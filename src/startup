@@ -1,0 +1,23 @@
+# changed by leer to run on xanthenix
+# Originally written for Cleft of Dimension - Leer
+# cleftofdimension.com: 9000
+
+#!/bin/bash
+#echo "Killing processes..."
+
+#kill -9 $(ps o user,pid,args | grep startup | grep -v grep | awk '{print($2)}') \
+#        >/dev/null 2>&1  \
+#        || echo "No startup running. Good."
+echo "killing rominit..    "
+kill -9 $(ps o user,pid,args | grep rominit | grep -v grep | awk '{print($2)}') \
+        >/dev/null 2>&1  \
+        || echo "None running. Good."
+echo "killing rom--    "
+kill -9 $(ps o user,pid,args | grep rot  | grep -v grep | awk '{print($2)}') \
+        >/dev/null 2>&1  \
+        || echo "None running. Good."
+
+echo "Calling rominit..."
+tcsh ./rominit &
+
+

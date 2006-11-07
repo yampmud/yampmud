@@ -1,0 +1,88 @@
+act_comm.o: act_comm.c merc.h interp.h proto.h gsn.h globals.h recycle.h \
+  tables.h db.h olc.h lookup.h
+act_enter.o: act_enter.c merc.h interp.h proto.h gsn.h globals.h
+act_info.o: act_info.c merc.h interp.h proto.h gsn.h globals.h magic.h \
+  recycle.h tables.h lookup.h db.h
+act_move.o: act_move.c merc.h interp.h proto.h gsn.h globals.h tables.h
+act_obj.o: act_obj.c merc.h interp.h proto.h gsn.h globals.h recycle.h \
+  tables.h magic.h
+act_wiz.o: act_wiz.c merc.h interp.h proto.h gsn.h globals.h recycle.h \
+  tables.h lookup.h magic.h olc.h db.h
+alias.o: alias.c merc.h interp.h proto.h gsn.h globals.h
+arena.o: arena.c merc.h interp.h proto.h gsn.h globals.h
+auction.o: auction.c merc.h interp.h proto.h gsn.h globals.h recycle.h
+ban.o: ban.c merc.h interp.h proto.h gsn.h globals.h recycle.h
+bit.o: bit.c merc.h interp.h proto.h gsn.h globals.h tables.h
+clans.o: clans.c merc.h interp.h proto.h gsn.h globals.h recycle.h \
+  tables.h lookup.h
+comm.o: comm.c merc.h interp.h proto.h gsn.h globals.h recycle.h tables.h \
+  telnet.h
+const.o: const.c merc.h interp.h proto.h gsn.h globals.h magic.h
+curse.o: curse.c merc.h interp.h proto.h gsn.h globals.h magic.h
+db2.o: db2.c merc.h interp.h proto.h gsn.h globals.h db.h lookup.h \
+  tables.h
+db.o: db.c merc.h interp.h proto.h gsn.h globals.h db.h recycle.h music.h \
+  tables.h lookup.h
+drunk.o: drunk.c merc.h interp.h proto.h gsn.h globals.h
+economy.o: economy.c merc.h interp.h proto.h gsn.h globals.h recycle.h \
+  tables.h lookup.h
+effects.o: effects.c merc.h interp.h proto.h gsn.h globals.h recycle.h
+explore.o: explore.c merc.h interp.h proto.h gsn.h globals.h
+fight.o: fight.c merc.h interp.h proto.h gsn.h globals.h tables.h \
+  recycle.h lookup.h
+finger.o: finger.c merc.h interp.h proto.h gsn.h globals.h magic.h \
+  recycle.h tables.h lookup.h
+flags.o: flags.c merc.h interp.h proto.h gsn.h globals.h tables.h
+forge.o: forge.c merc.h interp.h proto.h gsn.h globals.h magic.h
+forget.o: forget.c merc.h interp.h proto.h gsn.h globals.h
+games.o: games.c merc.h interp.h proto.h gsn.h globals.h recycle.h \
+  games.h
+handler.o: handler.c merc.h interp.h proto.h gsn.h globals.h magic.h \
+  recycle.h tables.h
+healer.o: healer.c merc.h interp.h proto.h gsn.h globals.h magic.h
+homes.o: homes.c merc.h interp.h proto.h gsn.h globals.h recycle.h
+interp.o: interp.c merc.h interp.h proto.h gsn.h globals.h db.h
+lookup.o: lookup.c merc.h interp.h proto.h gsn.h globals.h tables.h \
+  lookup.h
+magic2.o: magic2.c merc.h interp.h proto.h gsn.h globals.h magic.h \
+  tables.h recycle.h
+magic3.o: magic3.c merc.h interp.h proto.h gsn.h globals.h magic.h \
+  recycle.h
+magic.o: magic.c merc.h interp.h proto.h gsn.h globals.h magic.h \
+  recycle.h tables.h
+marry.o: marry.c merc.h interp.h proto.h gsn.h globals.h
+math.o: math.c merc.h interp.h proto.h gsn.h globals.h db.h
+mem.o: mem.c merc.h interp.h proto.h gsn.h globals.h recycle.h db.h
+mob_cmds.o: mob_cmds.c merc.h interp.h proto.h gsn.h globals.h mob_cmds.h
+mob_prog.o: mob_prog.c merc.h interp.h proto.h gsn.h globals.h tables.h \
+  lookup.h
+msedit.o: msedit.c merc.h interp.h proto.h gsn.h globals.h music.h \
+  recycle.h
+music.o: music.c merc.h interp.h proto.h gsn.h globals.h music.h \
+  recycle.h
+note.o: note.c merc.h interp.h proto.h gsn.h globals.h recycle.h tables.h
+olc_act.o: olc_act.c merc.h interp.h proto.h gsn.h globals.h olc.h \
+  tables.h recycle.h lookup.h magic.h db.h
+olc.o: olc.c merc.h interp.h proto.h gsn.h globals.h olc.h tables.h
+olc_mpcode.o: olc_mpcode.c merc.h interp.h proto.h gsn.h globals.h olc.h \
+  recycle.h
+olc_save.o: olc_save.c merc.h interp.h proto.h gsn.h globals.h olc.h \
+  tables.h db.h
+quest.o: quest.c merc.h interp.h proto.h gsn.h globals.h recycle.h \
+  magic.h tables.h lookup.h olc.h
+recycle.o: recycle.c merc.h interp.h proto.h gsn.h globals.h recycle.h
+repent.o: repent.c merc.h interp.h proto.h gsn.h globals.h magic.h
+save.o: save.c merc.h interp.h proto.h gsn.h globals.h recycle.h lookup.h \
+  tables.h
+scan.o: scan.c merc.h interp.h proto.h gsn.h globals.h
+sign.o: sign.c merc.h interp.h proto.h gsn.h globals.h recycle.h tables.h
+skills.o: skills.c merc.h interp.h proto.h gsn.h globals.h magic.h
+social_edit.o: social_edit.c merc.h interp.h proto.h gsn.h globals.h db.h
+special.o: special.c merc.h interp.h proto.h gsn.h globals.h magic.h
+string.o: string.c merc.h interp.h proto.h gsn.h globals.h
+summon.o: summon.c merc.h interp.h proto.h gsn.h globals.h magic.h \
+  recycle.h tables.h lookup.h db.h
+tables.o: tables.c merc.h interp.h proto.h gsn.h globals.h tables.h
+update.o: update.c merc.h interp.h proto.h gsn.h globals.h music.h \
+  lookup.h recycle.h
+wizlist.o: wizlist.c merc.h interp.h proto.h gsn.h globals.h recycle.h
