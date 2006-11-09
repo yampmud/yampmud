@@ -32,6 +32,46 @@
 *       ROT license, in the file doc/rot.license                           * 
 ***************************************************************************/
 
+struct flag_type
+{
+    char *name;
+    int bit;
+    bool settable;
+};
+
+struct clan_type
+{
+    char *name;
+    char *who_name;
+    long hall;
+    long entrance;
+    long pit;
+    bool independent;           /* true for loners */
+    bool pkill;                 /* true for pkilling clans */
+    char *exname;
+};
+
+struct position_type
+{
+    char *name;
+    char *short_name;
+};
+
+struct sex_type
+{
+    char *name;
+};
+
+struct size_type
+{
+    char *name;
+};
+
+struct clan_titles
+{
+    char *title_of_rank[3];
+};
+
 /* game tables */
 extern const struct clan_type clan_table[MAX_CLAN];
 extern const struct position_type position_table[];
@@ -80,43 +120,3 @@ extern const struct flag_type weapon_class[];
 extern const struct flag_type weapon_type2[];
 extern const struct flag_type furniture_flags[];
 extern const struct flag_type apply_types[];
-
-struct flag_type
-{
-    char *name;
-    int bit;
-    bool settable;
-};
-
-struct clan_type
-{
-    char *name;
-    char *who_name;
-    long hall;
-    long entrance;
-    long pit;
-    bool independent;           /* true for loners */
-    bool pkill;                 /* true for pkilling clans */
-    char *exname;
-};
-
-struct position_type
-{
-    char *name;
-    char *short_name;
-};
-
-struct sex_type
-{
-    char *name;
-};
-
-struct size_type
-{
-    char *name;
-};
-
-struct clan_titles
-{
-    char *title_of_rank[3];
-};
