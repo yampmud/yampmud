@@ -6,14 +6,8 @@
 
 
 # Set the port number.
-
-# changed by leer to run on xanthenix
-# cd /home/szrrya/Rom24/area
-cd ~/doc/doc/src
-
 set port = 2528
-# changed by leer to run on xanthenix
-# if ( "$1" != "" ) set port="$1"
+
 if ( "$1" != "" ) set port="$1"
 
 # Change to area directory.
