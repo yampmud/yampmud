@@ -758,9 +758,6 @@ MAGIC ( spell_downpour )
     act ( "$n raises $s arms and prays for {cr{wa{Ci{cn{x.", ch, NULL, NULL, TO_ROOM );
     act ( "You raise your arms and pray for {cr{wa{Ci{cn{x.", ch, NULL, NULL, TO_CHAR );
 
-    if ( saves_spell ( level, victim, DAM_WATER ) )
-        dam /= 1.5;
-
     act ( "$N is caught in $n's downpour!", ch, NULL, victim, TO_NOTVICT );
     act ( "You are caught in $n's downpour!!", ch, NULL, victim, TO_VICT );
     act ( "$N is caught in your downpour!", ch, NULL, victim, TO_CHAR );
@@ -768,6 +765,10 @@ MAGIC ( spell_downpour )
     while ( rds >= 0 )
     {
         dam = ( level * rds ) + dice ( 5, level );
+
+        if ( saves_spell ( level, victim, DAM_WATER ) )
+          dam /= 1.5;
+
         damage ( ch, victim, dam, sn, DAM_WATER, TRUE );
         rds--;
     }
@@ -782,9 +783,6 @@ MAGIC ( spell_dust_storm )
 
     rds = number_range ( 2, 2 + ( level / 40 ) );
 
-    if ( saves_spell ( level, victim, DAM_EARTH ) )
-        dam /= 1.5;
-
     act ( "$n summons a {yd{Du{Ys{yt st{Yo{Dr{ym{x to attack $N!", ch, NULL, victim, TO_NOTVICT );
     act ( "You are caught in $n's {yd{Du{Ys{yt st{Yo{Dr{ym{x!!", ch, NULL, victim, TO_VICT );
     act ( "You conjure a {yd{Du{Ys{yt st{Yo{Dr{ym{x to attack $N!", ch, NULL, victim, TO_CHAR );
@@ -792,6 +790,10 @@ MAGIC ( spell_dust_storm )
     while ( rds >= 0 )
     {
         dam = ( level * rds ) + dice ( 7, level );
+
+        if ( saves_spell ( level, victim, DAM_EARTH ) )
+          dam /= 1.5;
+
         damage ( ch, victim, dam, sn, DAM_EARTH, TRUE );
         rds--;
     }
