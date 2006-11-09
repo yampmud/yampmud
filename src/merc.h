@@ -2599,7 +2599,6 @@ void save_disabled args ( ( void ) );
 
 /* economy.c*/
 #define	BANK_INVEST
-#define BANK_INVEST_SAVE
 #define	BANK_TRANSFER
 
 /*****************************************************************************
