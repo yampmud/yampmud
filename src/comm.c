@@ -2361,7 +2361,7 @@ void bust_a_prompt ( CHAR_DATA * ch )
     if ( IS_IMMORTAL ( ch ) )
         sprintf ( buf, "%s", olc_ed_vnum ( ch ) );
     str_replace_c ( buf2, "%R", buf );
-    if ( IS_IMMORTAL ( ch ) && ch->in_room != NULL )
+    if ( ch->in_room != NULL )
         sprintf ( buf, "%s", ch->in_room->area->name );
     else
         sprintf ( buf, " " );
