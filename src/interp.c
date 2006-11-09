@@ -78,13 +78,6 @@ const struct cmd_type cmd_table[] = {
     {"southwest", do_southwest, POS_STANDING, 0, 1, LOG_NEVER, 0},
     {"northwest", do_northwest, POS_STANDING, 0, 1, LOG_NEVER, 0},
 
-    {"down", do_down, POS_STANDING, 0, 1, LOG_NEVER, 0},
-    {"down", do_down, POS_STANDING, 0, 1, LOG_NEVER, 0},
-    {"down", do_down, POS_STANDING, 0, 1, LOG_NEVER, 0},
-    {"down", do_down, POS_STANDING, 0, 1, LOG_NEVER, 0},
-    {"down", do_down, POS_STANDING, 0, 1, LOG_NEVER, 0},
-    {"down", do_down, POS_STANDING, 0, 1, LOG_NEVER, 0},
-
     /* 
      * Common other commands.
      * Placed here so one and two letter abbreviations work.
