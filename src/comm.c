@@ -2213,7 +2213,7 @@ void bust_a_prompt ( CHAR_DATA * ch )
     EXIT_DATA *pexit;
     bool found;
     bool round;
-    const char *dir_name[] = { "N", "E", "S", "W", "U", "D" };
+    const char *prompt_dir_name[] = { "N", "E", "S", "W", "U", "D" };
     char *door_name[] = { "north", "east", "south", "west", "up", "down" };
     int door, outlet;
 
@@ -2260,7 +2260,7 @@ void bust_a_prompt ( CHAR_DATA * ch )
                 {
                     found = TRUE;
                     round = TRUE;
-                    strcat ( doors, dir_name[door] );
+                    strcat ( doors, prompt_dir_name[door] );
                 }
                 if ( !round )
                 {
@@ -2272,7 +2272,7 @@ void bust_a_prompt ( CHAR_DATA * ch )
                     {
                         found = TRUE;
                         round = TRUE;
-                        strcat ( doors, dir_name[door] );
+                        strcat ( doors, prompt_dir_name[door] );
                     }
                 }
             }
