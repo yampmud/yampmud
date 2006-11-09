@@ -35,11 +35,8 @@
 #include "merc.h"
 #include "db.h"
 
-                        /*#define CONST_SOCIAL*//* remove this in Step 2 */
-
 #define SOCIAL_FILE "../config/text/socials.text"
 
-#ifndef CONST_SOCIAL
 struct social_type *social_table;   /* and social table */
 
 void load_social ( FILE * fp, struct social_type *social )
@@ -84,8 +81,6 @@ void load_social_table (  )
 
 }
 
-#endif /* CONST_SOCIAL */
-
 void save_social ( const struct social_type *s, FILE * fp )
 {
     /* get rid of (null) */
@@ -112,13 +107,6 @@ void save_social_table (  )
         return;
     }
 
-#ifdef CONST_SOCIAL             /* If old table still in use, count socials
-                                   first */
-
-    for ( maxSocial = 0; social_table[maxSocial].name[0]; maxSocial++ )
-        ;                       /* empty */
-#endif
-
     fprintf ( fp, "%d\n", maxSocial );
 
     for ( i = 0; i < maxSocial; i++ )
@@ -143,7 +131,6 @@ int social_lookup ( const char *name )
  * Social editting command
  */
 
-#ifndef CONST_SOCIAL
 CH_CMD ( do_sedit )
 {
     char cmd[MAX_INPUT_LENGTH], social[MAX_INPUT_LENGTH];
@@ -369,4 +356,3 @@ CH_CMD ( do_sedit )
 
     save_social_table (  );
 }
-#endif /* CONST_SOCIAL */
