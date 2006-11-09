@@ -41,12 +41,12 @@
 #include "merc.h"
 #include "magic.h"
 
-char *const dir_name[] = {
-    "north", "east", "south", "west", "up", "down"
+char *const dir_name[MAX_DIR] = {
+    "north", "east", "south", "west", "up", "down", "northeast", "southeast", "southwest", "northwest"
 };
 
-const sh_int rev_dir[] = {
-    2, 3, 0, 1, 5, 4, 2, 3, 0, 1, 5, 4
+const sh_int rev_dir[MAX_DIR] = {
+    2, 3, 0, 1, 5, 4, 8, 9, 6, 7
 };
 
 const sh_int movement_loss[SECT_MAX] = {

@@ -51,7 +51,7 @@ CH_CMD ( do_scan )
     char arg1[MAX_INPUT_LENGTH], buf[MAX_INPUT_LENGTH];
     ROOM_INDEX_DATA *scan_room;
     EXIT_DATA *pExit;
-    sh_int door, depth, outlet;
+    sh_int door, depth;
 
     argument = one_argument ( argument, arg1 );
 
@@ -67,14 +67,10 @@ CH_CMD ( do_scan )
         send_to_char ( "Looking around you see:\n\r", ch );
         scan_list ( ch->in_room, ch, 0, -1 );
 
-        for ( door = 0; door < 6; door++ )
+        for ( door = 0; door < MAX_DIR; door++ )
         {
-            outlet = door;
-            if ( ( ch->alignment < 0 ) &&
-                 ( pExit = ch->in_room->exit[door + 6] ) != NULL )
-                outlet += 6;
-            if ( ( pExit = ch->in_room->exit[outlet] ) != NULL )
-                scan_list ( pExit->u1.to_room, ch, 1, outlet );
+            if ( ( pExit = ch->in_room->exit[door] ) != NULL )
+                scan_list ( pExit->u1.to_room, ch, 1, door );
         }
         return;
     }
@@ -88,9 +84,16 @@ CH_CMD ( do_scan )
         door = 3;
     else if ( !str_cmp ( arg1, "u" ) || !str_cmp ( arg1, "up" ) )
         door = 4;
-
     else if ( !str_cmp ( arg1, "d" ) || !str_cmp ( arg1, "down" ) )
         door = 5;
+    else if ( !str_cmp ( arg1, "ne" ) || !str_cmp ( arg1, "northeast" ) )
+        door = 6;
+    else if ( !str_cmp ( arg1, "se" ) || !str_cmp ( arg1, "southeast" ) )
+        door = 7;
+    else if ( !str_cmp ( arg1, "sw" ) || !str_cmp ( arg1, "southwest" ) )
+        door = 8;
+    else if ( !str_cmp ( arg1, "nw" ) || !str_cmp ( arg1, "northwest" ) )
+        door = 9;
     else
     {
         send_to_char ( "Which way do you want to scan?\n\r", ch );
@@ -105,14 +108,10 @@ CH_CMD ( do_scan )
 
     for ( depth = 1; depth < 4; depth++ )
     {
-        outlet = door;
-        if ( ( ch->alignment < 0 ) &&
-             ( pExit = scan_room->exit[outlet + 6] ) != NULL )
-            outlet += 6;
-        if ( ( pExit = scan_room->exit[outlet] ) != NULL )
+        if ( ( pExit = scan_room->exit[door] ) != NULL )
         {
             scan_room = pExit->u1.to_room;
-            scan_list ( pExit->u1.to_room, ch, depth, outlet );
+            scan_list ( pExit->u1.to_room, ch, depth, door );
         }
     }
     return;

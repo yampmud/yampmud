@@ -1085,7 +1085,7 @@ void load_rooms ( FILE * fp )
         // SET_BIT(pRoomIndex->room_flags,ROOM_NOWHERE);
         pRoomIndex->sector_type = fread_number ( fp );
         pRoomIndex->light = 0;
-        for ( door = 0; door <= 11; door++ )
+        for ( door = 0; door < MAX_DIR; door++ )
             pRoomIndex->exit[door] = NULL;
 
         /* defaults */
@@ -1125,7 +1125,7 @@ void load_rooms ( FILE * fp )
                 int locks;
 
                 door = fread_number ( fp );
-                if ( door < 0 || door > 11 )
+                if ( door < 0 || door >= MAX_DIR )
                 {
                     bug ( "Fread_rooms: vnum %d has bad door number.", vnum );
                     quit ( 1 );
@@ -1390,7 +1390,7 @@ void fix_exits ( void )
             bool fexit;
 
             fexit = FALSE;
-            for ( door = 0; door <= 11; door++ )
+            for ( door = 0; door < MAX_DIR; door++ )
             {
                 if ( ( pexit = pRoomIndex->exit[door] ) != NULL )
                 {

@@ -2018,7 +2018,7 @@ CH_CMD ( do_rstat )
     }
     send_to_char ( ".\n\r", ch );
 
-    for ( door = 0; door <= 5; door++ )
+    for ( door = 0; door < MAX_DIR; door++ )
     {
         EXIT_DATA *pexit;
 

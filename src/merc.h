@@ -1428,6 +1428,10 @@ struct kill_data
 #define DIR_WEST		      3
 #define DIR_UP			      4
 #define DIR_DOWN		      5
+#define DIR_NORTHEAST     6
+#define DIR_SOUTHEAST     7
+#define DIR_SOUTHWEST     8
+#define DIR_NORTHWEST     9
 
 /*
  * Exit flags.
@@ -2616,7 +2620,7 @@ void save_disabled args ( ( void ) );
 #define         AREA_ADDED      2   /* Area has been added to. */
 #define         AREA_LOADING    4   /* Used for counting in db.c */
 
-#define MAX_DIR	6
+#define MAX_DIR	10
 #define NO_FLAG -99             /* Must not be used in flags or stats. */
 
 /*

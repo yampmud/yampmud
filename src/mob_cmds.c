@@ -317,7 +317,7 @@ CH_CMD ( do_mpasound )
         return;
 
     was_in_room = ch->in_room;
-    for ( door = 0; door < 6; door++ )
+    for ( door = 0; door < MAX_DIR; door++ )
     {
         EXIT_DATA *pexit;
 
@@ -1259,7 +1259,7 @@ CH_CMD ( do_mpflee )
     if ( ( was_in = ch->in_room ) == NULL )
         return;
 
-    for ( attempt = 0; attempt < 6; attempt++ )
+    for ( attempt = 0; attempt < MAX_DIR; attempt++ )
     {
         door = number_door (  );
         if ( ( pexit = was_in->exit[door] ) == 0 || pexit->u1.to_room == NULL ||

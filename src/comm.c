@@ -2213,8 +2213,8 @@ void bust_a_prompt ( CHAR_DATA * ch )
     EXIT_DATA *pexit;
     bool found;
     bool round;
-    const char *prompt_dir_name[] = { "N", "E", "S", "W", "U", "D" };
-    char *door_name[] = { "north", "east", "south", "west", "up", "down" };
+    const char *prompt_dir_name[MAX_DIR] = { "N", "E", "S", "W", "U", "D", "Ne", "Se", "Sw", "Nw" };
+    char *door_name[MAX_DIR] = { "north", "east", "south", "west", "up", "down", "northeast", "southeast", "southwest", "northwest" };
     int door, outlet;
 
     sprintf ( buf2, "%s", ch->prompt );
@@ -2244,14 +2244,10 @@ void bust_a_prompt ( CHAR_DATA * ch )
         }
         else
         {
-            for ( door = 0; door < 6; door++ )
+            for ( door = 0; door < MAX_DIR; door++ )
             {
                 round = FALSE;
-                outlet = door;
-                if ( ( ch->alignment < 0 ) &&
-                     ( pexit = ch->in_room->exit[door + 6] ) != NULL )
-                    outlet += 6;
-                if ( ( pexit = ch->in_room->exit[outlet] ) != NULL &&
+                if ( ( pexit = ch->in_room->exit[door] ) != NULL &&
                      pexit->u1.to_room != NULL &&
                      ( can_see_room ( ch, pexit->u1.to_room ) ||
                        ( IS_AFFECTED ( ch, AFF_INFRARED ) &&

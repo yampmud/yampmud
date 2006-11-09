@@ -1634,9 +1634,16 @@ CH_CMD ( do_look )
         door = 3;
     else if ( !str_cmp ( arg1, "u" ) || !str_cmp ( arg1, "up" ) )
         door = 4;
-
     else if ( !str_cmp ( arg1, "d" ) || !str_cmp ( arg1, "down" ) )
         door = 5;
+    else if ( !str_cmp ( arg1, "ne" ) || !str_cmp ( arg1, "northeast" ) )
+        door = 6;
+    else if ( !str_cmp ( arg1, "se" ) || !str_cmp ( arg1, "southeast" ) )
+        door = 7;
+    else if ( !str_cmp ( arg1, "sw" ) || !str_cmp ( arg1, "southwest" ) )
+        door = 8;
+    else if ( !str_cmp ( arg1, "nw" ) || !str_cmp ( arg1, "northwest" ) )
+        door = 9;
     else
     {
         send_to_char ( "You do not see that here.\n\r", ch );
@@ -1644,9 +1651,6 @@ CH_CMD ( do_look )
     }
 
     /* 'look direction' */
-    if ( ( ch->alignment < 0 ) &&
-         ( pexit = ch->in_room->exit[door + 6] ) != NULL )
-        door += 6;
     if ( ( pexit = ch->in_room->exit[door] ) == NULL )
     {
         send_to_char ( "Nothing special there.\n\r", ch );
@@ -2092,14 +2096,10 @@ CH_CMD ( do_exits )
     else
         sprintf ( buf, "{CO{cbvious exits{c:{x\n\r" );
     found = FALSE;
-    for ( door = 0; door < 6; door++ )
+    for ( door = 0; door < MAX_DIR; door++ )
     {
         round = FALSE;
-        outlet = door;
-        if ( ( ch->alignment < 0 ) &&
-             ( pexit = ch->in_room->exit[door + 6] ) != NULL )
-            outlet += 6;
-        if ( ( pexit = ch->in_room->exit[outlet] ) != NULL &&
+        if ( ( pexit = ch->in_room->exit[door] ) != NULL &&
              pexit->u1.to_room != NULL &&
              can_see_room ( ch, pexit->u1.to_room ) )
         {
@@ -2111,16 +2111,16 @@ CH_CMD ( do_exits )
                 {
                     num_exits++;
                     strcat ( buf, " " );
-                    strcat ( buf, dir_name[outlet] );
+                    strcat ( buf, dir_name[door] );
                 } else {
                     num_doors++;
                     strcat ( buf2, " " );
-                    strcat ( buf2, dir_name[outlet] );
+                    strcat ( buf2, dir_name[door] );
                 }
 
             } else {
                 sprintf ( buf + strlen ( buf ), "%-5s{x - %s",
-                          capitalize ( dir_name[outlet] ),
+                          capitalize ( dir_name[door] ),
                           room_is_dark ( pexit->u1.
                                          to_room ) ? "Too dark to tell" :
                           pexit->u1.to_room->name );
@@ -4540,7 +4540,7 @@ CH_CMD ( do_track )
             {
                 if ( victim->track_from[track] == track_vnum )
                 {
-                    for ( door = 0; door < 12; door++ )
+                    for ( door = 0; door < MAX_DIR; door++ )
                     {
                         if ( ( pexit = in_room->exit[door] ) != NULL )
                         {
@@ -4594,7 +4594,7 @@ CH_CMD ( do_track )
             {
                 if ( victim->track_from[track] == track_vnum )
                 {
-                    for ( door = 0; door < 12; door++ )
+                    for ( door = 0; door < MAX_DIR; door++ )
                     {
                         if ( ( pexit = in_room->exit[door] ) != NULL )
                         {

@@ -330,7 +330,7 @@ void move_char ( CHAR_DATA * ch, int door, bool follow, bool quiet )
     EXIT_DATA *pexit;
     int track;
 
-    if ( door < 0 || door > 11 )
+    if ( door < 0 || door >= MAX_DIR )
     {
         bug ( "Do_move: bad door %d.", door );
         return;
@@ -353,12 +353,8 @@ void move_char ( CHAR_DATA * ch, int door, bool follow, bool quiet )
         return;
 
     in_room = ch->in_room;
-    if ( ( ch->alignment < 0 ) && door < 6 &&
-         ( pexit = in_room->exit[door + 6] ) != NULL )
-    {
-        door += 6;
-    }
-    else if ( ( pexit = in_room->exit[door] ) == NULL )
+
+    if ( ( pexit = in_room->exit[door] ) == NULL )
     {
         if ( !quiet )
         {
@@ -856,6 +852,34 @@ CH_CMD ( do_down )
     return;
 }
 
+CH_CMD ( do_northeast )
+{
+    ch->movement_timer = 0;
+    move_char ( ch, DIR_NORTHEAST, FALSE, FALSE );
+    return;
+}
+
+CH_CMD ( do_southeast )
+{
+    ch->movement_timer = 0;
+    move_char ( ch, DIR_SOUTHEAST, FALSE, FALSE );
+    return;
+}
+
+CH_CMD ( do_southwest )
+{
+    ch->movement_timer = 0;
+    move_char ( ch, DIR_SOUTHWEST, FALSE, FALSE );
+    return;
+}
+
+CH_CMD ( do_northwest )
+{
+    ch->movement_timer = 0;
+    move_char ( ch, DIR_NORTHWEST, FALSE, FALSE );
+    return;
+}
+
 int find_door ( CHAR_DATA * ch, char *arg )
 {
     EXIT_DATA *pexit;
@@ -871,21 +895,21 @@ int find_door ( CHAR_DATA * ch, char *arg )
         door = 3;
     else if ( !str_cmp ( arg, "u" ) || !str_cmp ( arg, "up" ) )
         door = 4;
-
     else if ( !str_cmp ( arg, "d" ) || !str_cmp ( arg, "down" ) )
         door = 5;
+    else if ( !str_cmp ( arg, "ne" ) || !str_cmp ( arg, "northeast" ) )
+        door = 6;
+    else if ( !str_cmp ( arg, "se" ) || !str_cmp ( arg, "southeast" ) )
+        door = 7;
+    else if ( !str_cmp ( arg, "sw" ) || !str_cmp ( arg, "southwest" ) )
+        door = 8;
+    else if ( !str_cmp ( arg, "nw" ) || !str_cmp ( arg, "northwest" ) )
+        door = 9;
     else
     {
-        for ( door = 0; door <= 5; door++ )
+        for ( door = 0; door < MAX_DIR; door++ )
         {
-            if ( ( ch->alignment < 0 ) &&
-                 ( pexit = ch->in_room->exit[door + 6] ) != NULL &&
-                 IS_SET ( pexit->exit_info, EX_ISDOOR ) &&
-                 pexit->keyword != NULL && is_name ( arg, pexit->keyword ) )
-            {
-                return door + 6;
-            }
-            else if ( ( pexit = ch->in_room->exit[door] ) != NULL &&
+            if ( ( pexit = ch->in_room->exit[door] ) != NULL &&
                       IS_SET ( pexit->exit_info, EX_ISDOOR ) &&
                       pexit->keyword != NULL &&
                       is_name ( arg, pexit->keyword ) )
@@ -895,12 +919,6 @@ int find_door ( CHAR_DATA * ch, char *arg )
         }
         act ( "I see no $T here.", ch, NULL, arg, TO_CHAR );
         return -1;
-    }
-
-    if ( ( ch->alignment < 0 ) &&
-         ( pexit = ch->in_room->exit[door + 6] ) != NULL )
-    {
-        door += 6;
     }
 
     if ( ( pexit = ch->in_room->exit[door] ) == NULL )

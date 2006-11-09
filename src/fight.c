@@ -3260,7 +3260,7 @@ void death_cry ( CHAR_DATA * ch )
         msg = "You hear someone's death cry.";
 
     was_in_room = ch->in_room;
-    for ( door = 0; door <= 5; door++ )
+    for ( door = 0; door < MAX_DIR; door++ )
     {
         EXIT_DATA *pexit;
 
@@ -4481,7 +4481,7 @@ CH_CMD ( do_vdth )
             }
             wch->position = POS_STANDING;
             was_in = wch->in_room;
-            for ( attempt = 0; attempt < 6; attempt++ )
+            for ( attempt = 0; attempt < MAX_DIR; attempt++ )
             {
                 EXIT_DATA *pexit;
                 int door;
@@ -6020,7 +6020,7 @@ CH_CMD ( do_flee )
     }
 
     was_in = ch->in_room;
-    for ( attempt = 0; attempt < 6; attempt++ )
+    for ( attempt = 0; attempt < MAX_DIR; attempt++ )
     {
         EXIT_DATA *pexit;
         int door;

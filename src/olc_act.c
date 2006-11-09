@@ -1538,6 +1538,38 @@ REDIT ( redit_down )
     return FALSE;
 }
 
+REDIT ( redit_northeast )
+{
+    if ( change_exit ( ch, argument, DIR_NORTHEAST ) )
+        return TRUE;
+
+    return FALSE;
+}
+
+REDIT ( redit_southeast )
+{
+    if ( change_exit ( ch, argument, DIR_SOUTHEAST ) )
+        return TRUE;
+
+    return FALSE;
+}
+
+REDIT ( redit_southwest )
+{
+    if ( change_exit ( ch, argument, DIR_SOUTHWEST ) )
+        return TRUE;
+
+    return FALSE;
+}
+
+REDIT ( redit_northwest )
+{
+    if ( change_exit ( ch, argument, DIR_NORTHWEST ) )
+        return TRUE;
+
+    return FALSE;
+}
+
 REDIT ( redit_ed )
 {
     ROOM_INDEX_DATA *pRoom;

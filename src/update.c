@@ -570,7 +570,7 @@ void mobile_update ( void )
 
         /* Wander */
         if ( !IS_SET ( ch->act, ACT_SENTINEL ) && number_bits ( 3 ) == 0 &&
-             ( door = number_bits ( 5 ) ) <= 5 &&
+             ( door = number_bits ( 6 ) ) < MAX_DIR &&
              ( pexit = ch->in_room->exit[door] ) != NULL &&
              pexit->u1.to_room != NULL &&
              !IS_SET ( pexit->exit_info, EX_CLOSED ) &&
