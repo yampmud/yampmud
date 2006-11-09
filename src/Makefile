@@ -1,5 +1,5 @@
 CC      = gcc
-PROF    = -Os -ggdb3
+PROF    = -ggdb3
 WARN    = -Wall -pipe 
 C_FLAGS =  $(WARN) $(PROF) $(FLAGS)
 LIBS    = -lcrypt
