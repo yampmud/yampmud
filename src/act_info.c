@@ -2081,7 +2081,6 @@ CH_CMD ( do_exits )
     bool round;
     bool fAuto;
     int door;
-    int outlet;
 
     fAuto = !str_cmp ( argument, "auto" );
     if ( !check_blind ( ch ) )

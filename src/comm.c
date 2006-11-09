@@ -2215,7 +2215,7 @@ void bust_a_prompt ( CHAR_DATA * ch )
     bool round;
     const char *prompt_dir_name[MAX_DIR] = { "N", "E", "S", "W", "U", "D", "Ne", "Se", "Sw", "Nw" };
     char *door_name[MAX_DIR] = { "north", "east", "south", "west", "up", "down", "northeast", "southeast", "southwest", "northwest" };
-    int door, outlet;
+    int door;
 
     sprintf ( buf2, "%s", ch->prompt );
     if ( buf2 == NULL || buf2[0] == '\0' )
