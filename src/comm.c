@@ -4689,7 +4689,7 @@ int gettimeofday ( struct timeval *tp, void *tzp )
 }
 #endif
 
-void logf ( char *fmt, ... )
+void mudlogf ( char *fmt, ... )
 {
     char buf[MSL];
     va_list args;
@@ -4762,19 +4762,6 @@ void bugf ( char *fmt, ... )
     va_end ( args );
     bug ( buf, 0 );
 }
-
-/*
-void logf (char * fmt, ...)
-{
-	char buf [2*MSL];
-	va_list args;
-	va_start (args, fmt);
-	vsnprintf (buf, 2*MSL, fmt, args);
-	va_end (args);
-	
-	log_string (buf);
-}
-*/
 
 #define CH(descriptor)  ((descriptor)->original ? \
 (descriptor)->original : (descriptor)->character)
@@ -4885,13 +4872,13 @@ void copyover_recover (  )
     int desc;
     bool fOld;
 
-    logf ( "Copyover recovery initiated" );
+    mudlogf ( "Copyover recovery initiated" );
     fp = file_open ( COPYOVER_FILE, "r" );
     if ( !fp )                  /* there are some descriptors open which will
                                    hang forever then ? */
     {
         perror ( "copyover_recover:fopen" );
-        logf ( "Copyover file not found. Exitting.\n\r" );
+        mudlogf ( "Copyover file not found. Exitting.\n\r" );
         quit ( 1 );
     }
 

@@ -372,7 +372,7 @@ char *colour_channel args ( ( int colornum, CHAR_DATA * ch ) );
 void send_to_char args ( ( const char *txt, CHAR_DATA * ch ) );
 void page_to_char args ( ( const char *txt, CHAR_DATA * ch ) );
 void bugf ( char *fmt, ... ) __attribute__ ( ( format ( printf, 1, 2 ) ) );
-void logf ( char *fmt, ... ) __attribute__ ( ( format ( printf, 1, 2 ) ) );
+void mudlogf ( char *fmt, ... ) __attribute__ ( ( format ( printf, 1, 2 ) ) );
 void printf_to_char args ( ( CHAR_DATA * ch, char *fmt, ... ) )
     __attribute__ ( ( format ( printf, 2, 3 ) ) );
 void xsend_to_char args ( ( const char *txt, CHAR_DATA * ch, int suppress ) );
