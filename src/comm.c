@@ -1095,16 +1095,7 @@ void init_descriptor ( int control )
     /* 
      * Cons a new descriptor.
      */
-/*   
-    dnew = new_descriptor();
-    dnew->descriptor	= desc;
-    dnew->connected	= CON_GET_NAME;
-    dnew->showstr_head	= NULL;
-    dnew->showstr_point = NULL;
-    dnew->outsize	= 2000;
-    dnew->outbuf	= alloc_mem( dnew->outsize );
-*/
-    dnew = new_descriptor (  ); /* new_descriptor now also allocates things */
+    dnew = new_descriptor (  );
     dnew->descriptor = desc;
     dnew->pEdit = NULL;         /* OLC */
     dnew->pString = NULL;       /* OLC */
