@@ -1770,6 +1770,9 @@ CH_CMD ( do_goto )
     if ( ch->fighting != NULL )
         stop_fighting ( ch, TRUE );
 
+    if ( ch->position < POS_STANDING )
+        do_stand(ch, "");
+
     for ( rch = ch->in_room->people; rch != NULL; rch = rch->next_in_room )
     {
         if ( ( rch->level >= ch->invis_level ) &&
