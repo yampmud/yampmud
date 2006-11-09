@@ -1075,8 +1075,8 @@ void init_descriptor ( int control )
     int size;
 
     size = sizeof ( sock );
-    getsockname ( control, ( struct sockaddr * ) &sock, &size );
-    if ( ( desc = accept ( control, ( struct sockaddr * ) &sock, &size ) ) < 0 )
+    getsockname ( control, ( struct sockaddr * ) &sock, (socklen_t *) &size );
+    if ( ( desc = accept ( control, ( struct sockaddr * ) &sock, (socklen_t *) &size ) ) < 0 )
     {
         perror ( "New_descriptor: accept" );
         return;
@@ -1111,7 +1111,7 @@ void init_descriptor ( int control )
     dnew->editor = 0;           /* OLC */
     dnew->ansi = TRUE;
     size = sizeof ( sock );
-    if ( getpeername ( desc, ( struct sockaddr * ) &sock, &size ) < 0 )
+    if ( getpeername ( desc, ( struct sockaddr * ) &sock, (socklen_t *) &size ) < 0 )
     {
         perror ( "New_descriptor: getpeername" );
         dnew->host = str_dup ( "(unknown)" );
