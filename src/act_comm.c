@@ -60,64 +60,6 @@
 #include "lookup.h"
 #include "ctype.h"
 
-/* RT code to delete yourself */
-
-CH_CMD ( do_lmessage )
-{
-    char buf[MSL];
-    char arg1[MSL];
-
-    argument = one_argument ( argument, arg1 );
-
-    if ( IS_NPC ( ch ) )
-        return;
-
-    if ( argument[0] == '\0' )
-    {
-        sprintf ( buf,
-                  "Useage: lmessage < login / logout > <message>\n\rCustum login / logout messages cost 2500 QP.\n\rThe message will appears as [ Login / Logout ] %s <your message here>{x\n\rTo revert to a normal login message, set your message to \"none\" ( Without Quotes )\n\r",
-                  ch->name );
-        send_to_char ( buf, ch );
-        return;
-    }
-    else
-    {
-        if ( ch->pcdata->questpoints < 2500 )
-        {
-            send_to_char ( "You dont seem to have 2500 quest points.\n\r", ch );
-            return;
-        }
-        if ( strlen ( argument ) >= 250 )
-        {
-            send_to_char
-                ( "Sorry, the message must be less than 250 chars.\n\r", ch );
-            return;
-        }
-        if ( !str_cmp ( arg1, "logout" ) )
-        {
-            strcpy ( ch->pcdata->pmess, argument );
-            sprintf ( buf,
-                      "Your new logout message is now:\n\r{W[{RL{rog{Dout{W] %s %s{x\n\r",
-                      ch->name, argument );
-            send_to_char ( buf, ch );
-            ch->pcdata->questpoints -= 2500;
-            save_char_obj ( ch );
-            return;
-        }
-        if ( !str_cmp ( arg1, "login" ) )
-        {
-            strcpy ( ch->pcdata->jmess, argument );
-            sprintf ( buf,
-                      "Your new login message is now:\n\r{W[{RL{rog{Din{W] %s %s{x\n\r",
-                      ch->name, argument );
-            send_to_char ( buf, ch );
-            ch->pcdata->questpoints -= 2500;
-            save_char_obj ( ch );
-            return;
-        }
-    }
-}
-
 void do_pkset( CHAR_DATA * ch, char * argument)
 {
     if (IS_NPC(ch))
@@ -152,6 +94,8 @@ void do_pkset( CHAR_DATA * ch, char * argument)
 
     return;
 }
+
+/* RT code to delete yourself */
 
 CH_CMD ( do_delet )
 {

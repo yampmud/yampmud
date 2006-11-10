@@ -644,8 +644,6 @@ bool load_char_obj ( DESCRIPTOR_DATA * d, char *name )
     ch->pcdata->bamfin = str_dup ( "" );
     ch->pcdata->bamfout = str_dup ( "" );
     ch->pcdata->who_descr = str_dup ( "" );
-    ch->pcdata->jmess = str_dup ( "none" );
-    ch->pcdata->pmess = str_dup ( "none" );
     ch->pcdata->title = str_dup ( "" );
     ch->pcdata->spouse = str_dup ( "" );
     ch->pcdata->tier = 0;
@@ -1198,7 +1196,6 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                 break;
 
             case 'J':
-                KEYS ( "Jmes", ch->pcdata->jmess, fread_string ( fp ) );
                 break;
 
             case 'L':
@@ -1263,7 +1260,6 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                 KEY ( "Pkkl", ch->pcdata->pkkills, fread_number ( fp ) );
                 KEY ( "Pkset", ch->pcdata->pkset, fread_number ( fp ) );
                 KEY ( "Ptim", ch->pk_timer, fread_number ( fp ) );
-                KEYS ( "Pmes", ch->pcdata->pmess, fread_string ( fp ) );
                 break;
 
             case 'Q':

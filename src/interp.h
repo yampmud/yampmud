@@ -477,7 +477,6 @@ DECLARE_DO_FUN ( do_gocial );
 DECLARE_DO_FUN ( do_pload );
 DECLARE_DO_FUN ( do_punload );
 DECLARE_DO_FUN ( do_announce );
-DECLARE_DO_FUN ( do_lmessage );
 /*DECLARE_DO_FUN( do_combust      );*/
 /*DECLARE_DO_FUN( do_addapply     );*/
 /*DECLARE_DO_FUN( do_resetxp       );*/

@@ -1907,8 +1907,6 @@ struct pc_data
     char *title;
     char *sptitle;
     char *ctitle;
-    char *jmess;
-    char *pmess;
     char *afktitle;
     char *who_descr;
     char *socket;
