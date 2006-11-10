@@ -71,7 +71,6 @@ extern const struct cmd_type cmd_table[];
  * Defined in act_*.c (mostly).
  */
 DECLARE_DO_FUN( do_delevel      );
-DECLARE_DO_FUN( do_relevel      );
 DECLARE_DO_FUN( do_pktoggle     );
 DECLARE_DO_FUN( do_bprompt      );
 DECLARE_DO_FUN( do_spam         );
