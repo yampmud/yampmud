@@ -330,7 +330,7 @@ CH_CMD ( do_spells )
              skill_table[sn].spell_fun != spell_null &&
              ch->pcdata->learned[sn] > 0 )
         {
-            if ( !showAll && ch->pcdata->learned[sn] < 2 )
+            if ( !showAll && ch->level < skill_table[sn].skill_level[ch->class] )
                 continue;
 
             found = TRUE;
@@ -391,7 +391,7 @@ CH_CMD ( do_skills )
     if ( !strcmp(arg1, "all") )
         showAll = TRUE;
 
-    for ( lev = 0; lev < MAX_LEVEL; lev++ )
+    for ( lev = 0; lev < (showAll ? MAX_LEVEL : ch->level); lev++ )
     for ( sn = 0; sn < MAX_SKILL; sn++ )
     {
     
@@ -418,9 +418,6 @@ CH_CMD ( do_skills )
             level = 1;
         else
             level = skill_table[sn].skill_level[ch->class];
-
-        if ( !showAll && ch->pcdata->learned[sn] < 2 )
-            continue;
 
         if ( ch->pcdata->learned[sn] > 0 )
             sprintf ( learnbuf, "{G%%{g%-3d", ch->pcdata->learned[sn] );
