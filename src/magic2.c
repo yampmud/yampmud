@@ -838,8 +838,8 @@ MAGIC ( spell_napalm )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
 
     dam = ch->level * 10 + dice ( 15, 30 );
@@ -848,9 +848,9 @@ MAGIC ( spell_napalm )
     else
        spell_plague ( skill_lookup ( "plague" ), level, ch, ( void * ) victim, TARGET_CHAR );
 
-    damage ( ch, victim, dam + ( dam / 2 ), sn, DAM_FIRE, TRUE );
-    damage ( ch, victim, dam + ( dam / 4 ), sn, DAM_DISEASE, TRUE );
-    damage ( ch, victim, dam, sn, DAM_FIRE, TRUE );
+    damage ( ch, victim, dam + ( dam / 2 ), sn, DAM_FIRE, true );
+    damage ( ch, victim, dam + ( dam / 4 ), sn, DAM_DISEASE, true );
+    damage ( ch, victim, dam, sn, DAM_FIRE, true );
     return;
 }
 
@@ -1244,7 +1244,7 @@ MAGIC ( spell_cry )
         return;
     }
 
-    damage_old ( ch, victim, dice ( ch->level * 8, 10 ), sn, DAM_MENTAL, TRUE );
+    damage_old ( ch, victim, dice ( ch->level * 8, 10 ), sn, DAM_MENTAL, true );
 
     af.where = TO_AFFECTS;
     af.type = sn;
@@ -1767,15 +1767,15 @@ MAGIC ( spell_celestial_fury )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
 
     dam = dice ( level * 2, 40 );
     if ( saves_spell ( level, victim, DAM_HOLY ) )
         dam /= 1.5;
 
-    damage_old ( ch, victim, dam + dice ( 3, 10 ), sn, DAM_HOLY, TRUE );
-    damage_old ( ch, victim, dam + dice ( 2, 15 ), sn, DAM_LIGHTNING, TRUE );
+    damage_old ( ch, victim, dam + dice ( 3, 10 ), sn, DAM_HOLY, true );
+    damage_old ( ch, victim, dam + dice ( 2, 15 ), sn, DAM_LIGHTNING, true );
     return;
 }

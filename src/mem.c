@@ -96,7 +96,7 @@ AREA_DATA *new_area ( void )
     pArea->max_vnum = 0;
     pArea->age = 0;
     pArea->nplayer = 0;
-    pArea->empty = TRUE;        /* ROM patch */
+    pArea->empty = true;        /* ROM patch */
     sprintf ( buf, "area%d.are", pArea->vnum );
     pArea->file_name = str_dup ( buf );
     pArea->vnum = top_area - 1;
@@ -295,7 +295,7 @@ OBJ_INDEX_DATA *new_obj_index ( void )
     for ( value = 0; value < 5; value++ )   /* 5 - ROM */
         pObj->value[value] = 0;
 
-    pObj->new_format = TRUE;    /* ROM */
+    pObj->new_format = true;    /* ROM */
 
     return pObj;
 }
@@ -383,7 +383,7 @@ MOB_INDEX_DATA *new_mob_index ( void )
     pMob->default_pos = POS_STANDING;   /* -- Hugin */
     pMob->wealth = 0;
 
-    pMob->new_format = TRUE;    /* ROM */
+    pMob->new_format = true;    /* ROM */
 
     return pMob;
 }

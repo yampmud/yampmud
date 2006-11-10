@@ -21,7 +21,7 @@ void do_start_massarena ( void )
     {
         do_gmessage
             ( "{W[{RARENA{W] The mass arena is now active! Let the games begin!{x\n\r" );
-        is_mass_arena_fight = TRUE;
+        is_mass_arena_fight = true;
         for ( ch = char_list; ch != NULL; ch = ch_next )
         {
             ch_next = ch->next;
@@ -271,9 +271,9 @@ CH_CMD ( do_challenge )
         return;
     }
     if ( !str_cmp ( arg2, "spar" ) )
-    spar = TRUE;
+    spar = true;
     else
-    spar = FALSE;
+    spar = false;
 
     ch->challenge_timer = 5;
     SET_BIT ( ch->act2, PLR2_CHALLENGER );
@@ -490,7 +490,7 @@ CH_CMD ( do_decline )
     sprintf ( buf,
               "{w[{RSPAR{w] {R%s {whas declined {R%s's {Wchallenge.{x\n\r",
               ch->name, victim->name );
-    spar = FALSE;
+    spar = false;
     for ( d = descriptor_list; d; d = d->next )
     {
         if ( d->connected == CON_PLAYING )

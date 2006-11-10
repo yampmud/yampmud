@@ -122,26 +122,26 @@ MPEDIT ( mpedit_create )
     if ( argument[0] == '\0' || value == 0 )
     {
         send_to_char ( "Syntax: mpedit create [vnum]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( !IS_NPC ( ch ) && ch->pcdata->security < 5 )
     {
         send_to_char
             ( "MPEdit: Insuficiente seguridad para crear MobProgs.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( get_mprog_index ( value ) )
     {
         send_to_char ( "MPEdit: Code vnum already exists.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( !get_vnum_area ( value ) )
     {
         send_to_char ( "MPEdit: Vnum no asignado a ningun Area.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pMcode = new_mpcode (  );
@@ -151,7 +151,7 @@ MPEDIT ( mpedit_create )
     ch->desc->pEdit = ( void * ) pMcode;
 
     send_to_char ( "MobProgram Code Created.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 MPEDIT ( mpedit_show )
@@ -165,7 +165,7 @@ MPEDIT ( mpedit_show )
               pMcode->code );
     send_to_char ( buf, ch );
 
-    return FALSE;
+    return false;
 }
 
 MPEDIT ( mpedit_code )
@@ -177,11 +177,11 @@ MPEDIT ( mpedit_code )
     if ( argument[0] == '\0' )
     {
         string_append ( ch, &pMcode->code );
-        return TRUE;
+        return true;
     }
 
     send_to_char ( " Syntax: code\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 CH_CMD ( do_mplist )

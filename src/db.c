@@ -103,7 +103,7 @@ void boot_db (  )
             quit ( 1 );
         }
         top_string = string_space;
-        fBootDb = TRUE;
+        fBootDb = true;
     }
 
     boot_buf[0] = '\0';
@@ -173,9 +173,9 @@ void boot_db (  )
     {
         FILE *w, *n;
 
-        wizlock = ( !( w = file_open ( WIZLOCK_FILE, "r" ) ) ? FALSE : TRUE );
+        wizlock = ( !( w = file_open ( WIZLOCK_FILE, "r" ) ) ? false : true );
         file_close ( w );
-        newlock = ( !( n = file_open ( NEWLOCK_FILE, "r" ) ) ? FALSE : TRUE );
+        newlock = ( !( n = file_open ( NEWLOCK_FILE, "r" ) ) ? false : true );
         file_close ( n );
     }
 
@@ -299,7 +299,7 @@ void boot_db (  )
         fix_exits (  );
         fix_mobprogs (  );
         sort_areas_by_level (  );
-        fBootDb = FALSE;
+        fBootDb = false;
         convert_objects (  );   /* ROM OLC */
         strcat ( boot_buf, "ng forge" );
         log_string ( "Area Update." );
@@ -370,7 +370,7 @@ void load_area ( FILE * fp )
     pArea->max_vnum = fread_long ( fp );
     pArea->age = 15;
     pArea->nplayer = 0;
-    pArea->empty = FALSE;
+    pArea->empty = false;
 
     if ( !area_first )
         area_first = pArea;
@@ -399,7 +399,7 @@ void load_area ( FILE * fp )
                 if ( !str_cmp( word, literal ) )    \
                 {                                   \
                     field  = value;                 \
-                    fMatch = TRUE;                  \
+                    fMatch = true;                  \
                     break;                          \
                  }
 
@@ -408,7 +408,7 @@ void load_area ( FILE * fp )
                 {                                   \
          _free_string( field, __FILE__, __LINE__ ); \
                     field = fread_string( fp );     \
-                    fMatch = TRUE;                  \
+                    fMatch = true;                  \
                     break;                          \
                                 }
 
@@ -445,7 +445,7 @@ void new_load_area ( FILE * fp )
     for ( ;; )
     {
         word = feof ( fp ) ? "End" : fread_word ( fp );
-        fMatch = FALSE;
+        fMatch = false;
 
         switch ( UPPER ( word[0] ) )
         {
@@ -465,7 +465,7 @@ void new_load_area ( FILE * fp )
             case 'E':
                 if ( !str_cmp ( word, "End" ) )
                 {
-                    fMatch = TRUE;
+                    fMatch = true;
                     if ( area_first == NULL )
                         area_first = pArea;
                     if ( area_last != NULL )
@@ -582,18 +582,18 @@ void load_old_mob ( FILE * fp )
         if ( vnum == 0 )
             break;
 
-        fBootDb = FALSE;
+        fBootDb = false;
         if ( get_mob_index ( vnum ) != NULL )
         {
             bug ( "Load_mobiles: vnum %d duplicated.", vnum );
             quit ( 1 );
         }
-        fBootDb = TRUE;
+        fBootDb = true;
 
         pMobIndex = alloc_perm ( sizeof ( *pMobIndex ) );
         pMobIndex->vnum = vnum;
         pMobIndex->area = area_last;    /* OLC */
-        pMobIndex->new_format = FALSE;
+        pMobIndex->new_format = false;
         pMobIndex->player_name = fread_string ( fp );
         pMobIndex->short_descr = fread_string ( fp );
         pMobIndex->long_descr = fread_string ( fp );
@@ -726,18 +726,18 @@ void load_old_obj ( FILE * fp )
         if ( vnum == 0 )
             break;
 
-        fBootDb = FALSE;
+        fBootDb = false;
         if ( get_obj_index ( vnum ) != NULL )
         {
             bug ( "Load_objects: vnum %d duplicated.", vnum );
             quit ( 1 );
         }
-        fBootDb = TRUE;
+        fBootDb = true;
 
         pObjIndex = alloc_perm ( sizeof ( *pObjIndex ) );
         pObjIndex->vnum = vnum;
         pObjIndex->area = area_last;    /* OLC */
-        pObjIndex->new_format = FALSE;
+        pObjIndex->new_format = false;
         pObjIndex->reset_num = 0;
         pObjIndex->name = fread_string ( fp );
         pObjIndex->short_descr = fread_string ( fp );
@@ -1058,13 +1058,13 @@ void load_rooms ( FILE * fp )
         if ( vnum > top_vnum )
             top_vnum = vnum;
 
-        fBootDb = FALSE;
+        fBootDb = false;
         if ( get_room_index ( vnum ) != NULL )
         {
             bug ( "Load_rooms: vnum %d duplicated.", vnum );
             quit ( 1 );
         }
-        fBootDb = TRUE;
+        fBootDb = true;
 
         pRoomIndex = alloc_perm ( sizeof ( *pRoomIndex ) );
         pRoomIndex->owner = str_dup ( "" );
@@ -1235,13 +1235,13 @@ void load_mobprogs ( FILE * fp )
         if ( vnum == 0 )
             break;
 
-        fBootDb = FALSE;
+        fBootDb = false;
         if ( get_mprog_index ( vnum ) != NULL )
         {
             bug ( "Load_mobprogs: vnum %d duplicated.", vnum );
             quit ( 1 );
         }
-        fBootDb = TRUE;
+        fBootDb = true;
 
         pMprog = alloc_perm ( sizeof ( *pMprog ) );
         pMprog->vnum = vnum;
@@ -1389,7 +1389,7 @@ void fix_exits ( void )
         {
             bool fexit;
 
-            fexit = FALSE;
+            fexit = false;
             for ( door = 0; door < MAX_DIR; door++ )
             {
                 if ( ( pexit = pRoomIndex->exit[door] ) != NULL )
@@ -1399,7 +1399,7 @@ void fix_exits ( void )
                         pexit->u1.to_room = NULL;
                     else
                     {
-                        fexit = TRUE;
+                        fexit = true;
                         pexit->u1.to_room = get_room_index ( pexit->u1.vnum );
                     }
                 }
@@ -1482,7 +1482,7 @@ void area_update ( void )
                 }
                 else if ( pArea->nplayer == 0 )
                 {
-                    pArea->empty = TRUE;
+                    pArea->empty = true;
                 }
             }
         }
@@ -1510,7 +1510,7 @@ void reset_room ( ROOM_INDEX_DATA * pRoom )
         return; */
 
     pMob = NULL;
-    last = FALSE;
+    last = false;
 
     for ( iExit = 0; iExit < MAX_DIR; iExit++ )
     {
@@ -1559,7 +1559,7 @@ void reset_room ( ROOM_INDEX_DATA * pRoom )
 
                 if ( pMobIndex->count >= pReset->arg2 )
                 {
-                    last = FALSE;
+                    last = false;
                     break;
                 }
 /* */
@@ -1571,7 +1571,7 @@ void reset_room ( ROOM_INDEX_DATA * pRoom )
                         count++;
                         if ( count >= pReset->arg4 )
                         {
-                            last = FALSE;
+                            last = false;
                             break;
                         }
                     }
@@ -1606,7 +1606,7 @@ void reset_room ( ROOM_INDEX_DATA * pRoom )
                 level = URANGE ( 0, pMob->level - 2, LEVEL_ANCIENT - 1 );   /* -1 
                                                                                ROM 
                                                                              */
-                last = TRUE;
+                last = true;
                 break;
 
             case 'O':
@@ -1632,7 +1632,7 @@ void reset_room ( ROOM_INDEX_DATA * pRoom )
                      count_obj_list ( pObjIndex, pRoom->contents ) > 0 ) */
                 if ( count_obj_list ( pObjIndex, pRoom->contents ) > 0 )
                 {
-                    last = FALSE;
+                    last = false;
                     break;
                 }
 
@@ -1641,7 +1641,7 @@ void reset_room ( ROOM_INDEX_DATA * pRoom )
                                               LEVEL_ANCIENT - 1 ) );
                 pObj->cost = 0;
                 obj_to_room ( pObj, pRoom );
-                last = TRUE;
+                last = true;
                 break;
 
             case 'P':
@@ -1682,7 +1682,7 @@ void reset_room ( ROOM_INDEX_DATA * pRoom )
                        count_obj_list ( pObjIndex,
                                         LastObj->contains ) ) > pReset->arg4 )
                 {
-                    last = FALSE;
+                    last = false;
                     break;
                 }
                 /* lastObj->level - ROM */
@@ -1700,7 +1700,7 @@ void reset_room ( ROOM_INDEX_DATA * pRoom )
 
                 /* fix object lock state! */
                 LastObj->value[1] = LastObj->pIndexData->value[1];
-                last = TRUE;
+                last = true;
                 break;
 
             case 'G':
@@ -1719,7 +1719,7 @@ void reset_room ( ROOM_INDEX_DATA * pRoom )
                 {
                     bug ( "Reset_room: 'E' or 'G': null mob for vnum %d.",
                           pReset->arg1 );
-                    last = FALSE;
+                    last = false;
                     break;
                 }
 
@@ -1805,7 +1805,7 @@ void reset_room ( ROOM_INDEX_DATA * pRoom )
                 obj_to_char ( pObj, LastMob );
                 if ( pReset->command == 'E' )
                     equip_char ( LastMob, pObj, pReset->arg3 );
-                last = TRUE;
+                last = true;
                 break;
 
             case 'D':
@@ -2221,7 +2221,7 @@ OBJ_DATA *create_object ( OBJ_INDEX_DATA * pObjIndex, int level )
 
     obj->pIndexData = pObjIndex;
     obj->in_room = NULL;
-    obj->enchanted = FALSE;
+    obj->enchanted = false;
 
     if ( pObjIndex->new_format )
         obj->level = pObjIndex->level;
@@ -2575,14 +2575,14 @@ int fread_number ( FILE * fp )
 
     number = 0;
 
-    sign = FALSE;
+    sign = false;
     if ( c == '+' )
     {
         c = getc ( fp );
     }
     else if ( c == '-' )
     {
-        sign = TRUE;
+        sign = true;
         c = getc ( fp );
     }
 
@@ -2626,14 +2626,14 @@ long fread_long ( FILE * fp )
 
     number = 0;
 
-    sign = FALSE;
+    sign = false;
     if ( c == '+' )
     {
         c = getc ( fp );
     }
     else if ( c == '-' )
     {
-        sign = TRUE;
+        sign = true;
         c = getc ( fp );
     }
 
@@ -2664,7 +2664,7 @@ long fread_flag ( FILE * fp )
 {
     int number;
     char c;
-    bool negative = FALSE;
+    bool negative = false;
 
     do
     {
@@ -2674,7 +2674,7 @@ long fread_flag ( FILE * fp )
 
     if ( c == '-' )
     {
-        negative = TRUE;
+        negative = true;
         c = getc ( fp );
     }
 
@@ -2848,11 +2848,11 @@ char *fread_string_eol ( FILE * fp )
     char *plast;
     char c;
 
-    if ( char_special[EOF - EOF] != TRUE )
+    if ( char_special[EOF - EOF] != true )
     {
-        char_special[EOF - EOF] = TRUE;
-        char_special['\n' - EOF] = TRUE;
-        char_special['\r' - EOF] = TRUE;
+        char_special[EOF - EOF] = true;
+        char_special['\n' - EOF] = true;
+        char_special['\r' - EOF] = true;
     }
 
     plast = top_string + sizeof ( char * );
@@ -3312,7 +3312,7 @@ void do_areas( CHAR_DATA *ch, char *argument )
     char        arg1 [ MAX_INPUT_LENGTH ];
     char        arg2 [ MAX_INPUT_LENGTH ];
     int lo_level, hi_level;
-    bool found = FALSE;
+    bool found = false;
     bool col = 0;
 
     argument = one_argument( argument, arg1 );
@@ -3333,7 +3333,7 @@ void do_areas( CHAR_DATA *ch, char *argument )
     if ( (get_area_level(pArea) / (MAX_LEVEL+1) <= hi_level) &&
          (get_area_level(pArea) % (MAX_LEVEL+1) >= lo_level) )
     {
-      found = TRUE;
+      found = true;
       sprintf( buf, "%-39s",pArea->credits);
       send_to_char( buf, ch );
       if (col)
@@ -3367,7 +3367,7 @@ CH_CMD ( do_areas )
     char arg1[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
     int lo_level, hi_level;
-    bool found = FALSE;
+    bool found = false;
     bool col = 0;
 
     argument = one_argument ( argument, arg1 );
@@ -3391,7 +3391,7 @@ CH_CMD ( do_areas )
         if ( ( get_area_level ( pArea ) / ( MAX_LEVEL + 1 ) <= hi_level ) &&
              ( get_area_level ( pArea ) % ( MAX_LEVEL + 1 ) >= lo_level ) )
         {
-            found = TRUE;
+            found = true;
             if ( !strstr ( pArea->builders, "Unlinked" ) )
                 printf_to_char ( ch, "{W[%-9s{W] " "{c%-30s " "{x({D%s{x)\n\r", 
                                   pArea->credits, pArea->name, pArea->builders );
@@ -3799,7 +3799,7 @@ void smash_tilde ( char *str )
 
 /*
  * Compare strings, case insensitive.
- * Return TRUE if different
+ * Return true if different
  *   (compatibility with historical functions).
  */
 bool str_cmp ( const char *astr, const char *bstr )
@@ -3807,27 +3807,27 @@ bool str_cmp ( const char *astr, const char *bstr )
     if ( astr == NULL )
     {
 //        bug ( "Str_cmp: null astr.", 0 );
-        return TRUE;
+        return true;
     }
 
     if ( bstr == NULL )
     {
 //        bug ( "Str_cmp: null bstr.", 0 );
-        return TRUE;
+        return true;
     }
 
     for ( ; *astr || *bstr; astr++, bstr++ )
     {
         if ( LOWER ( *astr ) != LOWER ( *bstr ) )
-            return TRUE;
+            return true;
     }
 
-    return FALSE;
+    return false;
 }
 
 /*
  * Compare strings, case insensitive, for prefix matching.
- * Return TRUE if astr not a prefix of bstr
+ * Return true if astr not a prefix of bstr
  *   (compatibility with historical functions).
  */
 bool str_prefix ( const char *astr, const char *bstr )
@@ -3835,27 +3835,27 @@ bool str_prefix ( const char *astr, const char *bstr )
     if ( astr == NULL )
     {
 //        bug ( "Strn_cmp: null astr.", 0 );
-        return TRUE;
+        return true;
     }
 
     if ( bstr == NULL )
     {
 //        bug ( "Strn_cmp: null bstr.", 0 );
-        return TRUE;
+        return true;
     }
 
     for ( ; *astr; astr++, bstr++ )
     {
         if ( LOWER ( *astr ) != LOWER ( *bstr ) )
-            return TRUE;
+            return true;
     }
 
-    return FALSE;
+    return false;
 }
 
 /*
  * Compare strings, case sensitive, for prefix matching.
- * Return TRUE if astr not a prefix of bstr
+ * Return true if astr not a prefix of bstr
  *   (compatibility with historical functions).
  */
 bool str_prefix_c ( const char *astr, const char *bstr )
@@ -3863,27 +3863,27 @@ bool str_prefix_c ( const char *astr, const char *bstr )
     if ( astr == NULL )
     {
 //        bug ( "Strn_cmp: null astr.", 0 );
-        return TRUE;
+        return true;
     }
 
     if ( bstr == NULL )
     {
 //        bug ( "Strn_cmp: null bstr.", 0 );
-        return TRUE;
+        return true;
     }
 
     for ( ; *astr; astr++, bstr++ )
     {
         if ( *astr != *bstr )
-            return TRUE;
+            return true;
     }
 
-    return FALSE;
+    return false;
 }
 
 /*
  * Compare strings, case insensitive, for match anywhere.
- * Returns TRUE is astr not part of bstr.
+ * Returns true is astr not part of bstr.
  *   (compatibility with historical functions).
  */
 bool str_infix ( const char *astr, const char *bstr )
@@ -3894,7 +3894,7 @@ bool str_infix ( const char *astr, const char *bstr )
     char c0;
 
     if ( ( c0 = LOWER ( astr[0] ) ) == '\0' )
-        return FALSE;
+        return false;
 
     sstr1 = strlen ( astr );
     sstr2 = strlen ( bstr );
@@ -3902,15 +3902,15 @@ bool str_infix ( const char *astr, const char *bstr )
     for ( ichar = 0; ichar <= sstr2 - sstr1; ichar++ )
     {
         if ( c0 == LOWER ( bstr[ichar] ) && !str_prefix ( astr, bstr + ichar ) )
-            return FALSE;
+            return false;
     }
 
-    return TRUE;
+    return true;
 }
 
 /*
  * Compare strings, case sensitive, for match anywhere.
- * Returns TRUE is astr not part of bstr.
+ * Returns true is astr not part of bstr.
  *   (compatibility with historical functions).
  */
 bool str_infix_c ( const char *astr, const char *bstr )
@@ -3921,7 +3921,7 @@ bool str_infix_c ( const char *astr, const char *bstr )
     char c0;
 
     if ( ( c0 = astr[0] ) == '\0' )
-        return FALSE;
+        return false;
 
     sstr1 = strlen ( astr );
     sstr2 = strlen ( bstr );
@@ -3929,10 +3929,10 @@ bool str_infix_c ( const char *astr, const char *bstr )
     for ( ichar = 0; ichar <= sstr2 - sstr1; ichar++ )
     {
         if ( c0 == bstr[ichar] && !str_prefix_c ( astr, bstr + ichar ) )
-            return FALSE;
+            return false;
     }
 
-    return TRUE;
+    return true;
 }
 
 /*
@@ -3943,7 +3943,7 @@ char *str_replace ( char *astr, char *bstr, char *cstr )
 {
     char newstr[MAX_STRING_LENGTH];
     char buf[MAX_STRING_LENGTH];
-    bool found = FALSE;
+    bool found = false;
     int sstr1, sstr2;
     int ichar, jchar;
     char c0, c1, c2;
@@ -3971,7 +3971,7 @@ char *str_replace ( char *astr, char *bstr, char *cstr )
     {
         if ( c1 == LOWER ( astr[ichar] ) && !str_prefix ( bstr, astr + ichar ) )
         {
-            found = TRUE;
+            found = true;
             jchar = ichar;
             ichar = sstr1;
         }
@@ -4004,7 +4004,7 @@ char *str_replace_c ( char *astr, char *bstr, char *cstr )
 {
     char newstr[MAX_STRING_LENGTH];
     char buf[MAX_STRING_LENGTH];
-    bool found = FALSE;
+    bool found = false;
     int sstr1, sstr2;
     int ichar, jchar;
     char c0, c1, c2;
@@ -4031,7 +4031,7 @@ char *str_replace_c ( char *astr, char *bstr, char *cstr )
     {
         if ( c1 == astr[ichar] && !str_prefix_c ( bstr, astr + ichar ) )
         {
-            found = TRUE;
+            found = true;
             jchar = ichar;
             ichar = sstr1;
         }
@@ -4058,7 +4058,7 @@ char *str_replace_c ( char *astr, char *bstr, char *cstr )
 
 /*
  * Compare strings, case insensitive, for suffix matching.
- * Return TRUE if astr not a suffix of bstr
+ * Return true if astr not a suffix of bstr
  *   (compatibility with historical functions).
  */
 bool str_suffix ( const char *astr, const char *bstr )
@@ -4069,9 +4069,9 @@ bool str_suffix ( const char *astr, const char *bstr )
     sstr1 = strlen ( astr );
     sstr2 = strlen ( bstr );
     if ( sstr1 <= sstr2 && !str_cmp ( astr, bstr + sstr2 - sstr1 ) )
-        return FALSE;
+        return false;
     else
-        return TRUE;
+        return true;
 }
 
 /*

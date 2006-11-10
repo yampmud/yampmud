@@ -65,7 +65,7 @@ CH_CMD ( do_auction )
             return;
         }
 
-        auction_channel ( "{!A God has stopped the auction!{x\n\r", FALSE );
+        auction_channel ( "{!A God has stopped the auction!{x\n\r", false );
 
         if ( auction_list->high_bidder != NULL )
             auction_list->high_bidder->platinum += auction_list->platinum_held;
@@ -199,7 +199,7 @@ CH_CMD ( do_auction )
 
         sprintf ( buf1, "%ld platinum has been offered for %s.\n\r", bid,
                   auction_list->item->short_descr );
-        auction_channel ( buf1, FALSE );
+        auction_channel ( buf1, false );
 
         if ( auction_list->high_bidder != NULL )
             auction_list->high_bidder->platinum += auction_list->platinum_held;
@@ -296,14 +296,14 @@ void update_auc ( void )
                     strcat ( buf1, temp );
                 }
 
-                auction_channel ( buf1, FALSE );
+                auction_channel ( buf1, false );
             }
 
             if ( auction_list->status == AUCTION_LENGTH )
             {
                 sprintf ( buf1, "No bids on %s - item removed.\n\r",
                           auction_list->item->short_descr );
-                auction_channel ( buf1, FALSE );
+                auction_channel ( buf1, false );
 
                 obj_to_char ( auction_list->item, auction_list->owner );
 
@@ -322,7 +322,7 @@ void update_auc ( void )
             {
                 sprintf ( buf1, "%s - going twice ({8No Bids Received{x).\n\r",
                           capitalize ( auction_list->item->short_descr ) );
-                auction_channel ( buf1, FALSE );
+                auction_channel ( buf1, false );
                 return;
             }
 
@@ -330,7 +330,7 @@ void update_auc ( void )
             {
                 sprintf ( buf1, "%s - going once ({8No Bids Received{x).\n\r",
                           capitalize ( auction_list->item->short_descr ) );
-                auction_channel ( buf1, FALSE );
+                auction_channel ( buf1, false );
                 return;
             }
         }
@@ -342,7 +342,7 @@ void update_auc ( void )
                           capitalize ( auction_list->item->short_descr ),
                           auction_list->high_bidder->name,
                           auction_list->current_bid );
-                auction_channel ( buf1, FALSE );
+                auction_channel ( buf1, false );
 
                 auction_list->owner->platinum +=
                     ( auction_list->platinum_held * 9 ) / 10;
@@ -372,7 +372,7 @@ void update_auc ( void )
                 sprintf ( buf1, "%s - going twice at %ld platinum.\n\r",
                           capitalize ( auction_list->item->short_descr ),
                           auction_list->current_bid );
-                auction_channel ( buf1, FALSE );
+                auction_channel ( buf1, false );
                 return;
             }
 
@@ -381,7 +381,7 @@ void update_auc ( void )
                 sprintf ( buf1, "%s - going once at %ld platinum.\n\r",
                           capitalize ( auction_list->item->short_descr ),
                           auction_list->current_bid );
-                auction_channel ( buf1, FALSE );
+                auction_channel ( buf1, false );
                 return;
             }
         }

@@ -159,7 +159,7 @@ MAGIC ( spell_icerain )
         if ( saves_spell ( level, victim, DAM_COLD ) )
             dam /= 1.5;
         if ( victim->in_room == ch->in_room )
-            damage ( ch, victim, dam, sn, DAM_COLD, TRUE );
+            damage ( ch, victim, dam, sn, DAM_COLD, true );
     }
     return;
 }
@@ -182,7 +182,7 @@ MAGIC ( spell_firerain )
                   NULL, victim, TO_ROOM );
             act ( "{RDrops of {rfire {Brain {Rshower down upon {W$N!{x", ch,
                   NULL, victim, TO_CHAR );
-            damage ( ch, victim, dam, sn, DAM_FIRE, TRUE );
+            damage ( ch, victim, dam, sn, DAM_FIRE, true );
         }
     }
     return;
@@ -206,7 +206,7 @@ MAGIC ( spell_acidstorm )
                   NULL, victim, TO_ROOM );
             act ( "{RDrops of {Dacid {Brain {Rshower down upon {W$N!{x", ch,
                   NULL, victim, TO_CHAR );
-            damage ( ch, victim, dam, sn, DAM_ACID, TRUE );
+            damage ( ch, victim, dam, sn, DAM_ACID, true );
         }
     }
     return;
@@ -230,7 +230,7 @@ MAGIC ( spell_firestorm )
                   NULL, victim, TO_ROOM );
             act ( "{RDrops of {rfire {Brain {Rshower down upon {W$N!{x", ch,
                   NULL, victim, TO_CHAR );
-            damage ( ch, victim, dam, sn, DAM_FIRE, TRUE );
+            damage ( ch, victim, dam, sn, DAM_FIRE, true );
         }
     }
     return;
@@ -348,12 +348,12 @@ MAGIC ( spell_meteor_storm )
     {
         act ( "{DM{re{Dt{re{Do{rr{Ds{x rain down upon {W$N!!!{x", ch, NULL, victim, TO_ROOM );
         act ( "{DM{re{Dt{re{Do{rr{Ds{x rain down upon {W$N!{x", ch, NULL, victim, TO_CHAR );
-        damage ( ch, victim, dice ( level * 4, 45 ), sn, DAM_EARTH, TRUE );
-        damage ( ch, victim, dice ( level * 4, 45 ), sn, DAM_HARM, TRUE );
+        damage ( ch, victim, dice ( level * 4, 45 ), sn, DAM_EARTH, true );
+        damage ( ch, victim, dice ( level * 4, 45 ), sn, DAM_HARM, true );
         if ( number_percent ( ) <= get_curr_stat ( ch, STAT_INT ) )
         {
-            damage ( ch, victim, dice ( level * 3, 45 ), sn, DAM_FIRE, TRUE );
-            damage ( ch, victim, dice ( level * 2, 45 ), sn, DAM_HARM, TRUE );
+            damage ( ch, victim, dice ( level * 3, 45 ), sn, DAM_FIRE, true );
+            damage ( ch, victim, dice ( level * 2, 45 ), sn, DAM_HARM, true );
         }
     }
     return;
@@ -374,7 +374,7 @@ MAGIC ( spell_call_darkness )
 
         if ( victim->in_room == ch->in_room )
         {
-            damage ( ch, victim, dam, sn, DAM_NEGATIVE, TRUE );
+            damage ( ch, victim, dam, sn, DAM_NEGATIVE, true );
 
             if ( number_percent ( ) >= 91 )
             {
@@ -536,8 +536,8 @@ MAGIC ( spell_earthrise )
     {
         act ( "Chunks of the {ge{ba{gr{bt{gh {Dr{ri{Ds{re {xup and come crashing down upon {W$N!!!{x", ch, NULL, victim, TO_ROOM );
         act ( "Chunks of the {ge{ba{gr{bt{gh {Dr{ri{Ds{re {xup and come crashing down upon {W$N!{x", ch, NULL, victim, TO_CHAR );
-        damage ( ch, victim, dice ( level * 5, 40 ), sn, DAM_EARTH, TRUE );
-        damage ( ch, victim, dice ( level * 5, 40 ), sn, DAM_EARTH, TRUE );
+        damage ( ch, victim, dice ( level * 5, 40 ), sn, DAM_EARTH, true );
+        damage ( ch, victim, dice ( level * 5, 40 ), sn, DAM_EARTH, true );
     }
     return;
 }
@@ -559,7 +559,7 @@ MAGIC ( spell_immortal_wrath )
         act ( "The {BImm{Wort{Bals {xrelease their {DW{RR{WA{RT{DH {xupon {c$N!!!{x", ch, NULL, victim, TO_ROOM );
         act ( "Using your {BImm{Wor{Btal {DP{Yo{yw{Ye{Dr{x, you relese your {DW{RR{WA{RT{DH {xupon {c$N!{x", ch, NULL, victim, TO_CHAR );
         send_to_char ( "Everything goes black..\n\r", victim );
-        damage ( ch, victim, 1000000000, sn, DAM_OTHER, TRUE );
+        damage ( ch, victim, 1000000000, sn, DAM_OTHER, true );
     }
 
     return;
@@ -769,7 +769,7 @@ MAGIC ( spell_downpour )
         if ( saves_spell ( level, victim, DAM_WATER ) )
           dam /= 1.5;
 
-        damage ( ch, victim, dam, sn, DAM_WATER, TRUE );
+        damage ( ch, victim, dam, sn, DAM_WATER, true );
         rds--;
     }
 
@@ -794,7 +794,7 @@ MAGIC ( spell_dust_storm )
         if ( saves_spell ( level, victim, DAM_EARTH ) )
           dam /= 1.5;
 
-        damage ( ch, victim, dam, sn, DAM_EARTH, TRUE );
+        damage ( ch, victim, dam, sn, DAM_EARTH, true );
         rds--;
     }
 
@@ -820,7 +820,7 @@ MAGIC ( spell_ego_whip )
     act ( "$n prods your mind, looking for weaknesses.", ch, NULL, victim, TO_VICT );
     act ( "You prod $N's mind, looking for weaknesses.", ch, NULL, victim, TO_CHAR );
 
-    damage_old ( ch, victim, dam, sn, DAM_MENTAL, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_MENTAL, true );
     victim->mana -= ( dam / 4 );
     return;
 }
@@ -838,7 +838,7 @@ MAGIC ( spell_sonic_blast )
         act ( "$n emits a screeching blast at $N!", ch, NULL, victim, TO_NOTVICT );
         act ( "$n directs a sonic blast at you!", ch, NULL, victim, TO_VICT );
         act ( "You channel a loud sonic blast at $N!", ch, NULL, victim, TO_CHAR );
-        damage ( ch, victim, dam, sn, DAM_SOUND, TRUE );
+        damage ( ch, victim, dam, sn, DAM_SOUND, true );
     }
     return;
 }
@@ -853,8 +853,8 @@ MAGIC ( spell_death_chant )
         act ( "$n chants dark words, eyes grimly focused on $N.", ch, NULL, victim, TO_NOTVICT );
         act ( "$n chants dark words, eyes grimly focused on you!", ch, NULL, victim, TO_VICT );
         act ( "You begin your death chant, focusing your dark powers on $N.", ch, NULL, victim, TO_CHAR );
-        damage ( ch, victim, dice ( level * 5, 20 ), sn, DAM_SOUND, TRUE );
-        damage ( ch, victim, dice ( level * 5, 21 ), sn, DAM_NEGATIVE, TRUE );
+        damage ( ch, victim, dice ( level * 5, 20 ), sn, DAM_SOUND, true );
+        damage ( ch, victim, dice ( level * 5, 21 ), sn, DAM_NEGATIVE, true );
 
         if ( !IS_SET ( victim->imm_flags, IMM_SOUND ) )
         {   // If my understanding is correct, this should be %0.25
@@ -969,7 +969,7 @@ MAGIC ( spell_lullaby )
             continue;
         if ( vch->in_room == ch->in_room )
         {
-            if ( vch != ch && !is_safe_spell ( ch, vch, TRUE ) )
+            if ( vch != ch && !is_safe_spell ( ch, vch, true ) )
             {
                 if ( saves_spell ( level, vch, DAM_CHARM ) )
                     dam /= 3;
@@ -1036,8 +1036,8 @@ MAGIC ( spell_coldfire )
 
     if ( victim->in_room == ch->in_room )
     {
-        damage ( ch, victim, cdam, sn, DAM_COLD, TRUE );
-        damage ( ch, victim, fdam, sn, DAM_FIRE, TRUE );
+        damage ( ch, victim, cdam, sn, DAM_COLD, true );
+        damage ( ch, victim, fdam, sn, DAM_FIRE, true );
     }
     return;
 }
@@ -1050,7 +1050,7 @@ MAGIC ( spell_pandemonium )
     int chance, mal;
     bool found;
 
-    found = FALSE;
+    found = false;
 
     act ( "$n performs a devastatingly {nc{=h{-a{po{dt{Oi{Ic{x song!", ch, NULL, NULL, TO_ROOM );
     send_to_char ( "You perform a devastatingly {nc{=h{-a{po{dt{Oi{Ic{x song!\n\r", ch );
@@ -1063,7 +1063,7 @@ MAGIC ( spell_pandemonium )
         if ( ich == ch ) // Dont hurt yourself!
             continue;
 
-        found = TRUE; // There ARE people in the room other than me.
+        found = true; // There ARE people in the room other than me.
         chance = ( number_range ( 1, 5 ) );   // Randomize the second damage type.
 
         if ( chance == 1 )
@@ -1071,40 +1071,40 @@ MAGIC ( spell_pandemonium )
             act ( "Summoned {Wd{wa{Dgge{wr{Ws{x rain down upon $N!", ch, NULL, ich, TO_NOTVICT );
             act ( "Summoned {Wd{wa{Dgge{wr{Ws{x rain down upon $N!", ch, NULL, ich, TO_CHAR );
             send_to_char ( "Summoned {Wd{wa{Dgge{wr{Ws{x rain down upon you!\n\r", ich );
-            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_SOUND, TRUE );
-            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_PIERCE, TRUE );
+            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_SOUND, true );
+            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_PIERCE, true );
         }
         else if ( chance == 2 ) // else if is faster and eliminates danger of mis-execution.
         {
             act ( "A stream of {qa{qc{qi{qd{x pours down on $N!", ch, NULL, ich, TO_NOTVICT );
             act ( "A stream of {qa{qc{qi{qd{x pours down on $N!", ch, NULL, ich, TO_CHAR );
             send_to_char ( "A stream of {qa{qc{qi{qd{x pours down on you!\n\r", ich );
-            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_SOUND, TRUE );
-            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_ACID, TRUE );
+            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_SOUND, true );
+            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_ACID, true );
         }
         else if ( chance == 3 )
         {
             act ( "{pL{pi{pg{ph{pt{pn{pi{pn{pg{x strikes $N!", ch, NULL, ich, TO_NOTVICT );
             act ( "{pL{pi{pg{ph{pt{pn{pi{pn{pg{x strikes $N!", ch, NULL, ich, TO_CHAR );
             send_to_char ( "{pL{pi{pg{ph{pt{pn{pi{pn{pg{x strikes you!\n\r", ich );
-            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_SOUND, TRUE );
-            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_LIGHTNING, TRUE );
+            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_SOUND, true );
+            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_LIGHTNING, true );
         }
         else if ( chance == 4 )
         {
             act ( "$N is hit by a ball of {ce{Mn{ce{Cr{cg{Gy{x!", ch, NULL, ich, TO_NOTVICT );
             act ( "$N is hit by a ball of {ce{Mn{ce{Cr{cg{Gy{x!", ch, NULL, ich, TO_CHAR );
             send_to_char ( "You are hit by a ball of {ce{Mn{ce{Cr{cg{Gy{x!\n\r", ich );
-            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_SOUND, TRUE );
-            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_ENERGY, TRUE );
+            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_SOUND, true );
+            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_ENERGY, true );
         }
         else if ( chance == 5 )
         {
             act ( "$N seems to explode with {ol{oi{og{oh{ot{x!", ch, NULL, ich, TO_NOTVICT );
             act ( "$N seems to explode with {ol{oi{og{oh{ot{x!", ch, NULL, ich, TO_CHAR );
             send_to_char ( "{oL{oi{og{oh{ot{x explodes within you!\n\r", ich );
-            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_SOUND, TRUE );
-            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_LIGHT, TRUE );
+            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_SOUND, true );
+            damage ( ch, ich, ( dice ( ch->level * 4, 37 ) ), sn, DAM_LIGHT, true );
         }
 
         mal = get_curr_stat ( ch, STAT_WIS );
@@ -1237,8 +1237,8 @@ MAGIC ( spell_whisper )
     dam = dice ( ( 7 + level ) / 2, 10 );
     if ( saves_spell ( level, victim, DAM_CHARM ) )
         dam /= 1.5;
-    damage_old ( ch, victim, ( dam + dice ( 5, 4 ) ), sn, DAM_SOUND, TRUE );
-    damage_old ( ch, victim, dam, sn, DAM_CHARM, TRUE );
+    damage_old ( ch, victim, ( dam + dice ( 5, 4 ) ), sn, DAM_SOUND, true );
+    damage_old ( ch, victim, dam, sn, DAM_CHARM, true );
     return;
 }
 
@@ -1250,7 +1250,7 @@ MAGIC ( spell_gust )
     dam = dice ( ( 13 + level ) / 2, 10 );
     if ( saves_spell ( level, victim, DAM_LIGHTNING ) )
         dam /= 1.5;
-    damage_old ( ch, victim, dam, sn, DAM_LIGHTNING, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_LIGHTNING, true );
 
     chance = 5 + ( get_curr_stat ( ch, STAT_DEX ) - get_curr_stat ( victim, STAT_DEX ) );
     if ( number_percent ( ) <= chance )
@@ -1279,8 +1279,8 @@ MAGIC ( spell_acid_arrow )
 
     if ( victim->in_room == ch->in_room )
     {
-        damage ( ch, victim, pdam, sn, DAM_PIERCE, TRUE );
-        damage ( ch, victim, adam, sn, DAM_ACID, TRUE );
+        damage ( ch, victim, pdam, sn, DAM_PIERCE, true );
+        damage ( ch, victim, adam, sn, DAM_ACID, true );
     }
     return;
 }
@@ -1300,16 +1300,16 @@ MAGIC ( spell_rumors )
             continue;
         if ( vch->in_room == ch->in_room )
         {
-            if ( vch != ch && !is_safe_spell ( ch, vch, TRUE ) )
+            if ( vch != ch && !is_safe_spell ( ch, vch, true ) )
             {
                 if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
                      ( !IS_NPC ( vch ) ) )
                 {
-                    ch->attacker = TRUE;
-                    vch->attacker = FALSE;
+                    ch->attacker = true;
+                    vch->attacker = false;
                 }
-                damage_old ( ch, vch, level + dice ( level, 3 ), sn, DAM_SOUND, TRUE );
-                damage_old ( ch, vch, level + dice ( level, 3 ), sn, DAM_MENTAL, TRUE );
+                damage_old ( ch, vch, level + dice ( level, 3 ), sn, DAM_SOUND, true );
+                damage_old ( ch, vch, level + dice ( level, 3 ), sn, DAM_MENTAL, true );
             }
             continue;
         }
@@ -1332,8 +1332,8 @@ MAGIC ( spell_drowning_pool )
 
     if ( victim->in_room == ch->in_room )
     {
-        damage ( ch, victim, mdam, sn, DAM_MENTAL, TRUE );
-        damage ( ch, victim, wdam, sn, DAM_WATER, TRUE );
+        damage ( ch, victim, mdam, sn, DAM_MENTAL, true );
+        damage ( ch, victim, wdam, sn, DAM_WATER, true );
     }
     return;
 }
@@ -1344,7 +1344,7 @@ MAGIC ( spell_shatter )
 
     if ( victim->in_room == ch->in_room )
     {
-        damage_old ( ch, victim, dice ( level, 10 ) + level, sn, DAM_SOUND, TRUE );
+        damage_old ( ch, victim, dice ( level, 10 ) + level, sn, DAM_SOUND, true );
         cold_effect ( victim, level, dice ( level, 10 ) + level, TARGET_CHAR );
     }
     return;
@@ -1355,7 +1355,7 @@ MAGIC ( spell_energy_bolt )
     CHAR_DATA *victim = ( CHAR_DATA * ) vo;
 
     if ( victim->in_room == ch->in_room )
-        damage_old ( ch, victim, dice ( level * 4, 5 ), sn, DAM_ENERGY, TRUE );
+        damage_old ( ch, victim, dice ( level * 4, 5 ), sn, DAM_ENERGY, true );
 
     return;
 }
@@ -1367,8 +1367,8 @@ MAGIC ( spell_blight )
 
     if ( victim->in_room == ch->in_room )
     {
-        damage_old ( ch, victim, dice ( level + 20, 7 ), sn, DAM_COLD, TRUE );
-        damage_old ( ch, victim, dice ( level + 20, 7 ), sn, DAM_NEGATIVE, TRUE );
+        damage_old ( ch, victim, dice ( level + 20, 7 ), sn, DAM_COLD, true );
+        damage_old ( ch, victim, dice ( level + 20, 7 ), sn, DAM_NEGATIVE, true );
     }
 
     if ( saves_spell ( level, victim, DAM_POISON ) )
@@ -1399,8 +1399,8 @@ MAGIC ( spell_nightmare )
     {
         act ( "$n fills your head with {Dhorrific visions{x!", ch, NULL, victim, TO_VICT );
         act ( "You send {Dhorrific visions{x into $N's mind!", ch, NULL, victim, TO_CHAR );
-        damage_old ( ch, victim, dice ( level + 13, 8 ) + dice ( 3, level ), sn, DAM_NEGATIVE, TRUE );
-        damage_old ( ch, victim, dice ( level + 13, 8 ), sn, DAM_MENTAL, TRUE );
+        damage_old ( ch, victim, dice ( level + 13, 8 ) + dice ( 3, level ), sn, DAM_NEGATIVE, true );
+        damage_old ( ch, victim, dice ( level + 13, 8 ), sn, DAM_MENTAL, true );
     }
 
     if ( !saves_spell ( level, victim, DAM_MENTAL ) && 
@@ -1424,8 +1424,8 @@ MAGIC ( spell_hymn )
         dam /= 1.5;
     act ( "$n sings a {og{ol{oo{or{oi{oo{ou{os{x hymn!", ch, NULL, victim, TO_ROOM );
     act ( "You sing a {og{ol{oo{or{oi{oo{ou{os{x hymn!", ch, NULL, victim, TO_CHAR );
-    damage_old ( ch, victim, dam + dice ( 3, level ), sn, DAM_HOLY, TRUE );
-    damage_old ( ch, victim, dam, sn, DAM_SOUND, TRUE );
+    damage_old ( ch, victim, dam + dice ( 3, level ), sn, DAM_HOLY, true );
+    damage_old ( ch, victim, dam, sn, DAM_SOUND, true );
     return;
 }
 
@@ -1437,10 +1437,10 @@ MAGIC ( spell_ray_of_frost )
     dam = dice ( level + 13, 8 );
     if ( saves_spell ( level, victim, DAM_COLD ) )
         dam /= 1.5;
-    damage_old ( ch, victim, dam + dice ( 3, level ), sn, DAM_COLD, TRUE );
-    damage_old ( ch, victim, dam, sn, DAM_COLD, TRUE );
-    damage_old ( ch, victim, dam / 2 , sn, DAM_COLD, TRUE );
-    damage_old ( ch, victim, dam / 5, sn, DAM_COLD, TRUE );
+    damage_old ( ch, victim, dam + dice ( 3, level ), sn, DAM_COLD, true );
+    damage_old ( ch, victim, dam, sn, DAM_COLD, true );
+    damage_old ( ch, victim, dam / 2 , sn, DAM_COLD, true );
+    damage_old ( ch, victim, dam / 5, sn, DAM_COLD, true );
     return;
 }
 
@@ -1452,8 +1452,8 @@ MAGIC ( spell_hallowed_ground )
     dam = dice ( level * 5, 5 );
     if ( saves_spell ( level, victim, DAM_EARTH ) && saves_spell ( level, victim, DAM_HOLY ) )
         dam /= 1.5;
-    damage_old ( ch, victim, ( dam / 2 ) + dice ( 8, 5 ), sn, DAM_HOLY, TRUE );
-    damage_old ( ch, victim, ( dam / 2 ) + dice ( 8, 5 ), sn, DAM_EARTH, TRUE );
+    damage_old ( ch, victim, ( dam / 2 ) + dice ( 8, 5 ), sn, DAM_HOLY, true );
+    damage_old ( ch, victim, ( dam / 2 ) + dice ( 8, 5 ), sn, DAM_EARTH, true );
     return;
 }
 
@@ -1468,7 +1468,7 @@ MAGIC ( spell_searing_light )
     else
         spell_blindness ( skill_lookup ( "blindness" ), level / 2, ch, ( void * ) victim, TARGET_CHAR );
 
-    damage_old ( ch, victim, ( dam / 2 ) + dice ( 8, 5 ), sn, DAM_LIGHT, TRUE );
+    damage_old ( ch, victim, ( dam / 2 ) + dice ( 8, 5 ), sn, DAM_LIGHT, true );
     return;
 }
 
@@ -1487,8 +1487,8 @@ MAGIC ( spell_early_grave )
 
     if ( victim->in_room == ch->in_room )
     {
-        damage ( ch, victim, mdam, sn, DAM_MENTAL, TRUE );
-        damage ( ch, victim, edam, sn, DAM_EARTH, TRUE );
+        damage ( ch, victim, mdam, sn, DAM_MENTAL, true );
+        damage ( ch, victim, edam, sn, DAM_EARTH, true );
     }
     return;
 }
@@ -1509,15 +1509,15 @@ MAGIC ( spell_raindance )
             continue;
         if ( vch->in_room == ch->in_room )
         {
-            if ( vch != ch && !is_safe_spell ( ch, vch, TRUE ) )
+            if ( vch != ch && !is_safe_spell ( ch, vch, true ) )
             {
                 if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
                      ( !IS_NPC ( vch ) ) )
                 {
-                    ch->attacker = TRUE;
-                    vch->attacker = FALSE;
+                    ch->attacker = true;
+                    vch->attacker = false;
                 }
-                damage_old ( ch, vch, level + dice ( level * 4, 5 ), sn, DAM_WATER, TRUE );
+                damage_old ( ch, vch, level + dice ( level * 4, 5 ), sn, DAM_WATER, true );
             }
             continue;
         }
@@ -1542,15 +1542,15 @@ MAGIC ( spell_cloudkill )
             continue;
         if ( vch->in_room == ch->in_room )
         {
-            if ( vch != ch && !is_safe_spell ( ch, vch, TRUE ) )
+            if ( vch != ch && !is_safe_spell ( ch, vch, true ) )
             {
                 if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) && ( !IS_NPC ( vch ) ) )
                 {
-                    ch->attacker = TRUE;
-                    vch->attacker = FALSE;
+                    ch->attacker = true;
+                    vch->attacker = false;
                 }
-                damage_old ( ch, vch, level + dice ( level * 2, 5 ), sn, DAM_HARM, TRUE );
-                damage_old ( ch, vch, level + dice ( level * 2, 5 ), sn, DAM_POISON, TRUE );
+                damage_old ( ch, vch, level + dice ( level * 2, 5 ), sn, DAM_HARM, true );
+                damage_old ( ch, vch, level + dice ( level * 2, 5 ), sn, DAM_POISON, true );
 
                 if ( !IS_AFFECTED ( vch, AFF_POISON ) && !saves_spell ( level, vch, DAM_POISON )
                     && number_range ( 1, 35 ) > get_curr_stat ( vch, STAT_CON ) )
@@ -1590,8 +1590,8 @@ MAGIC ( spell_icestorm )
         dam = dice ( level, level / 10 );
         if ( saves_spell ( level, victim, DAM_COLD ) )
             dam /= 1.5;
-            damage ( ch, victim, dam, sn, DAM_COLD, TRUE );
-            damage ( ch, victim, dam, sn, DAM_PIERCE, TRUE );
+            damage ( ch, victim, dam, sn, DAM_COLD, true );
+            damage ( ch, victim, dam, sn, DAM_PIERCE, true );
         i--;
     }
     return;
@@ -1612,8 +1612,8 @@ MAGIC ( spell_deceit )
 
     if ( victim->in_room == ch->in_room )
     {
-        damage ( ch, victim, mdam, sn, DAM_MENTAL, TRUE );
-        damage ( ch, victim, cdam, sn, DAM_COLD, TRUE );
+        damage ( ch, victim, mdam, sn, DAM_MENTAL, true );
+        damage ( ch, victim, cdam, sn, DAM_COLD, true );
     }
     return;
 }
@@ -1633,8 +1633,8 @@ MAGIC ( spell_astral_blast )
 
     if ( victim->in_room == ch->in_room )
     {
-        damage ( ch, victim, mdam, sn, DAM_MENTAL, TRUE );
-        damage ( ch, victim, hdam, sn, DAM_HOLY, TRUE );
+        damage ( ch, victim, mdam, sn, DAM_MENTAL, true );
+        damage ( ch, victim, hdam, sn, DAM_HOLY, true );
     }
     return;
 }
@@ -1650,8 +1650,8 @@ MAGIC ( spell_desecrate )
     if ( IS_GOOD ( ch ) )
     {
          send_to_char ( "The {Ddarkness{x burns within you!\n\r", ch );
-         damage_old ( ch, ch, level + dice ( level * 2, 5 ), sn, DAM_NEGATIVE, TRUE );
-         damage_old ( ch, ch, level + dice ( level * 2, 5 ), sn, DAM_ENERGY, TRUE );
+         damage_old ( ch, ch, level + dice ( level * 2, 5 ), sn, DAM_NEGATIVE, true );
+         damage_old ( ch, ch, level + dice ( level * 2, 5 ), sn, DAM_ENERGY, true );
     }
 
     for ( vch = char_list; vch != NULL; vch = vch_next )
@@ -1667,16 +1667,16 @@ MAGIC ( spell_desecrate )
                 spell_frenzy ( skill_lookup ( "frenzy" ), level, ch, ( void * ) vch, TARGET_CHAR );
                 spell_protection_good ( skill_lookup ( "protection good" ), level, ch, ( void * ) vch, TARGET_CHAR );
             }
-            else if ( vch != ch && !is_safe_spell ( ch, vch, TRUE ) )
+            else if ( vch != ch && !is_safe_spell ( ch, vch, true ) )
             {
                 if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
                      ( !IS_NPC ( vch ) ) )
                 {
-                    ch->attacker = TRUE;
-                    vch->attacker = FALSE;
+                    ch->attacker = true;
+                    vch->attacker = false;
                 }
-                damage_old ( ch, vch, level + dice ( level * 2, 7 ), sn, DAM_NEGATIVE, TRUE );
-                damage_old ( ch, vch, level + dice ( level * 2, 7 ), sn, DAM_ENERGY, TRUE );
+                damage_old ( ch, vch, level + dice ( level * 2, 7 ), sn, DAM_NEGATIVE, true );
+                damage_old ( ch, vch, level + dice ( level * 2, 7 ), sn, DAM_ENERGY, true );
             }
             continue;
         }
@@ -1695,8 +1695,8 @@ MAGIC ( spell_consecrate )
     if ( IS_EVIL ( ch ) )
     {
          send_to_char ( "The {Wlight{x burns within you!\n\r", ch );
-         damage_old ( ch, ch, level + dice ( level * 2, 5 ), sn, DAM_HOLY, TRUE );
-         damage_old ( ch, ch, level + dice ( level * 2, 5 ), sn, DAM_ENERGY, TRUE );
+         damage_old ( ch, ch, level + dice ( level * 2, 5 ), sn, DAM_HOLY, true );
+         damage_old ( ch, ch, level + dice ( level * 2, 5 ), sn, DAM_ENERGY, true );
     }
 
     for ( vch = char_list; vch != NULL; vch = vch_next )
@@ -1712,16 +1712,16 @@ MAGIC ( spell_consecrate )
                 spell_protection_evil ( skill_lookup ( "protection evil" ), level, ch, ( void * ) vch, TARGET_CHAR );
                 spell_bless ( skill_lookup ( "bless" ), level, ch, ( void * ) vch, TARGET_CHAR );
             }
-            else if ( vch != ch && !is_safe_spell ( ch, vch, TRUE ) )
+            else if ( vch != ch && !is_safe_spell ( ch, vch, true ) )
             {
                 if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
                      ( !IS_NPC ( vch ) ) )
                 {
-                    ch->attacker = TRUE;
-                    vch->attacker = FALSE;
+                    ch->attacker = true;
+                    vch->attacker = false;
                 }
-                damage_old ( ch, vch, level + dice ( level * 2, 7 ), sn, DAM_HOLY, TRUE );
-                damage_old ( ch, vch, level + dice ( level * 2, 7 ), sn, DAM_ENERGY, TRUE );
+                damage_old ( ch, vch, level + dice ( level * 2, 7 ), sn, DAM_HOLY, true );
+                damage_old ( ch, vch, level + dice ( level * 2, 7 ), sn, DAM_ENERGY, true );
             }
             continue;
         }
@@ -1756,7 +1756,7 @@ MAGIC ( spell_venom )
      }
 
     if ( victim->in_room == ch->in_room )
-        damage ( ch, victim, dam, sn, DAM_ACID, TRUE );
+        damage ( ch, victim, dam, sn, DAM_ACID, true );
 
     return;
 }
@@ -1776,15 +1776,15 @@ MAGIC ( spell_holocaust )
             continue;
         if ( vch->in_room == ch->in_room )
         {
-            if ( vch != ch && !is_safe_spell ( ch, vch, TRUE ) )
+            if ( vch != ch && !is_safe_spell ( ch, vch, true ) )
             {
                 if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
                      ( !IS_NPC ( vch ) ) )
                 {
-                    ch->attacker = TRUE;
-                    vch->attacker = FALSE;
+                    ch->attacker = true;
+                    vch->attacker = false;
                 }
-                damage_old ( ch, vch, level + dice ( level * 4, 7 ), sn, DAM_NEGATIVE, TRUE );
+                damage_old ( ch, vch, level + dice ( level * 4, 7 ), sn, DAM_NEGATIVE, true );
                 if ( !saves_spell ( level, vch, DAM_MENTAL ) && number_range ( 1, 35 ) > get_curr_stat ( vch, STAT_WIS ) )
                 spell_curse ( skill_lookup ( "curse" ), level, ch, ( void * ) vch, TARGET_CHAR );
             }
@@ -1810,8 +1810,8 @@ MAGIC ( spell_sleet )
 
     if ( victim->in_room == ch->in_room )
     {
-        damage ( ch, victim, cdam, sn, DAM_COLD, TRUE );
-        damage ( ch, victim, wdam, sn, DAM_WATER, TRUE );
+        damage ( ch, victim, cdam, sn, DAM_COLD, true );
+        damage ( ch, victim, wdam, sn, DAM_WATER, true );
     }
     return;
 }
@@ -1832,8 +1832,8 @@ MAGIC ( spell_disrupt )
 
     if ( victim->in_room == ch->in_room )
     {
-        damage ( ch, victim, dam + dice ( 12, 6 ), sn, DAM_HARM, TRUE );
-        damage ( ch, victim, dam, sn, DAM_ENERGY, TRUE );
+        damage ( ch, victim, dam + dice ( 12, 6 ), sn, DAM_HARM, true );
+        damage ( ch, victim, dam, sn, DAM_ENERGY, true );
     }
 
     if ( number_percent ( ) <= chance )
@@ -1861,8 +1861,8 @@ MAGIC ( spell_laughter )
 
     if ( victim->in_room == ch->in_room )
     {
-        damage ( ch, victim, ldam, sn, DAM_LIGHT, TRUE );
-        damage ( ch, victim, sdam, sn, DAM_SOUND, TRUE );
+        damage ( ch, victim, ldam, sn, DAM_LIGHT, true );
+        damage ( ch, victim, sdam, sn, DAM_SOUND, true );
     }
     return;
 }
@@ -1878,8 +1878,8 @@ MAGIC ( spell_earthsong )
 
     if ( victim->in_room == ch->in_room )
     {
-        damage_old ( ch, victim, dam + dice ( 12, 6 ), sn, DAM_EARTH, TRUE );
-        damage_old ( ch, victim, dam, sn, DAM_SOUND, TRUE );
+        damage_old ( ch, victim, dam + dice ( 12, 6 ), sn, DAM_EARTH, true );
+        damage_old ( ch, victim, dam, sn, DAM_SOUND, true );
     }
     return;
 }
@@ -1900,8 +1900,8 @@ MAGIC ( spell_repulse )
 
     if ( victim->in_room == ch->in_room )
     {
-        damage ( ch, victim, dam + dice ( 12, 6 ), sn, DAM_HARM, TRUE );
-        damage ( ch, victim, dam, sn, DAM_ENERGY, TRUE );
+        damage ( ch, victim, dam + dice ( 12, 6 ), sn, DAM_HARM, true );
+        damage ( ch, victim, dam, sn, DAM_ENERGY, true );
     }
 
     if ( number_percent ( ) <= chance )
@@ -1926,7 +1926,7 @@ MAGIC ( spell_corrode )
 
     if ( victim->in_room == ch->in_room )
     {
-        damage_old ( ch, victim, dam, sn, DAM_ACID, TRUE );
+        damage_old ( ch, victim, dam, sn, DAM_ACID, true );
         acid_effect ( victim, level, dam, TARGET_CHAR );
     }
     return;
@@ -1945,7 +1945,7 @@ MAGIC ( spell_cyclone )
         chance -= 5;
     }
 
-    damage_old ( ch, victim, dam, sn, DAM_LIGHTNING, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_LIGHTNING, true );
 
     if ( number_percent ( ) <= chance )
     {
@@ -1976,7 +1976,7 @@ MAGIC ( spell_death_knell )
     act ( "You drain the last of $N's life from $S body and grow stronger!", ch, NULL, victim, TO_CHAR );
     act ( "$n drains the last of $N's life from $S body.", ch, NULL, victim, TO_NOTVICT );
     dam = victim->hit;
-    damage_old ( ch, victim, dam * 10, sn, DAM_NEGATIVE, TRUE );
+    damage_old ( ch, victim, dam * 10, sn, DAM_NEGATIVE, true );
     ch->hit += dam;
    
     if ( IS_AFFECTED ( ch, sn ) )
@@ -2017,8 +2017,8 @@ MAGIC ( spell_hemorrhage )
         chance /= 2;
     }
 
-    damage_old ( ch, victim, dam + dice ( level, 3 ), sn, DAM_DISEASE, TRUE );
-    damage_old ( ch, victim, dam, sn, DAM_HARM, TRUE );
+    damage_old ( ch, victim, dam + dice ( level, 3 ), sn, DAM_DISEASE, true );
+    damage_old ( ch, victim, dam, sn, DAM_HARM, true );
 
     if ( !IS_SHIELDED ( victim, SHD_HEMORRHAGE ) && ( number_percent ( ) <= chance ) )
     {
@@ -2048,8 +2048,8 @@ MAGIC ( spell_unearthly_beauty )
         chance /= 2;
     }
 
-    damage_old ( ch, victim, dam + dice ( level, 3 ), sn, DAM_CHARM, TRUE );
-    damage_old ( ch, victim, dam, sn, DAM_LIGHT, TRUE );
+    damage_old ( ch, victim, dam + dice ( level, 3 ), sn, DAM_CHARM, true );
+    damage_old ( ch, victim, dam, sn, DAM_LIGHT, true );
 
     if ( !IS_AFFECTED ( victim, AFF_BLIND ) && ( number_percent ( ) < chance ) )
     {
@@ -2076,8 +2076,8 @@ MAGIC ( spell_freezing_sphere )
     if ( saves_spell ( level, victim, DAM_COLD ) )
         dam /= 1.5;
 
-    damage_old ( ch, victim, dam + dice ( level, 3 ), sn, DAM_COLD, TRUE );
-    damage_old ( ch, victim, dam, sn, DAM_WATER, TRUE );
+    damage_old ( ch, victim, dam + dice ( level, 3 ), sn, DAM_COLD, true );
+    damage_old ( ch, victim, dam, sn, DAM_WATER, true );
     return;
 }
 
@@ -2090,7 +2090,7 @@ MAGIC ( spell_serendipity )
     if ( saves_spell ( level, victim, DAM_HOLY ) )
         dam /= 1.5;
 
-    damage_old ( ch, victim, dam, sn, DAM_HOLY, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_HOLY, true );
     ch->hit += dam / 25;
     return;
 }
@@ -2124,7 +2124,7 @@ MAGIC ( spell_prismatic_spray )
             act ( "$N is hit by a beam of {bindigo light{x!", ch, NULL, victim, TO_CHAR );
             act ( "You feel drained as you are hit by a beam of {bindigo light{x!", ch, NULL, victim, TO_VICT );
             spell_energy_drain ( skill_lookup ( "energy drain" ), level, ch, ( void * ) victim, TARGET_CHAR );
-            damage_old ( ch, victim, dam / 1.5, sn, DAM_LIGHT, TRUE );            
+            damage_old ( ch, victim, dam / 1.5, sn, DAM_LIGHT, true );            
         }
         if ( color == 5 )
         {
@@ -2143,7 +2143,7 @@ MAGIC ( spell_prismatic_spray )
             act ( "You feel sick as you are hit by a beam of {Ggreen light{x!", ch, NULL, victim, TO_VICT );
             if ( saves_spell ( level, victim, DAM_POISON ) )
                 dam /= 2;
-            damage_old ( ch, victim, dam, sn, DAM_POISON, TRUE );
+            damage_old ( ch, victim, dam, sn, DAM_POISON, true );
             spell_poison ( skill_lookup ( "poison" ), level, ch, ( void * ) victim, TARGET_CHAR );
         }
         if ( color == 3 )
@@ -2153,7 +2153,7 @@ MAGIC ( spell_prismatic_spray )
             act ( "You are shocked by a beam of {Yyellow light{x!", ch, NULL, victim, TO_VICT );
             if ( saves_spell ( level, victim, DAM_ENERGY ) )
                 dam /= 2;
-            damage_old ( ch, victim, dam, sn, DAM_ENERGY, TRUE );
+            damage_old ( ch, victim, dam, sn, DAM_ENERGY, true );
         }
         if ( color == 2 )
         {
@@ -2162,7 +2162,7 @@ MAGIC ( spell_prismatic_spray )
             act ( "You are hit with acid from a beam of {yorange light{x!", ch, NULL, victim, TO_VICT );
             if ( saves_spell ( level, victim, DAM_ACID ) )
                 dam /= 2;
-            damage_old ( ch, victim, dam, sn, DAM_ACID, TRUE );
+            damage_old ( ch, victim, dam, sn, DAM_ACID, true );
         }
         if ( color == 1 )
         {
@@ -2171,7 +2171,7 @@ MAGIC ( spell_prismatic_spray )
             act ( "You are burned by a beam of {Rred light{x!", ch, NULL, victim, TO_VICT );
             if ( saves_spell ( level, victim, DAM_FIRE ) )
                 dam /= 2;
-            damage_old ( ch, victim, dam, sn, DAM_FIRE, TRUE );
+            damage_old ( ch, victim, dam, sn, DAM_FIRE, true );
         }
         beams--;
         color = number_range ( 1, 7 );
@@ -2188,8 +2188,8 @@ MAGIC ( spell_sunburst )
     dam = dice ( level * 6, 9 );
     if ( saves_spell ( level, victim, DAM_FIRE ) )
         dam /= 1.5;
-    damage_old ( ch, victim, dam + dice ( 3, 10 ), sn, DAM_FIRE, TRUE );
-    damage_old ( ch, victim, dam + dice ( 1, 30 ), sn, DAM_LIGHT, TRUE );
+    damage_old ( ch, victim, dam + dice ( 3, 10 ), sn, DAM_FIRE, true );
+    damage_old ( ch, victim, dam + dice ( 1, 30 ), sn, DAM_LIGHT, true );
 
     if ( !IS_AFFECTED ( victim, AFF_BLIND ) && !saves_spell ( level, victim, DAM_LIGHT ) )
     {
@@ -2215,8 +2215,8 @@ MAGIC ( spell_horrid_wilting )
     dam = dice ( level * 6, 9 );
     if ( !saves_spell ( level, victim, DAM_LIGHTNING ) )
         dam *= 1.5;
-    damage_old ( ch, victim, dam + dice ( 3, 10 ), sn, DAM_NEGATIVE, TRUE );
-    damage_old ( ch, victim, dam + dice ( 1, 30 ), sn, DAM_WATER, TRUE );
+    damage_old ( ch, victim, dam + dice ( 3, 10 ), sn, DAM_NEGATIVE, true );
+    damage_old ( ch, victim, dam + dice ( 1, 30 ), sn, DAM_WATER, true );
     return;
 }
 
@@ -2228,9 +2228,9 @@ MAGIC ( spell_sound_burst )
     dam = dice ( level * 6, 6 );
     if ( saves_spell ( level, victim, DAM_SOUND ) )
         dam /= 1.5;
-    damage_old ( ch, victim, dam + dice ( 3, 10 ), sn, DAM_SOUND, TRUE );
-    damage_old ( ch, victim, dam + dice ( 2, 15 ), sn, DAM_HARM, TRUE );
-    damage_old ( ch, victim, dam + dice ( 1, 30 ), sn, DAM_BASH, TRUE );
+    damage_old ( ch, victim, dam + dice ( 3, 10 ), sn, DAM_SOUND, true );
+    damage_old ( ch, victim, dam + dice ( 2, 15 ), sn, DAM_HARM, true );
+    damage_old ( ch, victim, dam + dice ( 1, 30 ), sn, DAM_BASH, true );
 
     if ( number_percent ( ) > get_curr_stat ( victim, STAT_DEX ) * 3 )
     {
@@ -2254,8 +2254,8 @@ MAGIC ( spell_elysium )
     act ( "$n attempts to send you into the paradise beyond death!", ch, NULL, victim, TO_VICT );
     act ( "$n attempts to send $N into the paradise beyond death!", ch, NULL, victim, TO_NOTVICT );
 
-    damage_old ( ch, victim, dam + dice ( 3, 10 ), sn, DAM_LIGHT, TRUE );
-    damage_old ( ch, victim, dam + dice ( 2, 15 ), sn, DAM_EARTH, TRUE );
+    damage_old ( ch, victim, dam + dice ( 3, 10 ), sn, DAM_LIGHT, true );
+    damage_old ( ch, victim, dam + dice ( 2, 15 ), sn, DAM_EARTH, true );
     return;
 }
 
@@ -2272,15 +2272,15 @@ MAGIC ( spell_stinking_cloud )
             continue;
         if ( vch->in_room == ch->in_room )
         {
-            if ( vch != ch && !is_safe_spell ( ch, vch, TRUE ) )
+            if ( vch != ch && !is_safe_spell ( ch, vch, true ) )
             {
                 if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) && ( !IS_NPC ( vch ) ) )
                 {
-                    ch->attacker = TRUE;
-                    vch->attacker = FALSE;
+                    ch->attacker = true;
+                    vch->attacker = false;
                 }
-                damage_old ( ch, vch, level + dice ( level, level / 5 ), sn, DAM_HARM, TRUE );
-                damage_old ( ch, vch, level + dice ( level, level / 5 ), sn, DAM_DISEASE, TRUE );
+                damage_old ( ch, vch, level + dice ( level, level / 5 ), sn, DAM_HARM, true );
+                damage_old ( ch, vch, level + dice ( level, level / 5 ), sn, DAM_DISEASE, true );
 
                 if ( !IS_AFFECTED ( vch, AFF_PLAGUE ) && !saves_spell ( level, vch, DAM_DISEASE )
                     && number_range ( 1, 35 ) > get_curr_stat ( vch, STAT_CON ) )
@@ -2329,8 +2329,8 @@ MAGIC ( spell_baptism )
     if ( saves_spell ( level, victim, DAM_HOLY ) )
         dam /= 1.5;
 
-    damage_old ( ch, victim, dam + dice ( 3, 10 ), sn, DAM_HOLY, TRUE );
-    damage_old ( ch, victim, dam + dice ( 2, 15 ), sn, DAM_WATER, TRUE );
+    damage_old ( ch, victim, dam + dice ( 3, 10 ), sn, DAM_HOLY, true );
+    damage_old ( ch, victim, dam + dice ( 2, 15 ), sn, DAM_WATER, true );
     return;
 }
 
@@ -2343,16 +2343,16 @@ MAGIC ( spell_venomous_lies )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
 
     dam = dice ( level * 2, 36 );
     if ( saves_spell ( level, victim, DAM_SOUND ) )
         dam /= 1.5;
 
-    damage_old ( ch, victim, dam + dice ( 3, 10 ), sn, DAM_ACID, TRUE );
-    damage_old ( ch, victim, dam + dice ( 2, 15 ), sn, DAM_SOUND, TRUE );
+    damage_old ( ch, victim, dam + dice ( 3, 10 ), sn, DAM_ACID, true );
+    damage_old ( ch, victim, dam + dice ( 2, 15 ), sn, DAM_SOUND, true );
 
     if ( !IS_AFFECTED ( victim, AFF_POISON ) && !saves_spell ( level, victim, DAM_POISON ) 
         && number_range ( 1, 40 ) > get_curr_stat ( victim, STAT_CON ) )
@@ -2386,8 +2386,8 @@ MAGIC ( spell_pollution )
     if ( saves_spell ( level, victim, DAM_NEGATIVE ) )
         dam /= 1.5;
 
-    damage_old ( ch, victim, dam + dice ( 3, 10 ), sn, DAM_ACID, TRUE );
-    damage_old ( ch, victim, dam + dice ( 2, 15 ), sn, DAM_NEGATIVE, TRUE );
+    damage_old ( ch, victim, dam + dice ( 3, 10 ), sn, DAM_ACID, true );
+    damage_old ( ch, victim, dam + dice ( 2, 15 ), sn, DAM_NEGATIVE, true );
 
     if ( !IS_AFFECTED ( victim, AFF_POISON ) && !saves_spell ( level, victim, DAM_POISON ) 
         && number_range ( 1, 40 ) > get_curr_stat ( victim, STAT_CON ) )
@@ -2420,8 +2420,8 @@ MAGIC ( spell_phantasmal_killer )
     if ( saves_spell ( level, victim, DAM_MENTAL ) )
         dam /= 1.5;
 
-    damage_old ( ch, victim, dam + dice ( 3, 10 ), sn, DAM_ENERGY, TRUE );
-    damage_old ( ch, victim, dam + dice ( 2, 15 ), sn, DAM_NEGATIVE, TRUE );
+    damage_old ( ch, victim, dam + dice ( 3, 10 ), sn, DAM_ENERGY, true );
+    damage_old ( ch, victim, dam + dice ( 2, 15 ), sn, DAM_NEGATIVE, true );
     return;
 }
 
@@ -2436,8 +2436,8 @@ MAGIC ( spell_wail_of_the_banshee )
     if ( saves_spell ( level, victim, DAM_SOUND ) )
         dam /= 1.5;
 
-    damage_old ( ch, victim, dam + number_range ( 11, 123 ), sn, DAM_HARM, TRUE );
-    damage_old ( ch, victim, dam, sn, DAM_SOUND, TRUE );
+    damage_old ( ch, victim, dam + number_range ( 11, 123 ), sn, DAM_HARM, true );
+    damage_old ( ch, victim, dam, sn, DAM_SOUND, true );
     return;
 }
 
@@ -2454,8 +2454,8 @@ MAGIC ( spell_vermin_swarm )
     if ( saves_spell ( level, victim, DAM_DISEASE ) )
         dam /= 1.5;
 
-    damage_old ( ch, victim, dam + number_range ( 11, 123 ), sn, DAM_DISEASE, TRUE );
-    damage_old ( ch, victim, dam, sn, DAM_HARM, TRUE );
+    damage_old ( ch, victim, dam + number_range ( 11, 123 ), sn, DAM_DISEASE, true );
+    damage_old ( ch, victim, dam, sn, DAM_HARM, true );
     return;
 }
 
@@ -2477,20 +2477,20 @@ MAGIC ( spell_incendiary_cloud )
             continue;
         if ( vch->in_room == ch->in_room )
         {
-            if ( vch != ch && !is_safe_spell ( ch, vch, TRUE ) )
+            if ( vch != ch && !is_safe_spell ( ch, vch, true ) )
             {
                 if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) && ( !IS_NPC ( vch ) ) )
                 {
-                    ch->attacker = TRUE;
-                    vch->attacker = FALSE;
+                    ch->attacker = true;
+                    vch->attacker = false;
                 }
                 dam = number_range ( level * 4, 2500 ) * 8;
                 if ( saves_spell ( level, vch, DAM_FIRE ) )
                     dam /= 1.5;
                 act ( "The {Oe{Om{Ob{Oe{Or{Os{x spread to engulf you!", ch, NULL, vch, TO_VICT );
                 act ( "The {Oe{Om{Ob{Oe{Or{Os{x spread to engulf $N!", NULL, NULL, vch, TO_NOTVICT );
-                damage_old ( ch, vch, dam + dice ( 4, 17), sn, DAM_FIRE, TRUE );
-                damage_old ( ch, vch, dam, sn, DAM_HARM, TRUE );
+                damage_old ( ch, vch, dam + dice ( 4, 17), sn, DAM_FIRE, true );
+                damage_old ( ch, vch, dam, sn, DAM_HARM, true );
                 hits++;
             }
             if ( number_percent ( ) >= chance && hits > 0 )
@@ -2511,32 +2511,32 @@ MAGIC ( spell_storm_of_vengeance )
     act ( "A large {Dstorm cloud{x forms above {W$N{x, thundering loudly.", ch, NULL, victim, TO_NOTVICT );
     act ( "A large {Dstorm cloud{x forms above {W$N{x, thundering loudly.", ch, NULL, victim, TO_CHAR );
     send_to_char ( "A large {Dstorm cloud{x forms above you, thundering loudly.\n\r", victim );
-    damage ( ch, victim, dice ( level * 4, 22 ), sn, DAM_SOUND, TRUE );
+    damage ( ch, victim, dice ( level * 4, 22 ), sn, DAM_SOUND, true );
     if ( chance < 26 )
         return; 
     act ( "{qA{qc{qi{qd {qr{qa{qi{qn{x streams down upon $N!", ch, NULL, victim, TO_NOTVICT );
     act ( "{qA{qc{qi{qd {qr{qa{qi{qn{x streams down upon $N!", ch, NULL, victim, TO_CHAR );
     send_to_char ( "{qA{qc{qi{qd {qr{qa{qi{qn{x streams down upon you!\n\r", victim );
-    damage ( ch, victim, dice ( level * 4, 22 ), sn, DAM_ACID, TRUE );
+    damage ( ch, victim, dice ( level * 4, 22 ), sn, DAM_ACID, true );
     if ( chance < 28 )
         return;
     act ( "A bolt of {ol{oi{og{oh{ot{on{oi{on{og{x strikes $N!", ch, NULL, victim, TO_NOTVICT );
     act ( "A bolt of {ol{oi{og{oh{ot{on{oi{on{og{x strikes $N!", ch, NULL, victim, TO_CHAR );
     send_to_char ( "A bolt of {ol{oi{og{oh{ot{on{oi{on{og{x strikes you!\n\r", victim );
-    damage ( ch, victim, dice ( level * 4, 22 ), sn, DAM_LIGHTNING, TRUE );
+    damage ( ch, victim, dice ( level * 4, 22 ), sn, DAM_LIGHTNING, true );
     if ( chance < 31 )
         return;
     act ( "$N is bombarded with large {-h{-a{-i{-l{x stones!", ch, NULL, victim, TO_NOTVICT );
     act ( "$N is bombarded with large {-h{-a{-i{-l{x stones!", ch, NULL, victim, TO_CHAR );
     send_to_char ( "You are bombarded with large {-h{-a{-i{-l{x stones!\n\r", victim );
-    damage ( ch, victim, dice ( level * 4, 22 ), sn, DAM_COLD, TRUE );
-    damage ( ch, victim, dice ( level * 4, 22 ), sn, DAM_BASH, TRUE );
+    damage ( ch, victim, dice ( level * 4, 22 ), sn, DAM_COLD, true );
+    damage ( ch, victim, dice ( level * 4, 22 ), sn, DAM_BASH, true );
     if ( chance < 33 )
         return;
     act ( "Torrential rains {cf{Cl{Bo{co{Cd{x down upon $N!", ch, NULL, victim, TO_NOTVICT );
     act ( "Torrential rains {cf{Cl{Bo{co{Cd{x down upon $N!", ch, NULL, victim, TO_CHAR );
     send_to_char ( "Torrential rains {cf{Cl{Bo{co{Cd{x down upon you!\n\r", victim );
-    damage ( ch, victim, dice ( level * 4, 22 ), sn, DAM_WATER, TRUE );
+    damage ( ch, victim, dice ( level * 4, 22 ), sn, DAM_WATER, true );
     return;
 }
 
@@ -2553,8 +2553,8 @@ MAGIC ( spell_disintegrate )
         act ( "You shoot a {gd{Gi{gs{Gi{gntegrat{Gi{gon {Gb{gea{gm{x at $N!", ch, NULL, victim, TO_CHAR );
         while ( rds >= 0 )
         {
-            damage ( ch, victim, dam + dice ( 3, 13 ), sn, DAM_ENERGY, TRUE );
-            damage ( ch, victim, dam, sn, DAM_HARM, TRUE );
+            damage ( ch, victim, dam + dice ( 3, 13 ), sn, DAM_ENERGY, true );
+            damage ( ch, victim, dam, sn, DAM_HARM, true );
             rds--;
         }
         fire_effect ( victim, level, dam, TARGET_CHAR );

@@ -124,7 +124,7 @@ void parse_sign ( CHAR_DATA * ch, char *argument, int type )
     if ( !str_cmp ( arg, "-" ) )
     {
         int len;
-        bool found = FALSE;
+        bool found = false;
 
         sign_attach ( ch, type );
         if ( ch->pnote->type != type )
@@ -150,7 +150,7 @@ void parse_sign ( CHAR_DATA * ch, char *argument, int type )
                 {
                     if ( len > 0 )
                         len--;
-                    found = TRUE;
+                    found = true;
                 }
                 else            /* found the second one */
                 {

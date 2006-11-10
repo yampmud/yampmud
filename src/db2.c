@@ -216,18 +216,18 @@ void load_mobiles ( FILE * fp )
         if ( vnum == 0 )
             break;
 
-        fBootDb = FALSE;
+        fBootDb = false;
         if ( get_mob_index ( vnum ) != NULL )
         {
             bug ( "Load_mobiles: vnum %ld duplicated.", vnum );
             quit ( 1 );
         }
-        fBootDb = TRUE;
+        fBootDb = true;
 
         pMobIndex = alloc_perm ( sizeof ( *pMobIndex ) );
         pMobIndex->vnum = vnum;
         pMobIndex->area = area_last;    /* OLC */
-        pMobIndex->new_format = TRUE;
+        pMobIndex->new_format = true;
         newmobs++;
         pMobIndex->player_name = fread_string ( fp );
         pMobIndex->short_descr = fread_string ( fp );
@@ -427,18 +427,18 @@ void load_objects ( FILE * fp )
         if ( vnum == 0 )
             break;
 
-        fBootDb = FALSE;
+        fBootDb = false;
         if ( get_obj_index ( vnum ) != NULL )
         {
             bug ( "Load_objects: vnum %ld duplicated.", vnum );
             quit ( 1 );
         }
-        fBootDb = TRUE;
+        fBootDb = true;
 
         pObjIndex = alloc_perm ( sizeof ( *pObjIndex ) );
         pObjIndex->vnum = vnum;
         pObjIndex->area = area_last;    /* OLC */
-        pObjIndex->new_format = TRUE;
+        pObjIndex->new_format = true;
         pObjIndex->reset_num = 0;
         newobjs++;
         pObjIndex->name = fread_string ( fp );
@@ -934,7 +934,7 @@ void convert_object ( OBJ_INDEX_DATA * pObjIndex )
             break;
     }
 
-    pObjIndex->new_format = TRUE;
+    pObjIndex->new_format = true;
     ++newobjs;
 
     return;
@@ -1033,7 +1033,7 @@ void convert_mobile ( MOB_INDEX_DATA * pMobIndex )
     pMobIndex->size = SIZE_MEDIUM;
     pMobIndex->material = str_dup ( "none" );
 
-    pMobIndex->new_format = TRUE;
+    pMobIndex->new_format = true;
     ++newmobs;
 
     return;
@@ -1052,7 +1052,7 @@ bool file_close ( FILE * fp )
 {
     if ( fp != NULL )
         fclose ( fp );
-    return TRUE;
+    return true;
 }
 
 void _quit ( int iError, char *file, int line )

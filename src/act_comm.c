@@ -122,24 +122,24 @@ void do_pkset( CHAR_DATA * ch, char * argument)
 {
     if (IS_NPC(ch))
 	return;
-    if (ch->pcdata->pkset == TRUE)
+    if (ch->pcdata->pkset == true)
     {
 	send_to_char("You are already set with PK status.\n\r", ch);
 	return;
     }
-    if (ch->pcdata->confirm_pkset == TRUE)
+    if (ch->pcdata->confirm_pkset == true)
     {
 	if (argument[0] != '\0')
 	{
 	    send_to_char("Pkset status removed.\n\r", ch);
-	    ch->pcdata->confirm_pkset = FALSE;
+	    ch->pcdata->confirm_pkset = false;
 	    return;
 	}
 	else
 	{
 	    send_to_char("Pk status has been set.  You are now open to any and all pk attacks.\n\r", ch);
-	    ch->pcdata->confirm_pkset = FALSE;
-	    ch->pcdata->pkset = TRUE;
+	    ch->pcdata->confirm_pkset = false;
+	    ch->pcdata->pkset = true;
 	}
     }
     else
@@ -147,7 +147,7 @@ void do_pkset( CHAR_DATA * ch, char * argument)
 	send_to_char("Warning, this command will irreversibly make you vulnerable to pkills.\n\r", ch);
 	send_to_char("Type 'pkset' again to confirm this command.", ch);
 	send_to_char("Typing pkset with an argument will cancel the command.\n\r", ch);
-	ch->pcdata->confirm_pkset = TRUE;
+	ch->pcdata->confirm_pkset = true;
     }
 
     return;
@@ -186,22 +186,22 @@ CH_CMD ( do_delete )
         if ( argument[0] != '\0' )
         {
             send_to_char ( "Delete status removed.\n\r", ch );
-            ch->pcdata->confirm_delete = FALSE;
+            ch->pcdata->confirm_delete = false;
             return;
         }
         else
         {
             if ( is_clead ( ch ) )
-                update_clanlist ( ch, ch->clead, FALSE, TRUE );
+                update_clanlist ( ch, ch->clead, false, true );
             if ( is_clan ( ch ) )
-                update_clanlist ( ch, ch->clan, FALSE, FALSE );
+                update_clanlist ( ch, ch->clan, false, false );
             sprintf ( strsave, "%s%s", PLAYER_DIR, capitalize ( ch->name ) );
             wiznet ( "$N turns $Mself into line noise.", ch, NULL, WIZ_LOGS, 0, 0 );
 
             sprintf ( newbuf, "{w[{RDELETE{w] %s has deleted.\n\r", ch->name );
             do_gmessage ( newbuf );
 
-            stop_fighting ( ch, TRUE );
+            stop_fighting ( ch, true );
             if ( ch->level > HERO )
             {
                 update_wizlist ( ch, 1 );
@@ -226,7 +226,7 @@ CH_CMD ( do_delete )
     send_to_char ( "WARNING: this command is irreversible.\n\r", ch );
     send_to_char
         ( "Typing delete with an argument will undo delete status.\n\r", ch );
-    ch->pcdata->confirm_delete = TRUE;
+    ch->pcdata->confirm_delete = true;
 
     sprintf ( newbuf, "{w[{RDELETE{w] %s is considering deleting.\n\r",
               ch->name );
@@ -542,7 +542,7 @@ CH_CMD ( do_reroll )
     int player_plat, player_gold, player_slvr, player_tier, player_comm,
         player_iqp, player_aqp;
     int iClass, iSecv, wNet, ctier, player_trust;
-    bool wasHero = FALSE;
+    bool wasHero = false;
 
     if ( IS_NPC ( ch ) || ( d = ch->desc ) == NULL )
         return;
@@ -597,7 +597,7 @@ CH_CMD ( do_reroll )
     }
 
     if ( ch->level >= LEVEL_HERO )
-        wasHero = TRUE;
+        wasHero = true;
     iClass = ch->class;
 
     if ( ch->pcdata->confirm_reroll )
@@ -605,7 +605,7 @@ CH_CMD ( do_reroll )
         if ( argument[0] == '\0' )
         {
             send_to_char ( "Reroll status removed.\n\r", ch );
-            ch->pcdata->confirm_reroll = FALSE;
+            ch->pcdata->confirm_reroll = false;
             return;
         }
         else
@@ -613,7 +613,7 @@ CH_CMD ( do_reroll )
             if ( !is_number ( argument ) )
             {
                 send_to_char ( "Reroll status removed.\n\r", ch );
-                ch->pcdata->confirm_reroll = FALSE;
+                ch->pcdata->confirm_reroll = false;
                 return;
             }
             /* Make sure ctier is not greater or less than number tiers in
@@ -631,14 +631,14 @@ CH_CMD ( do_reroll )
                 send_to_char
                     ( "That tier is not available to you.\n\rReroll status removed.\n\r",
                       ch );
-                ch->pcdata->confirm_reroll = FALSE;
+                ch->pcdata->confirm_reroll = false;
                 return;
             }
 
             if ( is_clead ( ch ) )
-                update_clanlist ( ch, ch->clead, FALSE, TRUE );
+                update_clanlist ( ch, ch->clead, false, true );
             if ( is_clan ( ch ) )
-                update_clanlist ( ch, ch->clan, FALSE, FALSE );
+                update_clanlist ( ch, ch->clan, false, false );
             if ( ch->level > ANCIENT )
                 update_wizlist ( ch, 1 );
 
@@ -646,7 +646,7 @@ CH_CMD ( do_reroll )
              * Get ready to delete the pfile, send a nice informational message.
              */
             sprintf ( strsave, "%s%s", PLAYER_DIR, capitalize ( ch->name ) );
-            stop_fighting ( ch, TRUE );
+            stop_fighting ( ch, true );
 
             send_to_char
                 ( "{RYou have chosen to reroll.  You will now be dropped in at the\n\r",
@@ -699,7 +699,7 @@ CH_CMD ( do_reroll )
 
             /* 
              * "After extract_char the ch is no longer valid!" */
-            extract_char ( ch, TRUE );
+            extract_char ( ch, true );
             unlink ( strsave );
             sprintf ( buf, "rm -f %s.gz", strsave );
             system ( buf );
@@ -732,7 +732,7 @@ CH_CMD ( do_reroll )
 
             SET_BIT ( d->character->pcdata->ctier, tier_table[ctier - 1].bit );
             SET_BIT ( d->character->act, PLR_REROLL );
-            ch->pcdata->confirm_reroll = FALSE;
+            ch->pcdata->confirm_reroll = false;
 
             d->connected = CON_BEGIN_REROLL;
             return;
@@ -779,7 +779,7 @@ CH_CMD ( do_reroll )
 
     send_to_char ( "\n\r", ch );
 
-    ch->pcdata->confirm_reroll = TRUE;
+    ch->pcdata->confirm_reroll = true;
     wiznet ( "$N is contemplating rerolling.", ch, NULL, WIZ_LOGS, 0,
              get_trust ( ch ) );
 }
@@ -1459,7 +1459,7 @@ CH_CMD ( do_pray )
         {
             CHAR_DATA *victim;
             int pos;
-            bool found = FALSE;
+            bool found = false;
 
             victim = d->original ? d->original : d->character;
 
@@ -1476,7 +1476,7 @@ CH_CMD ( do_pray )
                     if ( victim->pcdata->forget[pos] == NULL )
                         break;
                     if ( !str_cmp ( ch->name, victim->pcdata->forget[pos] ) )
-                        found = TRUE;
+                        found = true;
                 }
                 if ( !found &&
                      ( IS_IMMORTAL ( ch ) || IS_SET ( ch->act2, PLR_MADMIN ) ) )
@@ -1564,7 +1564,7 @@ CH_CMD ( do_anctalk )
         {
             CHAR_DATA *victim;
             int pos;
-            bool found = FALSE;
+            bool found = false;
 
             victim = d->original ? d->original : d->character;
 
@@ -1577,7 +1577,7 @@ CH_CMD ( do_anctalk )
                     if ( victim->pcdata->forget[pos] == NULL )
                         break;
                     if ( !str_cmp ( ch->name, victim->pcdata->forget[pos] ) )
-                        found = TRUE;
+                        found = true;
                 }
                 act_new
                     ( "{W[{+A{+n{+c{+i{+e{+n{+t{W] {r-{R={W$n{R={r- {W'{D$t{W'{x",
@@ -1609,7 +1609,7 @@ char *pcolor ( CHAR_DATA * ch, const char *s, int tcolor )
     int ttemp;
     int skip;
 
-    tctoggle = FALSE;
+    tctoggle = false;
     skip = 0;
     ttemp = 0;
     sprintf ( new_arg, " " );
@@ -1630,11 +1630,11 @@ char *pcolor ( CHAR_DATA * ch, const char *s, int tcolor )
         {
             if ( tctoggle )
             {
-                tctoggle = FALSE;
+                tctoggle = false;
             }
             else
             {
-                tctoggle = TRUE;
+                tctoggle = true;
             }
 
             if ( *s == '{' )
@@ -1704,7 +1704,7 @@ char *pcolorr ( CHAR_DATA * ch, const char *g, int tcolor )
     int ttemp;
     int skip;
 
-    tctogglee = FALSE;
+    tctogglee = false;
     skip = 0;
     ttemp = 0;
     sprintf ( new_arg, " " );
@@ -1725,11 +1725,11 @@ char *pcolorr ( CHAR_DATA * ch, const char *g, int tcolor )
         {
             if ( tctoggle )
             {
-                tctogglee = FALSE;
+                tctogglee = false;
             }
             else
             {
-                tctogglee = TRUE;
+                tctogglee = true;
             }
 
             if ( *g == '{' )
@@ -1912,7 +1912,7 @@ CH_CMD ( do_ooc )
         {
             CHAR_DATA *victim;
             int pos;
-            bool found = FALSE;
+            bool found = false;
 
             victim = d->original ? d->original : d->character;
 
@@ -1925,7 +1925,7 @@ CH_CMD ( do_ooc )
                     if ( victim->pcdata->forget[pos] == NULL )
                         break;
                     if ( !str_cmp ( ch->name, victim->pcdata->forget[pos] ) )
-                        found = TRUE;
+                        found = true;
                 }
                 if ( !found )
                 {
@@ -2012,7 +2012,7 @@ CH_CMD ( do_gossip )
         {
             CHAR_DATA *victim;
             int pos;
-            bool found = FALSE;
+            bool found = false;
 
             victim = d->original ? d->original : d->character;
 
@@ -2025,7 +2025,7 @@ CH_CMD ( do_gossip )
                     if ( victim->pcdata->forget[pos] == NULL )
                         break;
                     if ( !str_cmp ( ch->name, victim->pcdata->forget[pos] ) )
-                        found = TRUE;
+                        found = true;
                 }
                 if ( !found )
                 {
@@ -2115,7 +2115,7 @@ CH_CMD ( do_qgossip )
         {
             CHAR_DATA *victim;
             int pos;
-            bool found = FALSE;
+            bool found = false;
 
             victim = d->original ? d->original : d->character;
 
@@ -2131,7 +2131,7 @@ CH_CMD ( do_qgossip )
                     if ( victim->pcdata->forget[pos] == NULL )
                         break;
                     if ( !str_cmp ( ch->name, victim->pcdata->forget[pos] ) )
-                        found = TRUE;
+                        found = true;
                 }
                 if ( !found )
                 {
@@ -2216,7 +2216,7 @@ CH_CMD ( do_grats )
         {
             CHAR_DATA *victim;
             int pos;
-            bool found = FALSE;
+            bool found = false;
 
             victim = d->original ? d->original : d->character;
 
@@ -2229,7 +2229,7 @@ CH_CMD ( do_grats )
                     if ( victim->pcdata->forget[pos] == NULL )
                         break;
                     if ( !str_cmp ( ch->name, victim->pcdata->forget[pos] ) )
-                        found = TRUE;
+                        found = true;
                 }
                 if ( !found )
                 {
@@ -2309,7 +2309,7 @@ CH_CMD ( do_quote )
         {
             CHAR_DATA *victim;
             int pos;
-            bool found = FALSE;
+            bool found = false;
 
             victim = d->original ? d->original : d->character;
 
@@ -2322,7 +2322,7 @@ CH_CMD ( do_quote )
                     if ( victim->pcdata->forget[pos] == NULL )
                         break;
                     if ( !str_cmp ( ch->name, victim->pcdata->forget[pos] ) )
-                        found = TRUE;
+                        found = true;
                 }
                 if ( !found )
                 {
@@ -2400,7 +2400,7 @@ CH_CMD ( do_gmote )
         {
             CHAR_DATA *victim;
             int pos;
-            bool found = FALSE;
+            bool found = false;
 
             victim = d->original ? d->original : d->character;
 
@@ -2413,7 +2413,7 @@ CH_CMD ( do_gmote )
                     if ( victim->pcdata->forget[pos] == NULL )
                         break;
                     if ( !str_cmp ( ch->name, victim->pcdata->forget[pos] ) )
-                        found = TRUE;
+                        found = true;
                 }
                 if ( !found )
                 {
@@ -2667,7 +2667,7 @@ CH_CMD ( do_ask )
         {
             CHAR_DATA *victim;
             int pos;
-            bool found = FALSE;
+            bool found = false;
 
             victim = d->original ? d->original : d->character;
 
@@ -2680,7 +2680,7 @@ CH_CMD ( do_ask )
                     if ( victim->pcdata->forget[pos] == NULL )
                         break;
                     if ( !str_cmp ( ch->name, victim->pcdata->forget[pos] ) )
-                        found = TRUE;
+                        found = true;
                 }
                 if ( !found )
                 {
@@ -2787,7 +2787,7 @@ CH_CMD ( do_answer )
         {
             CHAR_DATA *victim;
             int pos;
-            bool found = FALSE;
+            bool found = false;
 
             victim = d->original ? d->original : d->character;
 
@@ -2800,7 +2800,7 @@ CH_CMD ( do_answer )
                     if ( victim->pcdata->forget[pos] == NULL )
                         break;
                     if ( !str_cmp ( ch->name, victim->pcdata->forget[pos] ) )
-                        found = TRUE;
+                        found = true;
                 }
                 if ( !found )
                 {
@@ -2910,7 +2910,7 @@ CH_CMD ( do_music )
         {
             CHAR_DATA *victim;
             int pos;
-            bool found = FALSE;
+            bool found = false;
 
             victim = d->original ? d->original : d->character;
 
@@ -2923,7 +2923,7 @@ CH_CMD ( do_music )
                     if ( victim->pcdata->forget[pos] == NULL )
                         break;
                     if ( !str_cmp ( ch->name, victim->pcdata->forget[pos] ) )
-                        found = TRUE;
+                        found = true;
                 }
                 if ( !found )
                 {
@@ -3374,7 +3374,7 @@ CH_CMD ( do_shout )
     {
         CHAR_DATA *victim;
         int pos;
-        bool found = FALSE;
+        bool found = false;
 
         victim = d->original ? d->original : d->character;
 
@@ -3387,7 +3387,7 @@ CH_CMD ( do_shout )
                 if ( victim->pcdata->forget[pos] == NULL )
                     break;
                 if ( !str_cmp ( ch->name, victim->pcdata->forget[pos] ) )
-                    found = TRUE;
+                    found = true;
             }
             if ( !found )
             {
@@ -3404,7 +3404,7 @@ CH_CMD ( do_tell )
     char arg[MAX_INPUT_LENGTH], buf[MAX_STRING_LENGTH];
     CHAR_DATA *victim;
     int pos;
-    bool found = FALSE;
+    bool found = false;
     int wtime;
 
     if ( !IS_NPC ( ch ) )
@@ -3491,7 +3491,7 @@ CH_CMD ( do_tell )
             if ( victim->pcdata->forget[pos] == NULL )
                 break;
             if ( !str_cmp ( ch->name, victim->pcdata->forget[pos] ) )
-                found = TRUE;
+                found = true;
         }
     }
     if ( found )
@@ -3576,7 +3576,7 @@ CH_CMD ( do_reply )
     CHAR_DATA *victim;
     char buf[MAX_STRING_LENGTH];
     int pos;
-    bool found = FALSE;
+    bool found = false;
     int wtime;
 
     if ( argument[0] == '\0' )
@@ -3636,7 +3636,7 @@ CH_CMD ( do_reply )
             if ( victim->pcdata->forget[pos] == NULL )
                 break;
             if ( !str_cmp ( ch->name, victim->pcdata->forget[pos] ) )
-                found = TRUE;
+                found = true;
         }
     }
     if ( found )
@@ -3750,7 +3750,7 @@ CH_CMD ( do_yell )
     for ( d = descriptor_list; d != NULL; d = d->next )
     {
         int pos;
-        bool found = FALSE;
+        bool found = false;
 
         if ( d->connected == CON_PLAYING && d->character != ch &&
              d->character->in_room != NULL &&
@@ -3762,7 +3762,7 @@ CH_CMD ( do_yell )
                 if ( d->character->pcdata->forget[pos] == NULL )
                     break;
                 if ( !str_cmp ( ch->name, d->character->pcdata->forget[pos] ) )
-                    found = TRUE;
+                    found = true;
             }
             if ( !found )
             {
@@ -3795,10 +3795,10 @@ CH_CMD ( do_emote )
         return;
     }
 
-    MOBtrigger = FALSE;
+    MOBtrigger = false;
     act ( "$n $T{x", ch, NULL, argument, TO_ROOM );
     act ( "$n $T{x", ch, NULL, argument, TO_CHAR );
-    MOBtrigger = TRUE;
+    MOBtrigger = true;
     return;
 }
 
@@ -3836,9 +3836,9 @@ CH_CMD ( do_pmote )
 
         if ( ( letter = strstr ( argument, vch->name ) ) == NULL )
         {
-            MOBtrigger = FALSE;
+            MOBtrigger = false;
             act ( "{c$N $t{x", vch, argument, ch, TO_CHAR );
-            MOBtrigger = TRUE;
+            MOBtrigger = true;
             continue;
         }
 
@@ -3888,9 +3888,9 @@ CH_CMD ( do_pmote )
             name = vch->name;
         }
 
-        MOBtrigger = FALSE;
+        MOBtrigger = false;
         act ( "{c$N $t{x", vch, temp, ch, TO_CHAR );
-        MOBtrigger = TRUE;
+        MOBtrigger = true;
     }
 
     return;
@@ -4352,7 +4352,7 @@ void do_qquote ( CHAR_DATA * ch )
 CH_CMD ( do_quit )
 {
     DESCRIPTOR_DATA *d;
-    bool relog = FALSE;
+    bool relog = false;
     char buf[MSL];
 
     if ( ch == NULL )
@@ -4368,7 +4368,7 @@ CH_CMD ( do_quit )
 
     if ( !strcmp ( "relog", argument ) )
     {
-        relog = TRUE;
+        relog = true;
     }
 
     if ( ch->position == POS_FIGHTING )
@@ -4452,7 +4452,7 @@ CH_CMD ( do_quit )
     {
         if ( d != NULL )
             close_socket ( d );
-        extract_char ( ch, TRUE );
+        extract_char ( ch, true );
     }
     else
     {
@@ -4460,7 +4460,7 @@ CH_CMD ( do_quit )
         send_to_char ( "What name do you go by friend? ", ch );
         d->connected = CON_GET_NAME;
 
-        extract_char ( ch, TRUE );
+        extract_char ( ch, true );
     }
 
 return;
@@ -4484,7 +4484,7 @@ void force_quit ( CHAR_DATA * ch, char *argument )
     {
         lose = ( d != NULL ) ? 50 : 50;
         gain_exp ( ch, 0 - lose );
-        stop_fighting ( ch, TRUE );
+        stop_fighting ( ch, true );
     }
 
     if ( ch->position < POS_STUNNED )
@@ -4518,7 +4518,7 @@ void force_quit ( CHAR_DATA * ch, char *argument )
     if ( d != NULL )
     close_socket ( d );
 
-    extract_char ( ch, TRUE );
+    extract_char ( ch, true );
     return;
 }
 
@@ -4648,18 +4648,18 @@ void add_follower ( CHAR_DATA * ch, CHAR_DATA * master )
         }
     }
 
-    follower = TRUE;
+    follower = true;
 
     if ( IS_NPC ( ch ) )
     if ( ch->pIndexData->vnum == 3175 )
-        follower = FALSE;
+        follower = false;
 
     if ( IS_NPC ( ch ) )
     while ( i < MAX_SUMMON )
     {
         if ( summon_table[i].vnum == ch->pIndexData->vnum )
         {
-            follower = FALSE;
+            follower = false;
         }
         i++;
     }
@@ -4699,7 +4699,7 @@ void stop_follower ( CHAR_DATA * ch )
     {
         REMOVE_BIT ( ch->act, ACT_PET );
         ch->timer = 0;
-        ch->hastimer = TRUE;
+        ch->hastimer = true;
     }
 
     if ( can_see ( ch->master, ch ) && ch->in_room != NULL )
@@ -4729,9 +4729,9 @@ void stop_follower ( CHAR_DATA * ch )
 void nuke_pets ( CHAR_DATA * ch )
 {
     if ( ch->pet != NULL )
-        extract_char ( ch->pet, TRUE );
+        extract_char ( ch->pet, true );
     if ( ch->familiar != NULL )
-        extract_char ( ch->familiar, TRUE );
+        extract_char ( ch->familiar, true );
 
     ch->pet = NULL;
     ch->familiar = NULL;
@@ -4801,12 +4801,12 @@ CH_CMD ( do_order )
 
     if ( !str_cmp ( arg, "all" ) )
     {
-        fAll = TRUE;
+        fAll = true;
         victim = NULL;
     }
     else
     {
-        fAll = FALSE;
+        fAll = false;
         if ( ( victim = get_char_room ( ch, arg ) ) == NULL )
         {
             send_to_char ( "They aren't here.\n\r", ch );
@@ -4827,14 +4827,14 @@ CH_CMD ( do_order )
         }
     }
 
-    found = FALSE;
+    found = false;
     for ( och = ch->in_room->people; och != NULL; och = och_next )
     {
         och_next = och->next_in_room;
         if ( IS_AFFECTED ( och, AFF_CHARM ) && och->master == ch &&
              ( fAll || och == victim ) )
         {
-            found = TRUE;
+            found = true;
             sprintf ( buf, "$n orders you to '%s'.", argument );
             act ( buf, ch, NULL, och, TO_VICT );
             interpret ( och, argument );
@@ -5163,7 +5163,7 @@ CH_CMD ( do_gtell )
 bool is_same_group ( CHAR_DATA * ach, CHAR_DATA * bch )
 {
     if ( ach == NULL || bch == NULL )
-        return FALSE;
+        return false;
     if ( ach->leader != NULL )
         ach = ach->leader;
     if ( bch->leader != NULL )
@@ -5186,7 +5186,7 @@ CH_CMD ( do_colour )
         {
             REMOVE_BIT ( ch->act, PLR_NOCOLOUR );
             if ( ch->desc )
-                ch->desc->ansi = TRUE;
+                ch->desc->ansi = true;
             send_to_char ( "{bC{ro{yl{co{mu{gr{x is now {rON{x, Way Cool!\n\r",
                            ch );
         }
@@ -5195,7 +5195,7 @@ CH_CMD ( do_colour )
             send_to_char ( "Colour is now OFF, <sigh>\n\r", ch );
             SET_BIT ( ch->act, PLR_NOCOLOUR );
             if ( ch->desc )
-                ch->desc->ansi = FALSE;
+                ch->desc->ansi = false;
         }
     }
     else if ( !str_prefix ( arg, "list" ) )
@@ -5563,13 +5563,13 @@ CH_CMD ( do_gocial )
 
         argument = one_argument ( argument, command );
 
-    found = FALSE;
+    found = false;
     for ( cmd = 0; social_table[cmd].name[0] != '\0'; cmd++ )
     {
         if ( command[0] == social_table[cmd].name[0] &&
              !str_prefix ( command, social_table[cmd].name ) )
         {
-            found = TRUE;
+            found = true;
             break;
         }
     }

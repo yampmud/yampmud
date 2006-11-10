@@ -325,9 +325,9 @@ CH_CMD ( do_mpasound )
              pexit->u1.to_room != NULL && pexit->u1.to_room != was_in_room )
         {
             ch->in_room = pexit->u1.to_room;
-            MOBtrigger = FALSE;
+            MOBtrigger = false;
             act ( argument, ch, NULL, NULL, TO_ROOM );
-            MOBtrigger = TRUE;
+            MOBtrigger = true;
         }
     }
     ch->in_room = was_in_room;
@@ -537,7 +537,7 @@ CH_CMD ( do_mpoload )
     OBJ_INDEX_DATA *pObjIndex;
     OBJ_DATA *obj;
     int level;
-    bool fToroom = FALSE, fWear = FALSE;
+    bool fToroom = false, fWear = false;
 
     argument = one_argument ( argument, arg1 );
     argument = one_argument ( argument, arg2 );
@@ -581,9 +581,9 @@ CH_CMD ( do_mpoload )
      * 'W'     - load to mobile and force wear
      */
     if ( arg3[0] == 'R' || arg3[0] == 'r' )
-        fToroom = TRUE;
+        fToroom = true;
     else if ( arg3[0] == 'W' || arg3[0] == 'w' )
-        fWear = TRUE;
+        fWear = true;
 
     if ( ( pObjIndex = get_obj_index ( atol ( arg1 ) ) ) == NULL )
     {
@@ -597,7 +597,7 @@ CH_CMD ( do_mpoload )
     {
         obj_to_char ( obj, ch );
         if ( fWear )
-            wear_obj ( ch, obj, TRUE, FALSE );
+            wear_obj ( ch, obj, true, false );
     }
     else
     {
@@ -633,7 +633,7 @@ CH_CMD ( do_mppurge )
             vnext = victim->next_in_room;
             if ( IS_NPC ( victim ) && victim != ch &&
                  !IS_SET ( victim->act, ACT_NOPURGE ) )
-                extract_char ( victim, TRUE );
+                extract_char ( victim, true );
         }
 
         for ( obj = ch->in_room->contents; obj != NULL; obj = obj_next )
@@ -666,7 +666,7 @@ CH_CMD ( do_mppurge )
               IS_NPC ( ch ) ? ch->pIndexData->vnum : 0 );
         return;
     }
-    extract_char ( victim, TRUE );
+    extract_char ( victim, true );
     return;
 }
 
@@ -696,7 +696,7 @@ CH_CMD ( do_mpgoto )
     }
 
     if ( ch->fighting != NULL )
-        stop_fighting ( ch, TRUE );
+        stop_fighting ( ch, true );
 
     char_from_room ( ch );
     char_to_room ( ch, location );
@@ -825,7 +825,7 @@ CH_CMD ( do_mptransfer )
         return;
 
     if ( victim->fighting != NULL )
-        stop_fighting ( victim, TRUE );
+        stop_fighting ( victim, true );
     char_from_room ( victim );
     char_to_room ( victim, location );
     do_look ( victim, "auto" );
@@ -1072,7 +1072,7 @@ CH_CMD ( do_mpdamage )
     CHAR_DATA *victim = NULL, *victim_next;
     char target[MAX_INPUT_LENGTH], min[MAX_INPUT_LENGTH], max[MAX_INPUT_LENGTH];
     int low, high;
-    bool fAll = FALSE, fKill = FALSE;
+    bool fAll = false, fKill = false;
 
     argument = one_argument ( argument, target );
     argument = one_argument ( argument, min );
@@ -1085,7 +1085,7 @@ CH_CMD ( do_mpdamage )
         return;
     }
     if ( !str_cmp ( target, "all" ) )
-        fAll = TRUE;
+        fAll = true;
     else if ( ( victim = get_char_room ( ch, target ) ) == NULL )
         return;
 
@@ -1113,7 +1113,7 @@ CH_CMD ( do_mpdamage )
      */
 
     if ( target[0] != '\0' )
-        fKill = TRUE;
+        fKill = true;
     if ( fAll )
     {
         for ( victim = ch->in_room->people; victim; victim = victim_next )
@@ -1125,7 +1125,7 @@ CH_CMD ( do_mpdamage )
                                                 high ) : UMIN ( victim->hit,
                                                                 number_range
                                                                 ( low, high ) ),
-                         TYPE_UNDEFINED, DAM_NONE, FALSE );
+                         TYPE_UNDEFINED, DAM_NONE, false );
         }
     }
     else
@@ -1133,7 +1133,7 @@ CH_CMD ( do_mpdamage )
                  fKill ? number_range ( low, high ) : UMIN ( victim->hit,
                                                              number_range ( low,
                                                                             high ) ),
-                 TYPE_UNDEFINED, DAM_NONE, FALSE );
+                 TYPE_UNDEFINED, DAM_NONE, false );
     return;
 }
 
@@ -1270,7 +1270,7 @@ CH_CMD ( do_mpflee )
                                                                   ROOM_NO_MOB ) ) )
             continue;
 
-        move_char ( ch, door, FALSE, FALSE );
+        move_char ( ch, door, false, false );
         if ( ch->in_room != was_in )
             return;
     }
@@ -1327,7 +1327,7 @@ CH_CMD ( do_mpremove )
     CHAR_DATA *victim;
     OBJ_DATA *obj, *obj_next;
     long vnum = 0;
-    bool fAll = FALSE;
+    bool fAll = false;
     char arg[MAX_INPUT_LENGTH];
 
     argument = one_argument ( argument, arg );
@@ -1336,7 +1336,7 @@ CH_CMD ( do_mpremove )
 
     one_argument ( argument, arg );
     if ( !str_cmp ( arg, "all" ) )
-        fAll = TRUE;
+        fAll = true;
     else if ( !is_number ( arg ) )
     {
         bug ( "MpRemove: Invalid object from vnum %d.",

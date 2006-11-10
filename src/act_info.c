@@ -88,7 +88,7 @@ sh_int const where_order[] = {
 };
 
 /* for do_count */
-bool is_pm = FALSE;
+bool is_pm = false;
 
 char *format_obj_to_char ( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )
 {
@@ -209,7 +209,7 @@ BUFFER *show_list_to_char ( OBJ_DATA * list, CHAR_DATA * ch, bool fShort,
         {
             pstrShow = format_obj_to_char ( obj, ch, fShort );
 
-            fCombine = FALSE;
+            fCombine = false;
 
             if ( IS_NPC ( ch ) || IS_SET ( ch->comm, COMM_COMBINE ) )
             {
@@ -222,7 +222,7 @@ BUFFER *show_list_to_char ( OBJ_DATA * list, CHAR_DATA * ch, bool fShort,
                     if ( !str_cmp ( prgpstrShow[iShow], pstrShow ) )
                     {
                         prgnShow[iShow]++;
-                        fCombine = TRUE;
+                        fCombine = true;
                         break;
                     }
                 }
@@ -682,7 +682,7 @@ void show_char_to_char_1 ( CHAR_DATA * victim, CHAR_DATA * ch )
         add_buf ( output, buf );
     }
 
-    found = FALSE;
+    found = false;
     for ( oWear = 0; oWear < MAX_WEAR; oWear++ )
     {
         iWear = where_order[oWear];
@@ -695,12 +695,12 @@ void show_char_to_char_1 ( CHAR_DATA * victim, CHAR_DATA * ch )
                 add_buf ( output, buf );
                 sprintf ( buf, "{G%s is using:{x\n\r", victim->name );
                 add_buf ( output, buf );
-                found = TRUE;
+                found = true;
             }
-            sprintf ( buf, "%s\n\r", format_obj_to_char ( obj, ch, TRUE ) );
+            sprintf ( buf, "%s\n\r", format_obj_to_char ( obj, ch, true ) );
 
 //            sprintf ( buf, "%s%s\n\r", where_name[iWear],
-//                      format_obj_to_char ( obj, ch, TRUE ) );
+//                      format_obj_to_char ( obj, ch, true ) );
             add_buf ( output, buf );
         }
     }
@@ -711,9 +711,9 @@ void show_char_to_char_1 ( CHAR_DATA * victim, CHAR_DATA * ch )
     {
         sprintf ( buf, "\n\r{GYou peek at the inventory:{x\n\r" );
         add_buf ( output, buf );
-        check_improve ( ch, gsn_peek, TRUE, 4 );
+        check_improve ( ch, gsn_peek, true, 4 );
 
-        outlist = show_list_to_char ( victim->carrying, ch, TRUE, TRUE );
+        outlist = show_list_to_char ( victim->carrying, ch, true, true );
         add_buf ( output, buf_string ( outlist ) );
         free_buf ( outlist );
     }
@@ -795,9 +795,9 @@ CH_CMD ( do_peek )
     {
         sprintf ( buf, "\n\r{GYou peek at the inventory:{x\n\r" );
         add_buf ( output, buf );
-        check_improve ( ch, gsn_peek, TRUE, 4 );
+        check_improve ( ch, gsn_peek, true, 4 );
 
-        outlist = show_list_to_char ( victim->carrying, ch, TRUE, TRUE );
+        outlist = show_list_to_char ( victim->carrying, ch, true, true );
         add_buf ( output, buf_string ( outlist ) );
         free_buf ( outlist );
     }
@@ -805,7 +805,7 @@ CH_CMD ( do_peek )
     {
         sprintf ( buf, "{RYou fail to see anything.{x\n\r" );
         add_buf ( output, buf );
-        check_improve ( ch, gsn_peek, FALSE, 2 );
+        check_improve ( ch, gsn_peek, false, 2 );
     }
     page_to_char ( buf_string ( output ), ch );
     free_buf ( output );
@@ -816,15 +816,15 @@ bool check_blind ( CHAR_DATA * ch )
 {
 
     if ( !IS_NPC ( ch ) && IS_SET ( ch->act, PLR_HOLYLIGHT ) )
-        return TRUE;
+        return true;
 
     if ( IS_AFFECTED ( ch, AFF_BLIND ) )
     {
         send_to_char ( "You can't see a thing!\n\r", ch );
-        return FALSE;
+        return false;
     }
 
-    return TRUE;
+    return true;
 }
 
 /* changes your scroll */
@@ -1449,7 +1449,7 @@ CH_CMD ( do_look )
             do_exits ( ch, "auto" );
         }
 
-        outlist = show_list_to_char ( ch->in_room->contents, ch, FALSE, FALSE );
+        outlist = show_list_to_char ( ch->in_room->contents, ch, false, false );
         page_to_char ( buf_string ( outlist ), ch );
         free_buf ( outlist );
         show_char_to_char ( ch->in_room->people, ch );
@@ -1507,7 +1507,7 @@ CH_CMD ( do_look )
                 }
 
                 act ( "$p holds:", ch, obj, NULL, TO_CHAR );
-                outlist = show_list_to_char ( obj->contains, ch, TRUE, TRUE );
+                outlist = show_list_to_char ( obj->contains, ch, true, true );
                 page_to_char ( buf_string ( outlist ), ch );
                 free_buf ( outlist );
                 break;
@@ -1519,7 +1519,7 @@ CH_CMD ( do_look )
                 }
 
                 act ( "$p holds:", ch, obj, NULL, TO_CHAR );
-                outlist = show_list_to_char ( obj->contains, ch, TRUE, TRUE );
+                outlist = show_list_to_char ( obj->contains, ch, true, true );
                 page_to_char ( buf_string ( outlist ), ch );
                 free_buf ( outlist );
                 break;
@@ -1800,7 +1800,7 @@ CH_CMD ( do_lore )
     if ( number_percent (  ) < get_skill ( ch, gsn_lore ) )
     {
         send_to_char ( "You learn more about this object:\n\r", ch );
-        check_improve ( ch, gsn_lore, TRUE, 4 );
+        check_improve ( ch, gsn_lore, true, 4 );
 
         sprintf ( buf, "Name(s): %s\n\r", obj->name );
         send_to_char ( buf, ch );
@@ -2094,16 +2094,16 @@ CH_CMD ( do_exits )
         sprintf ( buf, "{CO{cbvious exits from room {W%ld{C:{x\n\r", ch->in_room->vnum );
     else
         sprintf ( buf, "{CO{cbvious exits{c:{x\n\r" );
-    found = FALSE;
+    found = false;
     for ( door = 0; door < MAX_DIR; door++ )
     {
-        round = FALSE;
+        round = false;
         if ( ( pexit = ch->in_room->exit[door] ) != NULL &&
              pexit->u1.to_room != NULL &&
              can_see_room ( ch, pexit->u1.to_room ) )
         {
-            found = TRUE;
-            round = TRUE;
+            found = true;
+            round = true;
             if ( fAuto )
             {
                 if ( !IS_SET ( pexit->exit_info, EX_CLOSED ) )
@@ -2138,8 +2138,8 @@ CH_CMD ( do_exits )
             portal = get_obj_exit ( dir_name[door], ch->in_room->contents );
             if ( portal != NULL )
             {
-                found = TRUE;
-                round = TRUE;
+                found = true;
+                round = true;
                 if ( fAuto )
                 {
                     strcat ( buf, " " );
@@ -3035,7 +3035,7 @@ CH_CMD ( do_affects )
     char *buf4;
     char buf3[MSL];
     char buf2[MSL];
-    bool found = FALSE;
+    bool found = false;
     long cheat = 0;
     long filter;
     long printme;
@@ -3078,7 +3078,7 @@ CH_CMD ( do_affects )
             add_buf ( buffer, "\n\r" );
             paf_last = paf;
         }
-        found = TRUE;
+        found = true;
         add_buf ( buffer, "\n\r" );
     }
     if ( race_table[ch->race].aff != 0 &&
@@ -3100,13 +3100,13 @@ CH_CMD ( do_affects )
             add_buf ( buffer, "\n\r" );
             buf4 = one_argument ( buf4, buf2 );
         }
-        found = TRUE;
+        found = true;
         add_buf ( buffer, "\n\r" );
     }
     if ( ch->affected_by != 0 &&
          ( ch->affected_by != race_table[ch->race].aff ) )
     {
-        bool print = FALSE;
+        bool print = false;
 
         for ( iWear = 0; iWear < MAX_WEAR; iWear++ )
         {
@@ -3129,7 +3129,7 @@ CH_CMD ( do_affects )
                                   "{Y------------------------------------------------------------------------------{x\n\r" );
                         add_buf ( buffer,
                                   "{cYou are affected by the following equipment spells:{x\n\r" );
-                        print = TRUE;
+                        print = true;
                     }
 
                     strcpy ( buf3, affect_bit_name ( printme ) );
@@ -3162,7 +3162,7 @@ CH_CMD ( do_affects )
                         {
                             add_buf ( buffer,
                                       "{cYou are affected by the following equipment spells:{x\n\r" );
-                            print = TRUE;
+                            print = true;
                         }
 
                         strcpy ( buf3, affect_bit_name ( printme ) );
@@ -3184,7 +3184,7 @@ CH_CMD ( do_affects )
         if ( print )
         {
             add_buf ( buffer, "\n\r" );
-            found = TRUE;
+            found = true;
         }
     }
 
@@ -3335,7 +3335,7 @@ CH_CMD ( do_help )
     char nohelp[MSL];
     char *output;
     int skill;
-    bool fRegular = FALSE;
+    bool fRegular = false;
 
     if ( argument[0] == '\0' )
         argument = "summary";
@@ -3392,14 +3392,14 @@ CH_CMD ( do_help )
                     send_to_char ( pHelp->keyword, ch );
                 }
                 send_to_char ( "\n\r", ch );
-                fRegular = TRUE;
+                fRegular = true;
             }
             else if ( pHelp->level != -2    /* str_cmp(argall,"motd") &&
                                                str_cmp(argall,"imotd") */
                  )
             {
                 send_to_char ( "{D<{GG{general {Gi{gnformation{D>{x\n\r", ch );
-                fRegular = TRUE;
+                fRegular = true;
             }
             output = malloc ( strlen ( pHelp->text ) + 200 );
             strcpy ( output, "" );
@@ -3441,7 +3441,7 @@ CH_CMD ( do_whois )
     char idletbuf[MSL];
     char clandat[MSL];
     DESCRIPTOR_DATA *d;
-    bool found = FALSE;
+    bool found = false;
 
     if ( IS_AFFECTED ( ch, AFF_BLIND ) )
     {
@@ -3469,7 +3469,7 @@ CH_CMD ( do_whois )
             continue;
         if ( !str_prefix ( arg, wch->name ) )
         {
-            found = TRUE;
+            found = true;
             /* work out the printing */
             sprintf ( buf2, "%3d", wch->level );
             switch ( wch->level )
@@ -3680,12 +3680,12 @@ CH_CMD ( do_who )
     bool rgfClass[MAX_CLASS];
     bool rgfRace[MAX_PC_RACE];
     bool rgfClan[MAX_CLAN];
-    bool fClassRestrict = FALSE;
-    bool fClanRestrict = FALSE;
-    bool fClan = FALSE;
-    bool fRaceRestrict = FALSE;
-    bool fImmortalOnly = FALSE;
-    bool wr_only = FALSE;
+    bool fClassRestrict = false;
+    bool fClanRestrict = false;
+    bool fClan = false;
+    bool fRaceRestrict = false;
+    bool fImmortalOnly = false;
+    bool wr_only = false;
 
     iClass = 0;
     iRace = 0;
@@ -3719,11 +3719,11 @@ CH_CMD ( do_who )
      * Set default arguments.
      */
     for ( iClass = 0; iClass < MAX_CLASS; iClass++ )
-        rgfClass[iClass] = FALSE;
+        rgfClass[iClass] = false;
     for ( iRace = 0; iRace < MAX_PC_RACE; iRace++ )
-        rgfRace[iRace] = FALSE;
+        rgfRace[iRace] = false;
     for ( iClan = 0; iClan < MAX_CLAN; iClan++ )
-        rgfClan[iClan] = FALSE;
+        rgfClan[iClan] = false;
     /* 
      * Parse arguments.
      */
@@ -3757,7 +3757,7 @@ CH_CMD ( do_who )
              */
             if ( !str_prefix ( arg, "immortals" ) )
             {
-                fImmortalOnly = TRUE;
+                fImmortalOnly = true;
             }
             else
             {
@@ -3768,21 +3768,21 @@ CH_CMD ( do_who )
                     if ( iRace == 0 || iRace >= MAX_PC_RACE )
                     {
                         if ( !str_prefix ( arg, "clan" ) )
-                            fClan = TRUE;
+                            fClan = true;
                         else
                         {
                             iClan = clan_lookup ( arg );
                             if ( iClan )
                             {
-                                fClanRestrict = TRUE;
-                                rgfClan[iClan] = TRUE;
+                                fClanRestrict = true;
+                                rgfClan[iClan] = true;
                             }
                             else
                             {
                                 if ( !str_prefix ( arg, "wr" ) ||
                                      !str_prefix ( arg, "pk" ) )
                                 {
-                                    wr_only = TRUE;
+                                    wr_only = true;
                                 }
                                 else
                                 {
@@ -3796,14 +3796,14 @@ CH_CMD ( do_who )
                     }
                     else
                     {
-                        fRaceRestrict = TRUE;
-                        rgfRace[iRace] = TRUE;
+                        fRaceRestrict = true;
+                        rgfRace[iRace] = true;
                     }
                 }
                 else
                 {
-                    fClassRestrict = TRUE;
-                    rgfClass[iClass] = TRUE;
+                    fClassRestrict = true;
+                    rgfClass[iClass] = true;
                 }
             }
         }
@@ -4131,17 +4131,17 @@ CH_CMD ( do_who )
                       ( uptime_ticks / 1440 ) );
 
         if ( copyover_countdown > 0 && copyover_countdown != 1 &&
-             is_copyover_countdown == TRUE && copyover_countdown <= 5 &&
+             is_copyover_countdown == true && copyover_countdown <= 5 &&
              copyover_countdown != 2 )
             sprintf ( utbuf,
                       "{wCopyover: {YPENDING{x, less than {Y%d{x minutes!{x\n\r",
                       copyover_countdown );
 
-        if ( copyover_countdown == 1 && is_copyover_countdown == TRUE )
+        if ( copyover_countdown == 1 && is_copyover_countdown == true )
             sprintf ( utbuf,
                       "{wCopyover: {YLess than 60 seconds!{x\n\rCommand LOCKDOWN is {GON{x.\n\rLogin LOCKDOWN is {GON{x.\n\r" );
 
-        if ( copyover_countdown == 2 && is_copyover_countdown == TRUE )
+        if ( copyover_countdown == 2 && is_copyover_countdown == true )
             sprintf ( utbuf,
                       "{wCopyover: {YLess than 2 minutes!{x\n\rCommand LOCKDOWN is {GON{x.\n\r" );
 
@@ -4204,14 +4204,14 @@ CH_CMD ( do_count )
     {
         if ( is_pm )
         {
-            is_pm = FALSE;
+            is_pm = false;
             //expire_notes (  );
             randomize_entrances ( ROOM_VNUM_CLANS );
         }
     }
     else
     {
-        is_pm = TRUE;
+        is_pm = true;
     }
 
     for ( d = descriptor_list; d != NULL; d = d->next )
@@ -4240,7 +4240,7 @@ CH_CMD ( do_inventory )
         return;
     }
     send_to_char ( "You are carrying:\n\r", ch );
-    outlist = show_list_to_char ( ch->carrying, ch, TRUE, TRUE );
+    outlist = show_list_to_char ( ch->carrying, ch, true, true );
     page_to_char ( buf_string ( outlist ), ch );
     free_buf ( outlist );
     return;
@@ -4254,7 +4254,7 @@ CH_CMD ( do_equipment )
     bool found;
 
     send_to_char ( "You are using:\n\r", ch );
-    found = FALSE;
+    found = false;
     for ( oWear = 0; oWear < MAX_WEAR; oWear++ )
     {
         iWear = where_order[oWear];
@@ -4265,14 +4265,14 @@ CH_CMD ( do_equipment )
         }
         else if ( can_see_obj ( ch, obj ) && !IS_SHIELDED ( ch, SHD_VANISH ) )
         {
-            send_to_char ( format_obj_to_char ( obj, ch, TRUE ), ch );
+            send_to_char ( format_obj_to_char ( obj, ch, true ), ch );
             send_to_char ( "\n\r", ch );
         }
         else
         {
             send_to_char ( "something.\n\r", ch );
         }
-        found = TRUE;
+        found = true;
     }
 
     if ( !found )
@@ -4432,7 +4432,7 @@ CH_CMD ( do_where )
     if ( arg[0] == '\0' )
     {
         send_to_char ( "Players near you:\n\r", ch );
-        found = FALSE;
+        found = false;
         for ( d = descriptor_list; d; d = d->next )
         {
             if ( d->connected == CON_PLAYING &&
@@ -4445,7 +4445,7 @@ CH_CMD ( do_where )
                  get_trust ( ch ) >= victim->ghost_level &&
                  can_see ( ch, victim ) )
             {
-                found = TRUE;
+                found = true;
                 sprintf ( buf, "%-28s %s\n\r", victim->name,
                           victim->in_room->name );
                 send_to_char ( buf, ch );
@@ -4456,7 +4456,7 @@ CH_CMD ( do_where )
     }
     else
     {
-        found = FALSE;
+        found = false;
         for ( victim = char_list; victim != NULL; victim = victim->next )
         {
             if ( victim->in_room != NULL &&
@@ -4466,7 +4466,7 @@ CH_CMD ( do_where )
                  get_trust ( ch ) >= victim->ghost_level &&
                  can_see ( ch, victim ) && is_name ( arg, victim->name ) )
             {
-                found = TRUE;
+                found = true;
                 sprintf ( buf, "%-28s %s\n\r", PERS ( victim, ch ),
                           victim->in_room->name );
                 send_to_char ( buf, ch );
@@ -4516,7 +4516,7 @@ CH_CMD ( do_track )
     {
         sprintf ( buf, "You can find no recent tracks for %s.\n\r", arg );
         send_to_char ( buf, ch );
-        check_improve ( ch, gsn_track, FALSE, 1 );
+        check_improve ( ch, gsn_track, false, 1 );
         if ( !IS_IMMORTAL ( ch ) )
             if ( !IS_IMMORTAL ( ch ) )
                 WAIT_STATE ( ch, 1 );
@@ -4550,7 +4550,7 @@ CH_CMD ( do_track )
                                           "Some tracks lead off to the %s.\n\r",
                                           dir_name[door] );
                                 send_to_char ( buf, ch );
-                                check_improve ( ch, gsn_track, TRUE, 1 );
+                                check_improve ( ch, gsn_track, true, 1 );
                                 if ( !IS_IMMORTAL ( ch ) )
                                     WAIT_STATE ( ch, 1 );
                                 ch->move -= move;
@@ -4560,7 +4560,7 @@ CH_CMD ( do_track )
                     }
                     act ( "$N seems to have vanished here.", ch, NULL, victim,
                           TO_CHAR );
-                    check_improve ( ch, gsn_track, TRUE, 1 );
+                    check_improve ( ch, gsn_track, true, 1 );
                     if ( !IS_IMMORTAL ( ch ) )
                         WAIT_STATE ( ch, 1 );
                     ch->move -= move;
@@ -4569,7 +4569,7 @@ CH_CMD ( do_track )
             }
             act ( "You can find no recent tracks for $N.", ch, NULL, victim,
                   TO_CHAR );
-            check_improve ( ch, gsn_track, FALSE, 1 );
+            check_improve ( ch, gsn_track, false, 1 );
             if ( !IS_IMMORTAL ( ch ) )
                 WAIT_STATE ( ch, 1 );
             ch->move -= move / 2;
@@ -4604,7 +4604,7 @@ CH_CMD ( do_track )
                                           "Some tracks lead off to the %s.\n\r",
                                           dir_name[door] );
                                 send_to_char ( buf, ch );
-                                check_improve ( ch, gsn_track, TRUE, 1 );
+                                check_improve ( ch, gsn_track, true, 1 );
                                 if ( !IS_IMMORTAL ( ch ) )
                                     WAIT_STATE ( ch, 1 );
                                 ch->move -= move;
@@ -4614,7 +4614,7 @@ CH_CMD ( do_track )
                     }
                     act ( "$N seems to have vanished here.", ch, NULL, victim,
                           TO_CHAR );
-                    check_improve ( ch, gsn_track, TRUE, 1 );
+                    check_improve ( ch, gsn_track, true, 1 );
                     if ( !IS_IMMORTAL ( ch ) )
                         WAIT_STATE ( ch, 1 );
                     ch->move -= move;
@@ -4625,7 +4625,7 @@ CH_CMD ( do_track )
     }
     sprintf ( buf, "You can find no recent tracks for %s.\n\r", arg );
     send_to_char ( buf, ch );
-    check_improve ( ch, gsn_track, FALSE, 1 );
+    check_improve ( ch, gsn_track, false, 1 );
     if ( !IS_IMMORTAL ( ch ) )
         WAIT_STATE ( ch, 1 );
     ch->move -= move / 2;
@@ -4743,19 +4743,19 @@ bool is_blinky ( char *argument )
     if ( !str_infix ( "{z", argument ) || !str_cmp ( "{z", argument ) ||
          !str_prefix ( "{z", argument ) )
     {
-        return TRUE;
+        return true;
     }
     if ( !str_infix ( "{$", argument ) || !str_cmp ( "{$", argument ) ||
          !str_prefix ( "{$", argument ) )
     {
-        return TRUE;
+        return true;
     }
-    return FALSE;
+    return false;
 }
 
 bool is_stupid ( char *argument )
 {
-    return FALSE;
+    return false;
 }
 
 void do_spacetext ( CHAR_DATA * ch, char *argument )
@@ -4856,7 +4856,7 @@ CH_CMD ( do_description )
         if ( argument[0] == '-' )
         {
             int len;
-            bool found = FALSE;
+            bool found = false;
 
             if ( ch->description == NULL || ch->description[0] == '\0' )
             {
@@ -4873,7 +4873,7 @@ CH_CMD ( do_description )
                     {
                         if ( len > 0 )
                             len--;
-                        found = TRUE;
+                        found = true;
                     }
                     else        /* found the second one */
                     {
@@ -4956,7 +4956,7 @@ CH_CMD ( do_practice )
         buffer = new_buf (  );
         for ( sn = 2; sn < MAX_SKILL; sn++ )
         {
-            found = FALSE;
+            found = false;
             if ( skill_table[sn].name == NULL )
                 break;
 
@@ -4968,7 +4968,7 @@ CH_CMD ( do_practice )
                     break;
                 if ( !str_cmp ( pc_race_table[ch->race].skills[i],
                                 skill_table[sn].name ) )
-                    found = TRUE;
+                    found = true;
             }
 
             if ( ( ch->level < skill_table[sn].skill_level[ch->class] &&

@@ -67,42 +67,42 @@ CH_CMD ( do_unread )
 {
     char buf[MAX_STRING_LENGTH];
     int count;
-    bool found = FALSE;
+    bool found = false;
 
     if ( IS_NPC ( ch ) )
         return;
 
     if ( ( count = count_spool ( ch, weddings_list ) ) > 0 )
     {
-        found = TRUE;
+        found = true;
         sprintf ( buf, "There %s %d new wedding announcement%s waiting.\n\r",
                   count > 1 ? "are" : "is", count, count > 1 ? "s" : "" );
         send_to_char ( buf, ch );
     }
     if ( ( count = count_spool ( ch, news_list ) ) > 0 )
     {
-        found = TRUE;
+        found = true;
         sprintf ( buf, "There %s %d new news article%s waiting.\n\r",
                   count > 1 ? "are" : "is", count, count > 1 ? "s" : "" );
         send_to_char ( buf, ch );
     }
     if ( ( count = count_spool ( ch, changes_list ) ) > 0 )
     {
-        found = TRUE;
+        found = true;
         sprintf ( buf, "There %s %d change%s waiting to be read.\n\r",
                   count > 1 ? "are" : "is", count, count > 1 ? "s" : "" );
         send_to_char ( buf, ch );
     }
     if ( ( count = count_spool ( ch, note_list ) ) > 0 )
     {
-        found = TRUE;
+        found = true;
         sprintf ( buf, "You have %d new note%s waiting.\n\r", count,
                   count > 1 ? "s" : "" );
         send_to_char ( buf, ch );
     }
     if ( ( count = count_spool ( ch, icn_list ) ) > 0 )
     {
-        found = TRUE;
+        found = true;
         sprintf ( buf, "You have %d unread ICN%s.\n\r", count,
                   count > 1 ? "s" : "" );
         send_to_char ( buf, ch );
@@ -110,7 +110,7 @@ CH_CMD ( do_unread )
     if ( IS_TRUSTED ( ch, SQUIRE ) &&
          ( count = count_spool ( ch, penalty_list ) ) > 0 )
     {
-        found = TRUE;
+        found = true;
         sprintf ( buf, "%d %s been added.\n\r", count,
                   count > 1 ? "penalties have" : "penalty has" );
         send_to_char ( buf, ch );
@@ -403,21 +403,21 @@ void append_note ( NOTE_DATA * pnote )
 bool is_note_to ( CHAR_DATA * ch, NOTE_DATA * pnote )
 {
     if ( !str_cmp ( ch->name, pnote->sender ) )
-        return TRUE;
+        return true;
 
     if ( is_name ( "all", pnote->to_list ) )
-        return TRUE;
+        return true;
 
     if ( IS_IMMORTAL ( ch ) && is_name ( "immortal", pnote->to_list ) )
-        return TRUE;
+        return true;
 
     if ( ch->clan && is_name ( clan_table[ch->clan].name, pnote->to_list ) )
-        return TRUE;
+        return true;
 
     if ( is_exact_name ( ch->name, pnote->to_list ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 void note_attach ( CHAR_DATA * ch, int type )
@@ -530,12 +530,12 @@ bool hide_note ( CHAR_DATA * ch, NOTE_DATA * pnote )
     time_t last_read;
 
     if ( IS_NPC ( ch ) )
-        return TRUE;
+        return true;
 
     switch ( pnote->type )
     {
         default:
-            return TRUE;
+            return true;
         case NOTE_NOTE:
             last_read = ch->pcdata->last_note;
             break;
@@ -557,15 +557,15 @@ bool hide_note ( CHAR_DATA * ch, NOTE_DATA * pnote )
     }
 
     if ( pnote->date_stamp <= last_read )
-        return TRUE;
+        return true;
 
     if ( !str_cmp ( ch->name, pnote->sender ) )
-        return TRUE;
+        return true;
 
     if ( !is_note_to ( ch, pnote ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 void update_read ( CHAR_DATA * ch, NOTE_DATA * pnote )
@@ -667,7 +667,7 @@ void parse_note ( CHAR_DATA * ch, char *argument, int type )
 
         if ( !str_cmp ( argument, "all" ) )
         {
-            fAll = TRUE;
+            fAll = true;
             anum = 0;
         }
 
@@ -697,7 +697,7 @@ void parse_note ( CHAR_DATA * ch, char *argument, int type )
 
         else if ( is_number ( argument ) )
         {
-            fAll = FALSE;
+            fAll = false;
             anum = atoi ( argument );
         }
         else
@@ -799,7 +799,7 @@ void parse_note ( CHAR_DATA * ch, char *argument, int type )
         {
             if ( is_note_to ( ch, pnote ) && vnum++ == anum )
             {
-                note_remove ( ch, pnote, FALSE );
+                note_remove ( ch, pnote, false );
                 send_to_char ( "Ok.\n\r", ch );
                 return;
             }
@@ -824,7 +824,7 @@ void parse_note ( CHAR_DATA * ch, char *argument, int type )
         {
             if ( is_note_to ( ch, pnote ) && vnum++ == anum )
             {
-                note_remove ( ch, pnote, TRUE );
+                note_remove ( ch, pnote, true );
                 send_to_char ( "Ok.\n\r", ch );
                 return;
             }
@@ -915,7 +915,7 @@ void parse_note ( CHAR_DATA * ch, char *argument, int type )
     if ( !str_cmp ( arg, "-" ) )
     {
         int len;
-        bool found = FALSE;
+        bool found = false;
 
         note_attach ( ch, type );
         if ( ch->pnote->type != type )
@@ -941,7 +941,7 @@ void parse_note ( CHAR_DATA * ch, char *argument, int type )
                 {
                     if ( len > 0 )
                         len--;
-                    found = TRUE;
+                    found = true;
                 }
                 else            /* found the second one */
                 {

@@ -345,7 +345,7 @@ int sig;
 int main ( int argc, char **argv )
 {
     struct timeval now_time;
-    bool fCopyOver = FALSE;
+    bool fCopyOver = false;
     struct sigaction halt_action, ignore_action, alarm_action;
 
     halt_action.sa_handler = halt_mud;
@@ -405,17 +405,17 @@ int main ( int argc, char **argv )
 
     if ( atoi ( argv[1] ) == 7202 )
     {
-        IS_DEVMUD = TRUE;
+        IS_DEVMUD = true;
     }
 
     if ( atoi ( argv[1] ) == 7201 )
     {
-        IS_BLDMUD = TRUE;
+        IS_BLDMUD = true;
     }
 
     if ( atoi ( argv[1] ) == 7200 )
     {
-        IS_LIVEMUD = TRUE;
+        IS_LIVEMUD = true;
     }
 
 
@@ -441,11 +441,11 @@ int main ( int argc, char **argv )
         if ( !str_cmp ( argv[3], "copyover" ) && is_number ( argv[4] ) &&
              is_number ( argv[5] ) )
         {
-            fCopyOver = TRUE;
+            fCopyOver = true;
             control = atoi ( argv[4] );
         }
         else
-            fCopyOver = FALSE;
+            fCopyOver = false;
     }
 
     /* 
@@ -453,7 +453,7 @@ int main ( int argc, char **argv )
      */
 
     log_string ( "Initializing Telnet Port." );
-    if ( fCopyOver == FALSE )
+    if ( fCopyOver == false )
         control = init_socket ( port );
 
     boot_db (  );
@@ -463,7 +463,7 @@ int main ( int argc, char **argv )
     sprintf ( log_buf, "MUD Booted: Telnet: %d", port );
     log_string ( log_buf );
     
-    if ( fCopyOver == TRUE )
+    if ( fCopyOver == true )
     {
         log_string ( "Initiating CopyOver Recovery" );
         copyover_recover (  );
@@ -568,7 +568,7 @@ void game_loop_mac_msdos ( void )
     dcon.pEdit = NULL;          /* OLC */
     dcon.pString = NULL;        /* OLC */
     dcon.editor = 0;            /* OLC */
-    dcon.ansi = TRUE;
+    dcon.ansi = true;
     descriptor_list = &dcon;
 
     /* 
@@ -595,7 +595,7 @@ void game_loop_mac_msdos ( void )
         for ( d = descriptor_list; d != NULL; d = d_next )
         {
             d_next = d->next;
-            d->fcommand = FALSE;
+            d->fcommand = false;
 
 #if defined(MSDOS)
             if ( kbhit (  ) )
@@ -625,7 +625,7 @@ void game_loop_mac_msdos ( void )
             read_from_buffer ( d );
             if ( d->incomm[0] != '\0' )
             {
-                d->fcommand = TRUE;
+                d->fcommand = true;
                 stop_idling ( d->character );
 
                 /* OLC */
@@ -652,7 +652,7 @@ void game_loop_mac_msdos ( void )
         /* 
          * Autonomous game motion.
          */
-        update_handler ( FALSE );
+        update_handler ( false );
 
         /* 
          * Output.
@@ -663,7 +663,7 @@ void game_loop_mac_msdos ( void )
 
             if ( ( d->fcommand || d->outtop > 0 ) )
             {
-                if ( !process_output ( d, TRUE ) )
+                if ( !process_output ( d, true ) )
                 {
 //                    if ( d->character != NULL && d->character->level > 1 )
 //                        save_char_obj ( d->character );
@@ -809,7 +809,7 @@ void game_loop_unix ( int control )
         for ( d = descriptor_list; d != NULL; d = d_next )
         {
             d_next = d->next;
-            d->fcommand = FALSE;
+            d->fcommand = false;
 
             if ( FD_ISSET ( d->descriptor, &in_set ) )
             {
@@ -838,7 +838,7 @@ void game_loop_unix ( int control )
             read_from_buffer ( d );
             if ( d->incomm[0] != '\0' )
             {
-                d->fcommand = TRUE;
+                d->fcommand = true;
                 stop_idling ( d->character );
 
                 /* OLC */
@@ -866,7 +866,7 @@ void game_loop_unix ( int control )
         /* 
          * Autonomous game motion.
          */
-        update_handler ( FALSE );
+        update_handler ( false );
 
         /* 
          * Output.
@@ -878,7 +878,7 @@ void game_loop_unix ( int control )
             if ( ( d->fcommand || d->outtop > 0 ) &&
                  FD_ISSET ( d->descriptor, &out_set ) )
             {
-                if ( !process_output ( d, TRUE ) )
+                if ( !process_output ( d, true ) )
                 {
  //                   if ( d->character != NULL && d->character->level > 1 )
  //                       save_char_obj ( d->character );
@@ -995,7 +995,7 @@ void game_loop_unix ( int control )
      * Process input.
     *//* 
       for ( d = descriptor_list; d != NULL; d = d_next ) { d_next = d->next;
-      d->fcommand = FALSE;
+      d->fcommand = false;
 
       if ( FD_ISSET( d->descriptor, &in_set ) ) { if ( d->character != NULL )
       d->character->timer = 0; if ( !read_from_descriptor( d ) ) { FD_CLR(
@@ -1008,7 +1008,7 @@ void game_loop_unix ( int control )
       if ( d->character != NULL && d->character->wait > 0 ) {
       --d->character->wait; continue; }
 
-      read_from_buffer( d ); if ( d->incomm[0] != '\0' ) { d->fcommand = TRUE;
+      read_from_buffer( d ); if ( d->incomm[0] != '\0' ) { d->fcommand = true;
       stop_idling( d->character );
 
              *//* OLC *//* 
@@ -1025,7 +1025,7 @@ void game_loop_unix ( int control )
     /* 
      * Autonomous game motion.
     *//* 
-      update_handler( FALSE );
+      update_handler( false );
 
     */
     /* 
@@ -1034,7 +1034,7 @@ void game_loop_unix ( int control )
       for ( d = descriptor_list; d != NULL; d = d_next ) { d_next = d->next;
 
       if ( ( d->fcommand || d->outtop > 0 ) && FD_ISSET(d->descriptor,
-      &out_set) ) { if ( !process_output( d, TRUE ) ) { if ( d->character !=
+      &out_set) ) { if ( !process_output( d, true ) ) { if ( d->character !=
       NULL && d->character->level > 1) save_char_obj( d->character ); d->outtop 
       = 0; close_socket( d ); } } }
 
@@ -1100,7 +1100,7 @@ void init_descriptor ( int control )
     dnew->pEdit = NULL;         /* OLC */
     dnew->pString = NULL;       /* OLC */
     dnew->editor = 0;           /* OLC */
-    dnew->ansi = TRUE;
+    dnew->ansi = true;
     size = sizeof ( sock );
     if ( getpeername ( desc, ( struct sockaddr * ) &sock, (socklen_t *) &size ) < 0 )
     {
@@ -1171,7 +1171,7 @@ void close_socket ( DESCRIPTOR_DATA * dclose )
     char buf[MSL];
 
     if ( dclose->outtop > 0 )
-        process_output ( dclose, FALSE );
+        process_output ( dclose, false );
 
     if ( dclose->snoop_by != NULL )
     {
@@ -1247,7 +1247,7 @@ bool read_from_descriptor ( DESCRIPTOR_DATA * d )
 
     /* Hold horses if pending command already. */
     if ( d->incomm[0] != '\0' )
-        return TRUE;
+        return true;
 
     /* Check for overflow. */
     iStart = strlen ( d->inbuf );
@@ -1257,7 +1257,7 @@ bool read_from_descriptor ( DESCRIPTOR_DATA * d )
         log_string ( log_buf );
         write_to_descriptor ( d->descriptor,
                               "\n\r*** Spam kick warning ***\n\r", 0 );
-        return FALSE;
+        return false;
     }
 
     /* Snarf input. */
@@ -1295,20 +1295,20 @@ bool read_from_descriptor ( DESCRIPTOR_DATA * d )
         else if ( nRead == 0 )
         {
             log_string ( "EOF encountered on read." );
-            return FALSE;
+            return false;
         }
         else if ( errno == EWOULDBLOCK )
             break;
         else
         {
             perror ( "Read_from_descriptor" );
-            return FALSE;
+            return false;
         }
     }
 #endif
 
     d->inbuf[iStart] = '\0';
-    return TRUE;
+    return true;
 }
 
 /*
@@ -1438,7 +1438,7 @@ void read_from_buffer ( DESCRIPTOR_DATA * d )
 /** Function: process_ansi_output
 * Descr   : Sends buffered output to descriptor, converting any ANSI codes
 *         : along the way if character has selected ANSI.
-* Returns : TRUE/FALSE based on success of output to descriptor
+* Returns : true/false based on success of output to descriptor
 * Syntax  : (N/A)
 * Written : v1.0 5/98
 * Author  : Lope, updated by Gary McNickle <gary@tarmongaidon.org>
@@ -1450,7 +1450,7 @@ bool process_ansi_output ( DESCRIPTOR_DATA * d )
     char output[MSL];
     char clcode[MSL];
     char *work;
-    bool success = TRUE;
+    bool success = true;
     char *i;
     int rcol;
 
@@ -1458,7 +1458,7 @@ bool process_ansi_output ( DESCRIPTOR_DATA * d )
      * No sense in dealing with a null descriptor 
      */
     if ( d == NULL )
-        return FALSE;
+        return false;
 
     /* 
      * Initialize output buffer, counter and working string 
@@ -1503,7 +1503,7 @@ bool process_ansi_output ( DESCRIPTOR_DATA * d )
 
         ch = d->character;
 
-        if ( d->ansi == TRUE )
+        if ( d->ansi == true )
             switch ( *work )
             {
                 default:
@@ -2175,7 +2175,7 @@ bool process_output ( DESCRIPTOR_DATA * d, bool fPrompt )
      * Short-circuit if nothing to write.
      */
     if ( d->outtop == 0 )
-        return TRUE;
+        return true;
 
     /* 
      * Snoop-o-rama.
@@ -2223,21 +2223,21 @@ void bust_a_prompt ( CHAR_DATA * ch )
         return;
     }
 
-    found = FALSE;
+    found = false;
     doors[0] = '\0';
     if ( ch->position > POS_SLEEPING )
     {
         if ( IS_AFFECTED ( ch, AFF_BLIND ) &&
              !IS_SET ( ch->act, PLR_HOLYLIGHT ) )
         {
-            found = TRUE;
+            found = true;
             strcpy ( doors, "blinded" );
         }
         else
         {
             for ( door = 0; door < MAX_DIR; door++ )
             {
-                round = FALSE;
+                round = false;
                 if ( ( pexit = ch->in_room->exit[door] ) != NULL &&
                      pexit->u1.to_room != NULL &&
                      ( can_see_room ( ch, pexit->u1.to_room ) ||
@@ -2245,8 +2245,8 @@ void bust_a_prompt ( CHAR_DATA * ch )
                          !IS_AFFECTED ( ch, AFF_BLIND ) ) ) &&
                      !IS_SET ( pexit->exit_info, EX_CLOSED ) )
                 {
-                    found = TRUE;
-                    round = TRUE;
+                    found = true;
+                    round = true;
                     strcat ( doors, prompt_dir_name[door] );
                 }
                 if ( !round )
@@ -2257,8 +2257,8 @@ void bust_a_prompt ( CHAR_DATA * ch )
                         get_obj_exit ( door_name[door], ch->in_room->contents );
                     if ( ( portal != NULL ) && !IS_AFFECTED ( ch, AFF_BLIND ) )
                     {
-                        found = TRUE;
-                        round = TRUE;
+                        found = true;
+                        round = true;
                         strcat ( doors, prompt_dir_name[door] );
                     }
                 }
@@ -2268,7 +2268,7 @@ void bust_a_prompt ( CHAR_DATA * ch )
     else
     {
         strcpy ( doors, "sleeping" );
-        found = TRUE;
+        found = true;
     }
     if ( !found )
     {
@@ -2435,7 +2435,7 @@ bool write_to_descriptor ( int desc, char *txt, int length )
     int sofar, thisround, total, loops;
 
     if (!txt)
-        return TRUE;
+        return true;
 
     total = strlen ( txt );
     sofar = 0;
@@ -2453,7 +2453,7 @@ bool write_to_descriptor ( int desc, char *txt, int length )
         sofar += thisround;
     }
 
-return TRUE;
+return true;
 }
 
 /*
@@ -2497,13 +2497,13 @@ void nanny ( DESCRIPTOR_DATA * d, char *argument )
 
             if ( !str_cmp ( argument, "logs" ) )
             {
-                islogonly = TRUE;
+                islogonly = true;
                 write_to_buffer ( d, "Password:\n\r", 0 );
                 d->connected = CON_GET_OLD_PASSWORD;
                 return;
             }
 
-            islogonly = FALSE;
+            islogonly = false;
 
             argument[0] = UPPER ( argument[0] );
             if ( !check_parse_name ( argument ) )
@@ -2570,9 +2570,9 @@ void nanny ( DESCRIPTOR_DATA * d, char *argument )
                 return;
             }
 
-            if ( check_reconnect ( d, argument, FALSE ) )
+            if ( check_reconnect ( d, argument, false ) )
             {
-                fOld = TRUE;
+                fOld = true;
             }
             else
             {
@@ -2639,7 +2639,7 @@ void nanny ( DESCRIPTOR_DATA * d, char *argument )
             {
                 write_to_buffer ( d, "You will now see the logs..\n\r", 0 );
                 d->connected = CON_WATCH_LOGS;
-                islogonly = FALSE;
+                islogonly = false;
                 return;
             }
 
@@ -2664,7 +2664,7 @@ void nanny ( DESCRIPTOR_DATA * d, char *argument )
 
             free_string ( ch->pcdata->socket );
             ch->pcdata->socket = str_dup ( d->host );
-            if ( check_reconnect ( d, ch->name, TRUE ) )
+            if ( check_reconnect ( d, ch->name, true ) )
                 return;
 
             sprintf ( log_buf, "%s@%s has connected.", ch->name, d->host );
@@ -2798,7 +2798,7 @@ OLD REROLL DUDE! */
                     }
                     free_string ( ch->pcdata->socket );
                     ch->pcdata->socket = str_dup ( d->host );
-                    if ( check_reconnect ( d, ch->name, TRUE ) )
+                    if ( check_reconnect ( d, ch->name, true ) )
                         return;
                     write_to_buffer ( d, "Reconnect attempt failed.\n\rName: ",
                                       0 );
@@ -2976,7 +2976,7 @@ OLD REROLL DUDE! */
             {
                 case 'y':
                 case 'Y':
-                    d->ansi = FALSE;
+                    d->ansi = false;
                     SET_BIT ( ch->act, PLR_NOCOLOUR );
                     break;
                 case 'n':
@@ -3220,8 +3220,8 @@ OLD REROLL DUDE! */
 
             write_to_buffer ( d, "\n\r", 0 );
 
-            group_add ( ch, "rom basics", FALSE );
-            group_add ( ch, class_table[ch->class].base_group, FALSE );
+            group_add ( ch, "rom basics", false );
+            group_add ( ch, class_table[ch->class].base_group, false );
             ch->pcdata->learned[gsn_recall] = 50;
             write_to_buffer ( d,
                               "{WDo you wish to customize this character?{x\n\r",
@@ -3253,7 +3253,7 @@ OLD REROLL DUDE! */
                 case 'n':
                 case 'N':
                     group_add ( ch, class_table[ch->class].default_group,
-                                TRUE );
+                                true );
                     write_to_buffer ( d, "\n\r", 2 );
                     write_to_buffer ( d,
                                       "{WPlease pick a weapon from the following choices:\n\r",
@@ -3539,23 +3539,23 @@ bool check_parse_name ( char *name )
          ( name,
            "all auto immortal immortals self someone something the it yes no"
            "you demise balance circle loner honor Loki unlinked they them {" ) )
-        return FALSE;
+        return false;
 
     /* Don't allow names similar to immortals,
        but allow the actual full names */
 
     if ( !str_infix( "dist", name ) &&
          str_cmp ( "Distortions", name ) )
-        return FALSE;
+        return false;
     if ( !str_infix( "shar", name ) &&
          str_cmp ( "Shartyn", name ) )
-        return FALSE;
+        return false;
     if ( !str_infix( "haos", name ) &&
          str_cmp ( "Khaos", name ) )
-        return FALSE;
+        return false;
     if ( !str_infix( "sam", name ) &&
          str_cmp ( "Samoth", name ) )
-        return FALSE;
+        return false;
 
     /* 
      * Cursing
@@ -3563,32 +3563,32 @@ bool check_parse_name ( char *name )
     for ( e = 1; e < MAX_CLAN; e++ )
     {
         if ( !str_prefix ( clan_table[e].name, name ) )
-            return FALSE;
+            return false;
     }
     if ( !str_infix ( "immortal", name ) )
-        return FALSE;
+        return false;
     if ( !str_infix ( " ", name ) )
-        return FALSE;
+        return false;
     if ( !str_infix ( "fuck", name ) )
-        return FALSE;
+        return false;
     if ( !str_infix ( "shit", name ) )
-        return FALSE;
+        return false;
     if ( !str_infix ( "asshole", name ) )
-        return FALSE;
+        return false;
     if ( !str_infix ( "pussy", name ) )
-        return FALSE;
+        return false;
     /* 
      * Length restrictions.
      */
     if ( strlen ( name ) < 3 )
-        return FALSE;
+        return false;
 #if defined(MSDOS)
     if ( strlen ( name ) > 8 )
-        return FALSE;
+        return false;
 #endif
 #if defined(macintosh) || defined(unix)
     if ( strlen ( name ) > 12 )
-        return FALSE;
+        return false;
 #endif
     /* 
      * Alphanumerics only.
@@ -3596,32 +3596,32 @@ bool check_parse_name ( char *name )
      */
     {
         char *pc;
-        bool fIll, adjcaps = FALSE, cleancaps = FALSE;
+        bool fIll, adjcaps = false, cleancaps = false;
         int total_caps = 0;
 
-        fIll = TRUE;
+        fIll = true;
         for ( pc = name; *pc != '\0'; pc++ )
         {
             if ( !isalpha ( *pc ) )
-                return FALSE;
+                return false;
             if ( isupper ( *pc ) )  /* ugly anti-caps hack */
             {
                 if ( adjcaps )
-                    cleancaps = TRUE;
+                    cleancaps = true;
                 total_caps++;
-                adjcaps = TRUE;
+                adjcaps = true;
             }
             else
-                adjcaps = FALSE;
+                adjcaps = false;
             if ( LOWER ( *pc ) != 'i' && LOWER ( *pc ) != 'l' )
-                fIll = FALSE;
+                fIll = false;
         }
 
         if ( fIll )
-            return FALSE;
+            return false;
         if ( cleancaps ||
              ( total_caps > ( strlen ( name ) ) / 2 && strlen ( name ) < 3 ) )
-            return FALSE;
+            return false;
     }
 
     /* 
@@ -3637,7 +3637,7 @@ bool check_parse_name ( char *name )
                   pMobIndex = pMobIndex->next )
             {
                 if ( is_name ( name, pMobIndex->player_name ) )
-                    return FALSE;
+                    return false;
             }
         }
     }
@@ -3666,11 +3666,11 @@ bool check_parse_name ( char *name )
         {
             sprintf ( log_buf, "Double Newbie alert (%s)", name );
             wiznet ( log_buf, NULL, NULL, WIZ_LOGINS, 0, 0 );
-            return FALSE;
+            return false;
         }
     }
 
-    return TRUE;
+    return true;
 }
 
 /*
@@ -3686,7 +3686,7 @@ bool check_reconnect ( DESCRIPTOR_DATA * d, char *name, bool fConn )
         if ( !IS_NPC ( ch ) && ( !fConn || ch->desc == NULL ) &&
              !str_cmp ( d->character->name, ch->name ) )
         {
-            if ( fConn == FALSE )
+            if ( fConn == false )
             {
                 free_string ( d->character->pcdata->pwd );
                 d->character->pcdata->pwd = str_dup ( ch->pcdata->pwd );
@@ -3722,11 +3722,11 @@ bool check_reconnect ( DESCRIPTOR_DATA * d, char *name, bool fConn )
                          WIZ_LINKS, 0, 0 );
                 d->connected = CON_PLAYING;
             }
-            return TRUE;
+            return true;
         }
     }
 
-    return FALSE;
+    return false;
 }
 
 /*
@@ -3748,11 +3748,11 @@ bool check_playing ( DESCRIPTOR_DATA * d, char *name )
             write_to_buffer ( d, "That character is already playing.\n\r", 0 );
             write_to_buffer ( d, "Do you wish to connect anyway (Y/N)?", 0 );
             d->connected = CON_BREAK_CONNECT;
-            return TRUE;
+            return true;
         }
     }
 
-    return FALSE;
+    return false;
 }
 
 void stop_idling ( CHAR_DATA * ch )
@@ -4797,7 +4797,7 @@ CH_CMD ( do_copyover )
 
     /* Consider changing all saved areas here, if you use OLC */
 
-    if ( IS_BLDMUD == TRUE )
+    if ( IS_BLDMUD == true )
         do_asave ( NULL, "changed" );   /* - autosave changed areas */
 
     // save_gquest_data();

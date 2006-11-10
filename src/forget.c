@@ -53,7 +53,7 @@ CH_CMD ( do_ignore )
     char arg[MAX_INPUT_LENGTH], buf[MAX_STRING_LENGTH];
     DESCRIPTOR_DATA *d;
     int pos;
-    bool found = FALSE;
+    bool found = false;
 
     if ( ch->desc == NULL )
         rch = ch;
@@ -113,7 +113,7 @@ CH_CMD ( do_ignore )
 
         if ( !str_cmp ( arg, wch->name ) )
         {
-            found = TRUE;
+            found = true;
             if ( wch == ch )
             {
                 send_to_char
@@ -164,7 +164,7 @@ CH_CMD ( do_remember )
     CHAR_DATA *rch;
     char arg[MAX_INPUT_LENGTH], buf[MAX_STRING_LENGTH];
     int pos;
-    bool found = FALSE;
+    bool found = false;
 
     if ( ch->desc == NULL )
         rch = ch;
@@ -213,7 +213,7 @@ CH_CMD ( do_remember )
             send_to_char ( "Forget removed.\n\r", ch );
             free_string ( rch->pcdata->forget[pos] );
             rch->pcdata->forget[pos] = NULL;
-            found = TRUE;
+            found = true;
         }
     }
 

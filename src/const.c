@@ -217,10 +217,10 @@ const struct race_type race_table[] = {
 	form,		parts 
     },
 */
-    {"unique", FALSE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {"unique", false, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 
     {
-     "Avian", TRUE,
+     "Avian", true,
      0,
      0,
      AFF_FLYING | AFF_FARSIGHT,
@@ -232,7 +232,7 @@ const struct race_type race_table[] = {
      A | H | M | W, A | B | C | D | E | F | G | H | I | J | K | P},
 
     {
-     "Bastet", TRUE,
+     "Bastet", true,
      0,
      0,
      AFF_HASTE | AFF_INFRARED,
@@ -244,7 +244,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K | Q}, 
 
     {
-     "Centaur", TRUE,
+     "Centaur", true,
      0,
      0,
      AFF_DETECT_HIDDEN,
@@ -256,7 +256,7 @@ const struct race_type race_table[] = {
      A | H | N | V, A | B | C | D | E | F | G | H | I | J | K | Q},
 
     {
-     "Demon", TRUE,
+     "Demon", true,
      0,
      0,
      AFF_HASTE | AFF_DETECT_GOOD,
@@ -268,7 +268,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Draconian", TRUE,
+     "Draconian", true,
      0,
      0,
      AFF_FLYING,
@@ -280,7 +280,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K | P | Q},
 
     {
-     "Drow", TRUE,
+     "Drow", true,
      0,
      0,
      AFF_HIDE | AFF_INFRARED,
@@ -292,7 +292,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Dwarf", TRUE,
+     "Dwarf", true,
      0,
      0,
      AFF_INFRARED,
@@ -304,7 +304,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Eladrin", TRUE,
+     "Eladrin", true,
      0,
      0,
      AFF_FLYING | AFF_DETECT_EVIL,
@@ -316,7 +316,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K | P},
 
     {
-     "Elf", TRUE,
+     "Elf", true,
      0,
      0,
      AFF_INFRARED,
@@ -328,7 +328,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Ent", TRUE,
+     "Ent", true,
      0,
      0,
      0,
@@ -340,7 +340,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Fireling", TRUE,
+     "Fireling", true,
      0,
      0,
      AFF_DARK_VISION,
@@ -352,7 +352,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Gnoll", TRUE,
+     "Gnoll", true,
      0,
      0,
      AFF_BERSERK | AFF_DARK_VISION,
@@ -364,7 +364,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Gnome", TRUE,
+     "Gnome", true,
      0,
      0,
      0,
@@ -376,7 +376,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Goblin", TRUE,
+     "Goblin", true,
      0,
      0,
      AFF_INFRARED,
@@ -388,7 +388,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Gryphon", TRUE,
+     "Gryphon", true,
      0,
      0,
      AFF_FARSIGHT | AFF_FLYING,
@@ -400,7 +400,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K | P | Q},
 
     {
-     "Halfelf", TRUE,
+     "Halfelf", true,
      0,
      0,
      AFF_FARSIGHT,
@@ -412,7 +412,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Halfling", TRUE,
+     "Halfling", true,
      0,
      0,
      0,
@@ -424,7 +424,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Halforc", TRUE,
+     "Halforc", true,
      0,
      0,
      AFF_BERSERK,
@@ -436,7 +436,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Heucuva", TRUE,
+     "Heucuva", true,
      0,
      0,
      AFF_DARK_VISION,
@@ -448,7 +448,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Howler", TRUE,
+     "Howler", true,
      0,
      0,
      AFF_INFRARED,
@@ -460,7 +460,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Human", TRUE,
+     "Human", true,
      0,
      0,
      0,
@@ -472,7 +472,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Iceling", TRUE,
+     "Iceling", true,
      0,
      0,
      0,
@@ -484,7 +484,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Illithid", TRUE,
+     "Illithid", true,
      0,
      0,
      0,
@@ -496,7 +496,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Imp", TRUE,
+     "Imp", true,
      0,
      0,
      AFF_HASTE | AFF_FLYING,
@@ -508,7 +508,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Kitsune", TRUE,
+     "Kitsune", true,
      0,
      0,
      AFF_INFRARED,
@@ -520,7 +520,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Kuo-Toa", TRUE,
+     "Kuo-Toa", true,
      0,
      0,
      AFF_SWIM,
@@ -532,7 +532,7 @@ const struct race_type race_table[] = {
      A | H | M | aa, A | B | C | D | E | F | G | H | I | J | K | L},
 
     {
-     "Lupine", TRUE,
+     "Lupine", true,
      0,
      0,
      AFF_INFRARED,
@@ -544,7 +544,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K | Q},
 
     {
-     "Minotaur", TRUE,
+     "Minotaur", true,
      0,
      0,
      AFF_FARSIGHT,
@@ -556,7 +556,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K | Q},
 
     {
-     "Mutant", TRUE,
+     "Mutant", true,
      0,
      0,
      0,
@@ -568,7 +568,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Nymph", TRUE,
+     "Nymph", true,
      0,
      0,
      0,
@@ -580,7 +580,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Obsidimen", TRUE,
+     "Obsidimen", true,
      0,
      0,
      0,
@@ -592,7 +592,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Ogre", TRUE,
+     "Ogre", true,
      0,
      0,
      AFF_BERSERK,
@@ -604,7 +604,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Phoenix", TRUE,
+     "Phoenix", true,
      0,
      0,
      AFF_FLYING,
@@ -616,7 +616,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Pixie", TRUE,
+     "Pixie", true,
      0,
      0,
      AFF_FLYING | AFF_DETECT_MAGIC | AFF_DETECT_HIDDEN | AFF_DETECT_INVIS,
@@ -628,7 +628,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K | P},
 
     {
-     "Satyr", TRUE,
+     "Satyr", true,
      0,
      0,
      AFF_DETECT_GOOD | AFF_DETECT_EVIL | AFF_DETECT_HIDDEN,
@@ -640,7 +640,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Shade", TRUE,
+     "Shade", true,
      0,
      0,
      AFF_PASS_DOOR,
@@ -652,7 +652,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Shockling", TRUE,
+     "Shockling", true,
      0,
      0,
      0,
@@ -664,7 +664,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Thri-Kreen", TRUE,
+     "Thri-Kreen", true,
      0,
      0,
      0,
@@ -676,7 +676,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Titan", TRUE,
+     "Titan", true,
      0,
      0,
      AFF_FARSIGHT | AFF_DETECT_INVIS,
@@ -688,7 +688,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Troll", TRUE,
+     "Troll", true,
      0,
      0,
      AFF_REGENERATION,
@@ -700,7 +700,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Giant", FALSE,
+     "Giant", false,
      0,
      0,
      0,
@@ -712,7 +712,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Orc", FALSE,
+     "Orc", false,
      0,
      0,
      AFF_BERSERK,
@@ -724,7 +724,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K},
 
     {
-     "Kenku", FALSE,
+     "Kenku", false,
      0,
      0,
      AFF_FARSIGHT | AFF_DETECT_HIDDEN | AFF_INFRARED | AFF_FLYING,
@@ -735,7 +735,7 @@ const struct race_type race_table[] = {
      0,
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K | P},
 
-    {"Dragon", FALSE,
+    {"Dragon", false,
      0,
      0,
      AFF_INFRARED | AFF_FLYING,
@@ -747,7 +747,7 @@ const struct race_type race_table[] = {
      A | H | Z, A | C | D | E | F | G | H | I | J | K | P | Q | U | V | X},
 
     {
-     "bat", FALSE,
+     "bat", false,
      0,
      0,
      AFF_FLYING | AFF_DARK_VISION,
@@ -759,7 +759,7 @@ const struct race_type race_table[] = {
      A | G | V, A | C | D | E | F | H | J | K | P},
 
     {
-     "bear", FALSE,
+     "bear", false,
      0,
      0,
      0,
@@ -771,7 +771,7 @@ const struct race_type race_table[] = {
      A | G | V, A | B | C | D | E | F | H | J | K | U | V},
 
     {
-     "cat", FALSE,
+     "cat", false,
      0,
      0,
      AFF_DARK_VISION,
@@ -783,7 +783,7 @@ const struct race_type race_table[] = {
      A | G | V, A | C | D | E | F | H | J | K | Q | U | V},
 
     {
-     "centipede", FALSE,
+     "centipede", false,
      0,
      0,
      AFF_DARK_VISION,
@@ -795,7 +795,7 @@ const struct race_type race_table[] = {
      A | B | G | O, A | C | K},
 
     {
-     "dog", FALSE,
+     "dog", false,
      0,
      0,
      0,
@@ -807,7 +807,7 @@ const struct race_type race_table[] = {
      A | G | V, A | C | D | E | F | H | J | K | U | V},
 
     {
-     "doll", FALSE,
+     "doll", false,
      0,
      0,
      0,
@@ -819,7 +819,7 @@ const struct race_type race_table[] = {
      0,
      E | J | M | cc, A | B | C | G | H | K},
 /*
-    { 	"dragon", 		FALSE, 
+    { 	"dragon", 		false, 
 	0,
     0,
 	AFF_INFRARED|AFF_FLYING,
@@ -832,7 +832,7 @@ const struct race_type race_table[] = {
     },
 */
     {
-     "fido", FALSE,
+     "fido", false,
      0,
      0,
      0,
@@ -844,7 +844,7 @@ const struct race_type race_table[] = {
      A | B | G | V, A | C | D | E | F | H | J | K | Q | V},
 
     {
-     "fox", FALSE,
+     "fox", false,
      0,
      0,
      AFF_DARK_VISION,
@@ -856,7 +856,7 @@ const struct race_type race_table[] = {
      A | G | V, A | C | D | E | F | H | J | K | Q | V},
 
     {
-     "hobgoblin", FALSE,
+     "hobgoblin", false,
      0,
      0,
      AFF_INFRARED,
@@ -868,7 +868,7 @@ const struct race_type race_table[] = {
      A | H | M | V, A | B | C | D | E | F | G | H | I | J | K | Y},
 
     {
-     "kobold", FALSE,
+     "kobold", false,
      0,
      0,
      AFF_INFRARED,
@@ -880,7 +880,7 @@ const struct race_type race_table[] = {
      A | B | H | M | V, A | B | C | D | E | F | G | H | I | J | K | Q},
 
     {
-     "lizard", FALSE,
+     "lizard", false,
      0,
      0,
      0,
@@ -892,7 +892,7 @@ const struct race_type race_table[] = {
      A | G | X | cc, A | C | D | E | F | H | K | Q | V},
 
     {
-     "modron", FALSE,
+     "modron", false,
      0,
      0,
      AFF_INFRARED,
@@ -904,7 +904,7 @@ const struct race_type race_table[] = {
      H, A | B | C | G | H | J | K},
 /*
     {
-	"orc",			FALSE,
+	"orc",			false,
 	0,
     0,
 	AFF_INFRARED,
@@ -917,7 +917,7 @@ const struct race_type race_table[] = {
     },
 */
     {
-     "pig", FALSE,
+     "pig", false,
      0,
      0,
      0,
@@ -929,7 +929,7 @@ const struct race_type race_table[] = {
      A | G | V, A | C | D | E | F | H | J | K},
 
     {
-     "rabbit", FALSE,
+     "rabbit", false,
      0,
      0,
      0,
@@ -941,7 +941,7 @@ const struct race_type race_table[] = {
      A | G | V, A | C | D | E | F | H | J | K},
 
     {
-     "school monster", FALSE,
+     "school monster", false,
      ACT_NOALIGN,
      0,
      0,
@@ -953,7 +953,7 @@ const struct race_type race_table[] = {
      A | M | V, A | B | C | D | E | F | H | J | K | Q | U},
 
     {
-     "snake", FALSE,
+     "snake", false,
      0,
      0,
      0,
@@ -965,7 +965,7 @@ const struct race_type race_table[] = {
      A | G | X | Y | cc, A | D | E | F | K | L | Q | V | X},
 
     {
-     "song bird", FALSE,
+     "song bird", false,
      0,
      0,
      AFF_FLYING,
@@ -977,7 +977,7 @@ const struct race_type race_table[] = {
      A | G | W, A | C | D | E | F | H | K | P},
 
 /*    {
-     "troll", FALSE,
+     "troll", false,
      0,
      0,
      AFF_REGENERATION | AFF_INFRARED | AFF_DETECT_HIDDEN,
@@ -989,7 +989,7 @@ const struct race_type race_table[] = {
      A | B | H | M | V, A | B | C | D | E | F | G | H | I | J | K | U | V}, */
 
     {
-     "water fowl", FALSE,
+     "water fowl", false,
      0,
      0,
      AFF_SWIM | AFF_FLYING,
@@ -1001,7 +1001,7 @@ const struct race_type race_table[] = {
      A | G | W, A | C | D | E | F | H | K | P},
 
     {
-     "wolf", FALSE,
+     "wolf", false,
      0,
      0,
      AFF_DARK_VISION,
@@ -1013,7 +1013,7 @@ const struct race_type race_table[] = {
      A | G | V, A | C | D | E | F | J | K | Q | V},
 
     {
-     "wyvern", FALSE,
+     "wyvern", false,
      0,
      0,
      AFF_FLYING | AFF_DETECT_INVIS | AFF_DETECT_HIDDEN,
@@ -1024,7 +1024,7 @@ const struct race_type race_table[] = {
      0,
      A | B | G | Z, A | C | D | E | F | H | J | K | Q | V | X},
 
-    {"unique", FALSE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {"unique", false, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 
     {
      NULL, 0, 0, 0, 0, 0, 0, 0}
@@ -1636,222 +1636,222 @@ const struct class_type class_table[MAX_CLASS] = {
 
     {
      "Mage", "Mag", STAT_INT, OBJ_VNUM_SCHOOL_DAGGER,
-     {3018, 9618, 18113}, 75, 20, 6, 10, 20, TRUE,
+     {3018, 9618, 18113}, 75, 20, 6, 10, 20, true,
      "basic mage", "mage default",
      TIER_01,
      TIER_02},
 
     {
      "Cleric", "Cle", STAT_WIS, OBJ_VNUM_SCHOOL_MACE,
-     {3003, 9619, 5699}, 75, 20, 2, 10, 20, TRUE,
+     {3003, 9619, 5699}, 75, 20, 2, 10, 20, true,
      "basic cleric", "cleric default",
      TIER_01,
      TIER_02},
 
     {
      "Rogue", "Rog", STAT_DEX, OBJ_VNUM_SCHOOL_DAGGER,
-     {3028, 9639, 5633}, 75, 20, -4, 14, 24, FALSE,
+     {3028, 9639, 5633}, 75, 20, -4, 14, 24, false,
      "basic rogue", "rogue default",
      TIER_01,
      TIER_02},
 
     {
      "Warrior", "War", STAT_STR, OBJ_VNUM_SCHOOL_SWORD,
-     {3022, 9633, 5613}, 75, 20, -10, 20, 30, FALSE,
+     {3022, 9633, 5613}, 75, 20, -10, 20, 30, false,
      "basic warrior", "warrior default",
      TIER_01,
      TIER_02},
 
     {
      "Tracker", "Trk", STAT_CON, OBJ_VNUM_SCHOOL_SPEAR,
-     {3372, 9752, 18111}, 75, 20, -4, 14, 24, TRUE,
+     {3372, 9752, 18111}, 75, 20, -4, 14, 24, true,
      "basic tracker", "tracker default",
      TIER_01,
      TIER_02},
 
     {
      "Druid", "Dru", STAT_WIS, OBJ_VNUM_SCHOOL_POLEARM,
-     {3369, 9755, 18111}, 75, 20, 0, 10, 20, TRUE,
+     {3369, 9755, 18111}, 75, 20, 0, 10, 20, true,
      "basic druid", "druid default",
      TIER_01,
      TIER_02},
 
     {
      "Occultist", "Occ", STAT_INT, OBJ_VNUM_SCHOOL_FLAIL,
-     {3375, 9758, 18113}, 75, 20, 4, 10, 20, TRUE,
+     {3375, 9758, 18113}, 75, 20, 4, 10, 20, true,
      "basic occultist", "occultist default",
      TIER_01,
      TIER_02},
 
     {
      "Lyricist", "Lyr", STAT_WIS, OBJ_VNUM_SCHOOL_WHIP,
-     {3375, 9758, 18113}, 75, 20, -5, 14, 24, TRUE,
+     {3375, 9758, 18113}, 75, 20, -5, 14, 24, true,
      "basic lyricist", "lyricist default",
      TIER_01,
      TIER_02},
 
     {
      "Wizard", "Wiz", STAT_INT, OBJ_VNUM_SCHOOL_DAGGER,
-     {3018, 9618, 18113}, 75, 10, -4, 25, 35, TRUE,
+     {3018, 9618, 18113}, 75, 10, -4, 25, 35, true,
      "basic mage", "wizard default",
      TIER_02,
      TIER_03},
 
     {
      "Priest", "Prs", STAT_WIS, OBJ_VNUM_SCHOOL_MACE,
-     {3003, 9619, 5699}, 75, 10, 2, 25, 35, TRUE,
+     {3003, 9619, 5699}, 75, 10, 2, 25, 35, true,
      "basic cleric", "priest default",
      TIER_02,
      TIER_03},
 
     {
      "Thief", "Thi", STAT_DEX, OBJ_VNUM_SCHOOL_DAGGER,
-     {3028, 9639, 5633}, 75, 10, -14, 30, 40, FALSE,
+     {3028, 9639, 5633}, 75, 10, -14, 30, 40, false,
      "basic rogue", "thief default",
      TIER_02,
      TIER_03},
 
     {
      "Berserker", "Brk", STAT_STR, OBJ_VNUM_SCHOOL_SWORD,
-     {3022, 9633, 5613}, 75, 10, -20, 40, 50, FALSE,
+     {3022, 9633, 5613}, 75, 10, -20, 40, 50, false,
      "basic warrior", "warrior default",
      TIER_02,
      TIER_03},
 
     {
      "Hunter", "Hnt", STAT_CON, OBJ_VNUM_SCHOOL_DAGGER,
-     {3372, 9752, 18111}, 75, 10, -14, 26, 36, TRUE,
+     {3372, 9752, 18111}, 75, 10, -14, 26, 36, true,
      "basic tracker", "hunter default",
      TIER_02,
      TIER_03},
 
     {
      "Shaman", "Shm", STAT_WIS, OBJ_VNUM_SCHOOL_POLEARM,
-     {3369, 9755, 18111}, 75, 10, -10, 25, 35, TRUE,
+     {3369, 9755, 18111}, 75, 10, -10, 25, 35, true,
      "basic druid", "shaman default",
      TIER_02,
      TIER_03},
 
     {
      "Spiritualist", "Spt", STAT_INT, OBJ_VNUM_SCHOOL_FLAIL,
-     {3375, 9758, 18113}, 75, 20, -10, 22, 33, TRUE,
+     {3375, 9758, 18113}, 75, 20, -10, 22, 33, true,
      "basic occultist", "spiritualist default",
      TIER_02,
      TIER_03},
 
     {
      "Troubadour", "Trb", STAT_WIS, OBJ_VNUM_SCHOOL_WHIP,
-     {3375, 9758, 18113}, 75, 20, -15, 28, 38, TRUE,
+     {3375, 9758, 18113}, 75, 20, -15, 28, 38, true,
      "basic lyricist", "troubadour default",
      TIER_02,
      TIER_03},
 
     {
      "Invoker", "Inv", STAT_INT, OBJ_VNUM_SCHOOL_DAGGER,
-     {3018, 9618, 18113}, 75, 10, -4, 30, 40, TRUE,
+     {3018, 9618, 18113}, 75, 10, -4, 30, 40, true,
      "basic mage", "invoker default",
      TIER_03,
      TIER_04},
 
     {
      "Bishop", "Bsh", STAT_WIS, OBJ_VNUM_SCHOOL_MACE,
-     {3003, 9619, 5699}, 75, 10, 2, 30, 40, TRUE,
+     {3003, 9619, 5699}, 75, 10, 2, 30, 40, true,
      "basic cleric", "bishop default",
      TIER_03,
      TIER_04},
 
     {
      "Mercenary", "Mrc", STAT_DEX, OBJ_VNUM_SCHOOL_DAGGER,
-     {3028, 9639, 5633}, 75, 10, -14, 40, 50, FALSE,
+     {3028, 9639, 5633}, 75, 10, -14, 40, 50, false,
      "basic rogue", "mercenary default",
      TIER_03,
      TIER_04},
 
     {
      "Gladiator", "Gld", STAT_STR, OBJ_VNUM_SCHOOL_SWORD,
-     {3022, 9633, 5613}, 75, 10, -20, 55, 65, FALSE,
+     {3022, 9633, 5613}, 75, 10, -20, 55, 65, false,
      "basic warrior", "gladiator default",
      TIER_03,
      TIER_04},
     {
      "Ranger", "Ran", STAT_CON, OBJ_VNUM_SCHOOL_DAGGER,
-     {3372, 9752, 18111}, 75, 10, -14, 38, 48, TRUE,
+     {3372, 9752, 18111}, 75, 10, -14, 38, 48, true,
      "basic tracker", "ranger default",
      TIER_03,
      TIER_04},
 
     {
      "Sage", "Sge", STAT_WIS, OBJ_VNUM_SCHOOL_POLEARM,
-     {3369, 9755, 18111}, 75, 10, -10, 35, 45, TRUE,
+     {3369, 9755, 18111}, 75, 10, -10, 35, 45, true,
      "basic druid", "sage default",
      TIER_03,
      TIER_04},
 
     {
      "Demonologist", "Dmn", STAT_INT, OBJ_VNUM_SCHOOL_FLAIL,
-     {3375, 9758, 18113}, 75, 10, -12, 35, 45, TRUE,
+     {3375, 9758, 18113}, 75, 10, -12, 35, 45, true,
      "basic occultist", "demonologist default",
      TIER_03,
      TIER_04},
 
     {
      "Minstrel", "Min", STAT_WIS, OBJ_VNUM_SCHOOL_WHIP,
-     {3375, 9758, 18113}, 75, 10, -15, 38, 48, TRUE,
+     {3375, 9758, 18113}, 75, 10, -15, 38, 48, true,
      "basic lyricist", "minstrel default",
      TIER_03,
      TIER_04},
 
     {
      "Sorcerer", "Sor", STAT_INT, OBJ_VNUM_SCHOOL_DAGGER,
-     {3018, 9618, 18113}, 75, 10, -4, 40, 50, TRUE,
+     {3018, 9618, 18113}, 75, 10, -4, 40, 50, true,
      "basic mage", "sorcerer default",
      TIER_04,
      TIER_04},
 
     {
      "Templar", "Tmp", STAT_WIS, OBJ_VNUM_SCHOOL_MACE,
-     {3003, 9619, 5699}, 75, 10, 2, 40, 50, TRUE,
+     {3003, 9619, 5699}, 75, 10, 2, 40, 50, true,
      "basic cleric", "templar default",
      TIER_04,
      TIER_04},
 
     {
      "Assassin", "Asn", STAT_DEX, OBJ_VNUM_SCHOOL_DAGGER,
-     {3028, 9639, 5633}, 75, 10, -14, 48, 58, FALSE,
+     {3028, 9639, 5633}, 75, 10, -14, 48, 58, false,
      "basic rogue", "assassin default",
      TIER_04,
      TIER_04},
 
     {
      "Knight", "Kni", STAT_STR, OBJ_VNUM_SCHOOL_SWORD,
-     {3022, 9633, 5613}, 75, 10, -20, 75, 85, FALSE,
+     {3022, 9633, 5613}, 75, 10, -20, 75, 85, false,
      "basic warrior", "knight default",
      TIER_04,
      TIER_04},
     {
      "Strider", "Str", STAT_CON, OBJ_VNUM_SCHOOL_DAGGER,
-     {3372, 9752, 18111}, 75, 10, -14, 48, 58, TRUE,
+     {3372, 9752, 18111}, 75, 10, -14, 48, 58, true,
      "basic tracker", "strider default",
      TIER_04,
      TIER_04},
 
     {
      "Elder", "Eld", STAT_WIS, OBJ_VNUM_SCHOOL_POLEARM,
-     {3369, 9755, 18111}, 75, 10, -10, 45, 55, TRUE,
+     {3369, 9755, 18111}, 75, 10, -10, 45, 55, true,
      "basic druid", "elder default",
      TIER_04,
      TIER_04},
 
     {
      "Necromancer", "Nec", STAT_INT, OBJ_VNUM_SCHOOL_FLAIL,
-     {3375, 9758, 18113}, 75, 10, -20, 42, 52, TRUE,
+     {3375, 9758, 18113}, 75, 10, -20, 42, 52, true,
      "basic occultist", "necromancer default",
      TIER_04,
      TIER_04},
 
     {
      "Bard", "Brd", STAT_WIS, OBJ_VNUM_SCHOOL_WHIP,
-     {3375, 9758, 18113}, 75, 10, -20, 50, 60, TRUE,
+     {3375, 9758, 18113}, 75, 10, -20, 50, 60, true,
      "basic lyricist", "bard default",
      TIER_04,
      TIER_04}
@@ -5758,7 +5758,7 @@ CLASSTABLE
       199, 199, 199, 199, 199, 199, 199, 199,
       199, 199, 199, 199, 199, 199, 199, 199},
      0, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 0 ), 0, 0,
+     NULL, true, SLOT ( 0 ), 0, 0,
      "", "", ""},
 
     {
@@ -5772,7 +5772,7 @@ CLASSTABLE
       199, 199, 199, 199, 199, 199, 199, 199,
       199, 199, 199, 199, 199, 199, 199, 199},
      0, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 0 ), 0, 0,
+     NULL, true, SLOT ( 0 ), 0, 0,
      "", "", ""},
 
     {
@@ -5786,7 +5786,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 2,
       1, 1, 1, 1, 1, 1, 1, 2},
      spell_drain_blade, TAR_OBJ_INV, POS_STANDING,
-     NULL, TRUE, SLOT ( 736 ), 20, 12,
+     NULL, true, SLOT ( 736 ), 20, 12,
      "drain blade", "!drain!", "Your weapon looses its vampiric abilities."},
 
     {
@@ -5800,7 +5800,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 2,
       1, 1, 1, 1, 1, 1, 1, 2},
      spell_vorpal_blade, TAR_OBJ_INV, POS_STANDING,
-     NULL, TRUE, SLOT ( 796 ), 20, 12,
+     NULL, true, SLOT ( 796 ), 20, 12,
      "vorpal blade", "!vorpal!", "Your weapon's edge gets dull."},
 
     {
@@ -5814,7 +5814,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 2,
       1, 1, 1, 1, 1, 1, 1, 2},
      spell_flame_blade, TAR_OBJ_INV, POS_STANDING,
-     NULL, TRUE, SLOT ( 196 ), 20, 12,
+     NULL, true, SLOT ( 196 ), 20, 12,
      "flame blade", "!flame!", "Your weapon's flaming aura fades away."},
 
     {
@@ -5828,7 +5828,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 2,
       1, 1, 1, 1, 1, 1, 1, 2},
      spell_shocking_blade, TAR_OBJ_INV, POS_STANDING,
-     NULL, TRUE, SLOT ( 245 ), 20, 12,
+     NULL, true, SLOT ( 245 ), 20, 12,
      "shocking blade", "!shock!", "Your weapon's shocking aura fizzles out."},
 
     {
@@ -5842,7 +5842,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_sharp_blade, TAR_OBJ_INV, POS_STANDING,
-     NULL, TRUE, SLOT ( 340 ), 20, 12,
+     NULL, true, SLOT ( 340 ), 20, 12,
      "sharp blade", "!sharp!", "Your weapon's edge gets dull."},
 
     {
@@ -5856,7 +5856,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 2,
       1, 1, 1, 1, 1, 1, 1, 2},
      spell_frost_blade, TAR_OBJ_INV, POS_STANDING,
-     NULL, TRUE, SLOT ( 506 ), 20, 12,
+     NULL, true, SLOT ( 506 ), 20, 12,
      "frost blade", "!frost!", "Your weapon's frosty aura slowly melts away."},
 
     {
@@ -5870,7 +5870,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1,
       1, 1, 2, 2, 2, 1, 1},
      spell_4x, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, TRUE, SLOT ( 799 ), 20, 1,
+     NULL, true, SLOT ( 799 ), 20, 1,
      "4x", "You no longer learn so quickly.", ""},
 
     {
@@ -5884,7 +5884,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_sate, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-     NULL, FALSE, SLOT ( 284 ), 50, 12,
+     NULL, false, SLOT ( 284 ), 50, 12,
      "", "!Sate!", ""},
     {
      "quench",
@@ -5897,7 +5897,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_quench, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-     NULL, FALSE, SLOT ( 286 ), 50, 12,
+     NULL, false, SLOT ( 286 ), 50, 12,
      "", "!Quench!", ""},
     {
      "heroes feast",
@@ -5910,7 +5910,7 @@ CLASSTABLE
       1, 2, 1, 1, 3, 3, 1, 1,
       1, 2, 1, 1, 3, 3, 1, 1},
      spell_heroes_feast, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-     NULL, FALSE, SLOT ( 299 ), 50, 12,
+     NULL, false, SLOT ( 299 ), 50, 12,
      "", "!Heroes Feast!", ""},
     {
      "holy mace",
@@ -5923,7 +5923,7 @@ CLASSTABLE
       1, 3, 1, 1, 1, 1, 1, 1,
       1, 2, 1, 1, 1, 1, 1, 1},
      spell_holy_mace, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 696 ), 75, 12,
+     NULL, true, SLOT ( 696 ), 75, 12,
      "", "!Holy Mace!", ""},
 
     {
@@ -5937,7 +5937,7 @@ CLASSTABLE
       1, 2, 1, 1, 1, 1, 1, 1,
       1, 2, 1, 1, 1, 1, 1, 1},
      spell_acid_rain, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 70 ), 160, 12,
+     NULL, true, SLOT ( 70 ), 160, 12,
      "{gac{Gi{gd ra{Gi{gn{x", "!Acid Rain!", ""},
 
     {
@@ -5951,7 +5951,7 @@ CLASSTABLE
       2, 3, 1, 1, 3, 2, 2, 3,
       2, 2, 1, 1, 2, 1, 2, 2},
      spell_acid_blast, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 70 ), 100, 12,
+     NULL, true, SLOT ( 70 ), 100, 12,
      "{qa{qc{qi{qd {qb{ql{qa{qs{qt{x", "!Acid Blast!", ""},
 
     {
@@ -5965,7 +5965,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 2, 1,
       1, 1, 1, 1, 1, 1, 2, 1},
      spell_animate, TAR_OBJ_INV, POS_STANDING,
-     NULL, TRUE, SLOT ( 239 ), 25, 12,
+     NULL, true, SLOT ( 239 ), 25, 12,
      "", "!Animate!", ""},
 
     {
@@ -5979,7 +5979,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 2, 2,
       1, 1, 1, 1, 1, 1, 2, 2},
      spell_armor, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 1 ), 5, 12,
+     NULL, false, SLOT ( 1 ), 5, 12,
      "", "You feel less armored.", ""},
     {
      "anger",
@@ -5992,7 +5992,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 5, 2, 1, 2, 1},
      spell_anger, TAR_CHAR_SELF, POS_STANDING,
-     NULL, FALSE, SLOT ( 150 ), 5, 12,
+     NULL, false, SLOT ( 150 ), 5, 12,
      "", "You are no longer so angry.", ""},
 
     {
@@ -6006,7 +6006,7 @@ CLASSTABLE
       2, 2, 4, 4, 4, 2, 4, 2,
       2, 2, 4, 4, 4, 2, 4, 2},
      spell_blade_bless, TAR_OBJ_INV, POS_STANDING,
-     NULL, TRUE, SLOT ( 516 ), 100, 24,
+     NULL, true, SLOT ( 516 ), 100, 24,
      "", "!BLADE BLESS!", "Your weapon's blessing has worn off."},
     {
      "bless",
@@ -6019,7 +6019,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_bless, TAR_OBJ_CHAR_DEF, POS_STANDING,
-     NULL, FALSE, SLOT ( 3 ), 5, 12,
+     NULL, false, SLOT ( 3 ), 5, 12,
      "", "You feel less righteous.", "$p's holy aura fades."},
 
     {
@@ -6033,7 +6033,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 2,
       1, 1, 2, 2, 2, 1, 1, 2},
      spell_blindness, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     &gsn_blindness, TRUE, SLOT ( 4 ), 13, 12,
+     &gsn_blindness, true, SLOT ( 4 ), 13, 12,
      "", "You can see again.", ""},
 
     {
@@ -6047,7 +6047,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 4, 2, 1, 2, 1},
      spell_blind_rage, TAR_CHAR_SELF, POS_STANDING,
-     NULL, FALSE, SLOT ( 156 ), 25, 16,
+     NULL, false, SLOT ( 156 ), 25, 16,
      "", "You calm down.", ""},
     {
      "burning hands",
@@ -6060,7 +6060,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_burning_hands, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 5 ), 15, 12,
+     NULL, true, SLOT ( 5 ), 15, 12,
      "{Oburning {Ohands{x", "!Burning Hands!", ""},
 
     {
@@ -6074,7 +6074,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 1, 1,
       1, 1, 2, 2, 1, 1, 1, 1},
      spell_call_lightning, TAR_IGNORE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 6 ), 15, 12,
+     NULL, true, SLOT ( 6 ), 15, 12,
      "lightning bolt", "!Call Lightning!", ""},
 
     {
@@ -6088,7 +6088,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_calm, TAR_IGNORE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 509 ), 30, 12,
+     NULL, true, SLOT ( 509 ), 30, 12,
      "", "You have lost your peace of mind.", ""},
     {
      "call darkness",
@@ -6101,7 +6101,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_call_darkness, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 711 ), 200, 12,
+     NULL, true, SLOT ( 711 ), 200, 12,
      "{Dp{wo{Dw{we{Dr{ws{x of {Dd{ba{Dr{bk{Dn{be{Ds{bs{x", "!Call Darkness!", ""},
 
     {
@@ -6115,7 +6115,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_lifeforce, TAR_CHAR_SELF, POS_STANDING,
-     &gsn_lifeforce, TRUE, SLOT ( 659 ), 250, 0,
+     &gsn_lifeforce, true, SLOT ( 659 ), 250, 0,
      "lifeforce", "Your lifeforce fades away!", ""},
 
     {
@@ -6129,7 +6129,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_soul_siphon, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 711 ), 150, 12,
+     NULL, true, SLOT ( 711 ), 150, 12,
      "{Dsoul siphon{x", "!Soul Siphon!", ""},
     {
      "camouflage",
@@ -6142,7 +6142,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_camouflage, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 265 ), 20, 12,
+     NULL, false, SLOT ( 265 ), 20, 12,
      "", "Your camoflage disapears.", ""},
 
     {
@@ -6156,7 +6156,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_cancellation, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 507 ), 20, 12,
+     NULL, false, SLOT ( 507 ), 20, 12,
      "" "!cancellation!", ""},
 
     {
@@ -6170,7 +6170,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1,
       1, 1, 2, 2, 2, 1, 1},
      spell_cause_critical, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 63 ), 80, 12,
+     NULL, true, SLOT ( 63 ), 80, 12,
      "spell", "!Cause Critical!", ""},
 
     {
@@ -6184,7 +6184,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_cause_light, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 62 ), 40, 12,
+     NULL, true, SLOT ( 62 ), 40, 12,
      "spell", "!Cause Light!", ""},
 
     {
@@ -6198,7 +6198,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_cause_serious, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 64 ), 120, 12,
+     NULL, true, SLOT ( 64 ), 120, 12,
      "spell", "!Cause Serious!", ""},
 
     {
@@ -6212,7 +6212,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_chain_lightning, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 500 ), 130, 12,
+     NULL, true, SLOT ( 500 ), 130, 12,
      "{olightning{x", "!Chain Lightning!", ""},
 
     {
@@ -6226,7 +6226,7 @@ CLASSTABLE
       2, 1, 2, 2, 2, 1, 1, 1,
       2, 1, 2, 2, 2, 1, 1, 1},
      spell_change_sex, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 82 ), 15, 12,
+     NULL, true, SLOT ( 82 ), 15, 12,
      "", "You feel like yourself again.", ""},
 
     {
@@ -6240,7 +6240,7 @@ CLASSTABLE
       1, 2, 1, 1, 1, 1, 2, 1,
       1, 2, 1, 1, 1, 1, 2, 1},
      spell_charm_person, TAR_CHAR_OFFENSIVE, POS_STANDING,
-     &gsn_charm_person, TRUE, SLOT ( 7 ), 20, 12,
+     &gsn_charm_person, true, SLOT ( 7 ), 20, 12,
      "", "You feel more self-confident.", ""},
 
     {
@@ -6254,7 +6254,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_chill_touch, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 8 ), 15, 12,
+     NULL, true, SLOT ( 8 ), 15, 12,
      "{-chilling {-touch{x", "You feel less cold.", ""},
 
     {
@@ -6268,7 +6268,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_coldfire, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 0 ), 10, 12,
+     NULL, true, SLOT ( 0 ), 10, 12,
      "{Cc{Go{cl{Cd{cf{Gi{Cr{ce{x", "!Coldfire!", ""},
 
     {
@@ -6282,7 +6282,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_colour_spray, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 10 ), 70, 12,
+     NULL, true, SLOT ( 10 ), 70, 12,
      "{Rc{ro{yl{Yo{Gu{Cr {Bs{bp{mr{Ma{Ry{x", "!Colour Spray!", ""},
 
     {
@@ -6296,7 +6296,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_concentration, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 651 ), 1, 18,
+     NULL, false, SLOT ( 651 ), 1, 18,
      "concentration", "You feel less focused.", ""},
 
     {
@@ -6310,7 +6310,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_conjure, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 280 ), 111, 12,
+     NULL, true, SLOT ( 280 ), 111, 12,
      "", "!Conjure!", ""},
 
     {
@@ -6324,7 +6324,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 2, 2,
       1, 1, 2, 2, 1, 1, 2, 2},
      spell_continual_light, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 57 ), 7, 12,
+     NULL, true, SLOT ( 57 ), 7, 12,
      "", "!Continual Light!", ""},
 
     {
@@ -6338,7 +6338,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 2, 1,
       1, 1, 2, 2, 1, 1, 2, 1},
      spell_control_weather, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 11 ), 25, 12,
+     NULL, true, SLOT ( 11 ), 25, 12,
      "", "!Control Weather!", ""},
     {
      "create bed",
@@ -6351,7 +6351,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 5, 3, 1,
       1, 1, 2, 2, 1, 4, 2, 1},
      spell_create_bed, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 126 ), 35, 12,
+     NULL, true, SLOT ( 126 ), 35, 12,
      "", "The wind scatters the leaves.", "The wind scatters the leaves."},
 
     {
@@ -6365,7 +6365,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 2, 1,
       1, 1, 2, 2, 1, 1, 2, 1},
      spell_create_food, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 12 ), 5, 12,
+     NULL, true, SLOT ( 12 ), 5, 12,
      "", "!Create Food!", ""},
 
     {
@@ -6379,7 +6379,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 1, 1,
       1, 1, 2, 2, 1, 1, 1, 1},
      spell_create_rose, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 511 ), 30, 12,
+     NULL, true, SLOT ( 511 ), 30, 12,
      "", "!Create Rose!", ""},
 
     {
@@ -6393,7 +6393,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 2, 1,
       1, 1, 2, 2, 1, 1, 2, 1},
      spell_create_spring, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 80 ), 20, 12,
+     NULL, true, SLOT ( 80 ), 20, 12,
      "", "!Create Spring!", ""},
 
     {
@@ -6407,7 +6407,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 2, 1,
       1, 1, 2, 2, 1, 1, 2, 1},
      spell_create_water, TAR_OBJ_INV, POS_STANDING,
-     NULL, TRUE, SLOT ( 13 ), 5, 12,
+     NULL, true, SLOT ( 13 ), 5, 12,
      "", "!Create Water!", ""},
 
     {
@@ -6421,7 +6421,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_cry, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 680 ), 110, 12,
+     NULL, true, SLOT ( 680 ), 110, 12,
      "{Dmental {rabuse{x", "You stop your crying.", ""},
     {
      "cure blindness",
@@ -6434,7 +6434,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_cure_blindness, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-     NULL, FALSE, SLOT ( 14 ), 12, 12,
+     NULL, false, SLOT ( 14 ), 12, 12,
      "", "!Cure Blindness!", ""},
 
     {
@@ -6448,7 +6448,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_cure_critical, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-     NULL, FALSE, SLOT ( 15 ), 20, 12,
+     NULL, false, SLOT ( 15 ), 20, 12,
      "", "!Cure Critical!", ""},
 
     {
@@ -6462,7 +6462,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_cure_disease, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 501 ), 20, 12,
+     NULL, false, SLOT ( 501 ), 20, 12,
      "", "!Cure Disease!", ""},
 
     {
@@ -6476,7 +6476,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_cure_light, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-     NULL, FALSE, SLOT ( 16 ), 10, 12,
+     NULL, false, SLOT ( 16 ), 10, 12,
      "", "!Cure Light!", ""},
 
     {
@@ -6490,7 +6490,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_cure_poison, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 43 ), 5, 12,
+     NULL, false, SLOT ( 43 ), 5, 12,
      "", "!Cure Poison!", ""},
 
     {
@@ -6504,7 +6504,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_cure_serious, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-     NULL, FALSE, SLOT ( 61 ), 15, 12,
+     NULL, false, SLOT ( 61 ), 15, 12,
      "", "!Cure Serious!", ""},
     {
      "entangle",
@@ -6517,7 +6517,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_entangle, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     &gsn_entangle, TRUE, SLOT ( 472 ), 300, 12,
+     &gsn_entangle, true, SLOT ( 472 ), 300, 12,
      "entagle", "The {gvines{x which bind you recede.", "$p is no longer entangled."},
     {
      "curse",
@@ -6530,7 +6530,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_curse, TAR_OBJ_CHAR_OFF, POS_FIGHTING,
-     &gsn_curse, TRUE, SLOT ( 17 ), 20, 12,
+     &gsn_curse, true, SLOT ( 17 ), 20, 12,
      "curse", "The curse wears off.",
      "$p is no longer impure."},
     {
@@ -6544,7 +6544,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 5, 1},
      spell_bloodbath, TAR_CHAR_SELF, POS_STANDING,
-     NULL, FALSE, SLOT ( 535 ), 200, 16,
+     NULL, false, SLOT ( 535 ), 200, 16,
      "", "The {=b{=l{=o{=o{=d{x recedes from your body.", ""},
 
     {
@@ -6558,7 +6558,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 3, 1},
      spell_death_chant, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 663 ), 169, 18,
+     NULL, true, SLOT ( 663 ), 169, 18,
      "{rd{De{wa{Dt{rh c{Dh{wa{Dn{rt{x", "!Death Chant!", ""},
 
     {
@@ -6572,7 +6572,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_demonfire, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 505 ), 20, 12,
+     NULL, true, SLOT ( 505 ), 20, 12,
      "{Dtorments{x", "!Demonfire!", ""},
 
     {
@@ -6586,7 +6586,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 1, 1,
       1, 1, 2, 2, 1, 1, 1, 1},
      spell_detect_evil, TAR_CHAR_SELF, POS_STANDING,
-     NULL, FALSE, SLOT ( 18 ), 5, 12,
+     NULL, false, SLOT ( 18 ), 5, 12,
      "", "The red in your vision disappears.", ""},
 
     {
@@ -6600,7 +6600,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 1, 1,
       1, 1, 2, 2, 1, 1, 1, 1},
      spell_detect_good, TAR_CHAR_SELF, POS_STANDING,
-     NULL, FALSE, SLOT ( 513 ), 5, 12,
+     NULL, false, SLOT ( 513 ), 5, 12,
      "", "The gold in your vision disappears.", ""},
 
     {
@@ -6614,7 +6614,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 1, 1,
       1, 1, 2, 2, 1, 1, 1, 1},
      spell_detect_hidden, TAR_CHAR_SELF, POS_STANDING,
-     NULL, FALSE, SLOT ( 44 ), 5, 12,
+     NULL, false, SLOT ( 44 ), 5, 12,
      "", "You feel less aware of your surroundings.",
      ""},
 
@@ -6629,7 +6629,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 1, 1,
       1, 1, 2, 2, 1, 1, 1, 1},
      spell_detect_invis, TAR_CHAR_SELF, POS_STANDING,
-     NULL, FALSE, SLOT ( 19 ), 5, 12,
+     NULL, false, SLOT ( 19 ), 5, 12,
      "", "You no longer see invisible objects.",
      ""},
 
@@ -6644,7 +6644,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 1, 1,
       1, 1, 2, 2, 1, 1, 1, 1},
      spell_detect_magic, TAR_CHAR_SELF, POS_STANDING,
-     NULL, FALSE, SLOT ( 20 ), 5, 12,
+     NULL, false, SLOT ( 20 ), 5, 12,
      "", "The detect magic wears off.", ""},
 
     {
@@ -6658,7 +6658,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 1, 1,
       1, 1, 2, 2, 1, 1, 1, 1},
      spell_detect_poison, TAR_OBJ_INV, POS_STANDING,
-     NULL, TRUE, SLOT ( 21 ), 5, 12,
+     NULL, true, SLOT ( 21 ), 5, 12,
      "", "!Detect Poison!", ""},
 
     {
@@ -6672,7 +6672,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_dispel_evil, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 22 ), 15, 12,
+     NULL, true, SLOT ( 22 ), 15, 12,
      "dispel evil", "!Dispel Evil!", ""},
 
     {
@@ -6686,7 +6686,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_dispel_good, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 512 ), 15, 12,
+     NULL, true, SLOT ( 512 ), 15, 12,
      "dispel good", "!Dispel Good!", ""},
 
     {
@@ -6700,7 +6700,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_dispel_magic, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 59 ), 15, 12,
+     NULL, true, SLOT ( 59 ), 15, 12,
      "", "!Dispel Magic!", ""},
     {
      "divine protection",
@@ -6713,7 +6713,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_divine_protection, TAR_CHAR_SELF, POS_STANDING,
-     NULL, FALSE, SLOT ( 505 ), 20, 12,
+     NULL, false, SLOT ( 505 ), 20, 12,
      "", "Your holy protection fades.", ""},
     {
      "celestial fury",
@@ -6726,7 +6726,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_celestial_fury, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, FALSE, SLOT ( 725 ), 190, 12,
+     NULL, false, SLOT ( 725 ), 190, 12,
      "{Yc{Ce{cl{ye{Ys{yt{ci{Ca{Yl {Wf{Yu{Wr{Yy{x", "!celestial fury!", ""},
 
     {
@@ -6740,7 +6740,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_downpour, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 225 ), 15, 16,
+     NULL, true, SLOT ( 225 ), 15, 16,
      "{cd{wo{cw{Cn{Wp{wo{Du{cr{x", "!Downpour!", ""},
 
     {
@@ -6754,7 +6754,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_dragon_skin, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 174 ), 5, 12,
+     NULL, false, SLOT ( 174 ), 5, 12,
      "", "Your skin returns to its normal state.", ""},
 
     {
@@ -6768,7 +6768,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_dragon_wisdom, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 39 ), 20, 12,
+     NULL, false, SLOT ( 39 ), 20, 12,
      "", "You feel less wise.", ""},
 
     {
@@ -6782,7 +6782,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_dust_storm, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 226 ), 20, 12,
+     NULL, true, SLOT ( 226 ), 20, 12,
      "{pd{pu{ps{pt {ps{pt{po{pr{pm{x", "!Dust Storm!", ""},
 
     {
@@ -6796,7 +6796,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_earthquake, TAR_IGNORE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 23 ), 25, 12,
+     NULL, true, SLOT ( 23 ), 25, 12,
      "{ye{Da{yrth{Dq{yua{Dk{ye{x", "!Earthquake!", ""},
 
     {
@@ -6810,7 +6810,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 3, 1, 1},
      spell_elemental_fury, TAR_IGNORE, POS_FIGHTING,
-     &gsn_elemental_fury, TRUE, SLOT ( 71 ), 167, 18,
+     &gsn_elemental_fury, true, SLOT ( 71 ), 167, 18,
      "elemental fury", "!Elemental Fury!", ""},
 
     {
@@ -6824,7 +6824,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_empower, TAR_IGNORE, POS_RESTING,
-     NULL, TRUE, SLOT ( 234 ), 40, 12,
+     NULL, true, SLOT ( 234 ), 40, 12,
      "", "!Empower!", ""},
 
     {
@@ -6838,7 +6838,7 @@ CLASSTABLE
       2, 2, 4, 4, 4, 2, 4, 2,
       2, 2, 4, 4, 4, 2, 4, 2},
      spell_enchant_armor, TAR_OBJ_INV, POS_STANDING,
-     NULL, TRUE, SLOT ( 510 ), 100, 24,
+     NULL, true, SLOT ( 510 ), 100, 24,
      "", "!Enchant Armor!", ""},
 
     {
@@ -6852,7 +6852,7 @@ CLASSTABLE
       2, 2, 4, 4, 4, 2, 4, 2,
       2, 2, 4, 4, 4, 2, 4, 2},
      spell_enchant_weapon, TAR_OBJ_INV, POS_STANDING,
-     NULL, TRUE, SLOT ( 24 ), 100, 24,
+     NULL, true, SLOT ( 24 ), 100, 24,
      "", "!Enchant Weapon!", ""},
 
     {
@@ -6866,7 +6866,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_energy_drain, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 25 ), 35, 12,
+     NULL, true, SLOT ( 25 ), 35, 12,
      "energy drain", "!Energy Drain!", ""},
 
     {
@@ -6880,7 +6880,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_expeditious_retreat, TAR_CHAR_SELF, POS_STANDING,
-     NULL, TRUE, SLOT ( 0 ), 333, 18,
+     NULL, true, SLOT ( 0 ), 333, 18,
      "", "You no longer flee so quickly.", ""},
 
     {
@@ -6894,7 +6894,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 2, 1,
       1, 1, 2, 2, 1, 1, 2, 1},
      spell_faerie_fire, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 72 ), 5, 12,
+     NULL, true, SLOT ( 72 ), 5, 12,
      "faerie fire", "The pink aura around you fades away.", ""},
 
     {
@@ -6908,7 +6908,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 2, 2,
       1, 1, 2, 2, 1, 1, 2, 2},
      spell_faerie_fog, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 73 ), 12, 12,
+     NULL, true, SLOT ( 73 ), 12, 12,
      "faerie fog", "!Faerie Fog!", ""},
 
     {
@@ -6922,7 +6922,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 1, 1,
       1, 1, 2, 2, 1, 1, 1, 1},
      spell_farsight, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 521 ), 5, 12,
+     NULL, false, SLOT ( 521 ), 5, 12,
      "", "The green in your vision disappears.",
      ""},
 
@@ -6937,7 +6937,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_fireball, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 26 ), 15, 12,
+     NULL, true, SLOT ( 26 ), 15, 12,
      "{Yf{yi{rr{Reb{ra{yl{Yl{x", "!Fireball!", ""},
 
     {
@@ -6951,7 +6951,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_fireproof, TAR_OBJ_INV, POS_STANDING,
-     NULL, TRUE, SLOT ( 523 ), 10, 12,
+     NULL, true, SLOT ( 523 ), 10, 12,
      "", "", "$p's protective aura fades."},
 
     {
@@ -6965,7 +6965,7 @@ CLASSTABLE
       3, 3, 5, 5, 5, 3, 5, 1,
       3, 3, 5, 5, 5, 3, 5, 1},
      spell_fireshield, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 411 ), 75, 12,
+     NULL, false, SLOT ( 411 ), 75, 12,
      "fireball", "Your firey shield gutters out.",
      ""},
     {
@@ -6979,7 +6979,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_firestorm, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 651 ), 100, 12,
+     NULL, true, SLOT ( 651 ), 100, 12,
      "{Rf{Yi{Rr{Ye {Rs{Yt{Ro{Yr{Rm", "!FIRESTORM!", ""},
 
     {
@@ -6993,7 +6993,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_flamestrike, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 65 ), 10, 12,
+     NULL, true, SLOT ( 65 ), 10, 12,
      "{Rf{rl{Da{wm{West{wr{Di{rk{Re{x", "!Flamestrike!", ""},
 
     {
@@ -7007,7 +7007,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 2, 1,
       1, 1, 2, 2, 1, 1, 2, 1},
      spell_floating_disc, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 522 ), 40, 24,
+     NULL, true, SLOT ( 522 ), 40, 24,
      "", "!Floating disc!", ""},
 
     {
@@ -7021,7 +7021,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_fly, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 56 ), 10, 18,
+     NULL, false, SLOT ( 56 ), 10, 18,
      "", "You slowly float to the ground.", ""},
 
     {
@@ -7035,7 +7035,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_frenzy, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 504 ), 30, 24,
+     NULL, false, SLOT ( 504 ), 30, 24,
      "", "Your rage ebbs.", ""},
 
     {
@@ -7049,7 +7049,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_gate, TAR_IGNORE, POS_STANDING,
-     NULL, FALSE, SLOT ( 83 ), 80, 12,
+     NULL, false, SLOT ( 83 ), 80, 12,
      "", "!Gate!", ""},
 
     {
@@ -7063,7 +7063,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_gods_armor, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 195 ), 120, 12,
+     NULL, false, SLOT ( 195 ), 120, 12,
      "", "You are no longer godly.", ""},
     {
      "giant strength",
@@ -7076,7 +7076,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_giant_strength, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 39 ), 20, 12,
+     NULL, false, SLOT ( 39 ), 20, 12,
      "", "You feel weaker.", ""},
 
     {
@@ -7090,7 +7090,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_harm, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 27 ), 160, 12,
+     NULL, true, SLOT ( 27 ), 160, 12,
      "harm spell", "!Harm!", ""},
 
     {
@@ -7104,7 +7104,7 @@ CLASSTABLE
       1, 2, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_divinewrath, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 476 ), 200, 16,
+     NULL, true, SLOT ( 476 ), 200, 16,
      "{Wdivine wrath{x", "!Wrath!", ""},
 
     {
@@ -7118,7 +7118,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_haste, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-     NULL, FALSE, SLOT ( 502 ), 30, 12,
+     NULL, false, SLOT ( 502 ), 30, 12,
      "", "You feel yourself slow down.", ""},
 
     {
@@ -7132,7 +7132,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_heal, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-     NULL, FALSE, SLOT ( 28 ), 50, 12,
+     NULL, false, SLOT ( 28 ), 50, 12,
      "", "!Heal!", ""},
 
     {
@@ -7146,7 +7146,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 3, 2, 2, 1, 2, 1},
      spell_fullheal, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-     NULL, FALSE, SLOT ( 439 ), 1000, 30,
+     NULL, false, SLOT ( 439 ), 1000, 30,
      "", "!FullHeal!", ""},
 
     {
@@ -7160,7 +7160,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_heat_metal, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 516 ), 25, 18,
+     NULL, true, SLOT ( 516 ), 25, 18,
      "spell", "!Heat Metal!", ""},
 
     {
@@ -7174,7 +7174,7 @@ CLASSTABLE
       2, 1, 4, 4, 4, 2, 4, 1,
       2, 1, 4, 4, 4, 2, 4, 1},
      spell_prayer, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 333 ), 130, 24,
+     NULL, true, SLOT ( 333 ), 130, 24,
      "{Wp{wr{Way{we{Wr{x", "!prayer!", ""},
 
     {
@@ -7188,7 +7188,7 @@ CLASSTABLE
       3, 3, 5, 5, 5, 3, 5, 1,
       3, 3, 5, 5, 5, 3, 5, 1},
      spell_iceshield, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 410 ), 75, 12,
+     NULL, false, SLOT ( 410 ), 75, 12,
      "chilling touch", "Your icy shield slowly melts away.",
      ""},
 
@@ -7203,7 +7203,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 1, 1,
       1, 1, 2, 2, 1, 1, 1, 1},
      spell_identify, TAR_OBJ_INV, POS_STANDING,
-     NULL, TRUE, SLOT ( 53 ), 12, 24,
+     NULL, true, SLOT ( 53 ), 12, 24,
      "", "!Identify!", ""},
 
     {
@@ -7217,7 +7217,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_immolation, TAR_CHAR_SELF, POS_STANDING,
-     NULL, FALSE, SLOT ( 666 ), 350, 30,
+     NULL, false, SLOT ( 666 ), 350, 30,
      "", "The {Rf{ri{Rr{re{Rs{x that surround you slowly fade.", ""},
 
     {
@@ -7231,7 +7231,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_infravision, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 77 ), 5, 18,
+     NULL, false, SLOT ( 77 ), 5, 18,
      "", "You no longer see in the dark.", ""},
 
     {
@@ -7245,7 +7245,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_inspire, TAR_IGNORE, POS_STANDING,
-     NULL, FALSE, SLOT ( 0 ), 450, 18,
+     NULL, false, SLOT ( 0 ), 450, 18,
      "", "You no longer feel so inspired.", ""},
 
     {
@@ -7259,7 +7259,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_invigorate, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 393 ), 1200, 12,
+     NULL, false, SLOT ( 393 ), 1200, 12,
      "", "You feel less invigorated!", "$p's is less invigorated."},
 
     {
@@ -7273,7 +7273,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_invis, TAR_OBJ_CHAR_DEF, POS_STANDING,
-     &gsn_invis, FALSE, SLOT ( 29 ), 15, 12,
+     &gsn_invis, false, SLOT ( 29 ), 15, 12,
      "", "You are no longer invisible.", "$p fades into view."},
 
     {
@@ -7287,7 +7287,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_vanish, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     &gsn_vanish, FALSE, SLOT ( 406 ), 500, 12,
+     &gsn_vanish, false, SLOT ( 406 ), 500, 12,
      "", "You suddenly re-appear...", "$p appears suddenly..."},
 
     {
@@ -7301,7 +7301,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 1, 1,
       1, 1, 2, 2, 1, 1, 1, 1},
      spell_know_alignment, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 58 ), 9, 12,
+     NULL, false, SLOT ( 58 ), 9, 12,
      "", "!Know Alignment!", ""},
 
     {
@@ -7315,7 +7315,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 1, 1,
       1, 1, 2, 2, 1, 1, 1, 1},
      spell_lightning_bolt, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 30 ), 15, 12,
+     NULL, true, SLOT ( 30 ), 15, 12,
      "{ylightning {Yb{yo{Yl{yt{x", "!Lightning Bolt!", ""},
 
     {
@@ -7329,7 +7329,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 1, 2,
       1, 1, 2, 2, 1, 1, 1, 2},
      spell_locate_object, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 31 ), 20, 18,
+     NULL, true, SLOT ( 31 ), 20, 18,
      "", "!Locate Object!", ""},
 
     {
@@ -7343,7 +7343,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_lullaby, TAR_IGNORE, POS_STANDING,
-     NULL, FALSE, SLOT ( 0 ), 450, 18,
+     NULL, false, SLOT ( 0 ), 450, 18,
      "", "You no longer feel so sleepy.", ""},
 
     {
@@ -7357,7 +7357,7 @@ CLASSTABLE
       1, 2, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_magic_missile, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 32 ), 5, 12,
+     NULL, true, SLOT ( 32 ), 5, 12,
      "magic missile", "!Magic Missile!", ""},
 
     {
@@ -7371,7 +7371,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 1, 2, 1,
       2, 2, 2, 2, 2, 1, 2, 1},
      spell_mana_shield, TAR_CHAR_SELF, POS_STANDING,
-     NULL, TRUE, SLOT ( 32 ), 95, 12,
+     NULL, true, SLOT ( 32 ), 95, 12,
      "mana shield", "Your {Bm{bana{x shield fades away!", ""},
 
     {
@@ -7385,7 +7385,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 1, 1, 1,
       5, 2, 2, 2, 2, 1, 1, 1},
      spell_ward, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 32 ), 60, 12,
+     NULL, true, SLOT ( 32 ), 60, 12,
      "ward", "You are no longer warded!", ""},
 
     {
@@ -7399,7 +7399,7 @@ CLASSTABLE
       2, 2, 4, 4, 2, 2, 2, 1,
       2, 2, 4, 4, 2, 2, 2, 1},
      spell_mass_healing, TAR_IGNORE, POS_STANDING,
-     NULL, FALSE, SLOT ( 508 ), 100, 36,
+     NULL, false, SLOT ( 508 ), 100, 36,
      "", "!Mass Healing!", ""},
 
     {
@@ -7413,7 +7413,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_mass_invis, TAR_IGNORE, POS_STANDING,
-     &gsn_mass_invis, FALSE, SLOT ( 69 ), 20, 24,
+     &gsn_mass_invis, false, SLOT ( 69 ), 20, 24,
      "", "You are no longer invisible.", ""},
     {
      "master healing",
@@ -7426,7 +7426,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_master_healing, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-     NULL, FALSE, SLOT ( 208 ), 50, 12,
+     NULL, false, SLOT ( 208 ), 50, 12,
      "", "!Master Healing!", ""},
     {
      "meteor storm",
@@ -7439,7 +7439,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       3, 1, 2, 2, 2, 1, 1, 1},
      spell_meteor_storm, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 204 ), 167, 18,
+     NULL, true, SLOT ( 204 ), 167, 18,
      "{Dm{re{Rte{ro{Dr{W storm{x", "!Meteor Storm!", ""},
     {
 
@@ -7453,7 +7453,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_napalm, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 651 ), 60, 12,
+     NULL, true, SLOT ( 651 ), 60, 12,
      "{Gn{ga{yp{Ra{rl{gm{x", "!NAPALM!", "The effects of the napalm leave you."},
 
     {
@@ -7467,7 +7467,7 @@ CLASSTABLE
       2, 2, 4, 4, 4, 2, 4, 3,
       2, 2, 4, 4, 4, 2, 4, 3},
      spell_nexus, TAR_IGNORE, POS_STANDING,
-     NULL, FALSE, SLOT ( 520 ), 150, 36,
+     NULL, false, SLOT ( 520 ), 150, 36,
      "", "!Nexus!", ""},
 
     {
@@ -7481,7 +7481,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 3},
      spell_pandemonium, TAR_IGNORE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 757 ), 167, 18,
+     NULL, true, SLOT ( 757 ), 167, 18,
      "{Op{-a{dn{nd{=e{pm{Io{qn{-i{Ou{nm{x", "The pandemonium wears off.", ""},
 
     {
@@ -7495,7 +7495,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_pass_door, TAR_CHAR_SELF, POS_STANDING,
-     NULL, FALSE, SLOT ( 74 ), 20, 12,
+     NULL, false, SLOT ( 74 ), 20, 12,
      "", "You feel solid again.", ""},
 
     {
@@ -7509,7 +7509,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_plague, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     &gsn_plague, TRUE, SLOT ( 503 ), 20, 12,
+     &gsn_plague, true, SLOT ( 503 ), 20, 12,
      "sickness", "Your sores vanish.", ""},
 
     {
@@ -7523,7 +7523,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_poison, TAR_OBJ_CHAR_OFF, POS_FIGHTING,
-     &gsn_poison, TRUE, SLOT ( 33 ), 10, 12,
+     &gsn_poison, true, SLOT ( 33 ), 10, 12,
      "poison", "You feel less sick.",
      "The poison on $p dries up."},
 
@@ -7538,7 +7538,7 @@ CLASSTABLE
       2, 2, 4, 4, 4, 2, 4, 3,
       2, 2, 4, 4, 4, 2, 4, 3},
      spell_portal, TAR_IGNORE, POS_STANDING,
-     NULL, FALSE, SLOT ( 519 ), 100, 24,
+     NULL, false, SLOT ( 519 ), 100, 24,
      "", "!Portal!", ""},
 
     {
@@ -7552,7 +7552,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_protection_evil, TAR_CHAR_SELF, POS_STANDING,
-     NULL, FALSE, SLOT ( 34 ), 5, 12,
+     NULL, false, SLOT ( 34 ), 5, 12,
      "", "You feel less protected.", ""},
 
     {
@@ -7566,7 +7566,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_protection_good, TAR_CHAR_SELF, POS_STANDING,
-     NULL, FALSE, SLOT ( 514 ), 5, 12,
+     NULL, false, SLOT ( 514 ), 5, 12,
      "", "You feel less protected.", ""},
 
     {
@@ -7580,7 +7580,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_protection_voodoo, TAR_CHAR_SELF, POS_STANDING,
-     NULL, FALSE, SLOT ( 345 ), 85, 12,
+     NULL, false, SLOT ( 345 ), 85, 12,
      "", "You are vulnerable to voodoo again.", ""},
 
     {
@@ -7594,7 +7594,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_ego_whip, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 227 ), 70, 12,
+     NULL, true, SLOT ( 227 ), 70, 12,
      "{np{ns{ni{no{nn{ni{nc {nb{nl{na{ns{nt{x", "!Psionic Blast!", ""},
 
     {
@@ -7608,7 +7608,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_quest_pill, TAR_CHAR_SELF, POS_STANDING,
-     NULL, TRUE, SLOT ( 530 ), 5, 18,
+     NULL, true, SLOT ( 530 ), 5, 18,
      "", "!Quest Pill!", ""},
 
     {
@@ -7622,7 +7622,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_ray_of_truth, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 518 ), 30, 12,
+     NULL, true, SLOT ( 518 ), 30, 12,
      "{Wray of truth{x", "!Ray of Truth!", ""},
 
     {
@@ -7636,7 +7636,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 2,
       1, 1, 2, 2, 2, 1, 1, 2},
      spell_recharge, TAR_OBJ_INV, POS_STANDING,
-     NULL, TRUE, SLOT ( 517 ), 60, 24,
+     NULL, true, SLOT ( 517 ), 60, 24,
      "", "!Recharge!", ""},
 
     {
@@ -7650,7 +7650,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_refresh, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 81 ), 12, 18,
+     NULL, false, SLOT ( 81 ), 12, 18,
      "refresh", "!Refresh!", ""},
 
     {
@@ -7664,7 +7664,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_remove_curse, TAR_OBJ_CHAR_DEF, POS_STANDING,
-     NULL, FALSE, SLOT ( 35 ), 5, 12,
+     NULL, false, SLOT ( 35 ), 5, 12,
      "", "!Remove Curse!", ""},
 
     {
@@ -7678,7 +7678,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_restore_mana, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 251 ), 1, 18,
+     NULL, false, SLOT ( 251 ), 1, 18,
      "restore mana", "!Restore Mana!", ""},
 
     {
@@ -7692,7 +7692,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_sanctuary, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     &gsn_sanctuary, FALSE, SLOT ( 36 ), 75, 12,
+     &gsn_sanctuary, false, SLOT ( 36 ), 75, 12,
      "", "The white aura around your body fades.", ""},
 
     {
@@ -7706,7 +7706,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_shield, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 67 ), 12, 18,
+     NULL, false, SLOT ( 67 ), 12, 18,
      "", "Your force shield shimmers then fades away.", ""},
 
     {
@@ -7720,7 +7720,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_shocking_grasp, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 53 ), 15, 12,
+     NULL, true, SLOT ( 53 ), 15, 12,
      "{pshocking {pgrasp{x", "!Shocking Grasp!", ""},
 
     {
@@ -7734,7 +7734,7 @@ CLASSTABLE
       3, 3, 5, 5, 5, 3, 5, 1,
       3, 3, 5, 5, 5, 3, 5, 1},
      spell_shockshield, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 412 ), 75, 12,
+     NULL, false, SLOT ( 412 ), 75, 12,
      "lightning bolt", "Your crackling shield sizzles and fades.", ""},
 
     {
@@ -7748,7 +7748,7 @@ CLASSTABLE
       2, 1, 5, 5, 5, 3, 5, 1,
       2, 1, 5, 5, 5, 3, 5, 1},
      spell_acidshield, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 536 ), 75, 12,
+     NULL, false, SLOT ( 536 ), 75, 12,
      "acidic blast", "Your acidic shield fades away.", ""},
 
     {
@@ -7762,7 +7762,7 @@ CLASSTABLE
       2, 1, 5, 5, 5, 3, 5, 1,
       2, 1, 5, 5, 5, 3, 5, 1},
      spell_poisonshield, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 882 ), 75, 12,
+     NULL, false, SLOT ( 882 ), 75, 12,
      "poisonous shield", "Your poisonous shield clears up.", ""},
 
     {
@@ -7776,7 +7776,7 @@ CLASSTABLE
       2, 1, 5, 5, 5, 3, 5, 1,
       2, 1, 5, 5, 5, 3, 5, 1},
      spell_briarshield, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, FALSE, SLOT ( 492 ), 75, 12,
+     NULL, false, SLOT ( 492 ), 75, 12,
      "{gt{yh{go{yr{gn{yy {xprick", "Your thorny shield fades away.", ""},
 
     {
@@ -7790,7 +7790,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_sleep, TAR_CHAR_OFFENSIVE, POS_STANDING,
-     &gsn_sleep, TRUE, SLOT ( 38 ), 15, 12,
+     &gsn_sleep, true, SLOT ( 38 ), 15, 12,
      "", "You feel less tired.", ""},
 
     {
@@ -7804,7 +7804,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_slow, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 515 ), 30, 12,
+     NULL, true, SLOT ( 515 ), 30, 12,
      "", "You feel yourself speed up.", ""},
 
     {
@@ -7818,7 +7818,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_sonic_blast, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 228 ), 20, 12,
+     NULL, true, SLOT ( 228 ), 20, 12,
      "{cs{Do{wn{Wic bl{wa{Ds{ct{x", "!Sonic Blast!", ""},
 
     {
@@ -7832,7 +7832,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_stone_skin, TAR_CHAR_SELF, POS_STANDING,
-     NULL, FALSE, SLOT ( 66 ), 12, 18,
+     NULL, false, SLOT ( 66 ), 12, 18,
      "", "Your skin feels soft again.", ""},
 
    {
@@ -7846,7 +7846,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 3,
       1, 1, 2, 2, 2, 1, 1, 3},
      spell_summon, TAR_IGNORE, POS_STANDING,
-     NULL, FALSE, SLOT ( 40 ), 50, 12,
+     NULL, false, SLOT ( 40 ), 50, 12,
      "", "!Summon!", ""},
 
     {
@@ -7860,7 +7860,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_superior_healing, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-     NULL, FALSE, SLOT ( 298 ), 50, 12,
+     NULL, false, SLOT ( 298 ), 50, 12,
      "", "!Superior Healing!", ""},
 
     {
@@ -7874,7 +7874,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_teleport, TAR_CHAR_SELF, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 2 ), 35, 12,
+     NULL, true, SLOT ( 2 ), 35, 12,
      "", "!Teleport!", ""},
 
     {
@@ -7888,7 +7888,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 2, 1,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_terror, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 888 ), 85, 18,
+     NULL, true, SLOT ( 888 ), 85, 18,
      "{Dterror{x", "You are no longer so afraid.", ""},
 
     {
@@ -7902,7 +7902,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_transport, TAR_OBJ_TRAN, POS_STANDING,
-     NULL, FALSE, SLOT ( 524 ), 30, 12,
+     NULL, false, SLOT ( 524 ), 30, 12,
      "", "!Transport!", ""},
 
     {
@@ -7916,7 +7916,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 1, 1, 1, 1},
      spell_ventriloquate, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 41 ), 5, 12,
+     NULL, true, SLOT ( 41 ), 5, 12,
      "", "!Ventriloquate!", ""},
 
     {
@@ -7930,7 +7930,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_voodoo, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 286 ), 80, 12,
+     NULL, true, SLOT ( 286 ), 80, 12,
      "", "!Voodoo!", ""},
 
     {
@@ -7944,7 +7944,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_weaken, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 68 ), 20, 12,
+     NULL, true, SLOT ( 68 ), 20, 12,
      "spell", "You feel stronger.", ""},
 
     {
@@ -7958,7 +7958,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_word_of_recall, TAR_CHAR_SELF, POS_RESTING,
-     NULL, TRUE, SLOT ( 42 ), 5, 12,
+     NULL, true, SLOT ( 42 ), 5, 12,
      "", "!Word of Recall!", ""},
     {
      "nightmare",
@@ -7971,7 +7971,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_nightmare, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 711 ), 200, 12,
+     NULL, true, SLOT ( 711 ), 200, 12,
      "{=n{=i{=g{=h{=t{=m{=a{=r{=e{x", "!nightmare!", ""},
 
     {
@@ -7985,7 +7985,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_vampiric_laceration, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, TRUE, SLOT ( 859 ), 400, 20,
+     NULL, true, SLOT ( 859 ), 400, 20,
      "", "Your evil rage ebbs.", ""},
 
 /*
@@ -8002,7 +8002,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_acid_breath, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 200 ), 100, 24,
+     NULL, true, SLOT ( 200 ), 100, 24,
      "blast of acid", "!Acid Breath!", ""},
 
     {
@@ -8016,7 +8016,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_fire_breath, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 201 ), 200, 24,
+     NULL, true, SLOT ( 201 ), 200, 24,
      "blast of flame", "The smoke leaves your eyes.", ""},
 
     {
@@ -8030,7 +8030,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_frost_breath, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 469 ), 125, 24,
+     NULL, true, SLOT ( 469 ), 125, 24,
      "blast of frost", "!Frost Breath!", ""},
 
     {
@@ -8044,7 +8044,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_gas_breath, TAR_IGNORE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 605 ), 175, 24,
+     NULL, true, SLOT ( 605 ), 175, 24,
      "blast of gas", "!Gas Breath!", ""},
 
     {
@@ -8058,7 +8058,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_lightning_breath, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 204 ), 150, 24,
+     NULL, true, SLOT ( 204 ), 150, 24,
      "blast of lightning", "!Lightning Breath!", ""},
 
     {
@@ -8072,7 +8072,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_screen, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, TRUE, SLOT ( 66 ), 28, 18,
+     NULL, true, SLOT ( 66 ), 28, 18,
      "", "The {+s{+m{+o{+k{+e{x surrounding you dissipates.", ""},
 
     {
@@ -8086,7 +8086,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_stone_meld, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, TRUE, SLOT ( 900 ), 12, 18,
+     NULL, true, SLOT ( 900 ), 12, 18,
      "", "Your skin is no longer stone.", ""},
 
     {
@@ -8100,7 +8100,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_acidstorm, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 901 ), 60, 12,
+     NULL, true, SLOT ( 901 ), 60, 12,
      "acid storm", "!Acid Storm!"},
 
     {
@@ -8114,7 +8114,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_icerain, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 902 ), 125, 12,
+     NULL, true, SLOT ( 902 ), 125, 12,
      "ice rain", "!Ice Rain!"},
 
     {
@@ -8128,7 +8128,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 1, 2, 1,
       2, 2, 2, 2, 2, 1, 2, 1},
      spell_icestorm, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 903 ), 180, 12,
+     NULL, true, SLOT ( 903 ), 180, 12,
      "{-i{-c{-e{-s{-t{-o{-r{-m{x", "!Ice Storm!"},
 
     {
@@ -8142,7 +8142,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_firerain, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 904 ), 125, 12,
+     NULL, true, SLOT ( 904 ), 125, 12,
      "fire rain", "!Fire Rain!"},
 
     {
@@ -8156,7 +8156,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_bark_skin, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, TRUE, SLOT ( 906 ), 12, 18,
+     NULL, true, SLOT ( 906 ), 12, 18,
      "", "Your skin feels soft again.", ""},
 
     {
@@ -8170,7 +8170,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_steel_skin, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, TRUE, SLOT ( 907 ), 12, 18,
+     NULL, true, SLOT ( 907 ), 12, 18,
      "", "Your skin feels soft again.", ""},
 
     {
@@ -8184,7 +8184,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 3, 2, 1,
       2, 2, 2, 2, 2, 3, 2, 1},
      spell_diamond_aura, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, TRUE, SLOT ( 922 ), 120, 18,
+     NULL, true, SLOT ( 922 ), 120, 18,
      "", "Your {Wg{wl{Wi{wt{Wte{wr{Wi{wn{Wg{x aura fades.", ""},
 
     {
@@ -8198,7 +8198,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 3, 2, 1,
       2, 2, 2, 2, 2, 3, 2, 1},
      spell_ruby_aura, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, TRUE, SLOT ( 923 ), 120, 18,
+     NULL, true, SLOT ( 923 ), 120, 18,
      "", "Your {Rg{rl{Ri{rt{Rte{rr{Ri{rn{Rg {xaura fades.", ""},
 
     {
@@ -8212,7 +8212,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 3, 2, 1,
       2, 2, 2, 2, 2, 3, 2, 1},
      spell_sapphire_aura, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, TRUE, SLOT ( 924 ), 120, 18,
+     NULL, true, SLOT ( 924 ), 120, 18,
      "", "Your {Bs{bp{Ba{br{Bk{bl{Bi{bn{Bg{x aura fades.", ""},
 
     {
@@ -8226,7 +8226,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 3, 2, 1,
       2, 2, 2, 2, 2, 3, 2, 1},
      spell_emerald_aura, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, TRUE, SLOT ( 925 ), 120, 18,
+     NULL, true, SLOT ( 925 ), 120, 18,
      "", "Your {Gs{gp{Ga{gr{Gk{gl{Gi{gn{Gg {xaura fades.", ""},
 
     {
@@ -8240,7 +8240,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 3, 2, 1,
       2, 2, 2, 2, 2, 3, 2, 1},
      spell_topaz_aura, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, TRUE, SLOT ( 926 ), 120, 18,
+     NULL, true, SLOT ( 926 ), 120, 18,
      "", "Your {Yg{yl{Yo{yw{Yi{yn{Yg{x aura fades.", ""},
 
     {
@@ -8254,7 +8254,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 3, 2, 1,
       2, 2, 2, 2, 2, 3, 2, 1},
      spell_obsidian_aura, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, TRUE, SLOT ( 927 ), 120, 18,
+     NULL, true, SLOT ( 927 ), 120, 18,
      "", "Your {Wg{wl{Dowi{wn{Wg{x aura fades.", ""},
 
     {
@@ -8268,7 +8268,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_mystic_armor, TAR_CHAR_DEFENSIVE, POS_STANDING,
-     NULL, TRUE, SLOT ( 0 ), 10, 6,
+     NULL, true, SLOT ( 0 ), 10, 6,
      "mystic armor", "The mystical armor protecting you fades away!", ""},
 
     {
@@ -8282,7 +8282,7 @@ CLASSTABLE
       2, 1, 2, 2, 2, 2, 2, 1,
       2, 1, 2, 2, 2, 2, 2, 1},
      spell_angeldust, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 760 ), 15, 12,
+     NULL, true, SLOT ( 760 ), 15, 12,
      "{Wangel{Ddust{x", "!angeldust!", ""},
 
     {
@@ -8296,7 +8296,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_whisper, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 761 ), 15, 12,
+     NULL, true, SLOT ( 761 ), 15, 12,
      "{Ww{wh{Disp{we{Wr{x", "!whisper!", ""},
 
     {
@@ -8310,7 +8310,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 2, 1, 1,
       1, 1, 2, 2, 2, 2, 1, 1},
      spell_acid_arrow, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 762 ), 20, 12,
+     NULL, true, SLOT ( 762 ), 20, 12,
      "{Ga{gc{Did {Ga{grr{Dow{x", "!acid arrow!", ""},
 
     {
@@ -8324,7 +8324,7 @@ CLASSTABLE
       2, 2, 2, 2, 1, 1, 2, 1,
       2, 2, 2, 2, 1, 1, 2, 1},
      spell_gust, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 763 ), 15, 12,
+     NULL, true, SLOT ( 763 ), 15, 12,
      "{Wg{wu{Ws{wt{x", "!gust!", ""},
 
     {
@@ -8338,7 +8338,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_rumors, TAR_IGNORE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 764 ), 35, 12,
+     NULL, true, SLOT ( 764 ), 35, 12,
      "{Dr{mu{Mmo{mr{Ds{x", "!rumors!", ""},
 
     {
@@ -8352,7 +8352,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_drowning_pool, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 765 ), 30, 12,
+     NULL, true, SLOT ( 765 ), 30, 12,
      "{Cd{cro{Dwn{cin{Cg {cp{Do{Co{cl{x", "!drowning pool!", ""},
 
     {
@@ -8366,7 +8366,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 1, 2, 1,
       2, 2, 2, 2, 2, 1, 2, 1},
      spell_shatter, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 766 ), 40, 12,
+     NULL, true, SLOT ( 766 ), 40, 12,
      "{Ws{Ch{ca{Wt{ct{Ce{Wr{x", "!shatter!", ""},
 
     {
@@ -8380,7 +8380,7 @@ CLASSTABLE
       1, 2, 2, 2, 2, 2, 2, 1,
       1, 2, 2, 2, 2, 2, 2, 1},
      spell_energy_bolt, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 767 ), 50, 12,
+     NULL, true, SLOT ( 767 ), 50, 12,
      "{Be{Gn{ger{Gg{By b{Go{Bl{Gt{x", "!energy bolt!", ""},
 
     {
@@ -8394,7 +8394,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 1, 1, 1,
       2, 2, 2, 2, 2, 1, 1, 1},
      spell_blight, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 768 ), 50, 12,
+     NULL, true, SLOT ( 768 ), 50, 12,
      "{Wb{wl{Dig{wh{Wt{x", "!blight!", ""},
 
     {
@@ -8408,7 +8408,7 @@ CLASSTABLE
       1, 2, 2, 2, 2, 1, 1, 1,
       1, 2, 2, 2, 2, 1, 1, 1},
      spell_ray_of_frost, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 759 ), 60, 12,
+     NULL, true, SLOT ( 759 ), 60, 12,
      "{Wr{wa{Wy {xof {Wf{Cr{co{Cs{Wt{x", "!ray of frost!", ""},
 
     {
@@ -8422,7 +8422,7 @@ CLASSTABLE
       2, 1, 2, 2, 2, 2, 2, 1,
       2, 1, 2, 2, 2, 2, 2, 1},
      spell_hymn, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 769 ), 60, 12,
+     NULL, true, SLOT ( 769 ), 60, 12,
      "{oh{oy{om{on{x", "!hymn!", ""},
 
     {
@@ -8436,7 +8436,7 @@ CLASSTABLE
       2, 2, 2, 2, 1, 1, 1, 1,
       2, 2, 2, 2, 1, 1, 1, 1},
      spell_hallowed_ground, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 770 ), 70, 12,
+     NULL, true, SLOT ( 770 ), 70, 12,
      "{Wh{wal{Wlo{wwe{Wd {Dg{yroun{Dd{x", "!hallowed ground!", ""},
 
     {
@@ -8450,7 +8450,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 2, 2, 1,
       1, 1, 2, 2, 2, 2, 2, 1},
      spell_searing_light, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 771 ), 65, 12,
+     NULL, true, SLOT ( 771 ), 65, 12,
      "{Wsearing {Ylight{x", "!searing light!", ""},
 
     {
@@ -8464,7 +8464,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 1, 2, 1,
       2, 2, 2, 2, 2, 1, 2, 1},
      spell_raindance, TAR_IGNORE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 772 ), 95, 12,
+     NULL, true, SLOT ( 772 ), 95, 12,
      "{Br{Ca{cin{Bd{Ca{cn{Cc{Be{x", "!raindance!", ""},
 
     {
@@ -8478,7 +8478,7 @@ CLASSTABLE
       1, 2, 2, 2, 2, 2, 2, 1,
       1, 2, 2, 2, 2, 2, 2, 1},
      spell_cloudkill, TAR_IGNORE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 773 ), 95, 12,
+     NULL, true, SLOT ( 773 ), 95, 12,
      "{yc{Dl{wo{yu{Dd{wk{yi{Dl{wl{x", "!cloudkill!", ""},
 
     {
@@ -8492,7 +8492,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 1, 1,
       2, 2, 2, 2, 2, 2, 1, 1},
      spell_deceit, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 774 ), 90, 12,
+     NULL, true, SLOT ( 774 ), 90, 12,
      "{Cd{ce{Dce{ci{Ct{x", "!deceit!", ""},
 
     {
@@ -8506,7 +8506,7 @@ CLASSTABLE
       2, 1, 2, 2, 2, 2, 2, 1,
       2, 1, 2, 2, 2, 2, 2, 1},
      spell_astral_blast, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 775 ), 90, 12,
+     NULL, true, SLOT ( 775 ), 90, 12,
      "{Ca{cs{Dt{wr{Wal {Cb{cl{Da{ws{Wt{x", "!astral blast!", ""},
 
     {
@@ -8520,7 +8520,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_desecrate, TAR_IGNORE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 776 ), 100, 16,
+     NULL, true, SLOT ( 776 ), 100, 16,
      "{Ddesecration{x", "!desecrate!", ""},
 
     {
@@ -8534,7 +8534,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_consecrate, TAR_IGNORE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 777 ), 100, 16,
+     NULL, true, SLOT ( 777 ), 100, 16,
      "{Wconsecration{x", "!consecrate!", ""},
 
     {
@@ -8548,7 +8548,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 1, 1, 1,
       2, 2, 2, 2, 2, 1, 1, 1},
      spell_venom, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 778 ), 100, 12,
+     NULL, true, SLOT ( 778 ), 100, 12,
      "{gv{Ge{Dn{gom{x", "!venom!", ""},
 
     {
@@ -8562,7 +8562,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_holocaust, TAR_IGNORE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 779 ), 100, 12,
+     NULL, true, SLOT ( 779 ), 100, 12,
      "{Dh{yo{Dloc{Ga{gu{Dst{x", "!holocaust!", ""},
 
     {
@@ -8576,7 +8576,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 1, 2, 1,
       2, 2, 2, 2, 2, 1, 2, 1},
      spell_sleet, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 780 ), 110, 12,
+     NULL, true, SLOT ( 780 ), 110, 12,
      "{Ws{cl{we{Ce{Dt{x", "!sleet!", ""},
 
     {
@@ -8590,7 +8590,7 @@ CLASSTABLE
       2, 1, 2, 2, 2, 2, 2, 1,
       2, 1, 2, 2, 2, 2, 2, 1},
      spell_laughter, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 781 ), 110, 12,
+     NULL, true, SLOT ( 781 ), 110, 12,
      "{Ml{Ca{Yu{Wgh{Yt{Ce{Mr{x", "!laughter!", ""},
 
     {
@@ -8604,7 +8604,7 @@ CLASSTABLE
       1, 2, 2, 2, 2, 2, 2, 1,
       1, 2, 2, 2, 2, 2, 2, 1},
      spell_disrupt, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 782 ), 110, 12,
+     NULL, true, SLOT ( 782 ), 110, 12,
      "{Gd{gi{Ds{Gr{gup{Gt{Di{go{Gn{x", "!disrupt!", ""},
 
     {
@@ -8618,7 +8618,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 1, 2, 1,
       2, 2, 2, 2, 2, 1, 2, 1},
      spell_earthsong, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 783 ), 125, 12,
+     NULL, true, SLOT ( 783 ), 125, 12,
      "{Ge{gar{yths{gon{Gg{x", "!earthsong!", ""},
 
     {
@@ -8632,7 +8632,7 @@ CLASSTABLE
       1, 2, 2, 2, 2, 2, 2, 1,
       1, 2, 2, 2, 2, 2, 2, 1},
      spell_repulse, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 784 ), 130, 12,
+     NULL, true, SLOT ( 784 ), 130, 12,
      "{cr{ge{Gp{Bu{bl{Bs{Gi{go{cn{x", "!repulse!", ""},
 
     {
@@ -8646,7 +8646,7 @@ CLASSTABLE
       2, 1, 2, 2, 2, 2, 1, 1,
       2, 1, 2, 2, 2, 2, 1, 1},
      spell_blasphemy, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 785 ), 130, 12,
+     NULL, true, SLOT ( 785 ), 130, 12,
      "{rb{Dl{ra{Ds{rp{Dh{re{Dm{ry{x", "!blasphemy!", ""},
 
     {
@@ -8660,7 +8660,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 1, 1, 1,
       2, 2, 2, 2, 2, 1, 1, 1},
      spell_corrode, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 786 ), 130, 12,
+     NULL, true, SLOT ( 786 ), 130, 12,
      "{Dc{Go{gr{Dro{Gs{gi{Don{x", "!corrode!", ""},
 
     {
@@ -8674,7 +8674,7 @@ CLASSTABLE
       2, 1, 2, 2, 2, 2, 1, 1,
       2, 1, 2, 2, 2, 2, 1, 1},
      spell_cyclone, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 787 ), 140, 12,
+     NULL, true, SLOT ( 787 ), 140, 12,
      "{oc{oy{oc{ol{oo{on{oe{x", "!cyclone!", ""},
 
     {
@@ -8688,7 +8688,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_death_knell, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 788 ), 150, 12,
+     NULL, true, SLOT ( 788 ), 150, 12,
      "{Ddeath knell{x", "Your borrowed strength fades.", ""},
 
     {
@@ -8702,7 +8702,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_hemorrhage, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 789 ), 150, 18,
+     NULL, true, SLOT ( 789 ), 150, 18,
      "{Ddark {mm{Ba{bgi{Bc{ms{x", "Your {rbleeding{x stops.", ""},
 
     {
@@ -8716,7 +8716,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_unearthly_beauty, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 790 ), 150, 12,
+     NULL, true, SLOT ( 790 ), 150, 12,
      "{Wu{Gn{ge{ca{Cr{ct{gh{Gl{Wy {Gb{Me{Cau{Mt{Gy{x", "!unearthly beauty!", ""},
 
     {
@@ -8730,7 +8730,7 @@ CLASSTABLE
       1, 2, 2, 2, 2, 2, 2, 1,
       1, 2, 2, 2, 2, 2, 2, 1},
      spell_freezing_sphere, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 791 ), 150, 12,
+     NULL, true, SLOT ( 791 ), 150, 12,
      "{Df{cre{Cez{Wing s{Cph{cer{De{x", "!freezing sphere!", ""},
 
     {
@@ -8744,7 +8744,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 1, 2, 1,
       2, 2, 2, 2, 2, 1, 2, 1},
      spell_serendipity, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 792 ), 150, 12,
+     NULL, true, SLOT ( 792 ), 150, 12,
      "{Cs{Ge{gr{ce{Cn{Gd{Ci{cp{gi{Gt{Cy{x", "!serendipity!", ""},
 
     {
@@ -8758,7 +8758,7 @@ CLASSTABLE
       1, 2, 2, 2, 2, 2, 2, 1,
       1, 2, 2, 2, 2, 2, 2, 1},
      spell_prismatic_spray, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 793 ), 170, 12,
+     NULL, true, SLOT ( 793 ), 170, 12,
      "{Rp{rr{yi{Ys{Gm{ga{ct{Ci{Bc {bs{mp{Mr{Ra{ry{x", "!prismatic spray!", ""},
 
     {
@@ -8772,7 +8772,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_sunburst, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 794 ), 170, 12,
+     NULL, true, SLOT ( 794 ), 170, 12,
      "{Rs{ru{yn{Yb{Ru{rr{ys{Yt{x", "!sunburst!", ""},
 
     {
@@ -8786,7 +8786,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 1, 1,
       2, 2, 2, 2, 2, 2, 1, 1},
      spell_horrid_wilting, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 795 ), 170, 12,
+     NULL, true, SLOT ( 795 ), 170, 12,
      "{Dh{co{Cr{Wr{wi{Dd wi{wl{Wt{Ci{cn{Dg{x", "!horrid wilting!", ""},
 
     {
@@ -8800,7 +8800,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_sound_burst, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 797 ), 180, 12,
+     NULL, true, SLOT ( 797 ), 180, 12,
      "{ns{no{nu{nn{nd {nb{nu{nr{ns{nt{x", "!sound burst!", ""},
 
     {
@@ -8814,7 +8814,7 @@ CLASSTABLE
       2, 1, 2, 2, 2, 2, 1, 1,
       2, 1, 2, 2, 2, 2, 1, 1},
      spell_elysium, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 798 ), 180, 12,
+     NULL, true, SLOT ( 798 ), 180, 12,
      "{*e{*l{*y{*s{*i{*u{*m{x", "!elysium!", ""},
 
     {
@@ -8828,7 +8828,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_stinking_cloud, TAR_IGNORE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 800 ), 180, 12,
+     NULL, true, SLOT ( 800 ), 180, 12,
      "{yst{gi{Gn{Dki{yng c{Gl{go{yu{Dd{x", "!stinking cloud!", ""},
 
     {
@@ -8842,7 +8842,7 @@ CLASSTABLE
       2, 1, 2, 2, 2, 2, 2, 1,
       2, 1, 2, 2, 2, 2, 2, 1},
      spell_baptism, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 801 ), 180, 12,
+     NULL, true, SLOT ( 801 ), 180, 12,
      "{Bb{wa{Wpti{ws{Bm{x", "!baptism!", ""},
 
     {
@@ -8856,7 +8856,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_venomous_lies, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 802 ), 190, 12,
+     NULL, true, SLOT ( 802 ), 190, 12,
      "{qv{qe{qn{qo{qm{qo{qu{qs {Dlies{x", "!venomous lies!", ""},
 
     {
@@ -8870,7 +8870,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 1, 2, 1,
       2, 2, 2, 2, 2, 1, 2, 1},
      spell_pollution, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 803 ), 190, 12,
+     NULL, true, SLOT ( 803 ), 190, 12,
      "{qp{qo{ql{ql{qu{qt{qi{qo{qn{x", "!pollution!", ""},
 
     {
@@ -8884,7 +8884,7 @@ CLASSTABLE
       1, 2, 2, 2, 2, 2, 1, 1,
       1, 2, 2, 2, 2, 2, 1, 1},
      spell_phantasmal_killer, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 804 ), 190, 12,
+     NULL, true, SLOT ( 804 ), 190, 12,
      "{Dphantasmal {Rk{rille{Rr{x", "!phantasmal killer!", ""},
 
     {
@@ -8898,7 +8898,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 2, 2, 2, 2, 2, 2, 1},
      spell_wail_of_the_banshee, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 805 ), 200, 12,
+     NULL, true, SLOT ( 805 ), 200, 12,
      "{rw{Da{gi{rl{gi{Dn{rg{x", "!wail of the banshee!", ""},
 
     {
@@ -8912,7 +8912,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 1, 2, 1,
       2, 2, 2, 2, 2, 1, 2, 1},
      spell_vermin_swarm, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 806 ), 200, 12,
+     NULL, true, SLOT ( 806 ), 200, 12,
      "{Dv{re{Dr{gm{ri{Dn {rs{gw{Da{rr{Dm{x", "!vermin swarm!", ""},
 
     {
@@ -8926,7 +8926,7 @@ CLASSTABLE
       1, 2, 2, 2, 2, 2, 2, 1,
       1, 2, 2, 2, 2, 2, 2, 1},
      spell_incendiary_cloud, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 807 ), 250, 12,
+     NULL, true, SLOT ( 807 ), 250, 12,
      "{Ob{Ou{Or{On{Oi{On{Og {Dembe{Or{Ds{x", "!incendiary cloud!", ""},
 
     {
@@ -8940,7 +8940,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       2, 3, 2, 2, 2, 2, 2, 1},
      spell_storm_of_vengeance, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 808 ), 167, 18,
+     NULL, true, SLOT ( 808 ), 167, 18,
      "{Iv{Ie{In{Ig{Ie{Ia{In{Ic{Ie {Bs{bt{Do{br{Bm{x", "!storm of vengeance!", ""},
 
     {
@@ -8954,7 +8954,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 1,
       3, 2, 2, 2, 2, 2, 2, 1},
      spell_disintegrate, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 809 ), 167, 18,
+     NULL, true, SLOT ( 809 ), 167, 18,
      "{Gd{Yi{ys{Di{gn{Gt{Yeg{Gr{ga{Dt{yi{Yo{Gn{x", "!disintegrate!", ""},
 
 /*
@@ -8971,7 +8971,7 @@ CLASSTABLE
       0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0},
      spell_general_purpose, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 401 ), 0, 12,
+     NULL, true, SLOT ( 401 ), 0, 12,
      "general purpose ammo", "!General Purpose Ammo!", ""},
 
     {
@@ -8985,7 +8985,7 @@ CLASSTABLE
       0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0},
      spell_high_explosive, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 402 ), 0, 12,
+     NULL, true, SLOT ( 402 ), 0, 12,
      "high explosive ammo", "!High Explosive Ammo!", ""},
 
     {
@@ -8999,7 +8999,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_early_grave, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 713 ), 80, 12,
+     NULL, true, SLOT ( 713 ), 80, 12,
      "{Dg{yra{Dve{ydi{Dgg{yin{Dg{x", "!early grave!", ""},
 
     {
@@ -9013,7 +9013,7 @@ CLASSTABLE
       1, 1, 2, 2, 1, 1, 1, 1,
       1, 1, 2, 2, 1, 1, 1, 1},
      spell_earthrise, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 0 ), 500, 24,
+     NULL, true, SLOT ( 0 ), 500, 24,
      "{ge{ba{gr{Bt{gh{Dr{ri{Ds{re", "!Earthrise!", ""},
 
     {
@@ -9027,7 +9027,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_immortal_wrath, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     NULL, TRUE, SLOT ( 710 ), 500, 12,
+     NULL, true, SLOT ( 710 ), 500, 12,
      "{BImm{Wor{Btal {DW{RR{WA{RT{DH", "!Immortal Wrath!", ""},
 
     {
@@ -9041,7 +9041,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 2, 1,
       1, 1, 2, 2, 2, 1, 2, 1},
      spell_powersurge, TAR_CHAR_SELF, POS_STANDING,
-     NULL, FALSE, SLOT ( 717 ), 1200, 12,
+     NULL, false, SLOT ( 717 ), 1200, 12,
      "", "Your strength returns to normal.", "$n's strength returns to normal."},
 
     {
@@ -9055,7 +9055,7 @@ CLASSTABLE
       1, 1, 2, 1, 1, 1, 1, 1,
       1, 1, 1, 2, 1, 1, 1, 1},
      spell_shadow_barrier, TAR_CHAR_SELF, POS_STANDING,
-     NULL, FALSE, SLOT ( 714 ), 100, 18,
+     NULL, false, SLOT ( 714 ), 100, 18,
      "", "The shadows surrounding vanish as the light returns.", ""},
 
     {
@@ -9069,7 +9069,7 @@ CLASSTABLE
       1, 1, 2, 2, 2, 1, 1, 1,
       1, 1, 2, 2, 2, 1, 1, 1},
      spell_mistblend, TAR_CHAR_SELF, POS_STANDING,
-     &gsn_mistblend, FALSE, SLOT ( 715 ), 5, 12,
+     &gsn_mistblend, false, SLOT ( 715 ), 5, 12,
      "", "The mist no longer hides you.",
      "$p emerges from the mist."},
 
@@ -9085,7 +9085,7 @@ CLASSTABLE
       2, 1, 1, 1, 1, 1, 1, 1,
       2, 1, 1, 1, 1, 1, 1, 1},
      spell_summon_mephit, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 0 ), 100, 18,
+     NULL, true, SLOT ( 0 ), 100, 18,
      "", "!mephit!", ""},
     {
      "summon elemental",
@@ -9098,7 +9098,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 2, 1, 1,
       1, 1, 1, 1, 1, 2, 1, 1},
      spell_summon_elemental, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 0 ), 100, 18,
+     NULL, true, SLOT ( 0 ), 100, 18,
      "", "!elemental!", ""},
     {
      "summon companion",
@@ -9111,7 +9111,7 @@ CLASSTABLE
       1, 1, 1, 1, 2, 1, 1, 1,
       1, 1, 1, 1, 2, 1, 1, 1},
      spell_summon_companion, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 0 ), 100, 18,
+     NULL, true, SLOT ( 0 ), 100, 18,
      "", "!companion!", ""},
     {
      "summon archon",
@@ -9124,7 +9124,7 @@ CLASSTABLE
       1, 2, 1, 1, 1, 1, 1, 1,
       1, 2, 1, 1, 1, 1, 1, 1},
      spell_summon_archon, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 0 ), 100, 18,
+     NULL, true, SLOT ( 0 ), 100, 18,
      "", "!archon!", ""},
     {
      "summon songbird",
@@ -9137,7 +9137,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 2,
       1, 1, 1, 1, 1, 1, 1, 2},
      spell_summon_songbird, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 0 ), 100, 18,
+     NULL, true, SLOT ( 0 ), 100, 18,
      "", "!songbird!", ""},
     {
      "resurrect",
@@ -9150,7 +9150,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 2, 1,
       1, 1, 1, 1, 1, 1, 2, 1},
      spell_summon_resurrect, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 0 ), 100, 18,
+     NULL, true, SLOT ( 0 ), 100, 18,
      "", "!resurrect!", ""},
     {
      "bone barrier",
@@ -9163,7 +9163,7 @@ CLASSTABLE
       1, 1, 1, 1, 1, 1, 1, 1,
       1, 1, 1, 1, 1, 1, 3, 1},
      spell_bone_barrier, TAR_IGNORE, POS_STANDING,
-     NULL, TRUE, SLOT ( 0 ), 100, 18,
+     NULL, true, SLOT ( 0 ), 100, 18,
      "", "!bone barrier!", ""},
 
     {
@@ -9177,7 +9177,7 @@ CLASSTABLE
       1, 3, 2, 2, 2, 3, 1, 2,
       1, 3, 2, 2, 2, 3, 1, 2},
      spell_silence, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     &gsn_silence, TRUE, SLOT ( 534 ), 13, 12,
+     &gsn_silence, true, SLOT ( 534 ), 13, 12,
      "", "You are able to speak again.", ""},
 
     {
@@ -9191,7 +9191,7 @@ CLASSTABLE
       1, 3, 2, 2, 2, 3, 1, 2,
       1, 3, 2, 2, 2, 3, 3, 2},
      spell_last_rites, TAR_CHAR_SELF, POS_STANDING,
-     &gsn_last_rites, TRUE, SLOT ( 535 ), 250, 12,
+     &gsn_last_rites, true, SLOT ( 535 ), 250, 12,
      "", "You begin to forget your last rites.", ""},
 
 /* combat and weapons skills */
@@ -9207,7 +9207,7 @@ CLASSTABLE
       6, 6, 6, 3, 4, 6, 5, 5,
       6, 6, 6, 3, 4, 6, 5, 5},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_axe, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_axe, true, SLOT ( 0 ), 0, 0,
      "", "!Axe!", ""},
 
     {
@@ -9221,7 +9221,7 @@ CLASSTABLE
       2, 3, 1, 1, 2, 3, 2, 1,
       2, 3, 1, 1, 2, 3, 2, 1},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_dagger, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_dagger, true, SLOT ( 0 ), 0, 0,
      "", "!Dagger!", ""},
 
     {
@@ -9235,7 +9235,7 @@ CLASSTABLE
       6, 3, 6, 3, 4, 3, 2, 6,
       5, 2, 5, 2, 3, 2, 1, 5},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_flail, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_flail, true, SLOT ( 0 ), 0, 0,
      "", "!Flail!", ""},
 
     {
@@ -9249,7 +9249,7 @@ CLASSTABLE
       5, 1, 4, 2, 3, 2, 5, 4,
       4, 1, 3, 1, 2, 1, 4, 3},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_mace, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_mace, true, SLOT ( 0 ), 0, 0,
      "", "!Mace!", ""},
 
     {
@@ -9263,7 +9263,7 @@ CLASSTABLE
       6, 6, 6, 3, 3, 2, 6, 6,
       5, 5, 5, 2, 2, 1, 5, 5},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_polearm, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_polearm, true, SLOT ( 0 ), 0, 0,
      "", "!Polearm!", ""},
 
     {
@@ -9277,7 +9277,7 @@ CLASSTABLE
       6, 4, 6, 1, 2, 4, 6, 5,
       5, 3, 5, 1, 1, 3, 5, 4},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_shield_block, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_shield_block, true, SLOT ( 0 ), 0, 0,
      "", "!Shield!", ""},
 
     {
@@ -9291,7 +9291,7 @@ CLASSTABLE
       3, 3, -1, -1, -1, 4, 3, 8,
       3, 3, -1, -1, -1, 4, 3, 8},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_shield_levitation, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_shield_levitation, true, SLOT ( 0 ), 0, 0,
      "", "!Shield Levitation!", ""},
 
     {
@@ -9305,7 +9305,7 @@ CLASSTABLE
       4, 4, 4, 2, 1, 3, 4, 5,
       3, 3, 3, 1, 1, 2, 3, 4},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_spear, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_spear, true, SLOT ( 0 ), 0, 0,
      "", "!Spear!", ""},
 
     {
@@ -9319,7 +9319,7 @@ CLASSTABLE
       5, 6, 3, 1, 2, 4, 5, 3,
       4, 5, 2, 1, 1, 3, 4, 2},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_sword, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_sword, true, SLOT ( 0 ), 0, 0,
      "", "!sword!", ""},
 
     {
@@ -9333,7 +9333,7 @@ CLASSTABLE
       6, 5, 5, 3, 3, 4, 3, 2,
       5, 4, 4, 3, 2, 3, 2, 1},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_whip, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_whip, true, SLOT ( 0 ), 0, 0,
      "", "!Whip!", ""},
 
     {
@@ -9347,7 +9347,7 @@ CLASSTABLE
       0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 12, 0, 0, 0, 0, 0,},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_assassinate, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_assassinate, true, SLOT ( 0 ), 0, 24,
      "assassinate", "!Assassinate!", ""},
 
     {
@@ -9361,7 +9361,7 @@ CLASSTABLE
       0, 0, 8, 10, 0, 0, 0, 12,
       0, 0, 7, 9, 0, 0, 0, 11},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_backstab, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_backstab, true, SLOT ( 0 ), 0, 24,
      "{gB{Da{gc{Dk{gs{Dt{ga{Db{x", "!Backstab!", ""},
 
     {
@@ -9375,7 +9375,7 @@ CLASSTABLE
       0, 0, 3, 0, 0, 0, 0, 0,
       0, 0, 2, 0, 0, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_blackjack, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_blackjack, true, SLOT ( 0 ), 0, 24,
      "{bblackjack{x", "!Blackjack!", ""},
 
     {
@@ -9389,7 +9389,7 @@ CLASSTABLE
       0, 0, 0, 2, 0, 0, 0, 0,
       0, 0, 0, 1, 0, 0, 0, 0,},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_bash, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_bash, true, SLOT ( 0 ), 0, 24,
      "bash", "!Bash!", ""},
 
     {
@@ -9403,7 +9403,7 @@ CLASSTABLE
       0, 0, 0, 2, 0, 0, 0, 0,
       0, 0, 0, 1, 0, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_berserk, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_berserk, true, SLOT ( 0 ), 0, 24,
      "", "You feel your pulse slow down.", ""},
 
     {
@@ -9417,7 +9417,7 @@ CLASSTABLE
       0, 0, 4, 0, 0, 0, 0, 0,
       0, 0, 3, 0, 0, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_circle, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_circle, true, SLOT ( 0 ), 0, 24,
      "{Ycircle{x", "!Circle!", ""},
 
     {
@@ -9431,7 +9431,7 @@ CLASSTABLE
       0, 0, 10, 8, 8, 0, 0, 0,
       0, 0, 10, 8, 8, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_counter, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_counter, true, SLOT ( 0 ), 0, 0,
      "{Rc{yo{Ru{yn{Rt{ye{Rr{Ya{rt{Yt{ra{Yc{rk{x", "!COUNTER!", ""},
 
     {
@@ -9445,7 +9445,7 @@ CLASSTABLE
       0, 0, 0, 8, 0, 0, 0, 0,
       0, 0, 6, 8, 0, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_critical, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_critical, true, SLOT ( 0 ), 0, 0,
      "{RC{Yr{Ri{Yt{Ri{Yc{Ra{Yl {RS{Yt{Rr{Yi{Rk{Ye{x", "!Critical Strike!",
      ""},
 
@@ -9460,7 +9460,7 @@ CLASSTABLE
       0, 0, 0, 0, 4, 0, 0, 0,
       0, 0, 0, 0, 3, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_call_wild, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_call_wild, true, SLOT ( 0 ), 0, 24,
      "", "You no longer feel so feral.", ""},
 
     {
@@ -9474,7 +9474,7 @@ CLASSTABLE
       0, 0, 3, 3, 3, 5, 0, 6,
       0, 0, 3, 3, 3, 5, 0, 6},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_dirt, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_dirt, true, SLOT ( 0 ), 0, 24,
      "kicked dirt", "You rub the dirt out of your eyes.", ""},
 
     {
@@ -9488,7 +9488,7 @@ CLASSTABLE
       0, 0, 6, 3, 5, 0, 0, 5,
       0, 0, 5, 2, 4, 0, 0, 4},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_disarm, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_disarm, true, SLOT ( 0 ), 0, 24,
      "", "!Disarm!", ""},
 
     {
@@ -9502,7 +9502,7 @@ CLASSTABLE
       0, 0, 3, 5, 4, 0, 0, 3,
       0, 0, 3, 5, 4, 0, 0, 3},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_dodge, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_dodge, true, SLOT ( 0 ), 0, 0,
      "", "!Dodge!", ""},
 
     {
@@ -9516,7 +9516,7 @@ CLASSTABLE
       0, 0, 3, 2, 3, 0, 0, 4,
       0, 0, 2, 1, 3, 0, 0, 3},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_dual_wield, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_dual_wield, true, SLOT ( 0 ), 0, 0,
      "", "!Dual Wield!", ""},
 
     {
@@ -9530,7 +9530,7 @@ CLASSTABLE
       0, 0, 0, 3, 6, 0, 0, 0,
       0, 0, 0, 2, 5, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_enhanced_damage, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_enhanced_damage, true, SLOT ( 0 ), 0, 0,
      "", "!Enhanced Damage!", ""},
 
     {
@@ -9544,7 +9544,7 @@ CLASSTABLE
       0, 0, 4, 6, 1, 0, 0, 0,
       0, 0, 3, 5, 1, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_RESTING,
-     &gsn_envenom, TRUE, SLOT ( 0 ), 0, 36,
+     &gsn_envenom, true, SLOT ( 0 ), 0, 36,
      "", "!Envenom!", "The venom on $p dries up."},
 
     {
@@ -9558,7 +9558,7 @@ CLASSTABLE
       0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_feed, TRUE, SLOT ( 0 ), 0, 6,
+     &gsn_feed, true, SLOT ( 0 ), 0, 6,
      "feed", "!Feed!", ""},
 
     {
@@ -9572,7 +9572,7 @@ CLASSTABLE
       0, 0, 2, 0, 0, 0, 0, 0,
       0, 0, 1, 0, 0, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_gouge, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_gouge, true, SLOT ( 0 ), 0, 24,
      "gouge", "Your vision clears.", ""},
 
     {
@@ -9586,7 +9586,7 @@ CLASSTABLE
       0, 0, 0, 2, 0, 0, 0, 0,
       0, 0, 0, 1, 0, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_grip, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_grip, true, SLOT ( 0 ), 0, 0,
      "", "!Grip!", ""},
 
     {
@@ -9600,7 +9600,7 @@ CLASSTABLE
       0, 0, 4, 2, 4, 0, 0, 3,
       0, 0, 3, 1, 3, 0, 0, 3},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_hand_to_hand, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_hand_to_hand, true, SLOT ( 0 ), 0, 0,
      "", "!Hand to Hand!", ""},
 
     {
@@ -9614,7 +9614,7 @@ CLASSTABLE
       0, 0, 0, 0, 4, 6, 0, 0,
       0, 0, 0, 0, 3, 5, 0, 0},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_howl, TRUE, SLOT ( 0 ), 0, 12,
+     &gsn_howl, true, SLOT ( 0 ), 0, 12,
      "{=h{=o{=w{=l{x", "!Howl!", ""},
 
     {
@@ -9628,7 +9628,7 @@ CLASSTABLE
       0, 0, 0, 4, 4, 0, 0, 0,
       0, 0, 0, 3, 3, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_wspit, TRUE, SLOT ( 0 ), 0, 12,
+     &gsn_wspit, true, SLOT ( 0 ), 0, 12,
      "{-s{-p{-i{-t{x", "!WSPIT!", ""},
 
     {
@@ -9642,7 +9642,7 @@ CLASSTABLE
       0, 4, 6, 3, 4, 6, 0, 3,
       0, 3, 5, 2, 3, 5, 0, 2},
      spell_null, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-     &gsn_kick, TRUE, SLOT ( 0 ), 0, 12,
+     &gsn_kick, true, SLOT ( 0 ), 0, 12,
      "kick", "!Kick!", ""},
 
     {
@@ -9656,7 +9656,7 @@ CLASSTABLE
       0, 0, 0, 0, 4, 0, 0, 0,
       0, 0, 0, 0, 3, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_mend, TRUE, SLOT ( 0 ), 0, 12,
+     &gsn_mend, true, SLOT ( 0 ), 0, 12,
      "mend", "!Mend!", ""},
 
     {
@@ -9670,7 +9670,7 @@ CLASSTABLE
       0, 0, 4, 4, 5, 5, 0, 3,
       0, 0, 3, 3, 4, 4, 0, 2},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_parry, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_parry, true, SLOT ( 0 ), 0, 0,
      "", "!Parry!", ""},
 
     {
@@ -9684,7 +9684,7 @@ CLASSTABLE
       0, 0, 0, 4, 3, 0, 0, 0,
       0, 0, 0, 3, 2, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_rescue, TRUE, SLOT ( 0 ), 0, 12,
+     &gsn_rescue, true, SLOT ( 0 ), 0, 12,
      "", "!Rescue!", ""},
 
     {
@@ -9698,7 +9698,7 @@ CLASSTABLE
       0, 0, 4, 8, 5, 0, 0, 3,
       0, 0, 3, 7, 4, 0, 0, 2},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_trip, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_trip, true, SLOT ( 0 ), 0, 24,
      "trip", "!Trip!", ""},
     {
      "thrust",
@@ -9711,7 +9711,7 @@ CLASSTABLE
       0, 0, 0, 0, 4, 0, 0, 0,
       0, 0, 0, 0, 4, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_thrust, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_thrust, true, SLOT ( 0 ), 0, 24,
      "thrust", "!Thrust!", ""},
 
     {
@@ -9725,7 +9725,7 @@ CLASSTABLE
       0, 0, 0, 3, 0, 0, 0, 0,
       0, 0, 0, 2, 0, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_stun, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_stun, true, SLOT ( 0 ), 0, 0,
      "", "!Stun!", ""},
 
     {
@@ -9739,7 +9739,7 @@ CLASSTABLE
       7, 8, 3, 3, 4, 8, 7, 3,
       6, 7, 2, 2, 3, 7, 6, 2},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_second_attack, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_second_attack, true, SLOT ( 0 ), 0, 0,
      "", "!Second Attack!", ""},
 
     {
@@ -9753,7 +9753,7 @@ CLASSTABLE
       8, 8, 5, 4, 5, 0, 7, 5,
       8, 8, 4, 3, 4, 0, 7, 4},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_third_attack, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_third_attack, true, SLOT ( 0 ), 0, 0,
      "", "!Third Attack!", ""},
 
     {
@@ -9767,7 +9767,7 @@ CLASSTABLE
       0, 0, 7, 4, 5, 0, 0, 7,
       0, 0, 6, 3, 4, 0, 0, 6},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_fourth_attack, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_fourth_attack, true, SLOT ( 0 ), 0, 0,
      "", "!Fourth Attack!", ""},
 
     {
@@ -9781,7 +9781,7 @@ CLASSTABLE
       0, 0, 10, 3, 4, 0, 0, 10,
       0, 0, 9, 3, 4, 0, 0, 9},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_fifth_attack, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_fifth_attack, true, SLOT ( 0 ), 0, 0,
      "", "!Fifth Attack!", ""},
     {
      "sixth attack",
@@ -9794,7 +9794,7 @@ CLASSTABLE
       0, 0, 12, 8, 8, 0, 0, 0,
       0, 0, 11, 6, 6, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_sixth_attack, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_sixth_attack, true, SLOT ( 0 ), 0, 0,
      "", "!Sixth Attack!", ""},
     {
      "seventh attack",
@@ -9807,7 +9807,7 @@ CLASSTABLE
       0, 0, 0, 12, 0, 0, 0, 0,
       0, 0, 0, 12, 0, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_seventh_attack, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_seventh_attack, true, SLOT ( 0 ), 0, 0,
      "", "!Seventh Attack!", ""},
 
 /* non-combat skills */
@@ -9823,7 +9823,7 @@ CLASSTABLE
       0, 5, 0, 4, 8, 5, 7, 0,
       0, 4, 0, 3, 7, 4, 6, 0},
      spell_null, TAR_IGNORE, POS_SLEEPING,
-     &gsn_fast_healing, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_fast_healing, true, SLOT ( 0 ), 0, 0,
      "", "!Fast Healing!", ""},
 
     {
@@ -9837,7 +9837,7 @@ CLASSTABLE
       0, 0, 3, 0, 5, 0, 0, 4,
       0, 0, 2, 0, 4, 0, 0, 3},
      spell_null, TAR_IGNORE, POS_RESTING,
-     &gsn_haggle, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_haggle, true, SLOT ( 0 ), 0, 0,
      "", "!Haggle!", ""},
 
     {
@@ -9851,7 +9851,7 @@ CLASSTABLE
       0, 0, 4, 6, 5, 0, 7, 4,
       0, 0, 3, 5, 4, 0, 7, 4},
      spell_null, TAR_IGNORE, POS_RESTING,
-     &gsn_hide, TRUE, SLOT ( 0 ), 0, 12,
+     &gsn_hide, true, SLOT ( 0 ), 0, 12,
      "", "You are no longer hidden.", ""},
 
     {
@@ -9865,7 +9865,7 @@ CLASSTABLE
       6, 6, 4, 0, 4, 5, 0, 1,
       5, 5, 3, 0, 3, 4, 0, 1},
      spell_null, TAR_IGNORE, POS_RESTING,
-     &gsn_lore, TRUE, SLOT ( 0 ), 0, 36,
+     &gsn_lore, true, SLOT ( 0 ), 0, 36,
      "", "!Lore!", ""},
 
     {
@@ -9879,7 +9879,7 @@ CLASSTABLE
       5, 5, 0, 0, 6, 6, 5, 6,
       4, 4, 0, 0, 5, 5, 5, 6},
      spell_null, TAR_IGNORE, POS_SLEEPING,
-     &gsn_meditation, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_meditation, true, SLOT ( 0 ), 0, 0,
      "", "Meditation", ""},
 
     {
@@ -9893,7 +9893,7 @@ CLASSTABLE
       0, 0, 3, 0, 0, 0, 0, 0,
       0, 0, 3, 0, 0, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_nervestrike, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_nervestrike, true, SLOT ( 0 ), 0, 24,
      "{RN{rervestrik{Re{x", "!Rampage!", ""},
     {
      "garrote",
@@ -9906,7 +9906,7 @@ CLASSTABLE
       0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_garrote, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_garrote, true, SLOT ( 0 ), 0, 24,
      "{Dga{grr{Dote{x", "You can breathe again!", ""},
 
     {
@@ -9920,7 +9920,7 @@ CLASSTABLE
       0, 0, 0, 0, 7, 0, 0, 0,
       0, 0, 0, 0, 7, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_ambush, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_ambush, true, SLOT ( 0 ), 0, 24,
      "{ga{ym{gb{yu{gs{yh{x", "!Ambush!", ""},
 
     {
@@ -9934,7 +9934,7 @@ CLASSTABLE
       0, 0, 3, 0, 0, 0, 0, 4,
       10, 0, 2, 0, 0, 0, 0, 3},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_peek, TRUE, SLOT ( 0 ), 0, 0,
+     &gsn_peek, true, SLOT ( 0 ), 0, 0,
      "", "!Peek!", ""},
 
     {
@@ -9948,7 +9948,7 @@ CLASSTABLE
       0, 0, 0, 0, 0, 0, 0, 4,
       0, 0, 0, 0, 0, 0, 0, 3},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_perform, TRUE, SLOT ( 0 ), 0, 9,
+     &gsn_perform, true, SLOT ( 0 ), 0, 9,
      "", "!Perform!", ""},
 
     {
@@ -9962,7 +9962,7 @@ CLASSTABLE
       0, 0, 4, 0, 0, 0, 0, 8,
       0, 0, 3, 0, 0, 0, 0, 7},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_pick_lock, TRUE, SLOT ( 0 ), 0, 12,
+     &gsn_pick_lock, true, SLOT ( 0 ), 0, 12,
      "", "!Pick!", ""},
 
     {
@@ -9976,7 +9976,7 @@ CLASSTABLE
       0, 0, 4, 6, 3, 0, 9, 4,
       0, 0, 3, 5, 2, 0, 8, 3},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_sneak, TRUE, SLOT ( 0 ), 0, 12,
+     &gsn_sneak, true, SLOT ( 0 ), 0, 12,
      "", "You no longer feel stealthy.", ""},
 
     {
@@ -9990,7 +9990,7 @@ CLASSTABLE
       0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 8, 0, 0, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_swalk, TRUE, SLOT ( 0 ), 0, 12,
+     &gsn_swalk, true, SLOT ( 0 ), 0, 12,
      "", "You emerge from the depths of the shadows.", ""},
 
     {
@@ -10004,7 +10004,7 @@ CLASSTABLE
       0, 0, 4, 0, 0, 0, 0, 10,
       0, 0, 3, 0, 0, 0, 0, 9},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_steal, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_steal, true, SLOT ( 0 ), 0, 24,
      "", "!Steal!", ""},
 
     {
@@ -10018,7 +10018,7 @@ CLASSTABLE
       2, 3, 5, 8, 7, 3, 2, 5,
       1, 2, 4, 7, 6, 2, 1, 4},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_scrolls, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_scrolls, true, SLOT ( 0 ), 0, 24,
      "", "!Scrolls!", ""},
 
     {
@@ -10032,7 +10032,7 @@ CLASSTABLE
       2, 3, 5, 8, 7, 3, 2, 5,
       1, 2, 4, 7, 6, 2, 1, 4},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_staves, TRUE, SLOT ( 0 ), 0, 12,
+     &gsn_staves, true, SLOT ( 0 ), 0, 12,
      "", "!Staves!", ""},
 
     {
@@ -10046,7 +10046,7 @@ CLASSTABLE
       0, 0, 0, 0, 3, 0, 0, 0,
       0, 0, 0, 0, 3, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_strike, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_strike, true, SLOT ( 0 ), 0, 24,
      "{Rs{rt{Rr{ri{Rk{re{x", "!Strike!", ""},
 
     {
@@ -10060,7 +10060,7 @@ CLASSTABLE
       0, 0, 0, 0, 1, 0, 0, 0,
       0, 0, 0, 0, 1, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_track, TRUE, SLOT ( 0 ), 0, 12,
+     &gsn_track, true, SLOT ( 0 ), 0, 12,
      "", "!Track!", ""},
 
     {
@@ -10074,7 +10074,7 @@ CLASSTABLE
       2, 3, 5, 8, 7, 3, 3, 5,
       1, 2, 5, 7, 6, 2, 2, 4},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_wands, TRUE, SLOT ( 0 ), 0, 12,
+     &gsn_wands, true, SLOT ( 0 ), 0, 12,
      "", "!Wands!", ""},
     {
      "whirlwind",
@@ -10087,7 +10087,7 @@ CLASSTABLE
       0, 0, 0, 4, 0, 0, 0, 0,
       0, 0, 0, 3, 0, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_FIGHTING,
-     &gsn_whirlwind, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_whirlwind, true, SLOT ( 0 ), 0, 24,
      "whirl wind", "!whirl wind!", ""},
     {
      "rampage",
@@ -10100,7 +10100,7 @@ CLASSTABLE
       0, 0, 0, 3, 0, 0, 0, 0,
       0, 0, 0, 3, 0, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_rampage, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_rampage, true, SLOT ( 0 ), 0, 24,
      "{RR{rampag{Re{x", "!Rampage!", ""},
 
     {
@@ -10114,7 +10114,7 @@ CLASSTABLE
       0, 0, 0, 3, 0, 0, 0, 0,
       0, 0, 0, 3, 0, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_sharpen, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_sharpen, true, SLOT ( 0 ), 0, 24,
      "", "", "$p loses its sharp edge."},
     {
      "stake",
@@ -10127,7 +10127,7 @@ CLASSTABLE
       0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_stake, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_stake, true, SLOT ( 0 ), 0, 24,
      "", "", ""},
 
     {
@@ -10141,7 +10141,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 2,
       1, 1, 1, 1, 1, 1, 1, 1},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_recall, TRUE, SLOT ( 0 ), 0, 12,
+     &gsn_recall, true, SLOT ( 0 ), 0, 12,
      "", "!Recall!", ""},
 
     {
@@ -10155,7 +10155,7 @@ CLASSTABLE
       2, 2, 2, 2, 2, 2, 2, 2,
       2, 2, 2, 2, 2, 2, 2, 2},
      spell_null, TAR_IGNORE, POS_STANDING,
-     &gsn_rub, TRUE, SLOT ( 0 ), 0, 24,
+     &gsn_rub, true, SLOT ( 0 ), 0, 24,
      "", "!RUB!", ""},
 
 };

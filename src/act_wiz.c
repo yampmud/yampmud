@@ -62,7 +62,7 @@ CH_CMD ( do_rollback )
 
     argument = one_argument ( argument, arg1 );
     argument = one_argument ( argument, arg2 );
-    offline = FALSE;
+    offline = false;
 
     if ( !IS_IMMORTAL ( ch ) )
         return;
@@ -81,11 +81,11 @@ CH_CMD ( do_rollback )
 
     if ( ( victim = get_char_world ( ch, arg1 ) ) == NULL )
     {
-        offline = TRUE;
+        offline = true;
     }
     else
     {
-        offline = FALSE;
+        offline = false;
     }
 
     if ( atoi ( arg2 ) == 1 )
@@ -208,8 +208,8 @@ CH_CMD ( do_codestat )
               arena == 0 ? "FIGHT_OPEN" : arena == 1 ? "FIGHT_START" : arena ==
               2 ? "FIGHT_BUSY" : arena == 3 ? "FIGHT_LOCK" : "", arenacount,
               mass_arena_players, mass_arena_players_joined, mass_arena_ticks,
-              mass_arena_valid_ticks, is_mass_arena ? "{GTRUE{x" : "{RFALSE{x",
-              is_mass_arena_fight ? "{GTRUE{x" : "{RFALSE{x", madmin_reroll );
+              mass_arena_valid_ticks, is_mass_arena ? "{Gtrue{x" : "{Rfalse{x",
+              is_mass_arena_fight ? "{Gtrue{x" : "{Rfalse{x", madmin_reroll );
 
     send_to_char ( buf, ch );
 
@@ -252,14 +252,14 @@ CH_CMD ( do_ftick )
         send_to_char ( buf, ch );
         while ( count > 1 )
         {
-            update_handler ( TRUE );
+            update_handler ( true );
             --count;
         }
     }
     else
     {
         send_to_char ( "Mud force ticked.\n\r", ch );
-        update_handler ( TRUE );
+        update_handler ( true );
     }
 }
 
@@ -311,11 +311,11 @@ CH_CMD ( do_madmin )
 
 CH_CMD ( do_devmud )
 {
-    if ( IS_DEVMUD == TRUE )
+    if ( IS_DEVMUD == true )
         send_to_char ( "This is the development port.\n\r", ch );
-    if ( IS_BLDMUD == TRUE )
+    if ( IS_BLDMUD == true )
         send_to_char ( "This is the builder port.\n\r", ch );
-    if ( IS_LIVEMUD == TRUE )
+    if ( IS_LIVEMUD == true )
         send_to_char ( "This is the live port.\n\r", ch );
     return;
 }
@@ -333,7 +333,7 @@ CH_CMD ( do_ctimer )
 {
     char buf[MAX_STRING_LENGTH];
 
-    if ( is_copyover_countdown == TRUE )
+    if ( is_copyover_countdown == true )
     {
         sprintf ( buf, "Current countdown has %d minute(s) remaining.\n\r",
                   ( copyover_countdown - 1 ) );
@@ -359,7 +359,7 @@ CH_CMD ( do_autocopy )
 
     if ( IS_IMMORTAL ( ch ) && !IS_NPC ( ch ) )
     {
-        if ( is_copyover_countdown == TRUE )
+        if ( is_copyover_countdown == true )
         {
             send_to_char
                 ( "There is already a copyover countdown in progress.\n\rType ABORT to abort.\n\r",
@@ -375,7 +375,7 @@ CH_CMD ( do_autocopy )
                 ( "Copyover in 5 minutes.\n\r( default if no time specified )\n\r\n\rType ABORT to abort.\n\r",
                   ch );
             copyover_countdown = 6;
-            is_copyover_countdown = TRUE;
+            is_copyover_countdown = true;
         }
         else
         {
@@ -384,7 +384,7 @@ CH_CMD ( do_autocopy )
                       atoi ( arg1 ) );
             send_to_char ( buf, ch );
             copyover_countdown = ( atoi ( arg1 ) + 1 );
-            is_copyover_countdown = TRUE;
+            is_copyover_countdown = true;
         }
         if ( !str_cmp ( arg2, "silent" ) )
         {
@@ -409,7 +409,7 @@ CH_CMD ( do_abort )
     if ( IS_IMMORTAL ( ch ) )
     {
 
-        if ( is_copyover_countdown == FALSE )
+        if ( is_copyover_countdown == false )
         {
             send_to_char ( "There is no copyover countdown to abort.\n\r", ch );
             return;
@@ -423,7 +423,7 @@ CH_CMD ( do_abort )
             send_to_char ( "The copyover was aborted silently.\n\r", ch );
         }
         copyover_countdown = -1;
-        is_copyover_countdown = FALSE;
+        is_copyover_countdown = false;
     }
 
 }
@@ -530,7 +530,7 @@ void godly ( CHAR_DATA * ch, CHAR_DATA * victim )
     {
         send_to_char ( "{YYou fool..{x\n\r", ch );
         wiznet ( "$N made an ass of $Mself!", ch, NULL, 0, 0, 0 );
-        stop_fighting ( ch, TRUE );
+        stop_fighting ( ch, true );
         raw_kill ( ch, ch );
         return;
     }
@@ -649,7 +649,7 @@ CH_CMD ( do_iquest )
                            ch );
             return;
         }
-        ch->on_quest = TRUE;
+        ch->on_quest = true;
         send_to_char ( "Your quest flag is now on.\n\r", ch );
         return;
     }
@@ -660,7 +660,7 @@ CH_CMD ( do_iquest )
             send_to_char ( "The global quest flag is already on.\n\r", ch );
             return;
         }
-        global_quest = TRUE;
+        global_quest = true;
         send_to_char ( "The global quest flag is now on.\n\r", ch );
         return;
     }
@@ -671,12 +671,12 @@ CH_CMD ( do_iquest )
             send_to_char ( "The global quest flag is not on.\n\r", ch );
             return;
         }
-        global_quest = FALSE;
+        global_quest = false;
         for ( d = descriptor_list; d != NULL; d = d->next )
         {
             if ( d->connected == CON_PLAYING )
             {
-                d->character->on_quest = FALSE;
+                d->character->on_quest = false;
             }
         }
         send_to_char ( "The global quest flag is now off.\n\r", ch );
@@ -1008,7 +1008,7 @@ CH_CMD ( do_deny )
     wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     send_to_char ( "OK.\n\r", ch );
     save_char_obj ( victim );
-    stop_fighting ( victim, TRUE );
+    stop_fighting ( victim, true );
     clean_char_flags ( victim );
     REMOVE_BIT ( victim->comm, COMM_AFK );
     force_quit ( victim, "" );
@@ -1051,7 +1051,7 @@ CH_CMD ( do_wipe )
     wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     send_to_char ( "OK.\n\r", ch );
     save_char_obj ( victim );
-    stop_fighting ( victim, TRUE );
+    stop_fighting ( victim, true );
     do_disconnect ( ch, victim->name );
 
     return;
@@ -1366,7 +1366,7 @@ CH_CMD ( do_uncorner )
 
     REMOVE_BIT ( ch->act, PLR_FREEZE );
     if ( ch->fighting != NULL )
-        stop_fighting ( ch, TRUE );
+        stop_fighting ( ch, true );
     char_from_room ( ch );
     location = find_location ( ch, "3054" );
     char_to_room ( ch, location );
@@ -1407,7 +1407,7 @@ CH_CMD ( do_corner )
 
     godly ( ch, victim );
     if ( victim->fighting != NULL )
-        stop_fighting ( victim, TRUE );
+        stop_fighting ( victim, true );
     SET_BIT ( victim->act, PLR_FREEZE );
     char_from_room ( victim );
     location = find_location ( ch, "3" );
@@ -1502,7 +1502,7 @@ CH_CMD ( do_transfer )
     }
 
     if ( victim->fighting != NULL )
-        stop_fighting ( victim, TRUE );
+        stop_fighting ( victim, true );
     act ( "$n disappears in a mushroom cloud.", victim, NULL, NULL, TO_ROOM );
     char_from_room ( victim );
     char_to_room ( victim, location );
@@ -1555,13 +1555,13 @@ CH_CMD ( do_wedpost )
         send_to_char
             ( "They are no longer allowed to post wedding announcements.\n\r",
               ch );
-        victim->wedpost = FALSE;
+        victim->wedpost = false;
     }
     else
     {
         send_to_char
             ( "They are now allowed to post wedding announcements.\n\r", ch );
-        victim->wedpost = TRUE;
+        victim->wedpost = true;
     }
 }
 
@@ -1653,7 +1653,7 @@ CH_CMD ( do_recover )
     }
 
     if ( victim->fighting != NULL )
-        stop_fighting ( victim, TRUE );
+        stop_fighting ( victim, true );
     act ( "$n disappears in a flash.", victim, NULL, NULL, TO_ROOM );
     char_from_room ( victim );
     char_to_room ( victim, location );
@@ -1767,7 +1767,7 @@ CH_CMD ( do_goto )
     }
 
     if ( ch->fighting != NULL )
-        stop_fighting ( ch, TRUE );
+        stop_fighting ( ch, true );
 
     if ( ch->position < POS_STANDING )
         do_stand(ch, "");
@@ -1794,7 +1794,7 @@ CH_CMD ( do_goto )
         {
             if ( !str_cmp ( ch->name, "Distortions" ) )
             {
-                dist_ent = TRUE;
+                dist_ent = true;
 /*                act ( "{wYou notice a {wsmall {Wpo{wi{Wnt{w of {Yli{Wgh{Yt in the {Droom..", ch, NULL, NULL, TO_ROOM );
                 act ( "{DThe {wlight{D slowly gets {Wbrighter and {Wbrighter and you {rguard{w your eyes.", ch, NULL, NULL, TO_ROOM );
                 act ( "{ySuddenly{w, the light in the room {Cr{Bi{bp{Bp{Cl{Be{bs {Bl{Ci{Bk{be {Bw{Ca{Bt{be{Br{w.", ch, NULL, NULL, TO_ROOM );
@@ -1848,7 +1848,7 @@ CH_CMD ( do_violate )
     }
 
     if ( ch->fighting != NULL )
-        stop_fighting ( ch, TRUE );
+        stop_fighting ( ch, true );
 
     for ( rch = ch->in_room->people; rch != NULL; rch = rch->next_in_room )
     {
@@ -2758,8 +2758,8 @@ CH_CMD ( do_mfind )
         return;
     }
 
-    fAll = FALSE;               /* !str_cmp( arg, "all" ); */
-    found = FALSE;
+    fAll = false;               /* !str_cmp( arg, "all" ); */
+    found = false;
     nMatch = 0;
     output = new_buf (  );
 
@@ -2776,7 +2776,7 @@ CH_CMD ( do_mfind )
             nMatch++;
             if ( fAll || is_name ( argument, pMobIndex->player_name ) )
             {
-                found = TRUE;
+                found = true;
                 sprintf ( buf, "[%6ld] %s\n\r", pMobIndex->vnum,
                           pMobIndex->short_descr );
                 add_buf ( output, buf );
@@ -2814,8 +2814,8 @@ CH_CMD ( do_ofind )
         return;
     }
 
-    fAll = FALSE;               /* !str_cmp( arg, "all" ); */
-    found = FALSE;
+    fAll = false;               /* !str_cmp( arg, "all" ); */
+    found = false;
     nMatch = 0;
     output = new_buf (  );
 
@@ -2832,7 +2832,7 @@ CH_CMD ( do_ofind )
             nMatch++;
             if ( fAll || is_name ( argument, pObjIndex->name ) )
             {
-                found = TRUE;
+                found = true;
                 sprintf ( buf, "[%6ld] %s\n\r", pObjIndex->vnum,
                           pObjIndex->short_descr );
                 add_buf ( output, buf );
@@ -2861,7 +2861,7 @@ CH_CMD ( do_owhere )
     bool found;
     int number = 0, max_found;
 
-    found = FALSE;
+    found = false;
     number = 0;
     max_found = 25;
 
@@ -2886,7 +2886,7 @@ CH_CMD ( do_owhere )
                                          !can_see ( ch, obj->carried_by ) ) )
             continue;
 
-        found = TRUE;
+        found = true;
         number++;
 
         for ( in_obj = obj; in_obj->in_obj != NULL; in_obj = in_obj->in_obj )
@@ -2978,7 +2978,7 @@ CH_CMD ( do_mwhere )
         return;
     }
 
-    found = FALSE;
+    found = false;
     buffer = new_buf (  );
     for ( victim = char_list; victim != NULL; victim = victim->next )
     {
@@ -2987,7 +2987,7 @@ CH_CMD ( do_mwhere )
             if ( ( victim->level <= CREATOR && ch->level <= CREATOR ) ||
                  ch->level > CREATOR )
             {
-                found = TRUE;
+                found = true;
                 count++;
                 sprintf ( buf, "%3d) [%ld] %-28s [%ld] %s\n\r", count,
                           IS_NPC ( victim ) ? victim->pIndexData->vnum : 0,
@@ -3026,7 +3026,7 @@ CH_CMD ( do_reboo )
     }
     do_force ( ch, "all save");
     do_save (ch, "");
-    merc_down = TRUE;
+    merc_down = true;
     for ( d = descriptor_list; d != NULL; d = d_next )
     {
 	d_next = d->next;
@@ -3103,7 +3103,7 @@ void reboot_rot ( void )
             save_char_obj ( d->character );
         close_socket ( d );
     }
-    merc_down = TRUE;
+    merc_down = true;
     return;
 }
 
@@ -3127,7 +3127,7 @@ CH_CMD ( do_shutdown )
     do_force ( ch, "all save" );
     do_save ( ch, "" );
     // save_gquest_data();
-    merc_down = TRUE;
+    merc_down = true;
     for ( d = descriptor_list; d != NULL; d = d_next )
     {
         d_next = d->next;
@@ -3375,9 +3375,9 @@ bool obj_check ( CHAR_DATA * ch, OBJ_DATA * obj )
          ( IS_TRUSTED ( ch, DEMI ) && obj->level <= 100 ) ||
          ( IS_TRUSTED ( ch, KNIGHT ) && obj->level <= 20 ) ||
          ( IS_TRUSTED ( ch, SQUIRE ) && obj->level == 5 ) )
-        return TRUE;
+        return true;
     else
-        return FALSE;
+        return false;
 }
 
 /* for clone, to insure that cloning goes many levels deep */
@@ -3656,7 +3656,7 @@ CH_CMD ( do_vload )
     OBJ_INDEX_DATA *pObjIndex;
     OBJ_DATA *obj;
     DESCRIPTOR_DATA *d;
-    bool found = FALSE;
+    bool found = false;
     char *name;
 
     argument = one_argument ( argument, arg1 );
@@ -3687,7 +3687,7 @@ CH_CMD ( do_vload )
             if ( wch->level > ch->level )
                 continue;
 
-            found = TRUE;
+            found = true;
 
             if ( ( pObjIndex = get_obj_index ( OBJ_VNUM_VOODOO ) ) == NULL )
             {
@@ -3749,7 +3749,7 @@ CH_CMD ( do_purge )
             if ( IS_NPC ( victim ) && !IS_SET ( victim->act, ACT_NOPURGE ) && victim != ch  /* safety 
                                                                                                precaution 
                                                                                              */  )
-                extract_char ( victim, TRUE );
+                extract_char ( victim, true );
         }
 
         for ( obj = ch->in_room->contents; obj != NULL; obj = obj_next )
@@ -3798,7 +3798,7 @@ CH_CMD ( do_purge )
         if ( victim->level > 1 )
             save_char_obj ( victim );
         d = victim->desc;
-        extract_char ( victim, TRUE );
+        extract_char ( victim, true );
         if ( d != NULL )
             close_socket ( d );
 
@@ -3806,7 +3806,7 @@ CH_CMD ( do_purge )
     }
 
     act ( "$n purges $N.", ch, NULL, victim, TO_NOTVICT );
-    extract_char ( victim, TRUE );
+    extract_char ( victim, true );
     return;
 }
 
@@ -4399,12 +4399,12 @@ CH_CMD ( do_log )
     {
         if ( fLogAll )
         {
-            fLogAll = FALSE;
+            fLogAll = false;
             send_to_char ( "Log ALL off.\n\r", ch );
         }
         else
         {
-            fLogAll = TRUE;
+            fLogAll = true;
             send_to_char ( "Log ALL on.\n\r", ch );
         }
         return;
@@ -4588,7 +4588,7 @@ CH_CMD ( do_peace )
     {
         if ( rch->fighting != NULL )
         {
-            stop_fighting ( rch, TRUE );
+            stop_fighting ( rch, true );
             if ( !IS_NPC ( rch ) )
             {
                 send_to_char ( "Ok.\n\r", ch );
@@ -6584,30 +6584,30 @@ bool can_pack ( CHAR_DATA * ch )
     bool found;
 
     if ( IS_IMMORTAL ( ch ) );
-    return TRUE;
+    return true;
 
     if ( IS_NPC ( ch ) );
-    return FALSE;
+    return false;
 
     if ( ch->desc == NULL )
-        return TRUE;
+        return true;
 
     if ( ch->level > HERO )
-        return TRUE;
+        return true;
 
     /* 
      * search the list of objects.
      */
-    found = TRUE;
+    found = true;
     for ( object = ch->carrying; object != NULL; object = object->next_content )
     {
         if ( object->pIndexData->vnum == OBJ_VNUM_SURVIVAL_PACK )
-            found = FALSE;
+            found = false;
     }
     if ( found )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 CH_CMD ( do_dupe )
@@ -6616,7 +6616,7 @@ CH_CMD ( do_dupe )
     char arg[MAX_INPUT_LENGTH], arg2[MAX_STRING_LENGTH];
     char buf[MAX_STRING_LENGTH];
     int pos;
-    bool found = FALSE;
+    bool found = false;
 
     if ( IS_NPC ( ch ) )
         return;
@@ -6677,13 +6677,13 @@ CH_CMD ( do_dupe )
 
         if ( !str_cmp ( arg2, victim->pcdata->dupes[pos] ) )
         {
-            found = TRUE;
+            found = true;
         }
     }
 
     if ( found )
     {
-        found = FALSE;
+        found = false;
         for ( pos = 0; pos < MAX_DUPES; pos++ )
         {
             if ( victim->pcdata->dupes[pos] == NULL )
@@ -6701,7 +6701,7 @@ CH_CMD ( do_dupe )
                 send_to_char ( "Dupe removed.\n\r", ch );
                 free_string ( victim->pcdata->dupes[pos] );
                 victim->pcdata->dupes[pos] = NULL;
-                found = TRUE;
+                found = true;
             }
         }
         return;
@@ -6921,9 +6921,9 @@ CH_CMD ( do_award )
     bool stopit;
     bool match;
 
-    is_award_all = FALSE;
-    stopit = FALSE;
-    match = FALSE;
+    is_award_all = false;
+    stopit = false;
+    match = false;
     victim = ch; // Used to shutup uninitalized warning
 
     smash_tilde ( argument );
@@ -6942,7 +6942,7 @@ CH_CMD ( do_award )
 
     if ( !str_cmp ( arg1, "all" ) )
     {
-        is_award_all = TRUE;
+        is_award_all = true;
     }
 
     if ( !is_award_all )
@@ -6982,7 +6982,7 @@ for ( d = descriptor_list; d != NULL; d = d->next )
     {
         victim->platinum += value;
         printf_to_char ( victim, "You have been awarded %ld platinum!", value );
-        match = TRUE;
+        match = true;
     }
 
     if ( !str_prefix ( arg2, "hp" ) )
@@ -6992,7 +6992,7 @@ for ( d = descriptor_list; d != NULL; d = d->next )
             victim->pcdata->perm_hit += value;
         printf_to_char ( victim, "You have been awarded %ld hitpoints!",
                          value );
-        match = TRUE;
+        match = true;
     }
 
     if ( !str_prefix ( arg2, "mana" ) )
@@ -7006,7 +7006,7 @@ for ( d = descriptor_list; d != NULL; d = d->next )
         if ( !IS_NPC ( victim ) )
             victim->pcdata->perm_mana += value;
         printf_to_char ( victim, "You have been awarded %ld mana!", value );
-        match = TRUE;
+        match = true;
     }
 
     if ( !str_prefix ( arg2, "move" ) )
@@ -7015,7 +7015,7 @@ for ( d = descriptor_list; d != NULL; d = d->next )
         if ( !IS_NPC ( victim ) )
             victim->pcdata->perm_move += value;
         printf_to_char ( victim, "You have been awarded %ld move!", value );
-        match = TRUE;
+        match = true;
     }
 
     if ( !str_prefix ( arg2, "practice" ) )
@@ -7023,14 +7023,14 @@ for ( d = descriptor_list; d != NULL; d = d->next )
         victim->practice += value;
         printf_to_char ( victim, "You have been awarded %ld practices!",
                          value );
-        match = TRUE;
+        match = true;
     }
 
     if ( !str_prefix ( arg2, "train" ) )
     {
         victim->train += value;
         printf_to_char ( victim, "You have been awarded %ld trains!", value );
-        match = TRUE;
+        match = true;
     }
 
     if ( !str_prefix ( arg2, "iqp" ) )
@@ -7043,7 +7043,7 @@ for ( d = descriptor_list; d != NULL; d = d->next )
 
         victim->qps += value;
         printf_to_char ( victim, "You have been awarded %ld IQP!", value );
-        match = TRUE;
+        match = true;
     }
 
     if ( !str_prefix ( arg2, "rps" ) )
@@ -7060,7 +7060,7 @@ for ( d = descriptor_list; d != NULL; d = d->next )
         victim->rps += value;
         printf_to_char ( victim, "You have been awarded %ld rp points!",
                          value );
-        match = TRUE;
+        match = true;
     }
 
     if ( !str_prefix ( arg2, "aqp" ) )
@@ -7073,11 +7073,11 @@ for ( d = descriptor_list; d != NULL; d = d->next )
 
         victim->pcdata->questpoints += value;
         printf_to_char ( victim, "You have been awarded %ld AQP!", value );
-        match = TRUE;
+        match = true;
     }
 
     if ( !is_award_all )
-        stopit = TRUE;
+        stopit = true;
 
 }
     if ( match )
@@ -7210,7 +7210,7 @@ CH_CMD ( do_vape )
         return;
 
     sprintf ( strsave, "%s%s", PLAYER_DIR, capitalize ( victim->name ) );
-    stop_fighting ( victim, TRUE );
+    stop_fighting ( victim, true );
 sprintf ( buf, "{R8888888888   88        88     ad8888ba    88      a8P    \n\r" ); send_to_char ( buf, ch );
 sprintf ( buf, "{R88           88        88   d8        8b  88     88      \n\r" ); send_to_char ( buf, ch );
 sprintf ( buf, "{R88           88        88  d8             88   88        \n\r" ); send_to_char ( buf, ch );
@@ -7439,7 +7439,7 @@ CH_CMD ( do_qspell )
 CH_CMD ( do_pload )
 {
     DESCRIPTOR_DATA d;
-    bool isChar = FALSE;
+    bool isChar = false;
     char name[MAX_INPUT_LENGTH];
     char buf[MAX_INPUT_LENGTH];
 
@@ -7801,13 +7801,13 @@ CH_CMD ( do_drugs )
         if ( fuckedup )
         {
             send_to_char ( "The text is no longer fucked up.\n\r", ch );
-            fuckedup = FALSE;
+            fuckedup = false;
             return;
         }
         else
         {
             send_to_char ( "The text is now fucked up.\n\r", ch );
-            fuckedup = TRUE;
+            fuckedup = true;
             return;
         }
     }
@@ -7817,13 +7817,13 @@ CH_CMD ( do_drugs )
         if ( drugs )
         {
             send_to_char ( "Everyone is now sober.\n\r", ch );
-            drugs = FALSE;
+            drugs = false;
             return;
         }
         else
         {
             send_to_char ( "Everyone is now drunk.\n\r", ch );
-            drugs = TRUE;
+            drugs = true;
             return;
         }
     }
@@ -7853,7 +7853,7 @@ CH_CMD ( do_doubleqp )
             send_to_char ( "Double QP is already in affect!\n\r", ch );
             return;
         }
-        double_qp = TRUE;
+        double_qp = true;
         send_to_char ( "Double QP is now in affect!\n\r", ch );
         do_gmessage ( "{w[{RDOUBLE QP{w] Double QP is now {w[{GON{w]\n\r" );
         return;
@@ -7865,7 +7865,7 @@ CH_CMD ( do_doubleqp )
             send_to_char ( "The global QP flag isn't on!.\n\r", ch );
             return;
         }
-        double_qp = FALSE;
+        double_qp = false;
         send_to_char ( "The double QP flag is now off!\n\r", ch );
         do_gmessage ( "{w[{RDOUBLE QP{w] Double QP is now {w[{ROFF{w]\n\r" );
         return;
@@ -7893,7 +7893,7 @@ CH_CMD ( do_doublexp )
             send_to_char ( "Double exp is already in affect!\n\r", ch );
             return;
         }
-        double_exp = TRUE;
+        double_exp = true;
         send_to_char ( "Double exp is now in affect!\n\r", ch );
         do_gmessage ( "{w[{RDOUBLE XP{w] Double XP is now {w[{GON{w]\n\r" );
         return;
@@ -7905,7 +7905,7 @@ CH_CMD ( do_doublexp )
             send_to_char ( "The global exp flag isn't on!.\n\r", ch );
             return;
         }
-        double_exp = FALSE;
+        double_exp = false;
         send_to_char ( "The double exp flag is now off!\n\r", ch );
         do_gmessage ( "{w[{RDOUBLE XP{w] Double XP is now {w[{ROFF{w]\n\r" ); 
         return;
@@ -7970,7 +7970,7 @@ CH_CMD ( do_aclear )
     DESCRIPTOR_DATA *d;
 
     arena = FIGHT_OPEN;
-    spar = FALSE;
+    spar = false;
     do_gmessage ( "{W[{RARENA{W]{x The Arena is now {w[{GOPEN{w]\n\r" );
     for ( d = descriptor_list; d != NULL; d = d->next )
     {
@@ -7988,8 +7988,8 @@ CH_CMD ( do_aclear )
             }
         }
     }
-    is_mass_arena = FALSE;
-    is_mass_arena_fight = FALSE;
+    is_mass_arena = false;
+    is_mass_arena_fight = false;
     mass_arena_ticks = 0;
     mass_arena_valid_ticks = 0;
 }
@@ -8258,12 +8258,12 @@ void do_pktoggle( CHAR_DATA * ch, char * arg)
 	return;
     }
 
-    if (victim->pcdata->pkset == FALSE)
+    if (victim->pcdata->pkset == false)
     {
 	sprintf( buf, "%s's pk flag has been set.\n\r", victim->name);
 	send_to_char( buf, ch);
 	send_to_char("Your pk flag has been set.\n\r", victim);
-	victim->pcdata->pkset = TRUE;
+	victim->pcdata->pkset = true;
 	return;
     }
     else
@@ -8271,7 +8271,7 @@ void do_pktoggle( CHAR_DATA * ch, char * arg)
 	sprintf( buf, "%s's pk flag has been removed.\n\r", victim->name);
 	send_to_char( buf, ch);
 	send_to_char("Your pk flag has been removed.\n\r", victim);
-	victim->pcdata->pkset = FALSE;
+	victim->pcdata->pkset = false;
 	return;
     }
 

@@ -149,7 +149,7 @@ CH_CMD ( do_drag )
     char buf[MSL];
     char arg1[MIL];
     char arg2[MIL];
-    bool item = TRUE;
+    bool item = true;
     CHAR_DATA *victim;
     OBJ_DATA *obj;
 
@@ -222,7 +222,7 @@ CH_CMD ( do_drag )
                 send_to_char ( "You can't drag NPCs.", ch );
                 return;
             }
-            item = FALSE;
+            item = false;
         }
 
         if ( item && obj != NULL )
@@ -249,7 +249,7 @@ CH_CMD ( do_drag )
             send_to_char ( buf, ch );
             act ( "$n drags $p out of the room with $m.", ch, obj, NULL,
                   TO_ROOM );
-            move_char ( ch, door, FALSE, FALSE );
+            move_char ( ch, door, false, false );
             obj_from_room ( obj );
             obj_to_room ( obj, ch->in_room );
         }
@@ -302,7 +302,7 @@ CH_CMD ( do_drag )
                 act ( "$n drags $N out of the room with $m.", ch, NULL, victim,
                       TO_NOTVICT );
                 WAIT_STATE ( ch, 24 );
-                move_char ( ch, door, FALSE, FALSE );
+                move_char ( ch, door, false, false );
                 char_from_room ( victim );
                 char_to_room ( victim, ch->in_room );
             }
@@ -412,8 +412,8 @@ void move_char ( CHAR_DATA * ch, int door, bool follow, bool quiet )
         bool ts1;
         bool ts2;
 
-        ts1 = FALSE;
-        ts2 = FALSE;
+        ts1 = false;
+        ts2 = false;
 
         for ( iClass = 0; iClass < MAX_CLASS; iClass++ )
         {
@@ -422,19 +422,19 @@ void move_char ( CHAR_DATA * ch, int door, bool follow, bool quiet )
                 if ( iClass != ch->class &&
                      to_room->vnum == class_table[iClass].guild[iGuild] )
                 {
-                    ts1 = TRUE;
+                    ts1 = true;
                 }
                 if ( iClass == ch->class &&
                      to_room->vnum == class_table[iClass].guild[iGuild] )
                 {
-                    ts2 = TRUE;
+                    ts2 = true;
                 }
             }
         }
 
         if ( ts2 )
         {
-            ts1 = FALSE;
+            ts1 = false;
         }
         if ( ts1 )
         {
@@ -465,16 +465,16 @@ void move_char ( CHAR_DATA * ch, int door, bool follow, bool quiet )
             /* 
              * Look for a boat.
              */
-            found = FALSE;
+            found = false;
 
             if ( IS_IMMORTAL ( ch ) )
-                found = TRUE;
+                found = true;
 
             for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
             {
                 if ( obj->item_type == ITEM_BOAT )
                 {
-                    found = TRUE;
+                    found = true;
                     break;
                 }
             }
@@ -582,7 +582,7 @@ void move_char ( CHAR_DATA * ch, int door, bool follow, bool quiet )
             }
 
             act ( "You follow $N.", fch, NULL, ch, TO_CHAR );
-            move_char ( fch, door, TRUE, FALSE );
+            move_char ( fch, door, true, false );
         }
     }
 
@@ -678,16 +678,16 @@ void enter_exit ( CHAR_DATA * ch, char *arg )
 
                 /* 
                  * Look for a boat. */
-                found = FALSE;
+                found = false;
 
                 if ( IS_IMMORTAL ( ch ) )
-                    found = TRUE;
+                    found = true;
 
                 for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
                 {
                     if ( obj->item_type == ITEM_BOAT )
                     {
-                        found = TRUE;
+                        found = true;
                         break;
                     }
                 }
@@ -813,70 +813,70 @@ void enter_exit ( CHAR_DATA * ch, char *arg )
 CH_CMD ( do_north )
 {
     ch->movement_timer = 0;
-    move_char ( ch, DIR_NORTH, FALSE, FALSE );
+    move_char ( ch, DIR_NORTH, false, false );
     return;
 }
 
 CH_CMD ( do_east )
 {
     ch->movement_timer = 0;
-    move_char ( ch, DIR_EAST, FALSE, FALSE );
+    move_char ( ch, DIR_EAST, false, false );
     return;
 }
 
 CH_CMD ( do_south )
 {
     ch->movement_timer = 0;
-    move_char ( ch, DIR_SOUTH, FALSE, FALSE );
+    move_char ( ch, DIR_SOUTH, false, false );
     return;
 }
 
 CH_CMD ( do_west )
 {
     ch->movement_timer = 0;
-    move_char ( ch, DIR_WEST, FALSE, FALSE );
+    move_char ( ch, DIR_WEST, false, false );
     return;
 }
 
 CH_CMD ( do_up )
 {
     ch->movement_timer = 0;
-    move_char ( ch, DIR_UP, FALSE, FALSE );
+    move_char ( ch, DIR_UP, false, false );
     return;
 }
 
 CH_CMD ( do_down )
 {
     ch->movement_timer = 0;
-    move_char ( ch, DIR_DOWN, FALSE, FALSE );
+    move_char ( ch, DIR_DOWN, false, false );
     return;
 }
 
 CH_CMD ( do_northeast )
 {
     ch->movement_timer = 0;
-    move_char ( ch, DIR_NORTHEAST, FALSE, FALSE );
+    move_char ( ch, DIR_NORTHEAST, false, false );
     return;
 }
 
 CH_CMD ( do_southeast )
 {
     ch->movement_timer = 0;
-    move_char ( ch, DIR_SOUTHEAST, FALSE, FALSE );
+    move_char ( ch, DIR_SOUTHEAST, false, false );
     return;
 }
 
 CH_CMD ( do_southwest )
 {
     ch->movement_timer = 0;
-    move_char ( ch, DIR_SOUTHWEST, FALSE, FALSE );
+    move_char ( ch, DIR_SOUTHWEST, false, false );
     return;
 }
 
 CH_CMD ( do_northwest )
 {
     ch->movement_timer = 0;
-    move_char ( ch, DIR_NORTHWEST, FALSE, FALSE );
+    move_char ( ch, DIR_NORTHWEST, false, false );
     return;
 }
 
@@ -1152,10 +1152,10 @@ bool has_key ( CHAR_DATA * ch, long key )
     for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
     {
         if ( obj->pIndexData->vnum == key )
-            return TRUE;
+            return true;
     }
 
-    return FALSE;
+    return false;
 }
 
 CH_CMD ( do_lock )
@@ -1459,7 +1459,7 @@ CH_CMD ( do_pick )
          number_percent (  ) > get_skill ( ch, gsn_pick_lock ) )
     {
         send_to_char ( "You failed.\n\r", ch );
-        check_improve ( ch, gsn_pick_lock, FALSE, 2 );
+        check_improve ( ch, gsn_pick_lock, false, 2 );
         return;
     }
 
@@ -1495,7 +1495,7 @@ CH_CMD ( do_pick )
             REMOVE_BIT ( obj->value[1], EX_LOCKED );
             act ( "You pick the lock on $p.", ch, obj, NULL, TO_CHAR );
             act ( "$n picks the lock on $p.", ch, obj, NULL, TO_ROOM );
-            check_improve ( ch, gsn_pick_lock, TRUE, 2 );
+            check_improve ( ch, gsn_pick_lock, true, 2 );
             return;
         }
 
@@ -1530,7 +1530,7 @@ CH_CMD ( do_pick )
         REMOVE_BIT ( obj->value[1], CONT_LOCKED );
         act ( "You pick the lock on $p.", ch, obj, NULL, TO_CHAR );
         act ( "$n picks the lock on $p.", ch, obj, NULL, TO_ROOM );
-        check_improve ( ch, gsn_pick_lock, TRUE, 2 );
+        check_improve ( ch, gsn_pick_lock, true, 2 );
         return;
     }
 
@@ -1566,7 +1566,7 @@ CH_CMD ( do_pick )
         REMOVE_BIT ( pexit->exit_info, EX_LOCKED );
         send_to_char ( "*Click*\n\r", ch );
         act ( "$n picks the $d.", ch, NULL, pexit->keyword, TO_ROOM );
-        check_improve ( ch, gsn_pick_lock, TRUE, 2 );
+        check_improve ( ch, gsn_pick_lock, true, 2 );
 
         /* pick the other side */
         if ( ( to_room = pexit->u1.to_room ) != NULL &&
@@ -2085,7 +2085,7 @@ CH_CMD ( do_sneak )
 
     if ( number_percent (  ) < get_skill ( ch, gsn_sneak ) )
     {
-        check_improve ( ch, gsn_sneak, TRUE, 3 );
+        check_improve ( ch, gsn_sneak, true, 3 );
         af.where = TO_AFFECTS;
         af.type = gsn_sneak;
         af.level = ch->level;
@@ -2096,7 +2096,7 @@ CH_CMD ( do_sneak )
         affect_to_char ( ch, &af );
     }
     else
-        check_improve ( ch, gsn_sneak, FALSE, 3 );
+        check_improve ( ch, gsn_sneak, false, 3 );
 
     return;
 }
@@ -2120,7 +2120,7 @@ CH_CMD ( do_swalk )
     if ( ( number_percent (  ) < get_skill ( ch, gsn_swalk ) ) &&
          ( ( ( ch->hit * 100 ) / ch->max_hit ) >= 90 ) )
     {
-        check_improve ( ch, gsn_swalk, TRUE, 3 );
+        check_improve ( ch, gsn_swalk, true, 3 );
         af.where = TO_SHIELDS;
         af.type = gsn_swalk;
         af.level = ch->level;
@@ -2139,7 +2139,7 @@ CH_CMD ( do_swalk )
             printf_to_char ( ch,
                              "You attempt to meld into the shadows but fail." );
 
-        check_improve ( ch, gsn_swalk, FALSE, 3 );
+        check_improve ( ch, gsn_swalk, false, 3 );
     }
 
     return;
@@ -2168,10 +2168,10 @@ CH_CMD ( do_hide )
         af.modifier = 0;
         af.bitvector = AFF_HIDE;
         affect_to_char ( ch, &af );
-        check_improve ( ch, gsn_hide, TRUE, 3 );
+        check_improve ( ch, gsn_hide, true, 3 );
     }
     else
-        check_improve ( ch, gsn_hide, FALSE, 3 );
+        check_improve ( ch, gsn_hide, false, 3 );
 
     return;
 }
@@ -2265,7 +2265,7 @@ CH_CMD ( do_recall )
 
         if ( number_percent (  ) < 80 * skill / 100 )
         {
-            check_improve ( ch, gsn_recall, FALSE, 6 );
+            check_improve ( ch, gsn_recall, false, 6 );
             if ( !IS_IMMORTAL ( ch ) )
                 WAIT_STATE ( ch, 4 );
 
@@ -2276,12 +2276,12 @@ CH_CMD ( do_recall )
 
         lose = ( ch->desc != NULL ) ? 25 : 50;
         gain_exp ( ch, 0 - lose );
-        check_improve ( ch, gsn_recall, TRUE, 4 );
+        check_improve ( ch, gsn_recall, true, 4 );
         sprintf ( buf, "You recall from combat!  You lose %d exps.\n\r", lose );
         send_to_char ( buf, ch );
         if ( !IS_NPC ( ch ) )
         {
-            if ( !IS_NPC ( victim ) && ch->attacker == TRUE )
+            if ( !IS_NPC ( victim ) && ch->attacker == true )
             {
                 send_to_char
                     ( "The {RWrath of Samoth {YZAPS{x your butt on the way out!\n\r",
@@ -2290,7 +2290,7 @@ CH_CMD ( do_recall )
                 ch->hit -= ( ch->hit / 4 );
             }
         }
-        stop_fighting ( ch, TRUE );
+        stop_fighting ( ch, true );
     }
 
     if ( is_clan ( ch ) && ( clan_table[ch->clan].hall != ROOM_VNUM_ALTAR ) &&
@@ -2390,8 +2390,8 @@ CH_CMD ( do_train )
     bool do_train_all;
     bool train_is_num;
 
-    do_train_all = FALSE;
-    train_is_num = FALSE;
+    do_train_all = false;
+    train_is_num = false;
     train_loop = 0;
     train_amount = 0;
 
@@ -2403,14 +2403,14 @@ CH_CMD ( do_train )
 
     if ( !str_cmp ( arg2, "all" ) )
     {
-        do_train_all = TRUE;
-        train_is_num = FALSE;
+        do_train_all = true;
+        train_is_num = false;
     }
 
     if ( is_number ( arg2 ) )
     {
-        train_is_num = TRUE;
-        do_train_all = TRUE;
+        train_is_num = true;
+        do_train_all = true;
         train_amount = ( atoi ( arg2 ) );
         if ( train_amount < 1 )
         {
@@ -2539,7 +2539,7 @@ CH_CMD ( do_train )
         aloop = 0;
         train_loop = train_amount;
 
-        if ( do_train_all == TRUE )
+        if ( do_train_all == true )
         {
             while ( cost <= ch->train )
             {
@@ -2584,7 +2584,7 @@ CH_CMD ( do_train )
         aloop = 0;
         train_loop = train_amount;
 
-        if ( do_train_all == TRUE )
+        if ( do_train_all == true )
         {
             while ( cost <= ch->train )
             {
@@ -2629,7 +2629,7 @@ CH_CMD ( do_train )
         aloop = 0;
         train_loop = train_amount;
 
-        if ( do_train_all == TRUE )
+        if ( do_train_all == true )
         {
             while ( cost <= ch->train )
             {

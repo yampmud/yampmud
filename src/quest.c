@@ -138,9 +138,9 @@ const struct quest_type quest_table[] = {
 bool chance ( int num )
 {
     if ( number_range ( 1, 100 ) <= num )
-        return TRUE;
+        return true;
     else
-        return FALSE;
+        return false;
 }
 
 /* is object in quest table? */
@@ -183,14 +183,14 @@ void affect_join_obj ( OBJ_DATA * obj, AFFECT_DATA * paf )
     AFFECT_DATA *paf_old;
     bool found;
 
-    found = FALSE;
+    found = false;
     for ( paf_old = obj->affected; paf_old != NULL; paf_old = paf_old->next )
     {
         if ( paf_old->location == paf->location )
         {
             paf_old->level = paf->level;
             paf_old->modifier = paf->modifier;
-            found = TRUE;
+            found = true;
         }
     }
     if ( !found )
@@ -1551,15 +1551,15 @@ void generate_quest ( CHAR_DATA * ch, CHAR_DATA * questman )
 bool quest_level_diff ( CHAR_DATA * ch, CHAR_DATA * mob )
 {
     if ( IS_IMMORTAL ( ch ) )
-        return TRUE;
+        return true;
 
     if ( ( ch->level + 20 ) < mob->level )
-        return FALSE;
+        return false;
 
     if ( ( mob->level + 50 ) < ch->level )
-        return FALSE;
+        return false;
 
-    return TRUE;
+    return true;
 }
 
 void quest_update ( void )

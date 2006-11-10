@@ -66,8 +66,8 @@ GLOBAL_DEF ( AUCTION_DATA * auction_list, NULL );
 GLOBAL ( char bug_buf[2 * MAX_INPUT_LENGTH] );
 
 GLOBAL ( time_t current_time );
-GLOBAL_DEF ( bool fLogAll, FALSE );
-GLOBAL_DEF ( bool islogonly, FALSE );
+GLOBAL_DEF ( bool fLogAll, false );
+GLOBAL_DEF ( bool islogonly, false );
 //GLOBAL_DEF ( FILE * fpReserve, NULL );
 GLOBAL ( KILL_DATA kill_table[MAX_LEVEL] );
 GLOBAL ( char log_buf[2 * MAX_INPUT_LENGTH] );
@@ -76,22 +76,22 @@ GLOBAL ( TIME_INFO_DATA time_info );
 GLOBAL ( WEATHER_DATA weather_info );
 GLOBAL_DEF ( int reboot_counter, -1 );
 
-GLOBAL_DEF ( bool MOBtrigger, TRUE );
+GLOBAL_DEF ( bool MOBtrigger, true );
 
-GLOBAL_DEF ( bool global_quest, FALSE );
-GLOBAL_DEF ( bool double_exp, FALSE );
-GLOBAL_DEF ( bool double_qp, FALSE );
-GLOBAL_DEF ( bool happy_hour, FALSE );
-GLOBAL_DEF ( bool fuckedup, FALSE );
-GLOBAL_DEF ( bool drugs, FALSE );
+GLOBAL_DEF ( bool global_quest, false );
+GLOBAL_DEF ( bool double_exp, false );
+GLOBAL_DEF ( bool double_qp, false );
+GLOBAL_DEF ( bool happy_hour, false );
+GLOBAL_DEF ( bool fuckedup, false );
+GLOBAL_DEF ( bool drugs, false );
 GLOBAL_DEF ( int titl, 0 );
 GLOBAL ( char new_arg[MIL] );
 GLOBAL ( char new_argg[MIL] );
 GLOBAL ( char fuck_arg[MIL] );
 GLOBAL ( char clean_arg[MIL] );
 
-GLOBAL_DEF ( bool tctoggle, TRUE );
-GLOBAL_DEF ( bool tctogglee, TRUE );
+GLOBAL_DEF ( bool tctoggle, true );
+GLOBAL_DEF ( bool tctogglee, true );
 GLOBAL ( char last_command[MSL] );
 GLOBAL ( char last_command2[MSL] );
 GLOBAL ( char lastwinner[MSL] );
@@ -99,9 +99,9 @@ GLOBAL ( char madmin_reroll[MSL] );
 GLOBAL_DEF ( int last_descriptor, 0 );
 GLOBAL_DEF ( int arena, FIGHT_OPEN );
 
-GLOBAL_DEF ( bool is_mass_arena, FALSE );
-GLOBAL_DEF ( bool spar, FALSE );
-GLOBAL_DEF ( bool is_mass_arena_fight, FALSE );
+GLOBAL_DEF ( bool is_mass_arena, false );
+GLOBAL_DEF ( bool spar, false );
+GLOBAL_DEF ( bool is_mass_arena_fight, false );
 GLOBAL_DEF ( int arenacount, 0 );
 GLOBAL_DEF ( int mass_arena_players, 0 );
 GLOBAL_DEF ( int mass_arena_players_joined, 0 );
@@ -110,7 +110,7 @@ GLOBAL_DEF ( int mass_arena_ticks, 0 );
 
 GLOBAL_DEF ( bool mass_arena_fticked, 0 );
 
-GLOBAL_DEF ( bool dist_ent, FALSE );
+GLOBAL_DEF ( bool dist_ent, false );
 GLOBAL_DEF ( int copyover_countdown, -1 );
 GLOBAL_DEF ( long logins_hour, 1 );
 GLOBAL_DEF ( long logins_today, 1 );
@@ -125,15 +125,15 @@ GLOBAL_DEF ( int max_on, 0 );
 
 GLOBAL ( int happy_pot );
 
-GLOBAL_DEF ( bool is_mid, TRUE );
-GLOBAL_DEF ( bool is_copyover_countdown, FALSE );
-GLOBAL_DEF ( bool IS_DEVMUD, FALSE );
-GLOBAL_DEF ( bool IS_BLDMUD, FALSE );
-GLOBAL_DEF ( bool IS_LIVEMUD, FALSE );
+GLOBAL_DEF ( bool is_mid, true );
+GLOBAL_DEF ( bool is_copyover_countdown, false );
+GLOBAL_DEF ( bool IS_DEVMUD, false );
+GLOBAL_DEF ( bool IS_BLDMUD, false );
+GLOBAL_DEF ( bool IS_LIVEMUD, false );
 GLOBAL_DEF ( AREA_DATA * area_first_sorted, NULL );
-GLOBAL_DEF ( bool newlock, FALSE );
-GLOBAL_DEF ( bool wizlock, FALSE );
-GLOBAL_DEF ( bool merc_down, FALSE );
+GLOBAL_DEF ( bool newlock, false );
+GLOBAL_DEF ( bool wizlock, false );
+GLOBAL_DEF ( bool merc_down, false );
 
 GLOBAL_DEF ( int chain, 0 );
 
@@ -157,7 +157,7 @@ GLOBAL_DEF ( CHAR_DATA * char_free, NULL );
 GLOBAL_DEF ( DESCRIPTOR_DATA * descriptor_free, NULL );
 GLOBAL_DEF ( PC_DATA * pcdata_free, NULL );
 GLOBAL_DEF ( AFFECT_DATA * affect_free, NULL );
-GLOBAL_DEF ( bool fBootDb, FALSE );
+GLOBAL_DEF ( bool fBootDb, false );
 GLOBAL ( MOB_INDEX_DATA * mob_index_hash[MAX_KEY_HASH] );
 GLOBAL ( OBJ_INDEX_DATA * obj_index_hash[MAX_KEY_HASH] );
 GLOBAL_DEF ( FILE * fpArea, NULL );

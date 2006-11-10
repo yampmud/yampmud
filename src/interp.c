@@ -620,7 +620,7 @@ void interpret ( CHAR_DATA * ch, char *argument )
     /* 
      * Look for command in command table.
      */
-    found = FALSE;
+    found = false;
     trust = get_trust ( ch );
     for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
     {
@@ -630,17 +630,17 @@ void interpret ( CHAR_DATA * ch, char *argument )
         {
             if ( cmd_table[cmd].tier == 1 )
             {
-                found = TRUE;
+                found = true;
                 break;
             }
             else if ( ch->class >= MAX_CLASS / 2 )
             {
-                found = TRUE;
+                found = true;
                 break;
             }
             else if ( ch->level >= LEVEL_ANCIENT )
             {
-                found = TRUE;
+                found = true;
                 break;
             }
         }
@@ -901,9 +901,9 @@ bool check_disabled ( const struct cmd_type *command )
 
     for ( p = disabled_first; p; p = p->next )
         if ( p->command->do_fun == command->do_fun )
-            return TRUE;
+            return true;
 
-    return FALSE;
+    return false;
 }
 
 /* Load disabled commands */
@@ -989,21 +989,21 @@ bool consent ( CHAR_DATA * ch, char *argument, char *command )
     CHAR_DATA *victim;
     char arg[MSL];
 
-    return FALSE;
+    return false;
     one_argument ( argument, arg );
 
     if ( ( victim = get_char_room ( ch, arg ) ) == NULL )
     {
         if ( !str_cmp ( victim->sex_consenter, "all" ) )
-            return TRUE;
+            return true;
         else
-            return FALSE;
+            return false;
     }
 
     if ( !str_cmp ( victim->sex_consenter, ch->name ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 bool check_social ( CHAR_DATA * ch, char *command, char *argument )
@@ -1013,40 +1013,40 @@ bool check_social ( CHAR_DATA * ch, char *command, char *argument )
     int cmd;
     bool found;
 
-    found = FALSE;
+    found = false;
     for ( cmd = 0; social_table[cmd].name[0] != '\0'; cmd++ )
     {
         if ( command[0] == social_table[cmd].name[0] &&
              !str_prefix ( command, social_table[cmd].name ) )
         {
-            found = TRUE;
+            found = true;
             break;
         }
     }
 
     if ( !found )
-        return FALSE;
+        return false;
 
     if ( !IS_NPC ( ch ) && IS_SET ( ch->comm, COMM_NOEMOTE ) )
     {
         send_to_char ( "You are anti-social!\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     switch ( ch->position )
     {
         case POS_DEAD:
             send_to_char ( "Lie still; you are DEAD.\n\r", ch );
-            return TRUE;
+            return true;
 
         case POS_INCAP:
         case POS_MORTAL:
             send_to_char ( "You are hurt far too bad for that.\n\r", ch );
-            return TRUE;
+            return true;
 
         case POS_STUNNED:
             send_to_char ( "You are too stunned to do that.\n\r", ch );
-            return TRUE;
+            return true;
 
         case POS_SLEEPING:
             /* 
@@ -1056,7 +1056,7 @@ bool check_social ( CHAR_DATA * ch, char *command, char *argument )
             if ( !str_cmp ( social_table[cmd].name, "snore" ) )
                 break;
             send_to_char ( "In your dreams, or what?\n\r", ch );
-            return TRUE;
+            return true;
 
     }
 
@@ -1115,7 +1115,7 @@ bool check_social ( CHAR_DATA * ch, char *command, char *argument )
         }
     }
 
-    return TRUE;
+    return true;
 }
 
 /*
@@ -1125,7 +1125,7 @@ bool is_number ( char *arg )
 {
 
     if ( *arg == '\0' )
-        return FALSE;
+        return false;
 
     if ( *arg == '+' || *arg == '-' )
         arg++;
@@ -1133,10 +1133,10 @@ bool is_number ( char *arg )
     for ( ; *arg != '\0'; arg++ )
     {
         if ( !isdigit ( *arg ) )
-            return FALSE;
+            return false;
     }
 
-    return TRUE;
+    return true;
 }
 
 /*

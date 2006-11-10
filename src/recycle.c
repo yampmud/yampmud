@@ -224,7 +224,7 @@ DESCRIPTOR_DATA *new_descriptor ( void )
     d->showstr_head = NULL;
     d->showstr_point = NULL;
     d->outsize = 2000;
-    d->ansi = TRUE;
+    d->ansi = true;
     d->outbuf = alloc_mem ( d->outsize );
 
     return d;
@@ -717,7 +717,7 @@ bool add_buf ( BUFFER * buffer, char *string )
 
     if ( buffer->state == BUFFER_OVERFLOW ) /* don't waste time on bad strings! 
                                              */
-        return FALSE;
+        return false;
 
     len = strlen ( buffer->string ) + strlen ( string ) + 1;
 
@@ -730,7 +730,7 @@ bool add_buf ( BUFFER * buffer, char *string )
                 buffer->size = oldsize;
                 buffer->state = BUFFER_OVERFLOW;
                 bug ( "buffer overflow past size %d", buffer->size );
-                return FALSE;
+                return false;
             }
         }
     }
@@ -744,7 +744,7 @@ bool add_buf ( BUFFER * buffer, char *string )
     }
 
     strcat ( buffer->string, string );
-    return TRUE;
+    return true;
 }
 
 void clear_buf ( BUFFER * buffer )

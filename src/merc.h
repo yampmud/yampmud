@@ -31,6 +31,9 @@
 *       ROT license, in the file doc/rot.license                           * 
 ***************************************************************************/
 
+#include <stdbool.h>
+
+
 /*
  * Accommodate old non-Ansi compilers.
  */
@@ -51,25 +54,15 @@
  * Short scalar types.
  * Diavolo reports AIX compiler has bugs with short types.
  */
-#if	!defined(FALSE)
-#define FALSE	 0
-#endif
-
-#if	!defined(TRUE)
-#define TRUE	 1
-#endif
-
 #if	defined(_AIX)
 #if	!defined(const)
 #define const
 #endif
 typedef int int;
-typedef int bool;
 
 #define unix
 #else
 typedef int sh_int;
-typedef unsigned char bool;
 #endif
 
 #define WWW_WHO		"/doc/mud/public_html/who.html"
@@ -1588,7 +1581,7 @@ struct kill_data
 #define PLR2_CHALLENGED         (B)
 #define PLR2_CONSENT            (C)
 #define PLR2_WIPED              (D)
-#define PLR2_TRUE_TRUST         (E)
+#define PLR2_true_TRUST         (E)
 #define PLR2_MASS_ARENA         (F)
 #define PLR2_MASS_JOINER        (G)
 #define PLR2_BUSY               (H)
@@ -2263,8 +2256,8 @@ struct mprog_code
  * Utility macros.
  */
 #define IS_VALID(data)		((data) != NULL && (data)->valid)
-#define VALIDATE(data)		((data)->valid = TRUE)
-#define INVALIDATE(data)	((data)->valid = FALSE)
+#define VALIDATE(data)		((data)->valid = true)
+#define INVALIDATE(data)	((data)->valid = false)
 #define UMIN(a, b)		((a) < (b) ? (a) : (b))
 #define UMAX(a, b)		((a) > (b) ? (a) : (b))
 #define URANGE(a, b, c)		((b) < (a) ? (a) : ((b) > (c) ? (c) : (b)))

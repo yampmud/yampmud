@@ -69,7 +69,7 @@ CH_CMD ( do_finger )
 
     victim = new_char (  );
     victim->pcdata = new_pcdata (  );
-    fOld = FALSE;
+    fOld = false;
 //    sprintf ( buf, "gzip -dfq %s%s.gz", PLAYER_DIR, capitalize ( arg ) );
 //    system ( buf );
     sprintf ( buf, "%s%s", PLAYER_DIR, capitalize ( arg ) );
@@ -80,7 +80,7 @@ CH_CMD ( do_finger )
         for ( iNest = 0; iNest < MAX_NEST; iNest++ )
             rgObjNest[iNest] = NULL;
 
-        fOld = TRUE;
+        fOld = true;
         for ( ;; )
         {
             char letter;

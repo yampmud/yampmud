@@ -54,8 +54,8 @@ const struct clan_type clan_table[MAX_CLAN] = {
 	clan pit vnum,
 	independent,	pkill?		ext name
 
-independent should be FALSE if is a real clan
-pkill should be TRUE if pkilling is allowed
+independent should be false if is a real clan
+pkill should be true if pkilling is allowed
 
 !!!DO NOT erase the first clan, all non-clanned players are
    placed in this first entry!!!
@@ -64,107 +64,107 @@ pkill should be TRUE if pkilling is allowed
     {"", "{x[    {bN{BP{bK{W     {x] ",
      ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
      OBJ_VNUM_PIT,
-     TRUE, FALSE, "NPK"},
+     true, false, "NPK"},
 
     {"Loner", "    {rI{RP{rK{x     ",
      ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
      OBJ_VNUM_PIT,
-     TRUE, TRUE, "IPK"},
+     true, true, "IPK"},
 
     {"Sages", "{mT{Dw{wi{Wli{wg{Dh{mt{WS{ma{wg{We{x",
      70101, 70100,
      OBJ_VNUM_PIT,
-     FALSE, FALSE, "Sages of Twilight Grove"},
+     false, false, "Sages of Twilight Grove"},
 
     {"DoD", "{C  D{ce{Dc{Wei{Dv{ce{Cr  {x",
      70400, 70406,
      OBJ_VNUM_PIT,
-     FALSE, FALSE, "Disciples of Deception"},
+     false, false, "Disciples of Deception"},
 
     {"Void", "  {mN{bi{Dh{wil{Di{bs{mt  ",
      70700, 70750,
      OBJ_VNUM_PIT,
-     FALSE, TRUE, "Followers of the Void"},
+     false, true, "Followers of the Void"},
 
     {"Watch", " {RN{ri{Dg{wh{Wtw{wa{Dt{rc{Rh {x",
      70000, 70000,
      OBJ_VNUM_PIT,
-     FALSE, TRUE, "Gaalstrom Nightwatch"},
+     false, true, "Gaalstrom Nightwatch"},
 
     {"KoT", "   {YK{ye{we{ype{Yr{x   ",
      70300, 70300,
      OBJ_VNUM_PIT,
-     FALSE, TRUE, "Keepers of the Tain"},
+     false, true, "Keepers of the Tain"},
 
 /*    {"NStalker", "{WN{wi{Dght{WS{wt{Dalker{x",
      70015, 70015,
      OBJ_VNUM_PIT,
-     FALSE, TRUE, "NightStalkers"},
+     false, true, "NightStalkers"},
 
     {"HoS", " {MH{ma{Drb{win{Dge{mr{Ms{x ",
      70200, 70200,
      OBJ_VNUM_PIT,
-     FALSE, TRUE, "Harbingers of Skulls"},
+     false, true, "Harbingers of Skulls"},
 
     {"TCC", " {YC{ye{Yl{ye{Ys{yt{Yi{ya{Yl{ys{x ",
      70600, 70600,
      OBJ_VNUM_PIT,
-     FALSE, TRUE, "Celestial Chorus"}, */
+     false, true, "Celestial Chorus"}, */
 
     {"clan7", " none ",
      ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
      OBJ_VNUM_PIT,
-     FALSE, TRUE, "Unused"},
+     false, true, "Unused"},
 
     {"clan8", " none ",
      ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
      OBJ_VNUM_PIT,
-     FALSE, TRUE, "Unused"},
+     false, true, "Unused"},
 
     {"clan9", "  {rI{RP{rK{x   ",
      ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
      OBJ_VNUM_PIT,
-     TRUE, TRUE, "Unused"},
+     true, true, "Unused"},
 
     {"clan10", "  {rI{RP{rK{x   ",
      ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
      OBJ_VNUM_PIT,
-     TRUE, TRUE, "Unused"},
+     true, true, "Unused"},
 
     {"clan11", "  {rI{RP{rK{x   ",
      ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
      OBJ_VNUM_PIT,
-     TRUE, TRUE, "Unused"},
+     true, true, "Unused"},
 
     {"clan12", "  {rI{RP{rK{x   ",
      ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
      OBJ_VNUM_PIT,
-     TRUE, TRUE, "Unused"},
+     true, true, "Unused"},
 
     {"clan13", "  {rI{RP{rK{x   ",
      ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
      OBJ_VNUM_PIT,
-     TRUE, TRUE, "Unused"},
+     true, true, "Unused"},
 
     {"clan14", "  {rI{RP{rK{x   ",
      ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
      OBJ_VNUM_PIT,
-     TRUE, TRUE, "Unused"},
+     true, true, "Unused"},
 
     {"clan15", "  {rI{RP{rK{x   ",
      ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
      OBJ_VNUM_PIT,
-     TRUE, TRUE, "Unused"},
+     true, true, "Unused"},
 
     {"clan16", "  {rI{RP{rK{x   ",
      ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
      OBJ_VNUM_PIT,
-     TRUE, TRUE, "Unused"},
+     true, true, "Unused"},
 
     {"rot", "ROT",
      ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
      OBJ_VNUM_PIT,
-     TRUE, FALSE, "Unused"},
+     true, false, "Unused"},
 
 };
 
@@ -209,7 +209,7 @@ CH_CMD ( do_clead )
         sprintf ( buf, "You are no longer leader of clan %s.\n\r",
                   capitalize ( clan_table[victim->clan].name ) );
         send_to_char ( buf, victim );
-        update_clanlist ( victim, victim->clan, FALSE, TRUE );
+        update_clanlist ( victim, victim->clan, false, true );
         victim->clead = 0;
         victim->clan_rank = 1;
     }
@@ -221,7 +221,7 @@ CH_CMD ( do_clead )
         sprintf ( buf, "You are now leader of clan %s.\n\r",
                   capitalize ( clan_table[victim->clan].name ) );
         send_to_char ( buf, victim );
-        update_clanlist ( victim, victim->clan, TRUE, TRUE );
+        update_clanlist ( victim, victim->clan, true, true );
         victim->clan_rank = 10;
         victim->clead = victim->clan;
     }
@@ -254,9 +254,9 @@ CH_CMD ( do_guild )
         send_to_char ( "They are now clanless.\n\r", ch );
         send_to_char ( "You are now a member of no clan!\n\r", victim );
         if ( is_clead ( victim ) )
-            update_clanlist ( victim, victim->clead, FALSE, TRUE );
+            update_clanlist ( victim, victim->clead, false, true );
         if ( is_clan ( victim ) )
-            update_clanlist ( victim, victim->clan, FALSE, FALSE );
+            update_clanlist ( victim, victim->clan, false, false );
         victim->clan_rank = 0;
         victim->clead = 0;
         victim->clan = 0;
@@ -294,17 +294,17 @@ CH_CMD ( do_guild )
 
     if ( is_clead ( victim ) )
     {
-        update_clanlist ( victim, victim->clead, FALSE, TRUE );
+        update_clanlist ( victim, victim->clead, false, true );
         victim->clead = 0;
         victim->clan_rank = 10;
     }
     if ( is_clan ( victim ) )
     {
-        update_clanlist ( victim, victim->clan, FALSE, FALSE );
+        update_clanlist ( victim, victim->clan, false, false );
         victim->clan = 0;
         victim->clan_rank = 0;
     }
-    update_clanlist ( victim, clan, TRUE, FALSE );
+    update_clanlist ( victim, clan, true, false );
     victim->clan = clan;
     victim->clan_rank = 1;
 }
@@ -337,7 +337,7 @@ CH_CMD ( do_member )
                       clan_table[ch->invited].who_name );
             send_to_char ( buf, ch );
             ch->clan = ch->invited;
-            update_clanlist ( ch, ch->invited, TRUE, FALSE );
+            update_clanlist ( ch, ch->invited, true, false );
             ch->invited = 0;
             ch->clan_rank = 1;
             return;
@@ -426,7 +426,7 @@ CH_CMD ( do_member )
             victim->clan = 0;
         }
         victim->clan_rank = 0;
-        update_clanlist ( victim, victim->clan, FALSE, FALSE );
+        update_clanlist ( victim, victim->clan, false, false );
         return;
     }
     if ( victim->invited )
@@ -508,7 +508,7 @@ CH_CMD ( do_cgossip )
         {
             CHAR_DATA *victim;
             int pos;
-            bool found = FALSE;
+            bool found = false;
 
             victim = d->original ? d->original : d->character;
 
@@ -523,7 +523,7 @@ CH_CMD ( do_cgossip )
                     if ( victim->pcdata->forget[pos] == NULL )
                         break;
                     if ( !str_cmp ( ch->name, victim->pcdata->forget[pos] ) )
-                        found = TRUE;
+                        found = true;
                 }
                 if ( !found )
                 {
@@ -592,7 +592,7 @@ CH_CMD ( do_clantalk )
     for ( d = descriptor_list; d != NULL; d = d->next )
     {
         int pos;
-        bool found = FALSE;
+        bool found = false;
 
         if ( d->connected == CON_PLAYING && d->character != ch &&
              ( is_same_clan ( ch, d->character ) ||
@@ -606,7 +606,7 @@ CH_CMD ( do_clantalk )
                 if ( d->character->pcdata->forget[pos] == NULL )
                     break;
                 if ( !str_cmp ( ch->name, d->character->pcdata->forget[pos] ) )
-                    found = TRUE;
+                    found = true;
             }
             if ( !found )
             {
@@ -703,9 +703,9 @@ CH_CMD ( do_noclan )
     {
         SET_BIT ( victim->act, PLR_NOCLAN );
         if ( is_clead ( victim ) )
-            update_clanlist ( victim, victim->clead, FALSE, TRUE );
+            update_clanlist ( victim, victim->clead, false, true );
         if ( is_clan ( victim ) )
-            update_clanlist ( victim, victim->clan, FALSE, FALSE );
+            update_clanlist ( victim, victim->clan, false, false );
         victim->clan = 0;
         victim->clead = 0;
         send_to_char ( "NOCLAN set.\n\r", ch );
@@ -735,12 +735,12 @@ void save_clanlist ( int clannum )
     {
         perror ( buf );
     }
-    found = FALSE;
+    found = false;
     for ( pcln = cln_list; pcln != NULL; pcln = pcln->next )
     {
         if ( pcln->clan == clannum )
         {
-            found = TRUE;
+            found = true;
             if ( sizeof ( pcln->members ) < 1 )
                 return;
 
@@ -897,8 +897,8 @@ CH_CMD ( do_clanwho )
     int iClan;
     int nNumber;
     int nMatch;
-    bool fClan = FALSE;
-    bool fClanRestrict = FALSE;
+    bool fClan = false;
+    bool fClanRestrict = false;
     bool rgfClan[MAX_CLAN];
 
     if ( !is_clan ( ch ) )
@@ -908,13 +908,13 @@ CH_CMD ( do_clanwho )
     }
 
     nNumber = 0;
-    fClan = TRUE;
+    fClan = true;
     iClan = clan_lookup ( clan_table[ch->clan].name );
     if ( iClan )
     {
 
-        fClanRestrict = TRUE;
-        rgfClan[iClan] = TRUE;
+        fClanRestrict = true;
+        rgfClan[iClan] = true;
     }
 
     /* 

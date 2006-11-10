@@ -104,10 +104,10 @@ void get_summon_type ( CHAR_DATA * ch, char *argument, int sn )
     bool group_found;
     
     // Nice fresh slate before we start.
-    found =			FALSE;
-    corpse_found =		FALSE;
-    is_bone =			FALSE;
-    group_found =		FALSE;
+    found =			false;
+    corpse_found =		false;
+    is_bone =			false;
+    group_found =		false;
     i =				0;
     vnum =			0;
     summon_id =			0;
@@ -156,7 +156,7 @@ void get_summon_type ( CHAR_DATA * ch, char *argument, int sn )
              !str_cmp ( summon_table[i].type, spell_name ) ) // Correct summon type?
         {
             if ( strlen ( arg2 ) > 1 )
-            found = TRUE; // WE GOT ONE!!!
+            found = true; // WE GOT ONE!!!
                           // *Hand slams on button*
                           // *Fire alarm goes off*
 
@@ -233,7 +233,7 @@ void get_summon_type ( CHAR_DATA * ch, char *argument, int sn )
            send_to_char ( "You can not summon a bone barrier in a safe room.\n\r", ch );
            return;
        }
-       is_bone = TRUE;
+       is_bone = true;
     }
 
     if ( !str_cmp ( skill_table[sn].name, "resurrect" ) )
@@ -256,12 +256,12 @@ void get_summon_type ( CHAR_DATA * ch, char *argument, int sn )
             if ( corpse->item_type == ITEM_CORPSE_NPC ||
                  corpse->item_type == ITEM_CORPSE_PC )
             {
-                corpse_found = TRUE; // This should do just fine            
+                corpse_found = true; // This should do just fine            
             }
             else
             {
                 send_to_char ( "Only corpses can be resurrected.\n\r", ch );
-                corpse_found = FALSE;
+                corpse_found = false;
                 return;
             }
 

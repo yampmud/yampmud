@@ -138,7 +138,7 @@ void acid_effect ( void *vo, int level, int dam, int target )
         if ( obj->item_type == ITEM_ARMOR ) /* etch it */
         {
             AFFECT_DATA *paf;
-            bool af_found = FALSE;
+            bool af_found = false;
             int i;
 
             affect_enchant ( obj );
@@ -147,7 +147,7 @@ void acid_effect ( void *vo, int level, int dam, int target )
             {
                 if ( paf->location == APPLY_AC )
                 {
-                    af_found = TRUE;
+                    af_found = true;
                     paf->type = -1;
                     paf->modifier += 1;
                     paf->level = UMAX ( paf->level, level );

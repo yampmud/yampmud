@@ -206,7 +206,7 @@ bool saves_spell ( int level, CHAR_DATA * victim, int dam_type )
     switch ( check_immune ( victim, dam_type ) )
     {
         case IS_IMMUNE:
-            return TRUE;
+            return true;
         case IS_RESISTANT:
             save += 5;
             break;
@@ -228,7 +228,7 @@ bool saves_dispel ( int dis_level, int spell_level, int duration )
     int save;
 
     if ( duration == -1 )
-        return TRUE;
+        return true;
 //        spell_level += 5;
 // No, we dont want perm effects dispelled.
     /* very hard to dispel permanent effects */
@@ -261,14 +261,14 @@ bool check_dispel ( int dis_level, CHAR_DATA * victim, int sn )
                             send_to_char ( "\n\r", victim );
                         }
                     }
-                    return TRUE;
+                    return true;
                 }
                 else
                     af->level--;
             }
         }
     }
-    return FALSE;
+    return false;
 }
 
 /* for finding mana costs -- temporary version */
@@ -330,7 +330,7 @@ CH_CMD ( do_cast )
         return;
     }
 
-    found = FALSE;
+    found = false;
     if ( ( sn = find_spell ( ch, arg1 ) ) > 0 ) 
     for ( i = 0; i < 5; i++ )
     {
@@ -338,7 +338,7 @@ CH_CMD ( do_cast )
             break;
         if ( !str_cmp ( pc_race_table[ch->race].skills[i],
                         skill_table[sn].name ) )
-            found = TRUE;
+            found = true;
     } 
     else
     {
@@ -519,7 +519,7 @@ CH_CMD ( do_cast )
 
             if ( target == TARGET_CHAR )    /* check the sanity of the attack */
             {
-                if ( is_safe_spell ( ch, victim, FALSE ) && victim != ch )
+                if ( is_safe_spell ( ch, victim, false ) && victim != ch )
                 {
                     send_to_char ( "Not on that target.\n\r", ch );
                     return;
@@ -658,7 +658,7 @@ CH_CMD ( do_cast )
             if ( !can_drop_obj ( ch, obj ) || IS_OBJ_STAT ( obj, ITEM_QUEST ) )
             {
                 send_to_char ( "It seems happy where it is.\n\r", ch );
-                check_improve ( ch, sn, FALSE, 1 );
+                check_improve ( ch, sn, false, 1 );
                 ch->mana -= mana / 3;
                 return;
             }
@@ -666,7 +666,7 @@ CH_CMD ( do_cast )
                  ( ch->level <= HERO ) )
             {
                 send_to_char ( "You can't transport voodoo dolls.\n\r", ch );
-                check_improve ( ch, sn, FALSE, 1 );
+                check_improve ( ch, sn, false, 1 );
                 ch->mana -= mana / 3;
                 return;
             }
@@ -674,7 +674,7 @@ CH_CMD ( do_cast )
             if ( number_percent (  ) > get_skill ( ch, sn ) )
             {
                 send_to_char ( "You lost your concentration.\n\r", ch );
-                check_improve ( ch, sn, FALSE, 1 );
+                check_improve ( ch, sn, false, 1 );
                 ch->mana -= mana / 2;
             }
             else
@@ -687,7 +687,7 @@ CH_CMD ( do_cast )
                 act ( "$p suddenly appears in your inventory.", ch, obj, victim,
                       TO_VICT );
                 act ( "$p glows {Ggreen{x, then disappears from $n's inventory.", ch, obj, victim, TO_NOTVICT );
-                check_improve ( ch, sn, TRUE, 1 );
+                check_improve ( ch, sn, true, 1 );
                 if ( IS_OBJ_STAT ( obj, ITEM_FORCED ) &&
                      ( victim->level <= HERO ) )
                 {
@@ -713,7 +713,7 @@ CH_CMD ( do_cast )
     if ( number_percent (  ) > get_skill ( ch, sn ) )
     {
         send_to_char ( "You lost your concentration.\n\r", ch );
-        check_improve ( ch, sn, FALSE, 1 );
+        check_improve ( ch, sn, false, 1 );
         ch->mana -= mana / 2;
     }
     else
@@ -725,7 +725,7 @@ CH_CMD ( do_cast )
         else
             ( *skill_table[sn].spell_fun ) ( sn, 3 * ch->level / 4, ch, vo,
                                              target );
-        check_improve ( ch, sn, TRUE, 1 );
+        check_improve ( ch, sn, true, 1 );
     }
 
     if ( ( skill_table[sn].target == TAR_CHAR_OFFENSIVE ||
@@ -830,7 +830,7 @@ void obj_cast_spell ( int sn, int level, CHAR_DATA * ch, CHAR_DATA * victim,
             }
             if ( victim != NULL )
             {
-                if ( is_safe_spell ( ch, victim, FALSE ) && ch != victim )
+                if ( is_safe_spell ( ch, victim, false ) && ch != victim )
                 {
                     send_to_char ( "Somehting isn't right...\n\r", ch );
                     return;
@@ -908,8 +908,8 @@ MAGIC ( spell_acid_blast )
 
     if ( victim->in_room == ch->in_room )
     {
-        damage ( ch, victim, adam, sn, DAM_ACID, TRUE );
-        damage ( ch, victim, edam, sn, DAM_ENERGY, TRUE );
+        damage ( ch, victim, adam, sn, DAM_ACID, true );
+        damage ( ch, victim, edam, sn, DAM_ENERGY, true );
     }
     return;
 }
@@ -1055,14 +1055,14 @@ MAGIC ( spell_burning_hands )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
 
     dam = number_range ( ( 15 + level ) / 3, 12 );
     if ( saves_spell ( level, victim, DAM_FIRE ) )
         dam /= 1.5;
-    damage_old ( ch, victim, dam, sn, DAM_FIRE, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_FIRE, true );
     return;
 }
 
@@ -1103,13 +1103,13 @@ MAGIC ( spell_call_lightning )
                 if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
                      ( !IS_NPC ( vch ) ) )
                 {
-                    ch->attacker = TRUE;
-                    vch->attacker = FALSE;
+                    ch->attacker = true;
+                    vch->attacker = false;
                 }
                 damage_old ( ch, vch,
                              saves_spell ( level, vch,
                                            DAM_LIGHTNING ) ? dam / 2 : dam, sn,
-                             DAM_LIGHTNING, TRUE );
+                             DAM_LIGHTNING, true );
             }
             continue;
         }
@@ -1170,7 +1170,7 @@ MAGIC ( spell_calm )
             send_to_char ( "A wave of calm passes over you.\n\r", vch );
 
             if ( vch->fighting || vch->position == POS_FIGHTING )
-                stop_fighting ( vch, FALSE );
+                stop_fighting ( vch, false );
 
             af.where = TO_AFFECTS;
             af.type = sn;
@@ -1194,7 +1194,7 @@ MAGIC ( spell_calm )
 MAGIC ( spell_cancellation )
 {
     CHAR_DATA *victim = ( CHAR_DATA * ) vo;
-    bool found = FALSE;
+    bool found = false;
 
     if ( IS_SET ( ch->in_room->room_flags, ROOM_ARENA ) )
     {
@@ -1223,168 +1223,168 @@ MAGIC ( spell_cancellation )
     /* begin running through the spells */
 
     if ( check_dispel ( level, victim, skill_lookup ( "silence" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "armor" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "bless" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "blindness" ) ) )
     {
-        found = TRUE;
+        found = true;
         act ( "$n is no longer blinded.", victim, NULL, NULL, TO_ROOM );
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "calm" ) ) )
     {
-        found = TRUE;
+        found = true;
         act ( "$n no longer looks so peaceful...", victim, NULL, NULL,
               TO_ROOM );
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "change sex" ) ) )
     {
-        found = TRUE;
+        found = true;
         act ( "$n looks more like $mself again.", victim, NULL, NULL, TO_ROOM );
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "charm person" ) ) )
     {
-        found = TRUE;
+        found = true;
         act ( "$n regains $s free will.", victim, NULL, NULL, TO_ROOM );
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "chill touch" ) ) )
     {
-        found = TRUE;
+        found = true;
         act ( "$n looks warmer.", victim, NULL, NULL, TO_ROOM );
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "curse" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "mana shield" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "lifeforce" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "detect evil" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "detect good" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "detect hidden" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "detect invis" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "detect hidden" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "detect magic" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "faerie fire" ) ) )
     {
         act ( "$n's outline fades.", victim, NULL, NULL, TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "fly" ) ) )
     {
         act ( "$n falls to the ground!", victim, NULL, NULL, TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "frenzy" ) ) )
     {
         act ( "$n no longer looks so wild.", victim, NULL, NULL, TO_ROOM );;
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "giant strength" ) ) )
     {
         act ( "$n no longer looks so mighty.", victim, NULL, NULL, TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "haste" ) ) )
     {
         act ( "$n is no longer moving so quickly.", victim, NULL, NULL,
               TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "infravision" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "invis" ) ) )
     {
         act ( "$n fades into existance.", victim, NULL, NULL, TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "mass invis" ) ) )
     {
         act ( "$n fades into existance.", victim, NULL, NULL, TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "pass door" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "protection evil" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "protection good" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "sanctuary" ) ) )
     {
         act ( "The white aura around $n's body vanishes.", victim, NULL, NULL,
               TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "shield" ) ) )
     {
         act ( "The shield protecting $n vanishes.", victim, NULL, NULL,
               TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "sleep" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "slow" ) ) )
     {
         act ( "$n is no longer moving so slowly.", victim, NULL, NULL,
               TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "stone skin" ) ) )
     {
         act ( "$n's skin regains its normal texture.", victim, NULL, NULL,
               TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "weaken" ) ) )
     {
         act ( "$n looks stronger.", victim, NULL, NULL, TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "terror" ) ) )
     {
         act ( "$n is no longer so afraid.", victim, NULL, NULL, TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( found )
@@ -1400,10 +1400,10 @@ MAGIC ( spell_cause_light )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
-    damage_old ( ch, victim, dice ( 50, 15 ) + level, sn, DAM_HARM, TRUE );
+    damage_old ( ch, victim, dice ( 50, 15 ) + level, sn, DAM_HARM, true );
     return;
 }
 
@@ -1414,10 +1414,10 @@ MAGIC ( spell_cause_critical )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
-    damage_old ( ch, victim, dice ( 80, 25 ) + level, sn, DAM_HARM, TRUE );
+    damage_old ( ch, victim, dice ( 80, 25 ) + level, sn, DAM_HARM, true );
     return;
 }
 
@@ -1428,10 +1428,10 @@ MAGIC ( spell_cause_serious )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
-    damage_old ( ch, victim, dice ( 160, 50 ) + level, sn, DAM_HARM, TRUE );
+    damage_old ( ch, victim, dice ( 160, 50 ) + level, sn, DAM_HARM, true );
     return;
 }
 
@@ -1454,35 +1454,35 @@ MAGIC ( spell_chain_lightning )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
     dam = dice ( level, 30 );
     if ( saves_spell ( level, victim, DAM_LIGHTNING ) )
         dam /= 3;
-    damage_old ( ch, victim, dam, sn, DAM_LIGHTNING, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_LIGHTNING, true );
     last_vict = victim;
     level -= 4;                 /* decrement damage */
 
     /* new targets */
     while ( level > 0 )
     {
-        found = FALSE;
+        found = false;
         for ( tmp_vict = ch->in_room->people; tmp_vict != NULL;
               tmp_vict = next_vict )
         {
             next_vict = tmp_vict->next_in_room;
-            if ( !is_safe_spell ( ch, tmp_vict, TRUE ) &&
+            if ( !is_safe_spell ( ch, tmp_vict, true ) &&
                  tmp_vict != last_vict )
             {
-                found = TRUE;
+                found = true;
                 last_vict = tmp_vict;
                 act ( "The bolt arcs to $n!", tmp_vict, NULL, NULL, TO_ROOM );
                 act ( "The bolt hits you!", tmp_vict, NULL, NULL, TO_CHAR );
                 dam = dice ( level, 25 );
                 if ( saves_spell ( level, tmp_vict, DAM_LIGHTNING ) )
                     dam /= 3;
-                damage_old ( ch, tmp_vict, dam, sn, DAM_LIGHTNING, TRUE );
+                damage_old ( ch, tmp_vict, dam, sn, DAM_LIGHTNING, true );
                 level -= 4;     /* decrement damage */
             }
         }                       /* end target searching loop */
@@ -1507,7 +1507,7 @@ MAGIC ( spell_chain_lightning )
             dam = dice ( level, 15 );
             if ( saves_spell ( level, ch, DAM_LIGHTNING ) )
                 dam /= 3;
-            damage_old ( ch, ch, dam, sn, DAM_LIGHTNING, TRUE );
+            damage_old ( ch, ch, dam, sn, DAM_LIGHTNING, true );
             level -= 4;         /* decrement damage */
 
             if ( ch == NULL )
@@ -1646,11 +1646,11 @@ MAGIC ( spell_chill_touch )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
 
-    damage_old ( ch, victim, dam, sn, DAM_COLD, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_COLD, true );
     return;
 }
 
@@ -1662,8 +1662,8 @@ MAGIC ( spell_colour_spray )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
     dam = dice ( level * 5, 5 );
     stun = ( ch->level / 7 ) + ( get_curr_stat ( ch, STAT_DEX ) - get_curr_stat ( victim, STAT_WIS ) );
@@ -1675,7 +1675,7 @@ MAGIC ( spell_colour_spray )
         act ( "$n is mesmerized by the swirling colors.\n\r", victim, NULL, victim, TO_ROOM );
         victim->stunned = 2;
     }
-    damage_old ( ch, victim, dam, sn, DAM_LIGHT, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_LIGHT, true );
     return;
 }
 
@@ -2041,8 +2041,8 @@ MAGIC ( spell_demonfire )
     if ( dam < 0 )
         dam /= 5;
 
-    damage_old ( ch, victim, dam, sn, DAM_NEGATIVE, TRUE );
-    damage_old ( ch, victim, dam, sn, DAM_FIRE, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_NEGATIVE, true );
+    damage_old ( ch, victim, dam, sn, DAM_FIRE, true );
     spell_curse ( gsn_curse, 3 * level / 4, ch, ( void * ) victim, TARGET_CHAR );
     return;
 }
@@ -2078,8 +2078,8 @@ MAGIC ( spell_angeldust )
     if ( dam < 0 )
         dam /= 5;
 
-    damage_old ( ch, victim, dam, sn, DAM_HOLY, TRUE );
-    damage_old ( ch, victim, dam, sn, DAM_EARTH, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_HOLY, true );
+    damage_old ( ch, victim, dam, sn, DAM_EARTH, true );
     spell_curse ( gsn_curse, 3 * level / 4, ch, ( void * ) victim, TARGET_CHAR );
     return;
 }
@@ -2273,10 +2273,10 @@ MAGIC ( spell_dispel_evil )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
-    damage_old ( ch, victim, dam, sn, DAM_HOLY, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_HOLY, true );
     return;
 }
 
@@ -2311,10 +2311,10 @@ MAGIC ( spell_dispel_good )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
-    damage_old ( ch, victim, dam, sn, DAM_NEGATIVE, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_NEGATIVE, true );
     return;
 }
 
@@ -2323,7 +2323,7 @@ MAGIC ( spell_dispel_good )
 MAGIC ( spell_dispel_magic )
 {
     CHAR_DATA *victim = ( CHAR_DATA * ) vo;
-    bool found = FALSE;
+    bool found = false;
 
     if ( saves_spell ( level, victim, DAM_OTHER ) )
     {
@@ -2335,135 +2335,135 @@ MAGIC ( spell_dispel_magic )
     /* begin running through the spells */
 
     if ( check_dispel ( level, victim, skill_lookup ( "silence" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "armor" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "bless" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "blindness" ) ) )
     {
-        found = TRUE;
+        found = true;
         act ( "$n is no longer blinded.", victim, NULL, NULL, TO_ROOM );
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "calm" ) ) )
     {
-        found = TRUE;
+        found = true;
         act ( "$n no longer looks so peaceful...", victim, NULL, NULL,
               TO_ROOM );
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "change sex" ) ) )
     {
-        found = TRUE;
+        found = true;
         act ( "$n looks more like $mself again.", victim, NULL, NULL, TO_ROOM );
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "charm person" ) ) )
     {
-        found = TRUE;
+        found = true;
         act ( "$n regains $s free will.", victim, NULL, NULL, TO_ROOM );
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "chill touch" ) ) )
     {
-        found = TRUE;
+        found = true;
         act ( "$n looks warmer.", victim, NULL, NULL, TO_ROOM );
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "curse" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "detect evil" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "detect good" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "detect hidden" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "detect invis" ) ) )
-        found = TRUE;
+        found = true;
 
-    found = TRUE;
+    found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "detect hidden" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "detect magic" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "faerie fire" ) ) )
     {
         act ( "$n's outline fades.", victim, NULL, NULL, TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "fly" ) ) )
     {
         act ( "$n falls to the ground!", victim, NULL, NULL, TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "frenzy" ) ) )
     {
         act ( "$n no longer looks so wild.", victim, NULL, NULL, TO_ROOM );;
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "giant strength" ) ) )
     {
         act ( "$n no longer looks so mighty.", victim, NULL, NULL, TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "haste" ) ) )
     {
         act ( "$n is no longer moving so quickly.", victim, NULL, NULL,
               TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "infravision" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "invis" ) ) )
     {
         act ( "$n fades into existance.", victim, NULL, NULL, TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "mass invis" ) ) )
     {
         act ( "$n fades into existance.", victim, NULL, NULL, TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "pass door" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "protection evil" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "protection good" ) ) )
-        found = TRUE;
+        found = true;
 
 /*  There's another sanc check (as SHD) below.
     if ( check_dispel ( level, victim, skill_lookup ( "sanctuary" ) ) )
     {
         act ( "The white aura around $n's body vanishes.", victim, NULL, NULL,
               TO_ROOM );
-        found = TRUE;
+        found = true;
     } */
 
     if ( check_dispel ( level, victim, skill_lookup ( "terror" ) ) )
     {
         act ( "$n is no longer so afraid.", victim, NULL, NULL, TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( IS_SHIELDED ( victim, SHD_SANCTUARY ) &&
@@ -2473,37 +2473,37 @@ MAGIC ( spell_dispel_magic )
         REMOVE_BIT ( victim->shielded_by, SHD_SANCTUARY );
         act ( "The white aura around $n's body vanishes.", victim, NULL, NULL,
               TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "shield" ) ) )
     {
         act ( "The shield protecting $n vanishes.", victim, NULL, NULL,
               TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "sleep" ) ) )
-        found = TRUE;
+        found = true;
 
     if ( check_dispel ( level, victim, skill_lookup ( "slow" ) ) )
     {
         act ( "$n is no longer moving so slowly.", victim, NULL, NULL,
               TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "stone skin" ) ) )
     {
         act ( "$n's skin regains its normal texture.", victim, NULL, NULL,
               TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( check_dispel ( level, victim, skill_lookup ( "weaken" ) ) )
     {
         act ( "$n looks stronger.", victim, NULL, NULL, TO_ROOM );
-        found = TRUE;
+        found = true;
     }
 
     if ( found )
@@ -2528,15 +2528,15 @@ MAGIC ( spell_earthquake )
             continue;
         if ( vch->in_room == ch->in_room )
         {
-            if ( vch != ch && !is_safe_spell ( ch, vch, TRUE ) && !IS_AFFECTED ( vch, AFF_FLYING ) )
+            if ( vch != ch && !is_safe_spell ( ch, vch, true ) && !IS_AFFECTED ( vch, AFF_FLYING ) )
             {
                 if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
                      ( !IS_NPC ( vch ) ) )
                 {
-                    ch->attacker = TRUE;
-                    vch->attacker = FALSE;
+                    ch->attacker = true;
+                    vch->attacker = false;
                 }
-                damage_old ( ch, vch, level + dice ( level + 2, 5 ), sn, DAM_EARTH, TRUE );
+                damage_old ( ch, vch, level + dice ( level + 2, 5 ), sn, DAM_EARTH, true );
             }
             continue;
         }
@@ -2554,7 +2554,7 @@ MAGIC ( spell_enchant_armor )
     AFFECT_DATA *paf;
     int result, fail;
     int ac_bonus, added;
-    bool ac_found = FALSE;
+    bool ac_found = false;
 
     if ( obj->item_type != ITEM_ARMOR )
     {
@@ -2586,7 +2586,7 @@ MAGIC ( spell_enchant_armor )
             if ( paf->location == APPLY_AC )
             {
                 ac_bonus = paf->modifier;
-                ac_found = TRUE;
+                ac_found = true;
                 fail += 5 * ( ac_bonus * ac_bonus );
             }
 
@@ -2599,7 +2599,7 @@ MAGIC ( spell_enchant_armor )
         if ( paf->location == APPLY_AC )
         {
             ac_bonus = paf->modifier;
-            ac_found = TRUE;
+            ac_found = true;
             fail += 5 * ( ac_bonus * ac_bonus );
         }
 
@@ -2636,7 +2636,7 @@ MAGIC ( spell_enchant_armor )
 
         act ( "$p glows brightly, then fades...oops.", ch, obj, NULL, TO_CHAR );
         act ( "$p glows brightly, then fades.", ch, obj, NULL, TO_ROOM );
-        obj->enchanted = TRUE;
+        obj->enchanted = true;
 
         /* remove all affects */
         for ( paf = obj->affected; paf != NULL; paf = paf_next )
@@ -2662,7 +2662,7 @@ MAGIC ( spell_enchant_armor )
     {
         AFFECT_DATA *af_new;
 
-        obj->enchanted = TRUE;
+        obj->enchanted = true;
 
         for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
         {
@@ -2738,7 +2738,7 @@ MAGIC ( spell_enchant_weapon )
     AFFECT_DATA *paf;
     int result, fail;
     int hit_bonus, dam_bonus, added;
-    bool hit_found = FALSE, dam_found = FALSE;
+    bool hit_found = false, dam_found = false;
 
     if ( obj->item_type != ITEM_WEAPON )
     {
@@ -2771,14 +2771,14 @@ MAGIC ( spell_enchant_weapon )
             if ( paf->location == APPLY_HITROLL )
             {
                 hit_bonus = paf->modifier;
-                hit_found = TRUE;
+                hit_found = true;
                 fail += 2 * ( hit_bonus * hit_bonus );
             }
 
             else if ( paf->location == APPLY_DAMROLL )
             {
                 dam_bonus = paf->modifier;
-                dam_found = TRUE;
+                dam_found = true;
                 fail += 2 * ( dam_bonus * dam_bonus );
             }
 
@@ -2791,14 +2791,14 @@ MAGIC ( spell_enchant_weapon )
         if ( paf->location == APPLY_HITROLL )
         {
             hit_bonus = paf->modifier;
-            hit_found = TRUE;
+            hit_found = true;
             fail += 2 * ( hit_bonus * hit_bonus );
         }
 
         else if ( paf->location == APPLY_DAMROLL )
         {
             dam_bonus = paf->modifier;
-            dam_found = TRUE;
+            dam_found = true;
             fail += 2 * ( dam_bonus * dam_bonus );
         }
 
@@ -2833,7 +2833,7 @@ MAGIC ( spell_enchant_weapon )
 
         act ( "$p glows brightly, then fades...oops.", ch, obj, NULL, TO_CHAR );
         act ( "$p glows brightly, then fades.", ch, obj, NULL, TO_ROOM );
-        obj->enchanted = TRUE;
+        obj->enchanted = true;
 
         /* remove all affects */
         for ( paf = obj->affected; paf != NULL; paf = paf_next )
@@ -2859,7 +2859,7 @@ MAGIC ( spell_enchant_weapon )
     {
         AFFECT_DATA *af_new;
 
-        obj->enchanted = TRUE;
+        obj->enchanted = true;
 
         for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
         {
@@ -2997,13 +2997,13 @@ MAGIC ( spell_energy_drain )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
 
     send_to_char ( "You feel your life slipping away!\n\r", victim );
     send_to_char ( "Wow....what a rush!\n\r", ch );
-    damage_old ( ch, victim, dam, sn, DAM_NEGATIVE, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_NEGATIVE, true );
 
     return;
 }
@@ -3020,10 +3020,10 @@ MAGIC ( spell_fireball )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
-    damage_old ( ch, victim, dam, sn, DAM_FIRE, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_FIRE, true );
     fire_effect ( victim, level, dam, TARGET_CHAR );
     return;
 }
@@ -3061,15 +3061,15 @@ MAGIC ( spell_flamestrike )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
 
     dam = dice ( ( 13 + level ) / 4, 15 );
     if ( saves_spell ( level, victim, DAM_FIRE ) && saves_spell ( level, victim, DAM_HOLY ) )
         dam /= 1.5;
-    damage_old ( ch, victim, dam + dice ( 3, 5 ), sn, DAM_FIRE, TRUE );
-    damage_old ( ch, victim, dam, sn, DAM_HOLY, TRUE );
+    damage_old ( ch, victim, dam + dice ( 3, 5 ), sn, DAM_FIRE, true );
+    damage_old ( ch, victim, dam, sn, DAM_HOLY, true );
     return;
 }
 
@@ -3140,7 +3140,7 @@ MAGIC ( spell_floating_disc )
     act ( "$n has created a floating black disc.", ch, NULL, NULL, TO_ROOM );
     send_to_char ( "You create a floating disc.\n\r", ch );
     obj_to_char ( disc, ch );
-    wear_obj ( ch, disc, TRUE, FALSE );
+    wear_obj ( ch, disc, true, false );
     return;
 }
 
@@ -3266,9 +3266,9 @@ MAGIC ( spell_gate )
     }
 
     if ( ch->pet != NULL && ch->in_room == ch->pet->in_room )
-        gate_pet = TRUE;
+        gate_pet = true;
     else
-        gate_pet = FALSE;
+        gate_pet = false;
 
     act ( "$n steps through a gate and vanishes.", ch, NULL, NULL, TO_ROOM );
     send_to_char ( "You step through a gate and vanish.\n\r", ch );
@@ -3326,10 +3326,10 @@ MAGIC ( spell_harm )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
-    damage_old ( ch, victim, dice ( 222, 78 ) + level, sn, DAM_HARM, TRUE );
+    damage_old ( ch, victim, dice ( 222, 78 ) + level, sn, DAM_HARM, true );
     return;
 }
 
@@ -3342,16 +3342,16 @@ MAGIC ( spell_divinewrath )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
 
     dam = ( number_range ( 800, 2500 ) * 8 );
     if ( saves_spell ( level, victim, DAM_HOLY ) )
         dam /= 1.5;
 
-    damage_old ( ch, victim, dam, sn, DAM_HOLY, TRUE );
-    damage_old ( ch, victim, dam, sn, DAM_LIGHT, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_HOLY, true );
+    damage_old ( ch, victim, dam, sn, DAM_LIGHT, true );
 
     if ( number_range ( 1, 100 ) >= 98 )
     {
@@ -3466,7 +3466,7 @@ MAGIC ( spell_heat_metal )
     CHAR_DATA *victim = ( CHAR_DATA * ) vo;
     OBJ_DATA *obj_lose, *obj_next;
     int dam;
-    bool fail = TRUE;
+    bool fail = true;
 
     dam = number_range ( ch->level, ch->level * 5 );
     if ( !saves_spell ( level + 2, victim, DAM_FIRE ) &&
@@ -3488,7 +3488,7 @@ MAGIC ( spell_heat_metal )
                         {
                             if ( can_drop_obj ( victim, obj_lose ) &&
                                  ( obj_lose->weight / 10 ) < number_range ( 1, 2 * get_curr_stat ( victim, STAT_DEX ) )
-                                 && remove_obj ( victim, obj_lose->wear_loc, TRUE, FALSE ) )
+                                 && remove_obj ( victim, obj_lose->wear_loc, true, false ) )
                             {
                                 act ( "$n yelps and throws $p to the ground!",
                                       victim, obj_lose, NULL, TO_ROOM );
@@ -3496,13 +3496,13 @@ MAGIC ( spell_heat_metal )
                                 dam += ( number_range ( 1, obj_lose->level ) / 3 );
                                 obj_from_char ( obj_lose );
                                 obj_to_room ( obj_lose, victim->in_room );
-                                fail = FALSE;
+                                fail = false;
                             }
                             else    /* stuck on the body! ouch! */
                             {
                                 act ( "Your skin is seared by $p!", victim, obj_lose, NULL, TO_CHAR );
                                 dam += ( number_range ( 1, obj_lose->level ) );
-                                fail = FALSE;
+                                fail = false;
                             }
 
                         }
@@ -3515,13 +3515,13 @@ MAGIC ( spell_heat_metal )
                                 dam += ( number_range ( 1, obj_lose->level ) / 6 );
                                 obj_from_char ( obj_lose );
                                 obj_to_room ( obj_lose, victim->in_room );
-                                fail = FALSE;
+                                fail = false;
                             }
                             else    /* cannot drop */
                             {
                                 act ( "Your skin is seared by $p!", victim, obj_lose, NULL, TO_CHAR );
                                 dam += ( number_range ( 1, obj_lose->level ) / 2 );
-                                fail = FALSE;
+                                fail = false;
                             }
                         }
                         break;
@@ -3532,21 +3532,21 @@ MAGIC ( spell_heat_metal )
                                 continue;
 
                             if ( can_drop_obj ( victim, obj_lose ) &&
-                                 remove_obj ( victim, obj_lose->wear_loc, TRUE, FALSE ) )
+                                 remove_obj ( victim, obj_lose->wear_loc, true, false ) )
                             {
                                 act ( "$n is burned by $p, and throws it to the ground.", victim, obj_lose, NULL, TO_ROOM );
                                 send_to_char ( "You throw your red-hot weapon to the ground!\n\r", victim );
                                 dam += 1;
                                 obj_from_char ( obj_lose );
                                 obj_to_room ( obj_lose, victim->in_room );
-                                fail = FALSE;
+                                fail = false;
                             }
                             else    /* YOWCH! */
                             {
                                 send_to_char
                                     ( "Your weapon sears your flesh!\n\r", victim );
                                 dam += number_range ( 1, obj_lose->level );
-                                fail = FALSE;
+                                fail = false;
                             }
                         }
                         else    /* drop it if we can */
@@ -3558,13 +3558,13 @@ MAGIC ( spell_heat_metal )
                                 dam += ( number_range ( 1, obj_lose->level ) / 6 );
                                 obj_from_char ( obj_lose );
                                 obj_to_room ( obj_lose, victim->in_room );
-                                fail = FALSE;
+                                fail = false;
                             }
                             else    /* cannot drop */
                             {
                                 act ( "Your skin is seared by $p!", victim, obj_lose, NULL, TO_CHAR );
                                 dam += ( number_range ( 1, obj_lose->level ) / 2 );
-                                fail = FALSE;
+                                fail = false;
                             }
                         }
                         break;
@@ -3581,7 +3581,7 @@ MAGIC ( spell_heat_metal )
     {
         if ( saves_spell ( level, victim, DAM_FIRE ) )
             dam /= 1.5;
-        damage_old ( ch, victim, dam, sn, DAM_FIRE, TRUE );
+        damage_old ( ch, victim, dam, sn, DAM_FIRE, true );
     }
 }
 
@@ -3609,8 +3609,8 @@ MAGIC ( spell_prayer )
 
     if ( dam < 0 )
         dam /= 5;
-    damage_old ( ch, victim, dam, sn, DAM_HOLY, TRUE );
-    damage_old ( ch, victim, dam, sn, DAM_SOUND, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_HOLY, true );
+    damage_old ( ch, victim, dam, sn, DAM_SOUND, true );
     if ( !saves_spell ( level, victim, DAM_HOLY ) && get_curr_stat ( ch, STAT_WIS ) > get_curr_stat ( victim, STAT_WIS ) )
          spell_blindness ( skill_lookup ( "blindness" ), level, ch, ( void * ) victim, TARGET_CHAR );
     return;
@@ -3640,8 +3640,8 @@ MAGIC ( spell_blasphemy )
     if ( dam < 0 )
         dam /= 5;
 
-    damage_old ( ch, victim, dam, sn, DAM_NEGATIVE, TRUE );
-    damage_old ( ch, victim, dam, sn, DAM_SOUND, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_NEGATIVE, true );
+    damage_old ( ch, victim, dam, sn, DAM_SOUND, true );
     if ( !saves_spell ( level, victim, DAM_NEGATIVE ) && get_curr_stat ( ch, STAT_WIS ) > get_curr_stat ( victim, STAT_WIS ) )
         spell_weaken ( skill_lookup ( "weaken" ), level, ch, ( void * ) victim, TARGET_CHAR );
     return;
@@ -4088,14 +4088,14 @@ MAGIC ( spell_lightning_bolt )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
 
     dam = number_range ( ( 11 + level ) / 2, 10 );
     if ( saves_spell ( level, victim, DAM_LIGHTNING ) )
         dam /= 1.5;
-    damage_old ( ch, victim, dam, sn, DAM_LIGHTNING, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_LIGHTNING, true );
     return;
 }
 
@@ -4108,7 +4108,7 @@ MAGIC ( spell_locate_object )
     bool found;
     int number = 0, max_found;
 
-    found = FALSE;
+    found = false;
     number = 0;
     max_found = IS_IMMORTAL ( ch ) ? 200 : 2 * level;
 
@@ -4121,7 +4121,7 @@ MAGIC ( spell_locate_object )
              number_percent (  ) > 2 * level || ch->level < obj->level )
             continue;
 
-        found = TRUE;
+        found = true;
         number++;
 
         for ( in_obj = obj; in_obj->in_obj != NULL; in_obj = in_obj->in_obj )
@@ -4170,8 +4170,8 @@ MAGIC ( spell_magic_missile )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
 
     for ( i = 1; i <= hits; i++ )
@@ -4181,7 +4181,7 @@ MAGIC ( spell_magic_missile )
             dam *= ( ch->level / 20 );
         if ( saves_spell ( level, victim, DAM_ENERGY ) )
             dam /= 1.5;
-        damage_old ( ch, victim, dam, sn, DAM_ENERGY, TRUE );
+        damage_old ( ch, victim, dam, sn, DAM_ENERGY, true );
     }
     return;
 }
@@ -4475,11 +4475,11 @@ MAGIC ( spell_ray_of_truth )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
-    damage_old ( ch, victim, dam, sn, DAM_LIGHT, TRUE );
-    damage_old ( ch, victim, dam, sn, DAM_HOLY, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_LIGHT, true );
+    damage_old ( ch, victim, dam, sn, DAM_HOLY, true );
     spell_blindness ( gsn_blindness, 3 * level / 4, ch, ( void * ) victim, TARGET_CHAR );
 }
 
@@ -4579,7 +4579,7 @@ MAGIC ( spell_remove_curse )
 {
     CHAR_DATA *victim;
     OBJ_DATA *obj;
-    bool found = FALSE;
+    bool found = false;
 
     /* do object cases first */
     if ( target == TARGET_OBJ )
@@ -4627,7 +4627,7 @@ MAGIC ( spell_remove_curse )
         {                       /* attempt to remove curse */
             if ( !saves_dispel ( level, obj->level, 0 ) )
             {
-                found = TRUE;
+                found = true;
                 REMOVE_BIT ( obj->extra_flags, ITEM_NODROP );
                 REMOVE_BIT ( obj->extra_flags, ITEM_NOREMOVE );
                 act ( "Your $p glows blue.", victim, obj, NULL, TO_CHAR );
@@ -4714,14 +4714,14 @@ MAGIC ( spell_shocking_grasp )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
 
     dam = number_range ( ( 9 + level ) / 2, 12 );
     if ( saves_spell ( level, victim, DAM_LIGHTNING ) )
         dam /= 1.5;
-    damage_old ( ch, victim, dam, sn, DAM_LIGHTNING, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_LIGHTNING, true );
     return;
 }
 
@@ -5000,7 +5000,7 @@ MAGIC ( spell_word_of_recall )
     }
 
     if ( victim->fighting != NULL )
-        stop_fighting ( victim, TRUE );
+        stop_fighting ( victim, true );
 
     ch->move /= 2;
     act ( "$n disappears.", victim, NULL, NULL, TO_ROOM );
@@ -5032,19 +5032,19 @@ MAGIC ( spell_acid_breath )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
     if ( saves_spell ( level, victim, DAM_ACID ) )
     {
         acid_effect ( victim, level / 2, dam / 4, TARGET_CHAR );
 
-        damage_old ( ch, victim, dam / 2, sn, DAM_ACID, TRUE );
+        damage_old ( ch, victim, dam / 2, sn, DAM_ACID, true );
     }
     else
     {
         acid_effect ( victim, level, dam, TARGET_CHAR );
-        damage_old ( ch, victim, dam, sn, DAM_ACID, TRUE );
+        damage_old ( ch, victim, dam, sn, DAM_ACID, true );
     }
 }
 
@@ -5071,7 +5071,7 @@ MAGIC ( spell_fire_breath )
     {
         vch_next = vch->next_in_room;
 
-        if ( is_safe_spell ( ch, vch, TRUE ) ||
+        if ( is_safe_spell ( ch, vch, true ) ||
              ( IS_NPC ( vch ) && IS_NPC ( ch ) &&
                ( ch->fighting != vch || vch->fighting != ch ) ) )
             continue;
@@ -5081,19 +5081,19 @@ MAGIC ( spell_fire_breath )
             if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
                  ( !IS_NPC ( victim ) ) )
             {
-                ch->attacker = TRUE;
-                victim->attacker = FALSE;
+                ch->attacker = true;
+                victim->attacker = false;
             }
             if ( saves_spell ( level, vch, DAM_FIRE ) )
             {
                 fire_effect ( vch, level / 2, dam / 4, TARGET_CHAR );
 
-                damage_old ( ch, vch, dam / 2, sn, DAM_FIRE, TRUE );
+                damage_old ( ch, vch, dam / 2, sn, DAM_FIRE, true );
             }
             else
             {
                 fire_effect ( vch, level, dam, TARGET_CHAR );
-                damage_old ( ch, vch, dam, sn, DAM_FIRE, TRUE );
+                damage_old ( ch, vch, dam, sn, DAM_FIRE, true );
             }
         }
         else                    /* partial damage */
@@ -5101,13 +5101,13 @@ MAGIC ( spell_fire_breath )
             if ( saves_spell ( level - 2, vch, DAM_FIRE ) )
             {
                 fire_effect ( vch, level / 4, dam / 8, TARGET_CHAR );
-                damage_old ( ch, vch, dam / 4, sn, DAM_FIRE, TRUE );
+                damage_old ( ch, vch, dam / 4, sn, DAM_FIRE, true );
             }
             else
             {
                 fire_effect ( vch, level / 2, dam / 4, TARGET_CHAR );
 
-                damage_old ( ch, vch, dam / 2, sn, DAM_FIRE, TRUE );
+                damage_old ( ch, vch, dam / 2, sn, DAM_FIRE, true );
             }
         }
     }
@@ -5136,7 +5136,7 @@ MAGIC ( spell_frost_breath )
     {
         vch_next = vch->next_in_room;
 
-        if ( is_safe_spell ( ch, vch, TRUE ) ||
+        if ( is_safe_spell ( ch, vch, true ) ||
              ( IS_NPC ( vch ) && IS_NPC ( ch ) &&
                ( ch->fighting != vch || vch->fighting != ch ) ) )
             continue;
@@ -5146,19 +5146,19 @@ MAGIC ( spell_frost_breath )
             if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
                  ( !IS_NPC ( victim ) ) )
             {
-                ch->attacker = TRUE;
-                victim->attacker = FALSE;
+                ch->attacker = true;
+                victim->attacker = false;
             }
             if ( saves_spell ( level, vch, DAM_COLD ) )
             {
                 cold_effect ( vch, level / 2, dam / 4, TARGET_CHAR );
 
-                damage_old ( ch, vch, dam / 2, sn, DAM_COLD, TRUE );
+                damage_old ( ch, vch, dam / 2, sn, DAM_COLD, true );
             }
             else
             {
                 cold_effect ( vch, level, dam, TARGET_CHAR );
-                damage_old ( ch, vch, dam, sn, DAM_COLD, TRUE );
+                damage_old ( ch, vch, dam, sn, DAM_COLD, true );
             }
         }
         else
@@ -5166,13 +5166,13 @@ MAGIC ( spell_frost_breath )
             if ( saves_spell ( level - 2, vch, DAM_COLD ) )
             {
                 cold_effect ( vch, level / 4, dam / 8, TARGET_CHAR );
-                damage_old ( ch, vch, dam / 4, sn, DAM_COLD, TRUE );
+                damage_old ( ch, vch, dam / 4, sn, DAM_COLD, true );
             }
             else
             {
                 cold_effect ( vch, level / 2, dam / 4, TARGET_CHAR );
 
-                damage_old ( ch, vch, dam / 2, sn, DAM_COLD, TRUE );
+                damage_old ( ch, vch, dam / 2, sn, DAM_COLD, true );
             }
         }
     }
@@ -5199,7 +5199,7 @@ MAGIC ( spell_gas_breath )
     {
         vch_next = vch->next_in_room;
 
-        if ( is_safe_spell ( ch, vch, TRUE ) ||
+        if ( is_safe_spell ( ch, vch, true ) ||
              ( IS_NPC ( ch ) && IS_NPC ( vch ) &&
                ( ch->fighting == vch || vch->fighting == ch ) ) )
             continue;
@@ -5207,19 +5207,19 @@ MAGIC ( spell_gas_breath )
         if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
              ( !IS_NPC ( vch ) ) )
         {
-            ch->attacker = TRUE;
-            vch->attacker = FALSE;
+            ch->attacker = true;
+            vch->attacker = false;
         }
         if ( saves_spell ( level, vch, DAM_POISON ) )
         {
             poison_effect ( vch, level / 2, dam / 4, TARGET_CHAR );
 
-            damage_old ( ch, vch, dam / 2, sn, DAM_POISON, TRUE );
+            damage_old ( ch, vch, dam / 2, sn, DAM_POISON, true );
         }
         else
         {
             poison_effect ( vch, level, dam, TARGET_CHAR );
-            damage_old ( ch, vch, dam, sn, DAM_POISON, TRUE );
+            damage_old ( ch, vch, dam, sn, DAM_POISON, true );
         }
     }
 }
@@ -5244,19 +5244,19 @@ MAGIC ( spell_lightning_breath )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
     if ( saves_spell ( level, victim, DAM_LIGHTNING ) )
     {
         shock_effect ( victim, level / 2, dam / 4, TARGET_CHAR );
 
-        damage_old ( ch, victim, dam / 2, sn, DAM_LIGHTNING, TRUE );
+        damage_old ( ch, victim, dam / 2, sn, DAM_LIGHTNING, true );
     }
     else
     {
         shock_effect ( victim, level, dam, TARGET_CHAR );
-        damage_old ( ch, victim, dam, sn, DAM_LIGHTNING, TRUE );
+        damage_old ( ch, victim, dam, sn, DAM_LIGHTNING, true );
     }
 }
 
@@ -5274,10 +5274,10 @@ MAGIC ( spell_general_purpose )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
-    damage_old ( ch, victim, dam, sn, DAM_PIERCE, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_PIERCE, true );
     return;
 }
 
@@ -5292,10 +5292,10 @@ MAGIC ( spell_high_explosive )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
-    damage_old ( ch, victim, dam, sn, DAM_PIERCE, TRUE );
+    damage_old ( ch, victim, dam, sn, DAM_PIERCE, true );
     return;
 }
 
@@ -5329,8 +5329,8 @@ MAGIC ( spell_acid_rain )
     if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) &&
          ( !IS_NPC ( victim ) ) )
     {
-        ch->attacker = TRUE;
-        victim->attacker = FALSE;
+        ch->attacker = true;
+        victim->attacker = false;
     }
 
     act ( "{CW{ca{Cv{ce{Cs{g of {Ga{gc{Gi{gd{Gi{gc {Brain {gcalled by $n shower down upon {R$N{g!{x", ch, NULL, victim, TO_NOTVICT );
@@ -5342,7 +5342,7 @@ MAGIC ( spell_acid_rain )
         dam = dice ( level, level / 10 );
         if ( saves_spell ( level, victim, DAM_ACID ) )
             dam /= 1.5;
-            damage ( ch, victim, dam, sn, DAM_ACID, TRUE );
+            damage ( ch, victim, dam, sn, DAM_ACID, true );
         i--;
     }
     return;
@@ -5366,12 +5366,12 @@ MAGIC ( spell_elemental_fury )
             continue;
         if ( victim->in_room == ch->in_room )
         {
-            if ( victim != ch && !is_safe_spell ( ch, victim, TRUE ) )
+            if ( victim != ch && !is_safe_spell ( ch, victim, true ) )
             {
                 if ( ( ch->fighting == NULL ) && ( !IS_NPC ( ch ) ) && ( !IS_NPC ( victim ) ) )
                 {
-                    ch->attacker = TRUE;
-                    victim->attacker = FALSE;
+                    ch->attacker = true;
+                    victim->attacker = false;
                 }
                 if ( number_percent ( ) <= cchan )
                 {
@@ -5380,7 +5380,7 @@ MAGIC ( spell_elemental_fury )
                     {
                         act ( "$n is harmed by the element of {Ga{gc{Gi{Gd{x!", victim, NULL, NULL, TO_ROOM );
                         send_to_char ( "You are harmed by the element of {Ga{gc{Gi{Gd{x!", victim );
-                        damage ( ch, victim, dam, sn, DAM_ACID, TRUE );
+                        damage ( ch, victim, dam, sn, DAM_ACID, true );
                     }
                 }
                 if ( number_percent ( ) <= cchan )
@@ -5390,7 +5390,7 @@ MAGIC ( spell_elemental_fury )
                     {
                         act ( "$n is harmed by the element of {Ci{Wc{ce{x!", victim, NULL, NULL, TO_ROOM );
                         send_to_char ( "You are harmed by the element of {Ci{Wc{ce{x!", victim );
-                        damage ( ch, victim, dam, sn, DAM_COLD, TRUE );
+                        damage ( ch, victim, dam, sn, DAM_COLD, true );
                     }
                 }
                 if ( number_percent ( ) <= cchan )
@@ -5400,7 +5400,7 @@ MAGIC ( spell_elemental_fury )
                     {
                         act ( "$n is harmed by the element of {Rf{Yi{rr{Re{x!", victim, NULL, NULL, TO_ROOM );
                         send_to_char ( "You are harmed by the element of {Rf{Yi{rr{Re{x!", victim );
-                        damage ( ch, victim, dam, sn, DAM_FIRE, TRUE );
+                        damage ( ch, victim, dam, sn, DAM_FIRE, true );
                     }
                 }
                 if ( number_percent ( ) <= cchan )
@@ -5410,7 +5410,7 @@ MAGIC ( spell_elemental_fury )
                     {
                         act ( "$n is harmed by the element of {yl{Yi{Wg{Dh{Yt{wn{Wi{Yn{yg{x!", victim, NULL, NULL, TO_ROOM );
                         send_to_char ( "You are harmed by the element of {yl{Yi{Wg{Dh{Yt{wn{Wi{Yn{yg{x!", victim );
-                        damage ( ch, victim, dam, sn, DAM_LIGHTNING, TRUE );
+                        damage ( ch, victim, dam, sn, DAM_LIGHTNING, true );
                     }
                 }
                 if ( number_percent ( ) <= cchan )
@@ -5420,7 +5420,7 @@ MAGIC ( spell_elemental_fury )
                     {
                         act ( "$n is harmed by the element of {ye{ga{yr{Gt{gh{x!", victim, NULL, NULL, TO_ROOM );
                         send_to_char ( "You are harmed by the element of {ye{ga{yr{Gt{gh{x!", victim );
-                        damage ( ch, victim, dam, sn, DAM_EARTH, TRUE );
+                        damage ( ch, victim, dam, sn, DAM_EARTH, true );
                     }
                 }
                 if ( number_percent ( ) <= cchan )
@@ -5430,7 +5430,7 @@ MAGIC ( spell_elemental_fury )
                     {
                         act ( "$n is harmed by the element of {Cw{Ba{ct{Ce{Br{x!", victim, NULL, NULL, TO_ROOM );
                         send_to_char ( "You are harmed by the element of {Cw{Ba{ct{Ce{Br{x!", victim );
-                        damage ( ch, victim, dam, sn, DAM_WATER, TRUE );
+                        damage ( ch, victim, dam, sn, DAM_WATER, true );
                     }
                 }
             }

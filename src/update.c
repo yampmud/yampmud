@@ -310,7 +310,7 @@ int hit_gain ( CHAR_DATA * ch )
         {
             gain += number * gain / 100;
             if ( ch->hit < ch->max_hit )
-                check_improve ( ch, gsn_fast_healing, TRUE, 8 );
+                check_improve ( ch, gsn_fast_healing, true, 8 );
         }
 
         switch ( ch->position )
@@ -383,7 +383,7 @@ int mana_gain ( CHAR_DATA * ch )
         {
             gain += number * gain / 100;
             if ( ch->mana < ch->max_mana )
-                check_improve ( ch, gsn_meditation, TRUE, 8 );
+                check_improve ( ch, gsn_meditation, true, 8 );
         }
         if ( !class_table[ch->class].fMana )
             gain /= 2;
@@ -582,7 +582,7 @@ void mobile_update ( void )
              ( !IS_SET ( ch->act, ACT_INDOORS ) ||
                IS_SET ( pexit->u1.to_room->room_flags, ROOM_INDOORS ) ) )
         {
-            move_char ( ch, door, FALSE, FALSE );
+            move_char ( ch, door, false, false );
         }
     }
 
@@ -776,7 +776,7 @@ void char_update ( void )
     int countu;
     bool is_xmas;
 
-    is_xmas = FALSE;
+    is_xmas = false;
 
 /*    if ( IS_LIVEMUD )
         do_htmlout (  ); */
@@ -804,23 +804,23 @@ void char_update ( void )
     day = ( int ) ( struct tm * ) localtime ( &current_time )->tm_mday;
     month = ( int ) ( struct tm * ) localtime ( &current_time )->tm_mon;
 
-    if ( hour == 12 && is_mid == TRUE )
+    if ( hour == 12 && is_mid == true )
     {
         if ( max_on > 0 )
             max_on = ( max_on / 2 );
-        is_mid = FALSE;
+        is_mid = false;
     }
     else
     {
-        is_mid = TRUE;
+        is_mid = true;
     }
 
     if ( ( day == 24 || day == 25 ) && month == 11 ) // Its actually 12
-        is_xmas = TRUE;
+        is_xmas = true;
 
     if ( hour == 5 || hour == 11 || hour == 17 || hour == 23 || is_xmas )
     {
-        if ( happy_hour == FALSE )
+        if ( happy_hour == false )
         {
             if ( is_xmas )
                 do_gmessage
@@ -829,16 +829,16 @@ void char_update ( void )
                 do_gmessage
                 ( "{W[{RHAPPY HOUR{W] {YDouble {CXP {c& {CQP {w[{GON{w]\n\r{W[{RHAPPY HOUR{W] {=Da{=ma{=ge {-En{-ha{-nc{-er {w[{GON{w]\n\r" );
 
-            happy_hour = TRUE;
+            happy_hour = true;
         }
     }
     else
     {
-        if ( happy_hour == TRUE )
+        if ( happy_hour == true )
         {
             do_gmessage
                 ( "{W[{RHAPPY HOUR{W] Aww.. {wHappy Hour{W is over.. *sniff*{x\n\r" );
-            happy_hour = FALSE;
+            happy_hour = false;
         }
     }
 
@@ -933,7 +933,7 @@ void char_update ( void )
         }
     }
     if ( !is_mass_arena )
-        is_mass_arena_fight = FALSE;
+        is_mass_arena_fight = false;
 
     if ( arena == FIGHT_OPEN )
     {
@@ -966,14 +966,14 @@ void char_update ( void )
                 ( "{W[{RARENA{W] The Mass-Arena is now {D[{GOPEN{D]\n\r{W[{RARENA{W] Type: {RMASSARENA JOIN{w. You have {w[{R2{w] minutes to do so.{x\n\r" );
             mass_arena_ticks = 0;
             mass_arena_players_joined = 0;
-            is_mass_arena = TRUE;
+            is_mass_arena = true;
         }
         if ( mass_arena_ticks >= 4 &&!is_mass_arena_fight && is_mass_arena )
         {
             do_gmessage
                 ( "{W[{RARENA{W] Not enough participants. Mass-Arena is now {D[{RCLOSED{D]\n\r" );
-            is_mass_arena = FALSE;
-            is_mass_arena_fight = FALSE;
+            is_mass_arena = false;
+            is_mass_arena_fight = false;
             mass_arena_valid_ticks = 0;
             mass_arena_players_joined = 0;
             mass_arena_ticks = 0;
@@ -1054,7 +1054,7 @@ void char_update ( void )
                           ch->name );
                 do_gmessage ( wbuf );
                 ch->qps += 10;
-                stop_fighting ( ch, TRUE );
+                stop_fighting ( ch, true );
                 ch->hit = ch->max_hit;
                 ch->mana = ch->max_mana;
                 ch->move = ch->max_move;
@@ -1065,8 +1065,8 @@ void char_update ( void )
                       ch );
                 REMOVE_BIT ( ch->act2, PLR2_MASS_JOINER );
                 REMOVE_BIT ( ch->act2, PLR2_MASS_ARENA );
-                is_mass_arena = FALSE;
-                is_mass_arena_fight = FALSE;
+                is_mass_arena = false;
+                is_mass_arena_fight = false;
                 do_aclear ( NULL, NULL );
                 break;
             }
@@ -1159,7 +1159,7 @@ void char_update ( void )
             if ( ++ch->timer > 5 )
             {
                 act ( "$n decays into dust.", ch, NULL, NULL, TO_ROOM );
-                extract_char ( ch, TRUE );
+                extract_char ( ch, true );
             }
         }
 
@@ -1172,7 +1172,7 @@ void char_update ( void )
                  number_percent (  ) < 5 )
             {
                 act ( "$n wanders on home.", ch, NULL, NULL, TO_ROOM );
-                extract_char ( ch, TRUE );
+                extract_char ( ch, true );
                 continue;
             }
 
@@ -1292,7 +1292,7 @@ void char_update ( void )
 
                                 ch->was_in_room = ch->in_room;
                                 if ( ch->fighting != NULL )
-                                    stop_fighting ( ch, TRUE );
+                                    stop_fighting ( ch, true );
                                 act ( "$n disappears into the void.", ch, NULL,
                                       NULL, TO_ROOM );
                                 SET_BIT ( ch->comm, COMM_AFK );
@@ -1401,7 +1401,7 @@ void char_update ( void )
             dam = UMIN ( ch->level, af->level / 5 + 1 );
             ch->mana -= dam;
             ch->move -= dam;
-            damage_old ( ch, ch, dam, gsn_plague, DAM_DISEASE, FALSE );
+            damage_old ( ch, ch, dam, gsn_plague, DAM_DISEASE, false );
         }
         else if ( IS_AFFECTED ( ch, AFF_POISON ) && ch != NULL &&
                   !IS_AFFECTED ( ch, AFF_SLOW ) )
@@ -1414,17 +1414,17 @@ void char_update ( void )
                 act ( "$n shivers and suffers.", ch, NULL, NULL, TO_ROOM );
                 send_to_char ( "You shiver and suffer.\n\r", ch );
                 damage_old ( ch, ch, poison->level / 10 + 1, gsn_poison,
-                             DAM_POISON, FALSE );
+                             DAM_POISON, false );
             }
         }
 
         else if ( ch->position == POS_INCAP && number_range ( 0, 1 ) == 0 )
         {
-            damage ( ch, ch, 1, TYPE_UNDEFINED, DAM_NONE, FALSE );
+            damage ( ch, ch, 1, TYPE_UNDEFINED, DAM_NONE, false );
         }
         else if ( ch->position == POS_MORTAL )
         {
-            damage ( ch, ch, 1, TYPE_UNDEFINED, DAM_NONE, FALSE );
+            damage ( ch, ch, 1, TYPE_UNDEFINED, DAM_NONE, false );
         }
 
         if ( IS_NPC ( ch ) )

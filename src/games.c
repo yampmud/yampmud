@@ -95,7 +95,7 @@ CH_CMD ( do_slots )
         return;
     }
 
-    foundSlot = FALSE;
+    foundSlot = false;
 
     for ( slotMachine = ch->in_room->contents; slotMachine != NULL;
           slotMachine = slotMachine->next_content )
@@ -105,17 +105,17 @@ CH_CMD ( do_slots )
         {
             if ( is_name ( arg, slotMachine->name ) )
             {
-                foundSlot = TRUE;
+                foundSlot = true;
                 break;
             }
             else
             {
-                foundSlot = FALSE;
+                foundSlot = false;
             }
         }
     }
 
-    if ( foundSlot == FALSE )
+    if ( foundSlot == false )
     {
         send_to_char ( "That slot machine is not here.\n\r", ch );
         return;
@@ -141,15 +141,15 @@ CH_CMD ( do_slots )
     bars = slotMachine->value[2];
 
     if ( slotMachine->value[3] == 1 )
-        partial = TRUE;
+        partial = true;
     else
-        partial = FALSE;
+        partial = false;
 
     if ( slotMachine->value[4] == 1 )
-        frozen = TRUE;
+        frozen = true;
 
     else
-        frozen = FALSE;
+        frozen = false;
 
     bar1 = number_range ( 1, 10 );
     bar2 = number_range ( 1, 10 );
@@ -190,9 +190,9 @@ CH_CMD ( do_slots )
               ch );
     }
 
-    wonJackpot = FALSE;
+    wonJackpot = false;
     winnings = 0;
-    won = FALSE;
+    won = false;
     numberMatched = 0;
 
     if ( bars == 3 )
@@ -200,9 +200,9 @@ CH_CMD ( do_slots )
         if ( ( bar1 == bar2 ) && ( bar2 == bar3 ) )
         {
             winnings = jackpot; /* they won the jackpot, make it */
-            won = TRUE;         /* worth their while! */
+            won = true;         /* worth their while! */
             slotMachine->value[1] = cost * 75;  /* put it back to something */
-            wonJackpot = TRUE;
+            wonJackpot = true;
         }
         else
         {
@@ -216,9 +216,9 @@ CH_CMD ( do_slots )
              ( bar4 == bar5 ) )
         {
             winnings = jackpot; /* if no partial, better have a */
-            won = TRUE;         /* kick butt jackpot for them */
+            won = true;         /* kick butt jackpot for them */
             slotMachine->value[1] = cost * 125;
-            wonJackpot = TRUE;
+            wonJackpot = true;
         }
         else
         {
@@ -249,7 +249,7 @@ CH_CMD ( do_slots )
             if ( bar1 == bar2 )
             {
                 winnings += cost / 2;
-                won = TRUE;
+                won = true;
                 numberMatched++;
             }
             if ( bar1 == bar3 )
@@ -260,7 +260,7 @@ CH_CMD ( do_slots )
                 else
                 {
                     winnings += cost / 2;
-                    won = TRUE;
+                    won = true;
                 }
             }
             if ( bar2 == bar3 )
@@ -271,7 +271,7 @@ CH_CMD ( do_slots )
                 else
                 {
                     winnings += cost / 2;
-                    won = TRUE;
+                    won = true;
                 }
             }
             if ( !frozen )
@@ -327,7 +327,7 @@ CH_CMD ( do_slots )
                     slotMachine->value[1] += cost;
             }
             if ( winnings > 0 )
-                won = TRUE;
+                won = true;
         }
     }
     // had to change cost to winnings here- Markanth

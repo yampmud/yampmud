@@ -69,7 +69,7 @@ void save_wizlist ( void )
 {
     WIZ_DATA *pwiz;
     FILE *fp;
-    bool found = FALSE;
+    bool found = false;
 
     if ( ( fp = file_open ( WIZ_FILE, "w" ) ) == NULL )
     {
@@ -78,7 +78,7 @@ void save_wizlist ( void )
 
     for ( pwiz = wiz_list; pwiz != NULL; pwiz = pwiz->next )
     {
-        found = TRUE;
+        found = true;
         fprintf ( fp, "%s %d\n", pwiz->name, pwiz->level );
     }
 
@@ -163,7 +163,7 @@ CH_CMD ( do_wizlist )
                 return;
             }
             level = atoi ( arg2 );
-            change_wizlist ( ch, TRUE, level, arg3 );
+            change_wizlist ( ch, true, level, arg3 );
             return;
         }
         if ( !str_prefix ( arg1, "delete" ) )
@@ -173,7 +173,7 @@ CH_CMD ( do_wizlist )
                 send_to_char ( "Syntax: wizlist delete <name>\n\r", ch );
                 return;
             }
-            change_wizlist ( ch, FALSE, 0, arg2 );
+            change_wizlist ( ch, false, 0, arg2 );
             return;
         }
         send_to_char ( "Syntax:\n\r", ch );
@@ -205,14 +205,14 @@ CH_CMD ( do_wizlist )
     add_buf ( buffer, buf );
     for ( level = IMPLEMENTOR; level > ANCIENT; level-- )
     {
-        found = FALSE;
+        found = false;
         amt = 0;
         for ( pwiz = wiz_list; pwiz != NULL; pwiz = pwiz->next )
         {
             if ( pwiz->level == level )
             {
                 amt++;
-                found = TRUE;
+                found = true;
             }
         }
         if ( !found )

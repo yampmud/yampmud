@@ -411,14 +411,14 @@ void fwrite_char ( CHAR_DATA * ch, FILE * fp )
         {
             if ( skill_table[sn].name != NULL && ch->pcdata->learned[sn] > 0 )
             {
-                    race_has = FALSE;
+                    race_has = false;
                     for ( i = 0; i < 5; i++ )
                     {
                         if ( pc_race_table[ch->race].skills[i] == NULL )
                             break;
                         if ( !str_cmp ( pc_race_table[ch->race].skills[i],
                              skill_table[sn].name ) )
-                        race_has = TRUE;
+                        race_has = true;
                     }
                     if ( skill_table[sn].skill_level[ch->class] < 203 || race_has )
                         fprintf ( fp, "Sk %d '%s'\n", ch->pcdata->learned[sn],
@@ -639,7 +639,7 @@ bool load_char_obj ( DESCRIPTOR_DATA * d, char *name )
     ch->pcdata->pkset = 0;
     ch->recall_room = 0;
     ch->prompt = str_dup ( "<{R%hhp {M%mm {G%vmv{x>" );
-    ch->pcdata->confirm_delete = FALSE;
+    ch->pcdata->confirm_delete = false;
     ch->pcdata->pwd = str_dup ( "" );
     ch->pcdata->bamfin = str_dup ( "" );
     ch->pcdata->bamfout = str_dup ( "" );
@@ -665,7 +665,7 @@ bool load_char_obj ( DESCRIPTOR_DATA * d, char *name )
     ch->btime = 1.00;
     ch->bflip = 0;
     bzero ( ch->pcdata->explored, MAX_EXPLORE );
-    found = FALSE;
+    found = false;
 
 #if defined(unix)
     /* decompress if .gz file exists */
@@ -688,7 +688,7 @@ bool load_char_obj ( DESCRIPTOR_DATA * d, char *name )
         for ( iNest = 0; iNest < MAX_NEST; iNest++ )
             rgObjNest[iNest] = NULL;
 
-        found = TRUE;
+        found = true;
         for ( ;; )
         {
             char letter;
@@ -742,7 +742,7 @@ bool load_char_obj ( DESCRIPTOR_DATA * d, char *name )
         {
             if ( pc_race_table[ch->race].skills[i] == NULL )
                 break;
-            group_add ( ch, pc_race_table[ch->race].skills[i], FALSE );
+            group_add ( ch, pc_race_table[ch->race].skills[i], false );
         }
         ch->affected_by = ch->affected_by | race_table[ch->race].aff;
         ch->shielded_by = ch->shielded_by | race_table[ch->race].shd;
@@ -759,7 +759,7 @@ bool load_char_obj ( DESCRIPTOR_DATA * d, char *name )
 
         if ( ch->version < 6 )
             if ( IS_SET ( ch->act, PLR_NOCOLOUR ) && d )
-                d->ansi = FALSE;
+                d->ansi = false;
     }
 
     if ( found && !IS_SET ( ch->pcdata->verbose, VERBOSE_SHIELD ) &&
@@ -788,7 +788,7 @@ bool load_char_reroll( DESCRIPTOR_DATA *d, char *name )
 					| COMM_PROMPT
 					| COMM_STORE;
     ch->prompt 				= str_dup("<{R%hhp {M%mm {G%vmv{x>");
-    ch->pcdata->confirm_delete		= FALSE;
+    ch->pcdata->confirm_delete		= false;
     ch->pcdata->pwd			= str_dup( "" );
     ch->pcdata->bamfin			= str_dup( "" );
     ch->pcdata->bamfout			= str_dup( "" );
@@ -803,7 +803,7 @@ bool load_char_reroll( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->pkdeaths               = 0;
     ch->pcdata->pkkills                  = 0;
 
-    found = FALSE;
+    found = false;
     return found;
 }*/
 
@@ -819,7 +819,7 @@ bool load_char_reroll( DESCRIPTOR_DATA *d, char *name )
 				if ( !str_cmp( word, literal ) )	\
 				{					\
 				    field  = value;			\
-				    fMatch = TRUE;			\
+				    fMatch = true;			\
 				    break;				\
 				}
 
@@ -832,7 +832,7 @@ bool load_char_reroll( DESCRIPTOR_DATA *d, char *name )
 		{				\
 			_free_string(field, __FILE__, __LINE__);	\
 			field = value;		\
-			fMatch = TRUE;		\
+			fMatch = true;		\
 			break;			\
 		}
 
@@ -856,12 +856,12 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
     for ( ;; )
     {
         word = feof ( fp ) ? "End" : fread_word ( fp );
-        fMatch = FALSE;
+        fMatch = false;
 
         switch ( UPPER ( word[0] ) )
         {
             case '*':
-                fMatch = TRUE;
+                fMatch = true;
                 fread_to_eol ( fp );
                 break;
 
@@ -879,7 +879,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                     if ( count >= MAX_ALIAS )
                     {
                         fread_to_eol ( fp );
-                        fMatch = TRUE;
+                        fMatch = true;
                         break;
                     }
 
@@ -887,7 +887,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                     ch->pcdata->alias_sub[count] =
                         str_dup ( fread_word ( fp ) );
                     count++;
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
 
@@ -896,21 +896,21 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                     if ( count >= MAX_ALIAS )
                     {
                         fread_to_eol ( fp );
-                        fMatch = TRUE;
+                        fMatch = true;
                         break;
                     }
 
                     ch->pcdata->alias[count] = str_dup ( fread_word ( fp ) );
                     ch->pcdata->alias_sub[count] = fread_string ( fp );
                     count++;
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
 
                 if ( !str_cmp ( word, "AC" ) || !str_cmp ( word, "Armor" ) )
                 {
                     fread_to_eol ( fp );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
 
@@ -920,7 +920,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
 
                     for ( i = 0; i < 4; i++ )
                         ch->armor[i] = fread_number ( fp );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
 
@@ -944,7 +944,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                     paf->bitvector = fread_long ( fp );
                     paf->next = ch->affected;
                     ch->affected = paf;
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
 
@@ -969,7 +969,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                     paf->bitvector = fread_long ( fp );
                     paf->next = ch->affected;
                     ch->affected = paf;
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
 
@@ -979,7 +979,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
 
                     for ( stat = 0; stat < MAX_STATS; stat++ )
                         ch->mod_stat[stat] = fread_number ( fp );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
 
@@ -990,7 +990,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
 
                     for ( stat = 0; stat < MAX_STATS; stat++ )
                         ch->perm_stat[stat] = fread_number ( fp );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
                 break;
@@ -1012,7 +1012,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
 
                     ch->class = class_lookup ( tmp );
                     free_string ( tmp );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
                 KEY ( "Class", ch->class, fread_number ( fp ) );
@@ -1023,7 +1023,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
 
                     ch->clan = clan_lookup ( tmp );
                     free_string ( tmp );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
                 if ( !str_cmp ( word, "Clead" ) )
@@ -1032,7 +1032,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
 
                     ch->clead = clan_lookup ( tmp );
                     free_string ( tmp );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
                 KEY ( "CRank", ch->clan_rank, fread_number ( fp ) );
@@ -1066,7 +1066,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                     ch->pcdata->condition[0] = fread_number ( fp );
                     ch->pcdata->condition[1] = fread_number ( fp );
                     ch->pcdata->condition[2] = fread_number ( fp );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
                 if ( !str_cmp ( word, "Cnd" ) )
@@ -1075,7 +1075,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                     ch->pcdata->condition[1] = fread_number ( fp );
                     ch->pcdata->condition[2] = fread_number ( fp );
                     ch->pcdata->condition[3] = fread_number ( fp );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
                 KEY ( "Comm", ch->comm, fread_flag ( fp ) );
@@ -1092,13 +1092,13 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                     if ( dcount >= MAX_DUPES )
                     {
                         fread_to_eol ( fp );
-                        fMatch = TRUE;
+                        fMatch = true;
                         break;
                     }
 
                     ch->pcdata->dupes[dcount] = fread_string ( fp );
                     dcount++;
-                    fMatch = TRUE;
+                    fMatch = true;
                 }
                 break;
 
@@ -1129,13 +1129,13 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                     if ( fcount >= MAX_FORGET )
                     {
                         fread_to_eol ( fp );
-                        fMatch = TRUE;
+                        fMatch = true;
                         break;
                     }
 
                     ch->pcdata->forget[fcount] = fread_string ( fp );
                     fcount++;
-                    fMatch = TRUE;
+                    fMatch = true;
                 }
                 break;
 
@@ -1157,7 +1157,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                     }
                     else
                         gn_add ( ch, gn );
-                    fMatch = TRUE;
+                    fMatch = true;
                 }
                 break;
 
@@ -1174,7 +1174,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                     ch->max_mana = fread_number ( fp );
                     ch->move = fread_number ( fp );
                     ch->max_move = fread_number ( fp );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
 
@@ -1184,7 +1184,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                     ch->pcdata->perm_hit = fread_number ( fp );
                     ch->pcdata->perm_mana = fread_number ( fp );
                     ch->pcdata->perm_move = fread_number ( fp );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
 
@@ -1212,7 +1212,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                 {
                     lastlogoff = fread_number ( fp );
                     ch->llogoff = ( time_t ) lastlogoff;
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
                 KEYS ( "LongDescr", ch->long_descr, fread_string ( fp ) );
@@ -1229,7 +1229,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                     ch->pcdata->last_penalty = fread_number ( fp );
                     ch->pcdata->last_news = fread_number ( fp );
                     ch->pcdata->last_changes = fread_number ( fp );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
                 if ( !str_cmp ( word, "Notb" ) )
@@ -1240,7 +1240,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                     ch->pcdata->last_news = fread_number ( fp );
                     ch->pcdata->last_changes = fread_number ( fp );
                     ch->pcdata->last_weddings = fread_number ( fp );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
                 break;
@@ -1290,7 +1290,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
 
                     ch->race = race_lookup ( tmp );
                     free_string ( tmp );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
                 KEY ( "Reca", ch->pcdata->recall, fread_number ( fp ) );
@@ -1299,13 +1299,13 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                     ch->in_room = get_room_index ( fread_number ( fp ) );
                     if ( ch->in_room == NULL )
                         ch->in_room = get_room_index ( ROOM_VNUM_LIMBO );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
                 if ( !str_cmp ( word, "RoomRLE" ) )
                 {
                     fread_rle ( ch->pcdata->explored, fp );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
 
@@ -1345,18 +1345,18 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                     {
                         bool race_has;
                         int i;
-                        race_has = FALSE;
+                        race_has = false;
                         for ( i = 0; i < 5; i++ )
                         {
                             if ( pc_race_table[ch->race].skills[i] == NULL )
                                 break;
                             if ( !str_cmp ( pc_race_table[ch->race].skills[i],
                                  skill_table[sn].name ) )
-                            race_has = TRUE;
+                            race_has = true;
                         }
                             ch->pcdata->learned[sn] = value;
                     }
-                    fMatch = TRUE;
+                    fMatch = true;
                 }
                 KEYS ( "Spouse", ch->pcdata->spouse, fread_string ( fp ) );
 
@@ -1383,7 +1383,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                         free_string ( ch->pcdata->title );
                         ch->pcdata->title = str_dup ( buf );
                     }
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
 
@@ -1396,7 +1396,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                 if ( !str_cmp ( word, "Vnum" ) )
                 {
                     ch->pIndexData = get_mob_index ( fread_number ( fp ) );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
                 break;
@@ -1456,12 +1456,12 @@ void fread_pet ( CHAR_DATA * ch, FILE * fp )
     for ( ;; )
     {
         word = feof ( fp ) ? "END" : fread_word ( fp );
-        fMatch = FALSE;
+        fMatch = false;
 
         switch ( UPPER ( word[0] ) )
         {
             case '*':
-                fMatch = TRUE;
+                fMatch = true;
                 fread_to_eol ( fp );
                 break;
 
@@ -1489,7 +1489,7 @@ void fread_pet ( CHAR_DATA * ch, FILE * fp )
                     paf->bitvector = fread_long ( fp );
                     paf->next = pet->affected;
                     pet->affected = paf;
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
 
@@ -1513,7 +1513,7 @@ void fread_pet ( CHAR_DATA * ch, FILE * fp )
                     paf->bitvector = fread_long ( fp );
                     paf->next = pet->affected;
                     pet->affected = paf;
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
 
@@ -1524,7 +1524,7 @@ void fread_pet ( CHAR_DATA * ch, FILE * fp )
 
                     pet->clan = clan_lookup ( tmp );
                     free_string ( tmp );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
                 break;
@@ -1553,7 +1553,7 @@ void fread_pet ( CHAR_DATA * ch, FILE * fp )
                     pet->max_mana = fread_number ( fp );
                     pet->move = fread_number ( fp );
                     pet->max_move = fread_number ( fp );
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
                 break;
@@ -1598,30 +1598,30 @@ void fread_obj ( CHAR_DATA * ch, FILE * fp )
     bool new_format;            /* to prevent errors */
     bool make_new;              /* update object */
 
-    fVnum = FALSE;
+    fVnum = false;
     obj = NULL;
-    first = TRUE;               /* used to counter fp offset */
-    new_format = FALSE;
-    make_new = FALSE;
+    first = true;               /* used to counter fp offset */
+    new_format = false;
+    make_new = false;
 
     word = feof ( fp ) ? "End" : fread_word ( fp );
     if ( !str_cmp ( word, "Vnum" ) )
     {
         long vnum;
 
-        first = FALSE;          /* fp will be in right place */
+        first = false;          /* fp will be in right place */
 
         vnum = fread_long ( fp );
         if ( get_obj_index ( vnum ) == NULL )
         {
             bug ( "Fread_obj: bad vnum %ld.", vnum );
             obj = create_object ( get_obj_index ( OBJ_VNUM_BAG ), -1 );
-            new_format = TRUE;
+            new_format = true;
         }
         else
         {
             obj = create_object ( get_obj_index ( vnum ), -1 );
-            new_format = TRUE;
+            new_format = true;
         }
 
     }
@@ -1634,22 +1634,22 @@ void fread_obj ( CHAR_DATA * ch, FILE * fp )
         obj->description = str_dup ( "" );
     }
 
-    fNest = FALSE;
-    fVnum = TRUE;
+    fNest = false;
+    fVnum = true;
     iNest = 0;
 
     for ( ;; )
     {
         if ( first )
-            first = FALSE;
+            first = false;
         else
             word = feof ( fp ) ? "End" : fread_word ( fp );
-        fMatch = FALSE;
+        fMatch = false;
 
         switch ( UPPER ( word[0] ) )
         {
             case '*':
-                fMatch = TRUE;
+                fMatch = true;
                 fread_to_eol ( fp );
                 break;
 
@@ -1674,7 +1674,7 @@ void fread_obj ( CHAR_DATA * ch, FILE * fp )
                     paf->bitvector = fread_long ( fp );
                     paf->next = obj->affected;
                     obj->affected = paf;
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
                 if ( !str_cmp ( word, "Affc" ) )
@@ -1699,7 +1699,7 @@ void fread_obj ( CHAR_DATA * ch, FILE * fp )
                     paf->bitvector = fread_long ( fp );
                     paf->next = obj->affected;
                     obj->affected = paf;
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
                 break;
@@ -1718,8 +1718,8 @@ void fread_obj ( CHAR_DATA * ch, FILE * fp )
 
                 if ( !str_cmp ( word, "Enchanted" ) )
                 {
-                    obj->enchanted = TRUE;
-                    fMatch = TRUE;
+                    obj->enchanted = true;
+                    fMatch = true;
                     break;
                 }
 
@@ -1737,7 +1737,7 @@ void fread_obj ( CHAR_DATA * ch, FILE * fp )
                     ed->description = fread_string ( fp );
                     ed->next = obj->extra_descr;
                     obj->extra_descr = ed;
-                    fMatch = TRUE;
+                    fMatch = true;
                 }
 
                 if ( !str_cmp ( word, "End" ) )
@@ -1819,9 +1819,9 @@ void fread_obj ( CHAR_DATA * ch, FILE * fp )
                     else
                     {
                         rgObjNest[iNest] = obj;
-                        fNest = TRUE;
+                        fNest = true;
                     }
-                    fMatch = TRUE;
+                    fMatch = true;
                 }
                 break;
 
@@ -1830,8 +1830,8 @@ void fread_obj ( CHAR_DATA * ch, FILE * fp )
                 {
                     if ( obj->pIndexData != NULL &&
                          obj->pIndexData->new_format )
-                        make_new = TRUE;
-                    fMatch = TRUE;
+                        make_new = true;
+                    fMatch = true;
                 }
                 break;
 
@@ -1858,7 +1858,7 @@ void fread_obj ( CHAR_DATA * ch, FILE * fp )
                     {
                         obj->value[iValue] = sn;
                     }
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
 
@@ -1878,7 +1878,7 @@ void fread_obj ( CHAR_DATA * ch, FILE * fp )
                     obj->value[3] = fread_long ( fp );
                     if ( obj->item_type == ITEM_WEAPON && obj->value[0] == 0 )
                         obj->value[0] = obj->pIndexData->value[0];
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
 
@@ -1890,7 +1890,7 @@ void fread_obj ( CHAR_DATA * ch, FILE * fp )
                     obj->value[3] = fread_long ( fp );
                     obj->value[4] = fread_long ( fp );
 
-                    fMatch = TRUE;
+                    fMatch = true;
                     break;
                 }
 
@@ -1902,8 +1902,8 @@ void fread_obj ( CHAR_DATA * ch, FILE * fp )
                     if ( ( obj->pIndexData = get_obj_index ( vnum ) ) == NULL )
                         bug ( "Fread_obj: bad vnum %ld.", vnum );
                     else
-                        fVnum = TRUE;
-                    fMatch = TRUE;
+                        fVnum = true;
+                    fMatch = true;
                     break;
                 }
                 break;

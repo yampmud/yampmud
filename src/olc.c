@@ -46,9 +46,9 @@ bool run_olc_editor ( DESCRIPTOR_DATA * d )
             mpedit ( d->character, d->incomm );
             break;
         default:
-            return FALSE;
+            return false;
     }
-    return TRUE;
+    return true;
 }
 
 char *olc_ed_name ( CHAR_DATA * ch )
@@ -175,7 +175,7 @@ bool show_commands ( CHAR_DATA * ch, char *argument )
             break;
     }
 
-    return FALSE;
+    return false;
 }
 
 /*****************************************************************************
@@ -370,7 +370,7 @@ bool edit_done ( CHAR_DATA * ch )
 {
     ch->desc->pEdit = NULL;
     ch->desc->editor = 0;
-    return FALSE;
+    return false;
 }
 
 /*****************************************************************************

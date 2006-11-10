@@ -216,7 +216,7 @@ CH_CMD ( do_play )
     OBJ_DATA *juke;
     char *str, arg[MAX_INPUT_LENGTH];
     int song, i;
-    bool global = FALSE;
+    bool global = false;
 
     str = one_argument ( argument, arg );
 
@@ -242,17 +242,17 @@ CH_CMD ( do_play )
         BUFFER *buffer;
         char buf[MAX_STRING_LENGTH];
         int col = 0;
-        bool artist = FALSE, match = FALSE;
+        bool artist = false, match = false;
 
         buffer = new_buf (  );
         argument = str;
         argument = one_argument ( argument, arg );
 
         if ( !str_cmp ( arg, "artist" ) )
-            artist = TRUE;
+            artist = true;
 
         if ( argument[0] != '\0' )
-            match = TRUE;
+            match = true;
 
         sprintf ( buf, "%s has the following songs available:\n\r",
                   juke->short_descr );
@@ -288,7 +288,7 @@ CH_CMD ( do_play )
     if ( !str_cmp ( arg, "loud" ) )
     {
         argument = str;
-        global = TRUE;
+        global = true;
     }
 
     if ( argument[0] == '\0' )

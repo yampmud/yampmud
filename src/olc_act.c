@@ -29,7 +29,7 @@
 #include "magic.h"
 #include "db.h"
 
-/* Return TRUE if area changed, FALSE if not. */
+/* Return true if area changed, false if not. */
 #define REDIT( fun )		bool fun( CHAR_DATA *ch, char *argument )
 #define OEDIT( fun )		bool fun( CHAR_DATA *ch, char *argument )
 #define MEDIT( fun )		bool fun( CHAR_DATA *ch, char *argument )
@@ -53,7 +53,7 @@ bool show_version ( CHAR_DATA * ch, char *argument )
     send_to_char ( CREDITS, ch );
     send_to_char ( "\n\r", ch );
 
-    return FALSE;
+    return false;
 }
 
 /*
@@ -235,7 +235,7 @@ bool show_help ( CHAR_DATA * ch, char *argument )
                       help_table[cnt].desc );
             send_to_char ( buf, ch );
         }
-        return FALSE;
+        return false;
     }
 
     /* 
@@ -250,17 +250,17 @@ bool show_help ( CHAR_DATA * ch, char *argument )
             if ( help_table[cnt].structure == spec_table )
             {
                 show_spec_cmds ( ch );
-                return FALSE;
+                return false;
             }
             else if ( help_table[cnt].structure == liq_table )
             {
                 show_liqlist ( ch );
-                return FALSE;
+                return false;
             }
             else if ( help_table[cnt].structure == attack_table )
             {
                 show_damlist ( ch );
-                return FALSE;
+                return false;
             }
             else if ( help_table[cnt].structure == skill_table )
             {
@@ -270,7 +270,7 @@ bool show_help ( CHAR_DATA * ch, char *argument )
                     send_to_char ( "Syntax:  ? spells "
                                    "[ignore/attack/defend/self/object/all]\n\r",
                                    ch );
-                    return FALSE;
+                    return false;
                 }
 
                 if ( !str_prefix ( spell, "all" ) )
@@ -290,18 +290,18 @@ bool show_help ( CHAR_DATA * ch, char *argument )
                                    "[ignore/attack/defend/self/object/all]\n\r",
                                    ch );
 
-                return FALSE;
+                return false;
             }
             else
             {
                 show_flag_cmds ( ch, help_table[cnt].structure );
-                return FALSE;
+                return false;
             }
         }
     }
 
     show_help ( ch, "" );
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_rlist )
@@ -320,13 +320,13 @@ REDIT ( redit_rlist )
     pArea = ch->in_room->area;
     buf1 = new_buf (  );
 /*    buf1[0] = '\0'; */
-    found = FALSE;
+    found = false;
 
     for ( vnum = pArea->min_vnum; vnum <= pArea->max_vnum; vnum++ )
     {
         if ( ( pRoomIndex = get_room_index ( vnum ) ) )
         {
-            found = TRUE;
+            found = true;
             sprintf ( buf, "[%-6ld] %-17.16s ", vnum,
                       capitalize ( pRoomIndex->name ) );
             add_buf ( buf1, buf );
@@ -338,7 +338,7 @@ REDIT ( redit_rlist )
     if ( !found )
     {
         send_to_char ( "Room(s) not found in this area.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( col % 3 != 0 )
@@ -346,7 +346,7 @@ REDIT ( redit_rlist )
 
     page_to_char ( buf_string ( buf1 ), ch );
     free_buf ( buf1 );
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_mlist )
@@ -364,14 +364,14 @@ REDIT ( redit_mlist )
     if ( arg[0] == '\0' )
     {
         send_to_char ( "Syntax:  mlist <all/name>\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     buf1 = new_buf (  );
     pArea = ch->in_room->area;
 /*    buf1[0] = '\0'; */
     fAll = !str_cmp ( arg, "all" );
-    found = FALSE;
+    found = false;
 
     for ( vnum = pArea->min_vnum; vnum <= pArea->max_vnum; vnum++ )
     {
@@ -379,7 +379,7 @@ REDIT ( redit_mlist )
         {
             if ( fAll || is_name ( arg, pMobIndex->player_name ) )
             {
-                found = TRUE;
+                found = true;
                 sprintf ( buf, "[%-6ld] %-17.16s ", pMobIndex->vnum,
                           capitalize ( pMobIndex->short_descr ) );
                 add_buf ( buf1, buf );
@@ -392,7 +392,7 @@ REDIT ( redit_mlist )
     if ( !found )
     {
         send_to_char ( "Mobile(s) not found in this area.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( col % 3 != 0 )
@@ -400,7 +400,7 @@ REDIT ( redit_mlist )
 
     page_to_char ( buf_string ( buf1 ), ch );
     free_buf ( buf1 );
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_olist )
@@ -418,14 +418,14 @@ REDIT ( redit_olist )
     if ( arg[0] == '\0' )
     {
         send_to_char ( "Syntax:  olist <all/name/item_type>\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pArea = ch->in_room->area;
     buf1 = new_buf (  );
 /*    buf1[0] = '\0'; */
     fAll = !str_cmp ( arg, "all" );
-    found = FALSE;
+    found = false;
 
     for ( vnum = pArea->min_vnum; vnum <= pArea->max_vnum; vnum++ )
     {
@@ -434,7 +434,7 @@ REDIT ( redit_olist )
             if ( fAll || is_name ( arg, pObjIndex->name ) ||
                  flag_value ( type_flags, arg ) == pObjIndex->item_type )
             {
-                found = TRUE;
+                found = true;
                 sprintf ( buf, "[%-6ld] %-17.16s", pObjIndex->vnum,
                           capitalize ( pObjIndex->short_descr ) );
                 add_buf ( buf1, buf );
@@ -447,7 +447,7 @@ REDIT ( redit_olist )
     if ( !found )
     {
         send_to_char ( "Object(s) not found in this area.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( col % 3 != 0 )
@@ -455,7 +455,7 @@ REDIT ( redit_olist )
 
     page_to_char ( buf_string ( buf1 ), ch );
     free_buf ( buf1 );
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_mshow )
@@ -466,13 +466,13 @@ REDIT ( redit_mshow )
     if ( argument[0] == '\0' )
     {
         send_to_char ( "Syntax:  mshow <vnum>\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( !is_number ( argument ) )
     {
         send_to_char ( "REdit: Ingresa un numero.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( is_number ( argument ) )
@@ -481,7 +481,7 @@ REDIT ( redit_mshow )
         if ( !( pMob = get_mob_index ( value ) ) )
         {
             send_to_char ( "REdit:  That mobile does not exist.\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         ch->desc->pEdit = ( void * ) pMob;
@@ -489,7 +489,7 @@ REDIT ( redit_mshow )
 
     medit_show ( ch, argument );
     ch->desc->pEdit = ( void * ) ch->in_room;
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_oshow )
@@ -500,13 +500,13 @@ REDIT ( redit_oshow )
     if ( argument[0] == '\0' )
     {
         send_to_char ( "Syntax:  oshow <vnum>\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( !is_number ( argument ) )
     {
         send_to_char ( "REdit: Ingresa un numero.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( is_number ( argument ) )
@@ -515,7 +515,7 @@ REDIT ( redit_oshow )
         if ( !( pObj = get_obj_index ( value ) ) )
         {
             send_to_char ( "REdit:  That object does not exist.\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         ch->desc->pEdit = ( void * ) pObj;
@@ -523,7 +523,7 @@ REDIT ( redit_oshow )
 
     oedit_show ( ch, argument );
     ch->desc->pEdit = ( void * ) ch->in_room;
-    return FALSE;
+    return false;
 }
 
 /*****************************************************************************
@@ -546,9 +546,9 @@ bool check_range ( int lower, int upper )
             ++cnt;
 
         if ( cnt > 1 )
-            return FALSE;
+            return false;
     }
-    return TRUE;
+    return true;
 }
 
 AREA_DATA *get_vnum_area ( int vnum )
@@ -614,7 +614,7 @@ AEDIT ( aedit_show )
               flag_string ( area_flags, pArea->area_flags ) );
     send_to_char ( buf, ch );
 
-    return FALSE;
+    return false;
 }
 
 AEDIT ( aedit_reset )
@@ -626,7 +626,7 @@ AEDIT ( aedit_reset )
     reset_area ( pArea );
     send_to_char ( "Area reset.\n\r", ch );
 
-    return FALSE;
+    return false;
 }
 
 AEDIT ( aedit_create )
@@ -640,7 +640,7 @@ AEDIT ( aedit_create )
 
     SET_BIT ( pArea->area_flags, AREA_ADDED );
     send_to_char ( "Area Created.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 AEDIT ( aedit_name )
@@ -652,14 +652,14 @@ AEDIT ( aedit_name )
     if ( argument[0] == '\0' )
     {
         send_to_char ( "Syntax:   name [$name]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     free_string ( pArea->name );
     pArea->name = str_dup ( argument );
 
     send_to_char ( "Name set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 AEDIT ( aedit_credits )
@@ -671,14 +671,14 @@ AEDIT ( aedit_credits )
     if ( argument[0] == '\0' )
     {
         send_to_char ( "Syntax:   credits [$credits]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     free_string ( pArea->credits );
     pArea->credits = str_dup ( argument );
 
     send_to_char ( "Credits set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 AEDIT ( aedit_file )
@@ -694,7 +694,7 @@ AEDIT ( aedit_file )
     if ( argument[0] == '\0' )
     {
         send_to_char ( "Syntax:  filename [$file]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     /* 
@@ -704,7 +704,7 @@ AEDIT ( aedit_file )
     if ( length > 8 )
     {
         send_to_char ( "No more than eight characters allowed.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     /* 
@@ -715,7 +715,7 @@ AEDIT ( aedit_file )
         if ( !isalnum ( file[i] ) )
         {
             send_to_char ( "Only letters and numbers are valid.\n\r", ch );
-            return FALSE;
+            return false;
         }
     }
 
@@ -724,7 +724,7 @@ AEDIT ( aedit_file )
     pArea->file_name = str_dup ( file );
 
     send_to_char ( "Filename set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 AEDIT ( aedit_repop_msg )
@@ -736,14 +736,14 @@ AEDIT ( aedit_repop_msg )
     if ( argument[0] == '\0' )
     {
         send_to_char ( "Syntax:   repop [MESSAGE]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     free_string ( pArea->repop_msg );
     pArea->repop_msg = str_dup ( argument );
 
     send_to_char ( "Repop Message set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 AEDIT ( aedit_age )
@@ -758,13 +758,13 @@ AEDIT ( aedit_age )
     if ( !is_number ( age ) || age[0] == '\0' )
     {
         send_to_char ( "Syntax:  age [#xage]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pArea->age = atoi ( age );
 
     send_to_char ( "Age set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 #if 0                           /* ROM OLC */
@@ -781,7 +781,7 @@ AEDIT ( aedit_recall )
     if ( !is_number ( argument ) || argument[0] == '\0' )
     {
         send_to_char ( "Syntax:  recall [#xrvnum]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     value = atol ( room );
@@ -789,13 +789,13 @@ AEDIT ( aedit_recall )
     if ( !get_room_index ( value ) )
     {
         send_to_char ( "AEdit:  Room vnum does not exist.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pArea->recall = value;
 
     send_to_char ( "Recall set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 #endif /* ROM OLC */
 
@@ -813,7 +813,7 @@ AEDIT ( aedit_security )
     if ( !is_number ( sec ) || sec[0] == '\0' )
     {
         send_to_char ( "Syntax:  security [#xlevel]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     value = atoi ( sec );
@@ -827,13 +827,13 @@ AEDIT ( aedit_security )
         }
         else
             send_to_char ( "Security is 0 only.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pArea->security = value;
 
     send_to_char ( "Security set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 AEDIT ( aedit_builder )
@@ -850,7 +850,7 @@ AEDIT ( aedit_builder )
     {
         send_to_char ( "Syntax:  builder [$name]  -toggles builder\n\r", ch );
         send_to_char ( "Syntax:  builder All      -allows everyone\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     name[0] = UPPER ( name[0] );
@@ -866,7 +866,7 @@ AEDIT ( aedit_builder )
             pArea->builders = str_dup ( "None" );
         }
         send_to_char ( "Builder removed.\n\r", ch );
-        return TRUE;
+        return true;
     }
     else
     {
@@ -888,10 +888,10 @@ AEDIT ( aedit_builder )
 
         send_to_char ( "Builder added.\n\r", ch );
         send_to_char ( pArea->builders, ch );
-        return TRUE;
+        return true;
     }
 
-    return FALSE;
+    return false;
 }
 
 AEDIT ( aedit_vnum )
@@ -911,25 +911,25 @@ AEDIT ( aedit_vnum )
          upper[0] == '\0' )
     {
         send_to_char ( "Syntax:  vnum [#xlower] [#xupper]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( ( ilower = atol ( lower ) ) > ( iupper = atol ( upper ) ) )
     {
         send_to_char ( "AEdit:  Upper must be larger then lower.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( !check_range ( atol ( lower ), atol ( upper ) ) )
     {
         send_to_char ( "AEdit:  Range must include only this area.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( get_vnum_area ( ilower ) && get_vnum_area ( ilower ) != pArea )
     {
         send_to_char ( "AEdit:  Lower vnum already assigned.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pArea->min_vnum = ilower;
@@ -938,13 +938,13 @@ AEDIT ( aedit_vnum )
     if ( get_vnum_area ( iupper ) && get_vnum_area ( iupper ) != pArea )
     {
         send_to_char ( "AEdit:  Upper vnum already assigned.\n\r", ch );
-        return TRUE;            /* The lower value has been set. */
+        return true;            /* The lower value has been set. */
     }
 
     pArea->max_vnum = iupper;
     send_to_char ( "Upper vnum set.\n\r", ch );
 
-    return TRUE;
+    return true;
 }
 
 AEDIT ( aedit_lvnum )
@@ -961,31 +961,31 @@ AEDIT ( aedit_lvnum )
     if ( !is_number ( lower ) || lower[0] == '\0' )
     {
         send_to_char ( "Syntax:  min_vnum [#xlower]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( ( ilower = atol ( lower ) ) > ( iupper = pArea->max_vnum ) )
     {
         send_to_char ( "AEdit:  Value must be less than the max_vnum.\n\r",
                        ch );
-        return FALSE;
+        return false;
     }
 
     if ( !check_range ( ilower, iupper ) )
     {
         send_to_char ( "AEdit:  Range must include only this area.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( get_vnum_area ( ilower ) && get_vnum_area ( ilower ) != pArea )
     {
         send_to_char ( "AEdit:  Lower vnum already assigned.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pArea->min_vnum = ilower;
     send_to_char ( "Lower vnum set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 AEDIT ( aedit_uvnum )
@@ -1002,31 +1002,31 @@ AEDIT ( aedit_uvnum )
     if ( !is_number ( upper ) || upper[0] == '\0' )
     {
         send_to_char ( "Syntax:  max_vnum [#xupper]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( ( ilower = pArea->min_vnum ) > ( iupper = atol ( upper ) ) )
     {
         send_to_char ( "AEdit:  Upper must be larger then lower.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( !check_range ( ilower, iupper ) )
     {
         send_to_char ( "AEdit:  Range must include only this area.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( get_vnum_area ( iupper ) && get_vnum_area ( iupper ) != pArea )
     {
         send_to_char ( "AEdit:  Upper vnum already assigned.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pArea->max_vnum = iupper;
     send_to_char ( "Upper vnum set.\n\r", ch );
 
-    return TRUE;
+    return true;
 }
 
 /*
@@ -1089,13 +1089,13 @@ REDIT ( redit_show )
     }
 
     strcat ( buf1, "Characters: [" );
-    fcnt = FALSE;
+    fcnt = false;
     for ( rch = pRoom->people; rch; rch = rch->next_in_room )
     {
         one_argument ( rch->name, buf );
         strcat ( buf1, buf );
         strcat ( buf1, " " );
-        fcnt = TRUE;
+        fcnt = true;
     }
 
     if ( fcnt )
@@ -1110,13 +1110,13 @@ REDIT ( redit_show )
         strcat ( buf1, "none]\n\r" );
 
     strcat ( buf1, "Objects:    [" );
-    fcnt = FALSE;
+    fcnt = false;
     for ( obj = pRoom->contents; obj; obj = obj->next_content )
     {
         one_argument ( obj->name, buf );
         strcat ( buf1, buf );
         strcat ( buf1, " " );
-        fcnt = TRUE;
+        fcnt = true;
     }
 
     if ( fcnt )
@@ -1192,7 +1192,7 @@ REDIT ( redit_show )
     }
 
     send_to_char ( buf1, ch );
-    return FALSE;
+    return false;
 }
 
 /* Local function. */
@@ -1217,7 +1217,7 @@ bool change_exit ( CHAR_DATA * ch, char *argument, int door )
         if ( !pRoom->exit[door] )
         {
             send_to_char ( "Salida no existe.\n\r", ch );
-            return FALSE;
+            return false;
         }
         /* pRoom->exit[door] = new_exit(); */
 
@@ -1241,7 +1241,7 @@ bool change_exit ( CHAR_DATA * ch, char *argument, int door )
         }
 
         send_to_char ( "Exit flag toggled.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     /* 
@@ -1252,14 +1252,14 @@ bool change_exit ( CHAR_DATA * ch, char *argument, int door )
 
     if ( command[0] == '\0' && argument[0] == '\0' )    /* Move command. */
     {
-        move_char ( ch, door, TRUE, FALSE );    /* ROM OLC */
-        return FALSE;
+        move_char ( ch, door, true, false );    /* ROM OLC */
+        return false;
     }
 
     if ( command[0] == '?' )
     {
         do_help ( ch, "EXIT" );
-        return FALSE;
+        return false;
     }
 
     if ( !str_cmp ( command, "delete" ) )
@@ -1270,7 +1270,7 @@ bool change_exit ( CHAR_DATA * ch, char *argument, int door )
         if ( !pRoom->exit[door] )
         {
             send_to_char ( "REdit:  Cannot delete a null exit.\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         /* 
@@ -1292,7 +1292,7 @@ bool change_exit ( CHAR_DATA * ch, char *argument, int door )
         pRoom->exit[door] = NULL;
 
         send_to_char ( "Exit unlinked.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     if ( !str_cmp ( command, "link" ) )
@@ -1302,7 +1302,7 @@ bool change_exit ( CHAR_DATA * ch, char *argument, int door )
         if ( arg[0] == '\0' || !is_number ( arg ) )
         {
             send_to_char ( "Syntax:  [direction] link [vnum]\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         value = atol ( arg );
@@ -1311,20 +1311,20 @@ bool change_exit ( CHAR_DATA * ch, char *argument, int door )
         {
             send_to_char ( "REdit:  Cannot link to non-existant room.\n\r",
                            ch );
-            return FALSE;
+            return false;
         }
 
         if ( !IS_BUILDER ( ch, get_room_index ( value )->area ) )
         {
             send_to_char ( "REdit:  Cannot link to that area.\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         if ( get_room_index ( value )->exit[rev_dir[door]] )
         {
             send_to_char ( "REdit:  Remote side's exit already exists.\n\r",
                            ch );
-            return FALSE;
+            return false;
         }
 
         if ( !pRoom->exit[door] )
@@ -1346,7 +1346,7 @@ bool change_exit ( CHAR_DATA * ch, char *argument, int door )
         pRoom->exit[door] = pExit;
 
         send_to_char ( "Two-way link established.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     if ( !str_cmp ( command, "dig" ) )
@@ -1356,13 +1356,13 @@ bool change_exit ( CHAR_DATA * ch, char *argument, int door )
         if ( arg[0] == '\0' || !is_number ( arg ) )
         {
             send_to_char ( "Syntax: [direction] dig <vnum>\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         redit_create ( ch, arg );
         sprintf ( buf, "link %s", arg );
         change_exit ( ch, buf, door );
-        return TRUE;
+        return true;
     }
 
     if ( !str_cmp ( command, "room" ) )
@@ -1370,7 +1370,7 @@ bool change_exit ( CHAR_DATA * ch, char *argument, int door )
         if ( arg[0] == '\0' || !is_number ( arg ) )
         {
             send_to_char ( "Syntax:  [direction] room [vnum]\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         if ( !pRoom->exit[door] )
@@ -1384,7 +1384,7 @@ bool change_exit ( CHAR_DATA * ch, char *argument, int door )
         {
             send_to_char ( "REdit:  Cannot link to non-existant room.\n\r",
                            ch );
-            return FALSE;
+            return false;
         }
 
         pRoom->exit[door]->u1.to_room = get_room_index ( value );   /* ROM OLC */
@@ -1392,7 +1392,7 @@ bool change_exit ( CHAR_DATA * ch, char *argument, int door )
 /*	pRoom->exit[door]->vnum = value;                 Can't set vnum in ROM */
 
         send_to_char ( "One-way link established.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     if ( !str_cmp ( command, "key" ) )
@@ -1400,13 +1400,13 @@ bool change_exit ( CHAR_DATA * ch, char *argument, int door )
         if ( arg[0] == '\0' || !is_number ( arg ) )
         {
             send_to_char ( "Syntax:  [direction] key [vnum]\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         if ( !pRoom->exit[door] )
         {
             send_to_char ( "Salida no existe.\n\r", ch );
-            return FALSE;
+            return false;
         }
 
 /*	if ( !pRoom->exit[door] )
@@ -1419,19 +1419,19 @@ bool change_exit ( CHAR_DATA * ch, char *argument, int door )
         if ( !get_obj_index ( value ) )
         {
             send_to_char ( "REdit:  Item doesn't exist.\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         if ( get_obj_index ( atol ( argument ) )->item_type != ITEM_KEY )
         {
             send_to_char ( "REdit:  Key doesn't exist.\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         pRoom->exit[door]->key = value;
 
         send_to_char ( "Exit key set.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     if ( !str_cmp ( command, "name" ) )
@@ -1440,13 +1440,13 @@ bool change_exit ( CHAR_DATA * ch, char *argument, int door )
         {
             send_to_char ( "Syntax:  [direction] name [string]\n\r", ch );
             send_to_char ( "         [direction] name none\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         if ( !pRoom->exit[door] )
         {
             send_to_char ( "Salida no existe.\n\r", ch );
-            return FALSE;
+            return false;
         }
 
 /*	if ( !pRoom->exit[door] )
@@ -1461,7 +1461,7 @@ bool change_exit ( CHAR_DATA * ch, char *argument, int door )
             pRoom->exit[door]->keyword = str_dup ( "" );
 
         send_to_char ( "Exit name set.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     if ( !str_prefix ( command, "description" ) )
@@ -1471,7 +1471,7 @@ bool change_exit ( CHAR_DATA * ch, char *argument, int door )
             if ( !pRoom->exit[door] )
             {
                 send_to_char ( "Salida no existe.\n\r", ch );
-                return FALSE;
+                return false;
             }
 
 /*	    if ( !pRoom->exit[door] )
@@ -1480,94 +1480,94 @@ bool change_exit ( CHAR_DATA * ch, char *argument, int door )
 	    } */
 
             string_append ( ch, &pRoom->exit[door]->description );
-            return TRUE;
+            return true;
         }
 
         send_to_char ( "Syntax:  [direction] desc\n\r", ch );
-        return FALSE;
+        return false;
     }
 
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_north )
 {
     if ( change_exit ( ch, argument, DIR_NORTH ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_south )
 {
     if ( change_exit ( ch, argument, DIR_SOUTH ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_east )
 {
     if ( change_exit ( ch, argument, DIR_EAST ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_west )
 {
     if ( change_exit ( ch, argument, DIR_WEST ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_up )
 {
     if ( change_exit ( ch, argument, DIR_UP ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_down )
 {
     if ( change_exit ( ch, argument, DIR_DOWN ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_northeast )
 {
     if ( change_exit ( ch, argument, DIR_NORTHEAST ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_southeast )
 {
     if ( change_exit ( ch, argument, DIR_SOUTHEAST ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_southwest )
 {
     if ( change_exit ( ch, argument, DIR_SOUTHWEST ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_northwest )
 {
     if ( change_exit ( ch, argument, DIR_NORTHWEST ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_ed )
@@ -1588,7 +1588,7 @@ REDIT ( redit_ed )
         send_to_char ( "         ed edit [keyword]\n\r", ch );
         send_to_char ( "         ed delete [keyword]\n\r", ch );
         send_to_char ( "         ed format [keyword]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( !str_cmp ( command, "add" ) )
@@ -1596,7 +1596,7 @@ REDIT ( redit_ed )
         if ( keyword[0] == '\0' )
         {
             send_to_char ( "Syntax:  ed add [keyword]\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         ed = new_extra_descr (  );
@@ -1607,7 +1607,7 @@ REDIT ( redit_ed )
 
         string_append ( ch, &ed->description );
 
-        return TRUE;
+        return true;
     }
 
     if ( !str_cmp ( command, "edit" ) )
@@ -1615,7 +1615,7 @@ REDIT ( redit_ed )
         if ( keyword[0] == '\0' )
         {
             send_to_char ( "Syntax:  ed edit [keyword]\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         for ( ed = pRoom->extra_descr; ed; ed = ed->next )
@@ -1628,12 +1628,12 @@ REDIT ( redit_ed )
         {
             send_to_char ( "REdit:  Extra description keyword not found.\n\r",
                            ch );
-            return FALSE;
+            return false;
         }
 
         string_append ( ch, &ed->description );
 
-        return TRUE;
+        return true;
     }
 
     if ( !str_cmp ( command, "delete" ) )
@@ -1643,7 +1643,7 @@ REDIT ( redit_ed )
         if ( keyword[0] == '\0' )
         {
             send_to_char ( "Syntax:  ed delete [keyword]\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         for ( ed = pRoom->extra_descr; ed; ed = ed->next )
@@ -1657,7 +1657,7 @@ REDIT ( redit_ed )
         {
             send_to_char ( "REdit:  Extra description keyword not found.\n\r",
                            ch );
-            return FALSE;
+            return false;
         }
 
         if ( !ped )
@@ -1668,7 +1668,7 @@ REDIT ( redit_ed )
         free_extra_descr ( ed );
 
         send_to_char ( "Extra description deleted.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     if ( !str_cmp ( command, "format" ) )
@@ -1676,7 +1676,7 @@ REDIT ( redit_ed )
         if ( keyword[0] == '\0' )
         {
             send_to_char ( "Syntax:  ed format [keyword]\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         for ( ed = pRoom->extra_descr; ed; ed = ed->next )
@@ -1689,17 +1689,17 @@ REDIT ( redit_ed )
         {
             send_to_char ( "REdit:  Extra description keyword not found.\n\r",
                            ch );
-            return FALSE;
+            return false;
         }
 
         ed->description = format_string ( ed->description );
 
         send_to_char ( "Extra description formatted.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     redit_ed ( ch, "" );
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_create )
@@ -1716,26 +1716,26 @@ REDIT ( redit_create )
     if ( argument[0] == '\0' || value <= 0 )
     {
         send_to_char ( "Syntax:  create [vnum > 0]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pArea = get_vnum_area ( value );
     if ( !pArea )
     {
         send_to_char ( "REdit:  That vnum is not assigned an area.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( !IS_BUILDER ( ch, pArea ) )
     {
         send_to_char ( "REdit:  Vnum in an area you cannot build in.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( get_room_index ( value ) )
     {
         send_to_char ( "REdit:  Room vnum already exists.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pRoom = new_room_index (  );
@@ -1751,7 +1751,7 @@ REDIT ( redit_create )
     ch->desc->pEdit = ( void * ) pRoom;
 
     send_to_char ( "Room created.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 REDIT ( redit_name )
@@ -1763,14 +1763,14 @@ REDIT ( redit_name )
     if ( argument[0] == '\0' )
     {
         send_to_char ( "Syntax:  name [name]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     free_string ( pRoom->name );
     pRoom->name = str_dup ( argument );
 
     send_to_char ( "Name set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 REDIT ( redit_desc )
@@ -1782,11 +1782,11 @@ REDIT ( redit_desc )
     if ( argument[0] == '\0' )
     {
         string_append ( ch, &pRoom->description );
-        return TRUE;
+        return true;
     }
 
     send_to_char ( "Syntax:  desc\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_heal )
@@ -1799,11 +1799,11 @@ REDIT ( redit_heal )
     {
         pRoom->heal_rate = atoi ( argument );
         send_to_char ( "Heal rate set.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     send_to_char ( "Syntax : heal <#xnumber>\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_tele )
@@ -1816,11 +1816,11 @@ REDIT ( redit_tele )
     {
         pRoom->tele_dest = atoi ( argument );
         send_to_char ( "Teleport Destination set.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     send_to_char ( "Syntax : tele <#xnumber>\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_mana )
@@ -1833,11 +1833,11 @@ REDIT ( redit_mana )
     {
         pRoom->mana_rate = atoi ( argument );
         send_to_char ( "Mana rate set.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     send_to_char ( "Syntax : mana <#xnumber>\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_clan )
@@ -1849,7 +1849,7 @@ REDIT ( redit_clan )
     pRoom->clan = clan_lookup ( argument );
 
     send_to_char ( "Clan set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 REDIT ( redit_format )
@@ -1861,7 +1861,7 @@ REDIT ( redit_format )
     pRoom->description = format_string ( pRoom->description );
 
     send_to_char ( "String formatted.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 REDIT ( redit_mreset )
@@ -1883,19 +1883,19 @@ REDIT ( redit_mreset )
     if ( arg[0] == '\0' || !is_number ( arg ) )
     {
         send_to_char ( "Syntax:  mreset <vnum> <max #x> <mix #x>\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( !( pMobIndex = get_mob_index ( atol ( arg ) ) ) )
     {
         send_to_char ( "REdit: No mobile has that vnum.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( pMobIndex->area != pRoom->area )
     {
         send_to_char ( "REdit: No such mobile in this area.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     /* 
@@ -1922,7 +1922,7 @@ REDIT ( redit_mreset )
               pReset->arg2 );
     send_to_char ( output, ch );
     act ( "$n has created $N!", ch, NULL, newmob, TO_ROOM );
-    return TRUE;
+    return true;
 }
 
 struct wear_type
@@ -2017,19 +2017,19 @@ REDIT ( redit_oreset )
         send_to_char ( "        -no_args               = into room\n\r", ch );
         send_to_char ( "        -<obj_name>            = into obj\n\r", ch );
         send_to_char ( "        -<mob_name> <wear_loc> = into mob\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( !( pObjIndex = get_obj_index ( atol ( arg1 ) ) ) )
     {
         send_to_char ( "REdit: No object has that vnum.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( pObjIndex->area != pRoom->area )
     {
         send_to_char ( "REdit: No such object in this area.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     /* 
@@ -2093,7 +2093,7 @@ REDIT ( redit_oreset )
         if ( ( wear_loc = flag_value ( wear_loc_flags, argument ) ) == NO_FLAG )
         {
             send_to_char ( "REdit: Invalid wear_loc.  '? wear-loc'\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         /* 
@@ -2105,7 +2105,7 @@ REDIT ( redit_oreset )
                       capitalize ( pObjIndex->short_descr ), pObjIndex->vnum,
                       flag_string ( wear_flags, pObjIndex->wear_flags ) );
             send_to_char ( output, ch );
-            return FALSE;
+            return false;
         }
 
         /* 
@@ -2114,7 +2114,7 @@ REDIT ( redit_oreset )
         if ( get_eq_char ( to_mob, wear_loc ) )
         {
             send_to_char ( "REdit:  Object already equipped.\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         pReset = new_reset_data (  );
@@ -2187,11 +2187,11 @@ REDIT ( redit_oreset )
     else                        /* Display Syntax */
     {
         send_to_char ( "REdit:  That mobile isn't here.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     act ( "$n has created $p!", ch, newobj, NULL, TO_ROOM );
-    return TRUE;
+    return true;
 }
 
 /*
@@ -2392,7 +2392,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
             {
                 default:
                     do_help ( ch, "ITEM_LIGHT" );
-                    return FALSE;
+                    return false;
                 case 2:
                     send_to_char ( "HOURS OF LIGHT SET.\n\r\n\r", ch );
                     pObj->value[2] = atol ( argument );
@@ -2433,7 +2433,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
             {
                 default:
                     do_help ( ch, "ITEM_STAFF_WAND" );
-                    return FALSE;
+                    return false;
                 case 0:
                     send_to_char ( "SPELL LEVEL SET.\n\r\n\r", ch );
                     pObj->value[0] = atol ( argument );
@@ -2462,7 +2462,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
             {
                 default:
                     do_help ( ch, "ITEM_SCROLL_POTION_PILL" );
-                    return FALSE;
+                    return false;
                 case 0:
                     send_to_char ( "SPELL LEVEL SET.\n\r\n\r", ch );
                     pObj->value[0] = atol ( argument );
@@ -2493,7 +2493,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
             {
                 default:
                     do_help ( ch, "ITEM_ARMOR" );
-                    return FALSE;
+                    return false;
                 case 0:
                     send_to_char ( "AC PIERCE SET.\n\r\n\r", ch );
                     pObj->value[0] = atol ( argument );
@@ -2520,7 +2520,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
             {
                 default:
                     do_help ( ch, "ITEM_WEAPON" );
-                    return FALSE;
+                    return false;
                 case 0:
                     send_to_char ( "WEAPON CLASS SET.\n\r\n\r", ch );
                     pObj->value[0] = flag_value ( weapon_class, argument );
@@ -2552,7 +2552,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
             {
                 default:
                     do_help ( ch, "ITEM_PORTAL" );
-                    return FALSE;
+                    return false;
 
                 case 0:
                     send_to_char ( "CHARGES SET.\n\r\n\r", ch );
@@ -2578,7 +2578,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
             {
                 default:
                     do_help ( ch, "ITEM_FURNITURE" );
-                    return FALSE;
+                    return false;
 
                 case 0:
                     send_to_char ( "NUMBER OF PEOPLE SET.\n\r\n\r", ch );
@@ -2613,7 +2613,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
 
                 default:
                     do_help ( ch, "ITEM_CONTAINER" );
-                    return FALSE;
+                    return false;
                 case 0:
                     send_to_char ( "WEIGHT CAPACITY SET.\n\r\n\r", ch );
                     pObj->value[0] = atol ( argument );
@@ -2626,7 +2626,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
                     else
                     {
                         do_help ( ch, "ITEM_CONTAINER" );
-                        return FALSE;
+                        return false;
                     }
                     send_to_char ( "CONTAINER TYPE SET.\n\r\n\r", ch );
                     break;
@@ -2637,7 +2637,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
                         {
                             send_to_char ( "THERE IS NO SUCH ITEM.\n\r\n\r",
                                            ch );
-                            return FALSE;
+                            return false;
                         }
 
                         if ( get_obj_index ( atol ( argument ) )->item_type !=
@@ -2645,7 +2645,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
                         {
                             send_to_char ( "THAT ITEM IS NOT A KEY.\n\r\n\r",
                                            ch );
-                            return FALSE;
+                            return false;
                         }
                     }
                     send_to_char ( "CONTAINER KEY SET.\n\r\n\r", ch );
@@ -2670,7 +2670,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
 
                 default:
                     do_help ( ch, "ITEM_CONTAINER" );
-                    return FALSE;
+                    return false;
                 case 0:
                     send_to_char ( "WEIGHT CAPACITY SET.\n\r\n\r", ch );
                     pObj->value[0] = atol ( argument );
@@ -2683,7 +2683,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
                     else
                     {
                         do_help ( ch, "ITEM_CONTAINER" );
-                        return FALSE;
+                        return false;
                     }
                     send_to_char ( "CONTAINER TYPE SET.\n\r\n\r", ch );
                     break;
@@ -2694,7 +2694,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
                         {
                             send_to_char ( "THERE IS NO SUCH ITEM.\n\r\n\r",
                                            ch );
-                            return FALSE;
+                            return false;
                         }
 
                     }
@@ -2719,7 +2719,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
                 default:
                     do_help ( ch, "ITEM_DRINK" );
 /* OLC		    do_help( ch, "liquids" );    */
-                    return FALSE;
+                    return false;
                 case 0:
                     send_to_char ( "MAXIMUM AMOUT OF LIQUID HOURS SET.\n\r\n\r",
                                    ch );
@@ -2749,7 +2749,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
                 default:
                     do_help ( ch, "ITEM_FOUNTAIN" );
 /* OLC		    do_help( ch, "liquids" );    */
-                    return FALSE;
+                    return false;
                 case 0:
                     send_to_char ( "MAXIMUM AMOUT OF LIQUID HOURS SET.\n\r\n\r",
                                    ch );
@@ -2774,7 +2774,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
             {
                 default:
                     do_help ( ch, "ITEM_FOOD" );
-                    return FALSE;
+                    return false;
                 case 0:
                     send_to_char ( "HOURS OF FOOD SET.\n\r\n\r", ch );
                     pObj->value[0] = atol ( argument );
@@ -2795,7 +2795,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
             {
                 default:
                     do_help ( ch, "ITEM_MONEY" );
-                    return FALSE;
+                    return false;
                 case 0:
                     send_to_char ( "GOLD AMOUNT SET.\n\r\n\r", ch );
                     pObj->value[0] = atol ( argument );
@@ -2810,7 +2810,7 @@ bool set_obj_values ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
 
     show_obj_values ( ch, pObj );
 
-    return TRUE;
+    return true;
 }
 
 OEDIT ( oedit_show )
@@ -2917,7 +2917,7 @@ OEDIT ( oedit_show )
 
     show_obj_values ( ch, pObj );
 
-    return FALSE;
+    return false;
 }
 
 /*
@@ -2940,14 +2940,14 @@ OEDIT( oedit_addaffect )
     if ( loc[0] == '\0' || mod[0] == '\0' || !is_number( mod ) )
     {
 	send_to_char( "Syntax:  addaffect [location] [#xmod]\n\r", ch );
-	return FALSE;
+	return false;
     }
 
     if ( ( value = flag_value( apply_flags, loc ) ) == NO_FLAG )
     {
         send_to_char( "Valid affects are:\n\r", ch );
 	show_help( ch, "apply" );
-	return FALSE;
+	return false;
     }
 
     pAf             =   new_affect();
@@ -2962,7 +2962,7 @@ OEDIT( oedit_addaffect )
     pObj->affected  =   pAf;
 
     send_to_char( "Affect added.\n\r", ch);
-    return TRUE;
+    return true;
 }*/
 /*
 OEDIT( oedit_addaffect )
@@ -2986,14 +2986,14 @@ OEDIT( oedit_addaffect )
     {
     	send_to_char( "Invalid apply type. Valid apply types are:\n\r", ch);
     	show_help( ch, "apptype" );
-    	return FALSE;
+    	return false;
     }
 
     if ( loc[0] == '\0' || ( value = flag_value( apply_flags, loc ) ) == NO_FLAG )
     {
         send_to_char( "Valid applys are:\n\r", ch );
 	show_help( ch, "apply" );
-	return FALSE;
+	return false;
     }
 
     if ( bvector[0] == '\0' || ( bv = flag_value( bitvector_type[typ].table, bvector ) ) == NO_FLAG )
@@ -3001,13 +3001,13 @@ OEDIT( oedit_addaffect )
     	send_to_char( "Invalid bitvector type.\n\r", ch );
 	send_to_char( "Valid bitvector types are:\n\r", ch );
 	show_help( ch, bitvector_type[typ].help );
-    	return FALSE;
+    	return false;
     }
 
     if ( mod[0] == '\0' || !is_number( mod ) )
     {
 	send_to_char( "Syntax:  addapply [type] [location] [#xmod] [bitvector]\n\r", ch );
-	return FALSE;
+	return false;
     }
 
     pAf             =   new_affect();
@@ -3022,7 +3022,7 @@ OEDIT( oedit_addaffect )
     pObj->affected  =   pAf;
 
     send_to_char( "Apply added.\n\r", ch);
-    return TRUE;
+    return true;
 }
 */
 
@@ -3055,7 +3055,7 @@ OEDIT ( oedit_addaffect )
             send_to_char ( "Type '? affect' for a list of spell affects.\n\r",
                            ch );
 
-            return FALSE;
+            return false;
         }
 
         for ( i = 0; mod[i] != '\0'; i++ )
@@ -3076,7 +3076,7 @@ OEDIT ( oedit_addaffect )
         pObj->affected = pAf;
 
         send_to_char ( "Affect added.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     if ( !str_prefix ( loc, "shield" ) )
@@ -3095,7 +3095,7 @@ OEDIT ( oedit_addaffect )
             send_to_char ( "Type '? shield' for a list of spell affects.\n\r",
                            ch );
 
-            return FALSE;
+            return false;
         }
 
         for ( i = 0; mod[i] != '\0'; i++ )
@@ -3116,7 +3116,7 @@ OEDIT ( oedit_addaffect )
         pObj->affected = pAf;
 
         send_to_char ( "Shield added.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     if ( !str_prefix ( loc, "immune" ) )
@@ -3133,7 +3133,7 @@ OEDIT ( oedit_addaffect )
         {
             send_to_char ( "Invalid immunity. \n\r", ch );
             send_to_char ( "Type '? imm' for a list of immunities.\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         pAf = new_affect (  );
@@ -3148,7 +3148,7 @@ OEDIT ( oedit_addaffect )
         pObj->affected = pAf;
 
         send_to_char ( "Immunity added.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     if ( !str_prefix ( loc, "resist" ) )
@@ -3165,7 +3165,7 @@ OEDIT ( oedit_addaffect )
         {
             send_to_char ( "Invalid resistance. \n\r", ch );
             send_to_char ( "Type '? res' for a list of resistances.\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         pAf = new_affect (  );
@@ -3180,7 +3180,7 @@ OEDIT ( oedit_addaffect )
         pObj->affected = pAf;
 
         send_to_char ( "Resistance added.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     if ( !str_prefix ( loc, "vuln" ) )
@@ -3198,7 +3198,7 @@ OEDIT ( oedit_addaffect )
             send_to_char ( "Invalid vulnerability. \n\r", ch );
             send_to_char ( "Type '? vul' for a list of vulnerabilities.\n\r",
                            ch );
-            return FALSE;
+            return false;
         }
 
         pAf = new_affect (  );
@@ -3213,20 +3213,20 @@ OEDIT ( oedit_addaffect )
         pObj->affected = pAf;
 
         send_to_char ( "Vulnerability added.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     if ( loc[0] == '\0' || mod[0] == '\0' || !is_number ( mod ) )
     {
         send_to_char ( "Syntax:  addaffect [location] [#xmod]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( ( value = flag_value ( apply_flags, loc ) ) == NO_FLAG )   /* Hugin */
     {
         send_to_char ( "Valid affects are:\n\r", ch );
         show_help ( ch, "apply" );
-        return FALSE;
+        return false;
     }
 
     pAf = new_affect (  );
@@ -3241,7 +3241,7 @@ OEDIT ( oedit_addaffect )
     pObj->affected = pAf;
 
     send_to_char ( "Affect added.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 OEDIT ( oedit_addapply )
@@ -3250,7 +3250,7 @@ OEDIT ( oedit_addapply )
         ( "Use addaffect spells/shield <spellaffect/shieldaffect>.\n\r", ch );
     send_to_char ( "Use addaffect [immune/resist/vuln] <imm/resist/vuln>.\n\r",
                    ch );
-    return FALSE;
+    return false;
 
 }
 
@@ -3274,7 +3274,7 @@ OEDIT ( oedit_delaffect )
     if ( !is_number ( affect ) || affect[0] == '\0' )
     {
         send_to_char ( "Syntax:  delaffect [#xaffect]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     value = atoi ( affect );
@@ -3282,13 +3282,13 @@ OEDIT ( oedit_delaffect )
     if ( value < 0 )
     {
         send_to_char ( "Only non-negative affect-numbers allowed.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( !( pAf = pObj->affected ) )
     {
         send_to_char ( "OEdit:  Non-existant affect.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( value == 0 )           /* First case: Remove first affect */
@@ -3310,12 +3310,12 @@ OEDIT ( oedit_delaffect )
         else                    /* Doesn't exist */
         {
             send_to_char ( "No such affect.\n\r", ch );
-            return FALSE;
+            return false;
         }
     }
 
     send_to_char ( "Affect removed.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 OEDIT ( oedit_name )
@@ -3327,14 +3327,14 @@ OEDIT ( oedit_name )
     if ( argument[0] == '\0' )
     {
         send_to_char ( "Syntax:  name [string]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     free_string ( pObj->name );
     pObj->name = str_dup ( argument );
 
     send_to_char ( "Name set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 OEDIT ( oedit_short )
@@ -3346,7 +3346,7 @@ OEDIT ( oedit_short )
     if ( argument[0] == '\0' )
     {
         send_to_char ( "Syntax:  short [string]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     free_string ( pObj->short_descr );
@@ -3354,7 +3354,7 @@ OEDIT ( oedit_short )
     pObj->short_descr[0] = LOWER ( pObj->short_descr[0] );
 
     send_to_char ( "Short description set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 OEDIT ( oedit_long )
@@ -3366,7 +3366,7 @@ OEDIT ( oedit_long )
     if ( argument[0] == '\0' )
     {
         send_to_char ( "Syntax:  long [string]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     free_string ( pObj->description );
@@ -3374,7 +3374,7 @@ OEDIT ( oedit_long )
     pObj->description[0] = UPPER ( pObj->description[0] );
 
     send_to_char ( "Long description set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 bool set_value ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, char *argument,
@@ -3383,13 +3383,13 @@ bool set_value ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, char *argument,
     if ( argument[0] == '\0' )
     {
         set_obj_values ( ch, pObj, -1, "" );    /* '\0' changed to "" -- Hugin */
-        return FALSE;
+        return false;
     }
 
     if ( set_obj_values ( ch, pObj, value, argument ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 /*****************************************************************************
@@ -3404,49 +3404,49 @@ bool oedit_values ( CHAR_DATA * ch, char *argument, int value )
     EDIT_OBJ ( ch, pObj );
 
     if ( set_value ( ch, pObj, argument, value ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 OEDIT ( oedit_value0 )
 {
     if ( oedit_values ( ch, argument, 0 ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 OEDIT ( oedit_value1 )
 {
     if ( oedit_values ( ch, argument, 1 ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 OEDIT ( oedit_value2 )
 {
     if ( oedit_values ( ch, argument, 2 ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 OEDIT ( oedit_value3 )
 {
     if ( oedit_values ( ch, argument, 3 ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 OEDIT ( oedit_value4 )
 {
     if ( oedit_values ( ch, argument, 4 ) )
-            return TRUE;
+            return true;
 
-    return FALSE;
+    return false;
 }
 
 OEDIT ( oedit_weight )
@@ -3458,13 +3458,13 @@ OEDIT ( oedit_weight )
     if ( argument[0] == '\0' || !is_number ( argument ) )
     {
         send_to_char ( "Syntax:  weight [number]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pObj->weight = atoi ( argument );
 
     send_to_char ( "Weight set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 OEDIT ( oedit_cost )
@@ -3476,13 +3476,13 @@ OEDIT ( oedit_cost )
     if ( argument[0] == '\0' || !is_number ( argument ) )
     {
         send_to_char ( "Syntax:  cost [number]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pObj->cost = atol ( argument );
 
     send_to_char ( "Cost set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 OEDIT ( oedit_create )
@@ -3496,26 +3496,26 @@ OEDIT ( oedit_create )
     if ( argument[0] == '\0' || value == 0 )
     {
         send_to_char ( "Syntax:  oedit create [vnum]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pArea = get_vnum_area ( value );
     if ( !pArea )
     {
         send_to_char ( "OEdit:  That vnum is not assigned an area.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( !IS_BUILDER ( ch, pArea ) )
     {
         send_to_char ( "OEdit:  Vnum in an area you cannot build in.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( get_obj_index ( value ) )
     {
         send_to_char ( "OEdit:  Object vnum already exists.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pObj = new_obj_index (  );
@@ -3531,7 +3531,7 @@ OEDIT ( oedit_create )
     ch->desc->pEdit = ( void * ) pObj;
 
     send_to_char ( "Object Created.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 OEDIT ( oedit_ed )
@@ -3552,7 +3552,7 @@ OEDIT ( oedit_ed )
         send_to_char ( "         ed delete [keyword]\n\r", ch );
         send_to_char ( "         ed edit [keyword]\n\r", ch );
         send_to_char ( "         ed format [keyword]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( !str_cmp ( command, "add" ) )
@@ -3560,7 +3560,7 @@ OEDIT ( oedit_ed )
         if ( keyword[0] == '\0' )
         {
             send_to_char ( "Syntax:  ed add [keyword]\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         ed = new_extra_descr (  );
@@ -3570,7 +3570,7 @@ OEDIT ( oedit_ed )
 
         string_append ( ch, &ed->description );
 
-        return TRUE;
+        return true;
     }
 
     if ( !str_cmp ( command, "edit" ) )
@@ -3578,7 +3578,7 @@ OEDIT ( oedit_ed )
         if ( keyword[0] == '\0' )
         {
             send_to_char ( "Syntax:  ed edit [keyword]\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         for ( ed = pObj->extra_descr; ed; ed = ed->next )
@@ -3591,12 +3591,12 @@ OEDIT ( oedit_ed )
         {
             send_to_char ( "OEdit:  Extra description keyword not found.\n\r",
                            ch );
-            return FALSE;
+            return false;
         }
 
         string_append ( ch, &ed->description );
 
-        return TRUE;
+        return true;
     }
 
     if ( !str_cmp ( command, "delete" ) )
@@ -3606,7 +3606,7 @@ OEDIT ( oedit_ed )
         if ( keyword[0] == '\0' )
         {
             send_to_char ( "Syntax:  ed delete [keyword]\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         for ( ed = pObj->extra_descr; ed; ed = ed->next )
@@ -3620,7 +3620,7 @@ OEDIT ( oedit_ed )
         {
             send_to_char ( "OEdit:  Extra description keyword not found.\n\r",
                            ch );
-            return FALSE;
+            return false;
         }
 
         if ( !ped )
@@ -3631,7 +3631,7 @@ OEDIT ( oedit_ed )
         free_extra_descr ( ed );
 
         send_to_char ( "Extra description deleted.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     if ( !str_cmp ( command, "format" ) )
@@ -3641,7 +3641,7 @@ OEDIT ( oedit_ed )
         if ( keyword[0] == '\0' )
         {
             send_to_char ( "Syntax:  ed format [keyword]\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         for ( ed = pObj->extra_descr; ed; ed = ed->next )
@@ -3655,17 +3655,17 @@ OEDIT ( oedit_ed )
         {
             send_to_char ( "OEdit:  Extra description keyword not found.\n\r",
                            ch );
-            return FALSE;
+            return false;
         }
 
         ed->description = format_string ( ed->description );
 
         send_to_char ( "Extra description formatted.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     oedit_ed ( ch, "" );
-    return FALSE;
+    return false;
 }
 
 /* ROM object functions : */
@@ -3685,13 +3685,13 @@ OEDIT ( oedit_extra )           /* Moved out of oedit() due to naming conflicts
             TOGGLE_BIT ( pObj->extra_flags, value );
 
             send_to_char ( "Extra flag toggled.\n\r", ch );
-            return TRUE;
+            return true;
         }
     }
 
     send_to_char ( "Syntax:  extra [flag]\n\r"
                    "Type '? extra' for a list of flags.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 OEDIT ( oedit_wear )            /* Moved out of oedit() due to naming conflicts 
@@ -3709,13 +3709,13 @@ OEDIT ( oedit_wear )            /* Moved out of oedit() due to naming conflicts
             TOGGLE_BIT ( pObj->wear_flags, value );
 
             send_to_char ( "Wear flag toggled.\n\r", ch );
-            return TRUE;
+            return true;
         }
     }
 
     send_to_char ( "Syntax:  wear [flag]\n\r"
                    "Type '? wear' for a list of flags.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 OEDIT ( oedit_type )            /* Moved out of oedit() due to naming conflicts 
@@ -3743,13 +3743,13 @@ OEDIT ( oedit_type )            /* Moved out of oedit() due to naming conflicts
             pObj->value[3] = 0;
             pObj->value[4] = 0; /* ROM */
 
-            return TRUE;
+            return true;
         }
     }
 
     send_to_char ( "Syntax:  type [flag]\n\r"
                    "Type '? type' for a list of flags.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 OEDIT ( oedit_material )
@@ -3761,14 +3761,14 @@ OEDIT ( oedit_material )
     if ( argument[0] == '\0' )
     {
         send_to_char ( "Syntax:  material [string]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     free_string ( pObj->material );
     pObj->material = str_dup ( argument );
 
     send_to_char ( "Material set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 OEDIT ( oedit_level )
@@ -3780,13 +3780,13 @@ OEDIT ( oedit_level )
     if ( argument[0] == '\0' || !is_number ( argument ) )
     {
         send_to_char ( "Syntax:  level [number]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pObj->level = atoi ( argument );
 
     send_to_char ( "Level set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 OEDIT ( oedit_condition )
@@ -3802,13 +3802,13 @@ OEDIT ( oedit_condition )
         pObj->condition = value;
         send_to_char ( "Condition set.\n\r", ch );
 
-        return TRUE;
+        return true;
     }
 
     send_to_char ( "Syntax:  condition [number]\n\r"
                    "Where number can range from 0 (ruined) to 100 (perfect).\n\r",
                    ch );
-    return FALSE;
+    return false;
 }
 
 OEDIT ( oedit_autoweapon )
@@ -3822,14 +3822,14 @@ OEDIT ( oedit_autoweapon )
     if ( pObj->item_type != ITEM_WEAPON )
     {
         send_to_char ( " {rAutoweapn only works on weapons...{x\n\r", ch );
-        return FALSE;
+        return false;
     }
     if ( pObj->level < 1 )
     {
         send_to_char
             ( " {cAutoweapon requires a level to be set on the weapon first.{x\n\r",
               ch );
-        return FALSE;
+        return false;
     }
     bonus = UMAX ( 0, pObj->level / 10 - 1 );
 /* adjust this next line to change the avg dmg your weapons will get! */
@@ -3900,7 +3900,7 @@ will be too high... ie, find the "best fit" */
         pObj->affected = pAf;
     }
     send_to_char ( " {cExperimental values set on weapon...{x\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 OEDIT ( oedit_autoarmor )
@@ -3912,14 +3912,14 @@ OEDIT ( oedit_autoarmor )
     if ( pObj->item_type != ITEM_ARMOR )
     {
         send_to_char ( " {rAutoArmor only works on Armor ...{x\n\r", ch );
-        return FALSE;
+        return false;
     }
     if ( pObj->level < 1 )
     {
         send_to_char
             ( " {cAutoArmor requires a level to be set on the armor first.{x\n\r",
               ch );
-        return FALSE;
+        return false;
     }
     size = UMAX ( 1, pObj->level / 1.2 + 5 );
     pObj->weight = pObj->level + 1;
@@ -3930,7 +3930,7 @@ OEDIT ( oedit_autoarmor )
     pObj->value[3] = ( size - 1 );
     send_to_char ( " {cAutoArmor has set experimental values for AC.{x\n\r",
                    ch );
-    return TRUE;
+    return true;
 }
 
 /*
@@ -4125,7 +4125,7 @@ MEDIT ( medit_show )
         }
     }
 
-    return FALSE;
+    return false;
 }
 
 MEDIT ( medit_create )
@@ -4139,7 +4139,7 @@ MEDIT ( medit_create )
     if ( argument[0] == '\0' || value == 0 )
     {
         send_to_char ( "Syntax:  medit create [vnum]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pArea = get_vnum_area ( value );
@@ -4147,19 +4147,19 @@ MEDIT ( medit_create )
     if ( !pArea )
     {
         send_to_char ( "MEdit:  That vnum is not assigned an area.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( !IS_BUILDER ( ch, pArea ) )
     {
         send_to_char ( "MEdit:  Vnum in an area you cannot build in.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( get_mob_index ( value ) )
     {
         send_to_char ( "MEdit:  Mobile vnum already exists.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pMob = new_mob_index (  );
@@ -4176,7 +4176,7 @@ MEDIT ( medit_create )
     ch->desc->pEdit = ( void * ) pMob;
 
     send_to_char ( "Mobile Created.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 MEDIT ( medit_spec )
@@ -4188,7 +4188,7 @@ MEDIT ( medit_spec )
     if ( argument[0] == '\0' )
     {
         send_to_char ( "Syntax:  spec [special function]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( !str_cmp ( argument, "none" ) )
@@ -4196,18 +4196,18 @@ MEDIT ( medit_spec )
         pMob->spec_fun = NULL;
 
         send_to_char ( "Spec removed.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     if ( spec_lookup ( argument ) )
     {
         pMob->spec_fun = spec_lookup ( argument );
         send_to_char ( "Spec set.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     send_to_char ( "MEdit: No such special function.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 MEDIT ( medit_damtype )
@@ -4222,12 +4222,12 @@ MEDIT ( medit_damtype )
         send_to_char
             ( "Para ver una lista de tipos de mensajes, pon '? weapon'.\n\r",
               ch );
-        return FALSE;
+        return false;
     }
 
     pMob->dam_type = attack_lookup ( argument );
     send_to_char ( "Damage type set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 MEDIT ( medit_align )
@@ -4239,13 +4239,13 @@ MEDIT ( medit_align )
     if ( argument[0] == '\0' || !is_number ( argument ) )
     {
         send_to_char ( "Syntax:  alignment [number]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pMob->alignment = atoi ( argument );
 
     send_to_char ( "Alignment set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 MEDIT ( medit_level )
@@ -4257,13 +4257,13 @@ MEDIT ( medit_level )
     if ( argument[0] == '\0' || !is_number ( argument ) )
     {
         send_to_char ( "Syntax:  level [number]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pMob->level = atoi ( argument );
 
     send_to_char ( "Level set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 MEDIT ( medit_desc )
@@ -4275,11 +4275,11 @@ MEDIT ( medit_desc )
     if ( argument[0] == '\0' )
     {
         string_append ( ch, &pMob->description );
-        return TRUE;
+        return true;
     }
 
     send_to_char ( "Syntax:  desc    - line edit\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 MEDIT ( medit_long )
@@ -4291,7 +4291,7 @@ MEDIT ( medit_long )
     if ( argument[0] == '\0' )
     {
         send_to_char ( "Syntax:  long [string]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     free_string ( pMob->long_descr );
@@ -4300,7 +4300,7 @@ MEDIT ( medit_long )
     pMob->long_descr[0] = UPPER ( pMob->long_descr[0] );
 
     send_to_char ( "Long description set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 MEDIT ( medit_short )
@@ -4312,14 +4312,14 @@ MEDIT ( medit_short )
     if ( argument[0] == '\0' )
     {
         send_to_char ( "Syntax:  short [string]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     free_string ( pMob->short_descr );
     pMob->short_descr = str_dup ( argument );
 
     send_to_char ( "Short description set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 MEDIT ( medit_name )
@@ -4331,14 +4331,14 @@ MEDIT ( medit_name )
     if ( argument[0] == '\0' )
     {
         send_to_char ( "Syntax:  name [string]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     free_string ( pMob->player_name );
     pMob->player_name = str_dup ( argument );
 
     send_to_char ( "Name set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 MEDIT ( medit_shop )
@@ -4360,7 +4360,7 @@ MEDIT ( medit_shop )
         send_to_char ( "         shop type [#x0-4] [item type]\n\r", ch );
         send_to_char ( "         shop assign\n\r", ch );
         send_to_char ( "         shop remove\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( !str_cmp ( command, "hours" ) )
@@ -4370,7 +4370,7 @@ MEDIT ( medit_shop )
         {
             send_to_char ( "Syntax:  shop hours [#xopening] [#xclosing]\n\r",
                            ch );
-            return FALSE;
+            return false;
         }
 
         if ( !pMob->pShop )
@@ -4378,14 +4378,14 @@ MEDIT ( medit_shop )
             send_to_char
                 ( "MEdit:  Debes crear un shop primero (shop assign).\n\r",
                   ch );
-            return FALSE;
+            return false;
         }
 
         pMob->pShop->open_hour = atoi ( arg1 );
         pMob->pShop->close_hour = atoi ( argument );
 
         send_to_char ( "Shop hours set.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     if ( !str_cmp ( command, "profit" ) )
@@ -4395,7 +4395,7 @@ MEDIT ( medit_shop )
         {
             send_to_char ( "Syntax:  shop profit [#xbuying%] [#xselling%]\n\r",
                            ch );
-            return FALSE;
+            return false;
         }
 
         if ( !pMob->pShop )
@@ -4403,14 +4403,14 @@ MEDIT ( medit_shop )
             send_to_char
                 ( "MEdit:  Debes crear un shop primero (shop assign).\n\r",
                   ch );
-            return FALSE;
+            return false;
         }
 
         pMob->pShop->profit_buy = atoi ( arg1 );
         pMob->pShop->profit_sell = atoi ( argument );
 
         send_to_char ( "Shop profit set.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     if ( !str_cmp ( command, "type" ) )
@@ -4421,14 +4421,14 @@ MEDIT ( medit_shop )
         if ( arg1[0] == '\0' || !is_number ( arg1 ) || argument[0] == '\0' )
         {
             send_to_char ( "Syntax:  shop type [#x0-4] [item type]\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         if ( atoi ( arg1 ) >= MAX_TRADE )
         {
             sprintf ( buf, "MEdit:  May sell %d items max.\n\r", MAX_TRADE );
             send_to_char ( buf, ch );
-            return FALSE;
+            return false;
         }
 
         if ( !pMob->pShop )
@@ -4436,19 +4436,19 @@ MEDIT ( medit_shop )
             send_to_char
                 ( "MEdit:  Debes crear un shop primero (shop assign).\n\r",
                   ch );
-            return FALSE;
+            return false;
         }
 
         if ( ( value = flag_value ( type_flags, argument ) ) == NO_FLAG )
         {
             send_to_char ( "MEdit:  That type of item is not known.\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         pMob->pShop->buy_type[atoi ( arg1 )] = value;
 
         send_to_char ( "Shop type set.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     /* shop assign && shop delete by Phoenix */
@@ -4458,7 +4458,7 @@ MEDIT ( medit_shop )
         if ( pMob->pShop )
         {
             send_to_char ( "Mob already has a shop assigned to it.\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         pMob->pShop = new_shop (  );
@@ -4471,7 +4471,7 @@ MEDIT ( medit_shop )
         pMob->pShop->keeper = pMob->vnum;
 
         send_to_char ( "New shop assigned to mobile.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     if ( !str_prefix ( command, "remove" ) )
@@ -4513,11 +4513,11 @@ MEDIT ( medit_shop )
         free_shop ( pShop );
 
         send_to_char ( "Mobile is no longer a shopkeeper.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     medit_shop ( ch, "" );
-    return FALSE;
+    return false;
 }
 
 /* ROM medit functions: */
@@ -4537,13 +4537,13 @@ MEDIT ( medit_sex )             /* Moved out of medit() due to naming conflicts
             pMob->sex = value;
 
             send_to_char ( "Sex set.\n\r", ch );
-            return TRUE;
+            return true;
         }
     }
 
     send_to_char ( "Syntax: sex [sex]\n\r"
                    "Type '? sex' for a list of flags.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 MEDIT ( medit_act )             /* Moved out of medit() due to naming conflicts 
@@ -4562,13 +4562,13 @@ MEDIT ( medit_act )             /* Moved out of medit() due to naming conflicts
             SET_BIT ( pMob->act, ACT_IS_NPC );
 
             send_to_char ( "Act flag toggled.\n\r", ch );
-            return TRUE;
+            return true;
         }
     }
 
     send_to_char ( "Syntax: act [flag]\n\r"
                    "Type '? act' for a list of flags.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 MEDIT ( medit_act2 )            /* Moved out of medit() due to naming conflicts 
@@ -4586,13 +4586,13 @@ MEDIT ( medit_act2 )            /* Moved out of medit() due to naming conflicts
             pMob->act2 ^= value;
 
             send_to_char ( "Act flag toggled.\n\r", ch );
-            return TRUE;
+            return true;
         }
     }
 
     send_to_char ( "Syntax: act2 [flag]\n\r"
                    "Type '? act2' for a list of flags.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 MEDIT ( medit_affect )          /* Moved out of medit() due to naming conflicts 
@@ -4610,13 +4610,13 @@ MEDIT ( medit_affect )          /* Moved out of medit() due to naming conflicts
             pMob->affected_by ^= value;
 
             send_to_char ( "Affect flag toggled.\n\r", ch );
-            return TRUE;
+            return true;
         }
     }
 
     send_to_char ( "Syntax: affect [flag]\n\r"
                    "Type '? affect' for a list of flags.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 MEDIT ( medit_shield )
@@ -4633,12 +4633,12 @@ MEDIT ( medit_shield )
             pMob->shielded_by ^= value;
 
             send_to_char ( "Shield flag toggled.\n\r", ch );
-            return TRUE;
+            return true;
         }
     }
     send_to_char ( "Syntax: shield [flag]\n\r"
                    "Type '? shield' for a list of flags.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 MEDIT ( medit_ac )
@@ -4696,14 +4696,14 @@ MEDIT ( medit_ac )
         pMob->ac[AC_EXOTIC] = exotic;
 
         send_to_char ( "Ac set.\n\r", ch );
-        return TRUE;
+        return true;
     }
-    while ( FALSE );            /* Just do it once.. */
+    while ( false );            /* Just do it once.. */
 
     send_to_char
         ( "Syntax:  ac [ac-pierce [ac-bash [ac-slash [ac-exotic]]]]\n\r"
           "help MOB_AC  gives a list of reasonable ac-values.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 MEDIT ( medit_form )
@@ -4719,13 +4719,13 @@ MEDIT ( medit_form )
         {
             pMob->form ^= value;
             send_to_char ( "Form toggled.\n\r", ch );
-            return TRUE;
+            return true;
         }
     }
 
     send_to_char ( "Syntax: form [flags]\n\r"
                    "Type '? form' for a list of flags.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 MEDIT ( medit_part )
@@ -4741,13 +4741,13 @@ MEDIT ( medit_part )
         {
             pMob->parts ^= value;
             send_to_char ( "Parts toggled.\n\r", ch );
-            return TRUE;
+            return true;
         }
     }
 
     send_to_char ( "Syntax: part [flags]\n\r"
                    "Type '? part' for a list of flags.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 MEDIT ( medit_imm )
@@ -4763,13 +4763,13 @@ MEDIT ( medit_imm )
         {
             pMob->imm_flags ^= value;
             send_to_char ( "Immunity toggled.\n\r", ch );
-            return TRUE;
+            return true;
         }
     }
 
     send_to_char ( "Syntax: imm [flags]\n\r"
                    "Type '? imm' for a list of flags.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 MEDIT ( medit_res )
@@ -4785,13 +4785,13 @@ MEDIT ( medit_res )
         {
             pMob->res_flags ^= value;
             send_to_char ( "Resistance toggled.\n\r", ch );
-            return TRUE;
+            return true;
         }
     }
 
     send_to_char ( "Syntax: res [flags]\n\r"
                    "Type '? res' for a list of flags.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 MEDIT ( medit_vuln )
@@ -4807,18 +4807,18 @@ MEDIT ( medit_vuln )
         {
             pMob->vuln_flags ^= value;
             send_to_char ( "Vulnerability toggled.\n\r", ch );
-            return TRUE;
+            return true;
         }
     }
 
     send_to_char ( "Syntax: vuln [flags]\n\r"
                    "Type '? vuln' for a list of flags.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 MEDIT ( medit_material )
 {
-    return TRUE;
+    return true;
     MOB_INDEX_DATA *pMob;
 
     EDIT_MOB ( ch, pMob );
@@ -4826,14 +4826,14 @@ MEDIT ( medit_material )
     if ( argument[0] == '\0' )
     {
         send_to_char ( "Syntax:  material [string]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     free_string ( pMob->material );
     pMob->material = str_dup ( argument );
 
     send_to_char ( "Material set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 MEDIT ( medit_off )
@@ -4849,13 +4849,13 @@ MEDIT ( medit_off )
         {
             pMob->off_flags ^= value;
             send_to_char ( "Offensive behaviour toggled.\n\r", ch );
-            return TRUE;
+            return true;
         }
     }
 
     send_to_char ( "Syntax: off [flags]\n\r"
                    "Type '? off' for a list of flags.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 MEDIT ( medit_size )
@@ -4871,13 +4871,13 @@ MEDIT ( medit_size )
         {
             pMob->size = value;
             send_to_char ( "Size set.\n\r", ch );
-            return TRUE;
+            return true;
         }
     }
 
     send_to_char ( "Syntax: size [size]\n\r"
                    "Type '? size' for a list of sizes.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 MEDIT ( medit_hitdice )
@@ -4891,7 +4891,7 @@ MEDIT ( medit_hitdice )
     if ( argument[0] == '\0' )
     {
         send_to_char ( syntax, ch );
-        return FALSE;
+        return false;
     }
 
     num = cp = argument;
@@ -4921,7 +4921,7 @@ MEDIT ( medit_hitdice )
                                                            0 ) )
     {
         send_to_char ( syntax, ch );
-        return FALSE;
+        return false;
     }
 
     pMob->hit[DICE_NUMBER] = atoi ( num );
@@ -4929,7 +4929,7 @@ MEDIT ( medit_hitdice )
     pMob->hit[DICE_BONUS] = atoi ( bonus );
 
     send_to_char ( "Hitdice set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 MEDIT ( medit_manadice )
@@ -4943,7 +4943,7 @@ MEDIT ( medit_manadice )
     if ( argument[0] == '\0' )
     {
         send_to_char ( syntax, ch );
-        return FALSE;
+        return false;
     }
 
     num = cp = argument;
@@ -4970,7 +4970,7 @@ MEDIT ( medit_manadice )
     if ( !( is_number ( num ) && is_number ( type ) && is_number ( bonus ) ) )
     {
         send_to_char ( syntax, ch );
-        return FALSE;
+        return false;
     }
 
     if ( ( !is_number ( num ) || atoi ( num ) < 1 ) ||
@@ -4979,7 +4979,7 @@ MEDIT ( medit_manadice )
                                                            0 ) )
     {
         send_to_char ( syntax, ch );
-        return FALSE;
+        return false;
     }
 
     pMob->mana[DICE_NUMBER] = atoi ( num );
@@ -4987,7 +4987,7 @@ MEDIT ( medit_manadice )
     pMob->mana[DICE_BONUS] = atoi ( bonus );
 
     send_to_char ( "Manadice set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 MEDIT ( medit_damdice )
@@ -5001,7 +5001,7 @@ MEDIT ( medit_damdice )
     if ( argument[0] == '\0' )
     {
         send_to_char ( syntax, ch );
-        return FALSE;
+        return false;
     }
 
     num = cp = argument;
@@ -5028,7 +5028,7 @@ MEDIT ( medit_damdice )
     if ( !( is_number ( num ) && is_number ( type ) && is_number ( bonus ) ) )
     {
         send_to_char ( syntax, ch );
-        return FALSE;
+        return false;
     }
 
     if ( ( !is_number ( num ) || atoi ( num ) < 1 ) ||
@@ -5037,7 +5037,7 @@ MEDIT ( medit_damdice )
                                                            0 ) )
     {
         send_to_char ( syntax, ch );
-        return FALSE;
+        return false;
     }
 
     pMob->damage[DICE_NUMBER] = atoi ( num );
@@ -5045,7 +5045,7 @@ MEDIT ( medit_damdice )
     pMob->damage[DICE_BONUS] = atoi ( bonus );
 
     send_to_char ( "Damdice set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 MEDIT ( medit_race )
@@ -5070,7 +5070,7 @@ MEDIT ( medit_race )
         pMob->parts |= race_table[race].parts;
 
         send_to_char ( "Race set.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     if ( argument[0] == '?' )
@@ -5088,12 +5088,12 @@ MEDIT ( medit_race )
         }
 
         send_to_char ( "\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     send_to_char ( "Syntax:  race [race]\n\r"
                    "Type 'race ?' for a list of races.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 MEDIT ( medit_position )
@@ -5122,7 +5122,7 @@ MEDIT ( medit_position )
 
             pMob->start_pos = value;
             send_to_char ( "Start position set.\n\r", ch );
-            return TRUE;
+            return true;
 
         case 'D':
         case 'd':
@@ -5137,12 +5137,12 @@ MEDIT ( medit_position )
 
             pMob->default_pos = value;
             send_to_char ( "Default position set.\n\r", ch );
-            return TRUE;
+            return true;
     }
 
     send_to_char ( "Syntax:  position [start/default] [position]\n\r"
                    "Type '? position' for a list of positions.\n\r", ch );
-    return FALSE;
+    return false;
 }
 
 MEDIT ( medit_gold )
@@ -5154,13 +5154,13 @@ MEDIT ( medit_gold )
     if ( argument[0] == '\0' || !is_number ( argument ) )
     {
         send_to_char ( "Syntax:  wealth [number]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pMob->wealth = atol ( argument );
 
     send_to_char ( "Wealth set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 MEDIT ( medit_hitroll )
@@ -5172,13 +5172,13 @@ MEDIT ( medit_hitroll )
     if ( argument[0] == '\0' || !is_number ( argument ) )
     {
         send_to_char ( "Syntax:  hitroll [number]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     pMob->hitroll = atoi ( argument );
 
     send_to_char ( "Hitroll set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 void show_liqlist ( CHAR_DATA * ch )
@@ -5241,7 +5241,7 @@ MEDIT ( medit_group )
     char buf[MAX_STRING_LENGTH];
     long temp;
     BUFFER *buffer;
-    bool found = FALSE;
+    bool found = false;
 
     EDIT_MOB ( ch, pMob );
 
@@ -5249,14 +5249,14 @@ MEDIT ( medit_group )
     {
         send_to_char ( "Syntax: group [number]\n\r", ch );
         send_to_char ( "        group show [number]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( is_number ( argument ) )
     {
         pMob->group = atol ( argument );
         send_to_char ( "Group set.\n\r", ch );
-        return TRUE;
+        return true;
     }
 
     argument = one_argument ( argument, arg );
@@ -5266,7 +5266,7 @@ MEDIT ( medit_group )
         if ( atoi ( argument ) == 0 )
         {
             send_to_char ( "Are you crazy?\n\r", ch );
-            return FALSE;
+            return false;
         }
 
         buffer = new_buf (  );
@@ -5276,7 +5276,7 @@ MEDIT ( medit_group )
             pMTemp = get_mob_index ( temp );
             if ( pMTemp && ( pMTemp->group == atol ( argument ) ) )
             {
-                found = TRUE;
+                found = true;
                 sprintf ( buf, "[%ld] %s\n\r", pMTemp->vnum,
                           pMTemp->player_name );
                 add_buf ( buffer, buf );
@@ -5289,10 +5289,10 @@ MEDIT ( medit_group )
             send_to_char ( "No mobs in that group.\n\r", ch );
 
         free_buf ( buffer );
-        return FALSE;
+        return false;
     }
 
-    return FALSE;
+    return false;
 }
 
 REDIT ( redit_owner )
@@ -5305,7 +5305,7 @@ REDIT ( redit_owner )
     {
         send_to_char ( "Syntax:  owner [owner]\n\r", ch );
         send_to_char ( "         owner none\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     free_string ( pRoom->owner );
@@ -5315,7 +5315,7 @@ REDIT ( redit_owner )
         pRoom->owner = str_dup ( argument );
 
     send_to_char ( "Owner set.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 MEDIT ( medit_addmprog )
@@ -5336,20 +5336,20 @@ MEDIT ( medit_addmprog )
     if ( !is_number ( num ) || trigger[0] == '\0' || phrase[0] == '\0' )
     {
         send_to_char ( "Syntax:   addmprog [vnum] [trigger] [phrase]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( ( value = flag_value ( mprog_flags, trigger ) ) == NO_FLAG )
     {
         send_to_char ( "Valid flags are:\n\r", ch );
         show_help ( ch, "mprog" );
-        return FALSE;
+        return false;
     }
 
     if ( ( code = get_mprog_index ( atol ( num ) ) ) == NULL )
     {
         send_to_char ( "No such MOBProgram.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     list = new_mprog (  );
@@ -5362,7 +5362,7 @@ MEDIT ( medit_addmprog )
     pMob->mprogs = list;
 
     send_to_char ( "Mprog Added.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 MEDIT ( medit_delmprog )
@@ -5380,7 +5380,7 @@ MEDIT ( medit_delmprog )
     if ( !is_number ( mprog ) || mprog[0] == '\0' )
     {
         send_to_char ( "Syntax:  delmprog [#mprog]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     value = atoi ( mprog );
@@ -5388,13 +5388,13 @@ MEDIT ( medit_delmprog )
     if ( value < 0 )
     {
         send_to_char ( "Only non-negative mprog-numbers allowed.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( !( list = pMob->mprogs ) )
     {
         send_to_char ( "MEdit:  Non existant mprog.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( value == 0 )
@@ -5418,12 +5418,12 @@ MEDIT ( medit_delmprog )
         else
         {
             send_to_char ( "No such mprog.\n\r", ch );
-            return FALSE;
+            return false;
         }
     }
 
     send_to_char ( "Mprog removed.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 MEDIT ( medit_autoset )
@@ -5437,7 +5437,7 @@ MEDIT ( medit_autoset )
     if ( pMob->level < 1 )
     {
         send_to_char ( "Set a level on the mob first!!!\n\r", ch );
-        return FALSE;
+        return false;
     }
     /* adjust these next 2 lines to affect ACs */
     ac_n = 95 - ( pMob->level * 6.67 ) - ( ( pMob->level / 10 ) ^ 2 );
@@ -5476,7 +5476,7 @@ MEDIT ( medit_autoset )
     medit_hitroll ( ch, temp );
     send_to_char ( " Values set, check for accuracy.\n\r", ch );
 
-    return TRUE;
+    return true;
 }
 
 MEDIT ( medit_autohard )
@@ -5490,7 +5490,7 @@ MEDIT ( medit_autohard )
     if ( pMob->level < 1 )
     {
         send_to_char ( "Set a level on the mob first!!!\n\r", ch );
-        return FALSE;
+        return false;
     }
     ac_n = 88 - ( pMob->level * 12.05 ) - ( ( pMob->level / 10 ) ^ 2 );
     ac_x = 88 - ( pMob->level * 10.02 ) - ( ( pMob->level / 10 ) ^ 2 );
@@ -5533,7 +5533,7 @@ MEDIT ( medit_autohard )
 
     medit_hitroll ( ch, temp );
     send_to_char ( "Hard values set, check for accuracy.\n\r", ch );
-    return TRUE;
+    return true;
 }
 
 MEDIT ( medit_autoeasy )
@@ -5547,7 +5547,7 @@ MEDIT ( medit_autoeasy )
     if ( pMob->level < 1 )
     {
         send_to_char ( "Set a level on the mob first!!!\n\r", ch );
-        return FALSE;
+        return false;
     }
     ac_n = 99 - ( pMob->level * 6.37 ) - ( ( pMob->level / 10 ) ^ 2 );
     ac_x = 99 - ( pMob->level * 4.27 ) - ( ( pMob->level / 10 ) ^ 2 );
@@ -5586,7 +5586,7 @@ MEDIT ( medit_autoeasy )
     medit_hitroll ( ch, temp );
     send_to_char ( "Easy values set, check for accuracy.\n\r", ch );
 
-    return TRUE;
+    return true;
 }
 
 OEDIT ( oedit_delete )
@@ -5604,7 +5604,7 @@ OEDIT ( oedit_delete )
     if ( argument[0] == '\0' )
     {
         send_to_char ( "Syntax:  oedit delete [vnum]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     one_argument ( argument, arg );
@@ -5617,7 +5617,7 @@ OEDIT ( oedit_delete )
     else
     {
         send_to_char ( "That is not a number.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     SET_BIT ( pObj->area->area_flags, AREA_CHANGED );
@@ -5752,7 +5752,7 @@ OEDIT ( oedit_delete )
     sprintf ( buf, "Removed object vnum ^C%d^x and ^C%d^x resets.\n\r", index,
               count );
     send_to_char ( buf, ch );
-    return TRUE;
+    return true;
 }
 
 MEDIT ( medit_delete )
@@ -5768,14 +5768,14 @@ MEDIT ( medit_delete )
     int index, count, iHash, i;
     int dobj[100];              /* I highly doubt one mobile will have 100
                                    unique objectresets */
-    bool foundmob = FALSE;
-    bool exist = FALSE;
-    bool foundobj = FALSE;
+    bool foundmob = false;
+    bool exist = false;
+    bool foundobj = false;
 
     if ( argument[0] == '\0' )
     {
         send_to_char ( "Syntax:  medit delete [vnum]\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     one_argument ( argument, arg );
@@ -5788,13 +5788,13 @@ MEDIT ( medit_delete )
     else
     {
         send_to_char ( "That is not a number.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     if ( !pMob )
     {
         send_to_char ( "No such mobile.\n\r", ch );
-        return FALSE;
+        return false;
     }
 
     SET_BIT ( pMob->area->area_flags, AREA_CHANGED );
@@ -5855,7 +5855,7 @@ MEDIT ( medit_delete )
                     case 'M':
                         if ( pReset->arg1 == index )
                         {
-                            foundmob = TRUE;
+                            foundmob = true;
 
                             /* DEBUG CODE - uncomment this if you have doubts */
                             /* printf("\nReset info for room %d:\n",
@@ -5890,7 +5890,7 @@ MEDIT ( medit_delete )
 
                         }
                         else
-                            foundmob = FALSE;
+                            foundmob = false;
 
                         break;
                     case 'E':
@@ -5907,13 +5907,13 @@ MEDIT ( medit_delete )
                                %c vnum: %d\n", tReset->command, tReset->arg1 ); 
                              */
 
-                            exist = FALSE;
+                            exist = false;
 
                             for ( i = 0; dobj[i] != -1; i++ )
                             {
                                 if ( dobj[i] == pReset->arg1 )
                                 {
-                                    exist = TRUE;
+                                    exist = true;
                                     break;
                                 }
                             }
@@ -5955,11 +5955,11 @@ MEDIT ( medit_delete )
 
                         break;
                     case 'P':
-                        foundobj = FALSE;
+                        foundobj = false;
 
                         for ( i = 0; dobj[i] != -1; i++ )
                             if ( dobj[i] == pReset->arg3 )
-                                foundobj = TRUE;
+                                foundobj = true;
 
                         if ( foundobj )
                         {
@@ -6014,5 +6014,5 @@ MEDIT ( medit_delete )
     sprintf ( buf, "Removed mobile vnum ^C%d^x and ^C%d^x resets.\n\r", index,
               count );
     send_to_char ( buf, ch );
-    return TRUE;
+    return true;
 }
