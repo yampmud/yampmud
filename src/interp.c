@@ -69,6 +69,7 @@ const struct cmd_type cmd_table[] = {
     {"south", do_south, POS_STANDING, 0, 1, LOG_NEVER, 0},
     {"west", do_west, POS_STANDING, 0, 1, LOG_NEVER, 0},
     {"up", do_up, POS_STANDING, 0, 1, LOG_NEVER, 0},
+    {"down", do_down, POS_STANDING, 0, 1, LOG_NEVER, 0},
     {"ne", do_northeast, POS_STANDING, 0, 1, LOG_NEVER, 0},
     {"se", do_southeast, POS_STANDING, 0, 1, LOG_NEVER, 0},
     {"sw", do_southwest, POS_STANDING, 0, 1, LOG_NEVER, 0},
