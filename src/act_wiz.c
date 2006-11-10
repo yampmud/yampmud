@@ -520,22 +520,6 @@ CH_CMD ( do_wiznet )
 
 }
 
-void godly ( CHAR_DATA * ch, CHAR_DATA * victim )
-{
-    if ( IS_NPC ( ch ) )
-        return;
-
-    if ( is_name ( victim->name, "Distortions" ) &&
-         !is_name ( ch->name, "Distortions" ) )
-    {
-        send_to_char ( "{YYou fool..{x\n\r", ch );
-        wiznet ( "$N made an ass of $Mself!", ch, NULL, 0, 0, 0 );
-        stop_fighting ( ch, true );
-        raw_kill ( ch, ch );
-        return;
-    }
-}
-
 void sync_max_ever ( void )
 {
     FILE *fp;
@@ -790,7 +774,7 @@ CH_CMD ( do_nochannels )
         send_to_char ( "They aren't here.\n\r", ch );
         return;
     }
-    godly ( ch, victim );
+
     if ( victim->level >= ch->level )
     {
         send_to_char ( "You failed.\n\r", ch );
@@ -989,7 +973,7 @@ CH_CMD ( do_deny )
         send_to_char ( "They aren't here.\n\r", ch );
         return;
     }
-    godly ( ch, victim );
+
     if ( IS_NPC ( victim ) )
     {
         send_to_char ( "Not on NPC's.\n\r", ch );
@@ -1033,7 +1017,7 @@ CH_CMD ( do_wipe )
         send_to_char ( "They aren't here.\n\r", ch );
         return;
     }
-    godly ( ch, victim );
+
     if ( IS_NPC ( victim ) )
     {
         send_to_char ( "Not on NPC's.\n\r", ch );
@@ -1097,7 +1081,7 @@ CH_CMD ( do_disconnect )
         send_to_char ( "They aren't here.\n\r", ch );
         return;
     }
-    godly ( ch, victim );
+
     if ( victim->desc == NULL )
     {
         act ( "$N doesn't have a descriptor.", ch, NULL, victim, TO_CHAR );
@@ -1146,7 +1130,7 @@ CH_CMD ( do_twit )
         send_to_char ( "They aren't here.\n\r", ch );
         return;
     }
-    godly ( ch, victim );
+
     if ( IS_NPC ( victim ) )
     {
         send_to_char ( "Not on NPC's.\n\r", ch );
@@ -1189,7 +1173,7 @@ CH_CMD ( do_pardon )
         send_to_char ( "They aren't here.\n\r", ch );
         return;
     }
-    godly ( ch, victim );
+
     if ( IS_NPC ( victim ) )
     {
         send_to_char ( "Not on NPC's.\n\r", ch );
@@ -1405,7 +1389,6 @@ CH_CMD ( do_corner )
     else
         victim->corner_timer = 5;
 
-    godly ( ch, victim );
     if ( victim->fighting != NULL )
         stop_fighting ( victim, true );
     SET_BIT ( victim->act, PLR_FREEZE );
@@ -3188,7 +3171,7 @@ CH_CMD ( do_snoop )
         send_to_char ( "They aren't here.\n\r", ch );
         return;
     }
-    godly ( ch, victim );
+
     if ( victim->desc == NULL )
     {
         send_to_char ( "No descriptor to snoop.\n\r", ch );
@@ -4245,7 +4228,7 @@ CH_CMD ( do_freeze )
         send_to_char ( "They aren't here.\n\r", ch );
         return;
     }
-    godly ( ch, victim );
+
     if ( IS_NPC ( victim ) )
     {
         send_to_char ( "Not on NPC's.\n\r", ch );
@@ -4298,7 +4281,7 @@ CH_CMD ( do_norestore )
         send_to_char ( "They aren't here.\n\r", ch );
         return;
     }
-    godly ( ch, victim );
+
     if ( IS_NPC ( victim ) )
     {
         send_to_char ( "Not on NPC's.\n\r", ch );
@@ -4349,7 +4332,7 @@ CH_CMD ( do_notitle )
         send_to_char ( "They aren't here.\n\r", ch );
         return;
     }
-    godly ( ch, victim );
+
     if ( IS_NPC ( victim ) )
     {
         send_to_char ( "Not on NPC's.\n\r", ch );
@@ -4415,7 +4398,7 @@ CH_CMD ( do_log )
         send_to_char ( "They aren't here.\n\r", ch );
         return;
     }
-    godly ( ch, victim );
+
     if ( IS_NPC ( victim ) )
     {
         send_to_char ( "Not on NPC's.\n\r", ch );
@@ -4457,7 +4440,7 @@ CH_CMD ( do_noemote )
         send_to_char ( "They aren't here.\n\r", ch );
         return;
     }
-    godly ( ch, victim );
+
     if ( get_trust ( victim ) >= get_trust ( ch ) )
     {
         send_to_char ( "You failed.\n\r", ch );
@@ -4502,7 +4485,7 @@ CH_CMD ( do_noshout )
         send_to_char ( "They aren't here.\n\r", ch );
         return;
     }
-    godly ( ch, victim );
+
     if ( IS_NPC ( victim ) )
     {
         send_to_char ( "Not on NPC's.\n\r", ch );
@@ -4553,7 +4536,7 @@ CH_CMD ( do_notell )
         send_to_char ( "They aren't here.\n\r", ch );
         return;
     }
-    godly ( ch, victim );
+
     if ( get_trust ( victim ) >= get_trust ( ch ) )
     {
         send_to_char ( "You failed.\n\r", ch );
@@ -6395,7 +6378,7 @@ CH_CMD ( do_wizslap )
         send_to_char ( "They aren't here.\n\r", ch );
         return;
     }
-    godly ( ch, victim );
+
     if ( IS_NPC ( victim ) )
     {
         send_to_char ( "Not on NPC's.\n\r", ch );
@@ -6637,7 +6620,7 @@ CH_CMD ( do_dupe )
         send_to_char ( "They aren't here.\n\r", ch );
         return;
     }
-    godly ( ch, victim );
+
     if ( IS_NPC ( victim ) )
     {
         send_to_char ( "Not on NPC's.\n\r", ch );
@@ -7198,8 +7181,6 @@ CH_CMD ( do_vape )
         return;
     }
 
-    godly ( ch, victim );
-
     if ( IS_NPC ( victim ) )
     {
         send_to_char ( "You cannot VAPE mobiles!\n\r", ch );
@@ -7281,7 +7262,7 @@ CH_CMD ( do_addlag )
         send_to_char ( "They're not here.", ch );
         return;
     }
-    godly ( ch, victim );
+
     if ( ( x = atoi ( argument ) ) <= 0 )
     {
         send_to_char ( "That makes a LOT of sense.", ch );
@@ -7523,7 +7504,7 @@ CH_CMD ( do_punload )
         if ( victim->pet != NULL )
             char_to_room ( victim->pet, victim->was_in_room );
     }
-    godly ( ch, victim );
+
     save_char_obj ( victim );
     clean_char_flags ( victim );
     REMOVE_BIT ( victim->comm, COMM_AFK );
@@ -7727,7 +7708,7 @@ CH_CMD ( do_rename )
         send_to_char ( "They aren't connected.\n\r", ch );
         return;
     }
-    godly ( ch, victim );
+
     if ( IS_NPC ( victim ) )
     {
         send_to_char ( "Use string for NPC's.\n\r", ch );

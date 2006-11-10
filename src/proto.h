@@ -85,7 +85,6 @@ void update_pos args ( ( CHAR_DATA * victim ) );
 void stop_fighting args ( ( CHAR_DATA * ch, bool fBoth ) );
 void check_killer args ( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 char *suppress_bit_name args ( ( int suppress_flags ) );
-void godly args ( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 bool WR args ( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 bool nia args ( ( CHAR_DATA * ch ) );
 void sync_max_ever args ( ( void ) );
