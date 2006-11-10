@@ -60,6 +60,8 @@
 #include "lookup.h"
 #include "ctype.h"
 
+static char *const him_her[] = { "it", "him", "her" };
+
 void do_pkset( CHAR_DATA * ch, char * argument)
 {
     if (IS_NPC(ch))
@@ -140,7 +142,8 @@ CH_CMD ( do_delete )
             if ( is_clan ( ch ) )
                 update_clanlist ( ch, ch->clan, false, false );
             sprintf ( strsave, "%s%s", PLAYER_DIR, capitalize ( ch->name ) );
-            wiznet ( "$N turns $Mself into line noise.", ch, NULL, WIZ_LOGS, 0, 0 );
+            sprintf(log_buf, "%s turns %sself into line noise.", ch->name, him_her[URANGE(0,ch->sex,2)]);
+            wiznet ( log_buf, ch, NULL, WIZ_LOGS, 0, 0 );
 
             sprintf ( newbuf, "{w[{RDELETE{w] %s has deleted.\n\r", ch->name );
             do_gmessage ( newbuf );
@@ -176,8 +179,8 @@ CH_CMD ( do_delete )
               ch->name );
     do_gmessage ( newbuf );
 
-    wiznet ( "$N is contemplating deletion.", ch, NULL, WIZ_LOGS, 0,
-             get_trust ( ch ) );
+    sprintf(newbuf, "%s is contemplating deletion.", ch->name );
+    wiznet ( newbuf, ch, NULL, WIZ_LOGS, 0, get_trust ( ch ) );
 }
 
 CH_CMD ( do_rerol )
@@ -626,7 +629,8 @@ CH_CMD ( do_reroll )
                   ch );
             send_to_char ( "\n\r{R[{WHit Enter to Continue{R]{x\n\r", ch );
 
-            wiznet ( "$N has rerolled.", ch, NULL, WIZ_LOGS, 0, 0 );
+            sprintf(log_buf, "%s has rerolled.", ch->name);
+            wiznet ( log_buf, ch, NULL, WIZ_LOGS, 0, 0 );
 
             sprintf ( newbuf, "{w[{RREROLL{w] %s has rerolled.\n\r", ch->name );
             do_gmessage ( newbuf );
@@ -732,8 +736,8 @@ CH_CMD ( do_reroll )
     send_to_char ( "\n\r", ch );
 
     ch->pcdata->confirm_reroll = true;
-    wiznet ( "$N is contemplating rerolling.", ch, NULL, WIZ_LOGS, 0,
-             get_trust ( ch ) );
+    sprintf( log_buf, "%s is contemplating rerolling.", ch->name);
+    wiznet ( log_buf, ch, NULL, WIZ_LOGS, 0, get_trust ( ch ) );
 }
 
 CH_CMD ( do_ancient )

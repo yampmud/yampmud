@@ -787,7 +787,7 @@ CH_CMD ( do_nochannels )
         send_to_char ( "The gods have restored your channel priviliges.\n\r",
                        victim );
         send_to_char ( "NOCHANNELS removed.\n\r", ch );
-        sprintf ( buf, "$N restores channels to %s", victim->name );
+        sprintf ( buf, "%s restores channels to %s", ch->name, victim->name );
         wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     }
     else
@@ -796,7 +796,7 @@ CH_CMD ( do_nochannels )
         send_to_char ( "The gods have revoked your channel priviliges.\n\r",
                        victim );
         send_to_char ( "NOCHANNELS set.\n\r", ch );
-        sprintf ( buf, "$N revokes %s's channels.", victim->name );
+        sprintf ( buf, "%s revokes %s's channels.", ch->name, victim->name );
         wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     }
 
@@ -988,7 +988,7 @@ CH_CMD ( do_deny )
 
     SET_BIT ( victim->act, PLR_DENY );
     send_to_char ( "You are denied access!\n\r", victim );
-    sprintf ( buf, "$N denies access to %s", victim->name );
+    sprintf ( buf, "%s denies access to %s", ch->name, victim->name );
     wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     send_to_char ( "OK.\n\r", ch );
     save_char_obj ( victim );
@@ -1031,7 +1031,7 @@ CH_CMD ( do_wipe )
     }
 
     SET_BIT ( victim->act2, PLR2_WIPED );
-    sprintf ( buf, "$N wipes access to %s", victim->name );
+    sprintf ( buf, "%s wipes access to %s", ch->name, victim->name );
     wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     send_to_char ( "OK.\n\r", ch );
     save_char_obj ( victim );
@@ -3183,8 +3183,8 @@ CH_CMD ( do_snoop )
         send_to_char ( "Cancelling all snoops.\n\r", ch );
         if ( !IS_TRUSTED ( ch, IMPLEMENTOR ) )
         {
-            wiznet ( "$N stops being such a snoop.", ch, NULL, WIZ_SNOOPS,
-                     WIZ_SECURE, get_trust ( ch ) );
+            sprintf( log_buf, "%s stops being such a snoop.", ch->name);
+            wiznet ( log_buf, ch, NULL, WIZ_SNOOPS, WIZ_SECURE, get_trust ( ch ) );
         }
         for ( d = descriptor_list; d != NULL; d = d->next )
         {
@@ -3232,7 +3232,7 @@ CH_CMD ( do_snoop )
     victim->desc->snoop_by = ch->desc;
     if ( !IS_TRUSTED ( ch, IMPLEMENTOR ) )
     {
-        sprintf ( buf, "$N starts snooping on %s",
+        sprintf ( buf, "%s starts snooping on %s", ch->name,
                   ( IS_NPC ( ch ) ? victim->short_descr : victim->name ) );
         wiznet ( buf, ch, NULL, WIZ_SNOOPS, WIZ_SECURE, get_trust ( ch ) );
     }
@@ -3302,7 +3302,7 @@ CH_CMD ( do_switch )
         return;
     }
 
-    sprintf ( buf, "$N switches into %s", victim->short_descr );
+    sprintf ( buf, "%s switches into %s", ch->name, victim->short_descr );
     wiznet ( buf, ch, NULL, WIZ_SWITCHES, WIZ_SECURE, get_trust ( ch ) );
 
     ch->desc->character = victim;
@@ -3340,7 +3340,7 @@ CH_CMD ( do_return )
         ch->prompt = NULL;
     }
 
-    sprintf ( buf, "$N returns from %s.", ch->short_descr );
+    sprintf ( buf, "%s returns from %s.", ch->desc->original->name, ch->short_descr );
     wiznet ( buf, ch->desc->original, 0, WIZ_SWITCHES, WIZ_SECURE,
              get_trust ( ch ) );
     ch->desc->character = ch->desc->original;
@@ -3454,7 +3454,8 @@ CH_CMD ( do_clone )
 
         act ( "$n has created $p.", ch, clone, NULL, TO_ROOM );
         act ( "You clone $p.", ch, clone, NULL, TO_CHAR );
-        wiznet ( "$N clones $p.", ch, clone, WIZ_LOAD, WIZ_SECURE,
+        sprintf( log_buf, "%s clones %s", ch->name, clone->short_descr );
+        wiznet ( log_buf, ch, clone, WIZ_LOAD, WIZ_SECURE,
                  get_trust ( ch ) );
         return;
     }
@@ -3501,7 +3502,7 @@ CH_CMD ( do_clone )
         char_to_room ( clone, ch->in_room );
         act ( "$n has created $N.", ch, NULL, clone, TO_ROOM );
         act ( "You clone $N.", ch, NULL, clone, TO_CHAR );
-        sprintf ( buf, "$N clones %s.", clone->short_descr );
+        sprintf ( buf, "%s clones %s.", ch->name, clone->short_descr );
         wiznet ( buf, ch, NULL, WIZ_LOAD, WIZ_SECURE, get_trust ( ch ) );
         return;
     }
@@ -3570,7 +3571,7 @@ CH_CMD ( do_mload )
     victim = create_mobile ( pMobIndex );
     char_to_room ( victim, ch->in_room );
     act ( "$n has created $N!", ch, NULL, victim, TO_ROOM );
-    sprintf ( buf, "$N loads %s.", victim->short_descr );
+    sprintf ( buf, "%s loads %s.", ch->name, victim->short_descr );
     wiznet ( buf, ch, NULL, WIZ_LOAD, WIZ_SECURE, get_trust ( ch ) );
     send_to_char ( "Ok.\n\r", ch );
     return;
@@ -3627,7 +3628,8 @@ CH_CMD ( do_oload )
     else
         obj_to_room ( obj, ch->in_room );
     act ( "$n has created $p!", ch, obj, NULL, TO_ROOM );
-    wiznet ( "$N loads $p.", ch, obj, WIZ_LOAD, WIZ_SECURE, get_trust ( ch ) );
+    sprintf( log_buf, "%s loads %s.", ch->name, obj->short_descr);
+    wiznet ( log_buf, ch, obj, WIZ_LOAD, WIZ_SECURE, get_trust ( ch ) );
     send_to_char ( "Ok.\n\r", ch );
     return;
 }
@@ -3693,8 +3695,8 @@ CH_CMD ( do_vload )
             else
                 obj_to_room ( obj, ch->in_room );
             act ( "$n has created $p!", ch, obj, NULL, TO_ROOM );
-            wiznet ( "$N loads $p.", ch, obj, WIZ_LOAD, WIZ_SECURE,
-                     get_trust ( ch ) );
+            sprintf(log_buf, "%s loads %s.", ch->name, obj->short_descr);
+            wiznet ( log_buf, ch, obj, WIZ_LOAD, WIZ_SECURE, get_trust ( ch ) );
             send_to_char ( "Ok.\n\r", ch );
             return;
         }
@@ -4095,7 +4097,7 @@ CH_CMD ( do_restore )
             }
         }
 
-        sprintf ( buf, "$N restored room %ld.", ch->in_room->vnum );
+        sprintf ( buf, "%s restored room %ld.", ch->name, ch->in_room->vnum );
         wiznet ( buf, ch, NULL, WIZ_RESTORE, WIZ_SECURE, get_trust ( ch ) );
 
         send_to_char ( "Room restored.\n\r", ch );
@@ -4163,7 +4165,7 @@ CH_CMD ( do_restore )
     victim->move = victim->max_move;
     update_pos ( victim );
     act ( "$n has restored you.", ch, NULL, victim, TO_VICT );
-    sprintf ( buf, "$N restored %s",
+    sprintf ( buf, "%s restored %s", ch->name,
               IS_NPC ( victim ) ? victim->short_descr : victim->name );
     wiznet ( buf, ch, NULL, WIZ_RESTORE, WIZ_SECURE, get_trust ( ch ) );
     send_to_char ( "Ok.\n\r", ch );
@@ -4204,7 +4206,7 @@ CH_CMD ( do_immkiss )
           victim, TO_VICT );
     send_to_char ( "You feel MUCH better now!\n\r", victim );
     send_to_char ( "They feel MUCH better now!\n\r", ch );
-    sprintf ( buf, "$N immkissed %s",
+    sprintf ( buf, "%s immkissed %s", ch->name,
               IS_NPC ( victim ) ? victim->short_descr : victim->name );
     wiznet ( buf, ch, NULL, WIZ_RESTORE, WIZ_SECURE, get_trust ( ch ) );
     return;
@@ -4246,7 +4248,7 @@ CH_CMD ( do_freeze )
         REMOVE_BIT ( victim->act, PLR_FREEZE );
         send_to_char ( "You can play again.\n\r", victim );
         send_to_char ( "FREEZE removed.\n\r", ch );
-        sprintf ( buf, "$N thaws %s.", victim->name );
+        sprintf ( buf, "%s thaws %s.", ch->name, victim->name );
         wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     }
     else
@@ -4254,7 +4256,7 @@ CH_CMD ( do_freeze )
         SET_BIT ( victim->act, PLR_FREEZE );
         send_to_char ( "You can't do ANYthing!\n\r", victim );
         send_to_char ( "FREEZE set.\n\r", ch );
-        sprintf ( buf, "$N puts %s in the deep freeze.", victim->name );
+        sprintf ( buf, "%s puts %s in the deep freeze.", ch->name, victim->name );
         wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     }
 
@@ -4298,14 +4300,14 @@ CH_CMD ( do_norestore )
     {
         REMOVE_BIT ( victim->act, PLR_NORESTORE );
         send_to_char ( "NORESTORE removed.\n\r", ch );
-        sprintf ( buf, "$N allows %s restores.", victim->name );
+        sprintf ( buf, "%s allows %s restores.", ch->name, victim->name );
         wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     }
     else
     {
         SET_BIT ( victim->act, PLR_NORESTORE );
         send_to_char ( "NORESTORE set.\n\r", ch );
-        sprintf ( buf, "$N denys %s restores.", victim->name );
+        sprintf ( buf, "%s denys %s restores.", ch->name, victim->name );
         wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     }
 
@@ -4349,14 +4351,14 @@ CH_CMD ( do_notitle )
     {
         REMOVE_BIT ( victim->act, PLR_NOTITLE );
         send_to_char ( "NOTITLE removed.\n\r", ch );
-        sprintf ( buf, "$N allows %s title.", victim->name );
+        sprintf ( buf, "%s allows %s title.", ch->name, victim->name );
         wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     }
     else
     {
         SET_BIT ( victim->act, PLR_NOTITLE );
         send_to_char ( "NOTITLE set.\n\r", ch );
-        sprintf ( buf, "$N denys %s title.", victim->name );
+        sprintf ( buf, "%s denys %s title.", ch->name, victim->name );
         wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     }
 
@@ -4452,7 +4454,7 @@ CH_CMD ( do_noemote )
         REMOVE_BIT ( victim->comm, COMM_NOEMOTE );
         send_to_char ( "You can emote again.\n\r", victim );
         send_to_char ( "NOEMOTE removed.\n\r", ch );
-        sprintf ( buf, "$N restores emotes to %s.", victim->name );
+        sprintf ( buf, "%s restores emotes to %s.", ch->name, victim->name );
         wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     }
     else
@@ -4460,7 +4462,7 @@ CH_CMD ( do_noemote )
         SET_BIT ( victim->comm, COMM_NOEMOTE );
         send_to_char ( "You can't emote!\n\r", victim );
         send_to_char ( "NOEMOTE set.\n\r", ch );
-        sprintf ( buf, "$N revokes %s's emotes.", victim->name );
+        sprintf ( buf, "%s revokes %s's emotes.", ch->name, victim->name );
         wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     }
 
@@ -4503,7 +4505,7 @@ CH_CMD ( do_noshout )
         REMOVE_BIT ( victim->comm, COMM_NOSHOUT );
         send_to_char ( "You can shout again.\n\r", victim );
         send_to_char ( "NOSHOUT removed.\n\r", ch );
-        sprintf ( buf, "$N restores shouts to %s.", victim->name );
+        sprintf ( buf, "%s restores shouts to %s.", ch->name, victim->name );
         wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     }
     else
@@ -4511,7 +4513,7 @@ CH_CMD ( do_noshout )
         SET_BIT ( victim->comm, COMM_NOSHOUT );
         send_to_char ( "You can't shout!\n\r", victim );
         send_to_char ( "NOSHOUT set.\n\r", ch );
-        sprintf ( buf, "$N revokes %s's shouts.", victim->name );
+        sprintf ( buf, "%s revokes %s's shouts.", ch->name, victim->name );
         wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     }
 
@@ -4548,7 +4550,7 @@ CH_CMD ( do_notell )
         REMOVE_BIT ( victim->comm, COMM_NOTELL );
         send_to_char ( "You can tell again.\n\r", victim );
         send_to_char ( "NOTELL removed.\n\r", ch );
-        sprintf ( buf, "$N restores tells to %s.", victim->name );
+        sprintf ( buf, "%s restores tells to %s.", ch->name, victim->name );
         wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     }
     else
@@ -4556,7 +4558,7 @@ CH_CMD ( do_notell )
         SET_BIT ( victim->comm, COMM_NOTELL );
         send_to_char ( "You can't tell!\n\r", victim );
         send_to_char ( "NOTELL set.\n\r", ch );
-        sprintf ( buf, "$N revokes %s's tells.", victim->name );
+        sprintf ( buf, "%s revokes %s's tells.", ch->name, victim->name );
         wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     }
 
@@ -4585,20 +4587,21 @@ CH_CMD ( do_peace )
 
 CH_CMD ( do_wizlock )
 {
+    char buf[MIL];
+
     wizlock = !wizlock;
 
     if ( wizlock )
     {
-        char buf[MIL];
-
-        wiznet ( "$N has wizlocked the game.", ch, NULL, 0, 0, 0 );
+        sprintf(buf, "%s has wizlocked the game.", ch->name);
+        wiznet ( buf, ch, NULL, 0, 0, 0 );
         send_to_char ( "Game wizlocked.\n\r", ch );
-        sprintf ( buf, "%s has wizlocked the game.", ch->name );
         append_file ( ch, WIZLOCK_FILE, buf );
     }
     else
     {
-        wiznet ( "$N removes wizlock.", ch, NULL, 0, 0, 0 );
+        sprintf(buf, "%s removes wizlock", ch->name);
+        wiznet ( buf, ch, NULL, 0, 0, 0 );
         send_to_char ( "Game un-wizlocked.\n\r", ch );
         unlink ( WIZLOCK_FILE );
     }
@@ -4610,20 +4613,21 @@ CH_CMD ( do_wizlock )
 
 CH_CMD ( do_newlock )
 {
+    char buf[MIL];
+
     newlock = !newlock;
 
     if ( newlock )
     {
-        char buf[MIL];
-
-        wiznet ( "$N locks out new characters.", ch, NULL, 0, 0, 0 );
+        sprintf(buf, "%s has newlocked the game.", ch->name);
+        wiznet ( buf, ch, NULL, 0, 0, 0 );
         send_to_char ( "New characters have been locked out.\n\r", ch );
-        sprintf ( buf, "%s has newlocked the game.", ch->name );
         append_file ( ch, NEWLOCK_FILE, buf );
     }
     else
     {
-        wiznet ( "$N allows new characters back in.", ch, NULL, 0, 0, 0 );
+        sprintf(buf, "%s allows new characters back in.", ch->name);
+        wiznet ( buf, ch, NULL, 0, 0, 0 );
         send_to_char ( "Newlock removed.\n\r", ch );
         unlink ( NEWLOCK_FILE );
     }

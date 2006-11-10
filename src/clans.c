@@ -696,7 +696,7 @@ CH_CMD ( do_noclan )
     {
         REMOVE_BIT ( victim->act, PLR_NOCLAN );
         send_to_char ( "NOCLAN removed.\n\r", ch );
-        sprintf ( buf, "$N allows %s to join pkill clans.", victim->name );
+        sprintf ( buf, "%s allows %s to join pkill clans.", ch->name, victim->name );
         wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     }
     else
@@ -709,7 +709,7 @@ CH_CMD ( do_noclan )
         victim->clan = 0;
         victim->clead = 0;
         send_to_char ( "NOCLAN set.\n\r", ch );
-        sprintf ( buf, "$N forbids %s to join pkill clans.", victim->name );
+        sprintf ( buf, "%s forbids %s to join pkill clans.", ch->name, victim->name );
         wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
     }
 

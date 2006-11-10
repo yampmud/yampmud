@@ -3032,8 +3032,10 @@ CH_CMD ( do_sacrifice )
         act ( buf, ch, NULL, NULL, TO_ROOM );
 
         if ( found )
-            wiznet ( "$N sends up everything in that room as a burnt offering.",
-                     ch, obj, WIZ_SECURE, 0, 0 );
+        {
+            sprintf( log_buf, "%s sends up everything in that room as a burnt offering.", ch->name );
+            wiznet ( log_buf, ch, obj, WIZ_SECURE, 0, 0 );
+        }
 
         else
         {
@@ -3124,8 +3126,8 @@ CH_CMD ( do_sacrifice )
     }
 
     act ( "$n sacrifices $p to $G.", ch, obj, NULL, TO_ROOM );
-    wiznet ( "$N sends up $p as a burnt offering.", ch, obj, WIZ_SACCING, 0,
-             0 );
+		sprintf( log_buf, "%s sends up %s as a burnt offering.", ch->name, obj->short_descr );
+    wiznet ( log_buf, ch, obj, WIZ_SACCING, 0, 0 );
     if ( obj->item_type != ITEM_CORPSE_PC && obj->item_type != ITEM_CORPSE_NPC
          && obj->item_type != ITEM_ITEMPILE )
         extract_obj ( obj );
@@ -3691,7 +3693,7 @@ CH_CMD ( do_steal )
             }
             else
             {
-                sprintf ( buf, "{R$N{x tried to steal from {B%s{x.",
+                sprintf ( buf, "{R%s{x tried to steal from {B%s{x.", ch->name,
                           victim->name );
                 wiznet ( buf, ch, NULL, WIZ_FLAGS, 0, 0 );
             }

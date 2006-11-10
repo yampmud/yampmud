@@ -3420,7 +3420,7 @@ void group_gain ( CHAR_DATA * ch, CHAR_DATA * victim )
 	    else
 		send_to_char(".\n\r", ch);
 
-	    sprintf(buf, "$N has killed %s, a global questmob.", victim->short_descr);
+	    sprintf(buf, "%s has killed %s, a global questmob.", ch->name, victim->short_descr);
 	    wiznet(buf, ch, NULL, 0, 0, 0);
 
 	    if (count_gqmobs(ch) == gquest_info.mob_count)
