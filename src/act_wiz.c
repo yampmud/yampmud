@@ -198,6 +198,7 @@ CH_CMD ( do_repeat )
 CH_CMD ( do_codestat )
 {
     char buf[MSL];
+    int sn = 0;
 
     if ( !IS_IMMORTAL ( ch ) || IS_NPC ( ch ) )
         return;
@@ -212,8 +213,6 @@ CH_CMD ( do_codestat )
 
     send_to_char ( buf, ch );
 
-    int sn;
-    sn = 0;
     while ( sn < MAX_SKILL )
     {
       sprintf ( buf, "%3d %s\n\r", sn, skill_table[sn].name );
