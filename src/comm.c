@@ -2473,6 +2473,7 @@ void nanny ( DESCRIPTOR_DATA * d, char *argument )
     int iClass, race, i, weapon;
     int pos = 0;
     bool fOld;
+    int sn;
 
     while ( isspace ( *argument ) )
         argument++;
@@ -3082,7 +3083,6 @@ OLD REROLL DUDE! */
             ch->parts = race_table[race].parts;
 
             /* add skills */
-            int sn;
             for ( i = 0; i < 5; i++ )
             {
                 if ( pc_race_table[ch->race].skills[i] == NULL )
