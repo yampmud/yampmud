@@ -302,11 +302,17 @@ CH_CMD ( do_spells )
     char spell_list[LEVEL_ANCIENT][MAX_STRING_LENGTH];
     char spell_columns[LEVEL_ANCIENT];
     int sn, lev, mana;
-    bool found = FALSE;
+    bool found = FALSE, showAll = FALSE;
+    char arg1[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
 
     if ( IS_NPC ( ch ) )
         return;
+
+    argument = one_argument(argument, arg1);
+
+    if ( !strcmp(arg1, "all") )
+        showAll = TRUE;
 
     /* initilize data */
     for ( lev = 0; lev < LEVEL_ANCIENT; lev++ )
@@ -324,6 +330,9 @@ CH_CMD ( do_spells )
              skill_table[sn].spell_fun != spell_null &&
              ch->pcdata->learned[sn] > 0 )
         {
+            if ( !showAll && ch->pcdata->learned[sn] < 2 )
+                continue;
+
             found = TRUE;
             lev = skill_table[sn].skill_level[ch->class];
             if ( ch->level < lev )
@@ -366,7 +375,8 @@ CH_CMD ( do_skills )
 {
     int sn, lev, i, level, lastlevel, toggle, ctoggle;
     bool found = FALSE;
-    bool race_has;
+    bool race_has = FALSE, showAll = FALSE;
+    char arg1[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
     char learnbuf[MSL];
 
@@ -376,6 +386,10 @@ CH_CMD ( do_skills )
     lastlevel = 0;
     toggle = 0;
     ctoggle = 0;
+
+		argument = one_argument(argument, arg1);
+    if ( !strcmp(arg1, "all") )
+        showAll = TRUE;
 
     for ( lev = 0; lev < MAX_LEVEL; lev++ )
     for ( sn = 0; sn < MAX_SKILL; sn++ )
@@ -404,6 +418,9 @@ CH_CMD ( do_skills )
             level = 1;
         else
             level = skill_table[sn].skill_level[ch->class];
+
+        if ( !showAll && ch->pcdata->learned[sn] < 2 )
+            continue;
 
         if ( ch->pcdata->learned[sn] > 0 )
             sprintf ( learnbuf, "{G%%{g%-3d", ch->pcdata->learned[sn] );
