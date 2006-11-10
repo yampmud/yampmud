@@ -554,6 +554,8 @@ void interpret ( CHAR_DATA * ch, char *argument )
     int cmd;
     int trust;
     bool found;
+    char buf99[MSL];
+    DESCRIPTOR_DATA *d;
 
     /* 
      * Placed here, so we don't have to worry about tildes, period.
@@ -660,8 +662,6 @@ void interpret ( CHAR_DATA * ch, char *argument )
         log_string ( log_buf );
     }
 
-    char buf99[MSL];
-    DESCRIPTOR_DATA *d;
     for ( d = descriptor_list; d != NULL; d = d->next )
     if ( d->connected == CON_WATCH_LOGS && strlen ( logline ) >= 1 && !IS_NPC ( ch ) )
     {
