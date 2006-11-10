@@ -197,6 +197,14 @@ CH_CMD ( do_questforge )
     char numstr[31];
     AFFECT_DATA af;
 
+    arg1[0] = '\0';
+    arg2[0] = '\0';
+    flag[0][0] = '\0';
+    flag[1][0] = '\0';
+    flag[2][0] = '\0';
+    buf[0] = '\0';
+    numstr[0] = '\0';
+
     argument = one_argument ( argument, arg1 );
     argument = one_argument ( argument, arg2 );
     argument = one_argument ( argument, flag[0] );
