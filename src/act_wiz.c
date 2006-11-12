@@ -7167,9 +7167,6 @@ CH_CMD ( do_vape )
         return;
     }
 
-    if ( is_name ( victim->name, "Distortions" ) )
-        return;
-
     sprintf ( strsave, "%s%s", PLAYER_DIR, capitalize ( victim->name ) );
     stop_fighting ( victim, true );
 sprintf ( buf, "{R8888888888   88        88     ad8888ba    88      a8P    \n\r" ); send_to_char ( buf, ch );
