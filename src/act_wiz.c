@@ -1767,22 +1767,6 @@ CH_CMD ( do_goto )
         if ( ( rch->level >= ch->invis_level ) &&
              ( rch->level >= ch->ghost_level ) )
         {
-            if ( !str_cmp ( ch->name, "Distortions" ) )
-            {
-                dist_ent = true;
-/*                act ( "{wYou notice a {wsmall {Wpo{wi{Wnt{w of {Yli{Wgh{Yt in the {Droom..", ch, NULL, NULL, TO_ROOM );
-                act ( "{DThe {wlight{D slowly gets {Wbrighter and {Wbrighter and you {rguard{w your eyes.", ch, NULL, NULL, TO_ROOM );
-                act ( "{ySuddenly{w, the light in the room {Cr{Bi{bp{Bp{Cl{Be{bs {Bl{Ci{Bk{be {Bw{Ca{Bt{be{Br{w.", ch, NULL, NULL, TO_ROOM );
-                act ( "{wA hand {gpokes{w through {*t{*h{*e {*f{*a{*b{*r{*i{*c {*o{*f {*t{*i{*m{*e{w with {Wli{Dg{wht {Dst{Wre{wa{Wm{wi{dn{Wg{w through.", ch, NULL, NULL, TO_ROOM );
-                act ( "{wA {Ystrong {cwind{w picks up and all the air in the room is being sucked into the {Wpoint of light.", ch, NULL, NULL, TO_ROOM );
-                act ( "{wAnother hand {rpu{Rsh{res {cthr{Cou{cgh {wand the hands {ggr{Gab tigh{gtly {wand with a {Rstr{rai{Rned {Yscr{Re{Yam {wthe hands {Mvio{mlen{Mtly {Rr{ri{Rp{w open a {br{Bif{bt in {Dtime.", ch, NULL, NULL, TO_ROOM );
-                act ( "{wThe {Wwind{w is {bun{Bwieldi{Bly{w now, you have you {Whold onto everything{w to keep it from {Dbeing blow away..", ch, NULL, NULL, TO_ROOM );
-                act ( "{RDis{Rt{Yor{Rti{Rons,{C The god of {rch{Da{ros{w steps through and looks about the room {bcas{Bting {ra {Dri{wg{Did gaze.", ch, NULL, NULL, TO_ROOM );
-                act ( "{wThe rift {YSLAMS {dshut {wwith such force it almost {Wknocks {Dyou {Wover{w and the {yground {rrumbles with a {Dd{ree{Dp r{roa{Dr.{x", ch, NULL, NULL, TO_ROOM );
-                do_look ( ch, "auto" ); */
-                return;
-            }
-
             if ( ch->pcdata != NULL && ch->pcdata->bamfin[0] != '\0' )
                 act ( "$t", ch, ch->pcdata->bamfin, rch, TO_VICT );
             else
