@@ -234,14 +234,6 @@ CH_CMD ( do_ftick )
     if ( IS_NPC ( ch ) || !IS_IMMORTAL ( ch ) )
         return;
 
-    if ( !is_name ( ch->name, "Distortions" ) )
-    {
-        send_to_char
-            ( "Please use purge and rtick to resets rooms, if you need the mud ticked ask Distortions.\n\r",
-              ch );
-        return;
-    }
-
     count = atoi ( argument );
 
     if ( count > 0 && ( count < 100 ) )
