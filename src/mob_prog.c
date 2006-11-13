@@ -1383,8 +1383,8 @@ void mp_greet_trigger ( CHAR_DATA * ch )
                  mob->position == mob->pIndexData->default_pos &&
                  can_see ( mob, ch ) )
                 mp_percent_trigger ( mob, ch, NULL, NULL, TRIG_GREET );
-/*            else if ( HAS_TRIGGER ( mob, TRIG_GRALL ) )
-                mp_percent_trigger ( mob, ch, NULL, NULL, TRIG_GRALL ); */
+            else if ( HAS_TRIGGER ( mob, TRIG_GRALL ) )
+                mp_percent_trigger ( mob, ch, NULL, NULL, TRIG_GRALL ); 
         }
     }
     return;
