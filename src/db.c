@@ -457,7 +457,9 @@ void new_load_area ( FILE * fp )
             case 'S':
                 if ( !str_cmp( word, "Security" ) )
                 {
-                    pArea->security = URANGE(0, fread_number(fp), MAX_SECURITY);
+                    pArea->security = fread_number(fp);
+                    if (pArea->security > MAX_SECURITY)
+                        pArea->security = MAX_SECURITY;
                     fMatch = true;
                     break;
                 }
