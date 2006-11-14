@@ -455,7 +455,7 @@ void new_load_area ( FILE * fp )
                 SKEY ( "Name", pArea->name );
                 break;
             case 'S':
-                KEY ( "Security", pArea->security, fread_number ( fp ) );
+                KEY ( "Security", pArea->security, URANGE(0, fread_number(fp), MAX_SECURITY) );
                 break;
             case 'V':
                 if ( !str_cmp ( word, "VNUMs" ) )
