@@ -818,11 +818,12 @@ AEDIT ( aedit_security )
 
     value = atoi ( sec );
 
-    if ( value > ch->pcdata->security || value < 0 )
+    if ( (value > ch->pcdata->security && !IS_TRUSTED(ch,IMPLEMENTOR)) || value < 0 )
     {
         if ( ch->pcdata->security != 0 )
         {
-            sprintf ( buf, "Security is 0-%d.\n\r", ch->pcdata->security );
+            sprintf ( buf, "Security is 0-%d.\n\r",
+                      IS_TRUSTED(ch,IMPLEMENTOR) ? MAX_SECURITY : ch->pcdata->security );
             send_to_char ( buf, ch );
         }
         else

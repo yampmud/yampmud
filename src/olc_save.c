@@ -915,7 +915,7 @@ void save_area ( AREA_DATA * pArea )
     fprintf ( fp, "Builders %s~\n", fix_string ( pArea->builders ) );
     fprintf ( fp, "VNUMs %ld %ld\n", pArea->min_vnum, pArea->max_vnum );
     fprintf ( fp, "Credits %s~\n", pArea->credits );
-    fprintf ( fp, "Security %d\n", pArea->security );
+    fprintf ( fp, "Security %d\n", URANGE(0,pArea->security,MAX_SECURITY) );
     fprintf ( fp, "RepopMsg %s~\n", pArea->repop_msg );
     fprintf ( fp, "End\n\n\n\n" );
 

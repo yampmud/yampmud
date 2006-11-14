@@ -10,6 +10,7 @@
 #include <time.h>
 #include "merc.h"
 #include "music.h"
+#include "olc.h"
 #include "recycle.h"
 
 struct song_data song_table[MAX_SONGS];
@@ -30,7 +31,7 @@ CH_CMD ( do_msedit )
     argument = one_argument ( argument, arg );
     strcpy ( edit_name, argument );
 
-    if ( ch->pcdata->security < 9 )
+    if ( ch->pcdata->security < MAX_SECURITY )
     {
         send_to_char ( "You don't have enough security to edit songs.\n\r",
                        ch );

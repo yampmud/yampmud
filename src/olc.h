@@ -33,6 +33,10 @@
 		"     Version actual : 1.5a - Mar 9, 1997\n\r"
 #define CREDITS "     Original by Surreality(cxw197@psu.edu) and Locke(locke@lm.com)"
 
+
+#define MAX_SECURITY 9
+
+
 /*
  * New typedefs.
  */

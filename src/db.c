@@ -55,6 +55,8 @@
 #include "lookup.h"
 #undef IN_DB_C
 
+#include "olc.h"
+
 #if !defined(macintosh)
 extern int _filbuf args ( ( FILE * ) );
 #endif
@@ -360,7 +362,7 @@ void load_area ( FILE * fp )
     pArea->file_name = fread_string ( fp );
 
     pArea->area_flags = AREA_LOADING;   /* OLC */
-    pArea->security = 9;        /* OLC *//* 9 -- Hugin */
+    pArea->security = MAX_SECURITY;
     pArea->builders = str_dup ( "None" );   /* OLC */
     pArea->vnum = top_area;     /* OLC */
     pArea->repop_msg = fread_string ( fp );
@@ -435,7 +437,7 @@ void new_load_area ( FILE * fp )
     pArea->vnum = top_area;
     pArea->name = str_dup ( "New Area" );
     pArea->builders = str_dup ( "" );
-    pArea->security = 9;        /* 9 -- Hugin */
+    pArea->security = MAX_SECURITY;
     pArea->repop_msg = str_dup ( "REPOP!" );
     pArea->min_vnum = 0;
     pArea->max_vnum = 0;

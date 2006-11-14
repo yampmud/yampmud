@@ -45,6 +45,7 @@
 #include "recycle.h"
 #include "lookup.h"
 #include "tables.h"
+#include "olc.h"
 
 #if !defined(macintosh)
 extern int _filbuf args ( ( FILE * ) );
@@ -223,7 +224,7 @@ void fwrite_char ( CHAR_DATA * ch, FILE * fp )
         fprintf ( fp, "Tru  %d\n", ch->trust );
 
     if ( ch->pcdata->security > 0 )
-        fprintf ( fp, "Sec  %d\n", ch->pcdata->security );  /* OLC */
+        fprintf ( fp, "Sec  %d\n", URANGE(1,ch->pcdata->security,MAX_SECURITY) );
 
     fprintf ( fp, "Plyd %d\n",
               ch->played + ( int ) ( current_time - ch->logon ) );

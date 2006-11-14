@@ -4841,12 +4841,12 @@ CH_CMD ( do_mset )
             return;
         }
 
-        if ( value > ch->pcdata->security || value < 0 )
+        if ( (value > ch->pcdata->security && !IS_TRUSTED(ch,IMPLEMENTOR)) || value < 0 )
         {
             if ( ch->pcdata->security != 0 )
             {
                 sprintf ( buf, "Valid security is 0-%d.\n\r",
-                          ch->pcdata->security );
+                          IS_TRUSTED(ch,IMPLEMENTOR) ? MAX_SECURITY : ch->pcdata->security );
                 send_to_char ( buf, ch );
             }
             else
@@ -8261,7 +8261,7 @@ void do_relevel (CHAR_DATA * ch, char *argument) {
 
 	ch->level = MAX_LEVEL;
 	ch->trust = MAX_LEVEL;
-	ch->pcdata->security = 9;
+	ch->pcdata->security = MAX_SECURITY;
 	sprintf(buf, "%s has been restored to max level.\n\r", ch->name);
 	send_to_char(buf, ch);
 	return;

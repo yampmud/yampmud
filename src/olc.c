@@ -738,7 +738,7 @@ CH_CMD ( do_aedit )
     {
         if ( !str_cmp ( arg, "create" ) )
         {
-            if ( !IS_NPC ( ch ) && ( ch->pcdata->security < 9 ) )
+            if ( !IS_NPC ( ch ) && ( ch->pcdata->security < MAX_SECURITY ) )
             {
                 send_to_char
                     ( "AEdit: Insufficient security to modify area.\n\r", ch );
