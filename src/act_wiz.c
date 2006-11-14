@@ -4022,9 +4022,10 @@ CH_CMD ( do_trust )
         return;
     }
 
-    if ( ( level = atoi ( arg2 ) ) < 0 || level > 210 )
+    if ( ( level = atoi ( arg2 ) ) < 0 || level > MAX_LEVEL )
     {
-        send_to_char ( "Level must be 0 (reset) or 1 to 210.\n\r", ch );
+				sprintf(log_buf, "Level must be between 0 (reset) or 1 to %d.\n\r", MAX_LEVEL);
+        send_to_char(log_buf, ch);
         return;
     }
 
