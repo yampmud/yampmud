@@ -1,10 +1,6 @@
 
 /* Auction.c */
-#if defined(macintosh)
-#include <types.h>
-#else
 #include <sys/types.h>
-#endif
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>

@@ -31,12 +31,7 @@
 *       ROT license, in the file doc/rot.license                           * 
 ***************************************************************************/
 
-#if defined(macintosh)
-#include <types.h>
-#include <time.h>
-#else
 #include <sys/types.h>
-#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

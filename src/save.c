@@ -31,11 +31,7 @@
 *       ROT license, in the file doc/rot.license                           * 
 ***************************************************************************/
 
-#if defined(macintosh)
-#include <types.h>
-#else
 #include <sys/types.h>
-#endif
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -47,9 +43,7 @@
 #include "tables.h"
 #include "olc.h"
 
-#if !defined(macintosh)
 extern int _filbuf args ( ( FILE * ) );
-#endif
 
 char *print_flags ( int flag )
 {

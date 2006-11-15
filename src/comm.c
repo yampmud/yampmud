@@ -49,12 +49,8 @@
  * -- Furey  26 Jan 1993
  */
 
-#if defined(macintosh)
-#include <types.h>
-#else
 #include <sys/types.h>
 #include <sys/time.h>
-#endif
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <sys/resource.h>
@@ -103,12 +99,6 @@ extern int malloc_verify args ( ( void ) );
 /*
  * Socket and TCP/IP stuff.
  */
-#if	defined(macintosh)
-const char echo_off_str[] = { '\0' };
-const char echo_on_str[] = { '\0' };
-const char go_ahead_str[] = { '\0' };
-#endif
-
 #if	defined(unix)
 #include <fcntl.h>
 #include <netdb.h>
@@ -178,24 +168,6 @@ int	socket		args( ( int domain, int type, int protocol ) );
 int	write		args( ( int fd, char *buf, int nbyte ) );
 #endif
 */
-#if	defined(macintosh)
-#include <console.h>
-#include <fcntl.h>
-#include <unix.h>
-struct timeval
-{
-    time_t tv_sec;
-    time_t tv_usec;
-};
-
-#if	!defined(isascii)
-#define	isascii(c)		( (c) < 0200 )
-#endif
-static long theKeys[4];
-
-int gettimeofday args ( ( struct timeval * tp, void *tzp ) );
-#endif
-
 #if	defined(MIPS_OS)
 extern int errno;
 #endif
@@ -300,12 +272,6 @@ char clcode[MAX_INPUT_LENGTH];
 /*
  * OS-dependent local functions.
  */
-#if defined(macintosh)
-void game_loop_mac args ( ( void ) );
-bool read_from_descriptor args ( ( DESCRIPTOR_DATA * d ) );
-bool write_to_descriptor args ( ( int desc, char *txt, int length ) );
-#endif
-
 #if defined(unix)
 void game_loop_unix args ( ( int control ) );
 int init_socket args ( ( int port ) );
@@ -382,16 +348,6 @@ int main ( int argc, char **argv )
     strcpy ( str_boot_time, ctime ( &current_time ) );
 
     boot_time = current_time;
-
-    /* 
-     * Macintosh console initialization.
-     */
-#if defined(macintosh)
-    console_options.nrows = 31;
-    cshow ( stdout );
-    csetmode ( C_RAW, stdin );
-    cecho2file ( "log file", 1, stderr );
-#endif
 
     /* 
      * Reserve one channel for our use.
@@ -535,168 +491,6 @@ int init_socket ( int port )
     }
 
     return fd;
-}
-#endif
-
-#if defined(macintosh)
-void game_loop_mac ( void )
-{
-    struct timeval last_time;
-    struct timeval now_time;
-    static DESCRIPTOR_DATA dcon;
-
-    gettimeofday ( &last_time, NULL );
-    current_time = ( time_t ) last_time.tv_sec;
-
-    /* 
-     * New_descriptor analogue.
-     */
-    dcon.descriptor = 0;
-    dcon.connected = CON_GET_NAME;
-    dcon.host = str_dup ( "localhost" );
-    dcon.outsize = 2000;
-    dcon.outbuf = alloc_mem ( dcon.outsize );
-    dcon.next = descriptor_list;
-    dcon.showstr_head = NULL;
-    dcon.showstr_point = NULL;
-    dcon.pEdit = NULL;          /* OLC */
-    dcon.pString = NULL;        /* OLC */
-    dcon.editor = 0;            /* OLC */
-    dcon.ansi = true;
-    descriptor_list = &dcon;
-
-    /* 
-     * Send the greeting.
-     */
-    {
-        extern char *help_greetinga;
-        extern char *help_authors;
-        extern char *help_login;
-
-        write_to_buffer ( &dcon, help_authors, 0 );
-        write_to_buffer ( &dcon, help_login, 0 );
-        write_to_buffer ( &dcon, help_greetinga, 0 );
-    }
-
-    /* Main loop */
-    while ( !merc_down )
-    {
-        DESCRIPTOR_DATA *d;
-
-        /* 
-         * Process input.
-         */
-        for ( d = descriptor_list; d != NULL; d = d_next )
-        {
-            d_next = d->next;
-            d->fcommand = false;
-
-            {
-                if ( d->character != NULL )
-                    d->character->timer = 0;
-                if ( !read_from_descriptor ( d ) )
-                {
-/*                    if ( d->character != NULL )
-                        save_char_obj ( d->character ); */
-                    d->outtop = 0;
-                    close_socket ( d );
-                    continue;
-                }
-            }
-
-            if ( d->character != NULL && d->character->daze > 0 )
-                --d->character->daze;
-
-            if ( d->character != NULL && d->character->wait > 0 )
-            {
-                --d->character->wait;
-                continue;
-            }
-
-            read_from_buffer ( d );
-            if ( d->incomm[0] != '\0' )
-            {
-                d->fcommand = true;
-                stop_idling ( d->character );
-
-                /* OLC */
-                if ( d->showstr_point )
-                    show_string ( d, d->incomm );
-                else if ( d->pString )
-                    string_add ( d->character, d->incomm );
-                else
-                    switch ( d->connected )
-                    {
-                        case CON_PLAYING:
-                            if ( !run_olc_editor ( d ) )
-                                substitute_alias ( d, d->incomm );
-                            break;
-                        default:
-                            nanny ( d, d->incomm );
-                            break;
-                    }
-
-                d->incomm[0] = '\0';
-            }
-        }
-
-        /* 
-         * Autonomous game motion.
-         */
-        update_handler ( false );
-
-        /* 
-         * Output.
-         */
-        for ( d = descriptor_list; d != NULL; d = d_next )
-        {
-            d_next = d->next;
-
-            if ( ( d->fcommand || d->outtop > 0 ) )
-            {
-                if ( !process_output ( d, true ) )
-                {
-//                    if ( d->character != NULL && d->character->level > 1 )
-//                        save_char_obj ( d->character );
-                    d->outtop = 0;
-                    close_socket ( d );
-                }
-            }
-        }
-
-        /* 
-         * Synchronize to a clock.
-         * Busy wait (blargh).
-         */
-        now_time = last_time;
-        for ( ;; )
-        {
-            int delta;
-
-            {
-                if ( dcon.character != NULL )
-                    dcon.character->timer = 0;
-                if ( !read_from_descriptor ( &dcon ) )
-                {
-//                    if ( dcon.character != NULL && d->character->level > 1 )
-//                        save_char_obj ( d->character );
-                    dcon.outtop = 0;
-                    close_socket ( &dcon );
-                }
-            }
-
-            gettimeofday ( &now_time, NULL );
-            delta =
-                ( now_time.tv_sec - last_time.tv_sec ) * 1000 * 1000 +
-                ( now_time.tv_usec - last_time.tv_usec );
-            if ( delta >= 1000000 / PULSE_PER_SECOND )
-                break;
-        }
-        last_time = now_time;
-        current_time = ( time_t ) last_time.tv_sec;
-    }
-
-    return;
 }
 #endif
 
@@ -1220,9 +1014,6 @@ void close_socket ( DESCRIPTOR_DATA * dclose )
 
     close ( dclose->descriptor );
     free_descriptor ( dclose );
-#if defined(macintosh)
-    quit ( 1 );
-#endif
     return;
 }
 
@@ -1246,23 +1037,6 @@ bool read_from_descriptor ( DESCRIPTOR_DATA * d )
     }
 
     /* Snarf input. */
-#if defined(macintosh)
-    for ( ;; )
-    {
-        int c;
-
-        c = getc ( stdin );
-        if ( c == '\0' || c == EOF )
-            break;
-        putc ( c, stdout );
-        if ( c == '\r' )
-            putc ( '\n', stdout );
-        d->inbuf[iStart++] = c;
-        if ( iStart > sizeof ( d->inbuf ) - 10 )
-            break;
-    }
-#endif
-
 #if defined(unix)
     for ( ;; )
     {
@@ -3567,7 +3341,7 @@ bool check_parse_name ( char *name )
      */
     if ( strlen ( name ) < 3 )
         return false;
-#if defined(macintosh) || defined(unix)
+#if defined(unix)
     if ( strlen ( name ) > 12 )
         return false;
 #endif
@@ -3779,14 +3553,10 @@ void page_to_char ( const char *txt, CHAR_DATA * ch )
         return;
     }
 
-#if defined(macintosh)
-    send_to_char ( txt, ch );
-#else
     ch->desc->showstr_head = alloc_mem ( strlen ( txt ) + 1 );
     strcpy ( ch->desc->showstr_head, txt );
     ch->desc->showstr_point = ch->desc->showstr_head;
     show_string ( ch->desc, "" );
-#endif
 }
 
 /* string pager */
@@ -4645,17 +4415,6 @@ char *colour_channel ( int colornum, CHAR_DATA * ch )
         sprintf ( clcode, colour_clear ( ch ) );
     return clcode;
 }
-
-/*
- * Macintosh support functions.
- */
-#if defined(macintosh)
-int gettimeofday ( struct timeval *tp, void *tzp )
-{
-    tp->tv_sec = time ( NULL );
-    tp->tv_usec = 0;
-}
-#endif
 
 void mudlogf ( char *fmt, ... )
 {

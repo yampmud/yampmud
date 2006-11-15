@@ -2445,13 +2445,6 @@ char *crypt args ( ( const char *key, const char *salt ) );
 char *crypt args ( ( const char *key, const char *salt ) );
 #endif
 
-#if	defined(macintosh)
-#define NOCRYPT
-#if	defined(unix)
-#undef	unix
-#endif
-#endif
-
 #if	defined(MIPS_OS)
 char *crypt args ( ( const char *key, const char *salt ) );
 #endif
@@ -2510,12 +2503,6 @@ char *crypt args ( ( const char *key, const char *salt ) );
  *   so players can go ahead and telnet to all the other descriptors.
  * Then we close it whenever we need to open a file (e.g. a save file).
  */
-#if defined(macintosh)
-#define PLAYER_DIR	""          /* Player files */
-#define TEMP_FILE	"romtmp"
-#define NULL_FILE	"proto.are" /* To reserve one stream */
-#endif
-
 #if defined(unix)
 #define PLAYER_DIR      "../player/"    /* Player files */
 #define OLDPFS_DIR      "../player/backup/" /* Backup Player Files */

@@ -39,13 +39,9 @@
 #include <unistd.h>
 #include <signal.h>
 
-#if defined(macintosh)
-#include <types.h>
-#else
 #include <sys/types.h>
 #include <sys/time.h>
 #include <sys/resource.h>
-#endif
 #define IN_DB_C
 #include "merc.h"
 #include "db.h"
@@ -57,9 +53,7 @@
 
 #include "olc.h"
 
-#if !defined(macintosh)
 extern int _filbuf args ( ( FILE * ) );
-#endif
 
 /*
  * Locals.

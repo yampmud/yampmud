@@ -5,11 +5,7 @@ Snippets of mine can be found at http://www.ncinter.net/~bert/mud/
 This file (games.c) contains all the game functions.
 */
 
-#if defined(macintosh)
-#include <types.h>
-#else
 #include <sys/types.h>
-#endif
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>

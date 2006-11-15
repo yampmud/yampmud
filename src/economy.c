@@ -18,13 +18,8 @@
  * Check it often because it's growing rapidly  -- Maniac --
  */
 
-#if defined(macintosh)
-#include <types.h>
-#include <time.h>
-#else
 #include <sys/types.h>
 #include <sys/time.h>
-#endif
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
