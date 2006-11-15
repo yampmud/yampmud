@@ -3471,7 +3471,7 @@ void group_gain ( CHAR_DATA * ch, CHAR_DATA * victim )
             send_to_char ( buf, gch );
         }
 
-        if ( !using_levelup_pill )
+        if ( !using_levelup_pill && !happy_hour )
         {
             float xpbonus;
             int oldxp;
