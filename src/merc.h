@@ -198,9 +198,9 @@ args ( ( int sn, int level, CHAR_DATA * ch, void *vo, int target ) );
 #define	MAX_GQUEST_MOB             25
 #define MAX_SUMMON                 32
 
-#define LEVEL_HERO		   (MAX_LEVEL - 11)
-#define LEVEL_ANCIENT              (MAX_LEVEL - 10)
-#define LEVEL_IMMORTAL		   (MAX_LEVEL - 9)
+#define LEVEL_HERO		   (MAX_LEVEL - 10)
+#define LEVEL_ANCIENT              (MAX_LEVEL - 9)
+#define LEVEL_IMMORTAL		   (MAX_LEVEL - 8)
 
 #define PULSE_PER_SECOND	    4
 #define PULSE_VIOLENCE		  ( 3  * PULSE_PER_SECOND)
