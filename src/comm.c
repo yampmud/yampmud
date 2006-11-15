@@ -328,8 +328,7 @@ int sig;
 {
     time_t tm;
 
-    time ( &tm );
-    fprintf ( stderr, "TOCK!\n\r" );
+    time(&tm);
 
     if ( ( tm - current_time ) > 15 )
     {
