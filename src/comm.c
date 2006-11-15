@@ -103,7 +103,7 @@ extern int malloc_verify args ( ( void ) );
 /*
  * Socket and TCP/IP stuff.
  */
-#if	defined(macintosh) || defined(MSDOS)
+#if	defined(macintosh)
 const char echo_off_str[] = { '\0' };
 const char echo_on_str[] = { '\0' };
 const char go_ahead_str[] = { '\0' };
@@ -198,11 +198,6 @@ int gettimeofday args ( ( struct timeval * tp, void *tzp ) );
 
 #if	defined(MIPS_OS)
 extern int errno;
-#endif
-
-#if	defined(MSDOS)
-int gettimeofday args ( ( struct timeval * tp, void *tzp ) );
-int kbhit args ( ( void ) );
 #endif
 
 #if	defined(NeXT)
@@ -305,8 +300,8 @@ char clcode[MAX_INPUT_LENGTH];
 /*
  * OS-dependent local functions.
  */
-#if defined(macintosh) || defined(MSDOS)
-void game_loop_mac_msdos args ( ( void ) );
+#if defined(macintosh)
+void game_loop_mac args ( ( void ) );
 bool read_from_descriptor args ( ( DESCRIPTOR_DATA * d ) );
 bool write_to_descriptor args ( ( int desc, char *txt, int length ) );
 #endif
@@ -543,8 +538,8 @@ int init_socket ( int port )
 }
 #endif
 
-#if defined(macintosh) || defined(MSDOS)
-void game_loop_mac_msdos ( void )
+#if defined(macintosh)
+void game_loop_mac ( void )
 {
     struct timeval last_time;
     struct timeval now_time;
@@ -596,9 +591,6 @@ void game_loop_mac_msdos ( void )
             d_next = d->next;
             d->fcommand = false;
 
-#if defined(MSDOS)
-            if ( kbhit (  ) )
-#endif
             {
                 if ( d->character != NULL )
                     d->character->timer = 0;
@@ -681,9 +673,6 @@ void game_loop_mac_msdos ( void )
         {
             int delta;
 
-#if defined(MSDOS)
-            if ( kbhit (  ) )
-#endif
             {
                 if ( dcon.character != NULL )
                     dcon.character->timer = 0;
@@ -694,9 +683,6 @@ void game_loop_mac_msdos ( void )
                     dcon.outtop = 0;
                     close_socket ( &dcon );
                 }
-#if defined(MSDOS)
-                break;
-#endif
             }
 
             gettimeofday ( &now_time, NULL );
@@ -1234,7 +1220,7 @@ void close_socket ( DESCRIPTOR_DATA * dclose )
 
     close ( dclose->descriptor );
     free_descriptor ( dclose );
-#if defined(MSDOS) || defined(macintosh)
+#if defined(macintosh)
     quit ( 1 );
 #endif
     return;
@@ -1277,7 +1263,7 @@ bool read_from_descriptor ( DESCRIPTOR_DATA * d )
     }
 #endif
 
-#if defined(MSDOS) || defined(unix)
+#if defined(unix)
     for ( ;; )
     {
         int nRead;
@@ -3581,10 +3567,6 @@ bool check_parse_name ( char *name )
      */
     if ( strlen ( name ) < 3 )
         return false;
-#if defined(MSDOS)
-    if ( strlen ( name ) > 8 )
-        return false;
-#endif
 #if defined(macintosh) || defined(unix)
     if ( strlen ( name ) > 12 )
         return false;

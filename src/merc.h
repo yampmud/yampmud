@@ -2456,13 +2456,6 @@ char *crypt args ( ( const char *key, const char *salt ) );
 char *crypt args ( ( const char *key, const char *salt ) );
 #endif
 
-#if	defined(MSDOS)
-#define NOCRYPT
-#if	defined(unix)
-#undef	unix
-#endif
-#endif
-
 #if	defined(NeXT)
 char *crypt args ( ( const char *key, const char *salt ) );
 #endif
@@ -2521,12 +2514,6 @@ char *crypt args ( ( const char *key, const char *salt ) );
 #define PLAYER_DIR	""          /* Player files */
 #define TEMP_FILE	"romtmp"
 #define NULL_FILE	"proto.are" /* To reserve one stream */
-#endif
-
-#if defined(MSDOS)
-#define PLAYER_DIR	""          /* Player files */
-#define TEMP_FILE	"romtmp"
-#define NULL_FILE	"nul"       /* To reserve one stream */
 #endif
 
 #if defined(unix)
