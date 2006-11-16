@@ -194,7 +194,7 @@ void fwrite_char ( CHAR_DATA * ch, FILE * fp )
 
     if ( is_clan ( ch ) )
     {
-        ch->pcdata->pkset = 4;
+        ch->pcdata->pkset = true;
     }
 
     if ( ch->pcdata->pkset > 0 )
@@ -1401,7 +1401,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
         }
         if ( is_clan ( ch ) )
         {
-            ch->pcdata->pkset = 4;
+            ch->pcdata->pkset = true;
         }
 
         if ( !fMatch )

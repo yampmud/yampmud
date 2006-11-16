@@ -231,27 +231,41 @@ void gain_exp ( CHAR_DATA * ch, int gain )
         affect_strip ( ch, gsn_curse );
         save_char_obj ( ch );
 
-        if ( ch->level > 39 && !is_clan ( ch ) && ch->pcdata->pkset == 0 )
+        if ( !ch->pcdata->pkset && !is_clan(ch) )
         {
-            add_buf
-                ( ch->pcdata->buffer, "System Message: {RYou are now level 40.\n\rIf you wish to become a PK player you MUST do so before level 50.\n\rType PKSET at any time to do so.\n\rRerolling is the only way after level 50 to change your PK status.\n\rYou DO NOT have to go PK before 4th tier!\n\r" );
-            ch->tells++;
-            ch->pcdata->pkset = 1;
-        }
-        if ( ch->level > 48 && !is_clan ( ch ) && ch->pcdata->pkset == 1 )
-        {
-            add_buf
-                ( ch->pcdata->buffer, "System Message: {RYou are now level 49.\n\rIf you wish to become a PK player you MUST do so now.\n\rType PKSET at any time to do so.\n\rRerolling is the only way after level 50 to change your PK status.\n\rYou DO NOT have to go PK before 4th tier!\n\r" );
-            ch->tells++;
-            ch->pcdata->pkset = 2;
+            switch (ch->level)
+            {
+                case 40:
+                    add_buf( ch->pcdata->buffer,
+                             "System Message: {RYou are now level 40.\n\r"
+                             "If you wish to become a PK player you MUST do so before level 50.\n\r"
+                             "Type PKSET at any time to do so.\n\r"
+                             "Rerolling is the only way after level 50 to change your PK status.\n\r"
+                             "You DO NOT have to go PK before 4th tier!\n\r" );
+                    ch->tells++;
+                    break;
+                case 49:
+                    add_buf( ch->pcdata->buffer,
+                             "System Message: {RYou are now level 49.\n\r"
+                             "If you wish to become a PK player you MUST do so now.\n\r"
+                             "Type PKSET at any time to do so.\n\r"
+                             "Rerolling is the only way after level 50 to change your PK status.\n\r"
+                             "You DO NOT have to go PK before 4th tier!\n\r" );
+                    ch->tells++;
+                    break;
+                case 50:
+                    add_buf( ch->pcdata->buffer,
+                             "System Message: {RYou are now level 50.\n\r"
+                             "You are now permanently a non-playerkill player.\n\r"
+                             "Rerolling is the only way to change your PK status now.\n\r"
+                             "You DO NOT have to become PK before 4th tier!\n\r" );
+                    ch->tells++;
+                    break;
+                default:
+                    break;
+            }
         }
 
-        if ( ch->level == 50 && !is_clan ( ch ) && ch->pcdata->pkset == 2 )
-        {
-            add_buf
-                ( ch->pcdata->buffer,  "System Message: {RYou are now level 50.\n\rYou are now permanently a non-playerkill player.\n\rRerolling is the only way to change your PK status now.\n\rYou DO NOT have to become PK before 4th tier!\n\r" );
-            ch->tells++;
-        }
 /*
 for(d = descriptor_list; d != NULL; d = d->next)
 {
