@@ -1100,7 +1100,7 @@ struct kill_data
 #define OBJ_VNUM_EXIT		     52
 #define OBJ_VNUM_CHAIN		     53
 #define OBJ_VNUM_BAG		     54
-#define OBJ_VNUM_ITEMPILE	     99
+#define OBJ_VNUM_ITEMPILE	     59
 
 #define OBJ_VNUM_RROSE		   3331
 #define OBJ_VNUM_BROSE		   3332
