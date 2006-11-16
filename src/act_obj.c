@@ -758,8 +758,6 @@ CH_CMD ( do_put )
 
     if ( str_cmp ( arg1, "all" ) && str_prefix ( "all.", arg1 ) )
     {
-        is_put_all = true;
-
         /* 'put obj container' */
         if ( ( obj = get_obj_carry ( ch, arg1 ) ) == NULL )
         {
@@ -853,11 +851,8 @@ CH_CMD ( do_put )
         }
         else
         {
-            if ( is_put_all == false )
-            {
-                act ( "$n puts $p in $P.", ch, obj, container, TO_ROOM );
-                act ( "You put $p in $P.", ch, obj, container, TO_CHAR );
-            }
+            act ( "$n puts $p in $P.", ch, obj, container, TO_ROOM );
+            act ( "You put $p in $P.", ch, obj, container, TO_CHAR );
         }
     }
     else
