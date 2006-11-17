@@ -383,7 +383,6 @@ const struct cmd_type cmd_table[] = {
     {"redeem", do_redeem, POS_DEAD, 0, 1, LOG_ALWAYS, 1},
     {"autocopy", do_autocopy, POS_DEAD, L1, 1, LOG_ALWAYS, 1},
     {"ctimer", do_ctimer, POS_DEAD, 0, 1, LOG_ALWAYS, 1},
-    {"devmud", do_devmud, POS_DEAD, IM, 1, LOG_ALWAYS, 1},
     {"relevel", do_relevel, POS_DEAD, 0, 1, LOG_ALWAYS, 1},
     {"uptime", do_uptime, POS_DEAD, 0, 1, LOG_ALWAYS, 1},
     {"abort", do_abort, POS_DEAD, L1, 1, LOG_ALWAYS, 1},

@@ -536,7 +536,7 @@ void load_helps ( FILE * fp )
             help_greetinge = pHelp->text;
         if ( !str_cmp ( pHelp->keyword, "authors" ) )
             help_authors = pHelp->text;
-        if ( !str_cmp ( pHelp->keyword, "login" ) && !IS_DEVMUD )
+        if ( !str_cmp ( pHelp->keyword, "login" ) )
             help_login = pHelp->text;
 
         if ( help_first == NULL )

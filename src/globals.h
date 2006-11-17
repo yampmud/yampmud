@@ -127,9 +127,6 @@ GLOBAL ( int happy_pot );
 
 GLOBAL_DEF ( bool is_mid, true );
 GLOBAL_DEF ( bool is_copyover_countdown, false );
-GLOBAL_DEF ( bool IS_DEVMUD, false );
-GLOBAL_DEF ( bool IS_BLDMUD, false );
-GLOBAL_DEF ( bool IS_LIVEMUD, false );
 GLOBAL_DEF ( AREA_DATA * area_first_sorted, NULL );
 GLOBAL_DEF ( bool newlock, false );
 GLOBAL_DEF ( bool wizlock, false );

@@ -353,22 +353,6 @@ int main ( int argc, char **argv )
      * Reserve one channel for our use.
      */
 
-    if ( atoi ( argv[1] ) == 7202 )
-    {
-        IS_DEVMUD = true;
-    }
-
-    if ( atoi ( argv[1] ) == 7201 )
-    {
-        IS_BLDMUD = true;
-    }
-
-    if ( atoi ( argv[1] ) == 7200 )
-    {
-        IS_LIVEMUD = true;
-    }
-
-
     /* 
      * Get the port number. */
     // Default Port
@@ -2360,14 +2344,9 @@ void nanny ( DESCRIPTOR_DATA * d, char *argument )
                 /* New player */
                 if ( newlock )
                 {
-                    if ( IS_DEVMUD )
-                        write_to_buffer ( d,
-                                          "Sorry this port is for development only.\n\r",
-                                          0 );
-                    else
-                        write_to_buffer ( d,
-                                          "Sorry the mud is newlocked at the moment. Email dist@bhmm.net\n\r",
-                                          0 );
+                    write_to_buffer ( d,
+                                      "Sorry the mud is newlocked at the moment. Email dist@bhmm.net\n\r",
+                                      0 );
 
                     close_socket ( d );
                     return;
@@ -4537,8 +4516,7 @@ CH_CMD ( do_copyover )
 
     /* Consider changing all saved areas here, if you use OLC */
 
-    if ( IS_BLDMUD == true )
-        do_asave ( NULL, "changed" );   /* - autosave changed areas */
+    do_asave ( NULL, "changed" );   /* - autosave changed areas */
 
     // save_gquest_data();
     sprintf ( buf, "\r\rThe gods reshape the world..\r\n" );

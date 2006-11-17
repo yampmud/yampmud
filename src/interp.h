@@ -168,7 +168,6 @@ DECLARE_DO_FUN( do_delete );
 DECLARE_DO_FUN( do_delevel );
 DECLARE_DO_FUN( do_deny );
 DECLARE_DO_FUN( do_description );
-DECLARE_DO_FUN( do_devmud );
 DECLARE_DO_FUN( do_dirt );
 DECLARE_DO_FUN( do_disarm );
 DECLARE_DO_FUN( do_disconnect );

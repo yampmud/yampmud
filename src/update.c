@@ -788,16 +788,14 @@ void char_update ( void )
 
     is_xmas = false;
 
-/*    if ( IS_LIVEMUD )
-        do_htmlout (  ); */
+//    do_htmlout();
 
     uptime_ticks++;
 
     //expire_notes (  );
     randomize_entrances ( ROOM_VNUM_CLANS );
 
-    if ( IS_BLDMUD )
-        do_asave ( NULL, "changed" );
+//    do_asave ( NULL, "changed" );
 
     if ( hour_ticks == 60 )
     {

@@ -296,17 +296,6 @@ CH_CMD ( do_madmin )
     }
 }
 
-CH_CMD ( do_devmud )
-{
-    if ( IS_DEVMUD == true )
-        send_to_char ( "This is the development port.\n\r", ch );
-    if ( IS_BLDMUD == true )
-        send_to_char ( "This is the builder port.\n\r", ch );
-    if ( IS_LIVEMUD == true )
-        send_to_char ( "This is the live port.\n\r", ch );
-    return;
-}
-
 CH_CMD ( do_uptime )
 {
     char buf[MAX_STRING_LENGTH];
