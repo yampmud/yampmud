@@ -79,21 +79,8 @@ extern int malloc_debug args ( ( int ) );
 extern int malloc_verify args ( ( void ) );
 #endif
 
-/*
- * Signal handling.
- * Apollo has a problem with __attribute(atomic) in signal.h,
- *   I dance around it.
- */
-#if defined(apollo)
-#define __attribute(x)
-#endif
-
 #if defined(unix)
 #include <signal.h>
-#endif
-
-#if defined(apollo)
-#undef __attribute
 #endif
 
 /*
@@ -127,11 +114,6 @@ int listen args ( ( int s, int backlog ) );
 int setsockopt
 args ( ( int s, int level, int optname, void *optval, int optlen ) );
 int socket args ( ( int domain, int type, int protocol ) );
-#endif
-
-#if	defined(apollo)
-#include <unistd.h>
-void bzero args ( ( char *b, int length ) );
 #endif
 
 #if	defined(interactive)

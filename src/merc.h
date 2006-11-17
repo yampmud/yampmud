@@ -2431,12 +2431,6 @@ extern const sh_int movement_loss[SECT_MAX];
 char *crypt args ( ( const char *key, const char *salt ) );
 #endif
 
-#if	defined(apollo)
-int atoi args ( ( const char *string ) );
-void *calloc args ( ( unsigned nelem, size_t size ) );
-char *crypt args ( ( const char *key, const char *salt ) );
-#endif
-
 #if	defined(linux)
 char *crypt args ( ( const char *key, const char *salt ) );
 #endif
