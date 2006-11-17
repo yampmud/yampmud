@@ -400,24 +400,11 @@ void fwrite_char ( CHAR_DATA * ch, FILE * fp )
                       ch->pcdata->alias_sub[pos] );
         }
 
-        int i;
-        bool race_has;
         for ( sn = 2; sn < MAX_SKILL; sn++ )
         {
             if ( skill_table[sn].name != NULL && ch->pcdata->learned[sn] > 0 )
             {
-                    race_has = false;
-                    for ( i = 0; i < 5; i++ )
-                    {
-                        if ( pc_race_table[ch->race].skills[i] == NULL )
-                            break;
-                        if ( !str_cmp ( pc_race_table[ch->race].skills[i],
-                             skill_table[sn].name ) )
-                        race_has = true;
-                    }
-                    if ( skill_table[sn].skill_level[ch->class] < 203 || race_has )
-                        fprintf ( fp, "Sk %d '%s'\n", ch->pcdata->learned[sn],
-                                  skill_table[sn].name );
+                fprintf ( fp, "Sk %d '%s'\n", ch->pcdata->learned[sn], skill_table[sn].name );
             }
         }
 
@@ -1334,18 +1321,7 @@ void fread_char ( CHAR_DATA * ch, FILE * fp )
                     }
                     else
                     {
-                        bool race_has;
-                        int i;
-                        race_has = false;
-                        for ( i = 0; i < 5; i++ )
-                        {
-                            if ( pc_race_table[ch->race].skills[i] == NULL )
-                                break;
-                            if ( !str_cmp ( pc_race_table[ch->race].skills[i],
-                                 skill_table[sn].name ) )
-                            race_has = true;
-                        }
-                            ch->pcdata->learned[sn] = value;
+                        ch->pcdata->learned[sn] = value;
                     }
                     fMatch = true;
                 }
