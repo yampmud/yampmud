@@ -103,7 +103,6 @@ void save_char_obj ( CHAR_DATA * ch )
     if ( ch->desc != NULL && ch->desc->original != NULL )
         ch = ch->desc->original;
 
-#if defined(unix)
     /* create god log */
     if ( IS_IMMORTAL ( ch ) || ch->level >= LEVEL_IMMORTAL )
     {
@@ -118,7 +117,6 @@ void save_char_obj ( CHAR_DATA * ch )
                   ch->name, ch->pcdata->title );
         file_close ( fp );
     }
-#endif
 
     sprintf ( strsave, "%s%s", PLAYER_DIR, capitalize ( ch->name ) );
     if ( ( fp = file_open ( TEMP_FILE, "w" ) ) == NULL )
@@ -647,7 +645,6 @@ bool load_char_obj ( DESCRIPTOR_DATA * d, char *name )
     bzero ( ch->pcdata->explored, MAX_EXPLORE );
     found = false;
 
-#if defined(unix)
     /* decompress if .gz file exists */
     sprintf ( strsave, "%s%s%s", PLAYER_DIR, capitalize ( name ), ".gz" );
     if ( ( fp = file_open ( strsave, "r" ) ) != NULL )
@@ -658,7 +655,6 @@ bool load_char_obj ( DESCRIPTOR_DATA * d, char *name )
 //        sprintf ( buf, "rm -f %s", strsave );
 //        system ( buf );
     }
-#endif
 
     sprintf ( strsave, "%s%s", PLAYER_DIR, capitalize ( name ) );
     if ( ( fp = file_open ( strsave, "r" ) ) != NULL )
@@ -1921,7 +1917,6 @@ void backup_char_obj ( CHAR_DATA * ch )
     sprintf ( buf, "cp -f ../player/backup/%s ../player/backup/backup2/", capitalize ( ch->name ) );
     system ( buf );
 
-#if defined(unix)
 
     /* create god log */
     if ( IS_IMMORTAL ( ch ) || ch->level >= LEVEL_IMMORTAL )
@@ -1937,7 +1932,6 @@ void backup_char_obj ( CHAR_DATA * ch )
                   ch->name, ch->pcdata->title );
         file_close ( fp );
     }
-#endif
 
     sprintf ( strsave, "%s%s", OLDPFS_DIR, capitalize ( ch->name ) );
 

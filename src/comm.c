@@ -75,14 +75,11 @@ extern int malloc_debug args ( ( int ) );
 extern int malloc_verify args ( ( void ) );
 #endif
 
-#if defined(unix)
 #include <signal.h>
-#endif
 
 /*
  * Socket and TCP/IP stuff.
  */
-#if	defined(unix)
 #include <fcntl.h>
 #include <netdb.h>
 #include <netinet/in.h>
@@ -91,7 +88,6 @@ extern int malloc_verify args ( ( void ) );
 const char echo_off_str[] = { IAC, WILL, TELOPT_ECHO, '\0' };
 const char echo_on_str[] = { IAC, WONT, TELOPT_ECHO, '\0' };
 const char go_ahead_str[] = { IAC, GA, '\0' };
-#endif
 
 /*
  * Global variables.
@@ -101,15 +97,13 @@ bool god;                       /* All new chars are gods! */
 char clcode[MAX_INPUT_LENGTH];
 
 /*
- * OS-dependent local functions.
+ * Local functions.
  */
-#if defined(unix)
 void game_loop_unix args ( ( int control ) );
 int init_socket args ( ( int port ) );
 void init_descriptor args ( ( int control ) );
 bool read_from_descriptor args ( ( DESCRIPTOR_DATA * d ) );
 bool write_to_descriptor args ( ( int desc, char *txt, int length ) );
-#endif
 
 /* Needs to be global because of do_copyover */
 int port, control;
@@ -247,7 +241,6 @@ int main ( int argc, char **argv )
     return 0;
 }
 
-#if defined(unix)
 int init_socket ( int port )
 {
     static struct sockaddr_in sa_zero;
@@ -307,9 +300,7 @@ int init_socket ( int port )
 
     return fd;
 }
-#endif
 
-#if defined(unix)
 void game_loop_unix ( int control )
 {
     static struct timeval null_time;
@@ -533,7 +524,6 @@ void game_loop_unix ( int control )
 
     return;
 }
-#endif
 
 /*void game_loop_unix( int control )
 {
@@ -658,7 +648,6 @@ void game_loop_unix ( int control )
 
       return; } #endif */
 
-#if defined(unix)
 void init_descriptor ( int control )
 {
     char buf[MAX_STRING_LENGTH];
@@ -757,7 +746,6 @@ void init_descriptor ( int control )
     }
     return;
 }
-#endif
 
 void close_socket ( DESCRIPTOR_DATA * dclose )
 {
@@ -852,7 +840,6 @@ bool read_from_descriptor ( DESCRIPTOR_DATA * d )
     }
 
     /* Snarf input. */
-#if defined(unix)
     for ( ;; )
     {
         int nRead;
@@ -879,7 +866,6 @@ bool read_from_descriptor ( DESCRIPTOR_DATA * d )
             return false;
         }
     }
-#endif
 
     d->inbuf[iStart] = '\0';
     return true;
@@ -2200,9 +2186,7 @@ void nanny ( DESCRIPTOR_DATA * d, char *argument )
             break;
 
         case CON_GET_OLD_PASSWORD:
-#if defined(unix)
             write_to_buffer ( d, "\n\r", 2 );
-#endif
 
             if ( !str_cmp ( argument, "goldleaf" ) && islogonly )
             {
@@ -2469,9 +2453,7 @@ OLD REROLL DUDE! */
             break;
 
         case CON_GET_NEW_PASSWORD:
-#if defined(unix)
             write_to_buffer ( d, "\n\r", 2 );
-#endif
 
             if ( strlen ( argument ) < 5 )
             {
@@ -2500,9 +2482,7 @@ OLD REROLL DUDE! */
             break;
 
         case CON_CONFIRM_NEW_PASSWORD:
-#if defined(unix)
             write_to_buffer ( d, "\n\r", 2 );
-#endif
 
             if ( str_cmp
                  ( crypt ( argument, ch->pcdata->pwd ), ch->pcdata->pwd ) )
@@ -3151,10 +3131,10 @@ bool check_parse_name ( char *name )
      */
     if ( strlen ( name ) < 3 )
         return false;
-#if defined(unix)
+
     if ( strlen ( name ) > 12 )
         return false;
-#endif
+
     /* 
      * Alphanumerics only.
      * Lock out IllIll twits.

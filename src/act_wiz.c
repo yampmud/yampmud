@@ -7717,13 +7717,12 @@ CH_CMD ( do_rename )
     save_char_obj ( victim );
     unlink ( strsave );
 
-#if defined(unix)
     if ( IS_IMMORTAL ( victim ) )
     {
         sprintf ( strsave, "%s%s", GOD_DIR, capitalize ( name ) );
         unlink ( strsave );
     }
-#endif
+
     if ( victim != ch )
     {
         sprintf ( buf, "{YNOTICE: {xYou have been renamed to {c%s{x.\n\r",

@@ -2419,15 +2419,12 @@ extern const sh_int movement_loss[SECT_MAX];
  *   so players can go ahead and telnet to all the other descriptors.
  * Then we close it whenever we need to open a file (e.g. a save file).
  */
-#if defined(unix)
 #define PLAYER_DIR      "../player/"    /* Player files */
 #define OLDPFS_DIR      "../player/backup/" /* Backup Player Files */
 #define GOD_DIR         "../player/gods/"   /* list of gods */
 #define	CLAN_DIR        "../config/clans/"
 #define TEMP_FILE	"../player/romtmp"
 #define NULL_FILE	"/dev/null" /* To reserve one stream */
-#endif
-
 #define AREA_LIST       "../config/area.list"   /* List of areas */
 #define BUG_FILE        "../config/text/bugs.text"  /* For 'bug' and bug() */
 #define IDEA_FILE        "../config/text/ideas.text"    /* For 'idea' */
