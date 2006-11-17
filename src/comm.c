@@ -116,22 +116,6 @@ int	socket		args( ( int domain, int type, int protocol ) );
 int	write		args( ( int fd, char *buf, int nbyte ) );
 #endif
 */
-#if	defined(NeXT)
-int close args ( ( int fd ) );
-int fcntl args ( ( int fd, int cmd, int arg ) );
-
-#if	!defined(htons)
-u_short htons args ( ( u_short hostshort ) );
-#endif
-#if	!defined(ntohl)
-u_long ntohl args ( ( u_long hostlong ) );
-#endif
-int read args ( ( int fd, char *buf, int nbyte ) );
-int select
-args ( ( int width, fd_set * readfds, fd_set * writefds, fd_set * exceptfds,
-         struct timeval * timeout ) );
-int write args ( ( int fd, char *buf, int nbyte ) );
-#endif
 
 /*
  * Global variables.

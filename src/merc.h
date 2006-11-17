@@ -2407,10 +2407,6 @@ extern const sh_int movement_loss[SECT_MAX];
 char *crypt args ( ( const char *key, const char *salt ) );
 #endif
 
-#if	defined(NeXT)
-char *crypt args ( ( const char *key, const char *salt ) );
-#endif
-
 /*
  * The crypt(3) function is not available on some operating systems.
  * In particular, the U.S. Government prohibits its export from the
