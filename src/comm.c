@@ -151,13 +151,6 @@ int read args ( ( int fd, char *buf, int nbyte ) );
 int select
 args ( ( int width, fd_set * readfds, fd_set * writefds, fd_set * exceptfds,
          struct timeval * timeout ) );
-#if defined(SYSV)
-int setsockopt
-args ( ( int s, int level, int optname, const char *optval, int optlen ) );
-#else
-int setsockopt
-args ( ( int s, int level, int optname, void *optval, int optlen ) );
-#endif
 int socket args ( ( int domain, int type, int protocol ) );
 int write args ( ( int fd, char *buf, int nbyte ) );
 #endif
@@ -338,7 +331,7 @@ int init_socket ( int port )
         quit ( 1 );
     }
 
-#if defined(SO_DONTLINGER) && !defined(SYSV)
+#if defined(SO_DONTLINGER)
     {
         struct linger ld;
 

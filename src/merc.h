@@ -2416,11 +2416,6 @@ char *crypt args ( ( const char *key, const char *salt ) );
 int fclose args ( ( FILE * stream ) );
 int fprintf args ( ( FILE * stream, const char *format, ... ) );
 
-#if	defined(SYSV)
-siz_t fread args ( ( void *ptr, size_t size, size_t n, FILE * stream ) );
-#else
-int fread args ( ( void *ptr, int size, int n, FILE * stream ) );
-#endif
 int fseek args ( ( FILE * stream, long offset, int ptrname ) );
 void perror args ( ( const char *s ) );
 int ungetc args ( ( int c, FILE * stream ) );
