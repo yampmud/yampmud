@@ -39,20 +39,7 @@
 #define DECLARE_SPEC_FUN( fun )		SPEC_FUN  fun
 #define DECLARE_SPELL_FUN( fun )	SPELL_FUN fun
 
-/*
- * Short scalar types.
- * Diavolo reports AIX compiler has bugs with short types.
- */
-#if	defined(_AIX)
-#if	!defined(const)
-#define const
-#endif
-typedef int int;
-
-#define unix
-#else
 typedef int sh_int;
-#endif
 
 #define WWW_WHO		"/doc/mud/public_html/who.html"
 #define mudname "{WD{wistort{Dions {WO{wf {WC{wha{Dos{x"
@@ -2416,10 +2403,6 @@ extern const sh_int movement_loss[SECT_MAX];
  * These are all very standard library functions,
  *   but some systems have incomplete or non-ansi header files.
  */
-#if	defined(_AIX)
-char *crypt args ( ( const char *key, const char *salt ) );
-#endif
-
 #if	defined(linux)
 char *crypt args ( ( const char *key, const char *salt ) );
 #endif
