@@ -3697,62 +3697,16 @@ int number_bits ( int width )
  * -- Furey
  */
 
-/* I noticed streaking with this random number generator, so I switched
-   back to the system srandom call.  If this doesn't work for you, 
-   define OLD_RAND to use the old system -- Alander */
-
-#if defined (OLD_RAND)
-static int rgiState[2 + 55];
-#endif
-
 void init_mm (  )
 {
-#if defined (OLD_RAND)
-    int *piState;
-    int iState;
-
-    piState = &rgiState[2];
-
-    piState[-2] = 55 - 55;
-    piState[-1] = 55 - 24;
-
-    piState[0] = ( ( int ) current_time ) & ( ( 1 << 30 ) - 1 );
-    piState[1] = 1;
-    for ( iState = 2; iState < 55; iState++ )
-    {
-        piState[iState] =
-            ( piState[iState - 1] + piState[iState - 2] ) & ( ( 1 << 30 ) - 1 );
-    }
-#else
     srandom ( time ( NULL ) ^ getpid (  ) );
-#endif
     strcat ( boot_buf, "sign " );
     return;
 }
 
 long number_mm ( void )
 {
-#if defined (OLD_RAND)
-    int *piState;
-    int iState1;
-    int iState2;
-    int iRand;
-
-    piState = &rgiState[2];
-    iState1 = piState[-2];
-    iState2 = piState[-1];
-    iRand = ( piState[iState1] + piState[iState2] ) & ( ( 1 << 30 ) - 1 );
-    piState[iState1] = iRand;
-    if ( ++iState1 == 55 )
-        iState1 = 0;
-    if ( ++iState2 == 55 )
-        iState2 = 0;
-    piState[-2] = iState1;
-    piState[-1] = iState2;
-    return iRand >> 6;
-#else
     return random (  ) >> 6;
-#endif
 }
 
 /*
