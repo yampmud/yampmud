@@ -294,8 +294,8 @@ CH_CMD ( do_gain )
 
 CH_CMD ( do_spells )
 {
-    char spell_list[LEVEL_ANCIENT][MAX_STRING_LENGTH];
-    char spell_columns[LEVEL_ANCIENT];
+    char spell_list[MAX_LEVEL+1][MAX_STRING_LENGTH];
+    char spell_columns[MAX_LEVEL+1];
     int sn, lev, mana;
     bool found = false, showAll = false;
     char arg1[MAX_INPUT_LENGTH];
@@ -310,7 +310,7 @@ CH_CMD ( do_spells )
         showAll = true;
 
     /* initilize data */
-    for ( lev = 0; lev < LEVEL_ANCIENT; lev++ )
+    for ( lev = 0; lev < MAX_LEVEL+1; lev++ )
     {
         spell_columns[lev] = 0;
         spell_list[lev][0] = '\0';
@@ -321,7 +321,7 @@ CH_CMD ( do_spells )
         if ( skill_table[sn].name == NULL )
             break;
 
-        if ( skill_table[sn].skill_level[ch->class] < LEVEL_ANCIENT &&
+        if ( skill_table[sn].skill_level[ch->class] <= MAX_LEVEL &&
              skill_table[sn].spell_fun != spell_null &&
              ch->pcdata->learned[sn] > 0 )
         {
@@ -360,7 +360,7 @@ CH_CMD ( do_spells )
         return;
     }
 
-    for ( lev = 0; lev < LEVEL_ANCIENT; lev++ )
+    for ( lev = 0; lev < MAX_LEVEL+1; lev++ )
         if ( spell_list[lev][0] != '\0' )
             send_to_char ( spell_list[lev], ch );
     send_to_char ( "\n\r", ch );
@@ -420,7 +420,7 @@ CH_CMD ( do_skills )
             sprintf ( learnbuf, "{RN{rone" );
 
 
-        if (  skill_table[sn].skill_level[ch->class] <= 202 ||
+        if (  skill_table[sn].skill_level[ch->class] <= MAX_LEVEL ||
                race_has )
         {
             found = true;
