@@ -2430,10 +2430,6 @@ void perror args ( ( const char *s ) );
 int ungetc args ( ( int c, FILE * stream ) );
 #endif
 
-#if	defined(ultrix)
-char *crypt args ( ( const char *key, const char *salt ) );
-#endif
-
 /*
  * The crypt(3) function is not available on some operating systems.
  * In particular, the U.S. Government prohibits its export from the

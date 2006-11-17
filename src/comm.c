@@ -166,25 +166,6 @@ int socket args ( ( int domain, int type, int protocol ) );
 int write args ( ( int fd, char *buf, int nbyte ) );
 #endif
 
-#if defined(ultrix)
-int accept args ( ( int s, struct sockaddr * addr, int *addrlen ) );
-int bind args ( ( int s, struct sockaddr * name, int namelen ) );
-void bzero args ( ( char *b, int length ) );
-int close args ( ( int fd ) );
-int getpeername args ( ( int s, struct sockaddr * name, int *namelen ) );
-int getsockname args ( ( int s, struct sockaddr * name, int *namelen ) );
-int gettimeofday args ( ( struct timeval * tp, struct timezone * tzp ) );
-int listen args ( ( int s, int backlog ) );
-int read args ( ( int fd, char *buf, int nbyte ) );
-int select
-args ( ( int width, fd_set * readfds, fd_set * writefds, fd_set * exceptfds,
-         struct timeval * timeout ) );
-int setsockopt
-args ( ( int s, int level, int optname, void *optval, int optlen ) );
-int socket args ( ( int domain, int type, int protocol ) );
-int write args ( ( int fd, char *buf, int nbyte ) );
-#endif
-
 /*
  * Global variables.
  */
