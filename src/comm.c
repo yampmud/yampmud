@@ -120,10 +120,6 @@ int	socket		args( ( int domain, int type, int protocol ) );
 int	write		args( ( int fd, char *buf, int nbyte ) );
 #endif
 */
-#if	defined(MIPS_OS)
-extern int errno;
-#endif
-
 #if	defined(NeXT)
 int close args ( ( int fd ) );
 int fcntl args ( ( int fd, int cmd, int arg ) );

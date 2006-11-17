@@ -2407,10 +2407,6 @@ extern const sh_int movement_loss[SECT_MAX];
 char *crypt args ( ( const char *key, const char *salt ) );
 #endif
 
-#if	defined(MIPS_OS)
-char *crypt args ( ( const char *key, const char *salt ) );
-#endif
-
 #if	defined(NeXT)
 char *crypt args ( ( const char *key, const char *salt ) );
 #endif
