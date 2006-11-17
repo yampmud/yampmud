@@ -2399,15 +2399,6 @@ extern char *const title_table[MAX_CLASS][MAX_LEVEL + 1][2];
 extern const sh_int movement_loss[SECT_MAX];
 
 /*
- * OS-dependent declarations.
- * These are all very standard library functions,
- *   but some systems have incomplete or non-ansi header files.
- */
-#if	defined(linux)
-char *crypt args ( ( const char *key, const char *salt ) );
-#endif
-
-/*
  * The crypt(3) function is not available on some operating systems.
  * In particular, the U.S. Government prohibits its export from the
  *   United States to foreign countries.
