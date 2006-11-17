@@ -96,10 +96,6 @@ const char go_ahead_str[] = { IAC, GA, '\0' };
 /*
  * OS-dependent declarations.
  */
-#if	defined(interactive)
-#include <net/errno.h>
-#include <sys/fnctl.h>
-#endif
 /*
 #if	defined(linux)
 //int	accept		args( ( int s, struct sockaddr *addr, int *addrlen ) );
