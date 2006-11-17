@@ -2437,10 +2437,6 @@ void *calloc args ( ( unsigned nelem, size_t size ) );
 char *crypt args ( ( const char *key, const char *salt ) );
 #endif
 
-#if	defined(hpux)
-char *crypt args ( ( const char *key, const char *salt ) );
-#endif
-
 #if	defined(linux)
 char *crypt args ( ( const char *key, const char *salt ) );
 #endif

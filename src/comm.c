@@ -134,20 +134,6 @@ int socket args ( ( int domain, int type, int protocol ) );
 void bzero args ( ( char *b, int length ) );
 #endif
 
-#if	defined(__hpux)
-/*int	accept		args( ( int s, void *addr, int *addrlen ) );*/
-/*int	bind		args( ( int s, const void *addr, int addrlen )
-);*/
-void bzero args ( ( char *b, int length ) );
-int getpeername args ( ( int s, void *addr, int *addrlen ) );
-int getsockname args ( ( int s, void *name, int *addrlen ) );
-int gettimeofday args ( ( struct timeval * tp, struct timezone * tzp ) );
-int listen args ( ( int s, int backlog ) );
-int setsockopt
-args ( ( int s, int level, int optname, const void *optval, int optlen ) );
-int socket args ( ( int domain, int type, int protocol ) );
-#endif
-
 #if	defined(interactive)
 #include <net/errno.h>
 #include <sys/fnctl.h>
