@@ -2453,16 +2453,6 @@ char *crypt args ( ( const char *key, const char *salt ) );
 char *crypt args ( ( const char *key, const char *salt ) );
 #endif
 
-#if	defined(sequent)
-char *crypt args ( ( const char *key, const char *salt ) );
-int fclose args ( ( FILE * stream ) );
-int fprintf args ( ( FILE * stream, const char *format, ... ) );
-int fread args ( ( void *ptr, int size, int n, FILE * stream ) );
-int fseek args ( ( FILE * stream, long offset, int ptrname ) );
-void perror args ( ( const char *s ) );
-int ungetc args ( ( int c, FILE * stream ) );
-#endif
-
 #if	defined(sun)
 char *crypt args ( ( const char *key, const char *salt ) );
 int fclose args ( ( FILE * stream ) );

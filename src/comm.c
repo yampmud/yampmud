@@ -189,35 +189,6 @@ args ( ( int width, fd_set * readfds, fd_set * writefds, fd_set * exceptfds,
 int write args ( ( int fd, char *buf, int nbyte ) );
 #endif
 
-#if	defined(sequent)
-/*int	accept		args( ( int s, struct sockaddr *addr, int *addrlen
-) );*/
-/*int	bind		args( ( int s, struct sockaddr *name, int namelen
-) );*/
-int close args ( ( int fd ) );
-int fcntl args ( ( int fd, int cmd, int arg ) );
-int getpeername args ( ( int s, struct sockaddr * name, int *namelen ) );
-int getsockname args ( ( int s, struct sockaddr * name, int *namelen ) );
-int gettimeofday args ( ( struct timeval * tp, struct timezone * tzp ) );
-
-#if	!defined(htons)
-u_short htons args ( ( u_short hostshort ) );
-#endif
-int listen args ( ( int s, int backlog ) );
-
-#if	!defined(ntohl)
-u_long ntohl args ( ( u_long hostlong ) );
-#endif
-int read args ( ( int fd, char *buf, int nbyte ) );
-int select
-args ( ( int width, fd_set * readfds, fd_set * writefds, fd_set * exceptfds,
-         struct timeval * timeout ) );
-int setsockopt
-args ( ( int s, int level, int optname, caddr_t optval, int optlen ) );
-int socket args ( ( int domain, int type, int protocol ) );
-int write args ( ( int fd, char *buf, int nbyte ) );
-#endif
-
 /* This includes Solaris Sys V as well */
 #if defined(sun)
 int accept args ( ( int s, struct sockaddr * addr, int *addrlen ) );
