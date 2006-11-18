@@ -308,7 +308,6 @@ DECLARE_DO_FUN(do_open);
 DECLARE_DO_FUN(do_order);
 DECLARE_DO_FUN(do_oset);
 DECLARE_DO_FUN(do_ostat);
-DECLARE_DO_FUN(do_outfit);
 DECLARE_DO_FUN(do_owhere);
 DECLARE_DO_FUN(do_pack);
 DECLARE_DO_FUN(do_pardon);
