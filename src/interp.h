@@ -174,7 +174,6 @@ DECLARE_DO_FUN(do_disarm);
 DECLARE_DO_FUN(do_disconnect);
 DECLARE_DO_FUN(do_divorce);
 DECLARE_DO_FUN(do_docarea);
-DECLARE_DO_FUN(do_docsrc);
 DECLARE_DO_FUN(do_donate);
 DECLARE_DO_FUN(do_doubleqp);
 DECLARE_DO_FUN(do_doublexp);

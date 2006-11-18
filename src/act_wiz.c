@@ -151,17 +151,6 @@ CH_CMD(do_docarea)
   return;
 }
 
-CH_CMD(do_docsrc)
-{
-  if (!IS_IMMORTAL(ch))
-    return;
-
-  system("code-sync");
-  send_to_char("Code synchronized, takes affect next copyover.\n\r", ch);
-
-  return;
-}
-
 CH_CMD(do_shutup)
 {
   if (IS_SET(ch->act, PLR_IMMNOCLAN))
