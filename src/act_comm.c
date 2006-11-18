@@ -365,9 +365,6 @@ CH_CMD(do_questforge)
   act("$n forges $p.", ch, obj, NULL, TO_ROOM);
   act("You forge $p.", ch, obj, NULL, TO_CHAR);
   send_to_char("200 immquest points have been deducted.\n\r", ch);
-  // printf_log("%s forges a %s (%s/%s) at %d.",
-  // ch->name,weapon_class[wc].name,attack_table[dt].name,
-  // flag_string(weapon_type2,flags),ch->in_room->vnum); 
   return;
 }
 
@@ -786,7 +783,7 @@ CH_CMD(do_ancient)
   if (ch->platinum < 2000)
   {
     send_to_char
-      ("”You must be carrying 2,000 platinum to become an Ancient.\n\r", ch);
+      ("ï¿½You must be carrying 2,000 platinum to become an Ancient.\n\r", ch);
     return;
   }
 
@@ -1152,32 +1149,6 @@ void clean_char_flags(CHAR_DATA * ch)
     REMOVE_BIT(ch->act2, PLR2_CONSENT);
   }
 }
-
-/*
-   void do_afw ( CHAR_DATA *ch, char * argument)  
-   {
-   char buf[MAX_STRING_LENGTH];
-
-   if (IS_SET(ch->comm,COMM_AFW))
-   {
-   if(ch->tells)
-   {
-   sprintf( buf, "AFW mode removed.  You have {R%d{x tells waiting.\n\r", ch->tells );
-   send_to_char( buf, ch );
-   send_to_char("Type 'replay' to see tells.\n\r",ch);
-   }
-   else
-   {
-   send_to_char("AFW mode removed.  You have no tells waiting.\n\r",ch);
-   }
-   REMOVE_BIT(ch->comm,COMM_AFW);
-   }
-   else
-   {
-   send_to_char("You are now in AFW mode.\n\r",ch);
-   SET_BIT(ch->comm,COMM_AFW);
-   }
-   } */
 
 CH_CMD(do_busy)
 {
@@ -2642,33 +2613,7 @@ CH_CMD(do_answer)
       send_to_char("The gods have revoked your channel priviliges.\n\r", ch);
       return;
     }
-    /*
-       if ( ( !str_infix ( " fuck ", argument ) ) ||
-       ( !str_prefix ( "fuck ", argument ) ) ||
-       ( !str_suffix ( " fuck", argument ) ) ||
-       ( !str_suffix ( " fuck.", argument ) ) ||
-       ( !str_suffix ( " fuck!", argument ) ) ||
-       ( !str_cmp ( "fuck", argument ) ) ||
-       ( !str_cmp ( "fuck.", argument ) ) ||
-       ( !str_cmp ( "fuck!", argument ) ) ||
-       ( !str_cmp ( "shit", argument ) ) ||
-       ( !str_cmp ( "shit.", argument ) ) ||
-       ( !str_cmp ( "shit!", argument ) ) ||
-       ( !str_infix ( " shit ", argument ) ) ||
-       ( !str_prefix ( "shit ", argument ) ) ||
-       ( !str_suffix ( " shit", argument ) ) ||
-       ( !str_suffix ( " shit.", argument ) ) ||
-       ( !str_suffix ( " shit!", argument ) ) )
-       {
-       if ( !IS_IMMORTAL ( ch ) )
-       {
-       send_to_char
-       ( "Don't let the IMM's catch you talking like that!\n\r",
-       ch );
-       return;
-       }
-       }
-     */
+
     if ((ch->in_room->vnum == ROOM_VNUM_CORNER) && (!IS_IMMORTAL(ch)))
     {
       send_to_char
@@ -2760,33 +2705,6 @@ CH_CMD(do_music)
       send_to_char("The gods have revoked your channel priviliges.\n\r", ch);
       return;
     }
-    /*
-       if ( ( !str_infix ( " fuck ", argument ) ) ||
-       ( !str_prefix ( "fuck ", argument ) ) ||
-       ( !str_suffix ( " fuck", argument ) ) ||
-       ( !str_suffix ( " fuck.", argument ) ) ||
-       ( !str_suffix ( " fuck!", argument ) ) ||
-       ( !str_cmp ( "fuck", argument ) ) ||
-       ( !str_cmp ( "fuck.", argument ) ) ||
-       ( !str_cmp ( "fuck!", argument ) ) ||
-       ( !str_cmp ( "shit", argument ) ) ||
-       ( !str_cmp ( "shit.", argument ) ) ||
-       ( !str_cmp ( "shit!", argument ) ) ||
-       ( !str_infix ( " shit ", argument ) ) ||
-       ( !str_prefix ( "shit ", argument ) ) ||
-       ( !str_suffix ( " shit", argument ) ) ||
-       ( !str_suffix ( " shit.", argument ) ) ||
-       ( !str_suffix ( " shit!", argument ) ) )
-       {
-       if ( !IS_IMMORTAL ( ch ) )
-       {
-       send_to_char
-       ( "Don't let the IMM's catch you talking like that!\n\r",
-       ch );
-       return;
-       }
-       }
-     */
 
     if (is_blinky(argument) || is_stupid(argument))
     {
@@ -3197,31 +3115,6 @@ CH_CMD(do_say)
   return;
 }
 
-/*void do_say( CHAR_DATA *ch, char *argument )
-   {
-   if ( argument[0] == '\0' )
-   {
-   send_to_char( "Say what?\n\r", ch );
-   return;
-   }
-
-   act( "{W$n says '$T{x'", ch, NULL, argument, TO_ROOM );
-   act( "{WYou say '$T{x'", ch, NULL, argument, TO_CHAR );
-
-   if ( !IS_NPC(ch) )
-   {
-   CHAR_DATA *mob, *mob_next;
-   for ( mob = ch->in_room->people; mob != NULL; mob = mob_next )
-   {
-   mob_next = mob->next_in_room;
-   if ( IS_NPC(mob) && HAS_TRIGGER( mob, TRIG_SPEECH )
-   &&   mob->position == mob->pIndexData->default_pos )
-   mp_act_trigger( argument, mob, ch, NULL, NULL, TRIG_SPEECH );
-   }
-   }
-   return;
-   } */
-
 CH_CMD(do_shout)
 {
   DESCRIPTOR_DATA *d;
@@ -3409,15 +3302,6 @@ CH_CMD(do_tell)
     return;
   }
 
-  /* Removed..Vengeance */
-  /*
-     if ( !(IS_IMMORTAL(ch) && ch->level > LEVEL_IMMORTAL) && !IS_AWAKE(victim) )
-     {
-     act( "$E can't hear you.", ch, 0, victim, TO_CHAR );
-     return;
-     }
-   */
-
   if ((IS_SET(victim->comm, COMM_QUIET) ||
        IS_SET(victim->comm, COMM_DEAF)) && !IS_IMMORTAL(ch))
   {
@@ -3550,15 +3434,6 @@ CH_CMD(do_reply)
     act("$N doesn't seem to be listening to you.", ch, NULL, victim, TO_CHAR);
     return;
   }
-
-  /* Removed...Vengeance */
-  /*
-     if ( !IS_IMMORTAL(ch) && !IS_AWAKE(victim) )
-     {
-     act( "$E can't hear you.", ch, 0, victim, TO_CHAR );
-     return;
-     }
-   */
 
   if ((IS_SET(victim->comm, COMM_QUIET) ||
        IS_SET(victim->comm, COMM_DEAF)) && !IS_IMMORTAL(ch) &&
