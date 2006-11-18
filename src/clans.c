@@ -1,3 +1,4 @@
+
 /***************************************************************************
  *  Original Diku Mud copyright (C) 1990, 1991 by Sebastian Hammer,        *
  *  Michael Seifert, Hans Henrik Strfeldt, Tom Madsen, and Katja Nyboe.   *
@@ -41,1076 +42,1065 @@
 #include "tables.h"
 #include "lookup.h"
 
-DECLARE_DO_FUN ( do_clanlist );
+DECLARE_DO_FUN(do_clanlist);
 
 const struct clan_type clan_table[MAX_CLAN] = {
-/*	name,		who entry,
-	death-transfer room,	clan room entrance,
-	clan pit vnum,
-	independent,	pkill?		ext name
+  /*  name,   who entry,
+     death-transfer room, clan room entrance,
+     clan pit vnum,
+     independent, pkill?    ext name
 
-independent should be false if is a real clan
-pkill should be true if pkilling is allowed
+     independent should be false if is a real clan
+     pkill should be true if pkilling is allowed
 
-!!!DO NOT erase the first clan, all non-clanned players are
-   placed in this first entry!!!
+     !!!DO NOT erase the first clan, all non-clanned players are
+     placed in this first entry!!!
 
-*/
-    {"", "{x[    {bN{BP{bK{W     {x] ",
-     ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
-     OBJ_VNUM_PIT,
-     true, false, "NPK"},
+   */
+  {"", "{x[    {bN{BP{bK{W     {x] ",
+   ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
+   OBJ_VNUM_PIT,
+   true, false, "NPK"},
 
-    {"Loner", "    {rI{RP{rK{x     ",
-     ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
-     OBJ_VNUM_PIT,
-     true, true, "IPK"},
+  {"Loner", "    {rI{RP{rK{x     ",
+   ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
+   OBJ_VNUM_PIT,
+   true, true, "IPK"},
 
-    {"Sages", "{mT{Dw{wi{Wli{wg{Dh{mt{WS{ma{wg{We{x",
-     70101, 70100,
-     OBJ_VNUM_PIT,
-     false, false, "Sages of Twilight Grove"},
+  {"Sages", "{mT{Dw{wi{Wli{wg{Dh{mt{WS{ma{wg{We{x",
+   70101, 70100,
+   OBJ_VNUM_PIT,
+   false, false, "Sages of Twilight Grove"},
 
-    {"DoD", "{C  D{ce{Dc{Wei{Dv{ce{Cr  {x",
-     70400, 70406,
-     OBJ_VNUM_PIT,
-     false, false, "Disciples of Deception"},
+  {"DoD", "{C  D{ce{Dc{Wei{Dv{ce{Cr  {x",
+   70400, 70406,
+   OBJ_VNUM_PIT,
+   false, false, "Disciples of Deception"},
 
-    {"Void", "  {mN{bi{Dh{wil{Di{bs{mt  ",
-     70700, 70750,
-     OBJ_VNUM_PIT,
-     false, true, "Followers of the Void"},
+  {"Void", "  {mN{bi{Dh{wil{Di{bs{mt  ",
+   70700, 70750,
+   OBJ_VNUM_PIT,
+   false, true, "Followers of the Void"},
 
-    {"Watch", " {RN{ri{Dg{wh{Wtw{wa{Dt{rc{Rh {x",
-     70000, 70000,
-     OBJ_VNUM_PIT,
-     false, true, "Gaalstrom Nightwatch"},
+  {"Watch", " {RN{ri{Dg{wh{Wtw{wa{Dt{rc{Rh {x",
+   70000, 70000,
+   OBJ_VNUM_PIT,
+   false, true, "Gaalstrom Nightwatch"},
 
-    {"KoT", "   {YK{ye{we{ype{Yr{x   ",
-     70300, 70300,
-     OBJ_VNUM_PIT,
-     false, true, "Keepers of the Tain"},
+  {"KoT", "   {YK{ye{we{ype{Yr{x   ",
+   70300, 70300,
+   OBJ_VNUM_PIT,
+   false, true, "Keepers of the Tain"},
 
-/*    {"NStalker", "{WN{wi{Dght{WS{wt{Dalker{x",
+  /*    {"NStalker", "{WN{wi{Dght{WS{wt{Dalker{x",
      70015, 70015,
      OBJ_VNUM_PIT,
      false, true, "NightStalkers"},
 
-    {"HoS", " {MH{ma{Drb{win{Dge{mr{Ms{x ",
+     {"HoS", " {MH{ma{Drb{win{Dge{mr{Ms{x ",
      70200, 70200,
      OBJ_VNUM_PIT,
      false, true, "Harbingers of Skulls"},
 
-    {"TCC", " {YC{ye{Yl{ye{Ys{yt{Yi{ya{Yl{ys{x ",
+     {"TCC", " {YC{ye{Yl{ye{Ys{yt{Yi{ya{Yl{ys{x ",
      70600, 70600,
      OBJ_VNUM_PIT,
      false, true, "Celestial Chorus"}, */
 
-    {"clan7", " none ",
-     ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
-     OBJ_VNUM_PIT,
-     false, true, "Unused"},
+  {"clan7", " none ",
+   ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
+   OBJ_VNUM_PIT,
+   false, true, "Unused"},
 
-    {"clan8", " none ",
-     ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
-     OBJ_VNUM_PIT,
-     false, true, "Unused"},
+  {"clan8", " none ",
+   ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
+   OBJ_VNUM_PIT,
+   false, true, "Unused"},
 
-    {"clan9", "  {rI{RP{rK{x   ",
-     ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
-     OBJ_VNUM_PIT,
-     true, true, "Unused"},
+  {"clan9", "  {rI{RP{rK{x   ",
+   ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
+   OBJ_VNUM_PIT,
+   true, true, "Unused"},
 
-    {"clan10", "  {rI{RP{rK{x   ",
-     ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
-     OBJ_VNUM_PIT,
-     true, true, "Unused"},
+  {"clan10", "  {rI{RP{rK{x   ",
+   ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
+   OBJ_VNUM_PIT,
+   true, true, "Unused"},
 
-    {"clan11", "  {rI{RP{rK{x   ",
-     ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
-     OBJ_VNUM_PIT,
-     true, true, "Unused"},
+  {"clan11", "  {rI{RP{rK{x   ",
+   ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
+   OBJ_VNUM_PIT,
+   true, true, "Unused"},
 
-    {"clan12", "  {rI{RP{rK{x   ",
-     ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
-     OBJ_VNUM_PIT,
-     true, true, "Unused"},
+  {"clan12", "  {rI{RP{rK{x   ",
+   ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
+   OBJ_VNUM_PIT,
+   true, true, "Unused"},
 
-    {"clan13", "  {rI{RP{rK{x   ",
-     ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
-     OBJ_VNUM_PIT,
-     true, true, "Unused"},
+  {"clan13", "  {rI{RP{rK{x   ",
+   ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
+   OBJ_VNUM_PIT,
+   true, true, "Unused"},
 
-    {"clan14", "  {rI{RP{rK{x   ",
-     ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
-     OBJ_VNUM_PIT,
-     true, true, "Unused"},
+  {"clan14", "  {rI{RP{rK{x   ",
+   ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
+   OBJ_VNUM_PIT,
+   true, true, "Unused"},
 
-    {"clan15", "  {rI{RP{rK{x   ",
-     ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
-     OBJ_VNUM_PIT,
-     true, true, "Unused"},
+  {"clan15", "  {rI{RP{rK{x   ",
+   ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
+   OBJ_VNUM_PIT,
+   true, true, "Unused"},
 
-    {"clan16", "  {rI{RP{rK{x   ",
-     ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
-     OBJ_VNUM_PIT,
-     true, true, "Unused"},
+  {"clan16", "  {rI{RP{rK{x   ",
+   ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
+   OBJ_VNUM_PIT,
+   true, true, "Unused"},
 
-    {"rot", "ROT",
-     ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
-     OBJ_VNUM_PIT,
-     true, false, "Unused"},
+  {"rot", "ROT",
+   ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
+   OBJ_VNUM_PIT,
+   true, false, "Unused"},
 
 };
 
-CH_CMD ( do_clead )
+CH_CMD(do_clead)
 {
-    char arg1[MAX_INPUT_LENGTH];
-    char buf[MAX_STRING_LENGTH];
-    CHAR_DATA *victim;
+  char arg1[MAX_INPUT_LENGTH];
+  char buf[MAX_STRING_LENGTH];
+  CHAR_DATA *victim;
 
-    argument = one_argument ( argument, arg1 );
+  argument = one_argument(argument, arg1);
 
-    if ( arg1[0] == '\0' )
-    {
-        send_to_char ( "Syntax: clead <char>\n\r", ch );
-        return;
-    }
-    if ( ( victim = get_char_world ( ch, arg1 ) ) == NULL )
-    {
-        send_to_char ( "They aren't playing.\n\r", ch );
-        return;
-    }
+  if (arg1[0] == '\0')
+  {
+    send_to_char("Syntax: clead <char>\n\r", ch);
+    return;
+  }
+  if ((victim = get_char_world(ch, arg1)) == NULL)
+  {
+    send_to_char("They aren't playing.\n\r", ch);
+    return;
+  }
 
-    if ( !is_clan ( victim ) )
-    {
-        send_to_char ( "This person is not in a clan.\n\r", ch );
-        return;
-    }
+  if (!is_clan(victim))
+  {
+    send_to_char("This person is not in a clan.\n\r", ch);
+    return;
+  }
 
-    if ( clan_table[victim->clan].independent )
-    {
-        sprintf ( buf, "This person is a %s.\n\r",
-                  clan_table[victim->clan].name );
-        send_to_char ( buf, ch );
-        return;
-    }
+  if (clan_table[victim->clan].independent)
+  {
+    sprintf(buf, "This person is a %s.\n\r", clan_table[victim->clan].name);
+    send_to_char(buf, ch);
+    return;
+  }
 
-    if ( is_clead ( victim ) )
-    {
-        sprintf ( buf, "They are no longer leader of clan %s.\n\r",
-                  capitalize ( clan_table[victim->clan].name ) );
-        send_to_char ( buf, ch );
-        sprintf ( buf, "You are no longer leader of clan %s.\n\r",
-                  capitalize ( clan_table[victim->clan].name ) );
-        send_to_char ( buf, victim );
-        update_clanlist ( victim, victim->clan, false, true );
-        victim->clead = 0;
-        victim->clan_rank = 1;
-    }
-    else
-    {
-        sprintf ( buf, "They are now leader of clan %s.\n\r",
-                  capitalize ( clan_table[victim->clan].name ) );
-        send_to_char ( buf, ch );
-        sprintf ( buf, "You are now leader of clan %s.\n\r",
-                  capitalize ( clan_table[victim->clan].name ) );
-        send_to_char ( buf, victim );
-        update_clanlist ( victim, victim->clan, true, true );
-        victim->clan_rank = 10;
-        victim->clead = victim->clan;
-    }
-}
-
-CH_CMD ( do_guild )
-{
-    char arg1[MAX_INPUT_LENGTH], arg2[MAX_INPUT_LENGTH];
-    char buf[MAX_STRING_LENGTH];
-    CHAR_DATA *victim;
-    int clan;
-
-    argument = one_argument ( argument, arg1 );
-    argument = one_argument ( argument, arg2 );
-
-    if ( arg1[0] == '\0' || arg2[0] == '\0' )
-    {
-        send_to_char ( "Syntax: guild <char> <cln name>\n\r", ch );
-        return;
-    }
-    if ( ( victim = get_char_world ( ch, arg1 ) ) == NULL ||
-         ( victim->level > ch->level && victim->level == MAX_LEVEL ) )
-    {
-        send_to_char ( "They aren't playing.\n\r", ch );
-        return;
-    }
-
-    if ( !str_prefix ( arg2, "none" ) )
-    {
-        send_to_char ( "They are now clanless.\n\r", ch );
-        send_to_char ( "You are now a member of no clan!\n\r", victim );
-        if ( is_clead ( victim ) )
-            update_clanlist ( victim, victim->clead, false, true );
-        if ( is_clan ( victim ) )
-            update_clanlist ( victim, victim->clan, false, false );
-        victim->clan_rank = 0;
-        victim->clead = 0;
-        victim->clan = 0;
-        return;
-    }
-
-    if ( ( clan = clan_lookup ( arg2 ) ) == 0 )
-    {
-        send_to_char ( "No such clan exists.\n\r", ch );
-        return;
-    }
-
-    if ( IS_SET ( victim->act, PLR_NOCLAN ) && clan_table[clan].pkill )
-    {
-        send_to_char ( "This player is banned from pkill clans.\n\r", ch );
-        return;
-    }
-
-    if ( clan_table[clan].independent )
-    {
-        sprintf ( buf, "They are now a %s.\n\r", clan_table[clan].name );
-        send_to_char ( buf, ch );
-        sprintf ( buf, "You are now a %s.\n\r", clan_table[clan].name );
-        send_to_char ( buf, victim );
-    }
-    else
-    {
-        sprintf ( buf, "They are now a member of clan %s.\n\r",
-                  capitalize ( clan_table[clan].name ) );
-        send_to_char ( buf, ch );
-        sprintf ( buf, "You are now a member of clan %s.\n\r",
-                  capitalize ( clan_table[clan].name ) );
-        send_to_char ( buf, victim );
-    }
-
-    if ( is_clead ( victim ) )
-    {
-        update_clanlist ( victim, victim->clead, false, true );
-        victim->clead = 0;
-        victim->clan_rank = 10;
-    }
-    if ( is_clan ( victim ) )
-    {
-        update_clanlist ( victim, victim->clan, false, false );
-        victim->clan = 0;
-        victim->clan_rank = 0;
-    }
-    update_clanlist ( victim, clan, true, false );
-    victim->clan = clan;
+  if (is_clead(victim))
+  {
+    sprintf(buf, "They are no longer leader of clan %s.\n\r",
+            capitalize(clan_table[victim->clan].name));
+    send_to_char(buf, ch);
+    sprintf(buf, "You are no longer leader of clan %s.\n\r",
+            capitalize(clan_table[victim->clan].name));
+    send_to_char(buf, victim);
+    update_clanlist(victim, victim->clan, false, true);
+    victim->clead = 0;
     victim->clan_rank = 1;
+  }
+  else
+  {
+    sprintf(buf, "They are now leader of clan %s.\n\r",
+            capitalize(clan_table[victim->clan].name));
+    send_to_char(buf, ch);
+    sprintf(buf, "You are now leader of clan %s.\n\r",
+            capitalize(clan_table[victim->clan].name));
+    send_to_char(buf, victim);
+    update_clanlist(victim, victim->clan, true, true);
+    victim->clan_rank = 10;
+    victim->clead = victim->clan;
+  }
 }
 
-CH_CMD ( do_member )
+CH_CMD(do_guild)
 {
-    char arg1[MAX_INPUT_LENGTH];
-    char buf[MAX_STRING_LENGTH];
-    CHAR_DATA *victim;
+  char arg1[MAX_INPUT_LENGTH], arg2[MAX_INPUT_LENGTH];
+  char buf[MAX_STRING_LENGTH];
+  CHAR_DATA *victim;
+  int clan;
 
-    argument = one_argument ( argument, arg1 );
+  argument = one_argument(argument, arg1);
+  argument = one_argument(argument, arg2);
 
-    if ( IS_NPC ( ch ) )
-    {
-        return;
-    }
+  if (arg1[0] == '\0' || arg2[0] == '\0')
+  {
+    send_to_char("Syntax: guild <char> <cln name>\n\r", ch);
+    return;
+  }
+  if ((victim = get_char_world(ch, arg1)) == NULL ||
+      (victim->level > ch->level && victim->level == MAX_LEVEL))
+  {
+    send_to_char("They aren't playing.\n\r", ch);
+    return;
+  }
 
-    if ( !is_clead ( ch ) )
-    {
-        if ( !ch->invited )
-        {
-            send_to_char ( "You have not been invited to join a clan.\n\r",
-                           ch );
-            return;
-        }
-        if ( !str_cmp ( arg1, "accept" ) )
-        {
-            sprintf ( buf, "{RYou are now a member of clan {x[{%s%s{x]\n\r",
-                      clan_table[ch->invited].pkill ? "B" : "M",
-                      clan_table[ch->invited].who_name );
-            send_to_char ( buf, ch );
-            ch->clan = ch->invited;
-            update_clanlist ( ch, ch->invited, true, false );
-            ch->invited = 0;
-            ch->clan_rank = 1;
-            return;
-        }
-        if ( !str_cmp ( arg1, "deny" ) )
-        {
-            send_to_char ( "You turn down the invitation.\n\r", ch );
-            ch->invited = 0;
-            return;
-        }
-        send_to_char ( "Syntax: member <accept|deny>\n\r", ch );
-        return;
-    }
+  if (!str_prefix(arg2, "none"))
+  {
+    send_to_char("They are now clanless.\n\r", ch);
+    send_to_char("You are now a member of no clan!\n\r", victim);
+    if (is_clead(victim))
+      update_clanlist(victim, victim->clead, false, true);
+    if (is_clan(victim))
+      update_clanlist(victim, victim->clan, false, false);
+    victim->clan_rank = 0;
+    victim->clead = 0;
+    victim->clan = 0;
+    return;
+  }
 
-    if ( arg1[0] == '\0' )
-    {
-        send_to_char ( "Syntax: member <char>\n\r", ch );
-        return;
-    }
-    if ( ( victim = get_char_world ( ch, arg1 ) ) == NULL )
-    {
-        send_to_char ( "They aren't playing.\n\r", ch );
-        return;
-    }
-    if ( IS_NPC ( victim ) )
-    {
-        send_to_char ( "NPC's cannot join clans.\n\r", ch );
-        return;
-    }
+  if ((clan = clan_lookup(arg2)) == 0)
+  {
+    send_to_char("No such clan exists.\n\r", ch);
+    return;
+  }
 
-    if ( is_pkill ( ch ) && is_pkill ( victim ) )
+  if (IS_SET(victim->act, PLR_NOCLAN) && clan_table[clan].pkill)
+  {
+    send_to_char("This player is banned from pkill clans.\n\r", ch);
+    return;
+  }
+
+  if (clan_table[clan].independent)
+  {
+    sprintf(buf, "They are now a %s.\n\r", clan_table[clan].name);
+    send_to_char(buf, ch);
+    sprintf(buf, "You are now a %s.\n\r", clan_table[clan].name);
+    send_to_char(buf, victim);
+  }
+  else
+  {
+    sprintf(buf, "They are now a member of clan %s.\n\r",
+            capitalize(clan_table[clan].name));
+    send_to_char(buf, ch);
+    sprintf(buf, "You are now a member of clan %s.\n\r",
+            capitalize(clan_table[clan].name));
+    send_to_char(buf, victim);
+  }
+
+  if (is_clead(victim))
+  {
+    update_clanlist(victim, victim->clead, false, true);
+    victim->clead = 0;
+    victim->clan_rank = 10;
+  }
+  if (is_clan(victim))
+  {
+    update_clanlist(victim, victim->clan, false, false);
+    victim->clan = 0;
+    victim->clan_rank = 0;
+  }
+  update_clanlist(victim, clan, true, false);
+  victim->clan = clan;
+  victim->clan_rank = 1;
+}
+
+CH_CMD(do_member)
+{
+  char arg1[MAX_INPUT_LENGTH];
+  char buf[MAX_STRING_LENGTH];
+  CHAR_DATA *victim;
+
+  argument = one_argument(argument, arg1);
+
+  if (IS_NPC(ch))
+  {
+    return;
+  }
+
+  if (!is_clead(ch))
+  {
+    if (!ch->invited)
     {
-        send_to_char ( "Ok.\n\r", ch );
+      send_to_char("You have not been invited to join a clan.\n\r", ch);
+      return;
+    }
+    if (!str_cmp(arg1, "accept"))
+    {
+      sprintf(buf, "{RYou are now a member of clan {x[{%s%s{x]\n\r",
+              clan_table[ch->invited].pkill ? "B" : "M",
+              clan_table[ch->invited].who_name);
+      send_to_char(buf, ch);
+      ch->clan = ch->invited;
+      update_clanlist(ch, ch->invited, true, false);
+      ch->invited = 0;
+      ch->clan_rank = 1;
+      return;
+    }
+    if (!str_cmp(arg1, "deny"))
+    {
+      send_to_char("You turn down the invitation.\n\r", ch);
+      ch->invited = 0;
+      return;
+    }
+    send_to_char("Syntax: member <accept|deny>\n\r", ch);
+    return;
+  }
+
+  if (arg1[0] == '\0')
+  {
+    send_to_char("Syntax: member <char>\n\r", ch);
+    return;
+  }
+  if ((victim = get_char_world(ch, arg1)) == NULL)
+  {
+    send_to_char("They aren't playing.\n\r", ch);
+    return;
+  }
+  if (IS_NPC(victim))
+  {
+    send_to_char("NPC's cannot join clans.\n\r", ch);
+    return;
+  }
+
+  if (is_pkill(ch) && is_pkill(victim))
+  {
+    send_to_char("Ok.\n\r", ch);
+  }
+  else
+  {
+    if (!is_pkill(ch) && !is_pkill(victim))
+    {
+      send_to_char("Ok.\n\r", ch);
     }
     else
     {
-        if ( !is_pkill ( ch ) && !is_pkill ( victim ) )
-        {
-            send_to_char ( "Ok.\n\r", ch );
-        }
-        else
-        {
-            send_to_char
-                ( "Sorry, PK players can not join NPK clans, and vice-versa. Rerolling bypasses this.\n\r",
-                  ch );
-            return;
-        }
+      send_to_char
+        ("Sorry, PK players can not join NPK clans, and vice-versa. Rerolling bypasses this.\n\r",
+         ch);
+      return;
     }
+  }
 
-    if ( !is_pkill ( ch ) && !is_pkill ( victim ) )
+  if (!is_pkill(ch) && !is_pkill(victim))
 
-        if ( IS_SET ( victim->act, PLR_NOCLAN ) && clan_table[ch->clan].pkill )
-        {
-            send_to_char ( "This player is banned from pkill clans.\n\r", ch );
-            return;
-        }
-    if ( victim == ch )
+    if (IS_SET(victim->act, PLR_NOCLAN) && clan_table[ch->clan].pkill)
     {
-        send_to_char ( "You're stuck...only a god can help you now!\n\r", ch );
-        return;
+      send_to_char("This player is banned from pkill clans.\n\r", ch);
+      return;
     }
+  if (victim == ch)
+  {
+    send_to_char("You're stuck...only a god can help you now!\n\r", ch);
+    return;
+  }
 
-    if ( ( is_clan ( victim ) && !is_same_clan ( ch, victim ) ) &&
-         !( clan_table[victim->clan].independent ) )
-    {
-        send_to_char ( "They are in another clan already.\n\r", ch );
-        return;
-    }
+  if ((is_clan(victim) && !is_same_clan(ch, victim)) &&
+      !(clan_table[victim->clan].independent))
+  {
+    send_to_char("They are in another clan already.\n\r", ch);
+    return;
+  }
 
-    if ( is_clan ( victim ) && ch->clan == victim->clan )
+  if (is_clan(victim) && ch->clan == victim->clan)
+  {
+    if (is_clead(victim))
     {
-        if ( is_clead ( victim ) )
-        {
-            send_to_char ( "You can't kick out another clan leader.\n\r", ch );
-            return;
-        }
-        send_to_char ( "They are now clanless.\n\r", ch );
-        send_to_char ( "Your clan leader has kicked you out!\n\r", victim );
-        if ( is_pkill ( victim ) )
-        {
-            victim->clan = 0;
-            victim->clan = clan_lookup ( "loner" );
-        }
-        else
-        {
-            victim->clan = 0;
-        }
-        victim->clan_rank = 0;
-        update_clanlist ( victim, victim->clan, false, false );
-        return;
+      send_to_char("You can't kick out another clan leader.\n\r", ch);
+      return;
     }
-    if ( victim->invited )
+    send_to_char("They are now clanless.\n\r", ch);
+    send_to_char("Your clan leader has kicked you out!\n\r", victim);
+    if (is_pkill(victim))
     {
-        send_to_char ( "They have already been invited to join a clan.\n\r",
-                       ch );
-        return;
+      victim->clan = 0;
+      victim->clan = clan_lookup("loner");
     }
-    if ( victim->level < 50 || victim->level > 202 )
+    else
     {
-        send_to_char ( "They must be between levels 50 -> 201.\n\r", ch );
-        return;
+      victim->clan = 0;
     }
-    if ( victim->level < 50 || victim->level > 202 )
-    {
-        send_to_char ( "They must be between levels 50 -> 201.\n\r", ch );
-        return;
-    }
-    sprintf ( buf, "%s has been invited to join your clan.\n\r", victim->name );
-    send_to_char ( buf, ch );
-    sprintf ( buf, "{RYou have been invited to join clan {x[{%s%s{x]\n\r",
-              clan_table[ch->clan].pkill ? "B" : "M",
-              clan_table[ch->clan].who_name );
-    send_to_char ( buf, victim );
-    send_to_char ( "{YUse {Gmember accept{Y to join this clan,{x\n\r", victim );
-    send_to_char ( "{Yor {Gmember deny{Y to turn down the invitation.{x\n\r",
-                   victim );
-    victim->invited = ch->clan;
+    victim->clan_rank = 0;
+    update_clanlist(victim, victim->clan, false, false);
+    return;
+  }
+  if (victim->invited)
+  {
+    send_to_char("They have already been invited to join a clan.\n\r", ch);
+    return;
+  }
+  if (victim->level < 50 || victim->level > 202)
+  {
+    send_to_char("They must be between levels 50 -> 201.\n\r", ch);
+    return;
+  }
+  if (victim->level < 50 || victim->level > 202)
+  {
+    send_to_char("They must be between levels 50 -> 201.\n\r", ch);
+    return;
+  }
+  sprintf(buf, "%s has been invited to join your clan.\n\r", victim->name);
+  send_to_char(buf, ch);
+  sprintf(buf, "{RYou have been invited to join clan {x[{%s%s{x]\n\r",
+          clan_table[ch->clan].pkill ? "B" : "M",
+          clan_table[ch->clan].who_name);
+  send_to_char(buf, victim);
+  send_to_char("{YUse {Gmember accept{Y to join this clan,{x\n\r", victim);
+  send_to_char("{Yor {Gmember deny{Y to turn down the invitation.{x\n\r",
+               victim);
+  victim->invited = ch->clan;
 }
 
-CH_CMD ( do_cgossip )
+CH_CMD(do_cgossip)
 {
-    char buf[MAX_STRING_LENGTH];
-    DESCRIPTOR_DATA *d;
-    int wtime;
+  char buf[MAX_STRING_LENGTH];
+  DESCRIPTOR_DATA *d;
+  int wtime;
 
-    if ( !is_clan ( ch ) && !IS_IMMORTAL ( ch ) )
-    {
-        send_to_char ( "You are not in a clan!\n\r", ch );
-        return;
-    }
+  if (!is_clan(ch) && !IS_IMMORTAL(ch))
+  {
+    send_to_char("You are not in a clan!\n\r", ch);
+    return;
+  }
 
-    if ( argument[0] == '\0' )
+  if (argument[0] == '\0')
+  {
+    if (IS_SET(ch->comm, COMM_NOCGOSSIP))
     {
-        if ( IS_SET ( ch->comm, COMM_NOCGOSSIP ) )
-        {
-            send_to_char ( "Clan gossip channel is now ON.\n\r", ch );
-            REMOVE_BIT ( ch->comm, COMM_NOCGOSSIP );
-        }
-        else
-        {
-            send_to_char ( "Clan gossip channel is now OFF.\n\r", ch );
-            SET_BIT ( ch->comm, COMM_NOCGOSSIP );
-        }
+      send_to_char("Clan gossip channel is now ON.\n\r", ch);
+      REMOVE_BIT(ch->comm, COMM_NOCGOSSIP);
     }
-    else                        /* cgossip message sent, turn cgossip on if it
+    else
+    {
+      send_to_char("Clan gossip channel is now OFF.\n\r", ch);
+      SET_BIT(ch->comm, COMM_NOCGOSSIP);
+    }
+  }
+  else                          /* cgossip message sent, turn cgossip on if it
                                    isn't already */
+  {
+    if (IS_SET(ch->comm, COMM_QUIET))
     {
-        if ( IS_SET ( ch->comm, COMM_QUIET ) )
-        {
-            send_to_char ( "You must turn off quiet mode first.\n\r", ch );
-            return;
-        }
-
-        if ( IS_SET ( ch->comm, COMM_NOCHANNELS ) )
-        {
-            send_to_char ( "The gods have revoked your channel priviliges.\n\r",
-                           ch );
-            return;
-        }
-
-        REMOVE_BIT ( ch->comm, COMM_NOCGOSSIP );
-
-        sprintf ( buf,
-                  "{r-{R={gYou{R={r- {W({CC{clan{CG{cossip{W){x '{W%s{x'\n\r",
-                  argument );
-        send_to_char ( buf, ch );
-        for ( d = descriptor_list; d != NULL; d = d->next )
-        {
-            CHAR_DATA *victim;
-            int pos;
-            bool found = false;
-
-            victim = d->original ? d->original : d->character;
-
-            if ( d->connected == CON_PLAYING && d->character != ch &&
-                 !IS_SET ( victim->comm, COMM_NOCGOSSIP ) &&
-                 !IS_SET ( victim->comm, COMM_QUIET ) && ( is_clan ( victim ) ||
-                                                           IS_IMMORTAL
-                                                           ( victim ) ) )
-            {
-                for ( pos = 0; pos < MAX_FORGET; pos++ )
-                {
-                    if ( victim->pcdata->forget[pos] == NULL )
-                        break;
-                    if ( !str_cmp ( ch->name, victim->pcdata->forget[pos] ) )
-                        found = true;
-                }
-                if ( !found )
-                {
-                    act_new
-                        ( "{r-{R={g$n{R={r- {W({CC{clan{CG{cossip{W){x '{W$t{x'",
-                          ch, argument, d->character, TO_VICT, POS_SLEEPING );
-                }
-            }
-        }
+      send_to_char("You must turn off quiet mode first.\n\r", ch);
+      return;
     }
-    wtime = UMAX ( 2, 9 - ( ch->level ) );
-    if ( !IS_IMMORTAL ( ch ) )
-        WAIT_STATE ( ch, wtime );
+
+    if (IS_SET(ch->comm, COMM_NOCHANNELS))
+    {
+      send_to_char("The gods have revoked your channel priviliges.\n\r", ch);
+      return;
+    }
+
+    REMOVE_BIT(ch->comm, COMM_NOCGOSSIP);
+
+    sprintf(buf,
+            "{r-{R={gYou{R={r- {W({CC{clan{CG{cossip{W){x '{W%s{x'\n\r",
+            argument);
+    send_to_char(buf, ch);
+    for (d = descriptor_list; d != NULL; d = d->next)
+    {
+      CHAR_DATA *victim;
+      int pos;
+      bool found = false;
+
+      victim = d->original ? d->original : d->character;
+
+      if (d->connected == CON_PLAYING && d->character != ch &&
+          !IS_SET(victim->comm, COMM_NOCGOSSIP) &&
+          !IS_SET(victim->comm, COMM_QUIET) && (is_clan(victim) ||
+                                                IS_IMMORTAL(victim)))
+      {
+        for (pos = 0; pos < MAX_FORGET; pos++)
+        {
+          if (victim->pcdata->forget[pos] == NULL)
+            break;
+          if (!str_cmp(ch->name, victim->pcdata->forget[pos]))
+            found = true;
+        }
+        if (!found)
+        {
+          act_new
+            ("{r-{R={g$n{R={r- {W({CC{clan{CG{cossip{W){x '{W$t{x'",
+             ch, argument, d->character, TO_VICT, POS_SLEEPING);
+        }
+      }
+    }
+  }
+  wtime = UMAX(2, 9 - (ch->level));
+  if (!IS_IMMORTAL(ch))
+    WAIT_STATE(ch, wtime);
 }
 
-CH_CMD ( do_clantalk )
+CH_CMD(do_clantalk)
 {
-    char buf[MAX_STRING_LENGTH];
-    char arg[MAX_INPUT_LENGTH];
-    DESCRIPTOR_DATA *d;
+  char buf[MAX_STRING_LENGTH];
+  char arg[MAX_INPUT_LENGTH];
+  DESCRIPTOR_DATA *d;
 
-    if ( !str_prefix ( argument, "list" ) && argument[0] != '\0' )
-    {
-        argument = one_argument ( argument, arg );
-        do_clans ( ch, argument );
-        return;
-    }
+  if (!str_prefix(argument, "list") && argument[0] != '\0')
+  {
+    argument = one_argument(argument, arg);
+    do_clans(ch, argument);
+    return;
+  }
 
-    if ( ( !is_clan ( ch ) || clan_table[ch->clan].independent ) && !IS_IMMORTAL ( ch ) )
+  if ((!is_clan(ch) || clan_table[ch->clan].independent) && !IS_IMMORTAL(ch))
+  {
+    send_to_char("You aren't in a clan.\n\r", ch);
+    return;
+  }
+  if (argument[0] == '\0')
+  {
+    if (IS_SET(ch->comm, COMM_NOCLAN))
     {
-        send_to_char ( "You aren't in a clan.\n\r", ch );
-        return;
+      send_to_char("Clan channel is now ON\n\r", ch);
+      REMOVE_BIT(ch->comm, COMM_NOCLAN);
     }
-    if ( argument[0] == '\0' )
+    else
     {
-        if ( IS_SET ( ch->comm, COMM_NOCLAN ) )
+      send_to_char("Clan channel is now OFF\n\r", ch);
+      SET_BIT(ch->comm, COMM_NOCLAN);
+    }
+    return;
+  }
+
+  if (IS_SET(ch->comm, COMM_NOCHANNELS))
+  {
+    send_to_char("The gods have revoked your channel priviliges.\n\r", ch);
+    return;
+  }
+
+  REMOVE_BIT(ch->comm, COMM_NOCLAN);
+  argument = makedrunk(argument, ch);
+  pcolor(ch, argument, 0);
+
+  sprintf(buf,
+          "{w[{oC{ol{oa{on{w] {w-{W={YYou to %s{W{w=- {W'{w%s{W'{x\n\r",
+          clan_table[ch->clan].exname, argument);
+  send_to_char(buf, ch);
+  sprintf(buf, "{w[{oC{ol{oa{on{w] {w-{W={Y%s to %s{W{w=- {W'{w%s{W'{x\n\r",
+          ch->name, clan_table[ch->clan].exname, argument);
+  for (d = descriptor_list; d != NULL; d = d->next)
+  {
+    int pos;
+    bool found = false;
+
+    if (d->connected == CON_PLAYING && d->character != ch &&
+        (is_same_clan(ch, d->character) ||
+         IS_IMMORTAL(d->character)) &&
+        !IS_SET(d->character->comm, COMM_NOCLAN) &&
+        !IS_SET(d->character->act, PLR_IMMNOCLAN) &&
+        !IS_SET(d->character->comm, COMM_QUIET))
+    {
+      for (pos = 0; pos < MAX_FORGET; pos++)
+      {
+        if (d->character->pcdata->forget[pos] == NULL)
+          break;
+        if (!str_cmp(ch->name, d->character->pcdata->forget[pos]))
+          found = true;
+      }
+      if (!found)
+      {
+        act_new(buf, ch, argument, d->character, TO_VICT, POS_DEAD);
+      }
+    }
+  }
+
+  return;
+}
+
+CH_CMD(do_clans)
+{
+  char buf[MAX_STRING_LENGTH];
+  BUFFER *output;
+  int e;
+
+  output = new_buf();
+  sprintf(buf,
+          "{x\n\r{R[] {x= {RP{rkill {WClan    {M[]{x = {MN{mon{x-{RP{rkill {WClan{x\n\r");
+  add_buf(output, buf);
+  for (e = 0; e < MAX_CLAN; e++)
+  {
+    if (str_cmp(clan_table[e].exname, "Unused"))
+    {
+      sprintf(buf, "{D-------------------------------{x\n\r");
+      add_buf(output, buf);
+      sprintf(buf, "{D| {WName{W: {W%s{x\n\r", clan_table[e].name);
+      add_buf(output, buf);
+      if (IS_IMMORTAL(ch))
+      {
+        sprintf(buf, "{D| {WRecall: %ld, Entrance: %ld{x\n\r",
+                clan_table[e].hall, clan_table[e].entrance);
+        add_buf(output, buf);
+      }
+      if (clan_table[e].pkill)
+        sprintf(buf,
+                "{D| {WWho Tag: {R[%s{R]{x\n\r{D| {WDesc{W: {g%s{x\n\r",
+                clan_table[e].who_name, clan_table[e].exname);
+
+      else
+        sprintf(buf,
+                "{D| {WWho Tag: {M[%s{M]{x\n\r{D| {WDesc{W: {g%s{x\n\r",
+                clan_table[e].who_name, clan_table[e].exname);
+      add_buf(output, buf);
+    }
+  }
+  sprintf(buf, "{D-------------------------------{x\n\r");
+  add_buf(output, buf);
+  page_to_char(buf_string(output), ch);
+  free_buf(output);
+  return;
+}
+
+CH_CMD(do_noclan)
+{
+  char arg[MAX_INPUT_LENGTH], buf[MAX_STRING_LENGTH];
+  CHAR_DATA *victim;
+
+  one_argument(argument, arg);
+
+  if (arg[0] == '\0')
+  {
+    send_to_char("Noclan whom?\n\r", ch);
+    return;
+  }
+
+  if ((victim = get_char_world(ch, arg)) == NULL)
+  {
+    send_to_char("They aren't here.\n\r", ch);
+    return;
+  }
+
+  if (IS_NPC(victim))
+  {
+    send_to_char("Not on NPC's.\n\r", ch);
+    return;
+  }
+
+  if (get_trust(victim) >= get_trust(ch))
+  {
+    send_to_char("You failed.\n\r", ch);
+    return;
+  }
+
+  if (IS_SET(victim->act, PLR_NOCLAN))
+  {
+    REMOVE_BIT(victim->act, PLR_NOCLAN);
+    send_to_char("NOCLAN removed.\n\r", ch);
+    sprintf(buf, "%s allows %s to join pkill clans.", ch->name, victim->name);
+    wiznet(buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0);
+  }
+  else
+  {
+    SET_BIT(victim->act, PLR_NOCLAN);
+    if (is_clead(victim))
+      update_clanlist(victim, victim->clead, false, true);
+    if (is_clan(victim))
+      update_clanlist(victim, victim->clan, false, false);
+    victim->clan = 0;
+    victim->clead = 0;
+    send_to_char("NOCLAN set.\n\r", ch);
+    sprintf(buf, "%s forbids %s to join pkill clans.", ch->name,
+            victim->name);
+    wiznet(buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0);
+  }
+
+  save_char_obj(victim);
+
+  return;
+}
+
+void save_clanlist(int clannum)
+{
+  char buf[MAX_STRING_LENGTH];
+  CLN_DATA *pcln;
+  MBR_DATA *pmbr;
+  FILE *fp;
+  bool found;
+
+  if (!str_cmp(clan_table[clannum].exname, "Unused"))
+  {
+    return;
+  }
+  sprintf(buf, "%s%s.cln", CLAN_DIR, clan_table[clannum].name);
+  if ((fp = file_open(buf, "w")) == NULL)
+  {
+    perror(buf);
+  }
+  found = false;
+  for (pcln = cln_list; pcln != NULL; pcln = pcln->next)
+  {
+    if (pcln->clan == clannum)
+    {
+      found = true;
+      if (sizeof(pcln->members) < 1)
+        return;
+
+      fprintf(fp, "%d\n", pcln->members);
+      for (pmbr = pcln->list; pmbr != NULL; pmbr = pmbr->next)
+      {
+        fprintf(fp, "%s\n", pmbr->name);
+      }
+    }
+  }
+  if (!found)
+  {
+    fprintf(fp, "0\n");
+  }
+  file_close(fp);
+}
+
+void load_clanlist(void)
+{
+  char buf[MAX_STRING_LENGTH];
+  FILE *fp;
+  MBR_DATA *mbr_last;
+  int clannum;
+
+  strcat(boot_buf, "- the Powe");
+  for (clannum = 0; clannum < MAX_CLAN; clannum++)
+  {
+    if (str_cmp(clan_table[clannum].exname, "Unused"))
+    {
+      CLN_DATA *pcln;
+
+      pcln = new_cln();
+      pcln->clan = clannum;
+      pcln->name = str_dup(clan_table[clannum].name);
+      sprintf(buf, "%s%s.cln", CLAN_DIR, clan_table[clannum].name);
+      if ((fp = file_open(buf, "r")) == NULL)
+      {
+        pcln->members = 0;
+      }
+      else
+      {
+        pcln->members = fread_number(fp);
+        fread_to_eol(fp);
+        mbr_last = NULL;
+        for (;;)
         {
-            send_to_char ( "Clan channel is now ON\n\r", ch );
-            REMOVE_BIT ( ch->comm, COMM_NOCLAN );
+          MBR_DATA *pmbr;
+
+          if (feof(fp))
+          {
+            break;
+          }
+
+          pmbr = new_mbr();
+
+          pmbr->name = str_dup(fread_word(fp));
+          fread_to_eol(fp);
+
+          if (pcln->list == NULL)
+            pcln->list = pmbr;
+          else
+            mbr_last->next = pmbr;
+          mbr_last = pmbr;
+        }
+        file_close(fp);
+      }
+      pcln->next = cln_list;
+      cln_list = pcln;
+    }
+  }
+  strcat(boot_buf, "rs that Be.");
+  return;
+}
+
+void update_clanlist(CHAR_DATA * ch, int clannum, bool add, bool clead)
+{
+  //    MBR_DATA *prev;
+  MBR_DATA *curr;
+  CLN_DATA *pcln;
+
+  if (IS_NPC(ch))
+  {
+    return;
+  }
+  else
+  {
+    return;
+  }
+
+  for (pcln = cln_list; pcln != NULL; pcln = pcln->next)
+  {
+    if (pcln->clan == clannum)
+    {
+      if (clead)
+      {
+        if (!add)
+        {
+          /*                    prev = NULL;
+             for ( curr = pcln->list; curr != NULL;
+             prev = curr, curr = curr->next )
+             {
+             if ( !str_cmp ( ch->name, curr->name ) )
+             {
+             if ( prev == NULL )
+             pcln->list = pcln->list->next;
+             else
+             prev->next = curr->next;
+
+             free_mbr ( curr );
+             save_clanlist ( clannum ); 
+             }
+             }
+             return; */
         }
         else
         {
-            send_to_char ( "Clan channel is now OFF\n\r", ch );
-            SET_BIT ( ch->comm, COMM_NOCLAN );
+          curr = new_mbr();
+          curr->name = str_dup(ch->name);
+          curr->next = pcln->list;
+          pcln->list = curr;
+          save_clanlist(clannum);
+          return;
         }
-        return;
+      }
+      if (add)
+        pcln->members++;
+      else
+      {
+        if (pcln->members > 0)
+          pcln->members--;
+      }
+      if (pcln->members < 0)
+        pcln->members = 0;
+      save_clanlist(clannum);
     }
-
-    if ( IS_SET ( ch->comm, COMM_NOCHANNELS ) )
-    {
-        send_to_char ( "The gods have revoked your channel priviliges.\n\r",
-                       ch );
-        return;
-    }
-
-    REMOVE_BIT ( ch->comm, COMM_NOCLAN );
-    argument = makedrunk ( argument, ch );
-    pcolor ( ch, argument, 0 );
-
-    sprintf ( buf,
-              "{w[{oC{ol{oa{on{w] {w-{W={YYou to %s{W{w=- {W'{w%s{W'{x\n\r",
-              clan_table[ch->clan].exname, argument );
-    send_to_char ( buf, ch );
-    sprintf ( buf, "{w[{oC{ol{oa{on{w] {w-{W={Y%s to %s{W{w=- {W'{w%s{W'{x\n\r",
-              ch->name, clan_table[ch->clan].exname, argument );
-    for ( d = descriptor_list; d != NULL; d = d->next )
-    {
-        int pos;
-        bool found = false;
-
-        if ( d->connected == CON_PLAYING && d->character != ch &&
-             ( is_same_clan ( ch, d->character ) ||
-               IS_IMMORTAL ( d->character ) ) &&
-             !IS_SET ( d->character->comm, COMM_NOCLAN ) &&
-             !IS_SET ( d->character->act, PLR_IMMNOCLAN ) &&
-             !IS_SET ( d->character->comm, COMM_QUIET ) )
-        {
-            for ( pos = 0; pos < MAX_FORGET; pos++ )
-            {
-                if ( d->character->pcdata->forget[pos] == NULL )
-                    break;
-                if ( !str_cmp ( ch->name, d->character->pcdata->forget[pos] ) )
-                    found = true;
-            }
-            if ( !found )
-            {
-                act_new ( buf, ch, argument, d->character, TO_VICT, POS_DEAD );
-            }
-        }
-    }
-
-    return;
+  }
+  return;
 }
 
-CH_CMD ( do_clans )
+char *player_clanwho(CHAR_DATA * ch)
 {
-    char buf[MAX_STRING_LENGTH];
-    BUFFER *output;
-    int e;
-
-    output = new_buf (  );
-    sprintf ( buf,
-              "{x\n\r{R[] {x= {RP{rkill {WClan    {M[]{x = {MN{mon{x-{RP{rkill {WClan{x\n\r" );
-    add_buf ( output, buf );
-    for ( e = 0; e < MAX_CLAN; e++ )
-    {
-        if ( str_cmp ( clan_table[e].exname, "Unused" ) )
-        {
-            sprintf ( buf, "{D-------------------------------{x\n\r" );
-            add_buf ( output, buf );
-            sprintf ( buf, "{D| {WName{W: {W%s{x\n\r", clan_table[e].name );
-            add_buf ( output, buf );
-            if ( IS_IMMORTAL ( ch ) )
-            {
-                sprintf ( buf, "{D| {WRecall: %ld, Entrance: %ld{x\n\r",
-                          clan_table[e].hall, clan_table[e].entrance );
-                add_buf ( output, buf );
-            }
-            if ( clan_table[e].pkill )
-                sprintf ( buf,
-                          "{D| {WWho Tag: {R[%s{R]{x\n\r{D| {WDesc{W: {g%s{x\n\r",
-                          clan_table[e].who_name, clan_table[e].exname );
-
-            else
-                sprintf ( buf,
-                          "{D| {WWho Tag: {M[%s{M]{x\n\r{D| {WDesc{W: {g%s{x\n\r",
-                          clan_table[e].who_name, clan_table[e].exname );
-            add_buf ( output, buf );
-        }
-    }
-    sprintf ( buf, "{D-------------------------------{x\n\r" );
-    add_buf ( output, buf );
-    page_to_char ( buf_string ( output ), ch );
-    free_buf ( output );
-    return;
-}
-
-CH_CMD ( do_noclan )
-{
-    char arg[MAX_INPUT_LENGTH], buf[MAX_STRING_LENGTH];
-    CHAR_DATA *victim;
-
-    one_argument ( argument, arg );
-
-    if ( arg[0] == '\0' )
-    {
-        send_to_char ( "Noclan whom?\n\r", ch );
-        return;
-    }
-
-    if ( ( victim = get_char_world ( ch, arg ) ) == NULL )
-    {
-        send_to_char ( "They aren't here.\n\r", ch );
-        return;
-    }
-
-    if ( IS_NPC ( victim ) )
-    {
-        send_to_char ( "Not on NPC's.\n\r", ch );
-        return;
-    }
-
-    if ( get_trust ( victim ) >= get_trust ( ch ) )
-    {
-        send_to_char ( "You failed.\n\r", ch );
-        return;
-    }
-
-    if ( IS_SET ( victim->act, PLR_NOCLAN ) )
-    {
-        REMOVE_BIT ( victim->act, PLR_NOCLAN );
-        send_to_char ( "NOCLAN removed.\n\r", ch );
-        sprintf ( buf, "%s allows %s to join pkill clans.", ch->name, victim->name );
-        wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
-    }
-    else
-    {
-        SET_BIT ( victim->act, PLR_NOCLAN );
-        if ( is_clead ( victim ) )
-            update_clanlist ( victim, victim->clead, false, true );
-        if ( is_clan ( victim ) )
-            update_clanlist ( victim, victim->clan, false, false );
-        victim->clan = 0;
-        victim->clead = 0;
-        send_to_char ( "NOCLAN set.\n\r", ch );
-        sprintf ( buf, "%s forbids %s to join pkill clans.", ch->name, victim->name );
-        wiznet ( buf, ch, NULL, WIZ_PENALTIES, WIZ_SECURE, 0 );
-    }
-
-    save_char_obj ( victim );
-
-    return;
-}
-
-void save_clanlist ( int clannum )
-{
-    char buf[MAX_STRING_LENGTH];
-    CLN_DATA *pcln;
-    MBR_DATA *pmbr;
-    FILE *fp;
-    bool found;
-
-    if ( !str_cmp ( clan_table[clannum].exname, "Unused" ) )
-    {
-        return;
-    }
-    sprintf ( buf, "%s%s.cln", CLAN_DIR, clan_table[clannum].name );
-    if ( ( fp = file_open ( buf, "w" ) ) == NULL )
-    {
-        perror ( buf );
-    }
-    found = false;
-    for ( pcln = cln_list; pcln != NULL; pcln = pcln->next )
-    {
-        if ( pcln->clan == clannum )
-        {
-            found = true;
-            if ( sizeof ( pcln->members ) < 1 )
-                return;
-
-            fprintf ( fp, "%d\n", pcln->members );
-            for ( pmbr = pcln->list; pmbr != NULL; pmbr = pmbr->next )
-            {
-                fprintf ( fp, "%s\n", pmbr->name );
-            }
-        }
-    }
-    if ( !found )
-    {
-        fprintf ( fp, "0\n" );
-    }
-    file_close ( fp );
-}
-
-void load_clanlist ( void )
-{
-    char buf[MAX_STRING_LENGTH];
-    FILE *fp;
-    MBR_DATA *mbr_last;
-    int clannum;
-
-    strcat ( boot_buf, "- the Powe" );
-    for ( clannum = 0; clannum < MAX_CLAN; clannum++ )
-    {
-        if ( str_cmp ( clan_table[clannum].exname, "Unused" ) )
-        {
-            CLN_DATA *pcln;
-
-            pcln = new_cln (  );
-            pcln->clan = clannum;
-            pcln->name = str_dup ( clan_table[clannum].name );
-            sprintf ( buf, "%s%s.cln", CLAN_DIR, clan_table[clannum].name );
-            if ( ( fp = file_open ( buf, "r" ) ) == NULL )
-            {
-                pcln->members = 0;
-            }
-            else
-            {
-                pcln->members = fread_number ( fp );
-                fread_to_eol ( fp );
-                mbr_last = NULL;
-                for ( ;; )
-                {
-                    MBR_DATA *pmbr;
-
-                    if ( feof ( fp ) )
-                    {
-                        break;
-                    }
-
-                    pmbr = new_mbr (  );
-
-                    pmbr->name = str_dup ( fread_word ( fp ) );
-                    fread_to_eol ( fp );
-
-                    if ( pcln->list == NULL )
-                        pcln->list = pmbr;
-                    else
-                        mbr_last->next = pmbr;
-                    mbr_last = pmbr;
-                }
-                file_close ( fp );
-            }
-            pcln->next = cln_list;
-            cln_list = pcln;
-        }
-    }
-    strcat ( boot_buf, "rs that Be." );
-    return;
-}
-
-void update_clanlist ( CHAR_DATA * ch, int clannum, bool add, bool clead )
-{
-//    MBR_DATA *prev;
-    MBR_DATA *curr;
-    CLN_DATA *pcln;
-
-    if ( IS_NPC ( ch ) )
-    {
-        return;
-    }
-    else
-    {
-        return;
-    }
-
-    for ( pcln = cln_list; pcln != NULL; pcln = pcln->next )
-    {
-        if ( pcln->clan == clannum )
-        {
-            if ( clead )
-            {
-                if ( !add )
-                {
-/*                    prev = NULL;
-                    for ( curr = pcln->list; curr != NULL;
-                          prev = curr, curr = curr->next )
-                    {
-                        if ( !str_cmp ( ch->name, curr->name ) )
-                        {
-                            if ( prev == NULL )
-                                pcln->list = pcln->list->next;
-                            else
-                                prev->next = curr->next;
-
-                            free_mbr ( curr );
-                            save_clanlist ( clannum ); 
-                        }
-                    }
-                    return; */
-                }
-                else
-                {
-                    curr = new_mbr (  );
-                    curr->name = str_dup ( ch->name );
-                    curr->next = pcln->list;
-                    pcln->list = curr;
-                    save_clanlist ( clannum );
-                    return;
-                }
-            }
-            if ( add )
-                pcln->members++;
-            else
-            {
-                if ( pcln->members > 0 )
-                    pcln->members--;
-            }
-            if ( pcln->members < 0 )
-                pcln->members = 0;
-            save_clanlist ( clannum );
-        }
-    }
-    return;
-}
-
-char *player_clanwho ( CHAR_DATA * ch )
-{
-    if ( ch->clan == 0 )
-        return '\0';
-    return clan_table[ch->clan].who_name;
+  if (ch->clan == 0)
+    return '\0';
+  return clan_table[ch->clan].who_name;
 }
 
 /* do_clanwho: hack of do_who to return everyone in your clan */
-CH_CMD ( do_clanwho )
+CH_CMD(do_clanwho)
 {
-    char buf[MAX_STRING_LENGTH];
-    char buf2[MAX_STRING_LENGTH];
-    BUFFER *output;
-    DESCRIPTOR_DATA *d;
-    int iClan;
-    int nNumber;
-    int nMatch;
-    bool fClan = false;
-    bool fClanRestrict = false;
-    bool rgfClan[MAX_CLAN];
+  char buf[MAX_STRING_LENGTH];
+  char buf2[MAX_STRING_LENGTH];
+  BUFFER *output;
+  DESCRIPTOR_DATA *d;
+  int iClan;
+  int nNumber;
+  int nMatch;
+  bool fClan = false;
+  bool fClanRestrict = false;
+  bool rgfClan[MAX_CLAN];
 
-    if ( !is_clan ( ch ) )
-    {
-        send_to_char ( "You are not a member of a clan.", ch );
-        return;
-    }
+  if (!is_clan(ch))
+  {
+    send_to_char("You are not a member of a clan.", ch);
+    return;
+  }
 
-    nNumber = 0;
-    fClan = true;
-    iClan = clan_lookup ( clan_table[ch->clan].name );
-    if ( iClan )
-    {
+  nNumber = 0;
+  fClan = true;
+  iClan = clan_lookup(clan_table[ch->clan].name);
+  if (iClan)
+  {
 
-        fClanRestrict = true;
-        rgfClan[iClan] = true;
-    }
+    fClanRestrict = true;
+    rgfClan[iClan] = true;
+  }
+
+  /* 
+   * Now
+   show matching chars.
+   */
+  nMatch = 0;
+  buf[0] = '\0';
+  output = new_buf();
+  sprintf(buf, "\n\r{c-----------%-11s{c----------\n\r", player_clanwho(ch));
+  add_buf(output, buf);
+  sprintf(buf, "{CR{cank       {c| {CN{came{x                \n\r");
+  add_buf(output, buf);
+  sprintf(buf, "{c------------------------------{x\n\r");
+  add_buf(output, buf);
+  for (d = descriptor_list; d != NULL; d = d->next)
+  {
+
+    CHAR_DATA *wch;
+    char const *class;
 
     /* 
-     * Now
-     show matching chars.
+     * Check
+     for match against restrictions.
+     * Don't use trust as that exposes
+     trusted mortals.
      */
-    nMatch = 0;
-    buf[0] = '\0';
-    output = new_buf (  );
-    sprintf ( buf, "\n\r{c-----------%-11s{c----------\n\r",
-              player_clanwho ( ch ) );
-    add_buf ( output, buf );
-    sprintf ( buf, "{CR{cank       {c| {CN{came{x                \n\r" );
-    add_buf ( output, buf );
-    sprintf ( buf, "{c------------------------------{x\n\r" );
-    add_buf ( output, buf );
-    for ( d = descriptor_list; d != NULL; d = d->next )
-    {
+    if (d->connected != CON_PLAYING || !can_see(ch, d->character))
+      continue;
 
-        CHAR_DATA *wch;
-        char const *class;
+    wch = (d->original != NULL) ? d->original : d->character;
 
-        /* 
-         * Check
-         for match against restrictions.
-         * Don't use trust as that exposes
-         trusted mortals.
-         */
-        if ( d->connected != CON_PLAYING || !can_see ( ch, d->character ) )
-            continue;
+    if (!can_see(ch, wch))
+      continue;
 
-        wch = ( d->original != NULL ) ? d->original : d->character;
+    if ((fClan && !is_clan(wch)) ||
+        (fClanRestrict && !rgfClan[wch->clan]) || (wch->clan != ch->clan))
+      continue;
 
-        if ( !can_see ( ch, wch ) )
-            continue;
+    nMatch++;
 
-        if ( ( fClan && !is_clan ( wch ) ) ||
-             ( fClanRestrict && !rgfClan[wch->clan] ) ||
-             ( wch->clan != ch->clan ) )
-            continue;
+    /* 
 
-        nMatch++;
+     * Figure out what to print for class. */
+    class = class_table[wch->class].who_name;
 
-        /* 
+    /* 
+     * Format it up.
+     */
+    sprintf(buf, "%-15s{c| {x%s%s%s\n\r",
+            is_clan(wch) ? clan_rank_table[wch->clan_rank].
+            title_of_rank[wch->sex] : "", IS_SET(wch->comm,
+                                                 COMM_AFK) ?
+            "{W[{RAFK{W]{x " : "", wch->name,
+            IS_NPC(wch) ? "" : wch->pcdata->title);
+    add_buf(output, buf);
 
-         * Figure out what to print for class. */
-        class = class_table[wch->class].who_name;
+  }
 
-        /* 
-         * Format it up.
-         */
-        sprintf ( buf, "%-15s{c| {x%s%s%s\n\r",
-                  is_clan ( wch ) ? clan_rank_table[wch->clan_rank].
-                  title_of_rank[wch->sex] : "", IS_SET ( wch->comm,
-                                                         COMM_AFK ) ?
-                  "{W[{RAFK{W]{x " : "", wch->name,
-                  IS_NPC ( wch ) ? "" : wch->pcdata->title );
-        add_buf ( output, buf );
+  sprintf(buf2, "\n\r{CC{clan {CM{cembers {CF{cound{x: {&%d{x\n\r", nMatch);
+  add_buf(output, buf2);
+  page_to_char(buf_string(output), ch);
 
-    }
-
-    sprintf ( buf2, "\n\r{CC{clan {CM{cembers {CF{cound{x: {&%d{x\n\r",
-              nMatch );
-    add_buf ( output, buf2 );
-    page_to_char ( buf_string ( output ), ch );
-
-    free_buf ( output );
-    return;
+  free_buf(output);
+  return;
 }
 
-CH_CMD ( do_promote )
+CH_CMD(do_promote)
 {
-    char arg1[MAX_INPUT_LENGTH], arg2[MAX_INPUT_LENGTH];
-    CHAR_DATA *victim;
+  char arg1[MAX_INPUT_LENGTH], arg2[MAX_INPUT_LENGTH];
+  CHAR_DATA *victim;
 
-    argument = one_argument ( argument, arg1 );
-    argument = one_argument ( argument, arg2 );
+  argument = one_argument(argument, arg1);
+  argument = one_argument(argument, arg2);
 
-    if ( IS_NPC ( ch ) )
-    {
-        send_to_char ( "NPC's can not promote someone.\n\r", ch );
-        return;
-    }
-
-    if ( ( ch->clan_rank < 9 ) && ( !IS_IMMORTAL ( ch ) ) )
-    {
-        send_to_char
-            ( "You must be a clan Leader or Magistrate to promote someone.\n\r",
-              ch );
-        return;
-    }
-    if ( arg1[0] == '\0' || arg2[0] == '\0' || atoi ( arg2 ) < 1 ||
-         atoi ( arg2 ) > 10 )
-    {
-        send_to_char ( "Syntax: promote <char> <rank 1-10>\n\r", ch );
-        return;
-    }
-
-    if ( ( victim = get_char_room ( ch, arg1 ) ) == NULL )
-    {
-        send_to_char ( "They must be present to be promoted.\n\r", ch );
-        return;
-    }
-
-    if ( IS_NPC ( victim ) )
-    {
-        send_to_char ( "You must be mad.\n\r", ch );
-        return;
-    }
-
-    if ( ( victim->clan != ch->clan ) && ( !IS_IMMORTAL ( ch ) ) )
-    {
-        send_to_char
-            ( "You can not promote a player who is not in your clan.\n\r", ch );
-        return;
-    }
-
-    /* if ( !is_clead(ch)) { send_to_char("This player is not qualified to
-       lead.\n\r",ch); return; } */
-
-    victim->clan_rank = atoi ( arg2 );
-
-    send_to_char ( "Rank ceremony complete\n\r", ch );
-    send_to_char ( "Rank ceremony complete\n\r", victim );
-
+  if (IS_NPC(ch))
+  {
+    send_to_char("NPC's can not promote someone.\n\r", ch);
     return;
+  }
+
+  if ((ch->clan_rank < 9) && (!IS_IMMORTAL(ch)))
+  {
+    send_to_char
+      ("You must be a clan Leader or Magistrate to promote someone.\n\r", ch);
+    return;
+  }
+  if (arg1[0] == '\0' || arg2[0] == '\0' || atoi(arg2) < 1 || atoi(arg2) > 10)
+  {
+    send_to_char("Syntax: promote <char> <rank 1-10>\n\r", ch);
+    return;
+  }
+
+  if ((victim = get_char_room(ch, arg1)) == NULL)
+  {
+    send_to_char("They must be present to be promoted.\n\r", ch);
+    return;
+  }
+
+  if (IS_NPC(victim))
+  {
+    send_to_char("You must be mad.\n\r", ch);
+    return;
+  }
+
+  if ((victim->clan != ch->clan) && (!IS_IMMORTAL(ch)))
+  {
+    send_to_char
+      ("You can not promote a player who is not in your clan.\n\r", ch);
+    return;
+  }
+
+  /* if ( !is_clead(ch)) { send_to_char("This player is not qualified to
+     lead.\n\r",ch); return; } */
+
+  victim->clan_rank = atoi(arg2);
+
+  send_to_char("Rank ceremony complete\n\r", ch);
+  send_to_char("Rank ceremony complete\n\r", victim);
+
+  return;
 }
 
-CH_CMD ( do_cdonate )
+CH_CMD(do_cdonate)
 {
-    char arg1[MAX_INPUT_LENGTH];
-    char arg2[MAX_INPUT_LENGTH];
-    long value;
+  char arg1[MAX_INPUT_LENGTH];
+  char arg2[MAX_INPUT_LENGTH];
+  long value;
 
-    smash_tilde ( argument );
-    argument = one_argument ( argument, arg1 );
-    strcpy ( arg2, argument );
+  smash_tilde(argument);
+  argument = one_argument(argument, arg1);
+  strcpy(arg2, argument);
 
-    if ( arg1[0] == '\0' || arg2[0] == '\0' )
-    {
-        send_to_char ( "Syntax:\n\r", ch );
-        send_to_char ( "cdonate <field> <value>\n\r", ch );
-        send_to_char ( "\n\rField being one of the following:\n\r", ch );
-        send_to_char ( "iqp aqp\n\r", ch );
-        return;
-    }
-
-    value = is_number ( arg2 ) ? atol ( arg2 ) : -1;
-
-    if ( !str_prefix ( arg1, "iqp" ) )
-    {
-        if ( !is_clan ( ch ) )
-        {
-            send_to_char ( "You aren't in a clan.\n\r", ch );
-            return;
-        }
-        {
-            if ( clan_table[ch->clan].independent )
-            {
-                send_to_char ( "Loner clans don't have clan balances!\n\r",
-                               ch );
-                return;
-            }
-            ch->pcdata->clan_data->cbalance = +value;
-            ch->qps = -value;
-            printf_to_char ( ch,
-                             "You have donated %ld to your clan balance, the clan's balance is now %ld",
-                             value, ch->pcdata->clan_data->cbalance );
-            return;
-        }
-    }
-
-    if ( !str_prefix ( arg1, "aqp" ) )
-
-    {
-        if ( !is_clan ( ch ) )
-        {
-            send_to_char ( "You aren't in a clan.\n\r", ch );
-            return;
-        }
-
-        if ( clan_table[ch->clan].independent )
-        {
-            send_to_char ( "Loner clans don't have clan balances!\n\r", ch );
-            return;
-        }
-        if ( value % 20 == 0 )
-        {
-            ch->pcdata->questpoints -= value;
-            ch->pcdata->clan_data->cbalance = +value / 20;
-            printf_to_char ( ch,
-                             "You donate %ld AQP. Your clans balance is now %ld.\n\r",
-                             value, ch->pcdata->clan_data->cbalance );
-            return;
-        }
-        else
-        {
-            printf_to_char ( ch, "Amount MUST be divisible by 20" );
-            return;
-        }
-    }
-    do_cdonate ( ch, "" );
+  if (arg1[0] == '\0' || arg2[0] == '\0')
+  {
+    send_to_char("Syntax:\n\r", ch);
+    send_to_char("cdonate <field> <value>\n\r", ch);
+    send_to_char("\n\rField being one of the following:\n\r", ch);
+    send_to_char("iqp aqp\n\r", ch);
     return;
+  }
+
+  value = is_number(arg2) ? atol(arg2) : -1;
+
+  if (!str_prefix(arg1, "iqp"))
+  {
+    if (!is_clan(ch))
+    {
+      send_to_char("You aren't in a clan.\n\r", ch);
+      return;
+    }
+    {
+      if (clan_table[ch->clan].independent)
+      {
+        send_to_char("Loner clans don't have clan balances!\n\r", ch);
+        return;
+      }
+      ch->pcdata->clan_data->cbalance = +value;
+      ch->qps = -value;
+      printf_to_char(ch,
+                     "You have donated %ld to your clan balance, the clan's balance is now %ld",
+                     value, ch->pcdata->clan_data->cbalance);
+      return;
+    }
+  }
+
+  if (!str_prefix(arg1, "aqp"))
+
+  {
+    if (!is_clan(ch))
+    {
+      send_to_char("You aren't in a clan.\n\r", ch);
+      return;
+    }
+
+    if (clan_table[ch->clan].independent)
+    {
+      send_to_char("Loner clans don't have clan balances!\n\r", ch);
+      return;
+    }
+    if (value % 20 == 0)
+    {
+      ch->pcdata->questpoints -= value;
+      ch->pcdata->clan_data->cbalance = +value / 20;
+      printf_to_char(ch,
+                     "You donate %ld AQP. Your clans balance is now %ld.\n\r",
+                     value, ch->pcdata->clan_data->cbalance);
+      return;
+    }
+    else
+    {
+      printf_to_char(ch, "Amount MUST be divisible by 20");
+      return;
+    }
+  }
+  do_cdonate(ch, "");
+  return;
 }

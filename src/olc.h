@@ -1,3 +1,4 @@
+
 /***************************************************************************
  *  File: olc.h                                                            *
  *                                                                         *
@@ -40,7 +41,7 @@
 /*
  * New typedefs.
  */
-typedef bool OLC_FUN args ( ( CHAR_DATA * ch, char *argument ) );
+typedef bool OLC_FUN args((CHAR_DATA * ch, char *argument));
 
 #define DECLARE_OLC_FUN( fun )	OLC_FUN    fun
 
@@ -56,11 +57,11 @@ typedef bool OLC_FUN args ( ( CHAR_DATA * ch, char *argument ) );
 /*
  * Interpreter Prototypes
  */
-void aedit args ( ( CHAR_DATA * ch, char *argument ) );
-void redit args ( ( CHAR_DATA * ch, char *argument ) );
-void medit args ( ( CHAR_DATA * ch, char *argument ) );
-void oedit args ( ( CHAR_DATA * ch, char *argument ) );
-void mpedit args ( ( CHAR_DATA * ch, char *argument ) );
+void aedit args((CHAR_DATA * ch, char *argument));
+void redit args((CHAR_DATA * ch, char *argument));
+void medit args((CHAR_DATA * ch, char *argument));
+void oedit args((CHAR_DATA * ch, char *argument));
+void mpedit args((CHAR_DATA * ch, char *argument));
 
 /*
  * OLC Constants
@@ -72,8 +73,8 @@ void mpedit args ( ( CHAR_DATA * ch, char *argument ) );
  */
 struct olc_cmd_type
 {
-    char *const name;
-    OLC_FUN *olc_fun;
+  char *const name;
+  OLC_FUN *olc_fun;
 };
 
 /*
@@ -81,8 +82,8 @@ struct olc_cmd_type
  */
 struct editor_cmd_type
 {
-    char *const name;
-    DO_FUN *do_fun;
+  char *const name;
+  DO_FUN *do_fun;
 };
 
 /*
@@ -97,141 +98,141 @@ extern const struct olc_cmd_type mpedit_table[];
 /*
  * General Functions
  */
-bool show_commands args ( ( CHAR_DATA * ch, char *argument ) );
-bool show_help args ( ( CHAR_DATA * ch, char *argument ) );
-bool edit_done args ( ( CHAR_DATA * ch ) );
-bool show_version args ( ( CHAR_DATA * ch, char *argument ) );
+bool show_commands args((CHAR_DATA * ch, char *argument));
+bool show_help args((CHAR_DATA * ch, char *argument));
+bool edit_done args((CHAR_DATA * ch));
+bool show_version args((CHAR_DATA * ch, char *argument));
 
 /*
  * Area Editor Prototypes
  */
-DECLARE_OLC_FUN ( aedit_show );
-DECLARE_OLC_FUN ( aedit_create );
-DECLARE_OLC_FUN ( aedit_name );
-DECLARE_OLC_FUN ( aedit_file );
-DECLARE_OLC_FUN ( aedit_age );
-/* DECLARE_OLC_FUN( aedit_recall	);       ROM OLC */
-DECLARE_OLC_FUN ( aedit_reset );
-DECLARE_OLC_FUN ( aedit_security );
-DECLARE_OLC_FUN ( aedit_builder );
-DECLARE_OLC_FUN ( aedit_vnum );
-DECLARE_OLC_FUN ( aedit_lvnum );
-DECLARE_OLC_FUN ( aedit_uvnum );
-DECLARE_OLC_FUN ( aedit_credits );
-DECLARE_OLC_FUN ( aedit_repop_msg );
+DECLARE_OLC_FUN(aedit_show);
+DECLARE_OLC_FUN(aedit_create);
+DECLARE_OLC_FUN(aedit_name);
+DECLARE_OLC_FUN(aedit_file);
+DECLARE_OLC_FUN(aedit_age);
+/* DECLARE_OLC_FUN( aedit_recall  );       ROM OLC */
+DECLARE_OLC_FUN(aedit_reset);
+DECLARE_OLC_FUN(aedit_security);
+DECLARE_OLC_FUN(aedit_builder);
+DECLARE_OLC_FUN(aedit_vnum);
+DECLARE_OLC_FUN(aedit_lvnum);
+DECLARE_OLC_FUN(aedit_uvnum);
+DECLARE_OLC_FUN(aedit_credits);
+DECLARE_OLC_FUN(aedit_repop_msg);
 
 /*
  * Room Editor Prototypes
  */
-DECLARE_OLC_FUN ( redit_show );
-DECLARE_OLC_FUN ( redit_create );
-DECLARE_OLC_FUN ( redit_name );
-DECLARE_OLC_FUN ( redit_desc );
-DECLARE_OLC_FUN ( redit_ed );
-DECLARE_OLC_FUN ( redit_format );
-DECLARE_OLC_FUN ( redit_north );
-DECLARE_OLC_FUN ( redit_south );
-DECLARE_OLC_FUN ( redit_east );
-DECLARE_OLC_FUN ( redit_west );
-DECLARE_OLC_FUN ( redit_up );
-DECLARE_OLC_FUN ( redit_down );
-DECLARE_OLC_FUN ( redit_northeast );
-DECLARE_OLC_FUN ( redit_southeast );
-DECLARE_OLC_FUN ( redit_southwest );
-DECLARE_OLC_FUN ( redit_northwest );
-DECLARE_OLC_FUN ( redit_mreset );
-DECLARE_OLC_FUN ( redit_oreset );
-DECLARE_OLC_FUN ( redit_mlist );
-DECLARE_OLC_FUN ( redit_rlist );
-DECLARE_OLC_FUN ( redit_olist );
-DECLARE_OLC_FUN ( redit_mshow );
-DECLARE_OLC_FUN ( redit_oshow );
-DECLARE_OLC_FUN ( redit_heal );
-DECLARE_OLC_FUN ( redit_mana );
-DECLARE_OLC_FUN ( redit_tele );
-DECLARE_OLC_FUN ( redit_clan );
-DECLARE_OLC_FUN ( redit_owner );
+DECLARE_OLC_FUN(redit_show);
+DECLARE_OLC_FUN(redit_create);
+DECLARE_OLC_FUN(redit_name);
+DECLARE_OLC_FUN(redit_desc);
+DECLARE_OLC_FUN(redit_ed);
+DECLARE_OLC_FUN(redit_format);
+DECLARE_OLC_FUN(redit_north);
+DECLARE_OLC_FUN(redit_south);
+DECLARE_OLC_FUN(redit_east);
+DECLARE_OLC_FUN(redit_west);
+DECLARE_OLC_FUN(redit_up);
+DECLARE_OLC_FUN(redit_down);
+DECLARE_OLC_FUN(redit_northeast);
+DECLARE_OLC_FUN(redit_southeast);
+DECLARE_OLC_FUN(redit_southwest);
+DECLARE_OLC_FUN(redit_northwest);
+DECLARE_OLC_FUN(redit_mreset);
+DECLARE_OLC_FUN(redit_oreset);
+DECLARE_OLC_FUN(redit_mlist);
+DECLARE_OLC_FUN(redit_rlist);
+DECLARE_OLC_FUN(redit_olist);
+DECLARE_OLC_FUN(redit_mshow);
+DECLARE_OLC_FUN(redit_oshow);
+DECLARE_OLC_FUN(redit_heal);
+DECLARE_OLC_FUN(redit_mana);
+DECLARE_OLC_FUN(redit_tele);
+DECLARE_OLC_FUN(redit_clan);
+DECLARE_OLC_FUN(redit_owner);
 
 /*
  * Object Editor Prototypes
  */
-DECLARE_OLC_FUN ( oedit_show );
-DECLARE_OLC_FUN ( oedit_delete );
-DECLARE_OLC_FUN ( oedit_create );
-DECLARE_OLC_FUN ( oedit_name );
-DECLARE_OLC_FUN ( oedit_short );
-DECLARE_OLC_FUN ( oedit_long );
-DECLARE_OLC_FUN ( oedit_addaffect );
-DECLARE_OLC_FUN ( oedit_addapply );
-DECLARE_OLC_FUN ( oedit_delaffect );
-DECLARE_OLC_FUN ( oedit_value0 );
-DECLARE_OLC_FUN ( oedit_value1 );
-DECLARE_OLC_FUN ( oedit_value2 );
-DECLARE_OLC_FUN ( oedit_value3 );
-DECLARE_OLC_FUN ( oedit_value4 );   /* ROM */
-DECLARE_OLC_FUN ( oedit_weight );
-DECLARE_OLC_FUN ( oedit_cost );
-DECLARE_OLC_FUN ( oedit_ed );
+DECLARE_OLC_FUN(oedit_show);
+DECLARE_OLC_FUN(oedit_delete);
+DECLARE_OLC_FUN(oedit_create);
+DECLARE_OLC_FUN(oedit_name);
+DECLARE_OLC_FUN(oedit_short);
+DECLARE_OLC_FUN(oedit_long);
+DECLARE_OLC_FUN(oedit_addaffect);
+DECLARE_OLC_FUN(oedit_addapply);
+DECLARE_OLC_FUN(oedit_delaffect);
+DECLARE_OLC_FUN(oedit_value0);
+DECLARE_OLC_FUN(oedit_value1);
+DECLARE_OLC_FUN(oedit_value2);
+DECLARE_OLC_FUN(oedit_value3);
+DECLARE_OLC_FUN(oedit_value4);  /* ROM */
+DECLARE_OLC_FUN(oedit_weight);
+DECLARE_OLC_FUN(oedit_cost);
+DECLARE_OLC_FUN(oedit_ed);
 
-DECLARE_OLC_FUN ( oedit_extra );    /* ROM */
-DECLARE_OLC_FUN ( oedit_wear ); /* ROM */
-DECLARE_OLC_FUN ( oedit_type ); /* ROM */
-DECLARE_OLC_FUN ( oedit_affect );   /* ROM */
-DECLARE_OLC_FUN ( oedit_material ); /* ROM */
-DECLARE_OLC_FUN ( oedit_level );    /* ROM */
-DECLARE_OLC_FUN ( oedit_condition );    /* ROM */
-DECLARE_OLC_FUN ( oedit_autoweapon );
-DECLARE_OLC_FUN ( oedit_autoarmor );
+DECLARE_OLC_FUN(oedit_extra);   /* ROM */
+DECLARE_OLC_FUN(oedit_wear);    /* ROM */
+DECLARE_OLC_FUN(oedit_type);    /* ROM */
+DECLARE_OLC_FUN(oedit_affect);  /* ROM */
+DECLARE_OLC_FUN(oedit_material);  /* ROM */
+DECLARE_OLC_FUN(oedit_level);   /* ROM */
+DECLARE_OLC_FUN(oedit_condition); /* ROM */
+DECLARE_OLC_FUN(oedit_autoweapon);
+DECLARE_OLC_FUN(oedit_autoarmor);
 
 /*
  * Mobile Editor Prototypes
  */
-DECLARE_OLC_FUN ( medit_show );
-DECLARE_OLC_FUN ( medit_delete );
-DECLARE_OLC_FUN ( medit_create );
-DECLARE_OLC_FUN ( medit_name );
-DECLARE_OLC_FUN ( medit_short );
-DECLARE_OLC_FUN ( medit_long );
-DECLARE_OLC_FUN ( medit_shop );
-DECLARE_OLC_FUN ( medit_desc );
-DECLARE_OLC_FUN ( medit_level );
-DECLARE_OLC_FUN ( medit_align );
-DECLARE_OLC_FUN ( medit_spec );
+DECLARE_OLC_FUN(medit_show);
+DECLARE_OLC_FUN(medit_delete);
+DECLARE_OLC_FUN(medit_create);
+DECLARE_OLC_FUN(medit_name);
+DECLARE_OLC_FUN(medit_short);
+DECLARE_OLC_FUN(medit_long);
+DECLARE_OLC_FUN(medit_shop);
+DECLARE_OLC_FUN(medit_desc);
+DECLARE_OLC_FUN(medit_level);
+DECLARE_OLC_FUN(medit_align);
+DECLARE_OLC_FUN(medit_spec);
 
-DECLARE_OLC_FUN ( medit_sex );  /* ROM */
-DECLARE_OLC_FUN ( medit_act );  /* ROM */
-DECLARE_OLC_FUN ( medit_act2 ); /* ROM */
-DECLARE_OLC_FUN ( medit_affect );   /* ROM */
-DECLARE_OLC_FUN ( medit_shield );   /* loki */
-DECLARE_OLC_FUN ( medit_ac );   /* ROM */
-DECLARE_OLC_FUN ( medit_form ); /* ROM */
-DECLARE_OLC_FUN ( medit_part ); /* ROM */
-DECLARE_OLC_FUN ( medit_imm );  /* ROM */
-DECLARE_OLC_FUN ( medit_res );  /* ROM */
-DECLARE_OLC_FUN ( medit_vuln ); /* ROM */
-DECLARE_OLC_FUN ( medit_material ); /* ROM */
-DECLARE_OLC_FUN ( medit_off );  /* ROM */
-DECLARE_OLC_FUN ( medit_size ); /* ROM */
-DECLARE_OLC_FUN ( medit_hitdice );  /* ROM */
-DECLARE_OLC_FUN ( medit_manadice ); /* ROM */
-DECLARE_OLC_FUN ( medit_damdice );  /* ROM */
-DECLARE_OLC_FUN ( medit_race ); /* ROM */
-DECLARE_OLC_FUN ( medit_position ); /* ROM */
-DECLARE_OLC_FUN ( medit_gold ); /* ROM */
-DECLARE_OLC_FUN ( medit_hitroll );  /* ROM */
-DECLARE_OLC_FUN ( medit_damtype );  /* ROM */
-DECLARE_OLC_FUN ( medit_group );    /* ROM */
-DECLARE_OLC_FUN ( medit_addmprog ); /* ROM */
-DECLARE_OLC_FUN ( medit_delmprog ); /* ROM */
-DECLARE_OLC_FUN ( medit_autoset );
-DECLARE_OLC_FUN ( medit_autoeasy );
-DECLARE_OLC_FUN ( medit_autohard );
+DECLARE_OLC_FUN(medit_sex);     /* ROM */
+DECLARE_OLC_FUN(medit_act);     /* ROM */
+DECLARE_OLC_FUN(medit_act2);    /* ROM */
+DECLARE_OLC_FUN(medit_affect);  /* ROM */
+DECLARE_OLC_FUN(medit_shield);  /* loki */
+DECLARE_OLC_FUN(medit_ac);      /* ROM */
+DECLARE_OLC_FUN(medit_form);    /* ROM */
+DECLARE_OLC_FUN(medit_part);    /* ROM */
+DECLARE_OLC_FUN(medit_imm);     /* ROM */
+DECLARE_OLC_FUN(medit_res);     /* ROM */
+DECLARE_OLC_FUN(medit_vuln);    /* ROM */
+DECLARE_OLC_FUN(medit_material);  /* ROM */
+DECLARE_OLC_FUN(medit_off);     /* ROM */
+DECLARE_OLC_FUN(medit_size);    /* ROM */
+DECLARE_OLC_FUN(medit_hitdice); /* ROM */
+DECLARE_OLC_FUN(medit_manadice);  /* ROM */
+DECLARE_OLC_FUN(medit_damdice); /* ROM */
+DECLARE_OLC_FUN(medit_race);    /* ROM */
+DECLARE_OLC_FUN(medit_position);  /* ROM */
+DECLARE_OLC_FUN(medit_gold);    /* ROM */
+DECLARE_OLC_FUN(medit_hitroll); /* ROM */
+DECLARE_OLC_FUN(medit_damtype); /* ROM */
+DECLARE_OLC_FUN(medit_group);   /* ROM */
+DECLARE_OLC_FUN(medit_addmprog);  /* ROM */
+DECLARE_OLC_FUN(medit_delmprog);  /* ROM */
+DECLARE_OLC_FUN(medit_autoset);
+DECLARE_OLC_FUN(medit_autoeasy);
+DECLARE_OLC_FUN(medit_autohard);
 
 /* Mobprog editor */
 
-DECLARE_OLC_FUN ( mpedit_create );
-DECLARE_OLC_FUN ( mpedit_code );
-DECLARE_OLC_FUN ( mpedit_show );
+DECLARE_OLC_FUN(mpedit_create);
+DECLARE_OLC_FUN(mpedit_code);
+DECLARE_OLC_FUN(mpedit_show);
 
 /*
  * Macros
@@ -253,19 +254,18 @@ DECLARE_OLC_FUN ( mpedit_show );
 #define EDIT_AREA(Ch, Area)	( Area = (AREA_DATA *)Ch->desc->pEdit )
 
 void show_olc_cmds
-args ( ( CHAR_DATA * ch, const struct olc_cmd_type * olc_table ) );
+args((CHAR_DATA * ch, const struct olc_cmd_type * olc_table));
 void show_flag_cmds
-args ( ( CHAR_DATA * ch, const struct flag_type * flag_table ) );
-void show_skill_cmds args ( ( CHAR_DATA * ch, int tar ) );
-void show_spec_cmds args ( ( CHAR_DATA * ch ) );
-bool check_range args ( ( int lower, int upper ) );
-bool change_exit args ( ( CHAR_DATA * ch, char *argument, int door ) );
-int wear_loc args ( ( int bits, int count ) );
-int wear_bit args ( ( int loc ) );
-void show_obj_values args ( ( CHAR_DATA * ch, OBJ_INDEX_DATA * obj ) );
+args((CHAR_DATA * ch, const struct flag_type * flag_table));
+void show_skill_cmds args((CHAR_DATA * ch, int tar));
+void show_spec_cmds args((CHAR_DATA * ch));
+bool check_range args((int lower, int upper));
+bool change_exit args((CHAR_DATA * ch, char *argument, int door));
+int wear_loc args((int bits, int count));
+int wear_bit args((int loc));
+void show_obj_values args((CHAR_DATA * ch, OBJ_INDEX_DATA * obj));
 bool set_obj_values
-args ( ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
-         char *argument ) );
+args((CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num, char *argument));
 bool set_value
-args ( ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, char *argument, int value ) );
-bool oedit_values args ( ( CHAR_DATA * ch, char *argument, int value ) );
+args((CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, char *argument, int value));
+bool oedit_values args((CHAR_DATA * ch, char *argument, int value));

@@ -24,7 +24,7 @@ depend:
 	@$(CC) -E -MM $(C_FILES) -I. > .depend
 
 indent:
-	@indent -bad -bap $(C_FILES) $(H_FILES)
+	@indent $(C_FILES) $(H_FILES)
 
 backup:
 	@tar -cf backup.tar $(C_FILES) $(H_FILES) Makefile

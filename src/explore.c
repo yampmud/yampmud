@@ -2,186 +2,185 @@
 #include <stdlib.h>
 #include "merc.h"
 
-int bitcount ( char ch )
+int bitcount(char ch)
 {
-    int bit, count = 0;
+  int bit, count = 0;
 
-    for ( bit = 1 << 7; bit > 0; bit >>= 1 )
-    {
-        if ( ch & bit )
-            count++;
-    }
+  for (bit = 1 << 7; bit > 0; bit >>= 1)
+  {
+    if (ch & bit)
+      count++;
+  }
 
-    return count;
+  return count;
 }
 
-int roomcount ( CHAR_DATA * ch )
+int roomcount(CHAR_DATA * ch)
 {
-    int index = 0, count = 0;
+  int index = 0, count = 0;
 
-    if ( IS_NPC ( ch ) )
-        return 0;
+  if (IS_NPC(ch))
+    return 0;
 
-    for ( index = 0; index < MAX_EXPLORE; index++ )
-    {
-        count += bitcount ( ch->pcdata->explored[index] );
-    }
+  for (index = 0; index < MAX_EXPLORE; index++)
+  {
+    count += bitcount(ch->pcdata->explored[index]);
+  }
 
-    return count;
+  return count;
 }
 
-int areacount ( CHAR_DATA * ch )
+int areacount(CHAR_DATA * ch)
 {
-    long index = 0;
-    int count = 0;
+  long index = 0;
+  int count = 0;
 
-    if ( IS_NPC ( ch ) )
-        return 0;
+  if (IS_NPC(ch))
+    return 0;
 
-    if ( ( ch->in_room == NULL ) || ( ch->in_room->area == NULL ) )
-        return 0;
+  if ((ch->in_room == NULL) || (ch->in_room->area == NULL))
+    return 0;
 
-    for ( index = ch->in_room->area->min_vnum;
-          index <= ch->in_room->area->max_vnum; index++ )
-    {
-        count += getbit ( ch->pcdata->explored, index );
-    }
+  for (index = ch->in_room->area->min_vnum;
+       index <= ch->in_room->area->max_vnum; index++)
+  {
+    count += getbit(ch->pcdata->explored, index);
+  }
 
-    return count;
+  return count;
 }
 
-int arearooms ( CHAR_DATA * ch )
+int arearooms(CHAR_DATA * ch)
 {
-    int count = 0;
-    int index = 0;
+  int count = 0;
+  int index = 0;
 
-    if ( IS_NPC ( ch ) )
-        return 0;
+  if (IS_NPC(ch))
+    return 0;
 
-    if ( ( ch->in_room == NULL ) || ( ch->in_room->area == NULL ) )
-        return 0;
+  if ((ch->in_room == NULL) || (ch->in_room->area == NULL))
+    return 0;
 
-    for ( index = ch->in_room->area->min_vnum;
-          index <= ch->in_room->area->max_vnum; index++ )
-    {
-        if ( get_room_index ( index ) != NULL )
-            count++;
-    }
+  for (index = ch->in_room->area->min_vnum;
+       index <= ch->in_room->area->max_vnum; index++)
+  {
+    if (get_room_index(index) != NULL)
+      count++;
+  }
 
-    return count;
+  return count;
 }
 
-void setbit ( char *explored, int index )
+void setbit(char *explored, int index)
 {
-    explored[index / 8] |= 1 << ( index % 8 );
-    return;
+  explored[index / 8] |= 1 << (index % 8);
+  return;
 }
 
-int getbit ( char *explored, int index )
+int getbit(char *explored, int index)
 {
-    return ( IS_SET ( explored[index / 8], 1 << ( index % 8 ) ) != 0 );
+  return (IS_SET(explored[index / 8], 1 << (index % 8)) != 0);
 }
 
-void fwrite_rle ( char *explored, FILE * fp )
+void fwrite_rle(char *explored, FILE * fp)
 {
-    int index;
-    int bit = 0;
-    int count = 0;
+  int index;
+  int bit = 0;
+  int count = 0;
 
-    fprintf ( fp, "RoomRLE      %d", bit );
+  fprintf(fp, "RoomRLE      %d", bit);
 
-    for ( index = 0; index < ( MAX_EXPLORE * 8 ) - 1; index++ )
-    {
-        if ( getbit ( explored, index ) == bit )
-            count++;
-        else
-        {
-            fprintf ( fp, " %d", count );
-            count = 1;
-            bit = getbit ( explored, index );
-        }
-    }
-    fprintf ( fp, " %d -1\n", count );
-    return;
-}
-
-void fread_rle ( char *explored, FILE * fp )
-{
-    int index;
-    int bit = 0;
-    int count = 0;
-    int pos = 0;
-
-    index = 0;
-
-    bit = fread_number ( fp );
-
-    for ( ;; )
-    {
-        count = fread_number ( fp );
-
-        if ( count < 0 )
-            break;
-        if ( count == 0 )
-            continue;
-
-        do
-        {
-            if ( bit == 1 )
-                explored[index / 8] |= 1 << ( index % 8 );
-            index++;
-        }
-        while ( index < pos + count );
-        pos = index;
-        bit = ( bit == 1 ) ? 0 : 1;
-    }
-    return;
-}
-
-CH_CMD ( do_explored )
-{
-    if ( IS_NPC ( ch ) )
-        return;
-
-    if ( argument[0] == '\0' )
-    {
-        send_to_char ( "{wUsage:\n\r"
-                       "{Yexplored world - {WShow total amount of the explored\n\r"
-                       "{Yexplored area  - {WShow total amount of the current area explored.{x\n\r",
-                       ch );
-
-        return;
-    }
-
-    if ( !str_cmp ( argument, "world" ) )
-    {
-        int rcnt = roomcount ( ch );
-        double rooms = top_room, percent = ( double ) rcnt / ( rooms / 100 );
-
-        printf_to_char ( ch,
-                         "You have explored {W%d {Wof {W%d rooms "
-                         "({W%.2f%% of the mud)\n\r{x", rcnt, top_room,
-                         percent );
-
-        return;
-    }
-
-    else if ( !str_cmp ( argument, "area" ) )
-    {
-        int rcnt = areacount ( ch );
-        double rooms = ( double ) ( arearooms ( ch ) );
-        double percent = ( double ) rcnt / ( rooms / 100 );
-
-        printf_to_char ( ch,
-                         "You have explored {W%d of {W%d {wrooms in "
-                         "this area. ({W%.2f%%)\n\r{x", rcnt, arearooms ( ch ),
-                         percent );
-
-        return;
-    }
+  for (index = 0; index < (MAX_EXPLORE * 8) - 1; index++)
+  {
+    if (getbit(explored, index) == bit)
+      count++;
     else
     {
-        do_explored ( ch, "" );
-        return;
+      fprintf(fp, " %d", count);
+      count = 1;
+      bit = getbit(explored, index);
     }
+  }
+  fprintf(fp, " %d -1\n", count);
+  return;
+}
+
+void fread_rle(char *explored, FILE * fp)
+{
+  int index;
+  int bit = 0;
+  int count = 0;
+  int pos = 0;
+
+  index = 0;
+
+  bit = fread_number(fp);
+
+  for (;;)
+  {
+    count = fread_number(fp);
+
+    if (count < 0)
+      break;
+    if (count == 0)
+      continue;
+
+    do
+    {
+      if (bit == 1)
+        explored[index / 8] |= 1 << (index % 8);
+      index++;
+    }
+    while (index < pos + count);
+    pos = index;
+    bit = (bit == 1) ? 0 : 1;
+  }
+  return;
+}
+
+CH_CMD(do_explored)
+{
+  if (IS_NPC(ch))
+    return;
+
+  if (argument[0] == '\0')
+  {
+    send_to_char("{wUsage:\n\r"
+                 "{Yexplored world - {WShow total amount of the explored\n\r"
+                 "{Yexplored area  - {WShow total amount of the current area explored.{x\n\r",
+                 ch);
+
+    return;
+  }
+
+  if (!str_cmp(argument, "world"))
+  {
+    int rcnt = roomcount(ch);
+    double rooms = top_room, percent = (double) rcnt / (rooms / 100);
+
+    printf_to_char(ch,
+                   "You have explored {W%d {Wof {W%d rooms "
+                   "({W%.2f%% of the mud)\n\r{x", rcnt, top_room, percent);
+
+    return;
+  }
+
+  else if (!str_cmp(argument, "area"))
+  {
+    int rcnt = areacount(ch);
+    double rooms = (double) (arearooms(ch));
+    double percent = (double) rcnt / (rooms / 100);
+
+    printf_to_char(ch,
+                   "You have explored {W%d of {W%d {wrooms in "
+                   "this area. ({W%.2f%%)\n\r{x", rcnt, arearooms(ch),
+                   percent);
+
+    return;
+  }
+  else
+  {
+    do_explored(ch, "");
+    return;
+  }
 }

@@ -34,42 +34,42 @@
 
 struct flag_type
 {
-    char *name;
-    int bit;
-    bool settable;
+  char *name;
+  int bit;
+  bool settable;
 };
 
 struct clan_type
 {
-    char *name;
-    char *who_name;
-    long hall;
-    long entrance;
-    long pit;
-    bool independent;           /* true for loners */
-    bool pkill;                 /* true for pkilling clans */
-    char *exname;
+  char *name;
+  char *who_name;
+  long hall;
+  long entrance;
+  long pit;
+  bool independent;             /* true for loners */
+  bool pkill;                   /* true for pkilling clans */
+  char *exname;
 };
 
 struct position_type
 {
-    char *name;
-    char *short_name;
+  char *name;
+  char *short_name;
 };
 
 struct sex_type
 {
-    char *name;
+  char *name;
 };
 
 struct size_type
 {
-    char *name;
+  char *name;
 };
 
 struct clan_titles
 {
-    char *title_of_rank[3];
+  char *title_of_rank[3];
 };
 
 /* game tables */

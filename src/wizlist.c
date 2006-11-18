@@ -1,3 +1,4 @@
+
 /***************************************************************************   
  *  Original Diku Mud copyright (C) 1990, 1991 by Sebastian Hammer,        *
  *  Michael Seifert, Hans Henrik St{rfeldt, Tom Madsen, and Katja Nyboe.   *
@@ -43,349 +44,349 @@
 WIZ_DATA *wiz_list;
 
 char *const wiz_titles[] = {
-    "Implementors",
-    "Creators    ",
-    "Supremacies ",
-    "Deities     ",
-    "Gods        ",
-    "Immortals   ",
-    "DemiGods    ",
-    "Knights     ",
-    "Squires     "
+  "Implementors",
+  "Creators    ",
+  "Supremacies ",
+  "Deities     ",
+  "Gods        ",
+  "Immortals   ",
+  "DemiGods    ",
+  "Knights     ",
+  "Squires     "
 };
 
 /*
  * Local functions.
  */
 void change_wizlist
-args ( ( CHAR_DATA * ch, bool add, int level, char *argument ) );
+args((CHAR_DATA * ch, bool add, int level, char *argument));
 
-void save_wizlist ( void )
+void save_wizlist(void)
 {
-    WIZ_DATA *pwiz;
-    FILE *fp;
-    bool found = false;
+  WIZ_DATA *pwiz;
+  FILE *fp;
+  bool found = false;
 
-    if ( ( fp = file_open ( WIZ_FILE, "w" ) ) == NULL )
+  if ((fp = file_open(WIZ_FILE, "w")) == NULL)
+  {
+    perror(WIZ_FILE);
+  }
+
+  for (pwiz = wiz_list; pwiz != NULL; pwiz = pwiz->next)
+  {
+    found = true;
+    fprintf(fp, "%s %d\n", pwiz->name, pwiz->level);
+  }
+
+  file_close(fp);
+  if (!found)
+    unlink(WIZ_FILE);
+}
+
+void load_wizlist(void)
+{
+  FILE *fp;
+  WIZ_DATA *wiz_last;
+
+  strcat(boot_buf, "sson to all .");
+  if ((fp = file_open(WIZ_FILE, "r")) == NULL)
+  {
+    strcat(boot_buf, "....\n\r\n\r                    ");
+    return;
+  }
+
+  wiz_last = NULL;
+  strcat(boot_buf, "....\n\r\n\r                    ");
+  for (;;)
+  {
+    WIZ_DATA *pwiz;
+
+    if (feof(fp))
     {
-        perror ( WIZ_FILE );
+      file_close(fp);
+      return;
     }
 
-    for ( pwiz = wiz_list; pwiz != NULL; pwiz = pwiz->next )
+    pwiz = new_wiz();
+
+    pwiz->name = str_dup(fread_word(fp));
+    pwiz->level = fread_number(fp);
+    fread_to_eol(fp);
+
+    if (wiz_list == NULL)
+      wiz_list = pwiz;
+    else
+      wiz_last->next = pwiz;
+    wiz_last = pwiz;
+  }
+}
+
+CH_CMD(do_wizlist)
+{
+  char arg1[MAX_INPUT_LENGTH];
+  char arg2[MAX_INPUT_LENGTH];
+  char arg3[MAX_INPUT_LENGTH];
+  char buf[MAX_STRING_LENGTH];
+  char title[MAX_STRING_LENGTH];
+  BUFFER *buffer;
+  int level;
+  WIZ_DATA *pwiz;
+  int lngth;
+  int amt;
+  bool found;
+
+  argument = one_argument(argument, arg1);
+  argument = one_argument(argument, arg2);
+  argument = one_argument(argument, arg3);
+
+  /*
+   * Uncomment the following to use the old method of having
+   * a fixed wizlist in the rot.are file.
+   */
+
+  /*
+     do_help(ch,"wizlist");
+     return;
+   */
+
+  if ((arg1[0] != '\0') && (ch->level == MAX_LEVEL))
+  {
+    if (!str_prefix(arg1, "add"))
     {
+      if (!is_number(arg2) || (arg3[0] == '\0'))
+      {
+        send_to_char("Syntax: wizlist add <level> <name>\n\r", ch);
+        return;
+      }
+      level = atoi(arg2);
+      change_wizlist(ch, true, level, arg3);
+      return;
+    }
+    if (!str_prefix(arg1, "delete"))
+    {
+      if (arg2[0] == '\0')
+      {
+        send_to_char("Syntax: wizlist delete <name>\n\r", ch);
+        return;
+      }
+      change_wizlist(ch, false, 0, arg2);
+      return;
+    }
+    send_to_char("Syntax:\n\r", ch);
+    send_to_char("       wizlist delete <name>\n\r", ch);
+    send_to_char("       wizlist add <level> <name>\n\r", ch);
+    return;
+  }
+
+  if (wiz_list == NULL)
+  {
+    send_to_char("No immortals listed at this time.\n\r", ch);
+    return;
+  }
+  buffer = new_buf();
+  sprintf(title, "The IMMORTALS of Distortions of Chaos{x");
+  sprintf(buf,
+          "{W  ___________________________________________________________________________{x\n\r");
+  add_buf(buffer, buf);
+  sprintf(buf, "{W /\\_\\%70s\\_\\\n\r", " ");
+  add_buf(buffer, buf);
+  lngth = (70 - strlen(title)) / 2;
+  for (; lngth >= 0; lngth--)
+  {
+    strcat(title, " ");
+  }
+  sprintf(buf, "{W|/\\\\_\\{D%72s{W\\_\\\n\r", title);
+  add_buf(buffer, buf);
+  sprintf(buf, "{W\\_/_|_|{x%69s{W|_|\n\r", " ");
+  add_buf(buffer, buf);
+  for (level = IMPLEMENTOR; level > ANCIENT; level--)
+  {
+    found = false;
+    amt = 0;
+    for (pwiz = wiz_list; pwiz != NULL; pwiz = pwiz->next)
+    {
+      if (pwiz->level == level)
+      {
+        amt++;
         found = true;
-        fprintf ( fp, "%s %d\n", pwiz->name, pwiz->level );
+      }
     }
-
-    file_close ( fp );
-    if ( !found )
-        unlink ( WIZ_FILE );
-}
-
-void load_wizlist ( void )
-{
-    FILE *fp;
-    WIZ_DATA *wiz_last;
-
-    strcat ( boot_buf, "sson to all ." );
-    if ( ( fp = file_open ( WIZ_FILE, "r" ) ) == NULL )
+    if (!found)
     {
-        strcat ( boot_buf, "....\n\r\n\r                    " );
-        return;
+      if (level == ANCIENT + 1)
+      {
+        sprintf(buf, "{x {W___|_|{x%69s{W|_|\n\r", " ");
+        add_buf(buffer, buf);
+      }
+      continue;
     }
-
-    wiz_last = NULL;
-    strcat ( boot_buf, "....\n\r\n\r                    " );
-    for ( ;; )
+    sprintf(buf, "{x    {W|_|{B%37s {b[{W%d{b]{x%26s{W|_|{x\n\r",
+            wiz_titles[IMPLEMENTOR - level], level, " ");
+    add_buf(buffer, buf);
+    sprintf(buf, "{x    {W|_|{c%25s******************{x%26s{W|_|{x\n\r",
+            " ", " ");
+    add_buf(buffer, buf);
+    lngth = 0;
+    for (pwiz = wiz_list; pwiz != NULL; pwiz = pwiz->next)
     {
-        WIZ_DATA *pwiz;
-
-        if ( feof ( fp ) )
+      if (pwiz->level == level)
+      {
+        if (lngth == 0)
         {
-            file_close ( fp );
-            return;
+          if (amt > 2)
+          {
+            sprintf(buf, "{x    {W|_|{x{%s%12s%-17s ",
+                    level >= DEMI ? "R" : "r", " ", pwiz->name);
+            add_buf(buffer, buf);
+            lngth = 1;
+          }
+          else if (amt > 1)
+          {
+            sprintf(buf, "{x    {W|_|{x{%s%21s%-17s ",
+                    level >= DEMI ? "R" : "r", " ", pwiz->name);
+            add_buf(buffer, buf);
+            lngth = 1;
+          }
+          else
+          {
+            sprintf(buf, "{x    {W|_|{x{%s%30s%-39s{W|_|{x\n\r",
+                    level >= DEMI ? "R" : "r", " ", pwiz->name);
+            add_buf(buffer, buf);
+            lngth = 0;
+          }
         }
-
-        pwiz = new_wiz (  );
-
-        pwiz->name = str_dup ( fread_word ( fp ) );
-        pwiz->level = fread_number ( fp );
-        fread_to_eol ( fp );
-
-        if ( wiz_list == NULL )
-            wiz_list = pwiz;
-        else
-            wiz_last->next = pwiz;
-        wiz_last = pwiz;
-    }
-}
-
-CH_CMD ( do_wizlist )
-{
-    char arg1[MAX_INPUT_LENGTH];
-    char arg2[MAX_INPUT_LENGTH];
-    char arg3[MAX_INPUT_LENGTH];
-    char buf[MAX_STRING_LENGTH];
-    char title[MAX_STRING_LENGTH];
-    BUFFER *buffer;
-    int level;
-    WIZ_DATA *pwiz;
-    int lngth;
-    int amt;
-    bool found;
-
-    argument = one_argument ( argument, arg1 );
-    argument = one_argument ( argument, arg2 );
-    argument = one_argument ( argument, arg3 );
-
-/*
- * Uncomment the following to use the old method of having
- * a fixed wizlist in the rot.are file.
- */
-
-/*
-    do_help(ch,"wizlist");
-    return;
-*/
-
-    if ( ( arg1[0] != '\0' ) && ( ch->level == MAX_LEVEL ) )
-    {
-        if ( !str_prefix ( arg1, "add" ) )
+        else if (lngth == 1)
         {
-            if ( !is_number ( arg2 ) || ( arg3[0] == '\0' ) )
-            {
-                send_to_char ( "Syntax: wizlist add <level> <name>\n\r", ch );
-                return;
-            }
-            level = atoi ( arg2 );
-            change_wizlist ( ch, true, level, arg3 );
-            return;
-        }
-        if ( !str_prefix ( arg1, "delete" ) )
-        {
-            if ( arg2[0] == '\0' )
-            {
-                send_to_char ( "Syntax: wizlist delete <name>\n\r", ch );
-                return;
-            }
-            change_wizlist ( ch, false, 0, arg2 );
-            return;
-        }
-        send_to_char ( "Syntax:\n\r", ch );
-        send_to_char ( "       wizlist delete <name>\n\r", ch );
-        send_to_char ( "       wizlist add <level> <name>\n\r", ch );
-        return;
-    }
-
-    if ( wiz_list == NULL )
-    {
-        send_to_char ( "No immortals listed at this time.\n\r", ch );
-        return;
-    }
-    buffer = new_buf (  );
-    sprintf ( title, "The IMMORTALS of Distortions of Chaos{x" );
-    sprintf ( buf,
-              "{W  ___________________________________________________________________________{x\n\r" );
-    add_buf ( buffer, buf );
-    sprintf ( buf, "{W /\\_\\%70s\\_\\\n\r", " " );
-    add_buf ( buffer, buf );
-    lngth = ( 70 - strlen ( title ) ) / 2;
-    for ( ; lngth >= 0; lngth-- )
-    {
-        strcat ( title, " " );
-    }
-    sprintf ( buf, "{W|/\\\\_\\{D%72s{W\\_\\\n\r", title );
-    add_buf ( buffer, buf );
-    sprintf ( buf, "{W\\_/_|_|{x%69s{W|_|\n\r", " " );
-    add_buf ( buffer, buf );
-    for ( level = IMPLEMENTOR; level > ANCIENT; level-- )
-    {
-        found = false;
-        amt = 0;
-        for ( pwiz = wiz_list; pwiz != NULL; pwiz = pwiz->next )
-        {
-            if ( pwiz->level == level )
-            {
-                amt++;
-                found = true;
-            }
-        }
-        if ( !found )
-        {
-            if ( level == ANCIENT + 1 )
-            {
-                sprintf ( buf, "{x {W___|_|{x%69s{W|_|\n\r", " " );
-                add_buf ( buffer, buf );
-            }
-            continue;
-        }
-        sprintf ( buf, "{x    {W|_|{B%37s {b[{W%d{b]{x%26s{W|_|{x\n\r",
-                  wiz_titles[IMPLEMENTOR - level], level, " " );
-        add_buf ( buffer, buf );
-        sprintf ( buf, "{x    {W|_|{c%25s******************{x%26s{W|_|{x\n\r",
-                  " ", " " );
-        add_buf ( buffer, buf );
-        lngth = 0;
-        for ( pwiz = wiz_list; pwiz != NULL; pwiz = pwiz->next )
-        {
-            if ( pwiz->level == level )
-            {
-                if ( lngth == 0 )
-                {
-                    if ( amt > 2 )
-                    {
-                        sprintf ( buf, "{x    {W|_|{x{%s%12s%-17s ",
-                                  level >= DEMI ? "R" : "r", " ", pwiz->name );
-                        add_buf ( buffer, buf );
-                        lngth = 1;
-                    }
-                    else if ( amt > 1 )
-                    {
-                        sprintf ( buf, "{x    {W|_|{x{%s%21s%-17s ",
-                                  level >= DEMI ? "R" : "r", " ", pwiz->name );
-                        add_buf ( buffer, buf );
-                        lngth = 1;
-                    }
-                    else
-                    {
-                        sprintf ( buf, "{x    {W|_|{x{%s%30s%-39s{W|_|{x\n\r",
-                                  level >= DEMI ? "R" : "r", " ", pwiz->name );
-                        add_buf ( buffer, buf );
-                        lngth = 0;
-                    }
-                }
-                else if ( lngth == 1 )
-                {
-                    if ( amt > 2 )
-                    {
-                        sprintf ( buf, "%-17s ", pwiz->name );
-                        add_buf ( buffer, buf );
-                        lngth = 2;
-                    }
-                    else
-                    {
-                        sprintf ( buf, "%-30s{W|_|{x\n\r", pwiz->name );
-                        add_buf ( buffer, buf );
-                        lngth = 0;
-                    }
-                }
-                else
-                {
-                    sprintf ( buf, "%-21s{W|_|{x\n\r", pwiz->name );
-                    add_buf ( buffer, buf );
-                    lngth = 0;
-                    amt -= 3;
-                }
-            }
-        }
-        if ( level == ANCIENT + 1 )
-        {
-            sprintf ( buf, "{x {W___|_|{x%69s{W|_|{x\n\r", " " );
+          if (amt > 2)
+          {
+            sprintf(buf, "%-17s ", pwiz->name);
+            add_buf(buffer, buf);
+            lngth = 2;
+          }
+          else
+          {
+            sprintf(buf, "%-30s{W|_|{x\n\r", pwiz->name);
+            add_buf(buffer, buf);
+            lngth = 0;
+          }
         }
         else
         {
-            sprintf ( buf, "{x   {W |_|{x%69s{W|_|{x\n\r", " " );
+          sprintf(buf, "%-21s{W|_|{x\n\r", pwiz->name);
+          add_buf(buffer, buf);
+          lngth = 0;
+          amt -= 3;
         }
-        add_buf ( buffer, buf );
+      }
     }
-    sprintf ( buf, "{x/ \\ {W|_|{x%69s{W|_|{x\n\r", " " );
-    add_buf ( buffer, buf );
-    sprintf ( buf, "{W|\\//_/{x%70s{W/_/\n\r", " " );
-    add_buf ( buffer, buf );
-    sprintf ( buf,
-              "{x\\{W/_/_______________________________________________________________________/_/{x\n\r" );
-    add_buf ( buffer, buf );
-    page_to_char ( buf_string ( buffer ), ch );
-    free_buf ( buffer );
-    return;
-}
-
-void update_wizlist ( CHAR_DATA * ch, int level )
-{
-    WIZ_DATA *prev;
-    WIZ_DATA *curr;
-
-    if ( IS_NPC ( ch ) )
+    if (level == ANCIENT + 1)
     {
-        return;
-    }
-    prev = NULL;
-    for ( curr = wiz_list; curr != NULL; prev = curr, curr = curr->next )
-    {
-        if ( !str_cmp ( ch->name, curr->name ) )
-        {
-            if ( prev == NULL )
-                wiz_list = wiz_list->next;
-            else
-                prev->next = curr->next;
-
-            free_wiz ( curr );
-            save_wizlist (  );
-        }
-    }
-    if ( level <= ANCIENT )
-    {
-        return;
-    }
-    curr = new_wiz (  );
-    curr->name = str_dup ( ch->name );
-    curr->level = level;
-    curr->next = wiz_list;
-    wiz_list = curr;
-    save_wizlist (  );
-    return;
-}
-
-void change_wizlist ( CHAR_DATA * ch, bool add, int level, char *argument )
-{
-    char arg[MAX_INPUT_LENGTH];
-    WIZ_DATA *prev;
-    WIZ_DATA *curr;
-
-    one_argument ( argument, arg );
-    if ( arg[0] == '\0' )
-    {
-        send_to_char ( "Syntax:\n\r", ch );
-        if ( !add )
-            send_to_char ( "    wizlist delete <name>\n\r", ch );
-        else
-            send_to_char ( "    wizlist add <level> <name>\n\r", ch );
-        return;
-    }
-    if ( add )
-    {
-        if ( ( level <= ANCIENT ) || ( level > MAX_LEVEL ) )
-        {
-            send_to_char ( "Syntax:\n\r", ch );
-            send_to_char ( "    wizlist add <level> <name>\n\r", ch );
-            return;
-        }
-    }
-    if ( !add )
-    {
-        prev = NULL;
-        for ( curr = wiz_list; curr != NULL; prev = curr, curr = curr->next )
-        {
-            if ( !str_cmp ( capitalize ( arg ), curr->name ) )
-            {
-                if ( prev == NULL )
-                    wiz_list = wiz_list->next;
-                else
-                    prev->next = curr->next;
-
-                free_wiz ( curr );
-                save_wizlist (  );
-            }
-        }
+      sprintf(buf, "{x {W___|_|{x%69s{W|_|{x\n\r", " ");
     }
     else
     {
-        curr = new_wiz (  );
-        curr->name = str_dup ( capitalize ( arg ) );
-        curr->level = level;
-        curr->next = wiz_list;
-        wiz_list = curr;
-        save_wizlist (  );
+      sprintf(buf, "{x   {W |_|{x%69s{W|_|{x\n\r", " ");
     }
+    add_buf(buffer, buf);
+  }
+  sprintf(buf, "{x/ \\ {W|_|{x%69s{W|_|{x\n\r", " ");
+  add_buf(buffer, buf);
+  sprintf(buf, "{W|\\//_/{x%70s{W/_/\n\r", " ");
+  add_buf(buffer, buf);
+  sprintf(buf,
+          "{x\\{W/_/_______________________________________________________________________/_/{x\n\r");
+  add_buf(buffer, buf);
+  page_to_char(buf_string(buffer), ch);
+  free_buf(buffer);
+  return;
+}
+
+void update_wizlist(CHAR_DATA * ch, int level)
+{
+  WIZ_DATA *prev;
+  WIZ_DATA *curr;
+
+  if (IS_NPC(ch))
+  {
     return;
+  }
+  prev = NULL;
+  for (curr = wiz_list; curr != NULL; prev = curr, curr = curr->next)
+  {
+    if (!str_cmp(ch->name, curr->name))
+    {
+      if (prev == NULL)
+        wiz_list = wiz_list->next;
+      else
+        prev->next = curr->next;
+
+      free_wiz(curr);
+      save_wizlist();
+    }
+  }
+  if (level <= ANCIENT)
+  {
+    return;
+  }
+  curr = new_wiz();
+  curr->name = str_dup(ch->name);
+  curr->level = level;
+  curr->next = wiz_list;
+  wiz_list = curr;
+  save_wizlist();
+  return;
+}
+
+void change_wizlist(CHAR_DATA * ch, bool add, int level, char *argument)
+{
+  char arg[MAX_INPUT_LENGTH];
+  WIZ_DATA *prev;
+  WIZ_DATA *curr;
+
+  one_argument(argument, arg);
+  if (arg[0] == '\0')
+  {
+    send_to_char("Syntax:\n\r", ch);
+    if (!add)
+      send_to_char("    wizlist delete <name>\n\r", ch);
+    else
+      send_to_char("    wizlist add <level> <name>\n\r", ch);
+    return;
+  }
+  if (add)
+  {
+    if ((level <= ANCIENT) || (level > MAX_LEVEL))
+    {
+      send_to_char("Syntax:\n\r", ch);
+      send_to_char("    wizlist add <level> <name>\n\r", ch);
+      return;
+    }
+  }
+  if (!add)
+  {
+    prev = NULL;
+    for (curr = wiz_list; curr != NULL; prev = curr, curr = curr->next)
+    {
+      if (!str_cmp(capitalize(arg), curr->name))
+      {
+        if (prev == NULL)
+          wiz_list = wiz_list->next;
+        else
+          prev->next = curr->next;
+
+        free_wiz(curr);
+        save_wizlist();
+      }
+    }
+  }
+  else
+  {
+    curr = new_wiz();
+    curr->name = str_dup(capitalize(arg));
+    curr->level = level;
+    curr->next = wiz_list;
+    wiz_list = curr;
+    save_wizlist();
+  }
+  return;
 }

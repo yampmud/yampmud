@@ -8,19 +8,19 @@
 #include "merc.h"
 #include "db.h"
 
-int powerf ( int value, int pow )
+int powerf(int value, int pow)
 {
-    int loop;
+  int loop;
 
-    if ( pow == 0 )
-        return 1;
+  if (pow == 0)
+    return 1;
 
-    if ( pow == 1 )
-        return value;
-
-    for ( loop = 1; loop < pow; loop++ )
-    {
-        value *= value;
-    }
+  if (pow == 1)
     return value;
+
+  for (loop = 1; loop < pow; loop++)
+  {
+    value *= value;
+  }
+  return value;
 }

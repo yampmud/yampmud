@@ -1,3 +1,4 @@
+
 /***************************************************************************
  *  Original Diku Mud copyright (C) 1990, 1991 by Sebastian Hammer,	   *
  *  Michael Seifert, Hans Henrik St{rfeldt, Tom Madsen, and Katja Nyboe.   *
@@ -31,7 +32,7 @@
 *       ROT license, in the file doc/rot.license                           * 
 ***************************************************************************/
 
-int clan_lookup args ( ( const char *name ) );
-int position_lookup args ( ( const char *name ) );
-int sex_lookup args ( ( const char *name ) );
-int size_lookup args ( ( const char *name ) );
+int clan_lookup args((const char *name));
+int position_lookup args((const char *name));
+int sex_lookup args((const char *name));
+int size_lookup args((const char *name));

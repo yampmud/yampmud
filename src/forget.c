@@ -1,3 +1,4 @@
+
 /***************************************************************************
  *  Original Diku Mud copyright (C) 1990, 1991 by Sebastian Hammer,	   *
  *  Michael Seifert, Hans Henrik St{rfeldt, Tom Madsen, and Katja Nyboe.   *
@@ -37,182 +38,181 @@
 #include <time.h>
 #include "merc.h"
 
-CH_CMD ( do_ignor )
+CH_CMD(do_ignor)
 {
-    send_to_char ( "I'm sorry, forget must be entered in full.\n\r", ch );
+  send_to_char("I'm sorry, forget must be entered in full.\n\r", ch);
+  return;
+}
+
+CH_CMD(do_ignore)
+{
+  CHAR_DATA *rch;
+  char arg[MAX_INPUT_LENGTH], buf[MAX_STRING_LENGTH];
+  DESCRIPTOR_DATA *d;
+  int pos;
+  bool found = false;
+
+  if (ch->desc == NULL)
+    rch = ch;
+  else
+    rch = ch->desc->original ? ch->desc->original : ch;
+
+  if (IS_NPC(rch))
     return;
-}
 
-CH_CMD ( do_ignore )
-{
-    CHAR_DATA *rch;
-    char arg[MAX_INPUT_LENGTH], buf[MAX_STRING_LENGTH];
-    DESCRIPTOR_DATA *d;
-    int pos;
-    bool found = false;
+  smash_tilde(argument);
 
-    if ( ch->desc == NULL )
-        rch = ch;
-    else
-        rch = ch->desc->original ? ch->desc->original : ch;
+  argument = one_argument(argument, arg);
 
-    if ( IS_NPC ( rch ) )
-        return;
-
-    smash_tilde ( argument );
-
-    argument = one_argument ( argument, arg );
-
-    if ( arg[0] == '\0' )
+  if (arg[0] == '\0')
+  {
+    if (rch->pcdata->forget[0] == NULL)
     {
-        if ( rch->pcdata->forget[0] == NULL )
-        {
-            send_to_char ( "You are not forgetting anyone.\n\r", ch );
-            return;
-        }
-        send_to_char ( "You are currently forgetting:\n\r", ch );
-
-        for ( pos = 0; pos < MAX_FORGET; pos++ )
-        {
-            if ( rch->pcdata->forget[pos] == NULL )
-                break;
-
-            sprintf ( buf, "    %s\n\r", rch->pcdata->forget[pos] );
-            send_to_char ( buf, ch );
-        }
-        return;
+      send_to_char("You are not forgetting anyone.\n\r", ch);
+      return;
     }
+    send_to_char("You are currently forgetting:\n\r", ch);
 
-    for ( pos = 0; pos < MAX_FORGET; pos++ )
+    for (pos = 0; pos < MAX_FORGET; pos++)
     {
-        if ( rch->pcdata->forget[pos] == NULL )
-            break;
+      if (rch->pcdata->forget[pos] == NULL)
+        break;
 
-        if ( !str_cmp ( arg, rch->pcdata->forget[pos] ) )
-        {
-            send_to_char ( "You have already forgotten that person.\n\r", ch );
-            return;
-        }
+      sprintf(buf, "    %s\n\r", rch->pcdata->forget[pos]);
+      send_to_char(buf, ch);
     }
-
-    for ( d = descriptor_list; d != NULL; d = d->next )
-    {
-        CHAR_DATA *wch;
-
-        if ( d->connected != CON_PLAYING || !can_see ( ch, d->character ) )
-            continue;
-
-        wch = ( d->original != NULL ) ? d->original : d->character;
-
-        if ( !can_see ( ch, wch ) )
-            continue;
-
-        if ( !str_cmp ( arg, wch->name ) )
-        {
-            found = true;
-            if ( wch == ch )
-            {
-                send_to_char
-                    ( "You forget yourself for a moment, but it passes.\n\r",
-                      ch );
-                return;
-            }
-            if ( wch->level >= LEVEL_IMMORTAL )
-            {
-                send_to_char ( "That person is very hard to forget.\n\r", ch );
-                return;
-            }
-        }
-    }
-
-    if ( !found )
-    {
-        send_to_char ( "No one by that name is playing.\n\r", ch );
-        return;
-    }
-
-    for ( pos = 0; pos < MAX_FORGET; pos++ )
-    {
-        if ( rch->pcdata->forget[pos] == NULL )
-            break;
-    }
-
-    if ( pos >= MAX_FORGET )
-    {
-        send_to_char ( "Sorry, you have reached the forget limit.\n\r", ch );
-        return;
-    }
-
-    /* make a new forget */
-    rch->pcdata->forget[pos] = str_dup ( arg );
-    sprintf ( buf, "You are now deaf to %s.\n\r", arg );
-    send_to_char ( buf, ch );
-}
-
-CH_CMD ( do_remembe )
-{
-    send_to_char ( "I'm sorry, remember must be entered in full.\n\r", ch );
     return;
+  }
+
+  for (pos = 0; pos < MAX_FORGET; pos++)
+  {
+    if (rch->pcdata->forget[pos] == NULL)
+      break;
+
+    if (!str_cmp(arg, rch->pcdata->forget[pos]))
+    {
+      send_to_char("You have already forgotten that person.\n\r", ch);
+      return;
+    }
+  }
+
+  for (d = descriptor_list; d != NULL; d = d->next)
+  {
+    CHAR_DATA *wch;
+
+    if (d->connected != CON_PLAYING || !can_see(ch, d->character))
+      continue;
+
+    wch = (d->original != NULL) ? d->original : d->character;
+
+    if (!can_see(ch, wch))
+      continue;
+
+    if (!str_cmp(arg, wch->name))
+    {
+      found = true;
+      if (wch == ch)
+      {
+        send_to_char
+          ("You forget yourself for a moment, but it passes.\n\r", ch);
+        return;
+      }
+      if (wch->level >= LEVEL_IMMORTAL)
+      {
+        send_to_char("That person is very hard to forget.\n\r", ch);
+        return;
+      }
+    }
+  }
+
+  if (!found)
+  {
+    send_to_char("No one by that name is playing.\n\r", ch);
+    return;
+  }
+
+  for (pos = 0; pos < MAX_FORGET; pos++)
+  {
+    if (rch->pcdata->forget[pos] == NULL)
+      break;
+  }
+
+  if (pos >= MAX_FORGET)
+  {
+    send_to_char("Sorry, you have reached the forget limit.\n\r", ch);
+    return;
+  }
+
+  /* make a new forget */
+  rch->pcdata->forget[pos] = str_dup(arg);
+  sprintf(buf, "You are now deaf to %s.\n\r", arg);
+  send_to_char(buf, ch);
 }
 
-CH_CMD ( do_remember )
+CH_CMD(do_remembe)
 {
-    CHAR_DATA *rch;
-    char arg[MAX_INPUT_LENGTH], buf[MAX_STRING_LENGTH];
-    int pos;
-    bool found = false;
+  send_to_char("I'm sorry, remember must be entered in full.\n\r", ch);
+  return;
+}
 
-    if ( ch->desc == NULL )
-        rch = ch;
-    else
-        rch = ch->desc->original ? ch->desc->original : ch;
+CH_CMD(do_remember)
+{
+  CHAR_DATA *rch;
+  char arg[MAX_INPUT_LENGTH], buf[MAX_STRING_LENGTH];
+  int pos;
+  bool found = false;
 
-    if ( IS_NPC ( rch ) )
-        return;
+  if (ch->desc == NULL)
+    rch = ch;
+  else
+    rch = ch->desc->original ? ch->desc->original : ch;
 
-    argument = one_argument ( argument, arg );
+  if (IS_NPC(rch))
+    return;
 
-    if ( arg[0] == '\0' )
+  argument = one_argument(argument, arg);
+
+  if (arg[0] == '\0')
+  {
+    if (rch->pcdata->forget[0] == NULL)
     {
-        if ( rch->pcdata->forget[0] == NULL )
-        {
-            send_to_char ( "You are not forgetting anyone.\n\r", ch );
-            return;
-        }
-        send_to_char ( "You are currently forgetting:\n\r", ch );
+      send_to_char("You are not forgetting anyone.\n\r", ch);
+      return;
+    }
+    send_to_char("You are currently forgetting:\n\r", ch);
 
-        for ( pos = 0; pos < MAX_FORGET; pos++ )
-        {
-            if ( rch->pcdata->forget[pos] == NULL )
-                break;
+    for (pos = 0; pos < MAX_FORGET; pos++)
+    {
+      if (rch->pcdata->forget[pos] == NULL)
+        break;
 
-            sprintf ( buf, "    %s\n\r", rch->pcdata->forget[pos] );
-            send_to_char ( buf, ch );
-        }
-        return;
+      sprintf(buf, "    %s\n\r", rch->pcdata->forget[pos]);
+      send_to_char(buf, ch);
+    }
+    return;
+  }
+
+  for (pos = 0; pos < MAX_FORGET; pos++)
+  {
+    if (rch->pcdata->forget[pos] == NULL)
+      break;
+
+    if (found)
+    {
+      rch->pcdata->forget[pos - 1] = rch->pcdata->forget[pos];
+      rch->pcdata->forget[pos] = NULL;
+      continue;
     }
 
-    for ( pos = 0; pos < MAX_FORGET; pos++ )
+    if (!str_cmp(arg, rch->pcdata->forget[pos]))
     {
-        if ( rch->pcdata->forget[pos] == NULL )
-            break;
-
-        if ( found )
-        {
-            rch->pcdata->forget[pos - 1] = rch->pcdata->forget[pos];
-            rch->pcdata->forget[pos] = NULL;
-            continue;
-        }
-
-        if ( !str_cmp ( arg, rch->pcdata->forget[pos] ) )
-        {
-            send_to_char ( "Forget removed.\n\r", ch );
-            free_string ( rch->pcdata->forget[pos] );
-            rch->pcdata->forget[pos] = NULL;
-            found = true;
-        }
+      send_to_char("Forget removed.\n\r", ch);
+      free_string(rch->pcdata->forget[pos]);
+      rch->pcdata->forget[pos] = NULL;
+      found = true;
     }
+  }
 
-    if ( !found )
-        send_to_char ( "No one by that name is forgotten.\n\r", ch );
+  if (!found)
+    send_to_char("No one by that name is forgotten.\n\r", ch);
 }

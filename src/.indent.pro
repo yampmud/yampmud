@@ -1,0 +1,1 @@
+-bap -bbb -nbbo -bli0 -bls -bl -cbi2 -ci2 -cli2 -cs -di2 -fc1 -hnl -i2 -nip -npsl -npcs -nsob -nss -pi0 -ts2 -nut
