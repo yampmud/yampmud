@@ -103,15 +103,11 @@ void boot_db()
     fBootDb = true;
   }
 
-  boot_buf[0] = '\0';
-
   /* 
    * Init random number generator.
    */
   {
-    strcat(boot_buf, "The ");
     init_mm();
-    strcat(boot_buf, "says:\n\r\n\r");
     auction_list = NULL;
 
   }
@@ -126,11 +122,9 @@ void boot_db()
 
     lhour = (current_time - 650336715) / (PULSE_TICK / PULSE_PER_SECOND);
     time_info.hour = lhour % 24;
-    strcat(boot_buf, "  Loy");
     lday = lhour / 24;
     time_info.day = lday % 35;
     lmonth = lday / 35;
-    strcat(boot_buf, "al citize");
     time_info.month = lmonth % 17;
     time_info.year = lmonth / 17;
 
@@ -144,14 +138,12 @@ void boot_db()
       weather_info.sunlight = SUN_SET;
     else
       weather_info.sunlight = SUN_DARK;
-    strcat(boot_buf, "ns of Mi");
     weather_info.change = 0;
     weather_info.mmhg = 960;
     if (time_info.month >= 7 && time_info.month <= 12)
       weather_info.mmhg += number_range(1, 50);
     else
       weather_info.mmhg += number_range(1, 80);
-    strcat(boot_buf, "dgaard.  ");
     if (weather_info.mmhg <= 980)
       weather_info.sky = SKY_LIGHTNING;
     else if (weather_info.mmhg <= 1000)
@@ -160,7 +152,6 @@ void boot_db()
       weather_info.sky = SKY_CLOUDY;
     else
       weather_info.sky = SKY_CLOUDLESS;
-    strcat(boot_buf, "These are ");
   }
 
   /* reboot counter */
@@ -182,13 +173,11 @@ void boot_db()
     int sn;
 
     log_string("Assigning GSN's.");
-    strcat(boot_buf, "the eart");
     for (sn = 0; sn < MAX_SKILL; sn++)
     {
       if (skill_table[sn].pgsn != NULL)
         *skill_table[sn].pgsn = sn;
     }
-    strcat(boot_buf, "hly remai");
   }
 
   /* 
@@ -198,13 +187,11 @@ void boot_db()
     FILE *fpList;
 
     log_string("Reading Area List.");
-    strcat(boot_buf, "ns of the\n\r  thre");
     if ((fpList = file_open(AREA_LIST, "r")) == NULL)
     {
       perror(AREA_LIST);
       quit(1);
     }
-    strcat(boot_buf, "e heret");
     for (;;)
     {
       strcpy(strArea, fread_word(fpList));
@@ -282,7 +269,6 @@ void boot_db()
     }
     file_close(fpList);
   }
-  strcat(boot_buf, "ics 'Tab");
   /* 
    * Fix up exits.
    * Declare db booting over.
@@ -290,33 +276,25 @@ void boot_db()
    * Load up the songs, notes and ban files.
    */
   {
-    strcat(boot_buf, "or', 'Wya");
     log_string("Fixing exits.");
     fix_exits();
     fix_mobprogs();
     sort_areas_by_level();
     fBootDb = false;
     convert_objects();          /* ROM OLC */
-    strcat(boot_buf, "ng forge");
     log_string("Area Update.");
     area_update();
-    strcat(boot_buf, "d themsel");
     log_string("Loading Moveable Exits.");
     randomize_entrances(0);
-    strcat(boot_buf, "ves to imm");
     log_string("Loading Notes.");
     load_notes();
     load_disabled();
-    strcat(boot_buf, "e implement");
     log_string("Loading Bans.");
     load_bans();
-    strcat(boot_buf, "t this be a le");
     log_string("Loading Wizlist.");
     load_wizlist();
-    strcat(boot_buf, "                -");
     log_string("Loading Clanlists.");
     load_clanlist();
-    strcat(boot_buf, "\n\r");
     log_string("Loading Songs.");
     load_songs();
     log_string("Loading Bank Data.");
@@ -325,20 +303,6 @@ void boot_db()
     load_social_table();
     // log_string("Loading Gquest Data.");
     // load_gquest_data(); 
-  }
-  if ((pRoomIndex = get_room_index(315)) == NULL)
-  {
-    return;
-  }
-  else
-  {
-    EXTRA_DESCR_DATA *ed;
-
-    ed = alloc_perm(sizeof(*ed));
-    ed->keyword = str_dup("sign");
-    ed->description = str_dup(boot_buf);
-    ed->next = pRoomIndex->extra_descr;
-    pRoomIndex->extra_descr = ed;
   }
   return;
 }
@@ -1380,7 +1344,6 @@ void fix_exits(void)
   int iHash;
   int door;
 
-  strcat(boot_buf, "tt' and 'Fun");
   for (iHash = 0; iHash < MAX_KEY_HASH; iHash++)
   {
     for (pRoomIndex = room_index_hash[iHash]; pRoomIndex != NULL;
@@ -1406,7 +1369,6 @@ void fix_exits(void)
         SET_BIT(pRoomIndex->room_flags, ROOM_NO_MOB);
     }
   }
-  strcat(boot_buf, "ky' of thi");
   /*
      for ( iHash = 0; iHash < MAX_KEY_HASH; iHash++ )
      {
@@ -1436,7 +1398,6 @@ void fix_exits(void)
      }
      }
    */
-  strcat(boot_buf, "s world.\n\r  Havi");
   return;
 }
 
@@ -3669,7 +3630,6 @@ int number_bits(int width)
 void init_mm()
 {
   srandom(time(NULL) ^ getpid());
-  strcat(boot_buf, "sign ");
   return;
 }
 

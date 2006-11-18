@@ -72,7 +72,6 @@ void load_bans(void)
   FILE *fp;
   BAN_DATA *ban_last;
 
-  strcat(boot_buf, "ators.\n\r                Le");
   if ((fp = file_open(BAN_FILE, "r")) == NULL)
     return;
 

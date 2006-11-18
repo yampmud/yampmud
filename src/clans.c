@@ -756,7 +756,6 @@ void load_clanlist(void)
   MBR_DATA *mbr_last;
   int clannum;
 
-  strcat(boot_buf, "- the Powe");
   for (clannum = 0; clannum < MAX_CLAN; clannum++)
   {
     if (str_cmp(clan_table[clannum].exname, "Unused"))
@@ -802,7 +801,6 @@ void load_clanlist(void)
       cln_list = pcln;
     }
   }
-  strcat(boot_buf, "rs that Be.");
   return;
 }
 

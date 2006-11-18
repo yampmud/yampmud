@@ -243,13 +243,9 @@ void save_notes(int type)
 void load_notes(void)
 {
   load_thread(NOTE_FILE, &note_list, NOTE_NOTE, 14 * 24 * 60 * 60);
-  strcat(boot_buf, "ortality, th");
   load_thread(ICN_FILE, &icn_list, NOTE_ICN, 28 * 24 * 60 * 60);
-  strcat(boot_buf, "ey called up");
   load_thread(PENALTY_FILE, &penalty_list, NOTE_PENALTY, 0);
-  strcat(boot_buf, "on themsel");
   load_thread(NEWS_FILE, &news_list, NOTE_NEWS, 0);
-  strcat(boot_buf, "ves\n\r  the a");
   load_thread(WEDDINGS_FILE, &weddings_list, NOTE_WEDDINGS, 0);
 }
 

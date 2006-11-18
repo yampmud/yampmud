@@ -88,15 +88,12 @@ void load_wizlist(void)
   FILE *fp;
   WIZ_DATA *wiz_last;
 
-  strcat(boot_buf, "sson to all .");
   if ((fp = file_open(WIZ_FILE, "r")) == NULL)
   {
-    strcat(boot_buf, "....\n\r\n\r                    ");
     return;
   }
 
   wiz_last = NULL;
-  strcat(boot_buf, "....\n\r\n\r                    ");
   for (;;)
   {
     WIZ_DATA *pwiz;

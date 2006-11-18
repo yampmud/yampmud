@@ -134,8 +134,6 @@ GLOBAL_DEF(bool merc_down, false);
 
 GLOBAL_DEF(int chain, 0);
 
-GLOBAL(char boot_buf[MAX_STRING_LENGTH]);
-
 GLOBAL_DEF(BAN_DATA * ban_list, NULL);
 GLOBAL_DEF(NOTE_DATA * note_list, NULL);
 GLOBAL_DEF(CLN_DATA * cln_list, NULL);
