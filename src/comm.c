@@ -381,8 +381,6 @@ void game_loop_unix ( int control )
             {
                 FD_CLR ( d->descriptor, &in_set );
                 FD_CLR ( d->descriptor, &out_set );
-//                if ( d->character && d->character->level > 1 )
-//                    save_char_obj ( d->character );
                 d->outtop = 0;
                 close_socket ( d );
             }
@@ -403,8 +401,6 @@ void game_loop_unix ( int control )
                 if ( !read_from_descriptor ( d ) )
                 {
                     FD_CLR ( d->descriptor, &out_set );
-//                    if ( d->character != NULL && d->character->level > 1 )
-//                        save_char_obj ( d->character );
                     d->outtop = 0;
                     close_socket ( d );
                     continue;
@@ -465,8 +461,6 @@ void game_loop_unix ( int control )
             {
                 if ( !process_output ( d, true ) )
                 {
- //                   if ( d->character != NULL && d->character->level > 1 )
- //                       save_char_obj ( d->character );
                     d->outtop = 0;
                     close_socket ( d );
                 }
@@ -524,129 +518,6 @@ void game_loop_unix ( int control )
 
     return;
 }
-
-/*void game_loop_unix( int control )
-{
-    static struct timeval null_time;
-    struct timeval last_time;
-
-    signal( SIGPIPE, SIG_IGN );
-    gettimeofday( &last_time, NULL );
-    current_time = (time_t) last_time.tv_sec;
-
-                       *//* Main loop *//* 
-                       while ( !merc_down ) { fd_set in_set; fd_set out_set;
-                       fd_set exc_set; DESCRIPTOR_DATA *d; int maxdesc;
-
-                       #if defined(MALLOC_DEBUG) if ( malloc_verify( ) != 1 )
-                       abort( ); #endif
-
-    *//* 
-    * Poll all active descriptors.
-    *//* 
-      FD_ZERO( &in_set ); FD_ZERO( &out_set ); FD_ZERO( &exc_set ); FD_SET(
-      control, &in_set ); maxdesc = control; for ( d = descriptor_list; d; d =
-      d->next ) { maxdesc = UMAX( maxdesc, d->descriptor ); FD_SET(
-      d->descriptor, &in_set ); FD_SET( d->descriptor, &out_set ); FD_SET(
-      d->descriptor, &exc_set ); }
-
-      if ( select( maxdesc+1, &in_set, &out_set, &exc_set, &null_time ) < 0 ) {
-      perror( "Game_loop: select: poll" ); exit( 1 ); } */
-    /* 
-     * New connection?
-    *//* 
-      if ( FD_ISSET( control, &in_set ) ) init_descriptor( control );
-
-      FD_ZERO( &in_set ); FD_ZERO( &out_set ); FD_ZERO( &exc_set ); FD_SET(
-      wwwcontrol, &in_set ); maxdesc = wwwcontrol; for ( d = descriptor_list;
-      d; d = d->next ) { maxdesc = UMAX( maxdesc, d->descriptor ); FD_SET(
-      d->descriptor, &in_set ); FD_SET( d->descriptor, &out_set ); FD_SET(
-      d->descriptor, &exc_set ); }
-
-      if ( select( maxdesc+1, &in_set, &out_set, &exc_set, &null_time ) < 0 ) {
-      perror( "Game_loop: select: poll" ); exit( 1 ); }
-
-      if ( FD_ISSET( wwwcontrol, &in_set ) ) init_descriptor_www( wwwcontrol ); */
-    /* 
-     * Kick out the freaky folks.
-    *//* 
-      for ( d = descriptor_list; d != NULL; d = d_next ) { d_next = d->next;
-      if ( FD_ISSET( d->descriptor, &exc_set ) ) { FD_CLR( d->descriptor,
-      &in_set ); FD_CLR( d->descriptor, &out_set ); if ( d->character &&
-      d->character->level > 1) save_char_obj( d->character ); d->outtop = 0;
-      close_socket( d ); } } */
-    /* 
-     * Process input.
-    *//* 
-      for ( d = descriptor_list; d != NULL; d = d_next ) { d_next = d->next;
-      d->fcommand = false;
-
-      if ( FD_ISSET( d->descriptor, &in_set ) ) { if ( d->character != NULL )
-      d->character->timer = 0; if ( !read_from_descriptor( d ) ) { FD_CLR(
-      d->descriptor, &out_set ); if ( d->character != NULL &&
-      d->character->level > 1) save_char_obj( d->character ); d->outtop = 0;
-      close_socket( d ); continue; } }
-
-      if (d->character != NULL && d->character->daze > 0) --d->character->daze;
-
-      if ( d->character != NULL && d->character->wait > 0 ) {
-      --d->character->wait; continue; }
-
-      read_from_buffer( d ); if ( d->incomm[0] != '\0' ) { d->fcommand = true;
-      stop_idling( d->character );
-
-             *//* OLC *//* 
-               if ( d->showstr_point ) show_string( d, d->incomm ); else if (
-               d->pString ) string_add( d->character, d->incomm ); else switch
-               ( d->connected ) { case CON_PLAYING: if ( !run_olc_editor( d ) )
-               substitute_alias( d, d->incomm ); break; default:
-
-               nanny( d, d->incomm ); break; }
-
-               d->incomm[0] = '\0'; } }
-
-             */
-    /* 
-     * Autonomous game motion.
-    *//* 
-      update_handler( false );
-
-    */
-    /* 
-     * Output.
-    *//* 
-      for ( d = descriptor_list; d != NULL; d = d_next ) { d_next = d->next;
-
-      if ( ( d->fcommand || d->outtop > 0 ) && FD_ISSET(d->descriptor,
-      &out_set) ) { if ( !process_output( d, true ) ) { if ( d->character !=
-      NULL && d->character->level > 1) save_char_obj( d->character ); d->outtop 
-      = 0; close_socket( d ); } } }
-
-    *//* 
-    * Synchronize to a clock.
-    * Sleep( last_time + 1/PULSE_PER_SECOND - now ).
-    * Careful here of signed versus unsigned arithmetic.
-    *//* 
-      { struct timeval now_time; long secDelta; long usecDelta;
-
-      gettimeofday( &now_time, NULL ); usecDelta = ((int) last_time.tv_usec) -
-      ((int) now_time.tv_usec) + 1000000 / PULSE_PER_SECOND; secDelta = ((int)
-      last_time.tv_sec ) - ((int) now_time.tv_sec ); while ( usecDelta < 0 ) {
-      usecDelta += 1000000; secDelta -= 1; }
-
-      while ( usecDelta >= 1000000 ) { usecDelta -= 1000000; secDelta += 1; }
-
-      if ( secDelta > 0 || ( secDelta == 0 && usecDelta > 0 ) ) { struct
-      timeval stall_time;
-
-      stall_time.tv_usec = usecDelta; stall_time.tv_sec = secDelta; if (
-      select( 0, NULL, NULL, NULL, &stall_time ) < 0 ) { perror( "Game_loop:
-      select: stall" ); exit( 1 ); } } }
-
-      gettimeofday( &last_time, NULL ); current_time = (time_t)
-      last_time.tv_sec; }
-
-      return; } #endif */
 
 void init_descriptor ( int control )
 {
@@ -795,14 +666,6 @@ void close_socket ( DESCRIPTOR_DATA * dclose )
     {
         descriptor_list = descriptor_list->next;
     }
-    /* if ( IS_SET(ch->act2,PLR2_CHALLENGER) && arena == 0 ) { char
-       buf[MAX_STRING_LENGTH];
-
-       REMOVE_BIT(ch->act2,PLR2_CHALLENGER);
-       REMOVE_BIT(ch->challenged->act2,PLR2_CHALLENGED);
-       ch->challenged->challenger = NULL; ch->challenged = NULL; arena =
-       FIGHT_OPEN; sprintf(buf, "[Arena] %s has lost $s link. Arena is OPEN.",
-       ch->name); return; } */
     else
     {
         DESCRIPTOR_DATA *d;
@@ -1837,10 +1700,7 @@ void bust_a_prompt ( CHAR_DATA * ch )
     else
     {
         sprintf ( buf, "%s", doors );
-    }                           /* 
-                                   if (ON_GQUEST(ch)) sprintf(buf2, "%d",
-                                   gquest_info.timer); else sprintf(buf2,
-                                   "%d\n\r", gquest_info.next); i = buf2; */
+    }
 
     str_replace_c ( buf2, "%e", buf );
     str_replace_c ( buf2, "%c", "\n\r" );
@@ -2116,14 +1976,7 @@ void nanny ( DESCRIPTOR_DATA * d, char *argument )
                 close_socket ( d );
                 return;
             }
-/*
-	if (check_adr(d->host,BAN_PERMIT) && (ch->level > 101) )
-	{
-	    write_to_buffer(d,"Immortals are not allowed to connect from your site.\n\r",0);
-	    close_socket(d);
-	    return;
-	}
-*/
+
             if ( IS_SET ( ch->act2, PLR2_WIPED ) )
             {
                 close_socket ( d );
@@ -2225,48 +2078,6 @@ void nanny ( DESCRIPTOR_DATA * d, char *argument )
             wiznet ( log_buf, NULL, NULL, WIZ_SITES, 0, get_trust ( ch ) );
             free_string ( ch->pcdata->socket );
             ch->pcdata->socket = str_dup ( d->host );
-/*	if (IS_SET(ch->act, PLR_REROLL ) )
-	{
-    	    sprintf( strsave, "%s%s", PLAYER_DIR, capitalize( ch->name ) );
-	    sprintf(newbuf, "%s", str_dup( ch->pcdata->pwd ));
-	    sprintf( argument, "%s", capitalize( ch->name ) );
-	    free_char( d->character );
-	    d->character = NULL;
-	    
-	    ch   = d->character;
-	    free_string( ch->pcdata->pwd );
-	    ch->pcdata->pwd	= str_dup( newbuf );
-	    newbuf[0] = '\0';
-	    ch->pcdata->tier = 1;
-        free_string( ch->pcdata->socket );
-	    ch->pcdata->socket = str_dup( d->host );
-	    write_to_buffer( d, echo_on_str, 0 );
-	    write_to_buffer(d, "The following races are available:\n\r\n\r",0);
-	    pos = 0;
-            race = 0;
-	    for ( race = 1; race_table[race].name != NULL; race++ )
-	    {
-		if (!race_table[race].pc_race || !IS_SET(ch->pcdata->ctier, pc_race_table[race].tier))
-		    continue;
-			sprintf(newbuf, "{g%6s{g%-24s{x", " ", race_table[race].name);
-			write_to_buffer(d,newbuf,0);
-			pos++;
-			if (pos >= 2)
-			{ 
-				write_to_buffer(d,"\n\r",1);
-				pos = 0;
-			}
-		}
-	    newbuf[0] = '\0';
-	    write_to_buffer(d,"\n\r\n\r",0);
-	    write_to_buffer(d, "What is your race (help for more information)? ",0);
-	    d->connected = CON_GET_NEW_RACE;
-	    break;
-	}
-OLD REROLL DUDE! */
-
-            /* if ( IS_IMMORTAL(ch) ) { do_help( ch, "imotd" ); d->connected =
-               CON_READ_IMOTD; } */
 
             if ( IS_IMMORTAL ( ch ) )
             {
@@ -2497,10 +2308,6 @@ OLD REROLL DUDE! */
             free_string ( ch->pcdata->socket );
             ch->pcdata->socket = str_dup ( d->host );
             write_to_buffer ( d, echo_on_str, 0 );
-/*            write_to_buffer ( d,
-                              "{gWould you like to turn {Yoff{g ANSI Colour now? ({WY{g/{RN{g){x",
-                              0 );
-            d->connected = CON_GET_ANSI; */
 
             write_to_buffer ( d, "Where did you hear about DoC?\n\rPlease put 'None' ( Without quotes ) if you were not referred: ", 0 );
             d->connected = CON_GET_REFER;
@@ -2520,23 +2327,6 @@ OLD REROLL DUDE! */
               ch->pcdata->refer = str_dup( referbuf );
            }   
 
-/*        case CON_GET_ANSI:
-            switch ( argument[0] )
-            {
-                case 'y':
-                case 'Y':
-                    d->ansi = false;
-                    SET_BIT ( ch->act, PLR_NOCOLOUR );
-                    break;
-                case 'n':
-                case 'N':
-                    break;
-                default:
-                    write_to_buffer ( d,
-                                      "{WPlease answer {YYes{W or {RNo{W.{x\n\r",
-                                      0 );
-                    return;
-            } */
             write_to_buffer ( d,
                               "{R={r-{R={r-{R={r-{R={r-{R={r-{R={r-{R={r-{R={r-{R={r-{D {-D{-o{-C {gRaces {r-{R={r-{R={r-{R={r-{R={r-{R={r-{R={r-{R={r-{R={r-{R=\n\r{x",
                               0 );
@@ -2676,27 +2466,7 @@ OLD REROLL DUDE! */
                     return;
             }
 
-            write_to_buffer ( d, echo_on_str, 0 );  /* 
-                                                       write_to_buffer(d,
-                                                       "{WThe following classes 
-                                                       are
-                                                       available:{x\n\r\n\r",0);
-                                                       for ( iClass = 0; iClass < 
-                                                       MAX_CLASS; iClass++ ) { if 
-                                                       (
-                                                       !IS_SET(ch->pcdata->ctier, 
-                                                       class_table[iClass].tier)
-                                                       ) continue; sprintf(buf, " 
-                                                       {%c%s{x\n\r",
-                                                       IS_SET(class_table[iClass].tier, 
-                                                       ch->pcdata->ctier) ? 'R' : 
-                                                       'B',
-                                                       class_table[iClass].name);
-                                                       write_to_buffer(d,buf,0); }
-                                                       write_to_buffer(d,"\n\r\n\r",0);
-                                                       write_to_buffer(d, "{WWhat is
-                                                       your class ? {x",0); d->connected 
-                                                       = CON_GET_NEW_CLASS; */
+            write_to_buffer ( d, echo_on_str, 0 );
             write_to_buffer ( d,
                               "\n\r{WYou may be {Bgood{W, {Gneutral{W, or {Devil{W.{x\n\r",
                               0 );
@@ -2729,16 +2499,7 @@ OLD REROLL DUDE! */
             log_string ( log_buf );
             wiznet ( log_buf, NULL, NULL, WIZ_SITES, 0, get_trust ( ch ) );
 
-            write_to_buffer ( d, "\n\r", 2 );   /* 
-                                                   write_to_buffer(d, "{WYou
-                                                   may be {Bgood{W,
-                                                   {Gneutral{W, or
-                                                   {Devil{W.{x\n\r",0);
-                                                   write_to_buffer(d, "{WWhich
-                                                   alignment
-                                                   {w({BG{w/{GN{w/{DE{x){W?{x
-                                                   ",0); d->connected =
-                                                   CON_GET_ALIGNMENT; */
+            write_to_buffer ( d, "\n\r", 2 );
             write_to_buffer ( d,
                               "{WWhat is your sex {w({BM{x/{MF{x/{RN{w){W?{x ",
                               0 );
@@ -3022,7 +2783,6 @@ OLD REROLL DUDE! */
             logins_total++;
             if ( IS_IMMORTAL ( ch ) )
             {
-                // do_announce ( ch, "is now watching over you..\n\r" );
                 sprintf ( buf, "%s has entered Distortions of Chaos.", ch->name );
                 wiznet ( buf, NULL, NULL, WIZ_LOGINS, 0, 0 );
             }
@@ -3927,183 +3687,6 @@ char *colour ( char type, CHAR_DATA * ch )
     return clcode;
 }
 
-/*
- * The colour version of the act( ) function, -Lope
- */
-/* void act_new ( const char *format, CHAR_DATA * ch, const void *arg1,
-               const void *arg2, int type, int min_pos )
-{
-
-    static char *const he_she[] = {
-        "it", "he", "she"
-    };
-    static char *const him_her[] = {
-        "it", "him", "her"
-    };
-    static char *const his_her[] = {
-        "its", "his", "her"
-    };
-    CHAR_DATA *to;
-    CHAR_DATA *vch = ( CHAR_DATA * ) arg2;
-    OBJ_DATA *obj1 = ( OBJ_DATA * ) arg1;
-    OBJ_DATA *obj2 = ( OBJ_DATA * ) arg2;
-    const char *str;
-    char *i;
-    char *point;
-    char buf[MAX_STRING_LENGTH];
-    char fname[MAX_INPUT_LENGTH];
-
-        if ( !format || !*format )
-            return;
-        if ( !ch || !ch->in_room )
-            return;
-        to = ch->in_room->people;
-
-    if ( type == TO_VICT )
-    {
-        if ( !vch )
-        {
-            bug ( "Act: null vch with TO_VICT.", 0 );
-            return;
-        }
-
-        if ( !vch->in_room )
-            return;
-        to = vch->in_room->people;
-    }
-
-    for ( ; to; to = to->next_in_room )
-    {
-        if ( ( ( !IS_NPC ( to ) && to->desc == NULL ) ||
-             ( IS_NPC ( to ) && !HAS_TRIGGER ( to, TRIG_ACT ) ) ||
-             to->position < min_pos ) )
-            continue;
-        if ( type == TO_CHAR && to != ch )
-            continue;
-        if ( type == TO_VICT && ( to != vch || to == ch ) )
-            continue;
-        if ( type == TO_ROOM && to == ch )
-            continue;
-        if ( type == TO_NOTVICT && ( to == ch || to == vch ) )
-            continue;
-        point = buf;
-        str = format;
-        while ( *str )
-        {
-            if ( *str != '$' )
-            {
-                *point++ = *str++;
-                continue;
-            }
-
-            i = NULL;
-            switch ( *str )
-            {
-                case '$':
-                    ++str;
-                    i = " <@@@> ";
-                    if ( !arg2 && *str >= 'A' && *str <= 'Z' && *str != 'G' )
-                    {
-                        bug ( "Act: missing arg2 for code %d.", *str );
-                        i = " <@@@> ";
-                    }
-                    else
-                    {
-                        switch ( *str )
-                        {
-                            default:
-                                bug ( "Act: bad code %d.", *str );
-                                i = " <@@@> ";
-                                break;
-                            case 't':
-                                i = ( char * ) arg1;
-                                break;
-                            case 'T':
-                                i = ( char * ) arg2;
-                                break;
-                            case 'n':
-                                i = PERS ( ch, to );
-                                break;
-                            case 'N':
-                                i = PERS ( vch, to );
-                                break;
-                            case 'e':
-                                i = he_she[URANGE ( 0, ch->sex, 2 )];
-                                break;
-                            case 'E':
-                                i = he_she[URANGE ( 0, vch->sex, 2 )];
-                                break;
-                            case 'm':
-                                i = him_her[URANGE ( 0, ch->sex, 2 )];
-                                break;
-                            case 'M':
-                                i = him_her[URANGE ( 0, vch->sex, 2 )];
-                                break;
-                            case 's':
-                                i = his_her[URANGE ( 0, ch->sex, 2 )];
-                                break;
-                            case 'S':
-                                i = his_her[URANGE ( 0, vch->sex, 2 )];
-                                break;
-                            case 'p':
-                                i = can_see_obj ( to,
-                                                  obj1 ) ? obj1->
-                                    short_descr : "something";
-                                break;
-                            case 'P':
-                                i = can_see_obj ( to,
-                                                  obj2 ) ? obj2->
-                                    short_descr : "something";
-                                break;
-                            case 'd':
-                                if ( !arg2 || ( ( char * ) arg2 )[0] == '\0' )
-                                {
-                                    i = "door";
-                                }
-                                else
-                                {
-                                    one_argument ( ( char * ) arg2, fname );
-                                    i = fname;
-                                }
-                                break;
-                            case 'G':
-                                if ( ch->alignment < 0 )
-                                {
-                                    i = "the darkness";
-                                }
-                                else
-                                {
-                                    i = "the light";
-                                }
-                                break;
-                        }
-                    }
-                    break;
-                default:
-                    *point++ = *str++;
-                    break;
-            }
-
-            ++str;
-            while ( ( *point = *i ) != '\0' )
-                ++point, ++i;
-        }
-
-        *point++ = '\n';
-        *point++ = '\r';
-        *point = '\0';
-        buf[0] = UPPER ( buf[0] );
-
-        if ( to->desc != NULL )
-        {
-            send_to_char ( buf, to->desc->character );
-        }
-        else if ( MOBtrigger )
-            mp_act_trigger ( buf, to, ch, arg1, arg2, TRIG_ACT );
-    }
-    return;
-} */
-
 void act ( const char *format, CHAR_DATA * ch, const void *arg1,
            const void *arg2, int type )
 {
@@ -4329,7 +3912,6 @@ CH_CMD ( do_copyover )
 
     do_asave ( NULL, "changed" );   /* - autosave changed areas */
 
-    // save_gquest_data();
     sprintf ( buf, "\r\rThe gods reshape the world..\r\n" );
     /* For each playing descriptor, save its state */
     for ( d = descriptor_list; d; d = d_next )
@@ -4484,17 +4066,6 @@ void halt_mud ( int sig )
         crashed++;
         fprintf ( stderr, "GAME CRASHED (SIGNAL %d).\rLast command: %s\r", sig,
                   last_command );
-        // Inform last command typer that he caused the crash
-/*        if ( strlen ( last_command2 ) )
-        {
-            write_to_descriptor ( last_descriptor,
-                                  "\n\rThe last command you typed, '", 0 );
-            write_to_descriptor ( last_descriptor, last_command2, 0 );
-            write_to_descriptor ( last_descriptor,
-                                  "', might have caused this crash.\n\r"
-                                  "Please note any unusual circumstances to IMP and avoid using that command.\n\r",
-                                  0 );
-        } */
         for ( d = descriptor_list; d != NULL; d = d_next )
         {
             d_next = d->next;
@@ -4633,4 +4204,3 @@ void halt_mud ( int sig )
         raise ( sig );
     }
 }
-
