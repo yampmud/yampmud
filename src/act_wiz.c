@@ -2844,28 +2844,6 @@ CH_CMD(do_reboo)
   return;
 }
 
-/*void do_reboot( CHAR_DATA *ch, char *argument )
-   {
-   char buf[MAX_STRING_LENGTH];
-   DESCRIPTOR_DATA *d,*d_next;
-
-   if (ch->invis_level < LEVEL_ANCIENT)
-   {
-   sprintf( buf, "Reboot by %s.", ch->name );
-   do_echo( ch, buf );
-   }
-   do_force ( ch, "all save");
-   do_save (ch, "");
-   merc_down = true;
-   for ( d = descriptor_list; d != NULL; d = d_next )
-   {
-   d_next = d->next;
-   close_socket(d);
-   }
-
-   return;
-   } */
-
 CH_CMD(do_reboot)
 {
   char arg[MAX_INPUT_LENGTH];
