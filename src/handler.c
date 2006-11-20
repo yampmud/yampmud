@@ -260,12 +260,12 @@ long wiznet_lookup(const char *name)
 /* returns class number */
 int class_lookup(const char *name)
 {
-  int class;
+  int clss;
 
-  for (class = 0; class_table[class].name; class++)
+  for (clss = 0; class_table[clss].name; clss++)
   {
-    if (!str_prefix(name, class_table[class].name))
-      return class;
+    if (!str_prefix(name, class_table[clss].name))
+      return clss;
   }
 
   return -1;
@@ -428,7 +428,7 @@ bool is_clan_obj(OBJ_DATA * obj)
 
 bool is_class_obj(OBJ_DATA * obj)
 {
-  return obj->class;
+  return obj->clss;
 }
 
 bool clan_can_use(CHAR_DATA * ch, OBJ_DATA * obj)
@@ -445,7 +445,7 @@ bool class_can_use(CHAR_DATA * ch, OBJ_DATA * obj)
 {
   if (!is_class_obj(obj))
     return true;
-  return (ch->class == obj->class);
+  return (ch->clss == obj->clss);
 }
 
 /* checks mob format */
@@ -488,7 +488,7 @@ int get_skill(CHAR_DATA * ch, int sn)
         found = true;
     }
 
-    if (ch->level < skill_table[sn].skill_level[ch->class] && !found)
+    if (ch->level < skill_table[sn].skill_level[ch->clss] && !found)
     {
       skill = 0;
     }
@@ -1003,7 +1003,7 @@ int get_curr_stat(CHAR_DATA * ch, int stat)
   {
     max = pc_race_table[ch->race].max_stats[stat] + 4;
 
-    if (class_table[ch->class].attr_prime == stat)
+    if (class_table[ch->clss].attr_prime == stat)
       max += 2;
 
     if (ch->race == race_lookup("human"))
@@ -1024,7 +1024,7 @@ int get_max_train(CHAR_DATA * ch, int stat)
     return 25;
 
   max = pc_race_table[ch->race].max_stats[stat];
-  if (class_table[ch->class].attr_prime == stat)
+  if (class_table[ch->clss].attr_prime == stat)
   {
     if (ch->race == race_lookup("human"))
       max += 3;
@@ -2994,7 +2994,7 @@ bool can_see_room(CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex)
     return false;
 
   if (IS_SET(pRoomIndex->room_flags, ROOM_NEWBIES_ONLY) &&
-      !IS_SET(class_table[ch->class].tier, TIER_01) && !IS_HERO(ch))
+      !IS_SET(class_table[ch->clss].tier, TIER_01) && !IS_HERO(ch))
     return false;
 
   if (!IS_IMMORTAL(ch) && pRoomIndex->clan && ch->clan != pRoomIndex->clan)
@@ -3325,7 +3325,7 @@ char *affect_bit_name(int vector)
     strcat(buf, " slow");
   if (vector & AFF_TERROR)
     strcat(buf, " terrified");
-  return (buf[0] != '\0') ? buf + 1 : "none";
+  return (char *) ((buf[0] != '\0') ? buf + 1 : "none");
 }
 
 
@@ -3402,7 +3402,7 @@ char *shield_bit_name(int vector)
   if (vector & (ee))
     strcat(buf, " invalid: ee");
 
-  return (buf[0] != '\0') ? buf + 1 : "none";
+  return (char *) ((buf[0] != '\0') ? buf + 1 : "none");
 }
 
 /*
@@ -3469,7 +3469,7 @@ char *extra_bit_name(int extra_flags)
     strcat(buf, " forced");
   if (extra_flags & ITEM_QUESTPOINT)
     strcat(buf, " questpoint");
-  return (buf[0] != '\0') ? buf + 1 : "none";
+  return (char *) ((buf[0] != '\0') ? buf + 1 : "none");
 }
 
 /* return ascii name of an act vector */
@@ -3567,7 +3567,7 @@ char *act_bit_name(int act_flags)
     if (act_flags & PLR_TWIT)
       strcat(buf, " twit");
   }
-  return (buf[0] != '\0') ? buf + 1 : "none";
+  return (char *) ((buf[0] != '\0') ? buf + 1 : "none");
 }
 
 /* return ascii name of an act vector */
@@ -3583,7 +3583,7 @@ char *act2_bit_name(int act2_flags)
     strcat(buf, " dealer");
   if (act2_flags & ACT2_BANKER)
     strcat(buf, " banker");
-  return (buf[0] != '\0') ? buf + 1 : "none";
+  return (char *) ((buf[0] != '\0') ? buf + 1 : "none");
 }
 
 /* return ascii name of an act vector */
@@ -3602,7 +3602,7 @@ char *plr2_bit_name(int act2_flags)
     strcat(buf, "wiped");
   if (act2_flags & PLR2_true_TRUST)
     strcat(buf, "true_trust");
-  return (buf[0] != '\0') ? buf + 1 : "none";
+  return (char *) ((buf[0] != '\0') ? buf + 1 : "none");
 }
 
 char *comm_bit_name(int comm_flags)
@@ -3659,7 +3659,7 @@ char *comm_bit_name(int comm_flags)
     strcat(buf, "norace");
   if (comm_flags & COMM_PRAY)
     strcat(buf, "curse");
-  return (buf[0] != '\0') ? buf + 1 : "none";
+  return (char *) ((buf[0] != '\0') ? buf + 1 : "none");
 }
 
 char *imm_bit_name(int imm_flags)
@@ -3715,7 +3715,7 @@ char *imm_bit_name(int imm_flags)
   if (imm_flags & VULN_SILVER)
     strcat(buf, " silver");
 
-  return (buf[0] != '\0') ? buf + 1 : "none";
+  return (char *) ((buf[0] != '\0') ? buf + 1 : "none");
 }
 
 char *wear_bit_name(int wear_flags)
@@ -3771,7 +3771,7 @@ char *wear_bit_name(int wear_flags)
     strcat(buf, " clan tattoo");
   if (wear_flags & ITEM_WEAR_BACK)
     strcat(buf, " back");
-  return (buf[0] != '\0') ? buf + 1 : "none";
+  return (char *) ((buf[0] != '\0') ? buf + 1 : "none");
 }
 
 char *room_bit_name(int room_flags)
@@ -3810,7 +3810,7 @@ char *room_bit_name(int room_flags)
   if (room_flags & ROOM_LOCKED)
     strcat(buf, " locked");
 
-  return (buf[0] != '\0') ? buf + 1 : "none";
+  return (char *) ((buf[0] != '\0') ? buf + 1 : "none");
 }
 
 char *form_bit_name(int form_flags)
@@ -3871,7 +3871,7 @@ char *form_bit_name(int form_flags)
   if (form_flags & FORM_COLD_BLOOD)
     strcat(buf, " cold_blooded");
 
-  return (buf[0] != '\0') ? buf + 1 : "none";
+  return (char *) ((buf[0] != '\0') ? buf + 1 : "none");
 }
 
 char *part_bit_name(int part_flags)
@@ -3922,7 +3922,7 @@ char *part_bit_name(int part_flags)
   if (part_flags & PART_SCALES)
     strcat(buf, " scales");
 
-  return (buf[0] != '\0') ? buf + 1 : "none";
+  return (char *) ((buf[0] != '\0') ? buf + 1 : "none");
 }
 
 char *weapon_bit_name(int weapon_flags)
@@ -3948,7 +3948,7 @@ char *weapon_bit_name(int weapon_flags)
     strcat(buf, " poison");
   if (weapon_flags & WEAPON_MANADRAIN)
     strcat(buf, " manadrain");
-  return (buf[0] != '\0') ? buf + 1 : "none";
+  return (char *) ((buf[0] != '\0') ? buf + 1 : "none");
 }
 
 char *cont_bit_name(int cont_flags)
@@ -3966,7 +3966,7 @@ char *cont_bit_name(int cont_flags)
   if (cont_flags & CONT_LOCKED)
     strcat(buf, " locked");
 
-  return (buf[0] != '\0') ? buf + 1 : "none";
+  return (char *) ((buf[0] != '\0') ? buf + 1 : "none");
 }
 
 char *off_bit_name(int off_flags)
@@ -4018,7 +4018,7 @@ char *off_bit_name(int off_flags)
   if (off_flags & ASSIST_VNUM)
     strcat(buf, " assist_vnum");
 
-  return (buf[0] != '\0') ? buf + 1 : "none";
+  return (char *) ((buf[0] != '\0') ? buf + 1 : "none");
 }
 
 bool remove_voodoo(CHAR_DATA * ch)

@@ -86,15 +86,13 @@ int sAllocPerm;
  */
 void boot_db()
 {
-  ROOM_INDEX_DATA *pRoomIndex;
-
   /* 
    * Init some data space stuff.
    */
   {
     log_string("Init data space.");
 
-    if ((string_space = calloc(1, MAX_STRING)) == NULL)
+    if ((string_space = (char *) calloc(1, MAX_STRING)) == NULL)
     {
       bug("Boot_db: can't alloc %d string space.", MAX_STRING);
       quit(1);
@@ -314,7 +312,7 @@ void load_area(FILE * fp)
 {
   AREA_DATA *pArea;
 
-  pArea = alloc_perm(sizeof(*pArea));
+  pArea = (AREA_DATA *) alloc_perm(sizeof(*pArea));
   /* pArea->reset_first = NULL; pArea->reset_last = NULL; */
   fread_string(fp);
   pArea->file_name = fread_string(fp);
@@ -388,7 +386,7 @@ void new_load_area(FILE * fp)
   char *word;
   bool fMatch;
 
-  pArea = alloc_perm(sizeof(*pArea));
+  pArea = (AREA_DATA *) alloc_perm(sizeof(*pArea));
   pArea->age = 15;
   pArea->nplayer = 0;
   pArea->file_name = str_dup(strArea);
@@ -404,7 +402,7 @@ void new_load_area(FILE * fp)
 
   for (;;)
   {
-    word = feof(fp) ? "End" : fread_word(fp);
+    word = (char *) (feof(fp) ? "End" : fread_word(fp));
     fMatch = false;
 
     switch (UPPER(word[0]))
@@ -481,7 +479,7 @@ void load_helps(FILE * fp)
 
   for (;;)
   {
-    pHelp = alloc_perm(sizeof(*pHelp));
+    pHelp = (HELP_DATA *) alloc_perm(sizeof(*pHelp));
     pHelp->level = fread_number(fp);
     pHelp->keyword = fread_string(fp);
     if (pHelp->keyword[0] == '$')
@@ -557,7 +555,7 @@ void load_old_mob(FILE * fp)
     }
     fBootDb = true;
 
-    pMobIndex = alloc_perm(sizeof(*pMobIndex));
+    pMobIndex = (MOB_INDEX_DATA *) alloc_perm(sizeof(*pMobIndex));
     pMobIndex->vnum = vnum;
     pMobIndex->area = area_last;  /* OLC */
     pMobIndex->new_format = false;
@@ -700,7 +698,7 @@ void load_old_obj(FILE * fp)
     }
     fBootDb = true;
 
-    pObjIndex = alloc_perm(sizeof(*pObjIndex));
+    pObjIndex = (OBJ_INDEX_DATA *) alloc_perm(sizeof(*pObjIndex));
     pObjIndex->vnum = vnum;
     pObjIndex->area = area_last;  /* OLC */
     pObjIndex->new_format = false;
@@ -764,7 +762,7 @@ void load_old_obj(FILE * fp)
       {
         EXTRA_DESCR_DATA *ed;
 
-        ed = alloc_perm(sizeof(*ed));
+        ed = (EXTRA_DESCR_DATA *) alloc_perm(sizeof(*ed));
         ed->keyword = fread_string(fp);
         ed->description = fread_string(fp);
         ed->next = pObjIndex->extra_descr;
@@ -879,7 +877,7 @@ void load_resets(FILE * fp)
       continue;
     }
 
-    pReset = alloc_perm(sizeof(*pReset));
+    pReset = (RESET_DATA *) alloc_perm(sizeof(*pReset));
     pReset->command = letter;
     /* if_flag */ fread_number(fp);
     pReset->arg1 = fread_long(fp);
@@ -1029,7 +1027,7 @@ void load_rooms(FILE * fp)
     }
     fBootDb = true;
 
-    pRoomIndex = alloc_perm(sizeof(*pRoomIndex));
+    pRoomIndex = (ROOM_INDEX_DATA *) alloc_perm(sizeof(*pRoomIndex));
     pRoomIndex->owner = str_dup("");
     pRoomIndex->people = NULL;
     pRoomIndex->contents = NULL;
@@ -1094,7 +1092,7 @@ void load_rooms(FILE * fp)
           quit(1);
         }
 
-        pexit = alloc_perm(sizeof(*pexit));
+        pexit = (EXIT_DATA *) alloc_perm(sizeof(*pexit));
         pexit->description = fread_string(fp);
         pexit->keyword = fread_string(fp);
         pexit->exit_info = 0;
@@ -1132,7 +1130,7 @@ void load_rooms(FILE * fp)
       {
         EXTRA_DESCR_DATA *ed;
 
-        ed = alloc_perm(sizeof(*ed));
+        ed = (EXTRA_DESCR_DATA *) alloc_perm(sizeof(*ed));
         ed->keyword = fread_string(fp);
         ed->description = fread_string(fp);
         ed->next = pRoomIndex->extra_descr;
@@ -1206,7 +1204,7 @@ void load_mobprogs(FILE * fp)
     }
     fBootDb = true;
 
-    pMprog = alloc_perm(sizeof(*pMprog));
+    pMprog = (MPROG_CODE *) alloc_perm(sizeof(*pMprog));
     pMprog->vnum = vnum;
     pMprog->code = fread_string(fp);
     if (mprog_list == NULL)
@@ -1262,7 +1260,7 @@ void load_shops(FILE * fp)
     MOB_INDEX_DATA *pMobIndex;
     int iTrade;
 
-    pShop = alloc_perm(sizeof(*pShop));
+    pShop = (SHOP_DATA *) alloc_perm(sizeof(*pShop));
     pShop->keeper = fread_long(fp);
     if (pShop->keeper == 0)
       break;
@@ -2023,7 +2021,7 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA * pMobIndex)
     mob->max_hit =
       mob->level * 8 + number_range(mob->level * mob->level / 4,
                                     mob->level * mob->level);
-    mob->max_hit *= .9;
+    mob->max_hit = (long int) (mob->max_hit + mob->max_hit * .9);
     mob->hit = mob->max_hit;
     mob->max_mana = 100 + dice(mob->level, 10);
     mob->mana = mob->max_mana;
@@ -2087,7 +2085,7 @@ void clone_mobile(CHAR_DATA * parent, CHAR_DATA * clone)
   clone->description = str_dup(parent->description);
   clone->group = parent->group;
   clone->sex = parent->sex;
-  clone->class = parent->class;
+  clone->clss = parent->clss;
   clone->race = parent->race;
   clone->level = parent->level;
   clone->trust = 0;
@@ -2190,7 +2188,7 @@ OBJ_DATA *create_object(OBJ_INDEX_DATA * pObjIndex, int level)
 
   obj->weight = pObjIndex->weight;
   obj->clan = pObjIndex->clan;
-  obj->class = pObjIndex->class;
+  obj->clss = pObjIndex->clss;
 
   if (level == -1 || pObjIndex->new_format)
     obj->cost = pObjIndex->cost;
@@ -2751,7 +2749,7 @@ char *fread_string(FILE * fp)
           iHash = UMIN(MAX_KEY_HASH - 1, plast - 1 - top_string);
           for (pHash = string_hash[iHash]; pHash; pHash = pHashPrev)
           {
-            for (ic = 0; ic < sizeof(char *); ic++)
+            for (ic = 0; ic < (signed) sizeof(char *); ic++)
               u1.rgc[ic] = pHash[ic];
             pHashPrev = u1.pc;
             pHash += sizeof(char *);
@@ -2766,7 +2764,7 @@ char *fread_string(FILE * fp)
             pString = top_string;
             top_string = plast;
             u1.pc = string_hash[iHash];
-            for (ic = 0; ic < sizeof(char *); ic++)
+            for (ic = 0; ic < (signed) sizeof(char *); ic++)
               pString[ic] = u1.rgc[ic];
             string_hash[iHash] = pString;
 
@@ -2850,7 +2848,7 @@ char *fread_string_eol(FILE * fp)
           iHash = UMIN(MAX_KEY_HASH - 1, plast - 1 - top_string);
           for (pHash = string_hash[iHash]; pHash; pHash = pHashPrev)
           {
-            for (ic = 0; ic < sizeof(char *); ic++)
+            for (ic = 0; ic < (signed) sizeof(char *); ic++)
               u1.rgc[ic] = pHash[ic];
             pHashPrev = u1.pc;
             pHash += sizeof(char *);
@@ -2865,7 +2863,7 @@ char *fread_string_eol(FILE * fp)
             pString = top_string;
             top_string = plast;
             u1.pc = string_hash[iHash];
-            for (ic = 0; ic < sizeof(char *); ic++)
+            for (ic = 0; ic < (signed) sizeof(char *); ic++)
               pString[ic] = u1.rgc[ic];
             string_hash[iHash] = pString;
 
@@ -2984,7 +2982,7 @@ void *alloc_mem(int sMem)
 
   magic = (int *) pMem;
   *magic = MAGIC_NUM;
-  pMem += sizeof(*magic);
+  pMem = (void *) ((int *) pMem + sizeof(*magic));
 
   return pMem;
 }
@@ -2998,7 +2996,7 @@ void _free_mem(void *pMem, int sMem, char *file, int line)
   int iList;
   int *magic;
 
-  pMem -= sizeof(*magic);
+  pMem = (void *) ((int *) pMem - sizeof(*magic));
   magic = (int *) pMem;
 
   if (*magic != MAGIC_NUM)
@@ -3052,7 +3050,7 @@ void *alloc_perm(int sMem)
   if (pMemPerm == NULL || iMemPerm + sMem > MAX_PERM_BLOCK)
   {
     iMemPerm = 0;
-    if ((pMemPerm = calloc(1, MAX_PERM_BLOCK)) == NULL)
+    if ((pMemPerm = (char *) calloc(1, MAX_PERM_BLOCK)) == NULL)
     {
       perror("Alloc_perm");
       quit(1);
@@ -3080,7 +3078,7 @@ char *str_dup(const char *str)
   if (str >= string_space && str < top_string)
     return (char *) str;
 
-  str_new = alloc_mem(strlen(str) + 1);
+  str_new = (char *) alloc_mem(strlen(str) + 1);
   strcpy(str_new, str);
   return str_new;
 }

@@ -48,7 +48,7 @@ NOTE_DATA *new_note()
   NOTE_DATA *note;
 
   if (note_free == NULL)
-    note = alloc_perm(sizeof(*note));
+    note = (NOTE_DATA *) alloc_perm(sizeof(*note));
   else
   {
     note = note_free;
@@ -83,7 +83,7 @@ BAN_DATA *new_ban(void)
   BAN_DATA *ban;
 
   if (ban_free == NULL)
-    ban = alloc_perm(sizeof(*ban));
+    ban = (BAN_DATA *) alloc_perm(sizeof(*ban));
   else
   {
     ban = ban_free;
@@ -117,7 +117,7 @@ WIZ_DATA *new_wiz(void)
   WIZ_DATA *wiz;
 
   if (wiz_free == NULL)
-    wiz = alloc_perm(sizeof(*wiz));
+    wiz = (WIZ_DATA *) alloc_perm(sizeof(*wiz));
   else
   {
     wiz = wiz_free;
@@ -151,7 +151,7 @@ CLN_DATA *new_cln(void)
   CLN_DATA *cln;
 
   if (cln_free == NULL)
-    cln = alloc_perm(sizeof(*cln));
+    cln = (CLN_DATA *) alloc_perm(sizeof(*cln));
   else
   {
     cln = cln_free;
@@ -172,7 +172,7 @@ MBR_DATA *new_mbr(void)
   MBR_DATA *mbr;
 
   if (mbr_free == NULL)
-    mbr = alloc_perm(sizeof(*mbr));
+    mbr = (MBR_DATA *) alloc_perm(sizeof(*mbr));
   else
   {
     mbr = mbr_free;
@@ -198,15 +198,13 @@ void free_mbr(MBR_DATA * mbr)
 }
 
 /* stuff for recycling descriptors */
-DESCRIPTOR_DATA *descriptor_free;
-
 DESCRIPTOR_DATA *new_descriptor(void)
 {
   static DESCRIPTOR_DATA d_zero;
   DESCRIPTOR_DATA *d;
 
   if (descriptor_free == NULL)
-    d = alloc_perm(sizeof(*d));
+    d = (DESCRIPTOR_DATA *) alloc_perm(sizeof(*d));
   else
   {
     d = descriptor_free;
@@ -221,7 +219,7 @@ DESCRIPTOR_DATA *new_descriptor(void)
   d->showstr_point = NULL;
   d->outsize = 2000;
   d->ansi = true;
-  d->outbuf = alloc_mem(d->outsize);
+  d->outbuf = (char *) alloc_mem(d->outsize);
 
   return d;
 }
@@ -247,7 +245,7 @@ GEN_DATA *new_gen_data(void)
   GEN_DATA *gen;
 
   if (gen_data_free == NULL)
-    gen = alloc_perm(sizeof(*gen));
+    gen = (GEN_DATA *) alloc_perm(sizeof(*gen));
   else
   {
     gen = gen_data_free;
@@ -277,7 +275,7 @@ EXTRA_DESCR_DATA *new_extra_descr(void)
   EXTRA_DESCR_DATA *ed;
 
   if (extra_descr_free == NULL)
-    ed = alloc_perm(sizeof(*ed));
+    ed = (EXTRA_DESCR_DATA *) alloc_perm(sizeof(*ed));
   else
   {
     ed = extra_descr_free;
@@ -304,15 +302,13 @@ void free_extra_descr(EXTRA_DESCR_DATA * ed)
 }
 
 /* stuff for recycling affects */
-AFFECT_DATA *affect_free;
-
 AFFECT_DATA *new_affect(void)
 {
   static AFFECT_DATA af_zero;
   AFFECT_DATA *af;
 
   if (affect_free == NULL)
-    af = alloc_perm(sizeof(*af));
+    af = (AFFECT_DATA *) alloc_perm(sizeof(*af));
   else
   {
     af = affect_free;
@@ -336,15 +332,13 @@ void free_affect(AFFECT_DATA * af)
 }
 
 /* stuff for recycling objects */
-OBJ_DATA *obj_free;
-
 OBJ_DATA *new_obj(void)
 {
   static OBJ_DATA obj_zero;
   OBJ_DATA *obj;
 
   if (obj_free == NULL)
-    obj = alloc_perm(sizeof(*obj));
+    obj = (OBJ_DATA *) alloc_perm(sizeof(*obj));
   else
   {
     obj = obj_free;
@@ -390,8 +384,6 @@ void free_obj(OBJ_DATA * obj)
 }
 
 /* stuff for recyling characters */
-CHAR_DATA *char_free;
-
 CHAR_DATA *new_char(void)
 {
   static CHAR_DATA ch_zero;
@@ -399,7 +391,7 @@ CHAR_DATA *new_char(void)
   int i;
 
   if (char_free == NULL)
-    ch = alloc_perm(sizeof(*ch));
+    ch = (CHAR_DATA *) alloc_perm(sizeof(*ch));
   else
   {
     ch = char_free;
@@ -481,8 +473,6 @@ void free_char(CHAR_DATA * ch)
   return;
 }
 
-PC_DATA *pcdata_free;
-
 PC_DATA *new_pcdata(void)
 {
   int alias;
@@ -491,7 +481,7 @@ PC_DATA *new_pcdata(void)
   PC_DATA *pcdata;
 
   if (pcdata_free == NULL)
-    pcdata = alloc_perm(sizeof(*pcdata));
+    pcdata = (PC_DATA *) alloc_perm(sizeof(*pcdata));
   else
   {
     pcdata = pcdata_free;
@@ -591,7 +581,7 @@ MEM_DATA *new_mem_data(void)
   MEM_DATA *memory;
 
   if (mem_data_free == NULL)
-    memory = alloc_mem(sizeof(*memory));
+    memory = (MEM_DATA *) alloc_mem(sizeof(*memory));
   else
   {
     memory = mem_data_free;
@@ -642,7 +632,7 @@ BUFFER *new_buf()
   BUFFER *buffer;
 
   if (buf_free == NULL)
-    buffer = alloc_perm(sizeof(*buffer));
+    buffer = (BUFFER *) alloc_perm(sizeof(*buffer));
   else
   {
     buffer = buf_free;
@@ -653,7 +643,7 @@ BUFFER *new_buf()
   buffer->state = BUFFER_SAFE;
   buffer->size = get_size(BASE_BUF);
 
-  buffer->string = alloc_mem(buffer->size);
+  buffer->string = (char *) alloc_mem(buffer->size);
   buffer->string[0] = '\0';
   VALIDATE(buffer);
 
@@ -665,7 +655,7 @@ BUFFER *new_buf_size(int size)
   BUFFER *buffer;
 
   if (buf_free == NULL)
-    buffer = alloc_perm(sizeof(*buffer));
+    buffer = (BUFFER *) alloc_perm(sizeof(*buffer));
   else
   {
     buffer = buf_free;
@@ -680,7 +670,7 @@ BUFFER *new_buf_size(int size)
     bug("new_buf: buffer size %d too large.", size);
     quit(1);
   }
-  buffer->string = alloc_mem(buffer->size);
+  buffer->string = (char *) alloc_mem(buffer->size);
   buffer->string[0] = '\0';
   VALIDATE(buffer);
 
@@ -733,7 +723,7 @@ bool add_buf(BUFFER * buffer, char *string)
 
   if (buffer->size != oldsize)
   {
-    buffer->string = alloc_mem(buffer->size);
+    buffer->string = (char *) alloc_mem(buffer->size);
 
     strcpy(buffer->string, oldstr);
     free_mem(oldstr, oldsize);
@@ -763,7 +753,7 @@ MPROG_LIST *new_mprog(void)
   MPROG_LIST *mp;
 
   if (mprog_free == NULL)
-    mp = alloc_perm(sizeof(*mp));
+    mp = (MPROG_LIST *) alloc_perm(sizeof(*mp));
   else
   {
     mp = mprog_free;
@@ -799,7 +789,7 @@ AUCTION_DATA *new_auction(void)
   AUCTION_DATA *auction;
 
   if (auction_free == NULL)
-    auction = alloc_perm(sizeof(*auction));
+    auction = (AUCTION_DATA *) alloc_perm(sizeof(*auction));
   else
   {
     auction = auction_free;

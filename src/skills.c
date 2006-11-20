@@ -90,10 +90,10 @@ CH_CMD(do_gain)
         break;
 
       if (!ch->pcdata->group_known[gn] &&
-          group_table[gn].rating[ch->class] > 0)
+          group_table[gn].rating[ch->clss] > 0)
       {
         sprintf(buf, "{c%-18s {W%-5d ", group_table[gn].name,
-                group_table[gn].rating[ch->class]);
+                group_table[gn].rating[ch->clss]);
         send_to_char(buf, ch);
         if (++col % 3 == 0)
           send_to_char("{x\n\r", ch);
@@ -118,12 +118,12 @@ CH_CMD(do_gain)
         break;
 
       if (!ch->pcdata->learned[sn] &&
-          skill_table[sn].rating[ch->class] > 0 &&
+          skill_table[sn].rating[ch->clss] > 0 &&
           skill_table[sn].spell_fun == spell_null)
       {
         sprintf(buf, "{w[{D%3d{w] {c%-18s {W%-3d{x ",
-                skill_table[sn].skill_level[ch->class],
-                skill_table[sn].name, skill_table[sn].rating[ch->class]);
+                skill_table[sn].skill_level[ch->clss],
+                skill_table[sn].name, skill_table[sn].rating[ch->clss]);
         send_to_char(buf, ch);
         if (++col % 3 == 0)
           send_to_char("\n\r", ch);
@@ -225,14 +225,14 @@ CH_CMD(do_gain)
       return;
     }
 
-    if (group_table[gn].rating[ch->class] <= 0)
+    if (group_table[gn].rating[ch->clss] <= 0)
     {
       act("$N tells you '{aThat group is beyond your powers.{x'", ch,
           NULL, trainer, TO_CHAR);
       return;
     }
 
-    if (ch->train < group_table[gn].rating[ch->class])
+    if (ch->train < group_table[gn].rating[ch->clss])
     {
       act("$N tells you '{aYou are not yet ready for that group.{x'",
           ch, NULL, trainer, TO_CHAR);
@@ -243,7 +243,7 @@ CH_CMD(do_gain)
     gn_add(ch, gn);
     act("$N trains you in the art of $t", ch, group_table[gn].name,
         trainer, TO_CHAR);
-    ch->train -= group_table[gn].rating[ch->class];
+    ch->train -= group_table[gn].rating[ch->clss];
     return;
   }
 
@@ -264,14 +264,14 @@ CH_CMD(do_gain)
       return;
     }
 
-    if (skill_table[sn].rating[ch->class] <= 0)
+    if (skill_table[sn].rating[ch->clss] <= 0)
     {
       act("$N tells you '{aThat skill is beyond your powers.{x'", ch,
           NULL, trainer, TO_CHAR);
       return;
     }
 
-    if (ch->train < skill_table[sn].rating[ch->class])
+    if (ch->train < skill_table[sn].rating[ch->clss])
     {
       act("$N tells you '{aYou are not yet ready for that skill.{x'",
           ch, NULL, trainer, TO_CHAR);
@@ -282,7 +282,7 @@ CH_CMD(do_gain)
     ch->pcdata->learned[sn] = 1;
     act("$N trains you in the art of $t", ch, skill_table[sn].name,
         trainer, TO_CHAR);
-    ch->train -= skill_table[sn].rating[ch->class];
+    ch->train -= skill_table[sn].rating[ch->clss];
     return;
   }
 
@@ -321,15 +321,15 @@ CH_CMD(do_spells)
     if (skill_table[sn].name == NULL)
       break;
 
-    if (skill_table[sn].skill_level[ch->class] <= MAX_LEVEL &&
+    if (skill_table[sn].skill_level[ch->clss] <= MAX_LEVEL &&
         skill_table[sn].spell_fun != spell_null &&
         ch->pcdata->learned[sn] > 0)
     {
-      if (!showAll && ch->level < skill_table[sn].skill_level[ch->class])
+      if (!showAll && ch->level < skill_table[sn].skill_level[ch->clss])
         continue;
 
       found = true;
-      lev = skill_table[sn].skill_level[ch->class];
+      lev = skill_table[sn].skill_level[ch->clss];
       if (ch->level < lev)
         sprintf(buf, "{W%-19s{g  n/a      ", skill_table[sn].name);
       else
@@ -408,7 +408,7 @@ CH_CMD(do_skills)
       if (race_has)
         level = 1;
       else
-        level = skill_table[sn].skill_level[ch->class];
+        level = skill_table[sn].skill_level[ch->clss];
 
       if (ch->pcdata->learned[sn] > 0)
         sprintf(learnbuf, "{G%%{g%-3d", ch->pcdata->learned[sn]);
@@ -416,7 +416,7 @@ CH_CMD(do_skills)
         sprintf(learnbuf, "{RN{rone");
 
 
-      if (skill_table[sn].skill_level[ch->class] <= MAX_LEVEL || race_has)
+      if (skill_table[sn].skill_level[ch->clss] <= MAX_LEVEL || race_has)
       {
         found = true;
 
@@ -498,10 +498,10 @@ void list_group_costs(CHAR_DATA * ch)
       break;
 
     if (!ch->gen_data->group_chosen[gn] && !ch->pcdata->group_known[gn] &&
-        group_table[gn].rating[ch->class] > 0)
+        group_table[gn].rating[ch->clss] > 0)
     {
       sprintf(buf, "{c%-18s {W%-5d{x ", group_table[gn].name,
-              group_table[gn].rating[ch->class]);
+              group_table[gn].rating[ch->clss]);
       send_to_char(buf, ch);
       if (++col % 3 == 0)
         send_to_char("\n\r", ch);
@@ -524,10 +524,10 @@ void list_group_costs(CHAR_DATA * ch)
 
     if (!ch->gen_data->skill_chosen[sn] && ch->pcdata->learned[sn] == 0 &&
         skill_table[sn].spell_fun == spell_null &&
-        skill_table[sn].rating[ch->class] > 0)
+        skill_table[sn].rating[ch->clss] > 0)
     {
       sprintf(buf, "{c%-18s {W%-2d{x ", skill_table[sn].name,
-              skill_table[sn].rating[ch->class]);
+              skill_table[sn].rating[ch->clss]);
       send_to_char(buf, ch);
       if (++col % 3 == 0)
         send_to_char("\n\r", ch);
@@ -565,10 +565,10 @@ void list_group_chosen(CHAR_DATA * ch)
       break;
 
     if (ch->gen_data->group_chosen[gn] &&
-        group_table[gn].rating[ch->class] > 0)
+        group_table[gn].rating[ch->clss] > 0)
     {
       sprintf(buf, "%-18s %-5d{x ", group_table[gn].name,
-              group_table[gn].rating[ch->class]);
+              group_table[gn].rating[ch->clss]);
       send_to_char(buf, ch);
       if (++col % 3 == 0)
         send_to_char("\n\r", ch);
@@ -590,10 +590,10 @@ void list_group_chosen(CHAR_DATA * ch)
       break;
 
     if (ch->gen_data->skill_chosen[sn] &&
-        skill_table[sn].rating[ch->class] > 0)
+        skill_table[sn].rating[ch->clss] > 0)
     {
       sprintf(buf, "{c%-18s {W%-2d ", skill_table[sn].name,
-              skill_table[sn].rating[ch->class]);
+              skill_table[sn].rating[ch->clss]);
       send_to_char(buf, ch);
       if (++col % 3 == 0)
         send_to_char("\n\r", ch);
@@ -622,7 +622,7 @@ long exp_per_level(CHAR_DATA * ch, int points)
   inc = 500;
 
   if (points < 40)
-    return 1000 * pc_race_table[ch->race].class_mult[ch->class] / 100;
+    return 1000 * pc_race_table[ch->race].class_mult[ch->clss] / 100;
 
   /* processing */
   points -= 40;
@@ -641,8 +641,8 @@ long exp_per_level(CHAR_DATA * ch, int points)
 
   expl += (long) points *(long) inc / 10;
 
-  return (long) expl *(long) pc_race_table[ch->race].class_mult[ch->
-                                                                class] / 100;
+  return (long) expl *(long) pc_race_table[ch->race].class_mult[ch->clss] /
+    100;
 }
 
 /* this procedure handles the input parsing for the skill generator */
@@ -686,7 +686,7 @@ bool parse_gen_groups(CHAR_DATA * ch, char *argument)
         return true;
       }
 
-      if (group_table[gn].rating[ch->class] < 1)
+      if (group_table[gn].rating[ch->clss] < 1)
       {
         send_to_char("That group is not available.\n\r", ch);
         return true;
@@ -694,7 +694,7 @@ bool parse_gen_groups(CHAR_DATA * ch, char *argument)
       if (exp_per_level
           (ch,
            ch->gen_data->points_chosen +
-           group_table[gn].rating[ch->class]) > 500000)
+           group_table[gn].rating[ch->clss]) > 500000)
       {
         send_to_char("That will take you over the Exp/Level limit.\n\r", ch);
         return true;
@@ -703,9 +703,9 @@ bool parse_gen_groups(CHAR_DATA * ch, char *argument)
       sprintf(buf, "%s group added\n\r", group_table[gn].name);
       send_to_char(buf, ch);
       ch->gen_data->group_chosen[gn] = true;
-      ch->gen_data->points_chosen += group_table[gn].rating[ch->class];
+      ch->gen_data->points_chosen += group_table[gn].rating[ch->clss];
       gn_add(ch, gn);
-      ch->pcdata->points += group_table[gn].rating[ch->class];
+      ch->pcdata->points += group_table[gn].rating[ch->clss];
       return true;
     }
 
@@ -718,7 +718,7 @@ bool parse_gen_groups(CHAR_DATA * ch, char *argument)
         return true;
       }
 
-      if (skill_table[sn].rating[ch->class] < 1 ||
+      if (skill_table[sn].rating[ch->clss] < 1 ||
           skill_table[sn].spell_fun != spell_null)
       {
         send_to_char("That skill is not available.\n\r", ch);
@@ -727,9 +727,9 @@ bool parse_gen_groups(CHAR_DATA * ch, char *argument)
       sprintf(buf, "%s skill added\n\r", skill_table[sn].name);
       send_to_char(buf, ch);
       ch->gen_data->skill_chosen[sn] = true;
-      ch->gen_data->points_chosen += skill_table[sn].rating[ch->class];
+      ch->gen_data->points_chosen += skill_table[sn].rating[ch->clss];
       ch->pcdata->learned[sn] = 1;
-      ch->pcdata->points += skill_table[sn].rating[ch->class];
+      ch->pcdata->points += skill_table[sn].rating[ch->clss];
       return true;
     }
 
@@ -750,14 +750,14 @@ bool parse_gen_groups(CHAR_DATA * ch, char *argument)
     {
       send_to_char("Group dropped.\n\r", ch);
       ch->gen_data->group_chosen[gn] = false;
-      ch->gen_data->points_chosen -= group_table[gn].rating[ch->class];
+      ch->gen_data->points_chosen -= group_table[gn].rating[ch->clss];
       gn_remove(ch, gn);
       for (i = 0; i < MAX_GROUP; i++)
       {
         if (ch->gen_data->group_chosen[gn])
           gn_add(ch, gn);
       }
-      ch->pcdata->points -= group_table[gn].rating[ch->class];
+      ch->pcdata->points -= group_table[gn].rating[ch->clss];
       return true;
     }
 
@@ -766,9 +766,9 @@ bool parse_gen_groups(CHAR_DATA * ch, char *argument)
     {
       send_to_char("Skill dropped.\n\r", ch);
       ch->gen_data->skill_chosen[sn] = false;
-      ch->gen_data->points_chosen -= skill_table[sn].rating[ch->class];
+      ch->gen_data->points_chosen -= skill_table[sn].rating[ch->clss];
       ch->pcdata->learned[sn] = 0;
-      ch->pcdata->points -= skill_table[sn].rating[ch->class];
+      ch->pcdata->points -= skill_table[sn].rating[ch->clss];
       return true;
     }
 
@@ -922,7 +922,7 @@ CH_CMD(do_class)
     {
       if (group_table[gn].name == NULL)
         break;
-      if (group_table[gn].rating[ch->class] > 0)
+      if (group_table[gn].rating[ch->clss] > 0)
       {
         sprintf(buf, "%-20s ", group_table[gn].name);
         send_to_char(buf, ch);
@@ -956,7 +956,7 @@ CH_CMD(do_class)
     if ((tn = spell_avail(ch, group_table[gn].spells[sn])) >= 0)
     {
       sprintf(buf, "{B%-5d {G%-20s ",
-              skill_table[tn].skill_level[ch->class],
+              skill_table[tn].skill_level[ch->clss],
               group_table[gn].spells[sn]);
       send_to_char(buf, ch);
       if (++col % 2 == 0)
@@ -982,7 +982,7 @@ int spell_avail(CHAR_DATA * ch, const char *name)
     if (LOWER(name[0]) == LOWER(skill_table[sn].name[0]) &&
         !str_prefix(name, skill_table[sn].name))
     {
-      if (skill_table[sn].skill_level[ch->class] <= LEVEL_ANCIENT)
+      if (skill_table[sn].skill_level[ch->clss] <= LEVEL_ANCIENT)
         return sn;
     }
   }
@@ -998,14 +998,14 @@ void check_improve(CHAR_DATA * ch, int sn, bool success, int multiplier)
   if (IS_NPC(ch))
     return;
 
-  if (ch->level < skill_table[sn].skill_level[ch->class] ||
-      skill_table[sn].rating[ch->class] == 0 || ch->pcdata->learned[sn] == 0
+  if (ch->level < skill_table[sn].skill_level[ch->clss] ||
+      skill_table[sn].rating[ch->clss] == 0 || ch->pcdata->learned[sn] == 0
       || ch->pcdata->learned[sn] == 100)
     return;                     /* skill is not known */
 
   /* check to see if the character has a chance to learn */
   chance = 10 * int_app[get_curr_stat(ch, STAT_INT)].learn;
-  chance /= (multiplier * skill_table[sn].rating[ch->class] * 4);
+  chance /= (multiplier * skill_table[sn].rating[ch->clss] * 4);
   chance += ch->level;
 
   if (number_range(1, 1000) > chance)
@@ -1021,7 +1021,7 @@ void check_improve(CHAR_DATA * ch, int sn, bool success, int multiplier)
       sprintf(buf, "You have become better at %s!\n\r", skill_table[sn].name);
       send_to_char(buf, ch);
       ch->pcdata->learned[sn]++;
-      gain_exp(ch, 2 * skill_table[sn].rating[ch->class]);
+      gain_exp(ch, 2 * skill_table[sn].rating[ch->clss]);
     }
   }
 
@@ -1036,7 +1036,7 @@ void check_improve(CHAR_DATA * ch, int sn, bool success, int multiplier)
       send_to_char(buf, ch);
       ch->pcdata->learned[sn] += number_range(1, 3);
       ch->pcdata->learned[sn] = UMIN(ch->pcdata->learned[sn], 100);
-      gain_exp(ch, 2 * skill_table[sn].rating[ch->class]);
+      gain_exp(ch, 2 * skill_table[sn].rating[ch->clss]);
     }
   }
 }
@@ -1103,7 +1103,7 @@ void group_add(CHAR_DATA * ch, const char *name, bool deduct)
     {
       ch->pcdata->learned[sn] = 1;
       if (deduct)
-        ch->pcdata->points += skill_table[sn].rating[ch->class];
+        ch->pcdata->points += skill_table[sn].rating[ch->clss];
     }
     return;
   }
@@ -1118,7 +1118,7 @@ void group_add(CHAR_DATA * ch, const char *name, bool deduct)
     {
       ch->pcdata->group_known[gn] = true;
       if (deduct)
-        ch->pcdata->points += group_table[gn].rating[ch->class];
+        ch->pcdata->points += group_table[gn].rating[ch->clss];
     }
     gn_add(ch, gn);             /* make sure all skills in the group are known */
   }
@@ -1153,7 +1153,7 @@ void group_remove(CHAR_DATA * ch, const char *name)
 CH_CMD(do_showskill)
 {
   char buf[MAX_STRING_LENGTH];
-  int skill, class = 0;
+  int skill, clss = 0;
   int i;
 
   strcpy(buf, "");
@@ -1176,16 +1176,16 @@ CH_CMD(do_showskill)
   /* send_to_char("{CClass Level Gain{x\n\r",ch); */
   /* send_to_char("{C----------- ----- ----{x\n\r",ch); */
   i = 0;
-  for (class = 0; class < MAX_CLASS; class++)
+  for (clss = 0; clss < MAX_CLASS; clss++)
   {
-    if (skill_table[skill].skill_level[class] > LEVEL_ANCIENT)
+    if (skill_table[skill].skill_level[clss] > LEVEL_ANCIENT)
       continue;
     i++;
-    /* sprintf(buf,"{m%-11s {c%5d {m%4d{x\n\r",class_table[class].name,
-       skill_table[skill].skill_level[class],
-       skill_table[skill].rating[class]); */
-    sprintf(buf, "{C%-13s{x: {c%3d  {x", class_table[class].name,
-            skill_table[skill].skill_level[class]);
+    /* sprintf(buf,"{m%-11s {c%5d {m%4d{x\n\r",class_table[clss].name,
+       skill_table[skill].skill_level[clss],
+       skill_table[skill].rating[clss]); */
+    sprintf(buf, "{C%-13s{x: {c%3d  {x", class_table[clss].name,
+            skill_table[skill].skill_level[clss]);
     buf[2] = UPPER(buf[2]);
     send_to_char(buf, ch);
     if (i == 3)
@@ -1202,7 +1202,7 @@ CH_CMD(do_showclass)
   char arg1[MAX_INPUT_LENGTH];
   char buf[MAX_STRING_LENGTH];
 
-  int class, level, skill;
+  int clss, level, skill;
 
   int i;
 
@@ -1214,20 +1214,20 @@ CH_CMD(do_showclass)
     send_to_char("Syntax: showclass [class]\n\r", ch);
     return;
   }
-  if ((class = class_lookup(arg1)) == -1)
+  if ((clss = class_lookup(arg1)) == -1)
   {
     send_to_char("Class not found.\n\r", ch);
     return;
   }
 
-  sprintf(buf, "{xSpells/skills for %s:{x\n\r", class_table[class].name);
+  sprintf(buf, "{xSpells/skills for %s:{x\n\r", class_table[clss].name);
   send_to_char(buf, ch);
   i = 0;
   for (level = 1; level <= LEVEL_ANCIENT; level++)
   {
     for (skill = 0; skill < MAX_SKILL; skill++)
     {
-      if (skill_table[skill].skill_level[class] != level)
+      if (skill_table[skill].skill_level[clss] != level)
         continue;
       i++;
       sprintf(buf, "{CLevel %3d: {x: {c%-20s{x  ", level,

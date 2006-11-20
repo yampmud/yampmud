@@ -47,7 +47,7 @@ CH_CMD(do_flag)
   CHAR_DATA *victim;
   OBJ_DATA *obj;
   ROOM_INDEX_DATA *location;
-  long *flag, old = 0, new = 0, marked = 0, pos;
+  long *flag, oldflag = 0, newflag = 0, marked = 0, pos;
   char type;
   char buf[100];
   int sn, col;
@@ -456,11 +456,11 @@ CH_CMD(do_flag)
       return;
     }
 
-    old = *flag;
+    oldflag = *flag;
     victim->zone = NULL;
 
     if (type != '=')
-      new = old;
+      newflag = oldflag;
 
     /* mark the words */
     for (;;)
@@ -482,9 +482,9 @@ CH_CMD(do_flag)
 
     for (pos = 0; flag_table[pos].name != NULL; pos++)
     {
-      if (!flag_table[pos].settable && IS_SET(old, flag_table[pos].bit))
+      if (!flag_table[pos].settable && IS_SET(oldflag, flag_table[pos].bit))
       {
-        SET_BIT(new, flag_table[pos].bit);
+        SET_BIT(newflag, flag_table[pos].bit);
         continue;
       }
 
@@ -494,20 +494,20 @@ CH_CMD(do_flag)
         {
           case '=':
           case '+':
-            SET_BIT(new, flag_table[pos].bit);
+            SET_BIT(newflag, flag_table[pos].bit);
             break;
           case '-':
-            REMOVE_BIT(new, flag_table[pos].bit);
+            REMOVE_BIT(newflag, flag_table[pos].bit);
             break;
           default:
-            if (IS_SET(new, flag_table[pos].bit))
-              REMOVE_BIT(new, flag_table[pos].bit);
+            if (IS_SET(newflag, flag_table[pos].bit))
+              REMOVE_BIT(newflag, flag_table[pos].bit);
             else
-              SET_BIT(new, flag_table[pos].bit);
+              SET_BIT(newflag, flag_table[pos].bit);
         }
       }
     }
-    *flag = new;
+    *flag = newflag;
     return;
   }
   else if (!str_prefix(arg1, "obj"))
@@ -550,10 +550,10 @@ CH_CMD(do_flag)
       return;
     }
 
-    old = *flag;
+    oldflag = *flag;
 
     if (type != '=')
-      new = old;
+      newflag = oldflag;
 
     /* mark the words */
     for (;;)
@@ -575,9 +575,9 @@ CH_CMD(do_flag)
 
     for (pos = 0; flag_table[pos].name != NULL; pos++)
     {
-      if (!flag_table[pos].settable && IS_SET(old, flag_table[pos].bit))
+      if (!flag_table[pos].settable && IS_SET(oldflag, flag_table[pos].bit))
       {
-        SET_BIT(new, flag_table[pos].bit);
+        SET_BIT(newflag, flag_table[pos].bit);
         continue;
       }
 
@@ -587,20 +587,20 @@ CH_CMD(do_flag)
         {
           case '=':
           case '+':
-            SET_BIT(new, flag_table[pos].bit);
+            SET_BIT(newflag, flag_table[pos].bit);
             break;
           case '-':
-            REMOVE_BIT(new, flag_table[pos].bit);
+            REMOVE_BIT(newflag, flag_table[pos].bit);
             break;
           default:
-            if (IS_SET(new, flag_table[pos].bit))
-              REMOVE_BIT(new, flag_table[pos].bit);
+            if (IS_SET(newflag, flag_table[pos].bit))
+              REMOVE_BIT(newflag, flag_table[pos].bit);
             else
-              SET_BIT(new, flag_table[pos].bit);
+              SET_BIT(newflag, flag_table[pos].bit);
         }
       }
     }
-    *flag = new;
+    *flag = newflag;
     return;
   }
   else if (!str_prefix(arg1, "room"))
@@ -625,10 +625,10 @@ CH_CMD(do_flag)
       return;
     }
 
-    old = *flag;
+    oldflag = *flag;
 
     if (type != '=')
-      new = old;
+      newflag = oldflag;
 
     /* mark the words */
     for (;;)
@@ -650,9 +650,9 @@ CH_CMD(do_flag)
 
     for (pos = 0; flag_table[pos].name != NULL; pos++)
     {
-      if (!flag_table[pos].settable && IS_SET(old, flag_table[pos].bit))
+      if (!flag_table[pos].settable && IS_SET(oldflag, flag_table[pos].bit))
       {
-        SET_BIT(new, flag_table[pos].bit);
+        SET_BIT(newflag, flag_table[pos].bit);
         continue;
       }
 
@@ -662,20 +662,20 @@ CH_CMD(do_flag)
         {
           case '=':
           case '+':
-            SET_BIT(new, flag_table[pos].bit);
+            SET_BIT(newflag, flag_table[pos].bit);
             break;
           case '-':
-            REMOVE_BIT(new, flag_table[pos].bit);
+            REMOVE_BIT(newflag, flag_table[pos].bit);
             break;
           default:
-            if (IS_SET(new, flag_table[pos].bit))
-              REMOVE_BIT(new, flag_table[pos].bit);
+            if (IS_SET(newflag, flag_table[pos].bit))
+              REMOVE_BIT(newflag, flag_table[pos].bit);
             else
-              SET_BIT(new, flag_table[pos].bit);
+              SET_BIT(newflag, flag_table[pos].bit);
         }
       }
     }
-    *flag = new;
+    *flag = newflag;
     return;
   }
 

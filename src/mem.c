@@ -40,7 +40,7 @@ RESET_DATA *new_reset_data(void)
 
   if (!reset_free)
   {
-    pReset = alloc_perm(sizeof(*pReset));
+    pReset = (RESET_DATA *) alloc_perm(sizeof(*pReset));
     top_reset++;
   }
   else
@@ -73,7 +73,7 @@ AREA_DATA *new_area(void)
 
   if (!area_free)
   {
-    pArea = alloc_perm(sizeof(*pArea));
+    pArea = (AREA_DATA *) alloc_perm(sizeof(*pArea));
     top_area++;
   }
   else
@@ -119,7 +119,7 @@ EXIT_DATA *new_exit(void)
 
   if (!exit_free)
   {
-    pExit = alloc_perm(sizeof(*pExit));
+    pExit = (EXIT_DATA *) alloc_perm(sizeof(*pExit));
     top_exit++;
   }
   else
@@ -157,7 +157,7 @@ ROOM_INDEX_DATA *new_room_index(void)
 
   if (!room_index_free)
   {
-    pRoom = alloc_perm(sizeof(*pRoom));
+    pRoom = (ROOM_INDEX_DATA *) alloc_perm(sizeof(*pRoom));
     top_room++;
   }
   else
@@ -227,7 +227,7 @@ SHOP_DATA *new_shop(void)
 
   if (!shop_free)
   {
-    pShop = alloc_perm(sizeof(*pShop));
+    pShop = (SHOP_DATA *) alloc_perm(sizeof(*pShop));
     top_shop++;
   }
   else
@@ -264,7 +264,7 @@ OBJ_INDEX_DATA *new_obj_index(void)
 
   if (!obj_index_free)
   {
-    pObj = alloc_perm(sizeof(*pObj));
+    pObj = (OBJ_INDEX_DATA *) alloc_perm(sizeof(*pObj));
     top_obj_index++;
   }
   else
@@ -327,7 +327,7 @@ MOB_INDEX_DATA *new_mob_index(void)
 
   if (!mob_index_free)
   {
-    pMob = alloc_perm(sizeof(*pMob));
+    pMob = (MOB_INDEX_DATA *) alloc_perm(sizeof(*pMob));
     top_mob_index++;
   }
   else
@@ -408,7 +408,7 @@ MPROG_CODE *new_mpcode(void)
 
   if (!mpcode_free)
   {
-    NewCode = alloc_perm(sizeof(*NewCode));
+    NewCode = (MPROG_CODE *) alloc_perm(sizeof(*NewCode));
     top_mprog_index++;
   }
   else

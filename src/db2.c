@@ -221,7 +221,7 @@ void load_mobiles(FILE * fp)
     }
     fBootDb = true;
 
-    pMobIndex = alloc_perm(sizeof(*pMobIndex));
+    pMobIndex = (MOB_INDEX_DATA *) alloc_perm(sizeof(*pMobIndex));
     pMobIndex->vnum = vnum;
     pMobIndex->area = area_last;  /* OLC */
     pMobIndex->new_format = true;
@@ -354,7 +354,7 @@ void load_mobiles(FILE * fp)
         char *word;
         int trigger = 0;
 
-        pMprog = alloc_perm(sizeof(*pMprog));
+        pMprog = (MPROG_LIST *) alloc_perm(sizeof(*pMprog));
         word = fread_word(fp);
         if (!(trigger = flag_lookup(word, mprog_flags)))
         {
@@ -425,7 +425,7 @@ void load_objects(FILE * fp)
     }
     fBootDb = true;
 
-    pObjIndex = alloc_perm(sizeof(*pObjIndex));
+    pObjIndex = (OBJ_INDEX_DATA *) alloc_perm(sizeof(*pObjIndex));
     pObjIndex->vnum = vnum;
     pObjIndex->area = area_last;  /* OLC */
     pObjIndex->new_format = true;
@@ -540,7 +540,7 @@ void load_objects(FILE * fp)
       {
         AFFECT_DATA *paf;
 
-        paf = alloc_perm(sizeof(*paf));
+        paf = (AFFECT_DATA *) alloc_perm(sizeof(*paf));
         paf->where = TO_OBJECT;
         paf->type = -1;
         paf->level = pObjIndex->level;
@@ -557,7 +557,7 @@ void load_objects(FILE * fp)
       {
         AFFECT_DATA *paf;
 
-        paf = alloc_perm(sizeof(*paf));
+        paf = (AFFECT_DATA *) alloc_perm(sizeof(*paf));
         letter = fread_letter(fp);
         switch (letter)
         {
@@ -595,7 +595,7 @@ void load_objects(FILE * fp)
       {
         EXTRA_DESCR_DATA *ed;
 
-        ed = alloc_perm(sizeof(*ed));
+        ed = (EXTRA_DESCR_DATA *) alloc_perm(sizeof(*ed));
         ed->keyword = fread_string(fp);
         ed->description = fread_string(fp);
         ed->next = pObjIndex->extra_descr;
@@ -637,13 +637,13 @@ void load_objects(FILE * fp)
       {
         char *temp;
 
-        if (pObjIndex->class)
+        if (pObjIndex->clss)
         {
           bug("Load_objects: duplicate class fields.", 0);
           quit(1);
         }
         temp = fread_string(fp);
-        pObjIndex->class = class_lookup(temp);
+        pObjIndex->clss = class_lookup(temp);
         free_string(temp);
       }
 
@@ -970,7 +970,7 @@ void convert_mobile(MOB_INDEX_DATA * pMobIndex)
   type = level * level * 27 / 40;
   number = UMIN(type / 40 + 1, 10); /* how do they get 11 ??? */
   type = UMAX(2, type / number);
-  bonus = UMAX(0, level * (8 + level) * .9 - number * type);
+  bonus = (int) (UMAX(0, level * (8 + level) * .9 - number * type));
 
   pMobIndex->hit[DICE_NUMBER] = number;
   pMobIndex->hit[DICE_TYPE] = type;

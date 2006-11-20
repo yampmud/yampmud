@@ -923,7 +923,7 @@ CH_CMD(do_clanwho)
   {
 
     CHAR_DATA *wch;
-    char const *class;
+    char const *clss;
 
     /* 
      * Check
@@ -948,7 +948,7 @@ CH_CMD(do_clanwho)
     /* 
 
      * Figure out what to print for class. */
-    class = class_table[wch->class].who_name;
+    clss = class_table[wch->clss].who_name;
 
     /* 
      * Format it up.

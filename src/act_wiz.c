@@ -745,19 +745,19 @@ CH_CMD(do_smote)
 
     for (; *letter != '\0'; letter++)
     {
-      if (*letter == '\'' && matches == strlen(vch->name))
+      if (*letter == '\'' && matches == (signed) strlen(vch->name))
       {
         strcat(temp, "r");
         continue;
       }
 
-      if (*letter == 's' && matches == strlen(vch->name))
+      if (*letter == 's' && matches == (signed) strlen(vch->name))
       {
         matches = 0;
         continue;
       }
 
-      if (matches == strlen(vch->name))
+      if (matches == (signed) strlen(vch->name))
       {
         matches = 0;
       }
@@ -766,7 +766,7 @@ CH_CMD(do_smote)
       {
         matches++;
         name++;
-        if (matches == strlen(vch->name))
+        if (matches == (signed) strlen(vch->name))
         {
           strcat(temp, "you");
           last[0] = '\0';
@@ -2121,7 +2121,7 @@ CH_CMD(do_ostat)
   if (is_class_obj(obj))
   {
     sprintf(buf, "This object may only be used by a %s.\n\r",
-            class_table[obj->class].name);
+            class_table[obj->clss].name);
     send_to_char(buf, ch);
   }
 
@@ -2313,7 +2313,7 @@ CH_CMD(do_mstat)
   add_buf(output, buf);
 
   sprintf(buf, "Lv: %d  Class: %s  Align: %d  Exp: %ld\n\r", victim->level,
-          IS_NPC(victim) ? "mobile" : class_table[victim->class].name,
+          IS_NPC(victim) ? "mobile" : class_table[victim->clss].name,
           victim->alignment, victim->exp);
   add_buf(output, buf);
 
@@ -4769,7 +4769,7 @@ CH_CMD(do_mset)
 
   if (!str_prefix(arg2, "class"))
   {
-    int class;
+    int clss;
 
     if (IS_NPC(victim))
     {
@@ -4777,17 +4777,17 @@ CH_CMD(do_mset)
       return;
     }
 
-    class = class_lookup(arg3);
-    if (class == -1)
+    clss = class_lookup(arg3);
+    if (clss == -1)
     {
       char buf[MAX_STRING_LENGTH];
 
       strcpy(buf, "Possible classes are: ");
-      for (class = 0; class < MAX_CLASS; class++)
+      for (clss = 0; clss < MAX_CLASS; clss++)
       {
-        if (class > 0)
+        if (clss > 0)
           strcat(buf, " ");
-        strcat(buf, class_table[class].name);
+        strcat(buf, class_table[clss].name);
       }
       strcat(buf, ".\n\r");
 
@@ -4795,7 +4795,7 @@ CH_CMD(do_mset)
       return;
     }
 
-    victim->class = class;
+    victim->clss = clss;
     return;
   }
 
@@ -5138,7 +5138,7 @@ CH_CMD(do_string)
         return;
       }
       if ((ch->level < CREATOR) && (victim->level < HERO) &&
-          (victim->class < MAX_CLASS / 2))
+          (victim->clss < MAX_CLASS / 2))
       {
         send_to_char("Not on 1st tier mortals.\n\r", ch);
         return;
@@ -5151,7 +5151,7 @@ CH_CMD(do_string)
         return;
       }
       cnt = 0;
-      for (plc = 0; plc < strlen(arg3); plc++)
+      for (plc = 0; plc < (signed) strlen(arg3); plc++)
       {
         if (arg3[plc] != '{')
         {
@@ -5350,7 +5350,7 @@ CH_CMD(do_oset)
   OBJ_DATA *obj;
   long value;
   int clan;
-  int class;
+  int clss;
 
   smash_tilde(argument);
   argument = one_argument(argument, arg1);
@@ -5406,15 +5406,15 @@ CH_CMD(do_oset)
   {
     if (!str_prefix(arg3, "none"))
     {
-      obj->class = 0;
+      obj->clss = 0;
       return;
     }
-    if ((class = class_lookup(arg3)) == 0)
+    if ((clss = class_lookup(arg3)) == 0)
     {
       send_to_char("No such guild exists.\n\r", ch);
       return;
     }
-    obj->class = class;
+    obj->clss = clss;
     return;
   }
 
@@ -6556,7 +6556,7 @@ CH_CMD(do_cscore)
                  1 ? "male" : "female", GET_DAMROLL(victim),
                  victim->move, victim->max_move, victim->level,
                  GET_HITROLL(victim), victim->carry_number,
-                 can_carry_n(victim), class_table[victim->class].name,
+                 can_carry_n(victim), class_table[victim->clss].name,
                  victim->platinum, get_carry_weight(victim) / 10,
                  can_carry_w(victim) / 10, victim->alignment,
                  victim->gold, victim->saving_throw, victim->wimpy,

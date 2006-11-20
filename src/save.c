@@ -184,7 +184,7 @@ void fwrite_char(CHAR_DATA * ch, FILE * fp)
   if (ch->pcdata->nextquest != 0)
     fprintf(fp, "QuestNext %d\n", ch->pcdata->nextquest);
   fprintf(fp, "Sex  %d\n", ch->sex);
-  fprintf(fp, "Clas %s~\n", class_table[ch->class].name);
+  fprintf(fp, "Clas %s~\n", class_table[ch->clss].name);
   fprintf(fp, "Levl %d\n", ch->level);
   if (ch->recall_room > 0)
     fprintf(fp, "ReRm %ld\n", ch->recall_room);
@@ -828,7 +828,7 @@ void fread_char(CHAR_DATA * ch, FILE * fp)
 
   for (;;)
   {
-    word = feof(fp) ? "End" : fread_word(fp);
+    word = (char *) (feof(fp) ? "End" : fread_word(fp));
     fMatch = false;
 
     switch (UPPER(word[0]))
@@ -981,13 +981,13 @@ void fread_char(CHAR_DATA * ch, FILE * fp)
         {
           char *tmp = fread_string(fp);
 
-          ch->class = class_lookup(tmp);
+          ch->clss = class_lookup(tmp);
           free_string(tmp);
           fMatch = true;
           break;
         }
-        KEY("Class", ch->class, fread_number(fp));
-        KEY("Cla", ch->class, fread_number(fp));
+        KEY("Class", ch->clss, fread_number(fp));
+        KEY("Cla", ch->clss, fread_number(fp));
         if (!str_cmp(word, "Clan"))
         {
           char *tmp = fread_string(fp);
@@ -1381,7 +1381,7 @@ void fread_pet(CHAR_DATA * ch, FILE * fp)
   //    int percent;
 
   /* first entry had BETTER be the vnum or we barf */
-  word = feof(fp) ? "END" : fread_word(fp);
+  word = (char *) (feof(fp) ? "END" : fread_word(fp));
   if (!str_cmp(word, "Vnum"))
   {
     long vnum;
@@ -1404,7 +1404,7 @@ void fread_pet(CHAR_DATA * ch, FILE * fp)
 
   for (;;)
   {
-    word = feof(fp) ? "END" : fread_word(fp);
+    word = (char *) (feof(fp) ? "END" : fread_word(fp));
     fMatch = false;
 
     switch (UPPER(word[0]))
@@ -1553,7 +1553,7 @@ void fread_obj(CHAR_DATA * ch, FILE * fp)
   new_format = false;
   make_new = false;
 
-  word = feof(fp) ? "End" : fread_word(fp);
+  word = (char *) (feof(fp) ? "End" : fread_word(fp));
   if (!str_cmp(word, "Vnum"))
   {
     long vnum;
@@ -1592,7 +1592,7 @@ void fread_obj(CHAR_DATA * ch, FILE * fp)
     if (first)
       first = false;
     else
-      word = feof(fp) ? "End" : fread_word(fp);
+      word = (char *) (feof(fp) ? "End" : fread_word(fp));
     fMatch = false;
 
     switch (UPPER(word[0]))

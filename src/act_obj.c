@@ -179,9 +179,9 @@ BUFFER *get_obj(CHAR_DATA * ch, OBJ_DATA * obj, OBJ_DATA * container,
   {
     if (container->pIndexData->item_type == ITEM_PIT &&
         (((get_trust(ch) < obj->level) &&
-          (ch->class < MAX_CLASS / 2) && (obj->level > 19)) ||
+          (ch->clss < MAX_CLASS / 2) && (obj->level > 19)) ||
          ((get_trust(ch) < obj->level) &&
-          (ch->class >= MAX_CLASS / 2) && (obj->level > 27))))
+          (ch->clss >= MAX_CLASS / 2) && (obj->level > 27))))
     {
       sprintf(buf, "%s: You are not powerful enough to use it.\n\r",
               obj->short_descr);
@@ -1980,10 +1980,10 @@ CH_CMD(do_drink)
     send_to_char("Your thirst is quenched.\n\r", ch);
 
   if (!str_cmp(liq_table[liquid].liq_name, "blood") &&
-      (!str_cmp(class_table[ch->class].name, "Vampire") ||
-       (!str_cmp(class_table[ch->class].name, "Cainite") ||
-        (!str_cmp(class_table[ch->class].name, "Revenant") ||
-         (!str_cmp(class_table[ch->class].name, "Lich"))))))
+      (!str_cmp(class_table[ch->clss].name, "Vampire") ||
+       (!str_cmp(class_table[ch->clss].name, "Cainite") ||
+        (!str_cmp(class_table[ch->clss].name, "Revenant") ||
+         (!str_cmp(class_table[ch->clss].name, "Lich"))))))
   {
     ch->hit += ch->max_hit / 20;
     ch->hit = UMIN(ch->hit, ch->max_hit);
@@ -2240,9 +2240,9 @@ void wear_obj(CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace, bool silent)
   OBJ_DATA *shieldobj;
   char buf[MAX_STRING_LENGTH];
 
-  if (((ch->level < obj->level) && (ch->class < MAX_CLASS / 2) &&
+  if (((ch->level < obj->level) && (ch->clss < MAX_CLASS / 2) &&
        (obj->level > 19)) || ((ch->level < obj->level) &&
-                              (ch->class >= MAX_CLASS / 2) &&
+                              (ch->clss >= MAX_CLASS / 2) &&
                               (obj->level > 27)))
   {
     sprintf(buf, "You must be level %d to use this object.\n\r", obj->level);
@@ -2483,7 +2483,7 @@ void wear_obj(CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace, bool silent)
     weapon = get_eq_char(ch, WEAR_WIELD);
     levitate = ((get_skill(ch, gsn_shield_levitation) != 0) &&
                 (skill_table[gsn_shield_levitation].
-                 skill_level[ch->class] <= ch->level));
+                 skill_level[ch->clss] <= ch->level));
 
     if (weapon != NULL && IS_WEAPON_STAT(weapon, WEAPON_TWO_HANDS) &&
         !levitate)
@@ -2537,7 +2537,7 @@ void wear_obj(CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace, bool silent)
 
     levitate = ((get_skill(ch, gsn_shield_levitation) != 0) &&
                 (skill_table[gsn_shield_levitation].
-                 skill_level[ch->class] <= ch->level));
+                 skill_level[ch->clss] <= ch->level));
 
     if (!remove_obj(ch, WEAR_WIELD, fReplace, false))
       return;
@@ -4064,9 +4064,9 @@ CH_CMD(do_buy)
       return;
     }
 
-    if (((obj->level > ch->level) && (ch->class < MAX_CLASS / 2) &&
+    if (((obj->level > ch->level) && (ch->clss < MAX_CLASS / 2) &&
          (obj->level > 19)) || ((obj->level > ch->level) &&
-                                (ch->class >= MAX_CLASS / 2) &&
+                                (ch->clss >= MAX_CLASS / 2) &&
                                 (obj->level > 27)))
     {
       act("$n tells you '{aYou can't use $p {ayet{x'.", keeper, obj, ch,
@@ -4446,7 +4446,7 @@ CH_CMD(do_second)
   bool levitate;
 
   levitate = ((get_skill(ch, gsn_shield_levitation) != 0) &&
-              (skill_table[gsn_shield_levitation].skill_level[ch->class] <=
+              (skill_table[gsn_shield_levitation].skill_level[ch->clss] <=
                ch->level));
 
   if (argument[0] == '\0')      /* empty */
@@ -4484,9 +4484,9 @@ CH_CMD(do_second)
     return;
   }
 
-  if (((ch->level < obj->level) && (ch->class < MAX_CLASS / 2) &&
+  if (((ch->level < obj->level) && (ch->clss < MAX_CLASS / 2) &&
        (obj->level > 19)) || ((ch->level < obj->level) &&
-                              (ch->class >= MAX_CLASS / 2) &&
+                              (ch->clss >= MAX_CLASS / 2) &&
                               (obj->level > 27)))
   {
     sprintf(buf, "You must be level %d to use this object.\n\r", obj->level);

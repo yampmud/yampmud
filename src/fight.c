@@ -118,28 +118,28 @@ bool WR(CHAR_DATA * ch, CHAR_DATA * victim)
   if (ch->pk_timer > 0 || victim->pk_timer > 0)
     return false;
 
-  if (IS_SET(class_table[ch->class].tier, TIER_01))
+  if (IS_SET(class_table[ch->clss].tier, TIER_01))
     ch_tier = 1;
 
-  if (IS_SET(class_table[ch->class].tier, TIER_02))
+  if (IS_SET(class_table[ch->clss].tier, TIER_02))
     ch_tier = 2;
 
-  if (IS_SET(class_table[ch->class].tier, TIER_03))
+  if (IS_SET(class_table[ch->clss].tier, TIER_03))
     ch_tier = 3;
 
-  if (IS_SET(class_table[ch->class].tier, TIER_04))
+  if (IS_SET(class_table[ch->clss].tier, TIER_04))
     ch_tier = 4;
 
-  if (IS_SET(class_table[victim->class].tier, TIER_01))
+  if (IS_SET(class_table[victim->clss].tier, TIER_01))
     victim_tier = 1;
 
-  if (IS_SET(class_table[victim->class].tier, TIER_02))
+  if (IS_SET(class_table[victim->clss].tier, TIER_02))
     victim_tier = 2;
 
-  if (IS_SET(class_table[victim->class].tier, TIER_03))
+  if (IS_SET(class_table[victim->clss].tier, TIER_03))
     victim_tier = 3;
 
-  if (IS_SET(class_table[victim->class].tier, TIER_04))
+  if (IS_SET(class_table[victim->clss].tier, TIER_04))
     victim_tier = 4;
 
   if ((!IS_NPC(ch) && !IS_NPC(victim)) &&
@@ -413,7 +413,7 @@ void multi_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt)
       one_hit(ch, victim, dt, true);
       if (get_skill(ch, gsn_dual_wield) != 0 &&
           (!IS_NPC(ch) &&
-           ch->level >= skill_table[gsn_dual_wield].skill_level[ch->class]))
+           ch->level >= skill_table[gsn_dual_wield].skill_level[ch->clss]))
       {
         check_improve(ch, gsn_dual_wield, true, 1);
       }
@@ -807,8 +807,8 @@ void one_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt, bool secondary)
   }
   else
   {
-    thac0_00 = class_table[ch->class].thac0_00;
-    thac0_32 = class_table[ch->class].thac0_32;
+    thac0_00 = class_table[ch->clss].thac0_00;
+    thac0_32 = class_table[ch->clss].thac0_32;
   }
   thac0 = interpolate(ch->level, thac0_00, thac0_32);
 
@@ -1064,7 +1064,7 @@ void one_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt, bool secondary)
 
     if (ch->fighting == victim && IS_WEAPON_STAT(wield, WEAPON_MANADRAIN))
     {
-      dam = wield->level * 0.5;
+      dam = (int) (wield->level * 0.5);
       xact_new("{k$p draws mana from $n.{x", victim, wield, ch, TO_VICT,
                POS_RESTING, VERBOSE_FLAGS);
       xact_new("{iYou feel $p drawing your mana away.{x", victim, wield,
@@ -1075,7 +1075,7 @@ void one_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt, bool secondary)
 
     if (ch->fighting == victim && IS_WEAPON_STAT(wield, WEAPON_VAMPIRIC))
     {
-      dam = wield->level * 1.50;
+      dam = (int) (wield->level * 1.50);
       xact_new("{k$p draws life from $n.{x", victim, wield, ch, TO_VICT,
                POS_RESTING, VERBOSE_FLAGS);
       xact_new("{iYou feel $p drawing your life away.{x", victim, wield,
@@ -1306,8 +1306,8 @@ void one_hit_mock(CHAR_DATA * ch, CHAR_DATA * victim, int dt, bool secondary)
   }
   else
   {
-    thac0_00 = class_table[ch->class].thac0_00;
-    thac0_32 = class_table[ch->class].thac0_32;
+    thac0_00 = class_table[ch->clss].thac0_00;
+    thac0_32 = class_table[ch->clss].thac0_32;
   }
   thac0 = interpolate(ch->level, thac0_00, thac0_32);
 
@@ -1670,7 +1670,7 @@ int xdamage(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int dam_type,
 
     if (cchan <= 25)
     {
-      dam *= 1.5;
+      dam = (int) (dam * 1.5);
     }
     else if (cchan <= 50)
     {
@@ -1678,7 +1678,7 @@ int xdamage(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int dam_type,
     }
     else if (cchan <= 75)
     {
-      dam *= 2.5;
+      dam = (int) (dam * 2.5);
     }
     else if (cchan <= 90)
     {
@@ -1755,7 +1755,7 @@ int xdamage(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int dam_type,
   if (IS_SHIELDED(victim, SHD_LIFE) && (dam > 0) && victim->mana > 0
       && victim->max_mana > 0 &&
       (((victim->mana * 100) / victim->max_mana) > 20) &&
-      !str_cmp(class_table[victim->class].name, "Elder") &&
+      !str_cmp(class_table[victim->clss].name, "Elder") &&
       victim->level >= 202)
   {
     char buf[MAX_STRING_LENGTH];
@@ -1789,7 +1789,7 @@ int xdamage(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int dam_type,
   update_pos(victim);
   if (dt == gsn_feed)
   {
-    ch->hit = UMIN(ch->hit + (dam * .8), ch->max_hit);
+    ch->hit = (long) (UMIN(ch->hit + (dam * .8), ch->max_hit));
     update_pos(ch);
   }
 
@@ -2244,7 +2244,7 @@ bool is_safe(CHAR_DATA * ch, CHAR_DATA * victim)
         return false;
 
       if (((victim->level > 19) ||
-           ((victim->class >= MAX_CLASS / 2) &&
+           ((victim->clss >= MAX_CLASS / 2) &&
             (victim->level > 14))) && (is_voodood(ch, victim)))
         return false;
 
@@ -2307,13 +2307,13 @@ bool can_pk(CHAR_DATA * ch, CHAR_DATA * victim)
   int lvalue;
   int pkvalue;
 
-  if (IS_SET(class_table[ch->class].tier, TIER_01))
+  if (IS_SET(class_table[ch->clss].tier, TIER_01))
     tvalue = 1;
 
-  else if (IS_SET(class_table[ch->class].tier, TIER_02))
+  else if (IS_SET(class_table[ch->clss].tier, TIER_02))
     tvalue = 2;
 
-  else if (IS_SET(class_table[ch->class].tier, TIER_03))
+  else if (IS_SET(class_table[ch->clss].tier, TIER_03))
     tvalue = 3;
 
   else
@@ -2483,7 +2483,7 @@ bool is_safe_spell(CHAR_DATA * ch, CHAR_DATA * victim, bool area)
         return false;
 
       if (((victim->level > 19) ||
-           ((victim->class >= MAX_CLASS / 2) &&
+           ((victim->clss >= MAX_CLASS / 2) &&
             (victim->level > 14))) && (is_voodood(ch, victim)))
         return false;
 
@@ -2511,9 +2511,9 @@ bool is_safe_spell(CHAR_DATA * ch, CHAR_DATA * victim, bool area)
       if (is_same_clan(ch, victim))
         return true;
 
-      if (((ch->class < MAX_CLASS / 2) &&
-           (victim->class < MAX_CLASS / 2)) ||
-          ((ch->class >= MAX_CLASS / 2) && (victim->class >= MAX_CLASS / 2)))
+      if (((ch->clss < MAX_CLASS / 2) &&
+           (victim->clss < MAX_CLASS / 2)) ||
+          ((ch->clss >= MAX_CLASS / 2) && (victim->clss >= MAX_CLASS / 2)))
       {
         if (ch->level > victim->level + 15)
         {
@@ -2585,7 +2585,7 @@ bool check_shield_block(CHAR_DATA * ch, CHAR_DATA * victim)
     return false;
 
   levitate = (get_skill(victim, gsn_shield_levitation) != 0) &&
-    (skill_table[gsn_shield_levitation].skill_level[ch->class] <=
+    (skill_table[gsn_shield_levitation].skill_level[ch->clss] <=
      ch->level) && (get_eq_char(victim, WEAR_SHIELD) != NULL) &&
     ((get_eq_char(victim, WEAR_SECONDARY) != NULL) ||
      ((get_eq_char(victim, WEAR_WIELD) != NULL) &&
@@ -3421,7 +3421,7 @@ void group_gain(CHAR_DATA * ch, CHAR_DATA * victim)
 
       xpbonus = (ch->btime / 40 + 1);
       oldxp = xp;
-      xp *= (ch->btime / 40 + 1);
+      xp = (int) (xp * (ch->btime / 40 + 1));
       bonusxp = (xp - oldxp);
       sprintf(xpbuf,
               "\n\r{GT{gime {GB{gonus{G: {Y%.2f {G({g%d xp{G){x\n\r",
@@ -3736,7 +3736,7 @@ int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels)
 
   while (xp > 5000)
   {
-    xp = xp * .95;
+    xp = (int) (xp * .95);
   }
 
   return xp;
@@ -4069,7 +4069,7 @@ CH_CMD(do_berserk)
 
   if ((chance == 0) || (IS_NPC(ch) && !IS_SET(ch->off_flags, OFF_BERSERK)) ||
       (!IS_NPC(ch) && (chance < 2)
-       && ch->level < skill_table[gsn_berserk].skill_level[ch->class]))
+       && ch->level < skill_table[gsn_berserk].skill_level[ch->clss]))
   {
     send_to_char
       ("{hYou turn {rred{h in the face, but nothing happens.{x\n\r", ch);
@@ -4470,7 +4470,7 @@ CH_CMD(do_bash)
 
   if ((chance == 0) || (IS_NPC(ch) && !IS_SET(ch->off_flags, OFF_BASH)) ||
       (!IS_NPC(ch) && chance < 2 &&
-       ch->level < skill_table[gsn_bash].skill_level[ch->class]))
+       ch->level < skill_table[gsn_bash].skill_level[ch->clss]))
   {
     send_to_char("Bashing? What's that?\n\r", ch);
     return;
@@ -4656,7 +4656,7 @@ CH_CMD(do_dirt)
 
   if ((chance == 0) || (IS_NPC(ch) && !IS_SET(ch->off_flags, OFF_KICK_DIRT))
       || (!IS_NPC(ch) && chance < 2 &&
-          ch->level < skill_table[gsn_dirt].skill_level[ch->class]))
+          ch->level < skill_table[gsn_dirt].skill_level[ch->clss]))
   {
     send_to_char("{hYou get your feet dirty.{x\n\r", ch);
     return;
@@ -4823,7 +4823,7 @@ CH_CMD(do_gouge)
 
   if (chance == 0 || (!IS_NPC(ch) && chance < 2 &&
                       ch->level <
-                      skill_table[gsn_gouge].skill_level[ch->class]))
+                      skill_table[gsn_gouge].skill_level[ch->clss]))
   {
     send_to_char("Gouge?  What's that?{x\n\r", ch);
     return;
@@ -4951,7 +4951,7 @@ CH_CMD(do_trip)
 
   if ((chance == 0) || (IS_NPC(ch) && !IS_SET(ch->off_flags, OFF_TRIP)) ||
       (!IS_NPC(ch) && chance < 2 &&
-       ch->level < skill_table[gsn_trip].skill_level[ch->class]))
+       ch->level < skill_table[gsn_trip].skill_level[ch->clss]))
   {
     send_to_char("Tripping?  What's that?\n\r", ch);
     return;
@@ -5464,7 +5464,7 @@ CH_CMD(do_backstab)
 
    if ( (chance = get_skill(ch,gsn_garrote)) == 0 
    ||   (!IS_NPC(ch) 
-   &&    ch->level < skill_table[gsn_garrote].skill_level[ch->class])) 
+   &&    ch->level < skill_table[gsn_garrote].skill_level[ch->clss])) 
    { 
    send_to_char("Garrote?  What's that?{x\n\r",ch); 
    return; 
@@ -5644,7 +5644,7 @@ CH_CMD(do_blackjack)
   }
 
   /* level */
-  chance += (ch->level - victim->level) * 1.15;
+  chance = (int) (chance + (ch->level - victim->level) * 1.15);
 
   /* sloppy hack to prevent false zeroes */
   if (chance % 5 == 0)
@@ -5704,7 +5704,7 @@ CH_CMD(do_circle)
 
   if (get_skill(ch, gsn_circle) == 0 ||
       (!IS_NPC(ch) &&
-       ch->level < skill_table[gsn_circle].skill_level[ch->class]))
+       ch->level < skill_table[gsn_circle].skill_level[ch->clss]))
   {
     send_to_char("Circle? What's that?\n\r", ch);
     return;
@@ -5859,7 +5859,7 @@ CH_CMD(do_feed)
 
   if (get_skill(ch, gsn_feed) == 0 ||
       (!IS_NPC(ch) &&
-       ch->level < skill_table[gsn_feed].skill_level[ch->class]))
+       ch->level < skill_table[gsn_feed].skill_level[ch->clss]))
   {
     send_to_char("Feed? What's that?\n\r", ch);
     return;
@@ -5964,8 +5964,8 @@ CH_CMD(do_flee)
     if (!IS_NPC(ch))
     {
       send_to_char("{BYou {Yflee{B from combat!{x\n\r", ch);
-      if (((ch->class == 2) ||
-           (ch->class == (MAX_CLASS / 2) + 1)) &&
+      if (((ch->clss == 2) ||
+           (ch->clss == (MAX_CLASS / 2) + 1)) &&
           (number_percent() < 3 * (ch->level / 2)))
       {
         if (IS_NPC(victim) || ch->attacker == false)
@@ -6086,7 +6086,7 @@ CH_CMD(do_howl)
   one_argument(argument, arg);
 
   if (!IS_NPC(ch) && get_skill(ch, gsn_howl) < 2 &&
-      ch->level < skill_table[gsn_howl].skill_level[ch->class])
+      ch->level < skill_table[gsn_howl].skill_level[ch->clss])
   {
     send_to_char("You are not in touch with your primal nature.\n\r", ch);
     return;
@@ -6173,7 +6173,7 @@ CH_CMD(do_wspit)
   one_argument(argument, arg);
 
   if (!IS_NPC(ch) && get_skill(ch, gsn_wspit) < 2 &&
-      ch->level < skill_table[gsn_wspit].skill_level[ch->class])
+      ch->level < skill_table[gsn_wspit].skill_level[ch->clss])
   {
     send_to_char("Your mouth is too dry.\n\r", ch);
     return;
@@ -6257,7 +6257,7 @@ CH_CMD(do_kick)
   int dam;
 
   if (!IS_NPC(ch) && get_skill(ch, gsn_kick) < 2 &&
-      ch->level < skill_table[gsn_kick].skill_level[ch->class])
+      ch->level < skill_table[gsn_kick].skill_level[ch->clss])
   {
     send_to_char("You better leave the martial arts to fighters.\n\r", ch);
     return;
@@ -6371,7 +6371,7 @@ CH_CMD(do_disarm)
   {
     if (((chance = get_skill(victim, gsn_grip)) == 0) ||
         (!IS_NPC(victim) &&
-         victim->level < skill_table[gsn_grip].skill_level[victim->class]))
+         victim->level < skill_table[gsn_grip].skill_level[victim->clss]))
     {
       if (!IS_IMMORTAL(ch))
         WAIT_STATE(ch, skill_table[gsn_disarm].beats);
@@ -6510,14 +6510,14 @@ CH_CMD(do_rub)
 
   if ((chance = get_skill(ch, gsn_rub)) == 0 ||
       (!IS_NPC(ch) && get_skill(ch, gsn_rub) < 2 &&
-       ch->level < skill_table[gsn_rub].skill_level[ch->class]))
+       ch->level < skill_table[gsn_rub].skill_level[ch->clss]))
   {
     send_to_char("You nearly gouged your own eyes.\n\r", ch);
     return;
   }
   if ((!IS_AFFECTED(ch, gsn_dirt)) ||
       (!IS_AFFECTED(ch, skill_lookup("fire_breath"))) ||
-      (!str_cmp(class_table[ch->class].name, "Knight") &&
+      (!str_cmp(class_table[ch->clss].name, "Knight") &&
        (!IS_AFFECTED(ch, gsn_gouge))))
 
   {
@@ -6540,7 +6540,7 @@ CH_CMD(do_rub)
       return;
     }
     if (IS_AFFECTED(ch, gsn_gouge) &&
-        (!str_cmp(class_table[ch->class].name, "Knight")))
+        (!str_cmp(class_table[ch->clss].name, "Knight")))
     {
       affect_strip(ch, gsn_gouge);
       check_improve(ch, gsn_rub, true, 5);
@@ -6578,7 +6578,7 @@ CH_CMD(do_sharpen)
   one_argument(argument, arg);
 
   if (!IS_NPC(ch) && get_skill(ch, gsn_sharpen) < 2 &&
-      ch->level < skill_table[gsn_sharpen].skill_level[ch->class])
+      ch->level < skill_table[gsn_sharpen].skill_level[ch->clss])
   {
     send_to_char("You had best leave that skill to master warriors.\n\r", ch);
     return;
@@ -6669,7 +6669,7 @@ CH_CMD(do_rampage)
   int dam;
 
   if (!IS_NPC(ch) && get_skill(ch, gsn_rampage) < 2 &&
-      ch->level < skill_table[gsn_rampage].skill_level[ch->class])
+      ch->level < skill_table[gsn_rampage].skill_level[ch->clss])
   {
     send_to_char("You had best leave that skill to master warriors.\n\r", ch);
     return;
@@ -6887,8 +6887,7 @@ CH_CMD(do_stake)
   one_argument(argument, arg);
 
   if ((chance = get_skill(ch, gsn_stake)) &&
-      ch->level < skill_table[gsn_stake].skill_level[ch->class] &&
-      !IS_NPC(ch))
+      ch->level < skill_table[gsn_stake].skill_level[ch->clss] && !IS_NPC(ch))
   {
     send_to_char("Stake? What's that?\n\r", ch);
     return;
@@ -6916,10 +6915,10 @@ CH_CMD(do_stake)
   }
 
   if (!IS_NPC(victim) &&
-      (!str_cmp(class_table[victim->class].name, "Vampire") ||
-       (!str_cmp(class_table[victim->class].name, "Cainite") ||
-        (!str_cmp(class_table[victim->class].name, "Revenant") ||
-         (!str_cmp(class_table[victim->class].name, "Lich"))))))
+      (!str_cmp(class_table[victim->clss].name, "Vampire") ||
+       (!str_cmp(class_table[victim->clss].name, "Cainite") ||
+        (!str_cmp(class_table[victim->clss].name, "Revenant") ||
+         (!str_cmp(class_table[victim->clss].name, "Lich"))))))
   {
     send_to_char("You cannot stake a non-vampire player.\n\r", ch);
     return;
@@ -7015,7 +7014,7 @@ CH_CMD(do_strike)
 
   if (get_skill(ch, gsn_strike) == 0 ||
       (!IS_NPC(ch) && get_skill(ch, gsn_strike) < 2 &&
-       ch->level < skill_table[gsn_strike].skill_level[ch->class]))
+       ch->level < skill_table[gsn_strike].skill_level[ch->clss]))
   {
     send_to_char("Strike? What's that?\n\r", ch);
     return;
@@ -7077,7 +7076,7 @@ CH_CMD(do_nervestrike)
   int dam;
 
   if (!IS_NPC(ch) && get_skill(ch, gsn_nervestrike) < 2 &&
-      ch->level < skill_table[gsn_nervestrike].skill_level[ch->class])
+      ch->level < skill_table[gsn_nervestrike].skill_level[ch->clss])
   {
     send_to_char("You had best leave that skill to master thieves.\n\r", ch);
     return;
@@ -7134,7 +7133,7 @@ CH_CMD(do_thrust)
   int dam;
 
   if (!IS_NPC(ch) && get_skill(ch, gsn_thrust) < 2 &&
-      ch->level < skill_table[gsn_thrust].skill_level[ch->class])
+      ch->level < skill_table[gsn_thrust].skill_level[ch->clss])
   {
     send_to_char("You better leave the martial arts to monks.\n\r", ch);
     return;
@@ -7195,7 +7194,7 @@ CH_CMD(do_whirlwind)
   bool found = false;
 
   if (!IS_NPC(ch) && get_skill(ch, gsn_whirlwind) < 2 &&
-      ch->level < skill_table[gsn_whirlwind].skill_level[ch->class])
+      ch->level < skill_table[gsn_whirlwind].skill_level[ch->clss])
   {
     send_to_char("You don't know how to do that...\n\r", ch);
     return;
@@ -7262,7 +7261,7 @@ CH_CMD(do_call_wild)
 
   if (get_skill(ch, gsn_call_wild) == 0 ||
       (!IS_NPC(ch) && get_skill(ch, gsn_call_wild) < 2 &&
-       ch->level < skill_table[gsn_call_wild].skill_level[ch->class]))
+       ch->level < skill_table[gsn_call_wild].skill_level[ch->clss]))
   {
     send_to_char("You scream at the top of your lungs!\n\r", ch);
     return;
@@ -7329,7 +7328,7 @@ CH_CMD(do_mend)
   one_argument(argument, arg);
 
   if (!IS_NPC(ch) && get_skill(ch, gsn_mend) < 2 &&
-      ch->level < skill_table[gsn_mend].skill_level[ch->class])
+      ch->level < skill_table[gsn_mend].skill_level[ch->clss])
   {
     send_to_char("You don't know how to mend wounds.\n\r", ch);
     return;
@@ -7414,7 +7413,7 @@ void check_arena(CHAR_DATA * ch, CHAR_DATA * victim)
       {
         if (d->character->gladiator == ch)
         {
-          payoff = d->character->pcdata->plr_wager * (odds + 1);
+          payoff = (int) (d->character->pcdata->plr_wager * (odds + 1));
           payoff = abs(payoff);
           sprintf(buf,
                   "{WYou won! Your wager: {D%d{W, payoff: {D%d{x\n\r",

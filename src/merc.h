@@ -470,7 +470,7 @@ struct shop_data
 struct class_type
 {
   char *name;                   /* the full name of the class */
-  char who_name[3];             /* Three-letter name for 'who' */
+  char who_name[4];             /* Three-letter name for 'who' */
   sh_int attr_prime;            /* Prime attribute */
   sh_int weapon;                /* First weapon */
   sh_int guild[MAX_GUILD];      /* Vnum of guild rooms */
@@ -1753,7 +1753,7 @@ struct char_data
   sh_int clan_rank;
   sh_int invited;
   sh_int sex;
-  sh_int class;
+  sh_int clss;
   sh_int race;
   sh_int level;
   long recall_room;
@@ -1998,7 +1998,7 @@ struct obj_index_data
   int cost;
   long value[5];
   sh_int clan;
-  sh_int class;
+  sh_int clss;
 };
 
 /*
@@ -2035,7 +2035,7 @@ struct obj_data
   sh_int timer;
   long value[5];
   sh_int clan;
-  sh_int class;
+  sh_int clss;
 };
 
 /*

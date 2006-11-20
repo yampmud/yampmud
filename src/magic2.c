@@ -238,14 +238,14 @@ MAGIC(spell_empower)
 
   if ((new_sn = find_spell(ch, target_name)) < 0 ||
       (!IS_NPC(ch) &&
-       (ch->level < skill_table[new_sn].skill_level[ch->class] ||
+       (ch->level < skill_table[new_sn].skill_level[ch->clss] ||
         ch->pcdata->learned[new_sn] == 0)))
   {
     send_to_char("What spell do you wish to bind?\n\r", ch);
     return;
   }
 
-  if (skill_table[new_sn].skill_level[ch->class] >= 201 && !IS_IMMORTAL(ch))
+  if (skill_table[new_sn].skill_level[ch->clss] >= 201 && !IS_IMMORTAL(ch))
   {
     send_to_char("You may not empower that spell.\n\r", ch);
     return;
@@ -258,20 +258,19 @@ MAGIC(spell_empower)
     return;
   }
   newtarget = skill_table[new_sn].target;
-  if (ch->level + 2 == skill_table[sn].skill_level[ch->class])
+  if (ch->level + 2 == skill_table[sn].skill_level[ch->clss])
     mana = 50;
   else
     mana =
       UMAX(skill_table[sn].min_mana,
-           100 / (2 + ch->level - skill_table[sn].skill_level[ch->class]));
+           100 / (2 + ch->level - skill_table[sn].skill_level[ch->clss]));
 
-  if (ch->level + 2 == skill_table[new_sn].skill_level[ch->class])
+  if (ch->level + 2 == skill_table[new_sn].skill_level[ch->clss])
     newmana = 50;
   else
     newmana =
       UMAX(skill_table[new_sn].min_mana,
-           100 / (2 + ch->level -
-                  skill_table[new_sn].skill_level[ch->class]));
+           100 / (2 + ch->level - skill_table[new_sn].skill_level[ch->clss]));
 
   if ((ch->mana - mana - newmana) < 0)
   {
@@ -827,7 +826,7 @@ MAGIC(spell_napalm)
 
   dam = ch->level * 10 + dice(15, 30);
   if (saves_spell(level, victim, DAM_DISEASE))
-    dam /= 1.5;
+    dam = (int) (dam / 1.5);
   else
     spell_plague(skill_lookup("plague"), level, ch, (void *) victim,
                  TARGET_CHAR);
@@ -968,11 +967,11 @@ MAGIC(spell_bloodbath)
   af.bitvector = 0;
 
   af.location = APPLY_DAMROLL;
-  af.modifier = level / 3.5;
+  af.modifier = (sh_int) (level / 3.5);
   affect_to_char(victim, &af);
 
   af.location = APPLY_HITROLL;
-  af.modifier = level / 3.5;
+  af.modifier = (sh_int) (level / 3.5);
   affect_to_char(victim, &af);
 
   af.location = APPLY_AC;
@@ -1067,7 +1066,7 @@ MAGIC(spell_divine_protection)
   af.where = TO_SHIELDS;
   af.type = sn;
   af.level = level;
-  af.duration = level / 1.5;
+  af.duration = (sh_int) (level / 1.5);
   af.bitvector = SHD_DIVINE_PROTECTION;
 
   af.location = APPLY_DAMROLL;
@@ -1083,7 +1082,7 @@ MAGIC(spell_divine_protection)
   affect_to_char(victim, &af);
 
   af.location = APPLY_AC;
-  af.modifier = 0 - level / 1.5;
+  af.modifier = (sh_int) (0 - level / 1.5);
   affect_to_char(victim, &af);
 
   send_to_char("The very essense of the gods protects you!\n\r", victim);
@@ -1139,7 +1138,7 @@ MAGIC(spell_anger)
   af.level = level;
   af.duration = level;
   af.location = APPLY_DAMROLL;
-  af.modifier = level / 4.5;
+  af.modifier = (sh_int) (level / 4.5);
   af.bitvector = 0;
   affect_to_char(victim, &af);
 
@@ -1148,7 +1147,7 @@ MAGIC(spell_anger)
   af.level = level;
   af.duration = level;
   af.location = APPLY_HITROLL;
-  af.modifier = level / 4.5;
+  af.modifier = (sh_int) (level / 4.5);
   af.bitvector = 0;
   affect_to_char(victim, &af);
 
@@ -1157,7 +1156,7 @@ MAGIC(spell_anger)
   af.level = level;
   af.duration = level;
   af.location = APPLY_AC;
-  af.modifier = level * .8;
+  af.modifier = (sh_int) (level * .8);
   af.bitvector = 0;
   affect_to_char(victim, &af);
   act("$n is filled with anger.", victim, NULL, NULL, TO_ROOM);
@@ -1285,7 +1284,7 @@ MAGIC(spell_blind_rage)
   af.level = level;
   af.duration = level;
   af.location = APPLY_DAMROLL;
-  af.modifier = level * .75;
+  af.modifier = (sh_int) (level * .75);
   af.bitvector = 0;
   affect_to_char(victim, &af);
 
@@ -1294,7 +1293,7 @@ MAGIC(spell_blind_rage)
   af.level = level;
   af.duration = level;
   af.location = APPLY_HITROLL;
-  af.modifier = level * .75;
+  af.modifier = (sh_int) (level * .75);
   af.bitvector = 0;
   affect_to_char(victim, &af);
 
@@ -1303,7 +1302,7 @@ MAGIC(spell_blind_rage)
   af.level = level;
   af.duration = level;
   af.location = APPLY_AC;
-  af.modifier = level / .75;
+  af.modifier = (sh_int) (level / .75);
   af.bitvector = 0;
   affect_to_char(victim, &af);
 
@@ -1338,7 +1337,7 @@ MAGIC(spell_gods_armor)
   af.type = sn;
   af.level = level;
   af.duration = 20;
-  af.modifier = 0 - level * 1.55;
+  af.modifier = (sh_int) (0 - level * 1.55);
   af.location = APPLY_AC;
   af.bitvector = 0;
   affect_to_char(victim, &af);
@@ -1556,7 +1555,7 @@ MAGIC(spell_holy_mace)
   /* Now for the level based damage roll */
   pAf = new_affect();
   pAf->location = APPLY_DAMROLL;
-  pAf->modifier = (ch->level / 3.5);
+  pAf->modifier = (sh_int) (ch->level / 3.5);
   pAf->where = TO_OBJECT;
   pAf->type = -1;
   pAf->duration = -1;
@@ -1582,7 +1581,7 @@ MAGIC(spell_holy_mace)
   /* Now for the weapons mana bonus */
   pAf = new_affect();
   pAf->location = APPLY_MANA;
-  pAf->modifier = ch->level * 1.5;
+  pAf->modifier = (sh_int) (ch->level * 1.5);
   pAf->where = TO_OBJECT;
   pAf->type = -1;
   pAf->duration = -1;
@@ -1602,8 +1601,8 @@ MAGIC(spell_holy_mace)
   send_to_char("You attempt to form a holy mace.\n\r", ch);
   send_to_char("You feel weak, perhaps you should rest.\n\r", ch);
   act("$n constructs a divine weapon.", ch, mace, NULL, TO_ROOM);
-  ch->hit *= .75;
-  ch->move *= .50;
+  ch->hit = (long) (ch->hit * .75);
+  ch->move = (long) (ch->move * .50);
   return;
 }
 
@@ -1687,8 +1686,8 @@ MAGIC(spell_summon_familiar)
   affect_to_char(ch, &af);
 
   send_to_char("You feel weak, perhaps you should rest.\n\r", ch);
-  ch->hit *= .75;
-  ch->move *= .50;
+  ch->hit = (int) (ch->hit * .75);
+  ch->move = (int) (ch->move * .50);
   SET_BIT(familiar->affected_by, AFF_CHARM);
   familiar->master = familiar->leader = ch;
   return;
@@ -1754,7 +1753,7 @@ MAGIC(spell_celestial_fury)
 
   dam = dice(level * 2, 40);
   if (saves_spell(level, victim, DAM_HOLY))
-    dam /= 1.5;
+    dam = (int) (dam / 1.5);
 
   damage_old(ch, victim, dam + dice(3, 10), sn, DAM_HOLY, true);
   damage_old(ch, victim, dam + dice(2, 15), sn, DAM_LIGHTNING, true);

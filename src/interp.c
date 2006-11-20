@@ -628,7 +628,7 @@ void interpret(CHAR_DATA * ch, char *argument)
         found = true;
         break;
       }
-      else if (ch->class >= MAX_CLASS / 2)
+      else if (ch->clss >= MAX_CLASS / 2)
       {
         found = true;
         break;
@@ -871,7 +871,7 @@ void do_disable(CHAR_DATA * ch, char *argument)
 
     /* Disable the command */
 
-    p = alloc_mem(sizeof(DISABLED_DATA));
+    p = (DISABLED_DATA *) (alloc_mem(sizeof(DISABLED_DATA)));
 
     p->command = &cmd_table[i];
     p->disabled_by = str_dup(ch->name); /* save name of disabler */
@@ -932,7 +932,7 @@ void load_disabled()
     }
     else                        /* add new disabled command */
     {
-      p = alloc_mem(sizeof(DISABLED_DATA));
+      p = (DISABLED_DATA *) alloc_mem(sizeof(DISABLED_DATA));
       p->command = &cmd_table[i];
       p->level = fread_number(fp);
       p->disabled_by = str_dup(fread_word(fp));

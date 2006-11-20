@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-                                                        /* #include "unchecked.h" *//* If you are using gcc w/bounds-checking */
+                                                                                    /* #include "unchecked.h" *//* If you are using gcc w/bounds-checking */
 #include "merc.h"
 
 #define MIL  MAX_INPUT_LENGTH

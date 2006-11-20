@@ -116,8 +116,8 @@ void say_spell(CHAR_DATA * ch, int sn)
 
   struct syl_type
   {
-    char *old;
-    char *new;
+    char *oldstr;
+    char *newstr;
   };
 
   static const struct syl_type syl_table[] = {
@@ -161,11 +161,11 @@ void say_spell(CHAR_DATA * ch, int sn)
   buf[0] = '\0';
   for (pName = skill_table[sn].name; *pName != '\0'; pName += length)
   {
-    for (iSyl = 0; (length = strlen(syl_table[iSyl].old)) != 0; iSyl++)
+    for (iSyl = 0; (length = strlen(syl_table[iSyl].oldstr)) != 0; iSyl++)
     {
-      if (!str_prefix(syl_table[iSyl].old, pName))
+      if (!str_prefix(syl_table[iSyl].oldstr, pName))
       {
-        strcat(buf, syl_table[iSyl].new);
+        strcat(buf, syl_table[iSyl].newstr);
         break;
       }
     }
@@ -180,7 +180,7 @@ void say_spell(CHAR_DATA * ch, int sn)
   for (rch = ch->in_room->people; rch; rch = rch->next_in_room)
   {
     if (rch != ch)
-      act(ch->class == rch->class ? buf : buf2, ch, NULL, rch, TO_VICT);
+      act(ch->clss == rch->clss ? buf : buf2, ch, NULL, rch, TO_VICT);
   }
 
   return;
@@ -210,7 +210,7 @@ bool saves_spell(int level, CHAR_DATA * victim, int dam_type)
       break;
   }
 
-  if (!IS_NPC(victim) && class_table[victim->class].fMana)
+  if (!IS_NPC(victim) && class_table[victim->clss].fMana)
     save = 9 * save / 10;
   save = URANGE(5, save, 95);
   return number_percent() < save;
@@ -342,7 +342,7 @@ CH_CMD(do_cast)
 
   if ((sn = find_spell(ch, arg1)) < 0 ||
       (!IS_NPC(ch) &&
-       ((ch->level < skill_table[sn].skill_level[ch->class] && !found) ||
+       ((ch->level < skill_table[sn].skill_level[ch->clss] && !found) ||
         ch->pcdata->learned[sn] == 0 ||
         skill_table[sn].spell_fun == spell_null)))
   {
@@ -356,12 +356,12 @@ CH_CMD(do_cast)
     return;
   }
 
-  if (ch->level + 2 == skill_table[sn].skill_level[ch->class])
+  if (ch->level + 2 == skill_table[sn].skill_level[ch->clss])
     mana = 50;
   else
     mana =
       UMAX(skill_table[sn].min_mana,
-           100 / (2 + ch->level - skill_table[sn].skill_level[ch->class]));
+           100 / (2 + ch->level - skill_table[sn].skill_level[ch->clss]));
 
   if (!str_cmp(skill_table[sn].name, "restore mana"))
     mana = 1;
@@ -702,7 +702,7 @@ CH_CMD(do_cast)
   else
   {
     ch->mana -= mana;
-    if (IS_NPC(ch) || class_table[ch->class].fMana)
+    if (IS_NPC(ch) || class_table[ch->clss].fMana)
       /* class has spells */
       (*skill_table[sn].spell_fun) (sn, ch->level, ch, vo, target);
     else
@@ -884,9 +884,9 @@ MAGIC(spell_acid_blast)
   edam = dice((level / 3), 33);
 
   if (saves_spell(level, victim, DAM_ACID))
-    adam /= 1.5;
+    adam = (int) (adam / 1.5);
   if (saves_spell(level, victim, DAM_ENERGY))
-    edam /= 1.5;
+    edam = (int) (edam / 1.5);
 
   if (victim->in_room == ch->in_room)
   {
@@ -1040,7 +1040,7 @@ MAGIC(spell_burning_hands)
 
   dam = number_range((15 + level) / 3, 12);
   if (saves_spell(level, victim, DAM_FIRE))
-    dam /= 1.5;
+    dam = (int) (dam / 1.5);
   damage_old(ch, victim, dam, sn, DAM_FIRE, true);
   return;
 }
@@ -1618,7 +1618,7 @@ MAGIC(spell_chill_touch)
     affect_join(victim, &af);
   }
   else
-    dam /= 1.5;
+    dam = (int) (dam / 1.5);
 
   if ((ch->fighting == NULL) && (!IS_NPC(ch)) && (!IS_NPC(victim)))
   {
@@ -1645,7 +1645,7 @@ MAGIC(spell_colour_spray)
     (ch->level / 7) + (get_curr_stat(ch, STAT_DEX) -
                        get_curr_stat(victim, STAT_WIS));
   if (saves_spell(level, victim, DAM_LIGHT))
-    dam /= 1.5;
+    dam = (int) (dam / 1.5);
   else if (number_percent() <= stun)
   {
     send_to_char("You are mesmerized by the swirling colors.\n\r", victim);
@@ -2983,7 +2983,7 @@ MAGIC(spell_fireball)
 
   dam = dice(level * 2, 33);
   if (saves_spell(level, victim, DAM_FIRE))
-    dam /= 1.5;
+    dam = (int) (dam / 1.5);
 
   if ((ch->fighting == NULL) && (!IS_NPC(ch)) && (!IS_NPC(victim)))
   {
@@ -3034,7 +3034,7 @@ MAGIC(spell_flamestrike)
   dam = dice((13 + level) / 4, 15);
   if (saves_spell(level, victim, DAM_FIRE) &&
       saves_spell(level, victim, DAM_HOLY))
-    dam /= 1.5;
+    dam = (int) (dam / 1.5);
   damage_old(ch, victim, dam + dice(3, 5), sn, DAM_FIRE, true);
   damage_old(ch, victim, dam, sn, DAM_HOLY, true);
   return;
@@ -3309,7 +3309,7 @@ MAGIC(spell_divinewrath)
 
   dam = (number_range(800, 2500) * 8);
   if (saves_spell(level, victim, DAM_HOLY))
-    dam /= 1.5;
+    dam = (int) (dam / 1.5);
 
   damage_old(ch, victim, dam, sn, DAM_HOLY, true);
   damage_old(ch, victim, dam, sn, DAM_LIGHT, true);
@@ -3555,7 +3555,7 @@ MAGIC(spell_heat_metal)
   else                          /* damage! */
   {
     if (saves_spell(level, victim, DAM_FIRE))
-      dam /= 1.5;
+      dam = (int) (dam / 1.5);
     damage_old(ch, victim, dam, sn, DAM_FIRE, true);
   }
 }
@@ -3799,7 +3799,7 @@ MAGIC(spell_identify)
   if (is_class_obj(obj))
   {
     sprintf(buf, "This object may only be used by a %s.\n\r",
-            class_table[obj->class].name);
+            class_table[obj->clss].name);
     send_to_char(buf, ch);
   }
   if (!obj->enchanted)
@@ -4068,7 +4068,7 @@ MAGIC(spell_lightning_bolt)
 
   dam = number_range((11 + level) / 2, 10);
   if (saves_spell(level, victim, DAM_LIGHTNING))
-    dam /= 1.5;
+    dam = (int) (dam / 1.5);
   damage_old(ch, victim, dam, sn, DAM_LIGHTNING, true);
   return;
 }
@@ -4152,7 +4152,7 @@ MAGIC(spell_magic_missile)
     if (ch->level > 19)
       dam *= (ch->level / 20);
     if (saves_spell(level, victim, DAM_ENERGY))
-      dam /= 1.5;
+      dam = (int) (dam / 1.5);
     damage_old(ch, victim, dam, sn, DAM_ENERGY, true);
   }
   return;
@@ -4429,7 +4429,7 @@ MAGIC(spell_ray_of_truth)
 
   dam = dice(level, 15);
   if (saves_spell(level, victim, DAM_LIGHT))
-    dam /= 1.5;
+    dam = (int) (dam / 1.5);
 
   align = (ch->alignment - victim->alignment) * (level / 125);
   if (align < 0)
@@ -4681,7 +4681,7 @@ MAGIC(spell_shocking_grasp)
 
   dam = number_range((9 + level) / 2, 12);
   if (saves_spell(level, victim, DAM_LIGHTNING))
-    dam /= 1.5;
+    dam = (int) (dam / 1.5);
   damage_old(ch, victim, dam, sn, DAM_LIGHTNING, true);
   return;
 }
@@ -5290,7 +5290,7 @@ MAGIC(spell_acid_rain)
   {
     dam = dice(level, level / 10);
     if (saves_spell(level, victim, DAM_ACID))
-      dam /= 1.5;
+      dam = (int) (dam / 1.5);
     damage(ch, victim, dam, sn, DAM_ACID, true);
     i--;
   }
