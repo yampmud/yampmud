@@ -2932,8 +2932,8 @@ CH_CMD(do_shutdown)
   strcat(buf, "\n\r");
   if (ch->invis_level < LEVEL_ANCIENT)
     do_echo(ch, buf);
-  do_force(ch, "all save");
-  do_save(ch, "");
+  do_force(ch, "all backup");
+  do_backup(ch, "");
   // save_gquest_data();
   merc_down = true;
   for (d = descriptor_list; d != NULL; d = d_next)
