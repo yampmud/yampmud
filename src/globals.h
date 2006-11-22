@@ -26,6 +26,7 @@ GLOBAL(char str_empty[1]);
 
 GLOBAL_DEF(AREA_DATA * area_first, NULL);
 GLOBAL_DEF(AREA_DATA * area_last, NULL);
+GLOBAL_DEF(AREA_DATA * current_area, NULL);
 GLOBAL_DEF(SHOP_DATA * shop_last, NULL);
 
 GLOBAL_DEF(int top_area, 0);
@@ -50,10 +51,13 @@ GLOBAL(ROOM_INDEX_DATA * room_index_hash[MAX_KEY_HASH]);
 GLOBAL(GQUEST gquest_info);
 
 GLOBAL_DEF(HELP_DATA * help_last, NULL);
+GLOBAL_DEF(HELP_DATA * help_first, NULL);
+GLOBAL_DEF(HELP_DATA * help_free, NULL);
+GLOBAL_DEF(HELP_AREA * had_list, NULL);
+GLOBAL_DEF(HELP_AREA * had_free, NULL);
 
 GLOBAL_DEF(int share_value, SHARE_VALUE);
 
-GLOBAL_DEF(HELP_DATA * help_first, NULL);
 GLOBAL_DEF(SHOP_DATA * shop_first, NULL);
 
 GLOBAL_DEF(CHAR_DATA * char_list, NULL);

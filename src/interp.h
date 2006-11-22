@@ -223,6 +223,7 @@ DECLARE_DO_FUN(do_gtc);
 DECLARE_DO_FUN(do_gtell);
 DECLARE_DO_FUN(do_guild);
 DECLARE_DO_FUN(do_heal);
+DECLARE_DO_FUN(do_hedit);
 DECLARE_DO_FUN(do_help);
 DECLARE_DO_FUN(do_hide);
 DECLARE_DO_FUN(do_high_dice);

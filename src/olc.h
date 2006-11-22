@@ -53,6 +53,7 @@ typedef bool OLC_FUN args((CHAR_DATA * ch, char *argument));
 #define ED_OBJECT 3
 #define ED_MOBILE 4
 #define ED_MPCODE 5
+#define ED_HELP 6
 
 /*
  * Interpreter Prototypes
@@ -62,6 +63,7 @@ void redit args((CHAR_DATA * ch, char *argument));
 void medit args((CHAR_DATA * ch, char *argument));
 void oedit args((CHAR_DATA * ch, char *argument));
 void mpedit args((CHAR_DATA * ch, char *argument));
+void hedit args((CHAR_DATA * ch, char *argument));
 
 /*
  * OLC Constants
@@ -94,6 +96,7 @@ extern const struct olc_cmd_type redit_table[];
 extern const struct olc_cmd_type oedit_table[];
 extern const struct olc_cmd_type medit_table[];
 extern const struct olc_cmd_type mpedit_table[];
+extern const struct olc_cmd_type hedit_table[];
 
 /*
  * General Functions
@@ -234,6 +237,15 @@ DECLARE_OLC_FUN(mpedit_create);
 DECLARE_OLC_FUN(mpedit_code);
 DECLARE_OLC_FUN(mpedit_show);
 
+/* Help editor */
+DECLARE_OLC_FUN(hedit_keyword);
+DECLARE_OLC_FUN(hedit_text);
+DECLARE_OLC_FUN(hedit_new);
+DECLARE_OLC_FUN(hedit_level);
+DECLARE_OLC_FUN(hedit_delete);
+DECLARE_OLC_FUN(hedit_show);
+DECLARE_OLC_FUN(hedit_list);
+
 /*
  * Macros
  */
@@ -269,3 +281,4 @@ args((CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num, char *argument));
 bool set_value
 args((CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, char *argument, int value));
 bool oedit_values args((CHAR_DATA * ch, char *argument, int value));
+HELP_AREA *get_help_area args((HELP_DATA * help));

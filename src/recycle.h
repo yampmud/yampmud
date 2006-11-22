@@ -145,3 +145,7 @@ int get_size args((int val));
 
 AUCTION_DATA *new_auction(void);
 void free_auction(AUCTION_DATA * auction);
+
+HELP_AREA *new_had args((void));
+HELP_DATA *new_help args((void));
+void free_help args((HELP_DATA * pHelp));

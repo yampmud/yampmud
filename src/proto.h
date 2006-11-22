@@ -462,7 +462,7 @@ void do_font args((CHAR_DATA * ch, char *argument));
 void init_mm args((void));
 void load_area args((FILE * fp));
 void new_load_area args((FILE * fp)); /* OLC */
-void load_helps args((FILE * fp));
+void load_helps args((FILE * fp, char *fname));
 void load_old_mob args((FILE * fp));
 void load_mobiles args((FILE * fp));
 void load_old_obj args((FILE * fp));

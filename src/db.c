@@ -233,7 +233,7 @@ void boot_db()
         else if (!str_cmp(word, "AREADATA"))
           new_load_area(fpArea);
         else if (!str_cmp(word, "HELPS"))
-          load_helps(fpArea);
+          load_helps(fpArea, strArea);
         else if (!str_cmp(word, "MOBOLD"))
           load_old_mob(fpArea);
         else if (!str_cmp(word, "MOBILES"))
@@ -339,6 +339,7 @@ void load_area(FILE * fp)
   }
   area_last = pArea;
   pArea->next = NULL;
+  current_area = pArea;
   top_area++;
   return;
 }
@@ -437,6 +438,7 @@ void new_load_area(FILE * fp)
             area_last->next = pArea;
           area_last = pArea;
           pArea->next = NULL;
+          current_area = pArea;
           top_area++;
           return;
         }
@@ -473,17 +475,48 @@ void assign_area_vnum(long vnum)
 /*
  * Snarf a help section.
  */
-void load_helps(FILE * fp)
+void load_helps(FILE * fp, char *fname)
 {
   HELP_DATA *pHelp;
+  int level;
+  char *keyword;
 
   for (;;)
   {
-    pHelp = alloc_perm(sizeof(*pHelp));
-    pHelp->level = fread_number(fp);
-    pHelp->keyword = fread_string(fp);
-    if (pHelp->keyword[0] == '$')
+    HELP_AREA *had;
+
+    level = fread_number(fp);
+    keyword = fread_string(fp);
+
+    if (keyword[0] == '$')
       break;
+
+    if (!had_list)
+    {
+      had = new_had();
+      had->filename = str_dup(fname);
+      had->area = current_area;
+      if (current_area)
+        current_area->helps = had;
+      had_list = had;
+    }
+    else if (str_cmp(fname, had_list->filename))
+    {
+      had = new_had();
+      had->filename = str_dup(fname);
+      had->area = current_area;
+      if (current_area)
+        current_area->helps = had;
+      had->next = had_list;
+      had_list = had;
+    }
+    else
+      had = had_list;
+
+    pHelp = new_help();
+    pHelp->level = level;
+    pHelp->keyword = keyword;
+
     pHelp->text = fread_string(fp);
 
     if (!str_cmp(pHelp->keyword, "greeting1"))
@@ -508,6 +541,16 @@ void load_helps(FILE * fp)
 
     help_last = pHelp;
     pHelp->next = NULL;
+
+    if (!had->first)
+      had->first = pHelp;
+    if (!had->last)
+      had->last = pHelp;
+
+    had->last->next_area = pHelp;
+    had->last = pHelp;
+    pHelp->next_area = NULL;
+
     top_help++;
   }
   return;

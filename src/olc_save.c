@@ -76,6 +76,7 @@ void save_area_list()
 {
   FILE *fp;
   AREA_DATA *pArea;
+  HELP_AREA *ha;
 
   if ((fp = file_open("../config/area.list", "w")) == NULL)
   {
@@ -88,11 +89,10 @@ void save_area_list()
      * Add any help files that need to be loaded at
      * startup to this section.
      */
-    fprintf(fp, "help.are\n");
-    fprintf(fp, "changes.are\n"); /* Changes */
-    fprintf(fp, "rot.are\n");   /* ROM OLC */
-    fprintf(fp, "group.are\n"); /* ROM OLC */
-    fprintf(fp, "olc.hlp\n");
+    for (ha = had_list; ha; ha = ha->next)
+      if (ha->area == NULL)
+        fprintf(fp, "%s\n", ha->filename);
+
 
     for (pArea = area_first; pArea; pArea = pArea->next)
     {
@@ -867,6 +867,26 @@ void save_shops(FILE * fp, AREA_DATA * pArea)
   return;
 }
 
+void save_helps(FILE * fp, HELP_AREA * ha)
+{
+  HELP_DATA *help = ha->first;
+
+  fprintf(fp, "#HELPS\n");
+
+  for (; help; help = help->next_area)
+  {
+    fprintf(fp, "%d %s~\n", help->level, help->keyword);
+    fprintf(fp, "%s~\n\n", fix_string(help->text));
+  }
+
+  fprintf(fp, "-1 $~\n\n");
+
+  ha->changed = false;
+
+  return;
+}
+
+
 /*****************************************************************************
  Name:		save_area
  Purpose:	Save an area, note that this format is new.
@@ -898,6 +918,9 @@ void save_area(AREA_DATA * pArea)
   save_resets(fp, pArea);
   save_shops(fp, pArea);
   save_mobprogs(fp, pArea);
+
+  if (pArea->helps && pArea->helps->first)
+    save_helps(fp, pArea->helps);
 
   fprintf(fp, "#$\n");
 
@@ -1051,6 +1074,8 @@ CH_CMD(do_asave)
       case ED_MOBILE:
         pArea = ((MOB_INDEX_DATA *) ch->desc->pEdit)->area;
         break;
+      case ED_HELP:
+        pArea = get_help_area((HELP_DATA *) ch->desc->pEdit)->area;
       default:
         pArea = ch->in_room->area;
         break;

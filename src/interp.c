@@ -42,7 +42,7 @@
 #include "merc.h"
 #include "db.h"
 
-bool check_disabled(const struct cmd_type * command);
+bool check_disabled(const struct cmd_type *command);
 DISABLED_DATA *disabled_first;
 
 #define END_MARKER	"END"       /* for load_disabled() and save_disabled() */
@@ -519,6 +519,7 @@ const struct cmd_type cmd_table[] = {
   {"sedit", do_sedit, POS_DEAD, L1, 1, LOG_ALWAYS, 1},
   {"mplist", do_mplist, POS_DEAD, IM, 1, LOG_NORMAL, 1},
   {"rtick", do_tick, POS_DEAD, L1, 1, LOG_NORMAL, 1},
+  {"hedit", do_hedit, POS_DEAD, ML, 1, LOG_ALWAYS, 1},
   /* 
    * Commands needed last on list
    */

@@ -35,6 +35,7 @@
 #include <sys/types.h>
 #include <stdio.h>
 #include <time.h>
+#include <string.h>
 #include "merc.h"
 #include "tables.h"
 #include "lookup.h"
@@ -107,4 +108,38 @@ int size_lookup(const char *name)
   }
 
   return -1;
+}
+
+HELP_DATA *help_lookup(char *keyword)
+{
+  HELP_DATA *pHelp;
+  char temp[MIL], argall[MIL];
+
+  argall[0] = '\0';
+
+  while (keyword[0] != '\0')
+  {
+    keyword = one_argument(keyword, temp);
+    if (argall[0] != '\0')
+      strcat(argall, " ");
+    strcat(argall, temp);
+  }
+
+  for (pHelp = help_first; pHelp != NULL; pHelp = pHelp->next)
+    if (is_name(argall, pHelp->keyword))
+      return pHelp;
+
+  return NULL;
+}
+
+HELP_AREA *had_lookup(char *arg)
+{
+  HELP_AREA *temp;
+  extern HELP_AREA *had_list;
+
+  for (temp = had_list; temp; temp = temp->next)
+    if (!str_cmp(arg, temp->filename))
+      return temp;
+
+  return NULL;
 }
