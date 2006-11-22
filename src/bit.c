@@ -190,5 +190,5 @@ char *flag_string(const struct flag_type *flag_table, int bits)
       break;
     }
   }
-  return (char *) ((buf[0] != '\0') ? buf + 1 : "none");
+  return (buf[0] != '\0') ? buf + 1 : "none";
 }

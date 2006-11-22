@@ -157,7 +157,7 @@ MAGIC(spell_icerain)
     dam = dice((level * 2), 8);
 
     if (saves_spell(level, victim, DAM_COLD))
-      dam = (int) (dam / 1.5);
+      dam /= 1.5;
     if (victim->in_room == ch->in_room)
       damage(ch, victim, dam, sn, DAM_COLD, true);
   }
@@ -487,7 +487,7 @@ MAGIC(spell_soul_siphon)
   dam = dice(ch->level, 33);
 
   if (victim->perm_stat[STAT_WIS] > ch->perm_stat[STAT_WIS])
-    dam = (int) (dam / 1.25);
+    dam /= 1.25;
   if (saves_spell(level, victim, DAM_NEGATIVE))
     dam /= 2;
 
@@ -778,7 +778,7 @@ MAGIC(spell_downpour)
     dam = (level * rds) + dice(5, level);
 
     if (saves_spell(level, victim, DAM_WATER))
-      dam = (int) (dam / 1.5);
+      dam /= 1.5;
 
     damage(ch, victim, dam, sn, DAM_WATER, true);
     rds--;
@@ -806,7 +806,7 @@ MAGIC(spell_dust_storm)
     dam = (level * rds) + dice(7, level);
 
     if (saves_spell(level, victim, DAM_EARTH))
-      dam = (int) (dam / 1.5);
+      dam /= 1.5;
 
     damage(ch, victim, dam, sn, DAM_EARTH, true);
     rds--;
@@ -822,7 +822,7 @@ MAGIC(spell_ego_whip)
 
   dam = dice(level * 5, 5);
   if (saves_spell(level, victim, DAM_MENTAL))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
 
   if ((ch->perm_stat[STAT_INT]) > (victim->perm_stat[STAT_INT]))
     dam *= 3;
@@ -848,7 +848,7 @@ MAGIC(spell_sonic_blast)
 
   dam = number_range(20, 50);
   if (saves_spell(level, victim, DAM_SOUND))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
   if (victim->in_room == ch->in_room)
   {
     act("$n emits a screeching blast at $N!", ch, NULL, victim, TO_NOTVICT);
@@ -1057,9 +1057,9 @@ MAGIC(spell_coldfire)
   fdam = dice((level / 5), 25);
 
   if (saves_spell(level, victim, DAM_COLD))
-    cdam = (int) (cdam / 1.5);
+    cdam /= 1.5;
   if (saves_spell(level, victim, DAM_FIRE))
-    fdam = (int) (fdam / 1.5);
+    fdam /= 1.5;
 
   if (victim->in_room == ch->in_room)
   {
@@ -1150,7 +1150,7 @@ MAGIC(spell_pandemonium)
     mal = get_curr_stat(ch, STAT_WIS);
 
     if (saves_spell(ch->level, ich, DAM_CHARM) && mal > 0)
-      mal = (int) (mal / 1.5);
+      mal /= 1.5;
 
     if (number_range(1, 100) < mal) // ( consider lowering.. dosn't happen very often =/ )
     {
@@ -1282,7 +1282,7 @@ MAGIC(spell_whisper)
 
   dam = dice((7 + level) / 2, 10);
   if (saves_spell(level, victim, DAM_CHARM))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
   damage_old(ch, victim, (dam + dice(5, 4)), sn, DAM_SOUND, true);
   damage_old(ch, victim, dam, sn, DAM_CHARM, true);
   return;
@@ -1295,7 +1295,7 @@ MAGIC(spell_gust)
 
   dam = dice((13 + level) / 2, 10);
   if (saves_spell(level, victim, DAM_LIGHTNING))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
   damage_old(ch, victim, dam, sn, DAM_LIGHTNING, true);
 
   chance =
@@ -1322,9 +1322,9 @@ MAGIC(spell_acid_arrow)
   adam = dice((level / 5), 25);
 
   if (saves_spell(level, victim, DAM_PIERCE))
-    pdam = (int) (pdam / 1.5);
+    pdam /= 1.5;
   if (saves_spell(level, victim, DAM_ACID))
-    adam = (int) (adam / 1.5);
+    adam /= 1.5;
 
   if (victim->in_room == ch->in_room)
   {
@@ -1370,13 +1370,13 @@ MAGIC(spell_drowning_pool)
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int mdam, wdam;
 
-  mdam = dice((int) (level / 2.5), 23);
-  wdam = dice((int) (level / 2.5), 23);
+  mdam = dice((level / 2.5), 23);
+  wdam = dice((level / 2.5), 23);
 
   if (saves_spell(level, victim, DAM_MENTAL))
-    mdam = (int) (mdam / 1.5);
+    mdam /= 1.5;
   if (saves_spell(level, victim, DAM_WATER))
-    wdam = (int) (wdam / 1.5);
+    wdam /= 1.5;
 
   if (victim->in_room == ch->in_room)
   {
@@ -1474,7 +1474,7 @@ MAGIC(spell_hymn)
 
   dam = dice(level + 13, 8);
   if (saves_spell(level, victim, DAM_HOLY))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
   act("$n sings a {og{ol{oo{or{oi{oo{ou{os{x hymn!", ch, NULL, victim,
       TO_ROOM);
   act("You sing a {og{ol{oo{or{oi{oo{ou{os{x hymn!", ch, NULL, victim,
@@ -1491,7 +1491,7 @@ MAGIC(spell_ray_of_frost)
 
   dam = dice(level + 13, 8);
   if (saves_spell(level, victim, DAM_COLD))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
   damage_old(ch, victim, dam + dice(3, level), sn, DAM_COLD, true);
   damage_old(ch, victim, dam, sn, DAM_COLD, true);
   damage_old(ch, victim, dam / 2, sn, DAM_COLD, true);
@@ -1507,7 +1507,7 @@ MAGIC(spell_hallowed_ground)
   dam = dice(level * 5, 5);
   if (saves_spell(level, victim, DAM_EARTH) &&
       saves_spell(level, victim, DAM_HOLY))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
   damage_old(ch, victim, (dam / 2) + dice(8, 5), sn, DAM_HOLY, true);
   damage_old(ch, victim, (dam / 2) + dice(8, 5), sn, DAM_EARTH, true);
   return;
@@ -1520,7 +1520,7 @@ MAGIC(spell_searing_light)
 
   dam = dice(level * 5, 5);
   if (saves_spell(level, victim, DAM_LIGHT))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
   else
     spell_blindness(skill_lookup("blindness"), level / 2, ch, (void *) victim,
                     TARGET_CHAR);
@@ -1538,9 +1538,9 @@ MAGIC(spell_early_grave)
   edam = dice((level / 4), 50);
 
   if (saves_spell(level, victim, DAM_MENTAL))
-    mdam = (int) (mdam / 1.5);
+    mdam /= 1.5;
   if (saves_spell(level, victim, DAM_EARTH))
-    edam = (int) (edam / 1.5);
+    edam /= 1.5;
 
   if (victim->in_room == ch->in_room)
   {
@@ -1654,7 +1654,7 @@ MAGIC(spell_icestorm)
   {
     dam = dice(level, level / 10);
     if (saves_spell(level, victim, DAM_COLD))
-      dam = (int) (dam / 1.5);
+      dam /= 1.5;
     damage(ch, victim, dam, sn, DAM_COLD, true);
     damage(ch, victim, dam, sn, DAM_PIERCE, true);
     i--;
@@ -1671,9 +1671,9 @@ MAGIC(spell_deceit)
   cdam = dice(level, 50);
 
   if (saves_spell(level, victim, DAM_MENTAL))
-    mdam = (int) (mdam / 1.5);
+    mdam /= 1.5;
   if (saves_spell(level, victim, DAM_COLD))
-    cdam = (int) (cdam / 1.5);
+    cdam /= 1.5;
 
   if (victim->in_room == ch->in_room)
   {
@@ -1692,9 +1692,9 @@ MAGIC(spell_astral_blast)
   hdam = dice(level, 20);
 
   if (saves_spell(level, victim, DAM_MENTAL))
-    mdam = (int) (mdam / 1.5);
+    mdam /= 1.5;
   if (saves_spell(level, victim, DAM_HOLY))
-    hdam = (int) (hdam / 1.5);
+    hdam /= 1.5;
 
   if (victim->in_room == ch->in_room)
   {
@@ -1806,7 +1806,7 @@ MAGIC(spell_venom)
   dam = dice(level * 2, 20);
 
   if (saves_spell(level, victim, DAM_ACID))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
 
   if (!IS_AFFECTED(victim, AFF_POISON) &&
       !saves_spell(level, victim, DAM_POISON) &&
@@ -1876,9 +1876,9 @@ MAGIC(spell_sleet)
   wdam = dice((level + 10), 25);
 
   if (saves_spell(level, victim, DAM_COLD))
-    cdam = (int) (cdam / 1.5);
+    cdam /= 1.5;
   if (saves_spell(level, victim, DAM_WATER))
-    wdam = (int) (wdam / 1.5);
+    wdam /= 1.5;
 
   if (victim->in_room == ch->in_room)
   {
@@ -1900,7 +1900,7 @@ MAGIC(spell_disrupt)
   if (saves_spell(level, victim, DAM_HARM) &&
       saves_spell(level, victim, DAM_ENERGY))
   {
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
     chance -= 5;
   }
 
@@ -1932,9 +1932,9 @@ MAGIC(spell_laughter)
   sdam = dice((level + 10), 25);
 
   if (saves_spell(level, victim, DAM_LIGHT))
-    ldam = (int) (ldam / 1.5);
+    ldam /= 1.5;
   if (saves_spell(level, victim, DAM_SOUND))
-    sdam = (int) (sdam / 1.5);
+    sdam /= 1.5;
 
   if (victim->in_room == ch->in_room)
   {
@@ -1952,7 +1952,7 @@ MAGIC(spell_earthsong)
   dam = dice(level, 33);
   if (saves_spell(level, victim, DAM_EARTH) &&
       saves_spell(level, victim, DAM_SOUND))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
 
   if (victim->in_room == ch->in_room)
   {
@@ -1974,7 +1974,7 @@ MAGIC(spell_repulse)
   if (saves_spell(level, victim, DAM_NEGATIVE) &&
       saves_spell(level, victim, DAM_ENERGY))
   {
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
     chance -= 5;
   }
 
@@ -2005,7 +2005,7 @@ MAGIC(spell_corrode)
 
   dam = dice(level * 2, 45);
   if (saves_spell(level, victim, DAM_ACID))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
 
   if (victim->in_room == ch->in_room)
   {
@@ -2025,7 +2025,7 @@ MAGIC(spell_cyclone)
     20 + (get_curr_stat(ch, STAT_INT) - get_curr_stat(victim, STAT_DEX));
   if (saves_spell(level, victim, DAM_LIGHTNING))
   {
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
     chance -= 5;
   }
 
@@ -2103,7 +2103,7 @@ MAGIC(spell_hemorrhage)
   chance = level / 2;
   if (saves_spell(level, victim, DAM_DISEASE))
   {
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
     chance /= 2;
   }
 
@@ -2134,7 +2134,7 @@ MAGIC(spell_unearthly_beauty)
   chance = level / 3;
   if (saves_spell(level, victim, DAM_CHARM))
   {
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
     chance /= 2;
   }
 
@@ -2164,7 +2164,7 @@ MAGIC(spell_freezing_sphere)
 
   dam = dice(level * 2, 27);
   if (saves_spell(level, victim, DAM_COLD))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
 
   damage_old(ch, victim, dam + dice(level, 3), sn, DAM_COLD, true);
   damage_old(ch, victim, dam, sn, DAM_WATER, true);
@@ -2178,7 +2178,7 @@ MAGIC(spell_serendipity)
 
   dam = dice(level * 4, 27);
   if (saves_spell(level, victim, DAM_HOLY))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
 
   damage_old(ch, victim, dam, sn, DAM_HOLY, true);
   ch->hit += dam / 25;
@@ -2194,7 +2194,7 @@ MAGIC(spell_prismatic_spray)
   color = number_range(1, 8);
   beams = 1;
 
-  if (!saves_spell((int) (level * 1.5), victim, DAM_LIGHT))
+  if (!saves_spell(level * 1.5, victim, DAM_LIGHT))
     spell_blindness(skill_lookup("blindness"), level, victim, (void *) victim,
                     TARGET_CHAR);
 
@@ -2223,7 +2223,7 @@ MAGIC(spell_prismatic_spray)
           ch, NULL, victim, TO_VICT);
       spell_energy_drain(skill_lookup("energy drain"), level, ch,
                          (void *) victim, TARGET_CHAR);
-      damage_old(ch, victim, (int) (dam / 1.5), sn, DAM_LIGHT, true);
+      damage_old(ch, victim, dam / 1.5, sn, DAM_LIGHT, true);
     }
     if (color == 5)
     {
@@ -2305,7 +2305,7 @@ MAGIC(spell_sunburst)
 
   dam = dice(level * 6, 9);
   if (saves_spell(level, victim, DAM_FIRE))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
   damage_old(ch, victim, dam + dice(3, 10), sn, DAM_FIRE, true);
   damage_old(ch, victim, dam + dice(1, 30), sn, DAM_LIGHT, true);
 
@@ -2333,7 +2333,7 @@ MAGIC(spell_horrid_wilting)
 
   dam = dice(level * 6, 9);
   if (!saves_spell(level, victim, DAM_LIGHTNING))
-    dam = (int) (dam * 1.5);
+    dam *= 1.5;
   damage_old(ch, victim, dam + dice(3, 10), sn, DAM_NEGATIVE, true);
   damage_old(ch, victim, dam + dice(1, 30), sn, DAM_WATER, true);
   return;
@@ -2346,7 +2346,7 @@ MAGIC(spell_sound_burst)
 
   dam = dice(level * 6, 6);
   if (saves_spell(level, victim, DAM_SOUND))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
   damage_old(ch, victim, dam + dice(3, 10), sn, DAM_SOUND, true);
   damage_old(ch, victim, dam + dice(2, 15), sn, DAM_HARM, true);
   damage_old(ch, victim, dam + dice(1, 30), sn, DAM_BASH, true);
@@ -2367,7 +2367,7 @@ MAGIC(spell_elysium)
 
   dam = dice(level * 5, 11);
   if (saves_spell(level, victim, DAM_LIGHT))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
 
   act("You attempt to send $N into the paradise beyond death!", ch, NULL,
       victim, TO_CHAR);
@@ -2459,7 +2459,7 @@ MAGIC(spell_baptism)
 
   dam = dice(level * 5, 11);
   if (saves_spell(level, victim, DAM_HOLY))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
 
   damage_old(ch, victim, dam + dice(3, 10), sn, DAM_HOLY, true);
   damage_old(ch, victim, dam + dice(2, 15), sn, DAM_WATER, true);
@@ -2480,7 +2480,7 @@ MAGIC(spell_venomous_lies)
 
   dam = dice(level * 2, 36);
   if (saves_spell(level, victim, DAM_SOUND))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
 
   damage_old(ch, victim, dam + dice(3, 10), sn, DAM_ACID, true);
   damage_old(ch, victim, dam + dice(2, 15), sn, DAM_SOUND, true);
@@ -2522,7 +2522,7 @@ MAGIC(spell_pollution)
 
   dam = dice(level * 2, 36);
   if (saves_spell(level, victim, DAM_NEGATIVE))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
 
   damage_old(ch, victim, dam + dice(3, 10), sn, DAM_ACID, true);
   damage_old(ch, victim, dam + dice(2, 15), sn, DAM_NEGATIVE, true);
@@ -2560,7 +2560,7 @@ MAGIC(spell_phantasmal_killer)
 
   dam = dice(level * 2, 40);
   if (saves_spell(level, victim, DAM_MENTAL))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
 
   damage_old(ch, victim, dam + dice(3, 10), sn, DAM_ENERGY, true);
   damage_old(ch, victim, dam + dice(2, 15), sn, DAM_NEGATIVE, true);
@@ -2576,7 +2576,7 @@ MAGIC(spell_wail_of_the_banshee)
 
   dam = (number_range(level * 4, 2500) * 8);
   if (saves_spell(level, victim, DAM_SOUND))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
 
   damage_old(ch, victim, dam + number_range(11, 123), sn, DAM_HARM, true);
   damage_old(ch, victim, dam, sn, DAM_SOUND, true);
@@ -2598,7 +2598,7 @@ MAGIC(spell_vermin_swarm)
 
   dam = (number_range(level * 4, 2500) * 8);
   if (saves_spell(level, victim, DAM_DISEASE))
-    dam = (int) (dam / 1.5);
+    dam /= 1.5;
 
   damage_old(ch, victim, dam + number_range(11, 123), sn, DAM_DISEASE, true);
   damage_old(ch, victim, dam, sn, DAM_HARM, true);
@@ -2632,7 +2632,7 @@ MAGIC(spell_incendiary_cloud)
         }
         dam = number_range(level * 4, 2500) * 8;
         if (saves_spell(level, vch, DAM_FIRE))
-          dam = (int) (dam / 1.5);
+          dam /= 1.5;
         act("The {Oe{Om{Ob{Oe{Or{Os{x spread to engulf you!", ch, NULL, vch,
             TO_VICT);
         act("The {Oe{Om{Ob{Oe{Or{Os{x spread to engulf $N!", NULL, NULL, vch,

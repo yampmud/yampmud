@@ -86,7 +86,7 @@ sh_int const where_order[] = {
      15, 16, 19, 17, 18, 24,
      0 */
   6, 25, 26, 20, 3, 4, 10, 14, 15, 9, 1, 2, 16, 19, 11, 17, 0, 5, 28, 12, 13,
-  7,
+    7,
   21, 22, 8, 18, 24, 23, 27
 };
 
@@ -193,8 +193,8 @@ BUFFER *show_list_to_char(OBJ_DATA * list, CHAR_DATA * ch, bool fShort,
   count = 0;
   for (obj = list; obj != NULL; obj = obj->next_content)
     count++;
-  prgpstrShow = (char **) alloc_mem(count * sizeof(char *));
-  prgnShow = (int *) alloc_mem(count * sizeof(int));
+  prgpstrShow = alloc_mem(count * sizeof(char *));
+  prgnShow = alloc_mem(count * sizeof(int));
   nShow = 0;
 
   /* 
@@ -1750,7 +1750,7 @@ CH_CMD(do_lore)
   AFFECT_DATA *paf;
   OBJ_DATA *obj;
 
-  if (!IS_NPC(ch) && ch->level < skill_table[gsn_lore].skill_level[ch->clss])
+  if (!IS_NPC(ch) && ch->level < skill_table[gsn_lore].skill_level[ch->class])
   {
     send_to_char("You would like to what?\n\r", ch);
     return;
@@ -2275,7 +2275,7 @@ CH_CMD(do_score_loki)
                  1 ? "male" : "female", GET_DAMROLL(ch), ch->move,
                  ch->max_move, ch->level, GET_HITROLL(ch),
                  ch->carry_number, can_carry_n(ch),
-                 class_table[ch->clss].name, ch->platinum,
+                 class_table[ch->class].name, ch->platinum,
                  get_carry_weight(ch) / 10, can_carry_w(ch) / 10,
                  ch->alignment, ch->gold, ch->saving_throw, ch->wimpy,
                  ch->silver, ch->pcdata->balance);
@@ -2442,7 +2442,7 @@ CH_CMD(do_lscore)
                  race_table[ch->race].name,
                  ch->sex == 0 ? "sexless" : ch->sex ==
                  1 ? "male" : "female",
-                 IS_NPC(ch) ? "mobile" : class_table[ch->clss].name);
+                 IS_NPC(ch) ? "mobile" : class_table[ch->class].name);
   if (ch->clan)
   {
     printf_to_char(ch, "{cClan:{x %s  {cRank:{x %s\n\r",
@@ -2687,7 +2687,7 @@ CH_CMD(do_score_new)
           ch->sex == 0 ? "sexless" : ch->sex == 1 ? "male" : "female");
   add_buf(output, buf);
   sprintf(buf, "      Race: %-28s   Class: %-10s\n\r",
-          race_table[ch->race].name, class_table[ch->clss].name);
+          race_table[ch->race].name, class_table[ch->class].name);
   add_buf(output, buf);
   sprintf(buf, "  Platinum: %-13ldGold: %-11ldSilver: %-12ld\n\r",
           ch->platinum, ch->gold, ch->silver);
@@ -2730,7 +2730,7 @@ CH_CMD(do_score)
   sprintf(buf, "{WRace{x: {M%s{W  Sex{x: {M%s{W  Class{x:  {M%s{x\n\r",
           race_table[ch->race].name,
           ch->sex == 0 ? "sexless" : ch->sex == 1 ? "male" : "female",
-          IS_NPC(ch) ? "mobile" : class_table[ch->clss].name);
+          IS_NPC(ch) ? "mobile" : class_table[ch->class].name);
   add_buf(output, buf);
   sprintf(buf,
           "{WYou have {r%ld{W/{R%ld{W hitpoints, {b%ld{W/{B%ld{W mana, {y%ld{W/{Y%ld{W movement.{x\n\r",
@@ -3359,7 +3359,7 @@ CH_CMD(do_help)
         send_to_char("{D<{GG{general {Gi{gnformation{D>{x\n\r", ch);
         fRegular = true;
       }
-      output = (char *) malloc(strlen(pHelp->text) + 200);
+      output = malloc(strlen(pHelp->text) + 200);
       strcpy(output, "");
       /* 
        * Strip leading '.' to allow initial blanks.
@@ -3417,7 +3417,7 @@ CH_CMD(do_whois)
   for (d = descriptor_list; d != NULL; d = d->next)
   {
     CHAR_DATA *wch;
-    char clss[MSL];
+    char class[MSL];
 
     if (d->connected != CON_PLAYING || !can_see(ch, d->character))
       continue;
@@ -3504,33 +3504,33 @@ CH_CMD(do_whois)
         sprintf(pkbuf, "{x");
       }
 
-      if (IS_SET(class_table[wch->clss].tier, TIER_03))
+      if (IS_SET(class_table[wch->class].tier, TIER_03))
       {
-        sprintf(clss, "{R%c{r%c%c{x",
-                class_table[wch->clss].who_name[0],
-                class_table[wch->clss].who_name[1],
-                class_table[wch->clss].who_name[2]);
+        sprintf(class, "{R%c{r%c%c{x",
+                class_table[wch->class].who_name[0],
+                class_table[wch->class].who_name[1],
+                class_table[wch->class].who_name[2]);
       }
-      else if (IS_SET(class_table[wch->clss].tier, TIER_02))
+      else if (IS_SET(class_table[wch->class].tier, TIER_02))
       {
-        sprintf(clss, "{Y%c{y%c%c{x",
-                class_table[wch->clss].who_name[0],
-                class_table[wch->clss].who_name[1],
-                class_table[wch->clss].who_name[2]);
+        sprintf(class, "{Y%c{y%c%c{x",
+                class_table[wch->class].who_name[0],
+                class_table[wch->class].who_name[1],
+                class_table[wch->class].who_name[2]);
       }
-      else if (IS_SET(class_table[wch->clss].tier, TIER_04))
+      else if (IS_SET(class_table[wch->class].tier, TIER_04))
       {
-        sprintf(clss, "{B%c{b%c%c{x",
-                class_table[wch->clss].who_name[0],
-                class_table[wch->clss].who_name[1],
-                class_table[wch->clss].who_name[2]);
+        sprintf(class, "{B%c{b%c%c{x",
+                class_table[wch->class].who_name[0],
+                class_table[wch->class].who_name[1],
+                class_table[wch->class].who_name[2]);
       }
       else
       {
-        sprintf(clss, "{G%c{g%c%c{x",
-                class_table[wch->clss].who_name[0],
-                class_table[wch->clss].who_name[1],
-                class_table[wch->clss].who_name[2]);
+        sprintf(class, "{G%c{g%c%c{x",
+                class_table[wch->class].who_name[0],
+                class_table[wch->class].who_name[1],
+                class_table[wch->class].who_name[2]);
       }
 
       /* a little formatting */
@@ -3567,7 +3567,8 @@ CH_CMD(do_whois)
               "{c<{C<{x%s%s %-6s %s{C>{c>{x %s%s%s%s%s%s%s%s%s%s%s\n\r",
               sexbuf, buf2,
               wch->race <
-              MAX_PC_RACE ? pc_race_table[wch->race].who_name : "     ", clss,
+              MAX_PC_RACE ? pc_race_table[wch->race].who_name : "     ",
+              class,
               //                ON_GQUEST(wch) ? "(GQuest)" : "",
               ((wch->ghost_level >= LEVEL_ANCIENT) &&
                (ch->level >= wch->level)) ? "(Ghost) " : "",
@@ -3789,7 +3790,7 @@ CH_CMD(do_who)
         for (d = descriptor_list; d != NULL; d = d->next)
         {
           CHAR_DATA *wch;
-          char clss[MSL];
+          char class[MSL];
 
           /* 
            * Check for match against restrictions.
@@ -3824,7 +3825,7 @@ CH_CMD(do_who)
               (fImmortalOnly && wch->level < LEVEL_IMMORTAL) ||
               (wr_only &&
                (!WR(ch, wch) || IS_IMMORTAL(wch))) ||
-              (fClassRestrict && !rgfClass[wch->clss]) ||
+              (fClassRestrict && !rgfClass[wch->class]) ||
               (fRaceRestrict && !rgfRace[wch->race]) || (fClan &&
                                                          !is_clan
                                                          (wch))
@@ -3932,33 +3933,33 @@ CH_CMD(do_who)
           if (wch->pk_timer > 0 && is_pkill(wch) && !IS_IMMORTAL(wch))
             sprintf(pkbuf, "{YT");
 
-          if (IS_SET(class_table[wch->clss].tier, TIER_03))
+          if (IS_SET(class_table[wch->class].tier, TIER_03))
           {
-            sprintf(clss, "{R%c{r%c%c{x",
-                    class_table[wch->clss].who_name[0],
-                    class_table[wch->clss].who_name[1],
-                    class_table[wch->clss].who_name[2]);
+            sprintf(class, "{R%c{r%c%c{x",
+                    class_table[wch->class].who_name[0],
+                    class_table[wch->class].who_name[1],
+                    class_table[wch->class].who_name[2]);
           }
-          else if (IS_SET(class_table[wch->clss].tier, TIER_02))
+          else if (IS_SET(class_table[wch->class].tier, TIER_02))
           {
-            sprintf(clss, "{Y%c{y%c%c{x",
-                    class_table[wch->clss].who_name[0],
-                    class_table[wch->clss].who_name[1],
-                    class_table[wch->clss].who_name[2]);
+            sprintf(class, "{Y%c{y%c%c{x",
+                    class_table[wch->class].who_name[0],
+                    class_table[wch->class].who_name[1],
+                    class_table[wch->class].who_name[2]);
           }
-          else if (IS_SET(class_table[wch->clss].tier, TIER_04))
+          else if (IS_SET(class_table[wch->class].tier, TIER_04))
           {
-            sprintf(clss, "{B%c{b%c%c{x",
-                    class_table[wch->clss].who_name[0],
-                    class_table[wch->clss].who_name[1],
-                    class_table[wch->clss].who_name[2]);
+            sprintf(class, "{B%c{b%c%c{x",
+                    class_table[wch->class].who_name[0],
+                    class_table[wch->class].who_name[1],
+                    class_table[wch->class].who_name[2]);
           }
           else
           {
-            sprintf(clss, "{G%c{g%c%c{x",
-                    class_table[wch->clss].who_name[0],
-                    class_table[wch->clss].who_name[1],
-                    class_table[wch->clss].who_name[2]);
+            sprintf(class, "{G%c{g%c%c{x",
+                    class_table[wch->class].who_name[0],
+                    class_table[wch->class].who_name[1],
+                    class_table[wch->class].who_name[2]);
           }
 
           /* 
@@ -4004,7 +4005,7 @@ CH_CMD(do_who)
             sprintf(whon, "%-6s %-3s",
                     wch->race <
                     MAX_PC_RACE ? pc_race_table[wch->race].
-                    who_name : "     ", clss);
+                    who_name : "     ", class);
           }
 
           if (IS_SET(wch->act2, PLR2_CHALLENGED) ||
@@ -4906,7 +4907,7 @@ CH_CMD(do_practice)
           found = true;
       }
 
-      if ((ch->level < skill_table[sn].skill_level[ch->clss] &&
+      if ((ch->level < skill_table[sn].skill_level[ch->class] &&
            !found) || ch->pcdata->learned[sn] <= 0)
         continue;
 
@@ -4971,14 +4972,14 @@ CH_CMD(do_practice)
       send_to_char("I dont know skill by that name.\n\r", ch);
       return;
     }
-    if (ch->level < skill_table[sn].skill_level[ch->clss] ||
+    if (ch->level < skill_table[sn].skill_level[ch->class] ||
         ch->pcdata->learned[sn] == 0)
     {
       send_to_char("You can't practice that.\n\r", ch);
       return;
     }
 
-    adept = IS_NPC(ch) ? 100 : class_table[ch->clss].skill_adept;
+    adept = IS_NPC(ch) ? 100 : class_table[ch->class].skill_adept;
     if (ch->pcdata->learned[sn] >= adept)
     {
       sprintf(buf, "I cannot teach you any more about %s.\n\r",
@@ -4990,7 +4991,7 @@ CH_CMD(do_practice)
       ch->practice--;
       ch->pcdata->learned[sn] +=
         int_app[get_curr_stat(ch, STAT_INT)].learn /
-        skill_table[sn].rating[ch->clss];
+        skill_table[sn].rating[ch->class];
       if (ch->pcdata->learned[sn] < adept)
       {
         act("You practice $T.", ch, NULL, skill_table[sn].name, TO_CHAR);
@@ -5194,7 +5195,7 @@ CH_CMD(do_omni)
   for (d = descriptor_list; d != NULL; d = d->next)
   {
     CHAR_DATA *wch;
-    char const *clss;
+    char const *class;
 
     if (d->connected != CON_PLAYING || !can_see(ch, d->character))
       continue;
@@ -5208,13 +5209,13 @@ CH_CMD(do_omni)
       hptemp = 100;
     else if (wch->hit < 0)
       hptemp = 0;
-    clss = class_table[wch->clss].who_name;
+    class = class_table[wch->class].who_name;
     sprintf(buf,
             "{G%-14s {D%6s{w/{Y%3s    {g%-15s {m%-3d   {R%3d%%   {w[{y%ld{w] %2.f %d{x\n\r",
             wch->name,
             wch->race <
             MAX_PC_RACE ? pc_race_table[wch->race].who_name : "     ",
-            clss, capitalize(position_table[wch->position].name),
+            class, capitalize(position_table[wch->position].name),
             wch->level, hptemp, wch->in_room->vnum, wch->btime, wch->bflip);
     add_buf(output, buf);
   }

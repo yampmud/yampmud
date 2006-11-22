@@ -161,8 +161,8 @@ CH_CMD(do_drag)
   if (!IS_IMMORTAL(ch))
     WAIT_STATE(ch, 24);
 
-  if ((((!str_cmp(class_table[ch->clss].name, "Knight") ||
-         !str_cmp(class_table[ch->clss].name, "Strider")) &&
+  if ((((!str_cmp(class_table[ch->class].name, "Knight") ||
+         !str_cmp(class_table[ch->class].name, "Strider")) &&
         ch->level >= 202) || IS_IMMORTAL(ch)))
   {
     if (ch->position == POS_FIGHTING)
@@ -2264,7 +2264,7 @@ CH_CMD(do_recall)
       !IS_SET(ch->master->act, PLR_TWIT))
     location = get_room_index(clan_table[ch->master->clan].hall);
 
-  ch->move = (int) (ch->move * .75);
+  ch->move *= .75;
   act("$n disappears.", ch, NULL, NULL, TO_ROOM);
   if (IS_NPC(ch) || !IS_IMMORTAL(ch))
   {
@@ -2407,7 +2407,7 @@ CH_CMD(do_train)
 
   if (!str_cmp(arg1, "str"))
   {
-    if (class_table[ch->clss].attr_prime == STAT_STR)
+    if (class_table[ch->class].attr_prime == STAT_STR)
       cost = 1;
     stat = STAT_STR;
     pOutput = "strength";
@@ -2415,7 +2415,7 @@ CH_CMD(do_train)
 
   else if (!str_cmp(arg1, "int"))
   {
-    if (class_table[ch->clss].attr_prime == STAT_INT)
+    if (class_table[ch->class].attr_prime == STAT_INT)
       cost = 1;
     stat = STAT_INT;
     pOutput = "intelligence";
@@ -2423,7 +2423,7 @@ CH_CMD(do_train)
 
   else if (!str_cmp(arg1, "wis"))
   {
-    if (class_table[ch->clss].attr_prime == STAT_WIS)
+    if (class_table[ch->class].attr_prime == STAT_WIS)
       cost = 1;
     stat = STAT_WIS;
     pOutput = "wisdom";
@@ -2431,7 +2431,7 @@ CH_CMD(do_train)
 
   else if (!str_cmp(arg1, "dex"))
   {
-    if (class_table[ch->clss].attr_prime == STAT_DEX)
+    if (class_table[ch->class].attr_prime == STAT_DEX)
       cost = 1;
     stat = STAT_DEX;
     pOutput = "dexterity";
@@ -2439,7 +2439,7 @@ CH_CMD(do_train)
 
   else if (!str_cmp(arg1, "con"))
   {
-    if (class_table[ch->clss].attr_prime == STAT_CON)
+    if (class_table[ch->class].attr_prime == STAT_CON)
       cost = 1;
     stat = STAT_CON;
     pOutput = "constitution";

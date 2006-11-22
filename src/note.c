@@ -275,7 +275,7 @@ void load_thread(char *name, NOTE_DATA ** list, int type, time_t free_time)
     while (isspace(letter));
     ungetc(letter, fp);
 
-    pnote = (NOTE_DATA *) alloc_perm(sizeof(*pnote));
+    pnote = alloc_perm(sizeof(*pnote));
 
     if (str_cmp(fread_word(fp), "sender"))
       break;
@@ -430,7 +430,7 @@ void note_attach(CHAR_DATA * ch, int type)
   return;
 }
 
-void note_remove(CHAR_DATA * ch, NOTE_DATA * pnote, bool deleteit)
+void note_remove(CHAR_DATA * ch, NOTE_DATA * pnote, bool delete)
 {
   char to_new[MAX_INPUT_LENGTH];
   char to_one[MAX_INPUT_LENGTH];
@@ -438,7 +438,7 @@ void note_remove(CHAR_DATA * ch, NOTE_DATA * pnote, bool deleteit)
   NOTE_DATA **list;
   char *to_list;
 
-  if (!deleteit)
+  if (!delete)
   {
     /* make a new list */
     to_new[0] = '\0';

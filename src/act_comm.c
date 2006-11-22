@@ -547,7 +547,7 @@ CH_CMD(do_reroll)
 
   if (ch->level >= LEVEL_HERO)
     wasHero = true;
-  iClass = ch->clss;
+  iClass = ch->class;
 
   if (ch->pcdata->confirm_reroll)
   {
@@ -758,7 +758,7 @@ CH_CMD(do_ancient)
     return;
   }
 
-  if (!IS_SET(class_table[ch->clss].tier, TIER_04))
+  if (!IS_SET(class_table[ch->class].tier, TIER_04))
   {
 
     send_to_char("{xYou must be tier 4 to become an Ancient.\n\r", ch);
@@ -783,8 +783,7 @@ CH_CMD(do_ancient)
   if (ch->platinum < 2000)
   {
     send_to_char
-      ("�You must be carrying 2,000 platinum to become an Ancient.\n\r",
-       ch);
+      ("�You must be carrying 2,000 platinum to become an Ancient.\n\r", ch);
     return;
   }
 
@@ -2430,11 +2429,11 @@ void social_channel(const char *format, CHAR_DATA * ch, const void *arg2,
                 break;
 
               case 'n':
-                i = (char *) PERS(ch, to);
+                i = PERS(ch, to);
                 break;
 
               case 'N':
-                i = (char *) PERS(vch, to);
+                i = PERS(vch, to);
                 break;
 
               case 'e':
@@ -3629,19 +3628,19 @@ CH_CMD(do_pmote)
 
     for (; *letter != '\0'; letter++)
     {
-      if (*letter == '\'' && matches == (signed) strlen(vch->name))
+      if (*letter == '\'' && matches == strlen(vch->name))
       {
         strcat(temp, "r");
         continue;
       }
 
-      if (*letter == 's' && matches == (signed) strlen(vch->name))
+      if (*letter == 's' && matches == strlen(vch->name))
       {
         matches = 0;
         continue;
       }
 
-      if (matches == (signed) strlen(vch->name))
+      if (matches == strlen(vch->name))
       {
         matches = 0;
       }
@@ -3650,7 +3649,7 @@ CH_CMD(do_pmote)
       {
         matches++;
         name++;
-        if (matches == (signed) strlen(vch->name))
+        if (matches == strlen(vch->name))
         {
           strcat(temp, "you");
           last[0] = '\0';
@@ -4000,23 +3999,21 @@ CH_CMD(do_pose)
   if (IS_NPC(ch))
     return;
 
-  level =
-    UMIN(ch->level,
-         (signed) (sizeof(pose_table) / sizeof(pose_table[0]) - 1));
+  level = UMIN(ch->level, sizeof(pose_table) / sizeof(pose_table[0]) - 1);
   pose = number_range(0, level);
 
-  if (ch->clss < MAX_CLASS / 2)
+  if (ch->class < MAX_CLASS / 2)
   {
-    act(pose_table[pose].message[2 * ch->clss + 0], ch, NULL, NULL, TO_CHAR);
-    act(pose_table[pose].message[2 * ch->clss + 1], ch, NULL, NULL, TO_ROOM);
+    act(pose_table[pose].message[2 * ch->class + 0], ch, NULL, NULL, TO_CHAR);
+    act(pose_table[pose].message[2 * ch->class + 1], ch, NULL, NULL, TO_ROOM);
   }
   else
   {
     act(pose_table[pose].
-        message[2 * (ch->clss - (MAX_CLASS / 2)) + 0], ch, NULL,
+        message[2 * (ch->class - (MAX_CLASS / 2)) + 0], ch, NULL,
         NULL, TO_CHAR);
     act(pose_table[pose].
-        message[2 * (ch->clss - (MAX_CLASS / 2)) + 1], ch, NULL,
+        message[2 * (ch->class - (MAX_CLASS / 2)) + 1], ch, NULL,
         NULL, TO_ROOM);
   }
   return;
@@ -4654,7 +4651,7 @@ CH_CMD(do_group)
         sprintf(buf,
                 "[%2d %s] %-16s %ld/%ld hp %ld/%ld mana %ld/%ld mv %5ld xp\n\r",
                 gch->level,
-                IS_NPC(gch) ? "Mob" : class_table[gch->clss].
+                IS_NPC(gch) ? "Mob" : class_table[gch->class].
                 who_name, capitalize(PERS(gch, ch)), gch->hit,
                 gch->max_hit, gch->mana, gch->max_mana, gch->move,
                 gch->max_move, gch->exp);

@@ -288,8 +288,7 @@ bool show_help(CHAR_DATA * ch, char *argument)
       }
       else
       {
-        show_flag_cmds(ch,
-                       (const struct flag_type *) help_table[cnt].structure);
+        show_flag_cmds(ch, help_table[cnt].structure);
         return false;
       }
     }
@@ -3881,7 +3880,7 @@ OEDIT(oedit_autoarmor)
        ch);
     return false;
   }
-  size = (int) (UMAX(1, pObj->level / 1.2 + 5));
+  size = UMAX(1, pObj->level / 1.2 + 5);
   pObj->weight = pObj->level + 1;
   pObj->cost = pObj->level ^ 2 * 2;
   pObj->value[0] = size;
@@ -5381,8 +5380,8 @@ MEDIT(medit_autoset)
     return false;
   }
   /* adjust these next 2 lines to affect ACs */
-  ac_n = (int) (95 - (pMob->level * 6.67) - ((pMob->level / 10) ^ 2));
-  ac_x = (int) (95 - (pMob->level * 4.57) - ((pMob->level / 10) ^ 2));
+  ac_n = 95 - (pMob->level * 6.67) - ((pMob->level / 10) ^ 2);
+  ac_x = 95 - (pMob->level * 4.57) - ((pMob->level / 10) ^ 2);
   pMob->ac[AC_PIERCE] = ac_n;
   pMob->ac[AC_BASH] = ac_n;
   pMob->ac[AC_SLASH] = ac_n;
@@ -5396,10 +5395,10 @@ MEDIT(medit_autoset)
   dice = pMob->level / 3;
   if (dice < 1)
     dice = 3;
-  size = (int) (.87 + pMob->level / dice);
+  size = (.87 + pMob->level / dice);
   if (size < 2)
     size = 2;
-  bonus = (int) (12.5 + pMob->level / 1);
+  bonus = (12.5 + pMob->level / 1);
   sprintf(temp, "%dd%d + %d", dice, size, bonus);
   medit_damdice(ch, temp);
   bonus =
@@ -5407,7 +5406,7 @@ MEDIT(medit_autoset)
   size = pMob->level / 3;
   if (size < 2)
     size = 2;
-  dice = (int) ((pMob->level + .5) * 5 + .2);
+  dice = (pMob->level + .5) * 5 + .2;
   if (dice < 1)
     dice = 3;
   sprintf(temp, "%dD%d + %d", dice, size, bonus);
@@ -5432,8 +5431,8 @@ MEDIT(medit_autohard)
     send_to_char("Set a level on the mob first!!!\n\r", ch);
     return false;
   }
-  ac_n = (int) (88 - (pMob->level * 12.05) - ((pMob->level / 10) ^ 2));
-  ac_x = (int) (88 - (pMob->level * 10.02) - ((pMob->level / 10) ^ 2));
+  ac_n = 88 - (pMob->level * 12.05) - ((pMob->level / 10) ^ 2);
+  ac_x = 88 - (pMob->level * 10.02) - ((pMob->level / 10) ^ 2);
   // sprintf(temp, "%d %d %d %d", ac_n, ac_n, ac_n, ac_x);
   pMob->ac[AC_PIERCE] = ac_n;
   pMob->ac[AC_BASH] = ac_n;
@@ -5453,7 +5452,7 @@ MEDIT(medit_autohard)
   size = (2 + pMob->level / dice);
   if (size < 2)
     size = 3;
-  bonus = (int) ((26.5 + pMob->level));
+  bonus = (26.5 + pMob->level);
   sprintf(temp, "%dd%d + %d", dice, size, bonus);
   medit_damdice(ch, temp);
   bonus =
@@ -5488,8 +5487,8 @@ MEDIT(medit_autoeasy)
     send_to_char("Set a level on the mob first!!!\n\r", ch);
     return false;
   }
-  ac_n = (int) (99 - (pMob->level * 6.37) - ((pMob->level / 10) ^ 2));
-  ac_x = (int) (99 - (pMob->level * 4.27) - ((pMob->level / 10) ^ 2));
+  ac_n = 99 - (pMob->level * 6.37) - ((pMob->level / 10) ^ 2);
+  ac_x = 99 - (pMob->level * 4.27) - ((pMob->level / 10) ^ 2);
   // sprintf(temp, "%d %d %d %d", ac_n, ac_n, ac_n, ac_x);
   pMob->ac[AC_PIERCE] = ac_n;
   pMob->ac[AC_BASH] = ac_n;
@@ -5501,13 +5500,13 @@ MEDIT(medit_autoeasy)
   bonus = 60;
   sprintf(temp, "%dd%d + %d", dice, size, bonus);
   medit_manadice(ch, temp);
-  dice = (int) (pMob->level / 3 * .95);
+  dice = pMob->level / 3 * .95;
   if (dice < 1)
     dice = 1;
-  size = (int) ((.87 + pMob->level / dice) * .95);
+  size = (.87 + pMob->level / dice) * .95;
   if (size < 2)
     size = 2;
-  bonus = (int) ((10.5 + pMob->level / 1));
+  bonus = (10.5 + pMob->level / 1);
   sprintf(temp, "%dd%d + %d", dice, size, bonus);
   medit_damdice(ch, temp);
   bonus =
@@ -5515,7 +5514,7 @@ MEDIT(medit_autoeasy)
   size = pMob->level / 3;
   if (size < 2)
     size = 2;
-  dice = (int) ((pMob->level + .5) * 10 + .2);
+  dice = (pMob->level + .5) * 10 + .2;
   if (dice < 1)
     dice = 2;
   sprintf(temp, "%dD%d + %d", dice, size, bonus);

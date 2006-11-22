@@ -496,7 +496,7 @@ void update_questobjs(CHAR_DATA * ch, OBJ_DATA * obj)
 
   else if (obj->item_type == ITEM_CONTAINER)
   {
-    obj->weight = (sh_int) (-1 * (50 + (ch->level * 1.5)));
+    obj->weight = -1 * (50 + (ch->level * 1.5));
     obj->value[0] = 1000 + (20 * ch->level);
     obj->value[3] = 1000 + (20 * ch->level);
   }
@@ -1023,8 +1023,7 @@ CH_CMD(do_quest)
         continue;
       if (quest_table[i].vnum == obj->pIndexData->vnum)
       {
-        ch->pcdata->questpoints =
-          (long) (ch->pcdata->questpoints + (quest_table[i].cost / 1.5));
+        ch->pcdata->questpoints += (quest_table[i].cost / 1.5);
         act("$N takes $p from $n.", ch, obj, questman, TO_ROOM);
         sprintf(buf, "$N takes $p from you for %d quest points.",
                 (int) (quest_table[i].cost / 1.5));
@@ -1156,7 +1155,7 @@ CH_CMD(do_quest)
       if (ch->pcdata->questmob == -1 && ch->pcdata->countdown > 0)
       {
         reward = number_range(10000, 15000);
-        points = (int) ((number_range(25, 50) * ((ch->btime / 40) + 1)));
+        points = (number_range(25, 50) * ((ch->btime / 40) + 1));
 
         act("$n informs $N $e has completed $s quest.", ch, NULL,
             questman, TO_ROOM);
@@ -1198,7 +1197,7 @@ CH_CMD(do_quest)
         if ((obj = has_questobj(ch)) != NULL)
         {
           reward = number_range(10000, 15000);
-          points = (int) ((number_range(25, 50) * ((ch->btime / 40) + 1)));
+          points = (number_range(25, 50) * ((ch->btime / 40) + 1));
 
           act("$n informs $N $e has completed $s quest.", ch, NULL,
               questman, TO_ROOM);
@@ -1334,7 +1333,7 @@ void generate_quest(CHAR_DATA * ch, CHAR_DATA * questman)
 
       continue;
     mobs[mob_count++] = victim;
-    if ((signed) mob_count >= MAX_QMOB_COUNT)
+    if (mob_count >= MAX_QMOB_COUNT)
       break;
   }
 

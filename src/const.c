@@ -40,7 +40,7 @@
 
 char *const dir_name[MAX_DIR] = {
   "north", "east", "south", "west", "up", "down", "northeast", "southeast",
-  "southwest", "northwest"
+    "southwest", "northwest"
 };
 
 const sh_int rev_dir[MAX_DIR] = {

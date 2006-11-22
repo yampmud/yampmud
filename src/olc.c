@@ -812,7 +812,7 @@ CH_CMD(do_redit)
     if (redit_create(ch, argument))
     {
       char_from_room(ch);
-      char_to_room(ch, (ROOM_INDEX_DATA *) ch->desc->pEdit);
+      char_to_room(ch, ch->desc->pEdit);
       SET_BIT(pRoom->area->area_flags, AREA_CHANGED);
       pRoom = ch->in_room;
     }

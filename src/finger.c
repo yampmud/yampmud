@@ -146,7 +146,7 @@ CH_CMD(do_finger)
      "{Y|{cHours{x:{g %-12d{x" "{cRPs Total/Current {x: {g%-6d / %-6d{x\n\r"
      "{Y=====================\n\r" "Last Logged off %s{x\r",
      victim->name, victim->level,
-     class_table[victim->clss].name,
+     class_table[victim->class].name,
      pc_race_table[victim->race].name,
      clan_table[victim->clan].exname,
      clan_rank_table[victim->clan_rank].title_of_rank[victim->sex],
@@ -172,7 +172,7 @@ CH_CMD(do_finger)
                  " {W   {+L{+a{+s{+t {+L{+o{+g{+g{+e{+d o{+f{+f {x%-25s{x\n\r",
                  victim->name, victim->pcdata->title, victim->level,
                  pc_race_table[victim->race].name,
-                 class_table[victim->clss].name,
+                 class_table[victim->class].name,
                  clan_table[victim->clan].exname,
                  clan_rank_table[victim->clan_rank].title_of_rank[victim->
                                                                   sex],

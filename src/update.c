@@ -61,18 +61,19 @@ void advance_level(CHAR_DATA * ch)
     (ch->played + (int) (current_time - ch->logon)) / 3600;
 
   sprintf(buf, "the %s",
-          title_table[ch->clss][ch->level][ch->sex == SEX_FEMALE ? 1 : 0]);
+          title_table[ch->class][ch->level][ch->sex == SEX_FEMALE ? 1 : 0]);
   /* set_title( ch, buf ); */
 
   add_hp =
     con_app[get_curr_stat(ch, STAT_CON)].hitp +
-    number_range(class_table[ch->clss].hp_min, class_table[ch->clss].hp_max);
+    number_range(class_table[ch->class].hp_min,
+                 class_table[ch->class].hp_max);
   add_mana =
     number_range(10,
                  (5 * get_curr_stat(ch, STAT_INT) +
                   get_curr_stat(ch, STAT_WIS)));
-  if (!class_table[ch->clss].fMana)
-    add_mana = (int) (add_mana / 3.5);
+  if (!class_table[ch->class].fMana)
+    add_mana /= 3.5;
   add_move =
     number_range(1,
                  (get_curr_stat(ch, STAT_CON) +
@@ -142,17 +143,18 @@ void advance_level_quiet(CHAR_DATA * ch)
     (ch->played + (int) (current_time - ch->logon)) / 3600;
 
   sprintf(buf, "the %s",
-          title_table[ch->clss][ch->level][ch->sex == SEX_FEMALE ? 1 : 0]);
+          title_table[ch->class][ch->level][ch->sex == SEX_FEMALE ? 1 : 0]);
   /* set_title( ch, buf ); */
 
   add_hp =
     con_app[get_curr_stat(ch, STAT_CON)].hitp +
-    number_range(class_table[ch->clss].hp_min, class_table[ch->clss].hp_max);
+    number_range(class_table[ch->class].hp_min,
+                 class_table[ch->class].hp_max);
   add_mana =
     number_range(4,
                  (4 * get_curr_stat(ch, STAT_INT) +
                   get_curr_stat(ch, STAT_WIS)) / 2);
-  if (!class_table[ch->clss].fMana)
+  if (!class_table[ch->class].fMana)
     add_mana /= 2;
   add_move =
     number_range(1,
@@ -309,7 +311,7 @@ int hit_gain(CHAR_DATA * ch)
   else
   {
     gain = UMAX(3, get_curr_stat(ch, STAT_CON) - 3 + ch->level / 2);
-    gain += class_table[ch->clss].hp_max - 10;
+    gain += class_table[ch->class].hp_max - 10;
     number = number_percent();
     if (number < get_skill(ch, gsn_fast_healing))
     {
@@ -390,7 +392,7 @@ int mana_gain(CHAR_DATA * ch)
       if (ch->mana < ch->max_mana)
         check_improve(ch, gsn_meditation, true, 8);
     }
-    if (!class_table[ch->clss].fMana)
+    if (!class_table[ch->class].fMana)
       gain /= 2;
     switch (ch->position)
     {
@@ -715,10 +717,10 @@ void weather_update(void)
   /*
      if ( time_info.hour < 9 || time_info.hour > 17 )
      {
-     if (IS_SET(class_table[ch->clss].name, Revenant))
-     || (IS_SET(class_table[ch->clss].name, Vampire))
-     || (IS_SET(class_table[ch->clss].name, Lich))
-     || (IS_SET(class_table[ch->clss].name, Cainite))
+     if (IS_SET(class_table[ch->class].name, Revenant))
+     || (IS_SET(class_table[ch->class].name, Vampire))
+     || (IS_SET(class_table[ch->class].name, Lich))
+     || (IS_SET(class_table[ch->class].name, Cainite))
      {
      printf_to_char(ch,"{bThe {Rd{za{x{Rz{zm{x{Ra{zg{x{Rin{zg{x {rrays of the sun {Rb{Yu{Rr{Yn{r your {yskin!{x\n\r");
      damage = ch->level/20;

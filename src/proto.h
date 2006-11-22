@@ -31,7 +31,7 @@ void reset_room args((ROOM_INDEX_DATA * pRoom));
 /* string.c */
 void string_edit args((CHAR_DATA * ch, char **pString));
 void string_append args((CHAR_DATA * ch, char **pString));
-char *string_replace args((char *origstr, char *oldstr, char *newstr));
+char *string_replace args((char *orig, char *old, char *new));
 void string_add args((CHAR_DATA * ch, char *argument));
 char *format_string args((char *oldstring /* , bool fSpace */ ));
 char *first_arg args((char *argument, char *arg_first, bool fCase));
@@ -70,16 +70,16 @@ bool is_safe_spell args((CHAR_DATA * ch, CHAR_DATA * victim, bool area));
 void violence_update args((void));
 void multi_hit args((CHAR_DATA * ch, CHAR_DATA * victim, int dt));
 int xdamage
-args((CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int clss,
+args((CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int class,
       bool show, int suppress));
 bool damage
-args((CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int clss,
+args((CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int class,
       bool show));
 bool damage_mock
-args((CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int clss,
+args((CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int class,
       bool show));
 bool damage_old
-args((CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int clss,
+args((CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int class,
       bool show));
 void update_pos args((CHAR_DATA * victim));
 void stop_fighting args((CHAR_DATA * ch, bool fBoth));
@@ -557,7 +557,7 @@ void save_notes args((int type));
 void append_note args((NOTE_DATA * pnote));
 bool is_note_to args((CHAR_DATA * ch, NOTE_DATA * pnote));
 void note_attach args((CHAR_DATA * ch, int type));
-void note_remove args((CHAR_DATA * ch, NOTE_DATA * pnote, bool deleteit));
+void note_remove args((CHAR_DATA * ch, NOTE_DATA * pnote, bool delete));
 void update_read args((CHAR_DATA * ch, NOTE_DATA * pnote));
 void note_remove_quiet args((NOTE_DATA * pnote));
 void display_resets args((CHAR_DATA * ch));

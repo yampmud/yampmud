@@ -111,7 +111,8 @@ bool write_to_descriptor args((int desc, char *txt, int length));
 int port, control;
 volatile sig_atomic_t crashed = 0;
 
-static void sigalrm(int sig)
+static void sigalrm(sig)
+int sig;
 {
   time_t tm;
 
@@ -685,7 +686,7 @@ bool read_from_descriptor(DESCRIPTOR_DATA * d)
 
   /* Check for overflow. */
   iStart = strlen(d->inbuf);
-  if (iStart >= (signed) sizeof(d->inbuf) - 15)
+  if (iStart >= sizeof(d->inbuf) - 15)
   {
     sprintf(log_buf, "%s input overflow!", d->host);
     log_string(log_buf);
@@ -1629,8 +1630,7 @@ void bust_a_prompt(CHAR_DATA * ch)
     { "N", "E", "S", "W", "U", "D", "Ne", "Se", "Sw", "Nw" };
   char *door_name[MAX_DIR] =
     { "north", "east", "south", "west", "up", "down", "northeast",
-    "southeast", "southwest", "northwest"
-  };
+"southeast", "southwest", "northwest" };
   int door;
 
   sprintf(buf2, "%s", ch->prompt);
@@ -1826,7 +1826,7 @@ void write_to_buffer(DESCRIPTOR_DATA * d, const char *txt, int length)
       close_socket(d);
       return;
     }
-    outbuf = (char *) alloc_mem(2 * d->outsize);
+    outbuf = alloc_mem(2 * d->outsize);
     strncpy(outbuf, d->outbuf, d->outtop);
     free_mem(d->outbuf, d->outsize);
     d->outbuf = outbuf;
@@ -2469,7 +2469,7 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
                         0);
         return;
       }
-      ch->clss = iClass;
+      ch->class = iClass;
 
       sprintf(log_buf, "%s@%s new player.", ch->name, d->host);
       log_string(log_buf);
@@ -2504,7 +2504,7 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
       write_to_buffer(d, "\n\r", 0);
 
       group_add(ch, "rom basics", false);
-      group_add(ch, class_table[ch->clss].base_group, false);
+      group_add(ch, class_table[ch->class].base_group, false);
       ch->pcdata->learned[gsn_recall] = 50;
       write_to_buffer(d,
                       "{WDo you wish to customize this character?{x\n\r", 0);
@@ -2534,7 +2534,7 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
           break;
         case 'n':
         case 'N':
-          group_add(ch, class_table[ch->clss].default_group, true);
+          group_add(ch, class_table[ch->class].default_group, true);
           write_to_buffer(d, "\n\r", 2);
           write_to_buffer(d,
                           "{WPlease pick a weapon from the following choices:\n\r",
@@ -2681,7 +2681,7 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
       if (ch->level == 0)
       {
 
-        ch->perm_stat[class_table[ch->clss].attr_prime] += 4;
+        ch->perm_stat[class_table[ch->class].attr_prime] += 4;
 
         /* add this while initializing all the racial stuff for new characters */
         ch->level = 1;
@@ -2878,9 +2878,7 @@ bool check_parse_name(char *name)
 
     if (fIll)
       return false;
-    if (cleancaps ||
-        (total_caps > ((signed) strlen(name)) / 2 &&
-         (signed) strlen(name) < 3))
+    if (cleancaps || (total_caps > (strlen(name)) / 2 && strlen(name) < 3))
       return false;
   }
 
@@ -3053,7 +3051,7 @@ void page_to_char(const char *txt, CHAR_DATA * ch)
     return;
   }
 
-  ch->desc->showstr_head = (char *) alloc_mem(strlen(txt) + 1);
+  ch->desc->showstr_head = alloc_mem(strlen(txt) + 1);
   strcpy(ch->desc->showstr_head, txt);
   ch->desc->showstr_point = ch->desc->showstr_head;
   show_string(ch->desc, "");
@@ -3211,10 +3209,10 @@ void xact_new(const char *format, CHAR_DATA * ch, const void *arg1,
                 i = (char *) arg2;
                 break;
               case 'n':
-                i = (char *) PERS(ch, to);
+                i = PERS(ch, to);
                 break;
               case 'N':
-                i = (char *) PERS(vch, to);
+                i = PERS(vch, to);
                 break;
               case 'e':
                 i = he_she[URANGE(0, ch->sex, 2)];
@@ -3235,14 +3233,10 @@ void xact_new(const char *format, CHAR_DATA * ch, const void *arg1,
                 i = his_her[URANGE(0, vch->sex, 2)];
                 break;
               case 'p':
-                i =
-                  (char *) (can_see_obj(to, obj1) ? obj1->
-                            short_descr : "something");
+                i = can_see_obj(to, obj1) ? obj1->short_descr : "something";
                 break;
               case 'P':
-                i =
-                  (char *) (can_see_obj(to, obj2) ? obj2->
-                            short_descr : "something");
+                i = can_see_obj(to, obj2) ? obj2->short_descr : "something";
                 break;
               case 'd':
                 if (!arg2 || ((char *) arg2)[0] == '\0')

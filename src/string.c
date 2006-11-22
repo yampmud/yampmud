@@ -81,7 +81,7 @@ void string_append(CHAR_DATA * ch, char **pString)
  Purpose:	Substitutes one string for another.
  Called by:	string_add(string.c) (aedit_builder)olc_act.c.
  ****************************************************************************/
-char *string_replace(char *orig, char *old, char *newstr)
+char *string_replace(char *orig, char *old, char *new)
 {
   char xbuf[MAX_STRING_LENGTH];
   int i;
@@ -92,7 +92,7 @@ char *string_replace(char *orig, char *old, char *newstr)
   {
     i = strlen(orig) - strlen(strstr(orig, old));
     xbuf[i] = '\0';
-    strcat(xbuf, newstr);
+    strcat(xbuf, new);
     strcat(xbuf, &orig[i + strlen(old)]);
     free_string(orig);
   }
