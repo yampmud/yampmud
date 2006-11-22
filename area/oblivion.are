@@ -1,0 +1,646 @@
+#AREADATA
+Name Oblivion~
+Builders Khaos Unlinked~
+VNUMs 100 199
+Credits {DImmOnly{x~
+Security 9
+RepopMsg (null)~
+End
+
+
+
+#MOBILES
+#100
+ice mephit~
+an {-i{-c{-e {-m{-e{-p{-h{-i{-t{x~
+An {-i{-c{-e {-m{-e{-p{-h{-i{-t{x hovers by its master.
+~
+~
+Human~
+AB 0 FTZ C 0 0
+95 95 0d0+0 0d0+0 8d14+110 chill
+-25 -25 -25 -25
+S I R EH
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#101
+dust mephit~
+a {pd{pu{ps{pt {pm{pe{pp{ph{pi{pt{x~
+A {pd{pu{ps{pt {pm{pe{pp{ph{pi{pt{x hovers by its master.
+~
+~
+Human~
+AB 0 FTZ 0 0 0
+75 75 0d0+0 0d0+0 7d13+65 dust
+-25 -25 -25 -25
+IS b F JR
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#102
+magma mephit~
+a {Om{Oa{Og{Om{Oa {Om{Oe{Op{Oh{Oi{Ot{x~
+A {Om{Oa{Og{Om{Oa {Om{Oe{Op{Oh{Oi{Ot{x hovers by its master.
+~
+~
+Human~
+AB 0 FTZ D 0 0
+115 115 0d0+0 0d0+0 9d14+270 flbite
+-25 -25 -25 -25
+S H b IR
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#103
+steam mephit~
+a {cs{wt{De{ca{wm {Wm{De{cp{wh{Wi{ct{x~
+A {cs{wt{De{ca{wm {Wm{De{cp{wh{Wi{ct{x hovers by its master.
+~
+~
+Human~
+AB 0 FQTUVZ 0 0 0
+135 135 0d0+0 0d0+0 20d15+125 squirt
+-25 -25 -25 -25
+FKLS R H Jb
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#104
+ooze mephit~
+an {qo{qo{qz{qe {qm{qe{qp{qh{qi{qt{x~
+An {qo{qo{qz{qe {qm{qe{qp{qh{qi{qt{x hovers by its master.
+~
+~
+Human~
+AB 0 FTZ F 0 0
+155 155 0d0+0 0d0+0 50d10+275 slime
+-25 -25 -25 -25
+S K 0 O
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#105
+smoke mephit~
+a {+s{+m{+o{+k{+e {+m{+e{+p{+h{+i{+t{x~
+A {+s{+m{+o{+k{+e {+m{+e{+p{+h{+i{+t{x hovers by its master.
+~
+~
+Human~
+AB 0 FPTUZ 0 0 0
+175 175 0d0+0 0d0+0 60d10+300 drain
+-25 -25 -25 -25
+FHKS M 0 S
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#110
+air elemental~
+an {oa{oi{or {oe{ol{oe{om{oe{on{ot{oa{ol{x~
+A swirling {oa{oi{or {oe{ol{oe{om{oe{on{ot{oa{ol{x hovers by its master.
+~
+~
+Human~
+AB 0 TV 0 0 0
+75 75 0d0+0 0d0+0 7d13+65 shock
+-25 -25 -25 -25
+FHS J 0 b
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#111
+water elemental~
+a {Bw{Ca{ct{Ce{Br {We{wl{ce{Cm{Be{Cn{ct{wa{Wl{x~
+A {Bw{ca{Wt{Be{Cr {We{wl{ce{Cm{We{Bn{ct{wa{Cl{x drips by its master, leaving puddles in its wake.
+~
+~
+Human~
+AB 0 bc 0 0 0
+100 100 0d0+0 0d0+0 8d14+220 splash
+-25 -25 -25 -25
+FS R 0 J
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#112
+earth elemental~
+an {pe{pa{pr{pt{ph {pe{pl{pe{pm{pe{pn{pt{pa{pl{x~
+An {pe{pa{pr{pt{ph {pe{pl{pe{pm{pe{pn{pt{pa{pl{x stands stoicly by its master.
+~
+~
+Human~
+AB 0 0 W 0 0
+125 125 0d0+0 0d0+0 15d15+199 tremor
+-25 -25 -25 -25
+CJS b 0 R
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#113
+fire elemental~
+a {Of{Oi{Or{Oe {Oe{Ol{Oe{Om{Oe{On{Ot{Oa{Ol{x~
+A {Of{Oi{Or{Oe {Oe{Ol{Oe{Om{Oe{On{Ot{Oa{Ol{x crackles wildly beside its master, radiating heat.
+~
+~
+Human~
+AB 0 VZ D 0 0
+150 0 0d0+0 0d0+0 48d10+125 flbite
+0 0 0 0
+FHS H 0 I
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#120
+bear companion~
+a {yb{Dea{yr{x~
+A massive {yb{Dea{yr{x protectively guards its companion.
+~
+~
+Human~
+AB 0 Za 0 0 0
+150 150 0d0+0 0d0+0 48d10+125 pound
+-25 -25 -25 -25
+CKS 0 Ea 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#121
+panther companion~
+a {Dpanther{x~
+A sleek {Dblack panther{x watches the area suspiciously.
+~
+~
+Human~
+AB 0 PVZ 0 0 0
+125 125 0d0+0 0d0+0 15d15+199 claw
+-25 -25 -25 -25
+FNS 0 Ma 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#122
+wolf companion~
+a {+w{+o{+l{+f{x~
+A large {+w{+o{+l{+f{x paces back and forth, ready for attack.
+~
+~
+Human~
+AB 0 PVZ 0 0 0
+100 100 0d0+0 0d0+0 8d14+225 bite
+-25 -25 -25 -25
+FS 0 Pa 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#123
+hawk companion~
+a {yh{Da{ywk{x~
+A keen-eyed {yh{Da{ywk{x circles high above, watching everything.
+~
+~
+Human~
+AB 0 LTV 0 0 0
+75 75 0d0+0 0d0+0 7d13+65 scream
+-25 -25 -25 -25
+FS 0 Ta 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#130
+lantern archon~
+a {ol{oa{on{ot{oe{or{on {oa{or{oc{oh{oo{on{x~
+A brightly glowing ball of {ol{oi{og{oh{ot{x guides and aids its priestly summoner.
+~
+~
+Human~
+AB 0 CLTVZ J 0 0
+75 75 0d0+0 0d0+0 7d13+65 radiance
+-25 -25 -25 -25
+FS S 0 M
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#131
+trumpet archon~
+a {Wt{wr{Wu{wm{Wp{we{Wt {wa{Wrcho{wn{x~
+An archon carrying a {Wt{wr{Wu{wm{Wp{we{Wt{x of purest silver stands tall by its summoner.
+~
+~
+Human~
+AB 0 CJLT J 0 0
+100 100 0d0+0 0d0+0 8d14+240 boom
+-25 -25 -25 -25
+EFKS T 0 F
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#132
+hound archon~
+a {Oh{Oo{Ou{On{Od {wa{Wrcho{wn{x~
+A well-muscled man with the head of a {Oh{Oo{Ou{On{Od{x watches for evil deeds.
+~
+~
+Human~
+AB 0 CVZ J 0 0
+125 125 0d0+0 0d0+0 15d15+199 shbite
+-25 -25 -25 -25
+BKS J 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#133
+crown archon~
+a {yc{Yr{Wo{Yw{yn {ya{Yr{Wch{Yo{yn{x~
+A glorious {ya{Yn{Wgel{Yi{yc{x being keeps guard over the area, warding away evil-doers.
+~
+~
+Human~
+A 0 CTVZ J 0 0
+150 150 0d0+0 0d0+0 48d10+125 divine
+-25 -25 -25 -25
+KLS N 0 K
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#140
+dove songbird~
+a {wd{Wov{we{x~
+A beautiful {wd{Wov{we {xkeeps close to its master, cooing softly.
+~
+~
+Human~
+AB 0 LT 0 0 0
+125 125 0d0+0 0d0+0 15d15+199 magic
+-25 -25 -25 -25
+FHS 0 C M
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#141
+raven songbird~
+a {Draven{x~
+A {Draven{x caws from its perch, keeping its master in view.
+~
+~
+Human~
+AB 0 PQTVZ 0 0 0
+150 150 0d0+0 0d0+0 48d10+125 drain
+-25 -25 -25 -25
+FHS M 0 S
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#142
+sparrow songbird~
+a {rs{yp{wa{Dr{wr{yo{rw{x~
+A tiny {rs{yp{wa{Dr{wr{yo{rw{x chirps happily beside its master.
+~
+~
+Human~
+AB 0 LTV 0 0 0
+75 75 0d0+0 0d0+0 7d13+65 scream
+-25 -25 -25 -25
+FS T 0 H
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#143
+mockingbird songbird~
+a {cmo{Dck{wing{Dbi{crd{x~
+A {cmo{Dck{wing{Dbi{crd{x quietly taunts all who pass by.
+~
+~
+Human~
+AB 0 LTV 0 0 0
+100 100 0d0+0 0d0+0 8d14+240 minds
+-25 -25 -25 -25
+FHS P 0 I
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#150
+skeleton familiar~
+a {Wskeleton {Dfamiliar{x~
+A {Wskeletal {Dfamiliar{x awaits its master's command.
+~
+~
+Human~
+AB 0 GJd O 0 0
+100 100 0d0+0 0d0+0 8d14+225 thwack
+-25 -25 -25 -25
+DKS P FGM E
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#151
+zombie familiar~
+a {yz{gom{yb{Gi{ye {Dfamiliar{x~
+An oozing {yz{gom{yb{Gi{ye {Dfamiliar{x stands by its master, hungry for brains.
+~
+~
+Human~
+AB 0 GJd O 0 0
+75 75 0d0+0 0d0+0 7d13+65 chomp
+-25 -25 -25 -25
+DS P EIM HN
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#152
+wraith familiar~
+a {+w{+r{+a{+i{+t{+h {Dfamiliar{x~
+A shadowy {+w{+r{+a{+i{+t{+h {Dfamiliar{x patiently hovers by its master.
+~
+~
+Human~
+AB 0 GJPTU O 0 0
+150 150 0d0+0 0d0+0 48d10+125 darkness
+-25 -25 -25 -25
+BFHS M D NS
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#153
+spectre familiar~
+a {Ws{wpectra{Wl {Dfamiliar{x~
+A transparent {Ws{wpectra{Wl {Dfamiliar{x hovers gloomily by its master.
+~
+~
+Human~
+AB 0 JPTUV O 0 0
+125 125 0d0+0 0d0+0 15d15+199 chill
+-25 -25 -25 -25
+FHS I D JN
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#160
+north bone barrier~
+the {Wbone {Dbarrier{x~
+A wall of {Wbones{x barricades the {Dnorthern{x exit.
+~
+~
+Human~
+AB 0 d 0 -500 0
+180 0 0d0+0 0d0+0 0d0+0 drain
+-66 -33 -66 -77
+0 ABLPQ FGHI E
+stand stand none 0
+D 0 large unknown
+F for AHMV
+F par ABCDEFGHIJK
+M EXALL 160 0~
+#161
+east bone barrier~
+the {Wbone {Dbarrier{x~
+A wall of {Wbones{x barricades the {Deastern{x exit.
+~
+~
+Human~
+AB 0 d 0 -500 0
+180 0 0d0+0 0d0+0 0d0+0 drain
+0 0 0 0
+0 ABLPQ FGHI E
+stand stand none 0
+D 0 large unknown
+F for AHMV
+F par ABCDEFGHIJK
+M EXALL 160 1~
+#162
+south bone barrier~
+the {Wbone {Dbarrier{x~
+A wall of {Wbones{x barricades the {Dsouthern{x exit.
+~
+~
+Human~
+AB 0 d 0 -500 0
+180 0 0d0+0 0d0+0 0d0+0 drain
+-66 -33 -66 -77
+0 ABLPQ FGHI E
+stand stand none 0
+D 0 large unknown
+F for AHMV
+F par ABCDEFGHIJK
+M EXALL 160 2~
+#163
+west bone barrier~
+the {Wbone {Dbarrier{x~
+A wall of {Wbones{x barricades the {Dwestern{x exit.
+~
+~
+Human~
+AB 0 d 0 -500 0
+180 0 0d0+0 0d0+0 0d0+0 drain
+-66 -33 -66 -77
+0 ABLPQ FGHI E
+stand stand none 0
+D 0 large unknown
+F for AHMV
+F par ABCDEFGHIJK
+M EXALL 160 3~
+#164
+up bone barrier~
+the {Wbone {Dbarrier{x~
+A wall of {Wbones{x barricades the exit {Dupward{x.
+~
+~
+Human~
+AB 0 d 0 -500 0
+180 0 0d0+0 0d0+0 0d0+0 drain
+-66 -33 -66 -77
+0 ABLPQ FGHI E
+stand stand none 0
+D 0 large unknown
+F for AHMV
+F par ABCDEFGHIJK
+M EXALL 160 4~
+#165
+down bone barrier~
+the {Wbone {Dbarrier{x~
+A wall of {Wbones{x barricades the exit {Ddownward{x.
+~
+~
+Human~
+AB 0 d 0 -500 0
+180 0 0d0+0 0d0+0 0d0+0 drain
+-66 -33 -66 -77
+0 ABLPQ FGHI E
+stand stand none 0
+D 0 large unknown
+F for AHMV
+F par ABCDEFGHIJK
+M EXALL 160 5~
+#0
+
+
+
+#OBJECTS
+#100
+oblivion pill~
+an {mo{bb{Dl{wiv{Di{bo{mn {Dp{Wi{wl{Dl{x~
+A strange {Dp{Wi{wl{Dl{x has been left here, pulsating {Dd{ba{mrk{bl{Dy{x.~
+darkness~
+pill BGHa A
+210 'quest pill' 'quest pill' 'quest pill' 'quest pill'
+1 1 0 P
+#101
+christmas cookie~
+a {GC{gh{rr{Rist{rm{ga{Gs {Yc{yookie{x~
+Mmmm! A {Yf{yestiv{Ye{x holiday cookie with {Rr{re{Rd {xand {Gg{gree{Gn {xsprinkles!~
+unknown~
+pill ASYa AP
+1 'quest pill' 'quest pill' 'quest pill' 'quest pill'
+1 1 0 P
+#102
+candy cane~
+a {Rc{Wa{Rn{Wd{Ry {Wc{Ra{Wn{Re{x~
+A sticky sweet {Rc{Wa{Rn{Wd{Ry {Wc{Ra{Wn{Re{x is hanging here.~
+unknown~
+pill ASYa AP
+500 'sanctuary' 'pass door' 'haste' 'invigorate'
+1 1 0 P
+#103
+egg nog~
+some {We{yg{Yg{Wn{yo{Yg{x~
+A toasty mug of {We{yg{Yg{Wn{yo{Yg{x has been left here.~
+unknown~
+potion AGSYa AP
+202 'mana shield' 'powersurge' 'vanish' 'ward'
+50 0 0 P
+#104
+snowflake~
+a {Wpristine {Cs{Wn{wo{Ww{Cf{Wl{wa{Wk{Ce{x~
+A magical {Cs{Wn{wo{Ww{Cf{Wl{wa{Wk{Ce{x glitters in the light.~
+unknown~
+pill AGISYa AP
+202 'lifeforce' 'diamond aura' 'sapphire aura' 'stone meld'
+50 0 0 P
+#105
+humbug~
+a {Gg{grumpy {Rl{rittle {Dhumbug{x~
+A {Rn{rasty{x little {Dhumbug{x scurries about miserably.~
+unknown~
+pill AGSYa AP
+202 'last rites' 'powersurge' 'mana shield' 'obsidian aura'
+50 1 0 P
+#106
+christmas wine~
+some {GC{gh{rr{Rist{rm{ga{Gs {rwine{x~
+A small glass of {GC{gh{rr{Rist{rm{ga{Gs {rwine{x has been left here.~
+unknown~
+potion AGISYa AP
+202 'divine protection' 'gods armor' 'protection evil' 'invigorate'
+50 1 0 P
+#107
+naughty list~
+the {Rn{ra{gu{Gg{gh{rt{Ry {Dlist{x~
+A list of all the {Rb{ra{Rd{x little girls and boys lies here.~
+unknown~
+scroll AGSYa AP
+210 'curse' 'entangle' 'terror' 'ray of frost'
+202 1 0 P
+#108
+unused~
+(no short description)~
+(no description)~
+unknown~
+potion 0 0
+0 'reserved' 'reserved' 'reserved' 'reserved'
+0 0 0 P
+#0
+
+
+
+#ROOMS
+#100
+{DBrink of Oblivion {x(Test Room)~
+This area will be used to create mobs or objects used in new spells since
+other area files are full.  Do {RNOT{x edit anything in this area without
+permission from Khaos or Distortions.
+~
+0 4 0
+S
+#101
+New Score.~
+{x                               Khaos is Building.
+{w+{D--------------------------------------------{w+{D------------{w+{D-------------------{w+
+{D| Level 211 sexless Thri-Kreen Demonologist  {D| Str: 25/25 {D| HP: 305319/305319 {D|
+{D| Referred by: blah blah whatever            {D| Int: 25/25 {D| MP: 117178/117178 {D|
+{D| Age: 150 (1337 hours)                      {D| Wis: 25/25 {D| MV: 39328 / 39328 {D|
+{D| Clan: Sages of Twilight Grove (NPKill)     {D| Dex: 25/25 +{D-------------------{w+
+{D| Rank: Ambassadress     Alignment: -1000    {D| Con: 25/25 {D| Practices:   8999 {D|
+{w+{D---------------+{D----------------------------{w+{D------------{w+ Trains:      3284 {D|
+{D| Hitroll: 9999 {D| AC: Pierce: -6666 [divinely armored]    {D| Exp:       211000 {D|
+{D| Damroll: 9999 {D|     Bash:   -6666 [divinely armored]    {D| TNL:            1 {D|
+{D| Saves:  -9999 {D|     Slash:  -6666 [divinely armored]    +{D-------------------{w+
+{D| Wimpy:  23000 {D|     Magic:  -6666 [divinely armored]    {D| Platinum: 9999999 {D|
+{w+{D---------------{w+{D-----------------------------------------{w+ Gold:     9999999 {D|
+{D| [Arena Record] Wins: 9999  Losses: 9999                 {D| Silver:   9999999 {D|
+{D| [PK Record]   Kills: 9999  Deaths: 9999                 {D| Balance:  9999999 {D|
+{w+{D---------------------------{w+{D-----------------------------{w+{D-------------------{w+
+{D| Auto-Quest Points: 100000 {D| Items  : 1     /1000        {D| Time Bonus:  4.00 {D|
+{D| Imm-Quest Points:  100000 {D| Weight : 40    /1000000     {D| PK Timer:     Off {D|
+{D| Roleplaying Points: 50/50 {D|                             {D| RP Flag:      Off {D|
+{w+{D---------------------------{w+{D-----------------------------{w+{D-------------------{w+
+{D| [Immortal Settings] Holy Light: on   Invis: 0   Incognito: 0   Ghost: 211   {D|
+{w+{D-----------------------------------------------------------------------------{w+{x
+~
+0 4 0
+S
+#0
+
+
+
+#SPECIALS
+M 100 spec_breath_frost
+M 102 spec_breath_fire
+M 104 spec_breath_acid
+M 105 spec_breath_any
+S
+
+
+
+#RESETS
+S
+
+
+
+#SHOPS
+0
+
+
+
+#MOBPROGS
+#160
+MOB Echoat $n $I blocks your retreat.
+MOB Echoaround $n $I blocks $n's retreat.
+~
+#0
+
+#$

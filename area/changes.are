@@ -1,0 +1,1208 @@
+#HELPS
+-1 CHANGE-ARCHIVED~
+
+{YHELP CHANGE-SEP04{y.
+{YHELP CHANGE-AUG04{y.
+{YHELP CHANGE-JUL04{y.
+{YHELP CHANGE-JUN04{y.
+
+{YHELP CHANGE-JUN03{y.
+{YHELP CHANGE-MAY03{y.
+{YHELP CHANGE-APR03{y.
+{YHELP CHANGE-MAR03{y.
+{YHELP CHANGE-FEB03{y.
+{YHELP CHANGE-JAN03{y.
+
+{YHELP CHANGE-DEC02{y.
+{YHELP CHANGE-NOV02{y.
+{x
+~
+
+-1 CHANGE CHANGES~
+{Y(changes are in the YY.MM.DD format){x
+
+04.10.03
+Newbie-only rooms now allow anyone of first tier, or hero or higher level.
+
+04.10.12
+Damage and healing affects of alignment-based templar spells (like blasphemy)
+should be toned down to a reasonable level now.
+The room directly up from the mud school arena is now a newbie-only healing room.
+
+04.10.18
+The areas command is now easier to read, in my opinion anyway, and no longer lists Unlinked areas.
+
+04.11.15
+Templars no longer get mana shield.  They've already got divine protection.
+Necromancers should have access to mana shield now.
+Necromancers have a new ancient spell called "last rites" since they had no real defensive spells.
+
+04.11.25
+
+Khaos:
+Some help files have been updated, including HELP RULES.
+Some stats have changed on a lot of the QEQ.  Only saves and attributes.
+Ray of Truth hopefull works now.  I dunno.  My logic's always screwy.  Try it out.
+Brissa's items are now burnproof.
+Extended the duration of Elder "aura" spells and Bard's inspire.
+Beds of leaves are now no-take, no-sac.  Ooops!
+Some things which didn't have fail messages do now.  Let me know if I missed something.
+Some things which didn't have room echos do now.  Let me know if I missed something.
+Call Darkness blind chance upped 3%.
+Movement costs to summon your familiars have decreased a bit.
+Ancient spell damage has been upped, possibly too much.  Play with it like this for a little.
+
+Dist:
+PK warning message at level 48,49,50 now moved to tells so it is not lost in battle spam.
+New characters can now specify a referrer when they create. When the character is 10 hours old they are notified their referrer is eligible for a referrer award via tell.
+If you have waiting tells you didn't notice when you returned from being afk or linkdead; you are notified on the tick you have waiting tells. This is also used for new "System Messages" such as the PK warning and referrer warning.
+Double QP/XP/Happy Hour/Copyover/Arena/Mass messages tweaked.
+Several other small bugfixes/tweaks.
+
+04.11.27
+
+Dist:
+Many changes made to help stability.
+Bad object(s) in vrugar.are that were causing problems fixed.
+Debugging enabled. Misc compile tweaks.
+Mortal-Admin flag, among other things now save properly.
+Who list tweaks.
+
+04.11.28
+Wizhelp, Commands, Practice cleaned up.
+Wiznet re-enabled for mortals.
+Skills command re-coded.
+
+04.12.01
+Wiznet tweaked, debugged.
+Object updating bug fixed.
+Quit/Force Quit debugged.
+Signal handler tweaked. Now dumps core on most copyover-recoveries.
+HELP RULES added to character creation.
+CHAR_UPDATE and OBJ_UPDATE debugged.
+
+04.12.14
+Names similar to names of immortals disallowed at creation.
+Ohio sprint DSL banned from bhmm.net for doing just that..
+Recent changes in code to help with bugs fairly successful.
+Happy holidays everyone.
+
+See {YHELP CHANGE-ARCHIVED{x for a list of older changes.
+~
+
+-1 CHANGE-SEP04~
+{Y(changes are in the YY.MM.DD format){x
+
+04.09.09
+Follow reenabled.
+Summoned pets (i.e. mephits) should take orders now.
+Silence should work on most IC channels now, as well as casting.
+All spells in the 'shielding' group are now castable on other characters.
+
+04.09.11
+Auctions are now conducted in platinum.
+Instruments are now REALLY only usable by bards.
+
+04.09.13
+Tweaked stun again.  We'll see how it works.  Give me feedback.
+Vanish fades when you enter into combat, as it should.
+The award command now accepts "all" as a victim.
+All dark-grey replaced with grey in all tcolors for readability.
+
+04.09.17
+Knights may now rub their eyes clean when they are gouged.  Thank Samoth for the suggestion.
+Mend now uses less moves.  It will drain 1/5 each use, until you can't move.
+
+04.09.28
+NOW racial abilities should work.  Sorry about the confusion.
+The rub fix for knights and gouge should be back in as well.
+All the offensive spells have changed.  All of them.  They're still being tweaked and help files are pending.
+Elders now get "auras" in elemental defense which add temporary resistances.
+Strider classes now have CON as their primary attribute.  It was INT before.  Who knows why.
+A few of Melody's weapons were modified to match the spell changes.  This should fix the Holy Havoc problem.
+Hopefully, stun will clear on tick if you aren't fighting.  This fix has not been thoroughly tested.
+Bladecraft spells now have the standard one round lag all spells should have.
+Who <argument> no longer crashes the mud.  Dist probably fixed this ages ago and I'm just noticing.
+Miscellaneous building fixes/changes and tweaking here and there, as per usual.
+~
+
+-1 CHANGE-AUG04~
+{Y(changes are in the YY.MM.DD format){x
+
+04.08.25  ({CGrand Reopening{x)
+- Race changes: Giants and Kenku are gone completely.  Dragons are no longer a selectable
+{x  PC race upon creation.  Eventually, draconians will be able to evolve into dragons. The
+{x  evolution code isn't in yet, though.  Lots of new races to total 40 PC races selectable
+{x  upon creation.  And they're balanced!!!
+- Gaalstrom completely renovated.  Get your city maps at the general store EN of MP!
+- Class changes: Cainite classes removed.  Bard and necromancer classes added.
+- New Bard spells: Inspire, Lullaby, and Pandemonium.
+- New Necromancer spells: Bone Barrier, Coldfire, Death Chant, Bloodbath, Terror.
+- Mend skill added for Strider tiers.  Yay!
+- Stun is now less insane.  See {Yhelp stun{x.
+- Call darkness blindness changed.  It is now a two tick, incurable affect.  (Rather than a
+{x  205 tick incurable affect ;P)  Damage also lowered.
+- New item type (instrument) and a skill (perform) with which to use them. (Bard only)
+- New class-specific "summon" spells for all casting-classes.  They summon familiars.
+- New ancient strider spell: Expeditious Retreat.  Halves flee lag.  Self-only.
+- Elemental Fury now hits all enemies in the room.
+- Knights get three spells at ancient: Blind Rage, Giant Strength, and Anger.
+- Sorcerers no longer get brage.  Why did they have it in the first place anyway?
+- Skill crossover problem fixed.  Showclass should only show skills you have and/or can gain.
+{x  If this isn't the case, note Khaos with details!!
+- New wear slot (back) and a piece of QEQ (backpack) for it.  This is a wearable container.
+- Divine protection is no longer empowerable.
+- Assassins now have access to the "screen" spell in the illusion group.
+- Elemental Offense spell group was seriously pared down.  This is a test run.  If you feel
+{x  the spells that are left aren't balanced enough, offer suggestions please.
+- Create bed and heroes feast given to Striders and Elders.
+- Camouflage given to Striders.  It's like... sneak with bonuses.
+- Dropped weather and creation spell groups.  Most creation spells are in conjuration.
+- Hell, most of the spell groups got shifted a bit.  Familiarize yourself with the changes.
+- Concentration available to primary spell-casting classes.
+- New Silence spell prevents spell casting and use of IC channels.  You are expected to RP
+{x  as silent when under the spell affect.
+
+See {YHELP CHANGE-ARCHIVED{x for a listing of archived changes.
+~
+
+-1 CHANGE-JUL04~
+{Y(changes are in the YY.MM.DD format){x
+
+Many changes have gone undocumented.  Oh well.
+
+04.05.31 
+Quest crest added, quest typos fixed.
+Clan halls updated, balanced.
+Feed immunity/resistance problem fixed.
+
+04.06.01
+God help files, among others, edited.
+Help PK updated to allow use of other clans' items/pets.
+
+04.06.09 (Distortions)
+Added total RPs/current RPs to finger and score in anticipation of upcoming Legend
+command and spending of RPs.  Expect a news on how to spend your RP points soon!
+
+04.06.11
+New (rather minor) skill "howl" available to Strider, Elder, and Cainite tiers.
+New (rather major) spell "elemental fury" available to Elder Ancients.  YAY!
+Feed damage toned down a bit.  We'll see how it looks.
+Critical damage tables changed.  A little more balanced.
+A very small chance to blind has been added to call darkness.
+Chance to dispel with divine wrath has been dropped just a little.
+New damage type "EARTH" added.
+Damage type "DROWNING" changed to "WATER."
+New damage nounds added to OLC for earth, light, water, and sound.
+Damage types that would fall under MAGIC are now divided between MAGIC and NATURE.
+Immunity/Resistance/Vulnerability to nature available in OLC.
+Resistance/Vulnerability to nature (and earth) to be availble to PCs pending race changes.
+
+04.06.14
+Added quest staff.  Imm tested and approved.  Enjoy.
+Empowered items are now at 20 levels below character level.
+Restore mana removed from all classes.  This is no longer a PC spell.
+Lag on meteor storm lowered.
+Lag on fullheal raised.
+You can no longer gate out of combat.
+Earthrise damage raised just slightly.
+Divine wrath hits only once now.
+Elemental fury damage raised to compete with other ancient spells.
+No_remove items such as all quest gear can no longer be stolen.
+Lifeforce is now available to elders at level 201.
+Finger has changed a bit. You can now finger players who are online.
+Deleted help files for ten defunct clans.  Ouch.
+
+04.06.16
+Changed Critical Strike tables again.  Maximum damage lowered from 10x to 7x.
+Bash works now.  Thanks to Xaero for pointing out the AC modifier problem.
+Stun changed a bit.  Characters with higher CON will have an easier time recovering.
+
+04.06.23
+Changed a lot of spell damage types to help balance spells/skills for race changes.
+Changed feed damage type to pierce, kept leech at negative.  Both now have uses.
+Added new skill wspit.  You spit (water) at someone.  For knight and strider tiers.
+Added new spells napalm, downpour, dust storm, psionic blast, and sonic blast.
+You can figure out whether you can get the spell or not by looking in showclass.
+Race changes are coming very very soon.  Be prepared.
+
+04.06.24
+Mass arena IQP changed from 100 to 10.
+
+04.06.25
+New summon spells added.
+
+See {YHELP CHANGE-ARCHIVED{x for a listing of archived changes.
+~
+
+-1 CHANGE-JUN04~
+
+Typing "Quit relog" ( without quotes ) now takes you back to the connect screen so you can login a diffrent character without having to reconnect.
+The new mud has something like this ( but nicer ). So I thought i would take a moment and do the same thing here as it is very easy to do.
+Enjoy.
+Full heal spell added for templars, 1000 mana, can cast on self, can not 
+cast while fighting, ancient spell.
+New spell for wizards: vanish
+Mobs no longer greet people they can not see.
+Invis people show up as "someone" in the who command.
+New spell for templars: divine wrath
+CoS renamed HoS: {MH{ma{Drb{wri{Dng{me{Mr {xof {DSkulls{x.
+The location of worn objects when looking at other players is now hidden.
+HOS clan help file added.
+Jade help file added.
+Divine Wrath tweaked.
+Liveforce added to Liches and Cainites, level 201.
+Lifeforce tweaked and prettyed up.
+Now correctly fades away at %20 mana as originally intended.
+Happy hour now happens at the correct time.
+Dune.net was 3 hours behind the timezone of the new server.
+See help happy
+PKSET warning message clarified.
+global PKSET message added.
+Reroll message clarified
+
+Divine wrath tweaked again.
+Re-coded critical strike added to assassins.
+Feed bumped up, but also more random.
+Tcolor 4 adjusted.
+Buffer problem cleared up some.
+News PK timer messages.
+New sparring code. Command: challenge playername spar
+You no longer need to be full healed to arena or spar.
+You can no longer arena with a PK timer.
+New sparring room.. Single room so you dont have to find each other.
+Shielding added to rangers and striders.
+New quest timer prompt
+New clan, The Merchants Guild.
+Quest timer now 5 minutes.
+~
+
+-1 CHANGE-JUN03~
+{Y(changes are in the YY.MM.DD format){x
+
+{R3.6.8:{w
+Clan {rD{yi{Ds{Wc{wi{Wp{Dl{ye{rs {Dof {RF{ra{Rt{re{w (DoF) added.
+Help reroll file updated.
+Help startclan file updated.
+Clan channel bug fixed.
+
+
+{R3.6.9:{w
+The quest room with merrick is now a safe room again.
+The bug related to sacrificing corpses and Distortions altar have been fixed.
+There will be a portal at MS for player feedback.
+Rerolls and deletes are now globally announced.
+The mud now automatically forces you to backup when you: complete a quest, drop/get/sell items or reroll.
+The "note sent" message displayed when you write a note not addressed to all is no longer global (whoops).
+Reroll warning expanded.
+Copyover messages cleaned up slightly. They now always display time remaining.
+Omni ( Immortal command ) bug fixed.
+
+
+{R3.6.10:{w
+Blackjack now removes swalk.
+The visable command ( forced for arena and the like ) now properly removes swalk.
+You will receive a message whenever swalk is removed.
+Blackjack now has a random 1-2 tick recharge time in PK. 
+DoF clan hall ready for use.
+Spam kick lowered to 30.
+
+
+{R3.6.11:{w
+You will not be able to swalk if you are not healthly enough. Your injures will give you away.
+You will now keep on-hand money when rerolling. Your bank account is still automatically closed so withdraw your money before rerolling.
+Port 7200, normal playing port (live). Port 7201, building port (bld). Port 7202 coding port (dev).
+Enjoy!
+Builders: the devmud command will tell you if the mud you are connected to is the live mud or the dev mud or builder mud.
+Builders: The builder port now tries to save the area files if there is a crash and automaticall does an "asave world" every tick to help you out.
+Help newbie file updated.
+
+
+{R3.6.12:{W
+The ooc channel is no longer affected by being drunk because it is out of character.
+The bug where you would be stuck as "stunned" after an arena where a stun was the killing blow has been fixed. This applys to normal and mass arenas.
+Happy hour is no longer annouced if the mud crashes or copyovers during happy hour, because that is overly verbose.
+"Recall here" is back. You can only recall to rooms with the "recall_here" flag.
+If you think a room should have that flag please type "idea recall_here" and the location will be logged.
+The bug with recall here making "recall clan" or "recall altar" not work properly has been fixed.
+Rooms requested to have the "recall here" flag have been added.
+
+
+{R3.6.14:{w
+The "sac all" bug has been fixed ( whoops ).
+Backups automatically save your pfile normally as well.
+This is a reminder: questing, rerolling, becoming ancient and buying quest items all automatically save a backup of your pfile, thus saving over the old one. Keep this in mind if you encounter a problem.
+
+
+{R3.6.16:{w
+We encountered some large problems yesterday and today and they have been taken care of.
+Automatic backups are now displayed.
+Changes for may archived.
+
+
+{R3.6.18:{w
+DoF clan help file updated.
+TCC: {DThe {YC{ye{Yl{ye{Ys{yt{Yi{ya{Yl {CC{ch{Co{cr{Cu{cs{w clan and help file added.
+Clan names can now be up to 12 letters.
+
+{WRe-coded changes from the code rollback:{w
+A coding mistake in sac all has been fixed.
+Sneak now works properly, people will not see you enter or exit a room. They will however see you open/close a door.
+xsocials disabled until a few bugs are fixed.
+Delay on MOTD removed.
+Global emote channel: Commands: gmote or gemote.
+Global social channel can now be turned on or off.
+The ancient channel now correctly shows in the "channel" command listing.
+Help prices updated.
+The bug where if stun was the killing blow in arena you got "stuck" stunned until you relogged is now fixed.
+Role-play points added.. Shown in score command.
+Mass-Arena now only need 3 players to start.
+Align based recalls removed.
+
+DoF clan hall shop keeper added.
+Channel / arena colors cleaned up slightly.
+Immortals: the commands to adjust rps are set <char> rps <amount> or award <player> rps <amount>.
+
+
+{R3.6.19:{w
+Mass arena award is now 200qps.
+Mass arena opening now takes less time.
+Mass arena now checks for link-dead players.
+Immortals now see all clan/race channels.
+LAME vape message changed.
+XP cap raised to 4k
+The 4x spell now works again, it *does not* add in with your timebonus.
+Clans allowed expanded to 18.
+Goc channel bug fixed.
+{WTwo large memory leaks fixed!{w
+DoF clan potions added.
+
+
+{Y** {RPK CORPSES HAVE CHANGED! {Y **
+{RThe killer can loot your corpse, but most of your items fall into a pile on the ground. No one but the killed person can get the items from the pile.
+
+
+{R3.6.20:{w
+Backjack timer fixed.
+You can now tell who is talking on your clan channel even if they are invis.
+A memory leak in tcolor has been fixed.
+Tcolors are now easyer to read.
+Small memory leak in weather_update fixed.
+A memory leak in notes has been fixed.
+The acid trip tcolor has been re-enabled, although it is now non-bright.
+Lifeforce helpfile updated.
+
+
+{R3.6.21:{w
+You can now paste 4k worth of text to the mud without being disconnected. This is usefull for posting large notes or ideas/bug/typo reports.
+Two new OLC commands. medit delete and oedit delete.
+A bug in the ACT code has been fixed.
+All character input is now filtered to prevent problems.
+Quest timer cut in half, qps cut in half. This means less waiting but more killing mobs. It also means more trains and more "luck".
+Pkill players items no longer go into a pile when killed by a NPC.
+
+Testing: Item spells and affects. No longer removing spells at logoff.
+
+
+{R3.6.22:{w
+A small error in the examine command has been fixed.
+A small error in the juke box code has been fixed.
+A bug in the distortions altar update code was fixed.
+Player corpses can no longer be picked up.
+Item piles now have the persons name in red.
+Some silly global text effects were added last night when I had too much to drink.
+A small memory leak with %e for exits on the prompt has been fixed.
+Ancient blades have been slightly tweaked.
+Word of recall is no longer align based. Players are not to go in the other old temples.
+Bare-bones TCC hall added.
+
+
+{R3.6.23:{w
+Blackjack timer changed.
+Spells are removed at logoff until the overflow problem is fixed. Equipment spells are kept. Sorry I just have other thing that need to be done first.. And loosing spells at logoff/copyover isnt a big issue.
+Note bug fixed with new input filering.
+Added protection against NULL objects.
+Immortals: You can now type "shutup" to toggle seeing all clan channels.
+New ancient strider spell, Camouflage. Sneak, with a bonus.
+The templar spell "divine protection" Now also cuts damage like sanctuary.
+Damage messages are now based on what percentage of the victim's health was taken by the damage. The percentage is shown in the damage message.
+Damage and health messages now use floating-point percentages.
+Lifeforce now correctly stops working at %20 mana. Also, other people no long see your absorb cost.
+Mass arena now awards 100iqp.
+The mass arena now shows a 60-second mass-join warning.
+Strider and Knight Ancients now have access to a "drag" command. You can drag objects or players.
+
+
+{R3.6.25{w:
+The VICTIM of a PK now recives a PK timer. Not the attacker. PK timers now only last 2 ticks.
+Cancel is ONLY for non-violent use. Because of abuse you may now only cancel people that are sitting.
+Legendary clan deleted for only having one member.
+Acid trip removed... New color Midnight Sun.
+{YT{w flag added to who for PK timer. See help who.
+Who list slightly cleaned up.
+New busy flag added. See the busy command.
+New ancient elder spell, entangle.
+
+
+{R3.6.26:{w
+The drag skill now has a %10 chance of dragging someone who is entangled. It will drag them from the room, but they will still be entangled.
+You can not use drag, or entangle in the arena.
+Lifeforce now supresses damage messages.
+All no-damage hits are now supressed.
+Idle is now show in who without minutes with the I tag. See help who.
+Idle now shows in LOOK.
+TCC potion added.
+
+
+{R3.6.27{w:
+Knights now get ( a re-coded ) critical strike.
+No other classes recieve critcal strike.
+Read help CRITICALSTRIKE.
+Auctions are now in platinum.
+
+
+{R3.6.28{w:
+New prompts! Type prompt all for the new prompt! See help promt.
+
+{R3.6.29:{w:
+Slightly tweaked new prompts.
+Fixed the annoying "blank line" people were seeing sometimes.
+Fixed bug with the 'busy' flag not telling people the user is busy.
+Removed all old half-disabled gquest code.
+Teleport spell shouldn't enter the arena any longer.
+
+
+{R3.6.30:{w:
+Call hall random exits are now fixed and change every start of happy hour or mud copyover.
+The clan hall exits will no longer go to *ANY* area they should not.
+Yes, it is legal to find one the exits and PK people in the clan hall.
+IT IS NOT LEGAL TO USE OTHER CLANS MOBS OR ITEMS IN THEIR CLAN HALL.
+If you want clan eq/pots whatever get it from a clan member.
+Some small tweaks with the pluse, buffer, ansi, and memory allocation were made.
+
+~
+
+-1 CHANGE-MAY03~
+{Y(changes are in the YY.MM.DD format){x
+
+{R3.5.3:{w
+Leech has been fixed. You can no longer leech yourself. You no longer gain health when leech misses or the target is immune. The amount of healing from leech has been reduced. You can no longer leech while stunned. You can no longer leech a target with low health ( just like feed ).
+{*H{*A{*P{*P{*Y {*H{*O{*U{*R{w is now from 3-4 PM *Eastern Time*, and enables double QP & EXP.
+You can no longer delete while auctioning or while in the arena.
+You can no longer use blink tags with the restring command.
+New command: psay ( shorthand is | ). This command is the same as say but is not affected by tcolor or being drunk. Very usefull for important messages.
+
+
+{R3.5.6:{w
+say, sayic, sayooc are now all understood by mobs even with a tcolor and or being drunk.
+Some changes to the command-disabling system were made.
+Some commands that were disabled have been disabled in the actual code to prevent accidents by immortals.
+Ancients ( or higher ) may now eat / drink as much as they like. The problem with "You are too full" because you never hunger / thirst is fixed.
+Empowered spell potions / scrolls names are now the spell name. This avoids the problem of trying to get the potion / scroll you want out of your pack when you have many empowered spells. So, if you empower a potion of iceshield you would type "put iceshield pack" and so on.
+Whois no longer tells mortals how long immortals have been idle ( same as who command ).
+The start / end of happy hour is now globally announced.
+
+
+{R3.5.13:{w
+Happy hour is now at 5-6 & 11-12, AM & PM, Eastern Time.
+
+
+{R3.5.14:{w
+You can no longer cancel yourself or others while in combat.
+You can no longer use canel while in the arena.
+Returns on pray and boom have been fixed.
+Wizlock & newlock messages are now based on port.
+A backup of your character is made when you complete a quest. If you pfile 
+is somehow lost or otherwise not quite right do not quest until AFTER you've 
+been restored. This also goes for rerolling.
+All sacrificed corpses now fly into the sky and fall at the altar of flesh ( unfinished area ).
+
+
+{R3.5.22:{w
+The temple of flesh and lake of gore have been expanded and the code for them expanded as well.
+There may be a rift at MS to take you there.
+
+
+{R3.5.23:{w
+Happy hour help file added.
+
+
+{R3.5.25:{w
+Logins this copyover added to WHO command.
+
+
+{R3.5.28:{w
+Logins this hour added to WHO command, bottom of WHO realigned.
+Changes for last two months archived.
+
+~
+
+-1 CHANGE-APR03~
+{Y(changes are in the YY.MM.DD format){x
+
+{R3.4.3:{w
+Invigorate no longer restores the health of the caster.
+Replay bug fixed.
+
+
+{R3.4.22:{w
+Mortals can no longer see if a immortal is idle or not. Only other immortals see the idle time of other immortals.
+Help file for playerbonus removed.
+Help file for timebonus fixed.
+Mortal Admins may now use the spellup command. Please use sparingly.
+The mortal admin flag now carrys across rerolls.
+
+
+{R3.4.25:{w
+The magic shop in Gaalstrom now sells spellup pills. They currently last for 15 ticks.
+
+~
+
+-1 CHANGE-MAR03~
+{Y(changes are in the YY.MM.DD format){x
+
+{R3.3.2:{w
+All changes re-added. Mud seems to be stable again.
+You can no longer loot a PC corpse unless they have the NOLOOT flag OFF.
+Items that fall to the ground are still free game to *everyone*.
+Only %25 of your items will fall to the floor if you are PK.
+
+
+{R3.3.4:{w
+Removed extra returns in global channels.
+Mass arenas no longer effect your arena wins and losses.
+
+
+{E3.3.7:{w
+The quest master's room is no longer a safe room.
+Recall here has been disabled due to abuse until a recall_here room flag is made.
+Added checks for max_move max_mana going negative. If you move/mana maxes go negative, or get automatically set to 100 by the code please inform and imm.
+
+
+{R3.3.9:{w
+DoD clan hall added.
+
+{R3.3.11:{w
+You now recive a message notifying you your note was posted if it was not addressed to "all".
+Powersurge no longer restores you.
+My office can now be reached by going north of the altar.
+
+
+{R3.3.24:{w
+The "consent" command has been renamed to "vow" for marriage consent.
+You must consent to someone before xsocials are allowed.
+You may consent to "all" or "none" or "name".
+New area directions help file, HELP AREADIR. Thanks Xirakus!
+New HELP NEWBIE file, re-written.
+
+
+{R3.3.31:{w
+Some minor code tweaks to fix possible bugs and to expand our code portability.
+
+~
+
+-1 CHANGE-NOV02~
+{Y(changes are in the YY.MM.DD format){x
+
+{R2.11.11 - 2.11.30:{w ( Muds first month )
+Cleaned up WHO list a little.
+Disabled idea board and replaced with idea command.
+Changed idea / bug / typo commands to show helpfile when given with no args.
+Added recall temple command.
+Cleared up reroll / ancient help files.
+Changed greeting code / greet screen.
+Changed all code occurrences of death rising to Distortions of Chaos.
+Fixed bug that always showed purchase price of home items as 0.
+Fixed some misc items such as the healing pool.
+Added code to prevent immortals from spamming themselves offline with
+the practice command.
+Made practicing non-verbose (others don't see what your practicing).
+Cleaned up and sorted the mud data file layout.
+Wrote help files about ANCIENT status.
+Setup development port and copyover shell script system.
+Added help changes ;o)
+Added wiznet status to channels listing for immortals.
+Added wiznet status report for bug / idea / typo / nohelp
+Added pray channel.
+New mud timebonus! Read help bonus.
+Added timebonus status to score and the prompt. See help prompt.
+Changed default prompt. Type prompt all to use it.
+Added sayic code.
+Added disable command.
+Tracked down and smashed many crashing bugs using -O3.
+Added train < hp / mana / move > < all / number>
+Unlocked The Celestial Temple. It had a locked door with no key
+item available.
+{x
+~
+
+-1 CHANGE-DEC02~
+{Y(changes are in the YY.MM.DD format){x
+
+
+{R02.12.06:{w
+New lifeforce spell
+Updated help color
+level 211 IMP:
+can use disabled commands without re-enabling.
+no longer has ANY wait_state() calls.
+no longer can be kicked for spamming.  
+Mortals now have command lag on save and backup.
+{R02.12.07:{w
+Started dating help changes.
+Added help apply.
+Updated MOTD.
+Who list now shows sex.
+Note / news / weddings no longer broadcast a notification unless addressed to "all"
+Reduced save / backup lag.
+Added new train syntax to argless train command execution.
+Added code to check for note commands on idea / bug /typo commands to avoid confusion.
+Added command lag to bug / idea / typo.
+Made training non-verbose ( Others will not see what you are training )
+Made the change command load help changes.
+Made command alias racetalk for rtalk to avoid confusion.
+Added a little color to help changes.
+Disabled silly, yet amazingly annoying change sex spell.
+
+
+{R02.12.09:{w
+Fixed conjure spell!
+You no longer can arena challenge yourself.
+Arena challenges now timeout in 5 ticks.
+Time / Weather messages now have color.
+Cleared Clans.
+Changed FreeLance to IPK. See help IPK
+(Also makes who list nice and aligned).
+Tweaked Login / Greeting / Author.
+Small compiler bug workaround to prevent memory leaks.
+(Damnit dune.. upgrade GCC!!)
+Changed some OLC edit messages that were not in english.
+IC Note board. Use the ICN command the same way as the note command.
+Made mortals READ the motd.. BWAHAHAHHHAHAaaa
+Prac nows supports paging to avoid spamming players offline.
+Paging code forced ON max of 75 lines to avoid buffer overflows.
+
+
+{R02.12.12:{w
+Added Lunar Knights clan.
+Added NightStalker clan.
+Working on squashing clan crashing bug =/
+I recently reached 3000 LINES of code changes and additions. (46k)
+
+
+{R02.12.13:{w
+Added requirement of level 5 to save.
+Recompiled with GCC 3.1. No warnings with -Wall -O3 found!
+Turned on FULL -g3 debug and disabled all optimizations.
+Fixed area / room reset problem! Use redit rest when testing resets.
+Tweaked buffer sizes and tick speeds.
+New rtick command resets room (Immortal only).
+You automatically get AFK removed if you type any commands.
+You automatically go AFK when you go into the void.
+You get a pause when go AFK to prevent cheating.
+Blackjack lag wasn't working. Added 2 round lag.
+Added time idle next to AFK flag if person is AFK in WHO and WHOIS.
+
+
+{R02.12.14:{w
+Changed gouge skill to not work when blinded.
+Fixed whirlwind, wild, circle, strike to check_improve.
+Reform with no argument crash fixed.
+Changed health meter so it wont show victim as having no health when they really do.
+Fixed problem where leech & feed would still add health even if victim was immune.
+Improved conjure spell's demon a little. (lifeforce spell) ;o)
+Decided I want idle time to show in who, even if the person isn't AFK.
+
+
+{R02.12.15:{w
+Changed auto-afk to 3 minutes.
+Fixed a bug related to level 5 saving ( Not auto-disconnecting on idle )
+Removed requirement for name in poofin / out for immortals.
+Added new copyover message (More RP).
+Added 2 round lag to flee and recall.
+Added ICN notes to the unread command.
+
+
+{R02.12.18:{w
+Make qp 4x of stock. IQuests aren't fair to players.
+The mud AND the development mud now have uptime over 48 hours.
+Sorry for the lack of changes lately. Its the holidays.
+Recalll/& flee lag cut to 1/4th. ( About 2 seconds )
+
+
+{R02.12.19:{w
+Quests now gives more qp 100 - 300.
+Quest timer greatly reduced. ( 4 mins )
+Quest gold reward is now much higher. ( 1 - 5 plat )
+Tweaked arena auto-reset code.
+Immortals can no longer arena.
+No can no longer challenge people to the arena if they are AFK or LINKDEAD.
+Level requirement to save dropped to level 2  for races / classes with high TNL.
+( Copyovers will still save your char )
+Working on adding many new spells to casters to level things out.
+Save, bug, idea, typo, backup, channels, no longer have command lag after level 5.
+You can no longer QUIT with arena the ARENA flag on.
+New automated copyover countdown.
+Quest settings above also now apply to object / mob quests.
+Cleaned idea / bug / typo files of all things that have been implemented.
+Cleaned note files.
+Quest timer on prompt, see help prompt.
+Changed char limit on prompt from 50 to 90.
+Quest practice gain chance is now %50, with a random reward range of 1 - 10.
+You can no longer use WHO or WHOIS while blind.
+
+
+
+{R02.12.20:{w
+Temple healer now correctly set as priest. You can now use the repent 
+command there.
+Temple healer level changed to 209, This fixes the problem with not being 
+able to cancel spells.
+Added god protection. Owner of mud is always immune to penalty commands.
+Cleaned up some bugs in the quit code.
+Added more arena flag checking. No one should ever be stuck with area flag for one than one tick.
+Added some OLC copyover protection.
+Added more informative logging.
+You can no longer quest, reroll, arena or use OLC if the mud is getting ready for a copyover.
+Whirlwind never fails. Added check_improve just for stats.
+New list for who that show most players ever online.
+Disabled wiznet for non-immortals.
+If you already had it on it will still be on. I'll be adding code to take
+care of that soon in my big pfile checking code project.
+Code that crashed the server after 3 days uptime fixed.
+Copyover countdown now only announces at 5, 3, 1 minute(s).
+
+
+{R02.12.21:{w
+Added RP flag to WHO, WHOIS, LOOK, and SCORE. Type RP to toggle.
+Made mortals unable to be deaf to pray, and forcefully deaf to wiznet.
+Idea, Typo and Bug commands now show the filed report on wiznet.
+Global announcement whenever someone is PKed, by who and where.
+You can no longer PK people that are not within your tier, or not within 5 levels of you ( 5 above or below ).
+Added WR tag. Players within 5 levels above or below you, within your tier, that are PK, if you are PK will have [{GWR{w] by their name in who & whois, and when you look. WR means 'Within Range'.
+
+
+{R02.12.22:{w
+New PKSET command. You must go PK before level 50.
+If you do not you are stuck NPK.
+If you are already PK, don't worry about it. Your pfile will automatically 
+be set PKSET.
+
+People are now locked out from logging in to the mud if there is less than  60 seconds until a copyover.
+Immortals no longer see the [{GWR{w] tag.
+Players will not get the copyover 'please try again later' message until 2 minutes before a copyover when using the note, arena and reroll commands.
+Autocopy now shows current countdown time if one is already in progress (Immortal only).
+Mew commands: sayic ( [ for short ), sayooc ( ] for short )
+Say automatically defaults to OOC if your RP flag is off and defaults to IC if your RP flag is on. You may still use sayooc or sayic manually.
+Mobs now use normal say.
+You can now PK people within 5 levels of you.. and not 4.
+By the way.. yes you can still actually PK people out of your range. The only command that blocks it is murder.
+If you kill someone out of your PK range it is logged. If I catch you doing it your dead meat.
+Fixed problem with not being able to quest with a pending copyover. ( vs only at 2 mins and counting with other commands) I simply forgot to change the quest code.
+When a dumbass PKs themselves it no longer displayed as global PK.
+
+
+{R02.12.23:{w
+OLC is no longer locked out at 2 mins, it only gives a warning.
+Mobprogs now trigger on sayic and sayooc.
+You can no longer put blink tags in your title, or use them in channels.
+Reduced quest quit time to 8 minutes from 30.
+Added protection to owhere and mwhere to keep the mud from locking up if it tries to come back with too many items (like owhere c).
+
+
+{R02.12.26:{w
+Note are now limited to 1k (1000 characters) to prevent buffer overflows and note phrase failure.
+The backup command now also does a standard save in addition to saving a backup.
+Character creation now shows help tier so people will not enter a class from lesser tier.
+Negative bet payoff should be fixed.
+Quest master now tells you the correct quest timer if you quit a quest.
+
+
+{R02.12.27:{W
+Added {RC{rha{Dos {RW{rarl{Dords{w clan (Zidane).
+Made a wiznet channel just for logs.
+Changed 'IMP' to 'GOD' in who and whois.
+
+
+{E02.12.28:{w
+Invalid help file attempts are now shown on wiznet. Not just that there was one. They are still logged to the help.text as well.
+Player kills outside of allowed range or tier are logged to a file just for out-of-range PKs with names and levels and tiers of the people involved. It is also globally announced.
+The owhere and mwhere commands are now truly crash proof.  (Will only let you search with two letters or more )
+Put all container shouldn't crash the mud any longer when used with hundreds of items.
+
+
+{R02.12.30:{w
+The REROLL command now makes a backup of your character incase you get disconnected during reroll.
+You can no longer give / sell an item to yourself.
+
+
+{R02.12.31:{w
+Added {cM{Cy{Wst{Ci{cc {bG{Bu{Ca{wr{Wd{wi{Ca{Bn{bs{w clan.
+Added help files for chaos knights and mystic guardian clans.
+Development will be picking up speed once again.
+You will automatically be backed up when becoming ancient.
+You can no longer steal in the arena.
+Updated the startclan help file with a few things.
+Disconnecting from spam may be fixed. ( Still tweaking )
+New ancient channel. type ANCTALK or the " char ( double quote ).
+Mortals no longer see mortals using PRAY.
+Mortals can now use the uptime command.
+New command, ctimer. Shows current copyover countdown time remaining.
+Closed doors now show up when you look.
+{x
+~
+
+-1 CHANGE-JAN03~
+{Y(changes are in the YY.MM.DD format){x
+
+
+{R03.01.01:{w
+Reduced thirst and hunger by half. Races larger than medium still have double thirst and hunger.
+New quest bonus. Amount of quest points received is based on number of players online. For more info see help PLAYERBONUS.
+Who list cleaned up a little and added new playerbonus to it.
+
+
+{R3.1.2:{w
+Newbies now receive 6 spellup pills.
+Added item spells at quest master.
+
+{R3.1.3:{w
+The items spell code is now finished.
+See help quest, or help qspells for a list of spells.
+The list of spells was shortened to spells that DO WORK.
+If you have an item with a spell other than what's on the new list send a note to Distortions.
+You are REQUIRED to. I have a LOG of ALL SPELLS put on items.
+You will be REIMBURSED for all wasted AQP.
+Thanks.
+
+
+{R3.1.5:{w
+Fixed bug in new WHO code what was clearing the 'Max On Ever' every reboot.
+All changes not done this month were moved to help OLDCHANGE.
+Slowness in development this month is due to work on a large IC / IQUEST area.
+For those that did not notice item spells at the quest master now cost 250aqp.
+If you still have items with non-working spells from the test version please an imm a tell so they can replace your EQ and reimburse you for your AQP.
+Fixed another small who list bug.
+Made the min/max qps in who show true values if double qp is on.
+Doubleqp now works more nicely.
+All players over level 1 are now automatically saved every tick.
+Please remember: if your pfile gets messed up PLEASE do not use the backup command until you have been restored.
+Added gzip compression to pfiles to save space so we can have more backups.
+
+
+{R3.1.6:{w
+The finger command is now compatible with the new gzip code for pfiles.
+Doors and exits are now shown separately.
+Pload now shows if the pfile was loaded successfully.
+Unread ICNs ( IC Notes ) are now listed as unread ICNs and not IC Notes to avoid confusion command wise.
+Arena resetting too quickly should be fixed.
+Tweaked copyover_countdown code.
+Max screen spam before cutoff is now 4 times higher.
+
+
+{R3.1.7:{w
+New verbose flag, damage! See the verbose command! It summarizes all of the damage done in the round!
+You can now eat pills even if your already full.
+Wear, remove, drop, put, sacrifice: all no longer spam.
+New commands. Gain convert all, Gain study all.	
+Last copyover time in WHO with minutes, hours, or days ago.
+Doubleqp now 'doubles the number of players online' to the quest bonus code vs just plain doubling it.
+The get command was spewing whatever was left over in the buffer because I had mistakenly silenced non-get-all messages. ( I assumed  !str_cmp.. it was not. )
+Fixed prac message.
+
+
+{R3.1.8:{w
+The verbose command now lists the new damage flag under syntax.
+Reroll now screams until the players ears bleed that if you disconnect while rerolling your fucked.
+If your pfile is lost or messed up for ANY REASON do **NOT** use the backup command or reroll until you are restored. Or there WILL NOT BE a backup to restore FROM! except a 1-3 day old backup.
+Lifeforce spell is now available for druid ancients. There is no help file as of yet. The spell is gain-able but will not do anything until a later date.
+
+
+{R3.1.9:{w
+Ancients no longer suffer from thirst or hunger for food ( Fixed ).
+Gods can now do commands regardless of sitting resting or sleeping.
+New IS_DEVMUD Boolean, useful for having code automatically disabled on the main mud.
+Typing a command while AFK now removes AFK, AND does the command you asked.
+Changed AFK delay to 6 seconds when going afk, and when returning.
+Only players age 17 get a delay on the MOTD.
+You can no longer swalk in the arena, wimpy is also disabled.
+Fixed bug where typing afk while already AFK would make you go afk agian.
+Added message for when you return from afk automatically.
+You will no longer go AFK while sitting still. Typing *anything* shows you as being active.
+Auto-afk changed to 5 minutes.
+
+
+{R3.1.10:{w
+Notes can now be 4k in size, but are limited to 80 chars across. You will be notified of how many chars you went over by. This isn't to be annoying. Its to fix the problem with the mud not full booting from notes lines that are too long.
+Copyover countdown code changed. Command and login LOCKDOWN are now shown in WHO and announced. See HELP COPYOVER.
+Copyover will no longer execute with an argument if it is triggered by a PC descriptor.
+
+
+{R3.1.11:{w
+The hide command has been fixed.
+The problem with casting skills to improve them is fixed.
+The lifeforce spell has been added. See help lifeforce.
+You are now forced to go vis when you arena.
+You can no longer reroll in the arena.
+Whoops. I made a mistake in the recall code, fixed.
+Chaos warlords clan hall completed.
+
+
+{R3.1.12:{w
+When you challenge someone to the arena you are forced to go vis.
+When accepting a challenge you are forced to go vis.
+The arena now resets at 4 ticks of a waiting challenge.
+You now must be level 25 or wait 2 minutes to reroll when logging in ( from the time you logged in ). This is to prevent people from rerolling to bypass things such as timers, and because i find rerolling 500 times annoying. Deleting has no timer.
+You can no longer reroll with a quest timer.
+The clan "member" command has been repaired.
+{=A{=d{=d{=e{=d {-n{-e{-w {+c{+o{+l{+o{+r {*c{*o{*d{*e{*s{*!{w
+See {=H{=E{=L{=P {=C{=O{=L{=O{=R{=.{w
+
+
+{R3.1.16:{w
+New recall code! You can set your recall point see help RECALL.
+
+
+{R3.1.18:{w
+The member command now works correctly. Also, NPKs can no longer join PK clans and visa-versa.
+If you want to go PK past level 50 you must reroll, if you are PK and want to go NPK you must reroll.
+
+
+{R3.1.19:{w
+I'm back in town today!
+You will no longer get bugged about having more than 1 quest item.
+You can no longer give items to yourself.
+
+
+{R3.1.20:{w
+You will no longer receive quests from unlinked areas.
+Talk color! type tcolor to change your talk color pattern. Works on all channels!
+If you have EQ that is missing bonuses reload it. reload <item>. You must remove the item first. restrings are kept.
+
+
+{R3.1.21:{w
+Lifeforce only works for druid ( Elder ) ancients, period.
+Each one of your items has a 25 percent chance of falling out of your corpse, free game to all.
+No one can loot your corpse but your killer unless you toggle noloot.
+Spamming offline should be harder to do.
+Cleaned up tier menu on new char / reroll.
+
+
+{R3.1.22:{w
+Area files not copying over correctly has been fixed.
+Two new color patters added. See the tcolor command and HELP COLOR.
+Added a small delay to logging off to prevent 'stuck' sockets.
+Made the login greeting look a little nicer ;o) see HELP GREETING.
+
+
+{R3.1.27:{w
+Added 4 new color patterns, see the HELP COLOR and TCOLOR commands.
+
+
+{R3.1.31:{w
+Finally squashed the note-board bug. Note board lines are now allowed up to 250 chars in length. Note desc and note write have been disabled. Please use the note + and note - commands.
+
+~
+
+
+-1 CHANGE-FEB03~
+{R3.2.1:{w
+Finally squashed the spamming offline bug! Whoooohhaaaa!
+Being forced to use a max of 75 lines of scroll has been disabled. To never see 'Press enter to continue' again, type scroll 0.
+
+
+{R3.2.2:{w
+All ancient striders now have the earthrise spell. You do not need to gain the spell. All strider ancients have it. Just practice it.
+Blackjack lag is now longer, and the chances of succeeding has been lowered.
+Assassinate lag has been raised as well.
+If you move goes negative you move will restored to 1/4th of your max at the next tick.
+The {D[{GWR{D]{w within range tag should be fixed. Please report if it does or does not show up in who, whois, or look when it should or should not. Thanks.
+Meteor storm lag is now 2 rounds, feed is now 1 round.
+
+
+{R3.2.3:{w
+Totally cleaned up WHO list code and format. See HELP WHO.
+Make the MOTD look nicer.
+Made the quit message look nicer.
+Made WHO list sorted by level.
+tcolor now turns off (temp) if you add any color codes to your message.
+To talk to mobs use: say {{xWords here.
+Added quit quotes.
+Added {GL{w clan leader flag to WHO flags.
+
+
+{R3.2.4:{w
+Cleaned up channel appearances.
+Added {CM{w flag to who ( See HELP MORTAL ADMIN ).
+Added ghost / incog / wizi flag to who.
+Added spacer between Immortals / Mortals in WHO.
+
+
+{R3.2.5:{w
+Fixed clan list crash ( add / remove members ). If you are not listed in your clan list please notify me so i can add you.
+Rare quit crash *may* be fixed.
+Changed login / logout messages to have name and title of the player.
+Changed copyover countdown text.
+
+
+{R3.2.5:{w
+New lmessage code. Allows custom login and logout messages. Simply type LMESSAGE for instructions. Each message costs 2500 aqp.
+Sorcs now have powersurge, cure blindness and restore mana.
+Mortal admins now have the corner command. Syntax: corner <victim> <minutes>. The minutes are optional, it defaults to 5 minutes.
+Arena fights are now limited to 15 minutes.
+The blindness spell should be stronger now, as well as the sleep spell.
+Added NightStalker clann hall.
+Finally realized why arena was resetting too quickly. Fixed. ( Really )
+You now must wait 1-2 mins before you can challenge someone to the arena again.
+The arena is now cleared when login lockdown is enabled 60 seconds before a copyover.
+
+
+{R3.2.6:{w
+AFK no longer has a delay to it, and will no longer re-afk you if you type afk while afk.. Lastly the first command you typed will go through, unlike before.
+Get / drop / wear / remove ALL now properly informs you if there were no item found.
+Removed circle from knight, improved rampage a bit.
+Blackjack, Assassinate, Whirlwind and others now have out of range pk protection.
+Out of range pk now auto-corners for 30 minutes.
+None of this applies in the arena.
+
+
+{R3.2.7:{w
+New timebonus code, slowly ramps to 4x over 2 hours ( as before ) then slowly ramps back down. More importantly it auto-reseting. Most importantly, it is not affected by copyovers or crashes!
+Quest code also works on the same code now, so your timebonus changes your XP and QP gains. The 'playerbonus' system has been withdrawn.
+Quest practice gains is now 3 to 12, it used to be 1 to 10.
+Logfile changes.
+The copyover time in WHO now shown more detail.
+The quest masters should now have a wider selection of mobs to kill, and no longer give you a quest to kill a mob in a safe area.
+Fixed a bug in lmessage.
+Fixed several bugs that may have been causing crashes.
+Pets now recall with you correctly.
+
+
+{R3.2.8:{w
+Removed LunarKnights clan, 0 pfiles in that clan.
+Fixed clan list data, all members are accounted for.
+Who now shows max on today ( resets at midnight ).
+An announcement is made when there are only 5 minutes remaining in the allowed arena time.
+Tcolor for notes. See help note.
+Changed typedef for sh_int from a short int to int to prevent numbers from going negative.
+New tcolor, {OD{Oe{Om{Oo{On{O's {OT{Oo{On{Og{Ou{Oe{w, suggested by Shartyn.
+Tcolor who / login / logout names.
+Fixed a bug in the new tcolor notes that was leaking memory.
+Tcolor notes disabled until the buffer bug is fixed.
+
+
+{R3.2.10:{w
+Wall road now has tons of cityguards for levelers.
+Brage and powersurge should work fine now.
+Spells are no longer stripped on logoff. Feel free to use the reload command to get back your EQ bonuses.
+All arena timers have been fixed, also when the arena is cleared you are sent to the temple ( a safe room ).
+
+
+{R3.2.12:{w
+It is now no longer possible to harm someone not in your PK range that is not a NPC, period. The damage is blocked directly in the damage function, and the fight between the users is automatically stopped. Also AFK and LINKDEAD users are always not WR.
+Going linkdead or AFK in a pk fight will get you slayed and cornered for 30 mins.
+All things are WR to immortals. Immortals never see the WR flag.
+Added tick command for immortals, although use the rtick command for reseting rooms.
+
+
+{R3.2.13:{w
+The clanlist code wont automatically update itself for now until the code for it is re-written. It's causing too many problems.
+The chaos warlords are now known as {DThe {WR{weign{D Of {WD{warkness{w clan.
+All new clan hall for {WR{wO{DD{w as well.
+Mortal admins can now boom and see pray.
+Added a pk timer. See help prompt to display it on your prompt. It is also displayed in WHO and LOOK.
+You cannot kill or be killed with a pk timer.
+
+
+{R3.2.14:{w
+Arena messages and copyover messages fixed, stuck shields fixed.
+The WR flag is now suppressed on immortals.
+
+
+{R3.2.17:{w
+You can no longer use the home command during a copyover countdown. See HELP COPYOVER.
+You can now use WHO PK or WHO WR to see who you are allowed to PK. See HELP WHO.
+PK and NPK players the same level are now sorted. Sample: 10 Ancients are online, 5 PK and 5 NPK. Before they would be one big mess, now all the PKs are at the top and the NPKs are below.
+The who list is also now sorted by clan.
+The rainbow tcolor has been removed due to every lamer using it to annoy people.
+Newbies now have the title "The newbie" as the default.
+
+
+{R3.2.20:{w
+Who list code cleanup and fixes.
+You are no longer restored when you gain a level.
+Added Elemental offense and Defense spells to Elder, for some reason they weren't in there -Samoth
+All the skill and spells are fixed. You will not see 'You cant practice that'.
+If you find any skill in showclass that do not work please report them. Thanks.
+Lifeforce now takes 1/2 has much mana.
+Mana gain is now higher when training.
+Fixed dirt kick for knight. -Samoth
+Spells hero or higher can no longer be empowered.
+
+
+{R3.2.21:{w
+New CoSamoth clan added.
+Helpfile for clan ROD added. See Help ROD or Reign or Darkness.
+Double QP fixed.
+You can now kill ANYONE in the arena, period.
+The arena is automatically cleared when we crash or copyover to keep people from being stuck in the arena.
+Your AFK flag is now automatically cleared when you login.
+New mass arena code! See help MASSARENA.
+You can no longer use blackjack, assassinate, ambush, quaff, recite or eat pills when in the arena.
+
+
+{R3.2.23:{w
+Auto-afk is now 10 minutes.
+Lifeforce bug fixed.
+Mass arena code tweaked.
+
+Not a change but a note: Shortcuts for sayic and sayooc are [ and ], it is not dependent on the RP flag. Remember it this way: [ is facing in, IC. ] is facing out, ooc.
+
+Newbies now default to having the verbose flags on. See the VERBOSE command.
+Corner timers now only tick when the player is connected to the mud.
+If intoxicated, your speech will now reflect that on all channels.
+All typos sent in by players have been fixed.
+More mass arena & normal arena fixes.
+Other misc bug fixes.
+PKSET warnings are now easier to understand and explain the system in much more detail.
+More mass arena stuff.
+Affects now correctly tells you if it has no affects to display.
+Affects are now shown in score if you have the show flag on. Type SHOW to toggle.
+Leech reduced in damage and healing.
+Critical strike disabled.
+
+
+{R3.2.24:{w
+Added clan {CDi{cscip{8le{Ws {wof {WD{8ec{cepti{Con{w.
+Cleaned up clan list slightly.
+Ran full spell check on help files.
+The winner of the mass arena now also recives a restore.
+The time for the massarena to open and start has been reduced to 2 minutes.
+Please note that it may take as long as 60 seconds, or as little as 1 second for you to be declared the winner of a mass arena, i am working on a fix.
+
+
+{R3.2.26:{w
+Verbose flag for newbies removed due to a bug.
+Cleaned files up, updated all pfiles.
+Added help allhelp, lists all commands by subject.
+Wiznet / log fixes ( no more (null) or "log blag: ''" )
+You can now use circle down to %16 health on your victim.
+
+
+{R3.2.27:{w
+Get, drop, put, wear and remove now all have more informational messages and cloak items and players if others can not see the items / player.
+Call wild will now improve when it succeeds.
+Fixed health meter and added percentages.
+Cleaned up arena messages.
+First copyover message surppresed if less than 6 minutes.
+
+
+{R3.2.28:{w
+The quest master now reports your next quest timer correctly when quiting a quest.
+Finally found the last (null) message and killed it.
+~
+
+0 $~
+
+
+#$

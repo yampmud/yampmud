@@ -1,0 +1,743 @@
+#AREADATA
+Name Player Homes~
+Builders Roland Loki~
+VNUMs 11800 12200
+Credits {C  ALL  {x~
+Security 9
+RepopMsg (null)~
+End
+
+
+
+#MOBILES
+#12010
+no name~
+(no short description)~
+(no long description)
+~
+~
+Human~
+A 0 0 0 0 0
+0 0 0d0+0 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#0
+
+
+
+#OBJECTS
+#11800
+a fish tank~
+a {Cf{gi{Cs{gh {ct{Ba{Cn{ck{x~
+Some fish swim happily in their {Cf{gi{Cs{gh {ct{Ba{Cn{ck{x.~
+Glass~
+furniture ABO 0
+0 0 0 0 0
+0 100 0 P
+E
+fish tank~
+{bSwimming around the murky water are dozens of different fish.  They dart
+back and forth looking for food.  A small light illuminates the tank well.{x
+~
+#11801
+turtle tank~
+a {Gt{gu{Gr{gt{Gl{ge {Ct{wan{Ck{x~
+A large, glass {Gt{gu{Gr{gt{Gl{ge {Ct{wan{Ck{x stands here.~
+Glass~
+furniture ABO 0
+0 0 0 0 0
+0 100 0 P
+E
+turtle tank~
+{c A large glass tank stands here.  A turtle is inside munching on some
+food while lounging on a big rock.  There is little water in the tank.  {x 
+~
+#11802
+snake tank~
+a {Gs{gn{Ga{gk{Ge {ytank{x~
+A large {Gs{gn{Ga{gk{Ge{x is curled up in its {ytank{x.~
+Glass~
+furniture ABO 0
+0 0 0 0 0
+0 100 0 P
+E
+snake tank~
+{gA giant cobra is coiled around a branch inside the tank.  Its large
+hood is decorated with diamond shaped patches of black scales.  It hisses
+loudly.  {x 
+~
+#11803
+spider tank~
+a {Ds{rp{Di{rd{De{rr {Dt{wan{Dk{x~
+A dark {Ds{rp{Di{rd{De{rr {Dt{wan{Dk{x is set up in the corner.~
+Glass~
+furniture ABO 0
+0 0 0 0 0
+0 100 0 P
+E
+spider tank~
+{DA large furry tarantula is crawling and skittering about inside the
+tank.  Insect guts are scattered about the floor.  The spider is huge and
+looks quite menacing.  {x 
+~
+#11804
+carved chair~
+a {yc{Da{yrv{De{yd {ychair{x~
+A  tall wooden {ychair{x stands here, its back and legs intricately carved.~
+unknown~
+furniture O 0
+1 10000 EH 200 200
+0 45 0 P
+#11805
+highback chair~
+a {bhighback chair{x~
+A comfortable {bhighback chair{x looks very inviting.~
+wood~
+furniture O 0
+1 10000 EH 500 500
+0 100 0 P
+#11806
+cushioned chair~
+a {Wc{wushione{Wd {ychair{x~
+A tall {ychair{x with a soft {Wc{wushio{Wn {xlooks quite comfortable.~
+wood~
+furniture O 0
+1 10000 EH 200 200
+0 110 0 P
+#11807
+sturdy chair~
+a {csturdy {ychair{x~
+A {csturdy{x-looking {ychair {xstands tall here.~
+wood~
+furniture O 0
+1 10000 EH 100 100
+0 100 0 P
+#11808
+oak desk~
+an {yoak {Wdesk{x~
+A sturdy {yoak {Wdesk {xstands against the wall.~
+wood~
+furniture O 0
+1 10000 DN 300 300
+0 150 0 P
+#11809
+pine desk~
+a {gpine{W desk{x~
+A sturdy {gpine {Wdesk {xstands against the wall.~
+wood~
+furniture O 0
+1 10000 DN 400 400
+0 150 0 P
+#11810
+carved desk~
+a {yc{Da{yrv{De{yd {Wdesk{x~
+An intricately {yc{Da{yrv{De{yd {Wdesk {xstands against the wall.~
+wood~
+furniture O 0
+1 10000 DN 500 500
+0 0 0 P
+#11811
+polished desk~
+a {Wpolished {ydesk{x~
+A fine {Wpolished {ydesk {xstands against the wall.~
+wood~
+furniture O 0
+1 10000 DN 500 500
+0 160 0 P
+#11812
+teak desk~
+a {gteak {Wdesk{x~
+A greenish {gteak {Wdesk {xstands against the wall.~
+wood~
+furniture O 0
+1 10000 DN 550 550
+0 180 0 P
+#11813
+plain desk~
+a {Wplain {xdesk{x~
+A rather plain-looking {Wdesk {xstands against the wall.~
+unknown~
+furniture O 0
+1 10000 DN 300 250
+0 140 0 P
+#11814
+plush sofa~
+a {Mp{ml{Mu{ms{Mh {Wsofa{x~
+A very comfortable-looking {Mp{ml{Mu{ms{Mh {Wsofa {xrests here.~
+plush~
+furniture O 0
+3 30000 EHK 1200 1200
+0 300 0 P
+#11815
+padded sofa~
+a {Bp{ba{Bd{bd{Be{bd {csofa{x~
+A comfy {Bp{ba{Bdd{be{Bd {csofa {xrests against the wall.~
+cloth & padding~
+furniture O 0
+3 30000 EHK 800 800
+0 300 0 P
+#11816
+comfy sofa~
+a {Wc{wo{Wm{wf{Wy {bsofa{x~
+A {Wc{wo{Wm{wf{Wy {bsofa {xlooks rather inviting.~
+cloth & wood~
+furniture O 0
+3 30000 EHK 300 300
+0 400 0 P
+#11817
+fluffed sofa~
+a {cf{Cl{Wu{wf{Wf{Ce{cd {Ws{wof{Wa{x~
+A {cf{Cl{Wu{wf{Wf{Ce{cd {Ws{wof{Wa{x stretches along the back wall.~
+wood & feathers, cloth~
+furniture O 0
+3 30000 EHK 350 340
+0 350 0 P
+#11818
+wood bench~
+a {ywood bench{x~
+A {ywood bench {xwith {Dwrought iron{x arms sits here.~
+wood~
+furniture O 0
+2 20000 EH 200 200
+0 200 0 P
+#11824
+oak dining table~
+an {yoak {Wdining {ytable{x~
+A luxurious {yoak {Wdining {ytable{x stands here.~
+Oak~
+furniture O 0
+8 80000 DN 1500 1500
+0 500 0 P
+#11825
+pine table~
+a {ylong {wpine {ytable{x~
+A {ylong table{x made of {Ww{white pin{We {x is here.~
+pine~
+furniture O 0
+4 40000 DN 1100 1100
+0 450 0 P
+#11826
+carved table~
+a {yc{Da{yrv{De{yd table{x~
+An intricately {yc{Da{yrv{De{yd table{x stands here.~
+wood~
+furniture O 0
+4 40000 DN 1000 1000
+0 450 0 P
+#11827
+polished table~
+a {Wpolished {ytable{x~
+A long {ytable{x has been nicely {Wpolished{x.~
+wood~
+furniture O 0
+4 40000 DN 900 900
+0 300 0 P
+#11828
+teak table~
+a {gteak {ytable{x~
+A large {gteak {ytable {xstands here.~
+wood~
+furniture O 0
+4 40000 DN 750 750
+0 350 0 P
+#11829
+comfy recliner~
+a {Wc{wo{Wm{wf{Wy {brecliner{x~
+A {Wc{wo{Wm{wf{Wy {brecliner {xlooks like a good place to nap.~
+wood & cloth~
+furniture O 0
+1 10000 EHK 1000 1000
+0 60 0 P
+#11830
+lamp~
+a {Yl{yam{Yp{x~
+A brightly burning {Yl{yam{Yp{x is here illuminating the room.~
+metal & oil~
+light AO 0
+0 0 999 0 0
+0 20 0 P
+#11831
+lantern~
+a {ybrass {Yl{yanter{Yn{x~
+A brightly burning {ybrass {Yl{yanter{Yn{x is here, illuminating the room.~
+metal & oil~
+light AO 0
+0 0 999 0 0
+0 15 0 P
+#11832
+torch~
+a {yt{ro{Yr{rc{yh{x~
+A {yt{ro{Yr{rc{yh {xis here burning away, dimly lighting the room.~
+wood & fire~
+light AO 0
+0 0 999 0 0
+0 10 0 P
+#11833
+oak dresser~
+an {yoak {Ddresser{x~
+A beautiful {yoak {Ddresser {xstands here.~
+oak~
+container O 0
+5000 A 0 100 1
+0 200 0 P
+#11834
+pine dresser~
+a {Wp{win{We {Ddresser{x~
+A tall {Ww{white pin{We {Ddresser{x stands here.~
+pine~
+container O 0
+3000 A 0 80 1
+0 200 0 P
+#11835
+carved dresser~
+a {ycarved dresser{x~
+A beautifully {yc{Da{yrv{De{yd {Ddresser{x stands here.~
+wood~
+container O 0
+2000 A 0 60 1
+0 200 0 P
+#11836
+polished dresser~
+a {Wpolished {Ddresser{x~
+A large {Wpolished {Ddresser{x stands here.~
+wood~
+container O 0
+1000 A 0 50 1
+0 200 0 P
+#11837
+teak dresser~
+a {cteak {Ddresser{x~
+A large {cteak {Ddresser{x stands here.~
+wood~
+container O 0
+1000 A 0 40 1
+0 200 0 P
+#11857
+oak bookshelf~
+an {yoak {Wbookshelf{x~
+A large {yoak {Wbookshelf{x stands here, displaying hundreds of books.~
+oak~
+furniture O 0
+0 0 N 0 0
+0 400 0 P
+#11858
+pine bookshelf~
+a {Wp{win{We bookshelf{x~
+A large {Ww{white pin{We {Wbookshelf{x stands here, displaying hundreds of books.~
+pine~
+furniture O 0
+0 0 N 0 0
+0 300 0 P
+#11859
+carved bookshelf~
+a {yc{Da{yrv{De{yd {Wbookshelf{x~
+A large {yc{Da{yrv{De{yd {Wbookshelf{x is here, displaying dozens of books.~
+wood~
+furniture O 0
+0 0 N 0 0
+0 250 0 P
+#11860
+polished bookshelf~
+a {Wpolished {ybookshelf{x~
+A large {Wpolished {ybookshelf{x is here, displaying books of various kinds.~
+wood~
+furniture O 0
+0 0 N 0 0
+0 200 0 P
+#11861
+teak bookshelf~
+a {gteak {Wbookshelf{x~
+A large {cteak {Wbookshelf{x is here, displaying books of various kinds.~
+wood~
+furniture O 0
+0 0 N 0 0
+0 200 0 P
+#11869
+royal bed~
+a {br{mo{by{ma{bl {Wbed{x~
+A large, comfortable {br{moya{bl {Wbed {xis covered in silk bedding.~
+silk, cloth & wood~
+furniture O 0
+2 20000 EHK 2000 2000
+0 0 0 P
+#11870
+cot~
+a {ycot{x~
+A small, shabby {ycot{x is here, a worn blanket crumpled on top.~
+cloth & wood~
+furniture O 0
+1 10000 EHK 1000 1000
+0 100 0 P
+#11871
+featherbed~
+a {Wf{wea{Wt{whe{Wr{wbe{Wd{x~
+An extremely comfortable {Wf{wea{Wt{whe{Wr{wbe{Wd{x looks very inviting.~
+feathers~
+furniture O 0
+2 20000 EHK 1500 1500
+0 50 0 P
+#11872
+canopy bed~
+a {Mc{manop{My b{me{Md{x~
+A beautiful {Mc{manop{My b{me{Md{x is here, draped in fine silks.~
+unknown~
+furniture O 0
+2 20000 EHK 1200 1200
+0 100 0 P
+#11873
+postedbed~
+a {Dfour-poster {Wbed{x~
+A broad {Wbed{x with four tall {Dposts{x is here.~
+wood & cloth~
+furniture O 0
+2 20000 EHK 0 0
+0 100 0 P
+#11874
+twinbed~
+a {btwinbed{x~
+A rather drab {btwinbed {xis here, its mattress too firm.~
+unknown~
+furniture O 0
+1 10000 EHK 900 900
+0 100 0 P
+#0
+
+
+
+#ROOMS
+#11800
+Khaos's Home~
+~
+0 33554440 0
+D2
+~
+~
+1 0 2950
+O Khaos~
+S
+#11801
+An Abandoned Home~
+~
+0 33554444 0
+D2
+~
+~
+1 0 2949
+S
+#11802
+An Abandoned Home~
+~
+0 0 0
+D1
+~
+~
+1 0 2949
+S
+#11803
+An Abandoned Home~
+~
+0 0 0
+D3
+~
+~
+1 0 2948
+S
+#11804
+An Abandoned Home~
+~
+0 0 0
+D1
+~
+~
+1 0 2948
+S
+#11805
+An Abandoned Home~
+~
+0 0 0
+D3
+~
+~
+1 0 2947
+S
+#11806
+An Abandoned Home~
+~
+0 0 0
+D1
+~
+~
+1 0 2947
+S
+#11807
+An Abandoned Home~
+~
+0 0 0
+D1
+~
+~
+1 0 2945
+S
+#11808
+An Abandoned Home~
+~
+0 0 0
+D1
+~
+~
+1 0 2944
+S
+#11809
+An Abandoned Home~
+~
+0 0 0
+D3
+~
+~
+1 0 2944
+S
+#11810
+An Abandoned Home~
+~
+0 0 0
+D1
+~
+~
+1 0 2943
+S
+#11811
+An Abandoned Home~
+~
+0 33554440 0
+D3
+~
+~
+1 0 2943
+S
+#11812
+An Abandoned Home~
+~
+0 33554440 0
+D1
+~
+~
+1 0 2942
+S
+#11813
+An Abandoned Home~
+~
+0 33554432 0
+D0
+~
+~
+1 0 2941
+S
+#11814
+An Abandoned Home~
+~
+0 33554440 0
+D0
+~
+~
+1 0 2942
+S
+#11815
+Grim's Home~
+~
+0 33554440 0
+D2
+~
+~
+1 0 2931
+O Grim~
+S
+#11816
+An Abandoned Home~
+~
+0 33554440 0
+D2
+~
+~
+1 0 2932
+S
+#11817
+An Abandoned Home~
+~
+0 33554440 0
+D3
+~
+~
+1 0 2932
+S
+#11818
+An Abandoned Home~
+~
+0 33554440 0
+D3
+~
+~
+1 0 2933
+S
+#11819
+An Abandoned Home~
+~
+0 33554440 0
+D1
+~
+~
+1 0 2933
+S
+#11820
+An Abandoned Home ~
+~
+0 33554440 0
+D3
+~
+~
+1 0 2934
+S
+#11821
+An Abandoned Home~
+~
+0 33554440 0
+D1
+~
+~
+1 0 2934
+S
+#11822
+An Abandoned Home~
+~
+0 33554440 0
+D3
+~
+~
+1 0 2935
+S
+#11823
+An Abandoned Home ~
+~
+0 33554440 0
+D3
+~
+~
+1 0 2937
+S
+#11824
+An Abandoned Home~
+~
+0 33554440 0
+D1
+~
+~
+1 0 2937
+S
+#11825
+Distortions's Home~
+BOk bok
+~
+0 33554440 0
+D1
+~
+~
+1 0 2938
+O Distortions~
+S
+#11826
+An Abandoned Home~
+~
+0 33554440 0
+D3
+~
+~
+1 0 2938
+S
+#11827
+An Abandoned Home~
+~
+0 33554440 0
+D3
+~
+~
+1 0 2939
+S
+#11828
+An Abandoned Home~
+~
+0 33554440 0
+D0
+~
+~
+1 0 2939
+S
+#11829
+An Abandoned Home~
+~
+0 33554440 0
+D0
+~
+~
+1 0 2940
+S
+#12002
+~
+~
+0 4 0
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 11800 2 1
+D 0 11801 2 1
+D 0 11802 1 1
+D 0 11803 3 1
+D 0 11804 1 1
+D 0 11805 3 1
+D 0 11806 1 1
+D 0 11807 1 1
+D 0 11808 1 1
+D 0 11809 3 1
+D 0 11810 1 1
+D 0 11811 3 1
+D 0 11812 1 1
+D 0 11813 0 1
+D 0 11814 0 1
+D 0 11815 2 1
+D 0 11816 2 1
+D 0 11817 3 1
+D 0 11818 3 1
+D 0 11819 1 1
+D 0 11820 3 1
+D 0 11821 1 1
+D 0 11822 3 1
+D 0 11823 3 1
+D 0 11824 1 1
+D 0 11825 1 1
+D 0 11826 3 1
+D 0 11827 3 1
+D 0 11828 0 1
+D 0 11829 0 1
+S
+
+
+
+#SHOPS
+0
+
+
+
+#MOBPROGS
+#0
+
+#$

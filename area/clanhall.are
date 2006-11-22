@@ -1,0 +1,5404 @@
+#AREADATA
+Name Clan Halls~
+Builders Unlinked Khaos~
+VNUMs 70000 71000
+Credits {C  ALL  {x~
+Security 1
+RepopMsg The time of battle is nigh.~
+End
+
+
+
+#MOBILES
+#70000
+Shopkeeper Armorer~
+(unused)~
+The {rD{De{rmonic{x {WA{Dr{Wmorer{x is waiting to slice your head off.
+~
+~
+Human~
+AB 0 0 0 0 0
+201 0 4d4+10 0d0+0 0d0+0 none
+0 0 0 0
+0 A 0 0
+stand stand none 2147483647
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70001
+lady sybil deirdre olgivanna ramkin~
+{ML{Dady {MS{Dybil {MR{Damkin{x~
+Lady Sybil Ramkin is tending to the wounded in her stern, motherly way.
+~
+~
+Human~
+ABZa 0 DFJZ 0 0 0
+210 1 1d1+1 1d1+1 1d1+1 none
+0 0 0 0
+0 0 0 0
+sit sit female 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70002
+sergeant colon~
+{DSergeant Colon{x~
+{DSergeant Colon{x is grudgingly showing new recruits the ropes.
+~
+~
+Human~
+ABJKb 0 0 0 0 0
+100 0 100d100+100 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCDa 0 0
+stand stand male 500
+AHMV ABCDEFGHIJK medium unknown
+#70003
+nobby nobbs~
+{DNobby{x~
+{DLance Corporal Nobby Nobbs{x is taking a very long smoke break.
+~
+~
+Human~
+AB 0 DFJV 0 0 0
+201 5 200d20+50 0d0+0 1d1+1 punch
+0 0 0 0
+FN ABCDa 0 0
+stand stand male 0
+AHMV ABCDEFGHIJK medium unknown
+#70004
+cut-me-own throat dibbler~
+{GC{gut{D-{GM{ge{D-{GO{gwn{D-{GT{ghroat {GD{gibbler{x~
+{GC{gut{D-{GM{ge{D-{GO{gwn{D-{GT{ghroat {GD{gibbler{x tries to pawn his wares off on the guards.
+~
+~
+Human~
+AB 0 DFZ 0 0 0
+200 0 100d20+50 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand none 2147483647
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70007
+captain samuel vimes~
+{DCaptain Vimes{x~
+{DCaptain Vimes{x hands out assignments between drinks.
+~
+~
+Human~
+AB 0 0 0 0 0
+0 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCDa 0 0
+stand stand male 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70015
+Shadow Healer~
+a {Dshadow{x~
+{wA {Dshadow {wis tending to the wounded.{x
+~
+~
+Dwarf~
+ABa 0 J 0 0 0
+201 1 1d1+1 1d1+1 1d1+1 none
+0 0 0 0
+0 L LQb R
+stand stand male 0
+AHMV ABCDEFGHIJK small unknown
+#70016
+Demon Necromancer Trainer~
+{DA {rDemon {DNecromancer{x~
+{DA {rDemon {DNecromancer is waiting to train you.{x
+~
+~
+Demon~
+ABJKb 0 GVa Sd 0 0
+0 1 1d1+1 1d1+1 0d0+0 none
+0 0 0 0
+0 H MO INSY
+stand stand male 0
+AHMV ABCDEFGHIJK large unknown
+#70017
+dread wraith~
+the {Wd{wr{Dead {Ww{wr{Daith{x~
+{DA {WD{wr{Dead {WW{wr{Daith offers reward to those who do its bidding.{x
+~
+~
+Human~
+AB 0 DFJTZ 0 -500 0
+0 0 100d100+100 0d0+0 0d0+0 none
+0 0 0 0
+0 ABLQ 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70022
+golem-making necromancer~
+the {yg{Wo{Dl{we{ym{x-{Dm{ra{Wk{we{yr{x~
+{DA meticulous {rNecromancer {Dslaves over his newest creation.{x
+~
+{xA hunched old man pieces together body parts,
+creating golems.   He holds a {Rb{rlood{Ry{x scalpel.
+~
+Human~
+AB 0 0 0 -500 0
+25 0 100d100+100 0d0+0 5d5+20 slice
+0 0 0 0
+0 AB LQ 0
+stand stand male 5000
+AHMV ABCDEFGHIJK medium unknown
+#70023
+luggage~
+the {Yl{yug{Dg{yag{Ye{x~
+A largish metal-bound {yc{Dhes{yt{x stands loyally by its owner... on many little legs.
+~
+{xA seemingly normal largish, metal-bound chest made of
+sapient pearwood follows its owner around faithfully.
+The sound of hurrying footsteps mark its presence. It
+is able to extrude a large number of little legs with
+horny-nailed, calloused feet.  It exudes a murderious
+intent, guarding its owner fiercely.
+~
+dog~
+AI 0 DFJVZ 0 0 0
+100 8 550d35+3200 100d10+75 33d3+118 charge
+-15 -15 -15 -15
+FHNS AP LQXZ EH
+stand stand none 0
+AGV ACDEFHJKUV medium unknown
+#70024
+swamp dragon~
+a {ns{nw{na{nm{np {nd{nr{na{ng{no{nn{x~
+A small, {nd{nr{na{ng{no{nn{n-{nl{ni{nk{ne{x creature nibbles on whatever it can get its maw around.
+~
+Swamp dragons resemble dragons... vaguely.
+This one seems to be drooling acid.
+~
+Dragon~
+AI 0 DFJT G 0 0
+201 20 1050d69+5000 1050d69+5000 70d3+200 acbite
+-33 -33 -33 -33
+FS 0 EKT FS
+stand stand either 0
+AHZ ACDEFGHIJKPQUVX small unknown
+F shd D
+F res BH
+F vul I
+#70102
+twilight healer treant~
+the {qt{qr{qe{qa{qn{qt {ph{pe{pa{pl{pe{pr{x~
+An elderly {Gt{gr{yea{gn{Gt{x keeps watch over the denizens of {mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x.
+~
+~
+Ent~
+ABZa 0 DFJZ HI 0 0
+202 0 100d100+1000 0d0+0 0d0+0 none
+0 0 0 0
+0 ABX a HJ
+stand stand none 0
+AHMV ABCDEFGHIJK medium unknown
+#70103
+twilight herbalist shopkeeper~
+a skilled {qh{qe{qr{pb{pa{pl{qi{qs{qt{x~
+Amid the trees sits an {Gh{ge{yr{gb{ya{gl{yi{gs{Gt{x, preparing salves and poultices.
+~
+~
+Human~
+AB 0 0 0 0 0
+202 0 100d100+1000 0d0+0 0d0+0 none
+0 0 0 0
+0 AB 0 0
+stand stand female 2147483647
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70104
+twilight panther~
+the {mt{Dw{wi{Wli{wg{Dh{mt {Dpanther{x~
+A slender {Dpanther{x paces the woods, accepting all challenges from students of the Grove.
+~
+~
+cat~
+AB 0 Z 0 0 0
+1 0 1000d500+50000 0d0+0 1d1+1 claw
+0 0 0 0
+H ABCDLQa 0 0
+stand stand none 0
+AGV ACDEFHJKQUV medium unknown
+F off F
+#70105
+aurennin vervain twilight trainer~
+{yA{Du{wr{Wen{wn{Di{yn {rV{De{wr{Wv{wa{Di{rn{x~
+The dark maiden {yA{Du{wr{Wen{wn{Di{yn {rV{De{wr{Wv{wa{Di{rn{x offers insight into witchcraft and weaponry.
+~
+~
+Human~
+ABJKb 0 DFJZ 0 0 0
+202 0 100d100+1000 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand female 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70106
+querquobad silver sage twilight questmaster~
+{WQ{wu{De{wr{Wqu{wo{Db{wa{Wd {xthe {WS{wi{Dlv{we{Wr S{Da{wg{We{x~
+A silver man in silver clothing rests here, offering {+q{+u{+e{+s{+t{+s{x.
+~
+~
+Human~
+AB 0 DFJZ H 0 0
+202 0 100d100+1000 0d0+0 0d0+0 none
+0 0 0 0
+0 AB 0 0
+stand stand male 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70200
+HEALER burzum~
+{DBurzum{x, {MJ{ma{Dd{me{x'{Ms {MD{mi{Ds{wci{Dp{ml{Me{x~
+{DBurzum{x, {MJ{ma{Dd{me{x'{Ms {MD{mi{Ds{wci{Dp{ml{Me{x stands here.
+~
+{xClad in robes of {MP{murpl{Me {xand {8Black{x, Burzum is here grumbling
+and muttering because he's here healing ailments rather than
+inflicting them. He looks up and sighs, "{MWhat is it now?{x"
+~
+Human~
+ABXZa 0 0 0 0 0
+202 1600 1601d134+80801 400d15+600 101d5+426 none
+-477 -477 -477 -396
+0 0 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70201
+Disciple blacksmith Illyar~
+{MI{ml{8ly{ma{Mr {xthe Disciple's merchant.~
+{MI{ml{8ly{ma{Mr {xstands here, hawking his wares.
+~
+Clad in finery, numerous items of jewelry adorn him....  Being a merchant
+must have it's advantages.  
+~
+Human~
+AB 0 0 0 0 0
+201 0 1d1+20000 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand none 2147483647
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70202
+Lorgrum trainer~
+{ML{mor{8g{mru{Mm{x, Trainer to the {MC{mh{8ur{mc{Mh{x~
+{ML{mor{Dg{mru{Mm{x, Trainer to the {MC{mh{Dur{mc{Mh{x stands here.
+~
+Clad in a suit of platemail, he trains the disciples of the church in the
+ways of war, spellcraft...  And other things.  
+~
+Human~
+ABJKb 0 0 0 0 0
+201 10000 10000d1000+10000 0d0+0 10000d100000+100000 none
+0 0 0 0
+0 0 0 0
+stand stand male 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70203
+Marith quest master~
+{MM{ma{8ri{mt{Mh {xthe questmaster.~
+{MM{ma{8ri{mt{Mh {xis here handing out quests.
+~
+Clad in fine silken robes of Purple and Black, Marith hands out jobs to
+those who want them...  Taking a cut for himself of course.  
+~
+Human~
+AB 0 0 0 0 0
+1 0 1000d1000+100000 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCD 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70205
+malavon training dummy~
+{xA {DTraining {DDummy{x~
+{xA {DTraining {DDummy{x stands before you {Dcharred {xand {1destroyed{x
+~
+~
+Human~
+AB 0 V 0 0 0
+0 0 100d100+100 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCD 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+M FIGHT 70201 40~
+M GRALL 70200 80~
+#70206
+nihilist blow-up doll dummy~
+a {mN{bi{Dh{wil{Di{bs{mt{x blow-up doll~
+A {*b{*l{*o{*w{*-{*u{*p {*d{*o{*l{*l{x awaits your abuse.  It looks strangely familiar.
+~
+~
+Human~
+AB 0 V 0 0 0
+0 0 100d100+100 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCDa 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70213
+howler~
+a {Mh{mo{Dwl{me{Mr{x~
+A gaunt hound with a mane of bristling quills {Mh{mowl{Ms{x incessantly.
+~
+{DA strange hound-like beast with its pale skin clinging
+to its bones, the howler glances about with madness in
+its eyes.  Its sharp quills look horrificly malicious.{x
+~
+dog~
+AI 0 FJVZa 0 -1000 0
+100 8 550d35+3200 100d10+75 33d3+118 insanity
+-15 -15 -15 -15
+FHIS AP LQ NS
+stand stand either 0
+AGV ACDEFHJKUV medium unknown
+#70214
+blood fiend~
+a {Rb{rloo{Rd {Dfiend{x~
+A vicious, {Rb{rloo{Rd{r-{Rt{rhirst{Ry {Ddemon{x hovers about, looking for its next meal.
+~
+{DThis nine foot tall demon has a hide so dark
+purple it appears black.  It has four clawed
+arms, vicious fangs, and two {Rb{rloo{Rd{D red eyes.{x
+~
+Demon~
+A 0 DFGVZa Sd -1000 0
+201 20 1050d69+5000 1050d69+5000 70d3+200 drain
+-33 -33 -33 -33
+CDHS AJO HIKMOP NSY
+stand stand either 0
+AHMV ABCDEFGHIJK large unknown
+#70300
+Usher~
+{othe {oaid {oof {othe {ohigh {opriest{x~
+{oAn {oaid {oto {othe {ohigh {opriest {ostands {ohere{o.{x
+~
+~
+Human~
+AB 0 0 0 0 0
+0 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70301
+high priest~
+{othe {ohigh {opriest~
+{oThe {ohigh {opriest {ostands {ohere {oo{om{oi{on{oo{ou{os{ol{oy{o.{x
+~
+~
+Human~
+AB 0 0 0 0 0
+0 0 1d1+100 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70302
+guard~
+{Dthe guard{x~
+{DA {wguard {Wstands here {Dwatching your every move{w.{x
+~
+~
+Human~
+AB 0 0 0 0 0
+0 0 1d1+1 0d0+0 0d0+0 dom
+0 0 0 0
+0 0 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70402
+no name~
+(no short description)~
+(no long description)
+~
+~
+Human~
+A 0 0 0 0 0
+0 0 0d0+0 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70404
+Ijuaqsiruq healer~
+{WIj{wu{Ca{cqs{Ci{wr{Wuq{x~
+{WIj{wu{Ca{cqs{Ci{wr{Wuq{x is resting on a large sitting pillow.
+~
+A tall dark drow man rests on a large satin sitting pillow. He
+looks to be trained in the arts of healing.
+~
+Drow~
+ABa JQ DFJQ 0 0 0
+250 0 1d1000+70000 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCDLQa M S
+stand stand male 0
+AFHMV ABCDEFGHIJK medium unknown
+F res BL
+F vul Z
+#70406
+taaffaqti bartender~
+{WT{8aaffaqt{Wi{x~
+{WT{8aaffaqt{Wi{x stumbles around passing out drinks and snacks.
+~
+A tall human man smiles a chummy smile as he leans
+heavily on anything nearby. [His breath smells an awful
+lot like the {ya{Yles {xhe sells.]
+~
+Human~
+ABL 0 0 0 0 0
+209 0 100d100+40000 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand male 0
+AHMV ABCDEFGHIJK medium unknown
+#70407
+afatkuq~
+{WA{8fatkuq{x~
+{WA{8fatkuq{x is here, standing over some bubbling potions.
+~
+A tall drow is here, concoting his potions. He very much
+resembles his brother, Ijuaqsiruq.
+~
+Drow~
+ABL JQ DFJQ 0 0 0
+209 0 1d1000+70000 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCDLQa M SZ
+stand stand male 0
+AFHMV ABCDEFGHIJK medium unknown
+F res BL
+#70408
+ataniq trainer~
+{BA{bt{Ba{bn{Bi{bg{x~
+The ice lizard, {BA{bt{Ba{bn{Bi{bg{x, is here ready to train you.
+~
+You see a large lizard, nearly as tall as a human. She is the
+purest of whites. Her reptilian skin is smooth and soft.
+~
+lizard~
+ABJKb 0 DF 0 0 0
+209 0 1d1000+70000 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCDLQa L I
+stand stand female 0
+AGXc ACDEFHKQV medium unknown
+#70411
+atchiksuq~
+{bL{Cady {bA{Ctchiksuq{x~
+{bL{Cady {bA{Ctchiksuq{x, high priestess of Shartyn, is here.
+~
+A creature composed entirely of the cold elements is
+here, serving as a Priest for the Disciples. She wears
+long robes, adorned with the symbol of Shartyn.
+~
+Iceling~
+ABZ 0 0 C 0 0
+250 0 1d1000+70000 0d0+0 0d0+0 none
+0 0 0 0
+0 AI R H
+stand stand female 0
+AHMV ABCDEFGHIJK medium unknown
+#70412
+glacies~
+{CG{cl{Ca{cc{Ci{ce{Cs{x~
+{CG{cl{Ca{cc{Ci{ce{Cs{x is here, puttering about and handing out quests.
+~
+You see a middle aged dwarven man wearing glassed. He's
+wearing a vest covered in pockets, all overflowing with
+different kinds of trinkets.
+~
+Dwarf~
+ABL 0 DFJ 0 0 0
+209 0 1d1000+70000 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCDLa LQb R
+stand stand male 0
+AHMV ABCDEFGHIJK medium unknown
+#70413
+puddle dwarf~
+{BP{8uddle{x~
+{BP{8uddle{x, Glacies' son, is here selling pets.
+~
+~
+Dwarf~
+ABL 0 J 0 0 0
+209 0 1d1000+70000 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCDLa LQb R
+stand stand male 0
+AHMV ABCDEFGHIJK medium unknown
+#70500
+train spar dummy~
+{xA {DTraining Dummy{x~
+{xA {DTraining Dummy {xrests before you, {1burnt {xand hacked at.
+~
+{xA padded stuffed representation of a figure stands before you, its
+stuffing and cloth, burnt and singed, slashes and holes fill its main bulk.
+~
+Human~
+AB 0 0 0 0 0
+0 0 100d100+100 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCD 0 0
+stand stand none 0
+AHMV ABCDEFGHIJK medium unknown
+#70501
+healer disciple old wise~
+{DAn {wold{D and {mwise {Dhealer{x~
+{DAn {wold{D and {mwise {Dhealer stand here waiting patiently.{x
+~
+~
+Human~
+ABZa 0 0 0 0 0
+0 0 100d100+100 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand male 0
+AHMV ABCDEFGHIJK medium unknown
+#70502
+quest master disciple~
+{DThe {BQu{bes{Dt{wm{Da{bst{Ber{x~
+{DThe {BQu{bes{Dt{wm{Da{bst{Ber {xof the {DGuild {xrests quietly in the corner.
+~
+~
+Human~
+AB 0 0 0 0 0
+0 0 100d100+100 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand female 0
+AHMV ABCDEFGHIJK medium unknown
+#70503
+old feeble man~
+{DThe {oo{ol{od {+f{+e{+e{+b{+l{+e {wman{D.{x~
+{DAn {oo{ol{od {+f{+e{+e{+b{+l{+e {wman{D stands here waiting to help you.{x
+~
+~
+Human~
+ABJ 0 0 0 0 0
+0 0 100d100+100 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand male 0
+AHMV ABCDEFGHIJK medium unknown
+#70504
+dealer merchant disciple market~
+{+A {+D{+i{+s{+c{+i{+p{+l{+e {+m{+e{+r{+{+c{+h{+a{+n{+t{+.{x~
+{+A {+D{+i{+s{+c{+i{+p{+l{+e {+m{+e{+r{+c{+h{+a{+n{+t {Dis standing here waiting to sell items to you.{x
+~
+~
+Human~
+AB 0 0 0 0 0
+201 0 100d100+100 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand male 10000
+AHMV ABCDEFGHIJK medium unknown
+#70600
+celestial apothecary alchemist~
+one of the {Yc{ye{Yl{ye{Ys{yt{Yi{ya{Yl{x {Ca{clc{Ch{cem{Ci{cst{Cs{x~
+The many {Ca{clc{Ch{cem{Ci{cst{Cs{x labor over beakers and vials, uttering spells.
+~
+Several men and women under the employ of the chorus are making potions.
+~
+Human~
+AB 0 DFJZ 0 1000 0
+0 0 100d100+100 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCDLQ 0 0
+stand stand none 2147483647
+AHMV ABCDEFGHIJK medium unknown
+#70601
+celestial healer~
+{oT{oh{oe {oo{ol{od{o, {ow{oi{os{oe {om{oa{on{x~
+{xA {Wv{Yer{Wy {wo{Wl{wd {Ya{wn{yd {Ww{wis{Ye {ym{Wa{Yn{x offers {Gh{gealin{Gg {xand {Cq{cuest{Cs {xto {YC{ye{Yl{ye{Ys{yt{Yi{ya{Yn{ys{x.
+~
+{xAn old man dressed in {Wpure white robes{x keeps the {YC{ye{Yl{ye{Ys{yt{Yi{ya{Yl {CC{ch{Co{cr{Cu{cs{x healthy.
+~
+Human~
+ABZa 0 DFJZ 0 1000 0
+201 0 100d100+100 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCDLQ 0 0
+stand stand male 0
+AHMV ABCDEFGHIJK medium unknown
+#70604
+harbinger dummy~
+a training {Md{mu{Dm{mm{My{x~
+A training dummy wearing {MH{ma{Drb{wi{Dng{me{Mr{x insignia stands in the corner.
+~
+{xThis dummy longs strangely familiar...
+~
+Human~
+AB 0 V 0 0 0
+0 0 100d100+10000 100d100+10000 2d2+2 none
+0 0 0 0
+H ABCDLQa 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70605
+retired celestian warrior trainer~
+a retired {Yc{ye{Yl{ye{Ys{yt{Yi{ya{Yl {Cw{ca{Cr{cr{Ci{co{Cr{x~
+A retired {Yc{ye{Yl{ye{Ys{yt{Yi{ya{Yn{x woman offers to {Rt{rrai{Rn{x you in the various arts of combat.
+~
+{xA woman with silver hair and {Cice-blue {xeyes stands
+here in half-platemail, a longsword at her side.
+~
+Human~
+ABJKb 0 DFJZ 0 1000 0
+201 0 100d100+1000 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCDLQ 0 0
+stand stand female 0
+AHMV ABCDEFGHIJK medium unknown
+#70608
+celestial stableboy~
+the {Yc{ye{Yl{ye{Ys{yt{Yi{ya{Yl{x stableboy~
+A young half-elf tends to the {Yc{ye{Yl{ye{Ys{yt{Yi{ya{Yl {Cs{ct{Ce{ce{Cd{cs{x.
+~
+This young half-elf watches over the animals in care of the chorus.
+~
+Halfelf~
+AB 0 DJLZ 0 1000 0
+25 0 100d100+100 0d0+0 5d5+5 none
+0 0 0 0
+0 AB BY 0
+stand stand male 500
+AHMV ABCDEFGHIJK medium unknown
+M GREET 70608 50~
+#70609
+moon dog~
+a {cm{Co{Wo{cn {wd{Do{Wg{x~
+A large wolf-like {wd{Do{Wg{x with {ch{Ca{wu{Dnt{wi{Cn{cg{x obsidian eyes guards its master vigilangly.
+~
+~
+dog~
+AI 0 CFQVZa 0 1000 0
+100 8 550d35+3200 100d10+75 33d3+118 fear
+-15 -15 -15 -15
+DFHS AI LQZ XY
+stand stand either 0
+AGV ACDEFHJKUV medium unknown
+#70610
+three-headed leskylor~
+a {yt{Yh{Wr{Ye{ye{w-{yh{Ye{Wad{Ye{yd {Cl{ce{Ws{Ck{Wy{Cl{co{Cr{x~
+A three-headed, {Wwinged {Cb{cl{Cu{ce {Ct{ci{Cg{ce{Cr{x stands ready to battle evil.
+~
+~
+cat~
+AI 0 DFJTa C 1000 0
+201 20 1050d69+5000 1050d69+5000 70d3+200 frbite
+0 0 0 0
+CHIS AINS QY HM
+stand stand either 0
+AGV ACDEFHJKPQUV medium unknown
+F aff Z
+F off F
+#70701
+Nyx night void questmaster~
+{bN{Dyx{x~
+The darkness of {bn{Di{wg{Dh{bt{x beckons you to do its bidding.
+~
+~
+Human~
+ABG 0 0 0 0 0
+0 0 1000d1000+10000 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCLQa 0 0
+stand stand female 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70703
+hypnos void healer~
+{mH{cy{Cpn{co{ms{x~
+{mH{cy{Cpn{co{ms{x gently welcomes everyone into his lulling embrace.
+~
+{DA thin young man with pale skin, {mH{cy{Cpn{co{ms{D stands naked
+in the darkness, healing those who surrender to him.{x
+~
+Human~
+ABMa 0 0 0 0 0
+211 0 100d100+100 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCLQa 0 0
+stand stand male 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70705
+erebus darkness void shopkeeper~
+{bE{Dr{web{Du{bs{x~
+The {bd{Dar{wkn{Des{bs{x provides strength and protection, for a small sacrifice.
+~
+{*A{*l{*l {*i{*s {*d{*a{*r{*k{*n{*e{*s{*s{*.{x
+~
+Human~
+AB 0 DFJZ 0 0 0
+201 0 1000d1000+10000 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCLQa 0 0
+stand stand female 99999999
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70708
+thanatos void trainer~
+{RT{rhanato{Rs{x~
+{RT{rhanato{Rs{x, death incarnate, shares his knowledge with the worthy few.
+~
+{DA youthful smile rests upon his lips though darkness
+dwells in his eyes.  Upon his left shoulder, a small
+{mb{cut{Ct{Wer{Cfl{my{D is perched peacefully.{x
+~
+Human~
+ABJKb 0 0 0 0 0
+203 0 1000d1000+10000 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCLQa 0 0
+stand stand male 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70709
+slave void dummy~
+a {Rs{rlav{Re {xof the {bv{Do{wi{bd{x~
+A {Rs{rlav{Re{x is chained here, waiting to take your {Ra{rbus{Re{x.
+~
+{DThis {Rs{rlav{Re{D has been so beaten and abused
+that its gender is undistinguishable. It
+holds its head high, awaiting more.{x
+~
+Human~
+ABG 0 V 0 0 0
+1 1 100d100+1000 0d0+0 1d1+0 insanity
+0 0 0 0
+H ABCDLQa 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70715
+clymenus void gamekeeper~
+{DC{Rly{rme{Rnu{Ds{x~
+The gamekeeper, {DC{Rly{rme{Rnu{Ds{x, waits by the cages, carving figures from {Wbone{x.
+~
+{DA tall, gaunt man dressed in black leathers, {DC{Rly{rme{Rnu{Ds
+takes his work seriously.  The dark cages which house
+the beasts of oblivion are tended by his hands.  Most
+often, he is seen whittling {Wbone{D into chess pieces.
+~
+Demon~
+AB 0 DGJZ 0 -666 0
+211 0 100d100+1000 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCDLQa 0 0
+stand stand male 0
+AHMV ABCDEFGHIJK medium unknown
+F aff V
+F shd S
+F res MO
+F vul NY
+#70716
+hell hound~
+a {=h{=e{=l{=l {=h{=o{=u{=n{=d{x~
+A large {=h{=o{=u{=n{=d{x summoned from the pits of {=Hell{x glares about itself.
+~
+{DCovered in singed black fur, this beast is all
+muscle and {Of{Oi{Or{Oe{D.  It glares about with flaming
+red eyes, ready to attack anything that moves.{x
+~
+dog~
+AI 0 FPVZ D 0 0
+100 8 550d35+3200 100d10+75 33d3+118 bite
+-15 -15 -15 -15
+FHS AH LQ NR
+stand stand either 0
+AGV ACDEFHJKUV medium unknown
+#70717
+malgoren~
+a {Dmalgoren{x~
+A massive hunched figure with {Debony{x skin and long claws eyes you {Rh{rungril{Ry{x.
+~
+{DThe {mm{ba{Dl{wgo{Dr{be{mn{D is an intimidating creature standing
+nearly ten feet tall. Its long, powerful arms end
+in three-fingered prehensile {Rc{rlaw{Rs{D.  Its head and
+body are thin, but its legs are thick and heavily
+muscled.  From its face stare large {Wwhite eyes{D.{x
+~
+Troll~
+AI 0 DFJZac 0 -750 0
+201 20 1050d69+5000 0d0+0 70d3+200 claw
+-33 -33 -33 -33
+CDOS AIL MQZ HSY
+stand stand either 0
+ABHMV ABCDEFGHIJKU huge unknown
+#70754
+charon ferryman south~
+{wC{Dharo{wn{x~
+{wC{Dharo{wn{x stands by the river, waiting to ferry the dead across.
+~
+{DA gaunt, robed figure stands by the southern banks
+of the Acheron, a long wooden oar in his bony hand.{x
+~
+Human~
+ABa 0 0 0 0 0
+0 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand male 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+M BRIBE 70754 100~
+M EXALL 70756 1~
+#70757
+charon ferryman north~
+{wC{Dharo{wn{x~
+{wC{Dharo{wn{x stands by the river, waiting to ferry the dead across.
+~
+{DA gaunt, robed figure stands by the northern banks
+of the Acheron, a long wooden oar in his bony hand.{x
+~
+Human~
+ABa 0 0 0 0 0
+0 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand male 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+M BRIBE 70757 100~
+M EXALL 70756 3~
+#70759
+cerberus~
+{RC{re{Rr{Dbe{Rr{ru{Rs{x~
+A massive three-headed dog guards the path toward {RH{rell{x.
+~
+{DThree viscious heads snarl at once, hungrily
+waiting for the living foolish enough to try
+to cross the {RF{rive {RR{rivers{D.{x
+~
+dog~
+AB 0 0 0 0 0
+0 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+H 0 0 0
+stand stand none 0
+AGV ACDEFHJKUV medium unknown
+M EXALL 70759 1~
+M EXALL 70759 0~
+#70782
+unused~
+(no short description)~
+(no long description)
+~
+~
+Human~
+A 0 0 0 0 0
+0 0 0d0+0 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#70797
+styx hatred~
+{RS{rty{Rx{D, the {wE{Dmbodimen{wt {Dof {RH{ratre{Rd{x~
+{DA dark being of {Rf{rlam{Re {Dand {Rh{ratre{Rd {Dguards the final river.{x
+~
+~
+Fireling~
+AB 0 Z D -900 0
+211 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 H X IR
+stand stand female 0
+AHMV ABCDEFGHIJK medium unknown
+#71000
+no name~
+(no short description)~
+(no long description)
+~
+~
+Human~
+AB 0 0 0 0 0
+0 0 0d0+0 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#0
+
+
+
+#OBJECTS
+#70000
+stone pile fountain~
+(unused)~
+{xA {-b{-l{-u{-e {-m{-a{-r{-b{-l{-e {xfountain rests in the middle of the room, gushing forth {-w{-a{-t{-e{-r{x~
+unknown~
+fountain 0 0
+-1 -1 'water' 0 0
+0 0 0 P
+#70001
+nightwatch infirmary cots~
+one of the {Wc{wo{yt{Ws{x~
+Several comfortable, if not remarkably clean, {Wc{wo{yt{Ws{x fill the room.~
+unknown~
+furniture I 0
+50 1000000 EHK 20000 20000
+0 0 0 P
+#70002
+pit donate~
+(unused)~
+{xA {Ddeep hole {xis in the {+B{+l{+a{+c{+k {+M{+a{+r{+b{+l{+e {xfloor.~
+unknown~
+pit 0 0
+0 0 0 0 0
+0 0 0 P
+#70003
+unused~
+(unused)~
+{DA black {+m{+a{+r{+b{+l{+e{D table sits here in the {wmiddle{D of the chairs.{x~
+wood~
+furniture 0 0
+1 -1 N 0 0
+0 0 0 P
+#70004
+unused~
+(unused)~
+I'm not whatever I used to be anymore.~
+unknown~
+furniture ES 0
+1 -1 EH 0 0
+0 0 0 P
+#70005
+unused~
+(unused)~
+{DA black {+m{+a{+r{+b{+l{+e{D chair sits here.{x~
+wood~
+furniture 0 0
+50 -1 E 0 0
+0 0 0 P
+#70006
+portal~
+{DA {Cpo{crt{Cal{x~
+{DA {Cpo{crt{Cal{D to the {woffice{D of {RD{ristortio{Dns, {RL{ror{Dd {RC{rha{Dos.{x~
+ether~
+portal AB 0
+0 0 0 8045 0
+0 0 0 P
+#70007
+unused~
+(unused)~
+{DA {wDesk{D sits here in the {wcorner{D of the room with the the {RC{rha{Dos {RE{rmbl{Dem {yengraved{D on all sides.{x~
+unknown~
+container 0 0
+0 0 0 1 0
+0 0 0 P
+#70008
+unused~
+(unused)~
+{WM{walav{Don's chair sits here.{x~
+unknown~
+furniture 0 0
+1 10000 DGJ 1000 1000
+0 0 0 P
+#70009
+unused~
+(unused)~
+{WK{woo{Dtz{w' {Dchair of {+s{+h{+a{+d{+o{+w{+s{D sit here.{x~
+unknown~
+furniture 0 0
+1 10000 EHK 0 0
+0 0 0 P
+#70010
+nightwatch gaalstrom seal tattoo~
+{x[ {RW{ra{Dt{wc{Wh {x] {DThe {RG{raalstrom {DCity Seal{x~
+A piece of skin marked "{DProperty of {RG{raalstrom{x" lies here, rotting.~
+unknown~
+armor OUY AW
+100 100 100 100 0
+50 0 30000 P
+A
+5 4
+A
+2 4
+A
+4 4
+A
+3 4
+A
+1 4
+A
+19 90
+A
+18 90
+A
+17 -200
+A
+13 200
+A
+14 200
+A
+12 200
+#70011
+nightwatch healing bourbon~
+a shot of {ybourbon{x~
+A small shot glass filled with bourbon sits here.~
+unknown~
+potion APY A
+102 'sanctuary' 'bless' 'protection evil' 'dragon skin'
+1 1 1000 P
+#70012
+nightwatch healing scotch~
+a shot of {yscotch{x~
+A small shot glass filled with scotch has been left here.~
+unknown~
+potion APY A
+102 'fly' 'giant strength' 'haste' 'frenzy'
+1 1 1000 P
+#70013
+nightwatch healing whiskey~
+a shot of {ywhiskey{x~
+A small shot glass filled with whiskey has been left here.~
+unknown~
+potion APY A
+102 'superior healing' 'superior healing' 'heal' 'heal'
+50 1 1000 P
+#70014
+nightwatch healing beer~
+a bottle of {ybeer{x~
+A green bottle filled with cold beer has been left here.~
+unknown~
+potion APY A
+102 'iceshield' 'fireshield' 'shockshield' 'acidshield'
+50 1 1000 P
+#70015
+dibblers sausage bun~
+some {ysa{Dus{yage{x in a {ybun{x~
+Some rather old {ysa{Dus{yage{x has been stuffed in a {ybun{x and smothered with onions.~
+unknown~
+pill P A
+102 'sate' 'quench' 'cure poison' 'cure disease'
+0 0 500 P
+#70016
+pool blood~
+a {Dblack m{Wa{wrble{x pool~
+A {Dblack m{Wa{wrble{x pool bubbles quietly in the center of the cavern.~
+unknown~
+furniture EG 0
+10 10000 FIL 20000 20000
+0 0 0 P
+#70017
+nightstalkers burning mask tattoo~
+[{DSt{wa{Wl{wk{Der{x] {DA {RB{ru{Yr{yn{Yi{rn{Rg {DMask{x~
+A piece of flesh here lies rotting with ink on it.~
+tattoo~
+armor IPY AW
+100 100 100 100 0
+50 1 30000 P
+A
+1 4
+A
+3 4
+A
+4 4
+A
+2 4
+A
+5 4
+A
+20 -20
+A
+17 -200
+A
+13 200
+A
+12 200
+A
+14 200
+A
+18 90
+A
+19 90
+#70018
+Throne Bones Fallen Foes~
+{DThrone made of {Wbones{x~
+{DThrone made of {Wbones {Dof fallen foes is here.{x~
+unknown~
+furniture ABEGS 0
+1 0 EHK 0 0
+0 0 0 P
+#70019
+fortune advent potion~
+{BA{bd{Bv{be{Bn{bt{Bu{br{Be{br{Bs {YF{yo{Yr{yt{Yu{yn{ye{x~
+{xa small glass bottle lays here abandoned.~
+glass~
+potion AIPY AO
+102 'haste' 'giant strength' 'frenzy' 'bless'
+1 1 1000 P
+#70020
+fava beans chianti~
+some {yf{gava bean{ys {xand a nice {rchianti{x~
+All this meal is missing is a nice, freshly removed {rliver{x.~
+unknown~
+pill P A
+102 'sate' 'quench' 'cure poison' 'cure disease'
+1 0 500 P
+#70021
+table~
+{DA {yoak table{x~
+{DA long {yoak table{D sits in the middle of the room.{x~
+wood~
+furniture Y 0
+10 10000 AD 0 0
+0 0 0 P
+#70022
+Donation pit rack equipment~
+{DAn Equipment Racks{x~
+{DThe Nightstalker's Equipment Racks are here.{x~
+unknown~
+pit 0 0
+0 0 0 -1 0
+0 0 0 P
+#70023
+wood chair~
+{DA wooden chair{x~
+{w30 {Dwooden chairs sit here around the the table.{x~
+unknown~
+furniture 0 0
+30 10000 EHK 1000 1000
+0 0 0 P
+#70024
+sirus office key~
+a {Wbone{x {Dkey{x~
+This strange bone key bears a faint stench of decay.~
+bone~
+key Y A
+0 0 0 0 0
+1 1 0 P
+#70025
+exotic herb~
+(unused)~
+A sticky herb, from oriental lands, lies here rotting.~
+unknown~
+potion AIPY AO
+102 'superior healing' 'superior healing' 'heal' 'heal'
+50 1 1000 P
+#70026
+vial shielding merchants~
+(unused)~
+A vial lays here forgotten and disgarded.~
+unknown~
+potion AIPY AO
+102 'iceshield' 'fireshield' 'shockshield' 'acidshield'
+50 1 1500 P
+#70027
+old temptation potion~
+(unused)~
+A small glass bottle lies here.~
+unknown~
+potion 0 0
+102 'iceshield' 'shockshield' 'fireshield' 'acidshield'
+50 1 1000 P
+#70028
+unused~
+(unused)~
+A half eaten dish of roast chicken and vegtibles lies here going to waste.~
+food~
+food 0 AO
+6 3 0 0 0
+1 1 200 P
+#70100
+twilight knowledge spring~
+the {-S{-p{-r{-i{-n{-g {xof {WK{wn{Do{cw{Cl{ce{Dd{wg{We{x~
+A beautiful {-s{-p{-r{-i{-n{-g{x rests in the grove, flowing with the waters of {Wk{wn{Do{cw{Cl{ce{Dd{wg{We{x.~
+unknown~
+fountain AG 0
+-1 -1 'water' 0 0
+0 5000 0 P
+#70101
+twilight bed leaves~
+a bed of {ra{gu{Yt{yu{rm{gn l{Ye{ra{gve{ys{x~
+A bed of {ga{ru{yt{Yu{gmn {rl{gea{Yv{re{ys{x has gathered beneath an old {yo{ga{yk{x.~
+unknown~
+furniture SY 0
+100 1000000 BEHK 20000 20000
+0 0 0 P
+#70102
+autumn tree twilight clan tattoo~
+{x[{m+{DS{wa{Wg{we{Ds{m+{x] {DAn {rA{gu{Yt{ru{ym{gn {gTr{ye{Ge{x {Dagainst a {mT{Dw{wil{Di{mt {DS{mk{wy{x~
+An {ra{gu{Yt{ru{ym{gn {gtr{ye{Ge{x has been trapped in {mt{Dw{wi{Wli{wg{Dh{mt{x.~
+unknown~
+armor GIPSY AW
+100 100 100 100 0
+50 0 30000 P
+A
+4 4
+A
+1 4
+A
+5 4
+A
+3 4
+A
+2 4
+A
+20 -20
+A
+12 200
+A
+13 200
+A
+14 200
+A
+18 90
+A
+19 90
+A
+17 -200
+#70103
+twilight healing draught~
+a {-p{-o{-t{-e{-n{-t {qh{qe{qa{ql{qi{qn{qg {pd{pr{pa{pu{pg{ph{pt{x~
+This {-p{-o{-t{-e{-n{-t {qh{qe{qa{ql{qi{qn{qg {pd{pr{pa{pu{pg{ph{pt{x has been prepared in the {mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x.~
+unknown~
+potion AGY A
+102 'superior healing' 'superior healing' 'heal' 'heal'
+50 0 1000 P
+#70104
+twilight elemental essence elixir~
+an {ce{gl{yix{gi{cr {xof {Re{Yl{Ge{Cm{Be{Cn{Gt{Ya{Rl {re{ys{gs{ce{gn{yc{re{x~
+This strange {Oe{Ol{pi{px{qe{qr{x wasprepared in the {mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x.~
+unknown~
+potion AGY A
+102 'iceshield' 'fireshield' 'shockshield' 'acidshield'
+50 0 1000 P
+#70105
+twilight grove protection potion~
+a {mp{wo{Wti{wo{mn {xof the {gg{Gr{yo{rv{ge'{ys {pp{pr{po{pt{pe{pc{pt{pi{po{pn{x~
+This potion contains the protective essence of {mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x.~
+unknown~
+potion AGY A
+102 'sanctuary' 'bless' 'bark skin' 'camouflage'
+1 0 1000 P
+#70106
+twilight strange stimulant~
+a {gs{yt{rr{ga{rn{yg{ge {=s{=t{=i{=m{=u{=l{=a{=n{=t{x~
+An exotic mixture of {gh{ye{rrb{ya{gl {=s{=t{=i{=m{=u{=l{=a{=n{=t{=s{x, this potion is from {mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x.~
+unknown~
+potion AGY A
+102 'fly' 'frenzy' 'haste' 'giant strength'
+1 0 1000 P
+#70107
+twilight clairvoyance philter~
+a {-p{-h{-i{-l{-t{-e{-r{x of {Yc{yla{cir{Cvo{cya{ync{Ye{x~
+This {-p{-h{-i{-l{-t{-e{-r{x from the {mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x bestows {Yc{yl{ca{Cr{ci{yt{Yy{x on those who quaff it.~
+unknown~
+potion AGY A
+102 'farsight' 'detect hidden' 'detect invis' 'dragon wisdom'
+1 0 1000 P
+#70108
+twilight pear~
+a {mt{Dw{wi{Wli{wg{Dh{mt {cp{wea{cr{x~
+This oddly bluish {cp{wea{cr{x was plucked from a tree in the {mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x.~
+unknown~
+pill AP A
+102 'sate' 'quench' 'cure poison' 'cure disease'
+1 0 500 P
+#70200
+black marble blood pool~
+a {Dblack{x marble pool overflowing with {Rb{rlood{x~
+{xA {Dblack marble {xpool rests in the floor, the {Rb{rl{Ro{ro{Rd {xwithin bubbling {Dviolently{x.~
+unknown~
+furniture AI 0
+100 100000 FIL 20000 20000
+0 1000 0 P
+#70201
+jade fountain~
+{WA fountain, in the shape of the {DDark Lady {MJ{Da{md{Me{x~
+{WA fountain, in the shape of the {DDark Lady {MJ{Da{md{Me{W is in the middle of the room.~
+unknown~
+fountain 0 0
+-1 -1 'water' 0 0
+0 0 0 P
+#70202
+harbinger chalice blood tattoo~
+{x[{D.{MH{D.{mo{D.{MS{D.{x] A {DChalice {xspilling {RB{rlood{x~
+A piece of rotten flesh lies here with ink on it.~
+ink~
+armor Y AW
+0 0 0 0 0
+50 0 30000 P
+A
+4 4
+A
+1 4
+A
+3 4
+A
+2 4
+A
+5 4
+A
+13 200
+A
+12 200
+A
+14 200
+A
+20 -20
+A
+18 90
+A
+19 90
+A
+17 -200
+#70203
+legion shard of bloodstone~
+[{RL{regio{Rn{w] {ra {CS{ch{Ca{cr{Cd {rof {DB{rl{Do{ro{Dd{rs{Dt{ro{Dn{re{x~
+A pure black earring lies on the ground here~
+onyx~
+armor 0 AV
+184 184 184 183 0
+201 150 5000000 P
+A
+19 40
+A
+18 40
+A
+13 400
+#70204
+jade tyranny enhancement potion~
+{DJade's {dT{dy{dr{da{dn{dn{dy{x~
+A corked vial lies here, looking rather nondescript.~
+unknown~
+potion PY A
+102 'sanctuary' 'haste' 'protection evil' 'anger'
+1 1 1000 P
+#70205
+jade rage potion~
+{DJade's {dR{da{dg{de{x~
+A bottle lies here, looking rather nondescript.~
+unknown~
+potion PY A
+102 'fly' 'farsight' 'bless' 'frenzy'
+1 1 1000 P
+#70206
+jade temptation healing potion~
+{DJade's {dT{de{dm{dp{dt{da{dt{di{do{dn{x~
+A potion lies here, looking rather nondescript.~
+unknown~
+potion PY A
+102 'superior healing' 'superior healing' 'heal' 'heal'
+50 1 1000 P
+#70207
+jade illusion shield potion~
+{DJade's {dI{dl{dl{du{ds{di{do{dn{x~
+A small glass bottle lies here.~
+unknown~
+potion BP A
+102 'iceshield' 'fireshield' 'shockshield' 'acidshield'
+50 0 1000 P
+#70208
+unbeliever heart~
+{RH{rear{Rt {Dof an {MU{mn{Db{Me{mli{Me{Dv{me{Mr{x~
+A still-beating {Rh{rear{Rt{x lies in its own blood.~
+unknown~
+pill P A
+102 'sate' 'quench' 'cure poison' 'cure disease'
+1 0 500 P
+#70209
+black marble harbinger table~
+the {Dblack{x table~
+A large {Dblack{x marble table stands here, the {MH{ma{Drb{win{Dge{mr{Ms{x emblem engraved in the center.~
+marble~
+furniture E 0
+6 100000 ADG 1000 1000
+0 100 0 P
+#70210
+granite throne~
+{MX{ma{De{mr{Mo{D's{x throne~
+A throne made of {Dgranite{x sits behind the head of the table.~
+granite~
+furniture E 0
+1 10000 FI 2500 2500
+0 100 0 P
+#70300
+pure white altar~
+{o{othe {opure {owhite {oaltar{x~
+{oA {opure {Wwhite {oaltar {ostands {ohere{o.{x~
+unknown~
+trash 0 0
+0 0 0 0 0
+0 0 0 P
+#70301
+perl fountain~
+{othe {op{oe{or{ol {ofoun{otain{o.{x~
+{oA {op{oe{or{ol {ofoun{otain {owith {+b{+r{+i{+g{+h{+t {og{ol{oe{oa{om{oi{on{og {owaters{o.{x~
+unknown~
+trash 0 0
+0 0 0 0 0
+0 0 0 P
+#70400
+dod snowflake tattoo~
+{8[{W::{CD{co{CD{W::{8] A {WS{wnowflake {8surrounded by {BR{bunes{x~
+An icy pool of ink lays on the ground.~
+ink~
+armor AP AW
+100 100 100 100 0
+50 0 30000 P
+A
+17 -200
+A
+18 90
+A
+19 90
+A
+20 -10
+A
+20 -10
+A
+12 200
+A
+13 200
+A
+14 200
+A
+5 4
+A
+1 4
+A
+2 4
+A
+4 4
+A
+3 4
+#70401
+DoD potion1~
+doD potion1: sanctuary, bless, farsight, protection good~
+You may change these spells if you like, but ask me first. Same with flags.~
+unknown~
+potion APY A
+102 'sanctuary' 'bless' 'farsight' 'protection good'
+1 1 1000 P
+#70402
+heap polar bear blankets~
+a large inviting {Bh{beap{x of {wp{Wo{wl{Wa{wr {Wb{we{Wa{wr{x fur {Dblankets{x~
+A large inviting {Bh{beap{x of {wp{Wo{wl{Wa{wr {Wb{we{Wa{wr{x fur {Dblankets{x is piled in the corner.~
+unknown~
+furniture 0 0
+100 1000000 CFIL 20000 20000
+0 0 0 P
+#70403
+DoD potion2~
+{CF{croze{Cn {BT{bear{Bs {8of {CS{ch{wa{Wr{w{xt{cy{Cn{x~
+A vial of small tear-shaped {Ci{cc{Ci{cl{Ce{cs{x lays here.~
+unknown~
+potion APY A
+102 'anger' 'frenzy' 'haste' 'giant strength'
+1 1 1000 P
+#70404
+DoD shield potion~
+doD shield potion~
+Pick a fourth shield/defense spell.  Fireshield seemed bad.~
+unknown~
+potion APY A
+102 'iceshield' 'shockshield' 'acidshield' 'drain blade'
+50 1 1000 P
+#70405
+healing breath~
+{8A {CB{cr{Wea{ct{Ch {8of {CC{coo{Cl {WA{cir{x~
+A {Cc{coo{Cl {xflask of swirling {Wa{cir {xhas been left here.~
+unknown~
+potion APY A
+102 'superior healing' 'superior healing' 'heal' 'heal'
+50 1 1000 P
+#70410
+frozen altar~
+{wa large {Cf{crozen {waltar adorned with {Bce{br{Ce{cmo{Cn{bi{Bal {wcloths{x~
+{wA large {Cf{crozen {waltar adorned with {Bce{br{Ce{cmo{Cn{bi{Bal {wcloths sits at the front of the room.~
+unknown~
+furniture 0 0
+20 50000 ADGJN 500 500
+0 0 0 P
+#70411
+goddess sculpture~
+{8a beautifully crafted {Ci{cc{Ce {cs{Cc{cu{Cl{cp{Ct{cu{Cr{ce {8of {BS{bh{Ca{cr{Ct{by{Bn{x~
+{8A beautifully crafted {Ci{cc{Ce {cs{Cc{cu{Cl{cp{Ct{cu{Cr{ce {8of {BS{bh{Ca{cr{Ct{by{Bn{8 stands behind the altar.{x~
+unknown~
+furniture A 0
+0 0 0 0 0
+0 0 0 P
+#70498
+marble table~
+{8a long {Wi{wvory {8and {Wo{8nxy swirled marble table{x~
+{8A long {Wi{wvory {8and {Wo{8nxy swirled marble table sits in the middle of the room.{x~
+unknown~
+furniture A 0
+20 90000 DG 0 0
+0 0 0 P
+#70499
+ice icicle pool~
+{xa pool of {8melted {Ci{cc{Ci{cc{Cl{ce{Cs{x~
+{xA pool of {8melted {Ci{cc{Ci{cc{Cl{ce{Cs{x has formed here.~
+unknown~
+fountain 0 0
+0 0 'water' 0 0
+0 0 0 P
+#70500
+unused~
+(unused)~
+(unused)~
+unknown~
+trash 0 0
+0 0 0 0 0
+0 0 0 P
+#70501
+iron rust candle~
+{pa {pc{pa{pn{pd{pl{pe{x~
+{DA {pca{pn{pd{pl{pe {Dsitting in a {rrusted iron{D holder has been attached to the wall here.{x~
+iron wax~
+light A 0
+0 0 999 0 0
+0 0 0 P
+#70502
+healing pool~
+{Da {-g{-l{-i{-m{-m{-e{-r{-i{-n{-g {Cpool{D of {qh{qe{qa{ql{qi{qn{qg{x~
+{Da {-g{-l{-i{-m{-m{-e{-r{-i{-n{-g {Cpool{D of {qh{qe{qa{ql{qi{qn{qg {Dis in the corner.{x~
+healing~
+furniture AB 0
+100 100000 FIL 20000 20000
+0 0 0 P
+#70503
+donation pit~
+{DA {rrusted iron {wdonation {Dpit{x~
+{DA {rrusted iron {wdonation {Dpit sits here in the middle of room.{x~
+rusted iron~
+pit OY 0
+0 0 0 1000 1000
+0 0 0 P
+#70504
+power disciples~
+{IP{Io{Iw{Ie{Ir {IO{If {IT{Ih{Ie {ID{Ii{Is{Ic{Ii{I{Ip{Il{Ie{Is{x~
+{IA {Ip{Io{It{Ii{Io{In {Io{If {IP{Io{Iw{Ie{Ir {IO{If {IT{Ih{Ie {ID{Ii{Is{Ic{Ii{Ip{Il{Ie{Is {Il{Ia{Iys {Ih{Ie{Ir{Ie{I.{x~
+glass~
+potion AGPSY AO
+50 'giant strength' 'armor' 'shield' 'haste'
+50 0 1000 P
+#70505
+shields~
+{DA {wpotion {wof {*S{*h{*i{*e{*l{*d{*s {+O{+f {+T{+h{+e {+D{+i{+s{+c{+i{+p{+l{+e{+s{x~
+{DA {wpotion {wof {*S{*h{*i{*e{*l{*d{*s {+O{+f {+T{+h{+e {+D{+i{+s{+c{+i{+p{+l{+e{+s {Dis laying here.{x~
+glass~
+potion AGPSY AO
+50 'iceshield' 'fireshield' 'shockshield' 'poisonshield'
+50 0 1000 P
+#70507
+protection~
+{wa potion of {OP{Or{Oo{Ot{Oe{Oc{Ot{Oi{Oo{On {+O{+f {+T{+h{+e {+D{+i{+s{+c{+i{+p{+l{+e{+s{x~
+{wa potion of {OP{Or{Oo{Ot{Oe{Oc{Ot{Oi{Oo{On {+O{+f {+T{+h{+e {+D{+i{+s{+c{+i{+p{+l{+e{+s{w is laying here.{x~
+glass~
+potion AGPSY AO
+50 'briarshield' 'acidshield' 'sanctuary' 'protection good'
+50 0 1500 P
+#70600
+table~
+{wa long table{x~
+{wA long table traces the wall here.{x~
+wood~
+furniture AI 0
+2 20000 E 0 0
+0 0 0 P
+#70601
+wood~
+{wa {ywooden {wsign{x~
+{wA {ywooden {wsign hangs on the wall.{x~
+unknown~
+trash 0 0
+0 0 0 0 0
+0 0 0 P
+#70602
+desk~
+{wa fine {ywooden{w desk{x~
+{wA fine {ywooden{w desk sits here in front of the {Wmerchant.{x~
+fine wood~
+furniture I 0
+0 0 E 0 0
+0 0 0 P
+#70603
+glimmering fountain~
+{oa {og{ol{oi{om{om{oe{or{oi{on{og {of{oo{ou{on{ot{oa{oi{on{x~
+{oA {og{ol{oi{om{om{oe{or{oi{on{og {of{oo{ou{on{ot{oa{oi{on{w sits here squarely in the middle of the room.{x~
+stone~
+fountain AI 0
+-1 -1 'water' 0 0
+0 0 0 P
+#70604
+glimmering celestial couch sofa~
+{xthe {Yc{ye{Yl{ye{Ys{yt{Yi{ya{Yl {Cs{cof{Ca{x~
+A {Yp{ylus{Yh{x, {Cg{cli{Cm{cmeri{Cn{cg {Ccou{cc{Ch{x covered in white {Wpillows{x spans three walls.~
+unknown~
+furniture AIY 0
+100 100000 EHK 20000 20000
+0 0 0 P
+#70605
+potion holy empowerment~
+{YH{yo{Yl{yy {CE{cm{Cp{co{Cw{ce{Cr{cm{Ce{cn{Ct{x~
+{qA {qp{qo{qt{qi{qo{qn of {oh{oo{ol{oy {oe{om{op{oo{ow{oe{or{om{oe{on{ot {wis laying here.{x~
+glass~
+potion APUY AO
+102 'stone skin' 'haste' 'giant strength' 'protection evil'
+1 1 1000 P
+#70606
+potion shielding~
+{YC{ye{Yl{ye{Ys{yt{Yi{ya{Yl {CS{ch{Ci{ce{Cl{cd{Ci{cn{Cg{x~
+A small glass vial lies here, shining slightly.~
+unknown~
+potion APY AO
+102 'iceshield' 'fireshield' 'shockshield' 'acidshield'
+50 1 1000 P
+#70607
+celestial attunement potion~
+{YC{ye{Yl{ye{Ys{yt{Yi{ya{Yl {CA{ct{Ct{cu{Cn{ce{Cm{ce{Cn{ct{x~
+A bottle has been disgarded and tossed on the ground here.~
+glass~
+potion APY AO
+102 'bless' 'frenzy' 'fly' 'sanctuary'
+1 1 1000 P
+#70608
+vial paladins kiss~
+{YP{ya{Yl{ya{Yd{yi{Yn{y'{Ys {CK{ci{Cs{cs~
+A beautiful crystal vial floats here on a cloud of mist.~
+glass~
+potion APY AO
+102 'superior healing' 'superior healing' 'heal' 'heal'
+50 1 1000 P
+#70609
+TCC clan tattoo ctattoo~
+{x[{D.{wT{D.{YC{D.{CC{D.{x] {W>{D>{W>{YG{yo{Yl{yd{Ye{yn {YW{ya{wr {WHam{wm{ye{Yr {xwith {WWh{wi{Wt{we {WW{wi{Wn{wg{Ws{Y<{y<{Y<{x~
+A piece of flesh lies here rotting, with ink on it.~
+unknown~
+armor AISY AW
+100 100 100 100 0
+50 0 30000 P
+A
+20 -20
+A
+1 4
+A
+3 4
+A
+4 4
+A
+2 4
+A
+5 4
+A
+18 90
+A
+19 90
+A
+17 -200
+A
+13 200
+A
+12 200
+A
+14 200
+#70610
+ambrosia~
+a {pb{po{pw{pl{x of {-a{-m{-b{-r{-o{-s{-i{-a{x~
+A small {pb{po{pw{pl{x of {-a{-m{-b{-r{-o{-s{-i{-a{x, food of the gods, awaits consumption.~
+unknown~
+pill AP A
+102 'sate' 'quench' 'cure poison' 'cure disease'
+1 0 500 P
+#70700
+lethe river forgetfulness void~
+the {WR{wi{Dv{we{Wr {DL{we{Wt{wh{De{x~
+The dark waters of the {Dr{wi{Wv{we{Dr{x of {mf{bo{Drg{wet{Wf{wul{Dne{bs{ms{x pass through, offering oblivion.~
+unknown~
+fountain ACI 0
+-1 -1 'water' 0 0
+0 1000 0 P
+#70703
+black water healing pool void~
+the {bb{Dla{wc{Wk {wp{Doo{bl{x~
+A pool of blackest water welcomes you into its {ms{bo{Do{wth{Di{bn{mg{x depths.~
+unknown~
+furniture ACI 0
+100 100000 ADIL 20000 20000
+0 1000 0 P
+#70705
+sweetened black rice~
+{Ds{ww{Weeten{we{Dd black r{wi{Wc{De{x~
+A bowl of black sticky rice sits here, lightly sweetened.~
+unknown~
+pill P A
+102 'sate' 'quench' 'cure poison' 'cure disease'
+1 0 500 P
+#70706
+void pocket~
+a {DP{wo{Wck{we{Dt {xof {bV{Do{wi{bd{x~
+A pocket of {bv{Do{wi{bd{x seems to pull hungrily at everything around it.~
+unknown~
+container CGIY AQ
+1000 A 0 1000 75
+50 0 5000 P
+A
+20 -1
+A
+14 -100
+A
+12 -100
+A
+13 -100
+#70707
+circlet darkness void tattoo~
+{x[{D({bVoid.{D){x] {DA {mC{bi{Dr{wc{Dl{be{mt {Dof {mD{ba{Dr{wkn{De{bs{ms{x~
+A small circle of {md{ba{Dr{wkn{De{bs{ms{x awaits some skin to feed upon.~
+ink~
+armor CIPY AW
+100 100 100 100 0
+50 0 30000 P
+A
+17 -200
+A
+19 90
+A
+18 90
+A
+14 200
+A
+12 200
+A
+13 200
+A
+20 -20
+A
+2 4
+A
+3 4
+A
+5 4
+A
+1 4
+A
+4 4
+#70708
+oblivion comfort heal potion~
+{mO{bb{Dl{wi{Wvi{wo{Dn{b'{ms C{bo{Dm{wf{Do{br{mt{x~
+A small bottle eminates a warm, {mc{bo{Dm{wf{Wor{wt{Di{bn{mg{x aroma.~
+unknown~
+potion APY A
+102 'superior healing' 'superior healing' 'heal' 'heal'
+50 0 1000 P
+#70709
+Essence Obliteration shield potion~
+{mE{bs{Ds{we{Dn{bc{me {xof {WO{wb{Dl{bi{mtera{bt{Di{wo{Wn{x~
+A strange vial has been tossed to the ground.~
+unknown~
+potion APY A
+102 'iceshield' 'fireshield' 'shockshield' 'acidshield'
+50 0 1000 P
+#70710
+serum insatiable hunger~
+{RS{rerum {xof {DI{rns{Ratia{rbl{De {RH{runger{x~
+Red fluid bubbles {Rh{rungril{Ry{x within a glass vial.~
+unknown~
+potion APY A
+102 'anger' 'frenzy' 'haste' 'giant strength'
+1 0 1000 P
+#70711
+void blessing potion~
+{WB{wl{De{mss{Di{wn{Wg {xof the {bV{Do{wi{bd{x~
+A small vial bearing the essence of the {bv{Do{wi{bd{x lies here.~
+unknown~
+potion APY A
+102 'sanctuary' 'farsight' 'bless' 'protection good'
+1 0 1000 P
+#70712
+ethereal bookcase~
+the {me{bt{Dher{wea{Wl b{woo{Dkca{bs{me{x~
+A {mb{bo{Do{wkc{Da{bs{me{x built of blackest {Dether{x stands against the far wall.~
+ether~
+container 0 0
+0 0 0 100 0
+0 0 0 P
+#70713
+darkness couch~
+a {md{ba{Dr{wk {Wc{wo{Du{bc{mh{x~
+A {Dcouch{x constructed of darkness looks out over the river of lamentation.~
+darkness~
+furniture C 0
+3 30000 BEHK 1000 1000
+0 0 0 P
+#70714
+moldy tome morbid morla musings~
+{DA {gm{Go{yl{gdy {wt{Dom{we {Dentitled {m"{DThe {wM{Dorbid {wM{Dusings {Dof {yM{gorla {Dthe {yA{gged {yO{gne{m"{x~
+A dirty old {ybook{x covered in {gm{Go{yl{gd{x gives off a faint swampy stench.~
+paper~
+treasure P AO
+0 0 0 0 0
+1 2 686 P
+E
+tome~
+{g"{DThe world is empty and aimless. Everything circles around. Whatever starts up
+{D must pass away, whatever is born must die.  It all cancels out, good and bad,
+{D beautiful and ugly.  Everything's empty.  Nothing is real.  Nothing matters.{g"
+{w                                               -- {yM{gorla {Dthe {yA{gged {yO{gne{x
+~
+E
+morla~
+{g"{DThe world is empty and aimless. Everything circles around. Whatever starts up
+{D must pass away, whatever is born must die.  It all cancels out, good and bad,
+{D beautiful and ugly.  Everything's empty.  Nothing is real.  Nothing matters.{g"
+{w                                               -- {yM{gorla {Dthe {yA{gged {yO{gne{x
+~
+#0
+
+
+
+#ROOMS
+#70700
+{wH{Dear{wt {Dof {mO{bb{Dl{wiv{Di{bo{mn{x~
+{DA{bt the edge of oblivion, existence teeters between death and rebir{Dt{wh{W,
+{Wc{wo{Dn{bstantly caught in an endless cycle of creation and destruction.  {DA{wl{Wl
+{Wi{ws{D {bdarkness and possibility.  Upon some distant horizon, it is possi{Db{wl{We
+{Wt{wo{D {bglimpse a faint flickering of life, caught in the periphery of si{Dg{wh{Wt
+{Wa{wn{Dd{b never allowing full view.  Potential flutters out of reach, keep{Di{wn{Wg
+{Wi{wt{Ds{b distance from the insatiable hunger of the void.  At this point,{D {wi{Wt
+{Wm{wa{Dy{b be possible to escape, to not give in to the sinking feeling ach{Di{wn{Wg
+{Ww{wi{Dt{bhin. Another step into the dark oblivion may mean utter loss of s{De{wl{Wf
+{Wa{wn{Dd{b control and sanity and perhaps life.  To cross into the depths, {Do{wn{We
+{Wm{wu{Ds{bt pass over the River Lethe, its cold and steely waters drowning {Da{wl{Wl
+{Wt{wr{Da{bces of memory.{x
+~
+0 8204 0
+D0
+~
+~
+0 0 70705
+D1
+~
+~
+0 0 70703
+D2
+~
+~
+0 0 70704
+D3
+~
+~
+0 0 70701
+D4
+~
+~
+0 0 70718
+D5
+~
+~
+0 0 2907
+S
+#70701
+{wA{Dlta{wr {Dof {bN{Di{wg{Dh{bt{x~
+{DT{bhe darkness of night is all encompassing.  Cool black grass crunc{Dh{we{Ws
+{Wb{we{Dn{beath the footfalls of Followers.  A china-white moon hangs above {Dt{wh{We
+{Wa{wr{De{ba, eternally waxing and waning. Glittering stars illuminate the v{Da{ws{Wt
+{Wl{wa{Dn{bdscape of night as she sings a sad, entrancing lullaby. Night's s{Do{wn{Wg
+{Wc{wa{Dl{bls to everyone, beckoning all to do her bidding. Passing through,{D {wi{Wt
+{Wi{ws{D {bpossible to catch the occasional glimpse of someone else's dreams{D,{w {Wa
+{Wf{wr{Da{bgment of possibility passing through night's domain.  Night herse{Dl{wf{W,
+{Wa{wl{Dl{b pitch and starlight, grins with knowing, offering tasks and rewa{Dr{wd{Ws
+{Wt{wo{D {bthe few souls willing to brave the depths of her realm, home of b{Do{wt{Wh
+{Wd{wr{De{bam and nightmare, fantastic and horrible, light and shadow.{x
+~
+0 8200 0
+D0
+~
+~
+0 0 70725
+D1
+~
+~
+0 0 70700
+D2
+~
+~
+0 0 70706
+D3
+~
+~
+0 0 70709
+S
+#70702
+{wB{Defor{we {Dthe {wH{Dollo{ww H{Dall{ws{x~
+~
+0 12 0
+D0
+~
+~
+3 0 70704
+D2
+~
+~
+0 0 70799
+M 75 H 75
+S
+#70703
+{wA{Dlta{wr {Dof {mS{cl{Ce{ce{mp{x~
+{DN{bight is complete here,  existing constantly at its moment of full{De{ws{Wt
+{Wd{wa{Dr{bkness.  All is pitch black. Not even the faintest pinpricks of st{Da{wr{Ws
+{Wd{wa{Dr{be mar the perfect beauty of the unending blackness.  There is a w{Da{wr{Wm
+{Wa{wn{Dd{b welcoming air here in the depths of darkness. Warm black water l{Da{wp{Ws
+{Wa{wt{D {bthe black sands unseen in this darkness.  The gentle, lulling rht{Dh{wy{Wm
+{Wo{wf{D {bthe tides soothes and relaxes,  luring one into perpetual slumber{D {wi{Wn
+{Wt{wh{De{b complete calm of this darkestness.  So alive is this darkness as{D {wi{Wt
+{Ws{wi{Dn{bgs its silent serenade, one might imagine it had a consciousness {Da{wn{Wd
+{Wb{we{Dl{bieve it to be a sentient being of its own accord,  pulling wander{De{wr{Ws
+{Wi{wn{Dt{bo the fold of the void where they can wither willingly into nothi{Dn{wg{W.{x
+~
+0 9224 0
+D0
+~
+~
+0 0 70722
+D1
+~
+~
+0 0 70719
+D2
+~
+~
+0 0 70724
+D3
+~
+~
+0 0 70700
+M 1000 H 1000
+S
+#70704
+{wE{Dnterin{wg {Dthe {wH{Dollo{ww H{Dall{ws{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70700
+D1
+~
+~
+0 0 70724
+D2
+~
+~
+3 0 70702
+D3
+~
+~
+0 0 70706
+S
+#70705
+{wA{Dlta{wr {Dof {bD{Dar{wkn{Des{bs{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70716
+D1
+~
+~
+0 0 70722
+D2
+~
+~
+0 0 70700
+D3
+~
+~
+0 0 70725
+S
+#70706
+{wH{Dollo{ww H{Dall{ws{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70701
+D1
+~
+~
+0 0 70704
+S
+#70707
+{MX{mayide's {wO{Dffic{we{x~
+~
+0 8200 0
+D0
+~
+~
+1 0 70709
+S
+#70708
+{DAn {wE{Dmpt{wy {DOffice{x~
+~
+0 8200 0
+D2
+~
+~
+1 0 70709
+S
+#70709
+{wA{Dlta{wr {Dof {RD{reat{Rh{x~
+~
+0 8200 0
+D0
+~
+~
+1 0 70708
+D1
+~
+~
+0 0 70701
+D2
+~
+~
+1 0 70707
+S
+#70710
+{RA{rren{Ra {Dof {RA{rnn{Di{wh{Wil{wa{Dt{rio{Rn{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70713
+D1
+~
+~
+0 0 70711
+D2
+~
+~
+0 0 70712
+S
+#70711
+{RA{rren{Ra {Dof {RA{rnn{Di{wh{Wil{wa{Dt{rio{Rn{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70715
+D2
+~
+~
+0 0 70714
+D3
+~
+~
+0 0 70710
+S
+#70712
+{RA{rren{Ra {Dof {RA{rnn{Di{wh{Wil{wa{Dt{rio{Rn{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70710
+D1
+~
+~
+0 0 70714
+S
+#70713
+{RA{rren{Ra {Dof {RA{rnn{Di{wh{Wil{wa{Dt{rio{Rn{x~
+~
+0 8200 0
+D1
+~
+~
+0 0 70715
+D2
+~
+~
+0 0 70710
+D5
+~
+~
+0 0 70799
+S
+#70714
+{RA{rren{Ra {Dof {RA{rnn{Di{wh{Wil{wa{Dt{rio{Rn{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70711
+D3
+~
+~
+0 0 70712
+D5
+~
+~
+0 0 70798
+S
+#70715
+{RA{rren{Ra {Dof {RA{rnn{Di{wh{Wil{wa{Dt{rio{Rn{x~
+~
+0 8200 0
+D2
+~
+~
+0 0 70711
+D3
+~
+~
+0 0 70713
+S
+#70716
+{wA{Dlta{wr {Dof {RD{restructio{Rn{x~
+~
+0 12296 0
+D1
+~
+~
+0 0 70723
+D2
+~
+~
+0 0 70705
+D3
+~
+~
+0 0 70726
+S
+#70717
+{DA {cC{Cr{Wy{ws{Dt{wa{Wl{w-{Dl{wi{Wn{Ce{cd {DC{wa{Wve{wr{Dn{x~
+~
+0 9228 0
+S
+#70718
+{wC{Dhambe{wr {Dof the {mM{ba{Dn{wy {WD{wo{Do{br{ms{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 355
+D1
+~
+~
+0 0 40300
+D2
+~
+~
+0 0 9206
+D3
+~
+~
+0 0 40580
+D4
+~
+~
+0 0 2377
+D5
+~
+~
+0 0 70700
+S
+#70719
+{wA{Dlta{wr {Dof {mD{Despai{mr{x~
+~
+0 8200 0
+D0
+~
+~
+1 0 70720
+D2
+~
+~
+1 0 70721
+D3
+~
+~
+0 0 70703
+M 500 H 500
+S
+#70720
+{DAn {wE{Dmpt{wy {DOffice{x~
+~
+0 8200 0
+D2
+~
+~
+1 0 70719
+S
+#70721
+{RE{rrzsebet's {wO{Dffic{we{x~
+~
+0 532488 0
+D0
+~
+~
+1 0 70719
+S
+#70722
+{wH{Dollo{ww H{Dall{ws{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70723
+D2
+~
+~
+0 0 70703
+D3
+~
+~
+0 0 70705
+S
+#70723
+{wH{Dollo{ww H{Dall{ws{x~
+~
+0 8200 0
+D2
+~
+~
+0 0 70722
+D3
+~
+~
+0 0 70716
+S
+#70724
+{wH{Dollo{ww H{Dall{ws{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70703
+D3
+~
+~
+0 0 70704
+S
+#70725
+{wH{Dollo{ww H{Dall{ws{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70726
+D1
+~
+~
+0 0 70705
+D2
+~
+~
+0 0 70701
+S
+#70726
+{wH{Dollo{ww H{Dall{ws{x~
+~
+0 8200 0
+D1
+~
+~
+0 0 70716
+D2
+~
+~
+0 0 70725
+S
+#70750
+{wA{Dpproachin{wg {Dthe {RF{rive {RR{rivers{x~
+{DGreat grey plains stretch out in all directions.  In most directions,
+the horizon shifts from time to time, offering passage to various lands
+and escape from these gruesome depths.  To the north, however, the view
+is constant: the seemingly endless grey sand banks of the Acheron.  The
+air feels heavy hear and is filled with sorrowful moans.  Perhaps it is
+best to turn back now, before the despair is overwhelming.{x
+~
+0 8204 0
+D0
+~
+~
+0 0 70751
+C Void~
+S
+#70751
+{wB{Dank{ws {Dof the {RA{rchero{Rn{x~
+{DThe dreary grey sand banks of the Acheron stretch east and west along
+the edge of the black river. Pained moaning fills the air and moves the
+souls of those who dare to walk these shores with a sense of agony.  In
+the distance to the west, a dark figure can be seen by the wide river.{x
+~
+0 8200 0
+D1
+~
+~
+0 0 70752
+D2
+~
+~
+0 0 70750
+D3
+~
+~
+0 0 70753
+S
+#70752
+{wB{Dank{ws {Dof the {RA{rchero{Rn{x~
+{DThe dreary grey sand banks of the Acheron stretch east and west along
+the edge of the black river. Pained moaning fills the air and moves the
+souls of those who dare to walk these shores with a sense of agony.  It
+seems as if this river goes on forever, its broad depths impassible.{x
+~
+0 8200 0
+D1
+~
+~
+0 0 70752
+D3
+~
+~
+0 0 70751
+S
+#70753
+{wB{Dank{ws {Dof the {RA{rchero{Rn{x~
+{DThe black river curves slowly to the north, its banks growing steeper
+at the bend. The soft grey sand erodes with the endless flow. The river
+seems to stretch endlessly to the east, but the figure to the north may
+be closer now, though it is still dark and indistinguishable.{x
+~
+0 8200 0
+D0
+~
+~
+0 0 70754
+D1
+~
+~
+0 0 70751
+S
+#70754
+{wB{Dank{ws {Dof the {RA{rchero{Rn{x~
+{DA long, low boat has been tied upon  this {ws{Douther{wn{D bank of the river.
+The dark waters of the Acheron lap against its sides monotonously, adding
+to the drear.  The river seems at its narrowest to the east, though still
+unpassable without the ferry.  The figure by the boat waits patiently.{x
+~
+0 8200 0
+D1
+~
+~
+0 0 70756
+D2
+~
+~
+0 0 70753
+D3
+~
+~
+0 0 70755
+S
+#70755
+{wB{Dank{ws {Dof the {RA{rchero{Rn{x~
+{DThe dreary grey sand banks of the Acheron stretch east and west along
+the edge of the black river. Pained moaning fills the air and moves the
+souls of those who dare to walk these shores with a sense of agony.  In
+the distance to the east, a dark figure can be seen.  Beyond that, this
+river seems to go on forever, its broad depths impassible.{x
+~
+0 8200 0
+D1
+~
+~
+0 0 70754
+D3
+~
+~
+0 0 70755
+S
+#70756
+{RA{rchero{Rn{D, {wR{Dive{wr {Dof {rW{Ro{re{x~
+{DYou are drowning in the black, miserable depths of the Acheron.{x
+~
+0 8200 6
+D1
+~
+~
+0 0 70757
+D3
+~
+~
+0 0 70754
+S
+#70757
+{wB{Dank{ws {Dof the {RA{rchero{Rn{x~
+{DA long, low boat has been tied upon  this {wn{Dorther{wn{D bank of the river.
+The dark waters of the Acheron lap against its sides monotonously, adding
+to the drear.  The river seems at its narrowest to the west, though still
+unpassable without the ferry.  The figure by the boat waits patiently.{x
+~
+0 8200 0
+D0
+~
+~
+0 0 70759
+D1
+~
+~
+0 0 70758
+D3
+~
+~
+0 0 70756
+S
+#70758
+{wB{Dank{ws {Dof the {RA{rchero{Rn{x~
+{DThe dreary grey sand banks of the Acheron stretch east and west along
+the edge of the black river. Pained moaning fills the air and moves the
+souls of those who dare to walk these shores with a sense of agony.  In
+the distance to the west, a dark figure can be seen.  Beyond that, this
+river seems to go on forever, its broad depths impassible.{x
+~
+0 8200 0
+D1
+~
+~
+0 0 70758
+D3
+~
+~
+0 0 70757
+S
+#70759
+{wB{Dank{ws {Dof the {RA{rchero{Rn{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70765
+D1
+~
+~
+0 0 70761
+D2
+~
+~
+0 0 70757
+D3
+~
+~
+0 0 70760
+S
+#70760
+{wB{Dank{ws {Dof the {RA{rchero{Rn{x~
+~
+0 8200 0
+D1
+~
+~
+0 0 70759
+D3
+~
+~
+0 0 70760
+S
+#70761
+{wB{Dank{ws {Dof the {MC{mocytu{Ms{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70764
+D1
+~
+~
+0 0 70762
+D3
+~
+~
+0 0 70759
+S
+#70762
+{wB{Dank{ws {Dof the {MC{mocytu{Ms{x~
+~
+0 8200 0
+D2
+~
+~
+0 0 70763
+D3
+~
+~
+0 0 70761
+S
+#70763
+{wB{Dank{ws {Dof the {MC{mocytu{Ms{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70762
+S
+#70764
+{wB{Dank{ws {Dof the {MC{mocytu{Ms{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70767
+D1
+~
+~
+0 0 70768
+D2
+~
+~
+0 0 70761
+D3
+~
+~
+0 0 70765
+S
+#70765
+{wB{Dank{ws {Dof the {MC{mocytu{Ms{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70766
+D1
+~
+~
+0 0 70764
+D2
+~
+~
+0 0 70759
+S
+#70766
+{wB{Dank{ws {Dof the {MC{mocytu{Ms{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70766
+D1
+~
+~
+0 0 70767
+D2
+~
+~
+0 0 70765
+D3
+~
+~
+0 0 70766
+S
+#70767
+{wB{Dank{ws {Dof the {MC{mocytu{Ms{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70767
+D2
+~
+~
+0 0 70764
+D3
+~
+~
+0 0 70766
+S
+#70768
+{wB{Dridg{we {Dover the {MC{mocytu{Ms{D, {wR{Dive{wr {Dof {ML{mamentatio{Mn{x~
+~
+0 8200 0
+D1
+~
+~
+0 0 70769
+D3
+~
+~
+0 0 70764
+S
+#70769
+{wB{Dank{ws {Dof the {YP{yh{rle{Rge{rth{yo{Yn{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70770
+D1
+~
+~
+0 0 70775
+D2
+~
+~
+0 0 70771
+D3
+~
+~
+0 0 70768
+S
+#70770
+{wB{Dank{ws {Dof the {YP{yh{rle{Rge{rth{yo{Yn{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70770
+D1
+~
+~
+0 0 70776
+D2
+~
+~
+0 0 70769
+S
+#70771
+{wB{Dank{ws {Dof the {YP{yh{rle{Rge{rth{yo{Yn{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70769
+D1
+~
+~
+0 0 70772
+S
+#70772
+{wB{Dank{ws {Dof the {YP{yh{rle{Rge{rth{yo{Yn{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70775
+D1
+~
+~
+0 0 70773
+D3
+~
+~
+0 0 70771
+S
+#70773
+{wB{Dank{ws {Dof the {YP{yh{rle{Rge{rth{yo{Yn{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70774
+D1
+~
+~
+0 0 70773
+D3
+~
+~
+0 0 70772
+S
+#70774
+{YP{yh{rle{Rge{rth{yo{Yn{D, {wR{Dive{wr {Dof {OF{Oi{Or{Oe{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70777
+D1
+~
+~
+0 0 70774
+D2
+~
+~
+0 0 70773
+D3
+~
+~
+0 0 70775
+S
+#70775
+{YP{yh{rle{Rge{rth{yo{Yn{D, {wR{Dive{wr {Dof {OF{Oi{Or{Oe{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70776
+D1
+~
+~
+0 0 70774
+D2
+~
+~
+0 0 70772
+D3
+~
+~
+0 0 70769
+S
+#70776
+{YP{yh{rle{Rge{rth{yo{Yn{D, {wR{Dive{wr {Dof {OF{Oi{Or{Oe{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70776
+D1
+~
+~
+0 0 70777
+D2
+~
+~
+0 0 70775
+D3
+~
+~
+0 0 70770
+S
+#70777
+{wB{Dank{ws {Dof the {YP{yh{rle{Rge{rth{yo{Yn{x~
+~
+0 8200 0
+D1
+~
+~
+0 0 70778
+D2
+~
+~
+0 0 70774
+D3
+~
+~
+0 0 70776
+S
+#70778
+{wB{Dank{ws {Dof the {DL{weth{De{x~
+~
+0 8200 0
+D1
+~
+~
+0 0 70779
+D3
+~
+~
+0 0 70777
+S
+#70779
+{wB{Dank{ws {Dof the {DL{weth{De{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70780
+D3
+~
+~
+0 0 70778
+S
+#70780
+{wB{Dridg{we {Dover the {DL{weth{De{x~
+1
+~
+0 8200 0
+D0
+~
+~
+0 0 70781
+D2
+~
+~
+0 0 70779
+S
+#70781
+{wB{Dridg{we {Dover the {DL{weth{De{x~
+2
+~
+0 8200 0
+D0
+~
+~
+0 0 70782
+D2
+~
+~
+0 0 70781
+S
+#70782
+{wB{Dridg{we {Dover the {DL{weth{De{x~
+3
+~
+0 8200 0
+D0
+~
+~
+0 0 70781
+D2
+~
+~
+0 0 70783
+S
+#70783
+{wB{Dridg{we {Dover the {DL{weth{De{x~
+4
+~
+0 8200 0
+D0
+~
+~
+0 0 70784
+D2
+~
+~
+0 0 70783
+S
+#70784
+{wB{Dridg{we {Dover the {DL{weth{De{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70782
+D2
+~
+~
+0 0 70785
+S
+#70785
+{wB{Dridg{we {Dover the {DL{weth{De{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70784
+D2
+~
+~
+0 0 70786
+S
+#70786
+{wB{Dridg{we {Dover the {DL{weth{De{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70787
+D2
+~
+~
+0 0 70783
+S
+#70787
+{wB{Dridg{we {Dover the {DL{weth{De{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70785
+D2
+~
+~
+0 0 70788
+S
+#70788
+{wB{Dridg{we {Dover the {DL{weth{De{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70789
+D2
+~
+~
+0 0 70784
+S
+#70789
+{wB{Dridg{we {Dover the {DL{weth{De{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70788
+D2
+~
+~
+0 0 70790
+S
+#70790
+{wB{Dridg{we {Dover the {DL{weth{De{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70791
+D2
+~
+~
+0 0 70787
+S
+#70791
+{wB{Dridg{we {Dover the {DL{weth{De{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70786
+D2
+~
+~
+0 0 70792
+S
+#70792
+{wB{Dridg{we {Dover the {DL{weth{De{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70793
+D2
+~
+~
+0 0 70790
+S
+#70793
+{wB{Dank{ws {Dof the {DL{weth{De{x~
+~
+0 8200 0
+D1
+~
+~
+0 0 70794
+D2
+~
+~
+0 0 70792
+S
+#70794
+{wB{Dank{ws {Dof the {RS{rty{Rx{x~
+~
+0 8200 0
+D1
+~
+~
+0 0 70795
+D3
+~
+~
+0 0 70793
+S
+#70795
+{wB{Dank{ws {Dof the {RS{rty{Rx{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70796
+D3
+~
+~
+0 0 70794
+S
+#70796
+{wB{Dank{ws {Dof the {RS{rty{Rx{x~
+~
+0 8200 0
+D2
+~
+~
+0 0 70795
+D3
+~
+~
+0 0 70797
+S
+#70797
+{RS{rty{Rx{D, {wR{Dive{wr {Dof {RH{ratre{Rd{x~
+~
+0 8200 0
+D1
+~
+~
+0 0 70796
+D3
+~
+~
+0 0 70798
+S
+#70798
+{wB{Dank{ws{D of the {RS{rty{Rx{x~
+~
+0 8200 0
+D1
+~
+~
+0 0 70797
+D4
+~
+~
+0 0 70714
+S
+#70799
+{wB{Deyon{wd {Dthe {RF{rive {RR{rivers{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70702
+D4
+~
+~
+0 0 70713
+S
+#70999
+(unused)~
+~
+0 4 0
+S
+#71000
+(unused)~
+~
+0 262156 0
+S
+#70000
+{D-=({RG{raalstrom {RN{ri{Dg{wh{Wtw{wa{Dt{rc{Rh {MM{main {MO{mffice{D)=-{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 3110
+D1
+~
+~
+0 0 70001
+D2
+~
+~
+0 0 70005
+D3
+~
+~
+0 0 70007
+C Watch~
+S
+#70001
+{D-=({RG{raalstrom {RN{ri{Dg{wh{Wtw{wa{Dt{rc{Rh {MI{mnfirmary{D)=-{x~
+~
+0 9224 0
+D0
+~
+~
+0 0 70002
+D2
+~
+~
+0 0 70004
+D3
+~
+~
+0 0 70000
+M 1000 H 1000
+S
+#70002
+{D-=({RG{raalstrom {RN{ri{Dg{wh{Wtw{wa{Dt{rc{Rh {MC{moachyard and {MS{mtables{D)=-{x~
+~
+0 12296 0
+D2
+~
+~
+0 0 70001
+S
+#70003
+{D-=({RG{raalstrom {RN{ri{Dg{wh{Wtw{wa{Dt{rc{Rh {MP{met {MS{mtorage{D)=-{x~
+~
+0 12 0
+S
+#70004
+{D-=({RG{raalstrom {RN{ri{Dg{wh{Wtw{wa{Dt{rc{Rh {MC{manteen{D)=-{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70001
+D3
+~
+~
+0 0 70005
+S
+#70005
+{D-=({RG{raalstrom {RN{ri{Dg{wh{Wtw{wa{Dt{rc{Rh {MT{mraining {MH{mall{D)=-{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70000
+D1
+~
+~
+0 0 70004
+D3
+~
+~
+0 0 70006
+S
+#70006
+{D-=({RG{raalstrom {RN{ri{Dg{wh{Wtw{wa{Dt{rc{Rh {ML{mocker {MR{moom{D)=-{x~
+~
+0 8200 0
+D0
+~
+~
+0 0 70007
+D1
+~
+~
+0 0 70005
+D2
+~
+~
+0 0 70009
+S
+#70007
+{D-=({RG{raalstrom {RN{ri{Dg{wh{Wtw{wa{Dt{rc{Rh {MC{maptain {DVimes {MO{mffice{D)=-{x~
+~
+0 8200 0
+D0
+~
+~
+1 0 70008
+D1
+~
+~
+0 0 70000
+D2
+~
+~
+0 0 70006
+S
+#70008
+{D-=({RG{raalstrom {RN{ri{Dg{wh{Wtw{wa{Dt{rc{Rh {MH{molding {MC{mells{D)=-{x~
+~
+0 8200 0
+D2
+~
+~
+1 0 70007
+S
+#70009
+{D-=({RG{raalstrom {RN{ri{Dg{wh{Wtw{wa{Dt{rc{Rh {MT{memporary {MP{mortals{D)=-{x ~
+{GE{gast{D: Celestial Temple
+          {BS{bouth{D: Elemental Canyon
+          {CW{cest{D: Yoshiuki Mountains
+          {MU{mp{D: Mahn-Tor
+          {WD{Down{D: Lemtorak{x
+~
+0 4 0
+D0
+~
+~
+0 0 70006
+D1
+~
+~
+0 0 40300
+D2
+~
+~
+0 0 9206
+D3
+~
+~
+0 0 40580
+D4
+~
+~
+0 0 2377
+D5
+~
+~
+0 0 355
+S
+#70010
+(unused)~
+~
+0 533516 0
+S
+#70015
+{DThe Catacombs{x~
+{xThe catacombs are dark and dank, you can faintly hear the bustle of the
+city and the Market place above you.  {xFigures walk around here keeping to
+themselves, passageways wind their way between the rock walls in various
+different directions, a faint dripping can be heard nearby.  
+~
+0 8204 0
+D1
+~
+~
+0 0 70016
+D2
+~
+~
+0 0 70019
+D3
+~
+~
+0 0 3014
+D5
+~
+~
+0 0 70017
+S
+#70016
+{WT{wr{Daining {WR{wo{Dom{x~
+{xA passageway branches off to the east of the main {Dcatacomb{x,
+bringing you into this small dark {ycavern{x.  Upon entering you notice the
+many different {1corpses {xand {1limbs{x laying about the gravel floor. 
+{xThe walls are soaked in a {Dblack {xsubstance, and the air stinks of
+{yDecay{x.  
+~
+0 8200 0
+D0
+~
+~
+0 0 70025
+D3
+~
+~
+0 0 70015
+S
+#70017
+{DBelow the Catacombs{x~
+{xYou have entered a huge Arched Hallway.  The walls are bleeding a
+{Dblack watery substance {xthat bleeds into the gravel floor.  The hallway
+is very spacious allowing many to walk it abreast.  There is a wooden door
+to the north, engulfed in {=f{=l{=a{=m{=e{=s{x.  The stairway down is smothered in {Dshadows{x.
+~
+0 8200 0
+D0
+~
+~
+1 0 70021
+D2
+~
+~
+1 0 70020
+D4
+~
+~
+0 0 70015
+D5
+~
+~
+3 70024 70018
+S
+#70018
+{DPrive Office of Sirus il'Olth{x~
+{xThe walls are a smooth, rounded {Donyx {xas if rought from other means
+other then by hand, its surface flawless.  As you step into the room from
+the bottom step, you notice, your feet sink into an inch of cold black
+water.  To the north of the room, on a {Dstone dias{x, rased a foot off the
+floor, rests an {Diron canopy {xbed, the blankets heavy and dark, To the
+other side of the cirular chamber rests a large throne, made from an
+unidentifiable material, the color of ivory, it seems cold, uninviting.  
+~
+0 532488 0
+D4
+~
+~
+3 0 70017
+S
+#70019
+{DA Selpulchral Cavern{x~
+The dark southern passage of the catacombs leads to a large burial chamber.
+The bodies of its long dead residents are little more than dust and bones,
+but fill the cavern with a stench of earth and rot.  In the center of the
+chamber, a deep pool has been carved into the earth, set with black marble.
+Its bubbling waters seem as black as the substance dripping down the walls.
+~
+0 9224 0
+D0
+~
+~
+0 0 70015
+M 1000 H 1000
+S
+#70020
+{DA Crack in the Wall{x~
+{xThis isnt a room, though it could be one you notice as you turn around
+and look about you.  The walls could be made of the {Dcatacombs
+{xthemselves, and its as you look again, you notice they are.  Your not in a
+room, but in a very large crack in the wall, and as you peer into the
+darkness, you see a figure squatting in the {Dshadows{x.  
+~
+0 8200 0
+D0
+~
+~
+1 0 70017
+S
+#70021
+{DNightstalker's Headquarters{x~
+{xAs you pass through the flames you enter the largest {ycavern {xin the
+{Dcatacombs{x.  In the center of the room there sits a long {yoak {xtable. 
+{yOak chairs {xline the sides of the table and at the far end there is a
+wooden throne.  {xThe room is almost {Dblack{x, having being plunged into
+shadows, the only light eminating from the {0f{0l{0a{0m{0e {xsurrounding the
+doorway to the south.  The walls are bare, except for a tapestry on
+the back wall.  Against a background black as night is a {Wcrescent
+{Wmoon{x and a rampant {ylion{x expertly woven. This is the gathering place
+of the Nightstalkers.  This table, the place where decisions are made.
+~
+0 8200 0
+D1
+~
+~
+0 0 70023
+D2
+~
+~
+1 0 70017
+D3
+~
+~
+1 0 70022
+S
+#70022
+{DDeep within the Catacombs{x~
+A crack in the wall of the meeting room leads into this strange spherical
+room.  It is about forty feet in diameter, but the ceiling rises so high that
+it is shrouded in darkness and shadows.  All around, the walls are covered in
+hooks and nails, various armor and weaponry hanging from them.  Containers of
+all manner cover the floor of the cavern, filled with the loot of many nights'
+work as well as equipment and tools for use by the Nightstalkers.
+~
+0 8200 0
+D1
+~
+~
+1 0 70021
+S
+#70023
+{DA Dark Laboratory{x~
+This smaller cavern has been made into a laboratory of a particularly
+fiendish necromancer.  Strange equipment lines the room.  In the center,
+a long metal table holds his latest project.  The stench of formaldehyde
+permeates the air.  A feral growling can be heard from a cage in the back.
+Inside the cage is a strange hyena-like creature, pacing back and forth.
+                    ({DType 'list' to see available pets.{x)
+~
+0 12296 0
+D3
+~
+~
+0 0 70021
+S
+#70024
+Nightstalkers Pet Storage Room~
+~
+0 4 0
+S
+#70025
+{DWinding Tunnels through the Catacombs{x~
+A small winding passage emerges from the {rbloodied{x training cavern and
+opens into a strange intersection.  Narrow tunnels and passageways branch
+off in all directions, leading to various locations across the realms.
+{R        {RN{rorth{x: Before the Keep of Mahn-Tor
+{G        E{gast{x : Sanctuary of Lemtorak
+{C        W{cest{x : Landing in the Yoshiuki Mountains
+{M        U{mp{x   : The Celestial Temple
+{W        D{Down{x : Vista of Elemental Canyon
+~
+0 0 0
+D0
+~
+~
+0 0 2377
+D1
+~
+~
+0 0 355
+D2
+~
+~
+0 0 70016
+D3
+~
+~
+0 0 40580
+D4
+~
+~
+0 0 40300
+D5
+~
+~
+0 0 9205
+S
+#70026
+(unused)~
+~
+0 12 0
+S
+#70027
+(Unusued)~
+~
+0 12 0
+S
+#70028
+(Unusued)~
+~
+0 4 0
+S
+#70029
+(unused)~
+~
+0 532492 0
+S
+#70030
+(unused)~
+~
+0 4 0
+S
+#70031
+(unused)~
+~
+0 9228 0
+S
+#70100
+{DBefore the {mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+All around, the trees shift and shimmer, the subtle rustling of their
+leaves whispering with excitement as another being approaches the famed
+Twilight Grove. The landscape here seems to shift with such sublety and
+grace that it could easily go unnoticed. Only three things remain fixed
+and unchanged here.  First is the color of the sky, trapped in constant
+twilight, stars lingering against a blanket of pale purple. Second is a
+moss-covered gate to the south. It sets between two large stone columns
+and is made of wrought iron. Strangely enough, however, it does not sit
+inside a fence, but stands alone among the trees. The iron gates form a
+beautiful oak, the symbol of this grove.  Beyond it, city sounds can be
+heard. The third constant is the worn path leading up the hills leading
+to Twilight Grove.  Though the hills themselves move, the path remains.
+~
+0 12 3
+D2
+~
+gate~
+1 0 3014
+D4
+~
+~
+0 0 70101
+C Sages~
+S
+#70101
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+A copse of hazel and oak trees surrounds a small clearing at the top
+of the worn dirt path.  Lush green grass covers the open area.  Toward
+the back glimmers a beautiful spring surrounded by hand-placed stones.
+The spring itself rises from an underground river and flows constantly
+crystal clear.  Before it, one of the stones is etched with words in a
+common tongue. The trees, like the dusk, stretches out every which way
+painting the landscape with beautiful autumn colors.
+~
+0 8 3
+E
+stone~
+Here lay the Spring of Knowledge,
+gifted by the earth to this quiet
+grove.  May its waters always run
+clear, and may those who taste of
+it be forever sagacious and wise.
+~
+D0
+~
+~
+0 0 70104
+D1
+~
+~
+0 0 70102
+D3
+~
+~
+0 0 70106
+D5
+~
+~
+0 0 70100
+S
+#70102
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+Amid the autumn oaks, the denizens of Twilight Grove gather here for
+relaxation upon the fallen leaves and a perhaps story from the elderly
+treant who has taken root here.  A soothing symphony of nightbirds and
+the nearby spring lull the grove's denizens into a peaceful dream-like
+state.  Nearby, quiet conversations can be heard.  The aroma of fresh-
+cut herbs drifts in from the north.
+~
+0 8 3
+D0
+~
+~
+0 0 70103
+D3
+~
+~
+0 0 70101
+M 1000 H 1000
+S
+#70103
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+Tucked between the trees in small circular patches,  herbs grow like
+wildfire here, filling the grove with a pleasant, savory aroma.  Among
+the herbs works a fair-haired woman of indiscernable age.  Her motions
+are all patient and deliberate.  Below an elder tree, she has arranged
+a selection of her concotions--potions and poultices--upon a table. If
+any ask, she'll kindly offer her serums, for a small price to fund her
+continued research.
+~
+0 8 3
+D2
+~
+~
+0 0 70102
+D3
+~
+~
+0 0 70104
+S
+#70104
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+A small path winds through the tall autumn trees to nowhere particular.
+The soothing aroma of savory herbs and brewing potions drifts in from the
+east.  To the south, to gentle bubbling of the Spring of Knowledge can be
+heard.  The occasional clatter of weapons or chanting of arcane words are
+carried on the wind from the west.
+~
+0 8 3
+D1
+~
+~
+0 0 70103
+D2
+~
+~
+0 0 70101
+D3
+~
+~
+0 0 70105
+S
+#70105
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+{DShadows fall in strange patterns in this part of the grove, making it
+darker and slightly unsettling. In the center of a circle of five trees
+sits a dark-haired maiden with piercing eyes.  A variety of weapons are
+scattered in weapon racks around the circle's edge.  Books of magic sit
+at the base of one of the taller trees.   Acolytes of the Grove's sages
+come here to train at the hand of Aurennin Vervain. To the south, light
+shines strange and silvery, a pleasant contrast to the velvet dark here
+in the training circle.{x
+~
+0 8 3
+D0
+~
+~
+0 0 70107
+D1
+~
+~
+0 0 70104
+D2
+~
+~
+0 0 70106
+S
+#70106
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+A radiant silver light fills this small corner of the grove. A single
+ray of evening light pours down through the trees and falls on a man in
+silvery robes and silvery hair  sitting between a pair of stout rowans.
+Many of the denizens of the grove approach the man, who offers them few
+words before they run off.  Many return to offer the man strange tokens
+or beast skins.  This silver sage, it seems, offers quests to those who
+seek adventure or reward.  A gentle sound of flowing water can be heard
+from the east where lies the Spring of Knowledge. To the north, strange
+shadows play among the trees and occasional clamor can be heard.
+~
+0 8 3
+D0
+~
+~
+0 0 70105
+D1
+~
+~
+0 0 70101
+S
+#70107
+{mT{Dw{wi{Wli{wg{Dh{mt {cP{Co{Wr{wt{Wa{Cl{cs{x~
+A strong magic is at work here, evident by the shimmering light which
+fills the area. In the center of the room stands an ivory pedastal upon
+which hovers a glowing lavender sphere.  Around it, filling this circle
+of the grove, are glowing portals, six in total. It would seem that the
+sphere powers and maintains these magical passageways.  Words magically
+appear by each portal as anyone approaches, stating its destination.
+{R              N{rorth{x: Before the Keep of Mahn-Tor
+{G              E{gast {x: Sanctuary of Lemtorak
+{C              W{cest {x: Landing in the Yoshiuki Mountains
+{M              U{mp   {x: The Celestial Temple
+{W              D{Down {x: Vista of Elemental Canyon
+~
+0 8 3
+D0
+~
+~
+0 0 2377
+D1
+~
+~
+0 0 355
+D2
+~
+~
+0 0 70105
+D3
+~
+~
+0 0 40580
+D4
+~
+~
+0 0 40300
+D5
+~
+~
+0 0 9205
+S
+#70200
+{MT{me{Dmp{ml{Me {xof the {MD{ma{Drk {ML{ma{Ddy{x~
+{DYour in the middle of what appears to be a large temple.  Pillars are
+spanning the floor of the large room, Archways to The North, South, East and
+west, all carved to resemble bodies, A disgusting mosaic, displaying them in
+brutal anguish.  {DZealouts and other members of the church are wandering
+about, preparing sacrifices for their Goddess.  In the center of the room,
+is a Statue of {MJ{Da{md{Me {DA dark blackish liquid pouring from her
+malicious screaming lips.  {x 
+~
+0 8200 0
+D0
+~
+~
+0 0 70204
+D1
+~
+~
+0 0 70201
+D2
+~
+~
+0 0 70202
+D3
+~
+~
+0 0 70203
+D5
+~
+~
+0 0 3014
+S
+#70201
+{MD{mi{8s{wc{Wi{wp{8l{me{Ms {8Common {MR{mo{8om{x~
+Tiled in black marble with a single bubbling pool in the center, this
+room exudes an aura of rest.  Members of the church come here to rest and
+relax from the days trials and tribulations.  
+~
+0 9224 0
+D3
+~
+~
+0 0 70200
+M 1000 H 1000
+S
+#70202
+{8Little Shop {wof {MH{mo{8rro{mr{Ms{x~
+Racks, racks, and more racks.  Holding every item imaginable...  From
+weapons to armor, to various magical implements.  Illymar sits behind a
+counter reading a fairly large and dusty book, glancing up every so often to
+see if your ready.  
+~
+0 8200 0
+D0
+~
+~
+0 0 70200
+S
+#70203
+{8Training Room{x~
+The sounds of mock battle can be heard, the screech of steel on steel,
+Yells and shouts, battle crys and the like.  Yet, above all the racket can
+be heard Lorgrum's prodding yells.  ""{1Faster{x"", "Good Parry", "What the hell
+are you trying to do?!"  Here is where all the disciples come and train
+there skills, and perhaps gain new ones.  
+~
+0 8200 0
+D1
+~
+~
+0 0 70200
+S
+#70204
+{8Hallway{x~
+A hallway tiled in a black marble, floor, walls, and ceiling.  Sconces
+with flickering torches give off eerie shadows as they flicker.  
+~
+0 9224 0
+D0
+~
+~
+0 0 70205
+D1
+~
+~
+0 0 70207
+D2
+~
+~
+0 0 70200
+D3
+~
+~
+0 0 70206
+S
+#70205
+{8Hallway{x~
+A hallway tiled in a black marble, floor, walls, and ceiling.  Sconces
+with flickering torches give off eerie shadows as they flicker.  
+~
+0 8200 0
+D0
+~
+~
+0 0 70209
+D1
+~
+~
+0 0 70208
+D2
+~
+~
+0 0 70204
+D3
+~
+~
+0 0 70212
+S
+#70206
+{MP{mo{8r{wt{8a{ml{Ms{x~
+North - Mahn Tohr
+{x  Down - Lemtorak
+{x  South - Elemental Canyon
+  West - Yoshiuki Mountains
+  Up - Celestial Temple
+~
+0 8200 0
+D0
+~
+~
+0 0 2377
+D1
+~
+~
+0 0 70204
+D2
+~
+~
+0 0 9205
+D3
+~
+~
+0 0 40580
+D4
+~
+~
+0 0 40300
+D5
+~
+~
+0 0 355
+S
+#70207
+{DTraining Area{x~
+~
+0 8200 0
+D3
+~
+~
+0 0 70204
+S
+#70208
+{MQ{muest {DRoom{x~
+A warm fire place crackles in the corner of the room, and is lavishly
+furnished.  Here is where Marith gives out quest to other Disciples,
+obviously keeping a cut of the profits for himself judging by the look of
+the room.  Practicing some minor spellcraft in a corner he looks up as you
+enter.  
+~
+0 8200 0
+D3
+~
+~
+0 0 70205
+S
+#70209
+{DHallway{x~
+A hallway tiled in a black marble, floor, walls, and ceiling.  Sconces
+with flickering torches give off eerie shadows as they flicker.  
+~
+0 8200 0
+D1
+~
+~
+0 0 70211
+D2
+~
+~
+0 0 70205
+D3
+~
+~
+1 0 70210
+S
+#70210
+{MX{ma{De{mr{Mo{D's Lounge{x~
+Wrought iron lanterns hang on the stone walls of this large office.  The
+middle of the room is dominated by a large black marble table, its center
+bearing an engraved chalice spilling blood.  At the far end, a throne sits,
+its arms bearing humanoid skulls embedded into the black granite.  Beside
+the throne, an iron bar standing seven feet in height is covered in strange
+whitish objects.  Closer inspection reveals that these are bones of various
+sizes--finger bones, jaw bones, shattered femurs--tied to the bar, likely
+tokens from kills, a totem to honor the dark goddess Jade.
+~
+0 532488 0
+D1
+~
+~
+1 0 70209
+S
+#70211
+{DBlack Marble Stairway{x~
+Here ends the nice constructed look of the rest of the hall.  Seemingly
+carved outta the rock, the walls are all rough hewn, looking to be chipped
+at piece by piece.  The only feature of this room is a black spiral
+staircase seemingly carved from a single piece of stone leading down into
+the darkness below.  
+~
+0 8200 0
+D3
+~
+~
+0 0 70209
+S
+#70212
+{dC{dh{da{do{dt{di{dc {DCompanions{x~
+An unsettling howl echoes through the room.
+     {m({DType {m'{Dlist{m'{D to see available pets.{m){x
+~
+0 12296 0
+D1
+~
+~
+0 0 70205
+S
+#70213
+Harbinger Pet Holding Cell~
+~
+0 4 0
+S
+#70300
+The courtyard~
+put a fountain and stuff here
+~
+0 9224 0
+D0
+~
+~
+0 0 70301
+D1
+~
+~
+3 0 3362
+C KoT~
+S
+#70301
+Around the statue of Distoritons~
+~
+0 0 0
+D1
+~
+~
+0 0 70302
+D2
+~
+~
+0 0 70300
+D3
+~
+~
+0 0 70308
+S
+#70302
+Around the statue of Distoritons~
+~
+0 4 0
+D0
+~
+~
+0 0 70303
+D3
+~
+~
+0 0 70301
+S
+#70303
+Around the statue of Distoritons~
+~
+0 4 0
+D0
+~
+~
+0 0 70304
+D2
+~
+~
+0 0 70302
+S
+#70304
+Around the statue of Distoritons~
+~
+0 4 0
+D2
+~
+~
+0 0 70303
+D3
+~
+~
+0 0 70305
+S
+#70305
+Around the statue of Distoritons~
+~
+0 4 0
+D0
+~
+~
+0 0 70309
+D1
+~
+~
+0 0 70304
+D3
+~
+~
+0 0 70306
+S
+#70306
+Around the statue of Distoritons~
+~
+0 0 0
+D1
+~
+~
+0 0 70305
+D2
+~
+~
+0 0 70307
+S
+#70307
+Around the statue of Distoritons~
+~
+0 0 0
+D0
+~
+~
+0 0 70306
+D2
+~
+~
+0 0 70308
+S
+#70308
+Around the statue of Distoritons~
+~
+0 0 0
+D0
+~
+~
+0 0 70307
+D1
+~
+~
+0 0 70301
+S
+#70309
+Before the great doors~
+~
+0 0 0
+D0
+~
+~
+0 0 70310
+D2
+~
+~
+0 0 70305
+S
+#70310
+Grand hallway~
+~
+0 0 0
+D2
+~
+~
+0 0 70309
+D4
+~
+~
+0 0 70311
+S
+#70311
+Sanctuary walkway~
+~
+0 0 0
+D0
+~
+~
+0 0 70314
+D1
+~
+~
+0 0 70312
+D3
+~
+~
+0 0 70313
+D5
+~
+~
+0 0 70310
+S
+#70312
+Pews~
+~
+0 0 0
+D3
+~
+~
+0 0 70311
+S
+#70313
+Pews~
+~
+0 0 0
+D1
+~
+~
+0 0 70311
+S
+#70314
+Sanctuary walkway~
+~
+0 0 0
+D1
+~
+~
+0 0 70315
+D2
+~
+~
+0 0 70311
+D3
+~
+~
+0 0 70316
+D4
+~
+~
+0 0 70317
+S
+#70315
+Pews~
+~
+0 0 0
+D3
+~
+~
+0 0 70314
+S
+#70316
+Pews~
+~
+0 0 0
+D1
+~
+~
+0 0 70314
+S
+#70317
+The Altar~
+~
+0 0 0
+D1
+~
+~
+0 0 70318
+D3
+~
+~
+0 0 70319
+D5
+~
+~
+0 0 70314
+S
+#70318
+Door to the fellowship hall~
+~
+0 0 0
+D3
+~
+~
+0 0 70317
+S
+#70319
+Door to the raid-only area ( non public )~
+~
+0 0 0
+D1
+~
+~
+0 0 70317
+D3
+~
+~
+1 0 70320
+S
+#70320
+Grey stone hallway~
+~
+0 0 0
+D1
+~
+~
+1 0 70319
+D3
+~
+~
+0 0 70321
+S
+#70321
+A grey stone hallway~
+~
+0 0 0
+D1
+~
+~
+0 0 70320
+D3
+~
+~
+0 0 70322
+S
+#70322
+Stairway to the main hall~
+~
+0 0 0
+D1
+~
+~
+0 0 70321
+D5
+~
+~
+0 0 70323
+S
+#70323
+Main hall~
+~
+0 0 0
+D0
+~
+~
+0 0 70324
+D1
+~
+~
+0 0 70327
+D2
+~
+~
+0 0 70326
+D3
+~
+~
+0 0 70325
+D4
+~
+~
+0 0 70322
+D5
+~
+~
+1 0 70328
+S
+#70324
+Door to the healing area~
+~
+0 0 0
+D2
+~
+~
+0 0 70323
+S
+#70325
+Door to the recall room~
+~
+0 0 0
+D1
+~
+~
+0 0 70323
+D3
+~
+~
+0 0 70333
+S
+#70326
+Door to the clan stores~
+~
+0 0 0
+D0
+~
+~
+0 0 70323
+S
+#70327
+Door to the offices~
+~
+0 0 0
+D3
+~
+~
+0 0 70323
+S
+#70328
+Stairway to the secret chamber~
+~
+0 0 0
+D4
+~
+~
+1 0 70323
+D5
+~
+~
+0 0 70329
+S
+#70329
+Secret chamber~
+~
+0 0 0
+D0
+~
+~
+0 0 70330
+D1
+~
+~
+0 0 70332
+D2
+~
+~
+0 0 70331
+D4
+~
+~
+0 0 70328
+S
+#70330
+Donation pit~
+~
+0 0 0
+D2
+~
+~
+0 0 70329
+S
+#70331
+Door to the portal room~
+~
+0 0 0
+D0
+~
+~
+0 0 70329
+S
+#70332
+Formless ( Clan hall raid entrance )~
+~
+0 4 0
+S
+#70333
+~
+~
+0 0 0
+D1
+~
+~
+0 0 70325
+S
+#70400
+{BEn{bt{Wra{bn{Bce {8to the {CCh{ca{Wm{cb{Cer{x~
+{x
+{8     You stand at the{C|{w          /\          {C|{8entrance to a large 
+{8 cave. As the opening{c|{w      .__ \/ __,      {c|{8rolls closed behind 
+{8    you, you can hear{C|{w    ._ \_|!!|_/ _.    {C|{8a {Cfi{cer{Wce {cwi{Cnd{8 roaring. 
+{8     Despite the {Bc{Co{cl{bd{c|{w      `- \!!/ -'      {c|{8still slipping in, the 
+{8        cave is {Rw{ya{Yr{rm{8.{C|{w   ->=<>->><<-<>=<-   {C|{8Its walls are a dark 
+{8        black, having{c|{w     _.-_/!!\_-._     {c|{8been carved into an 
+{8        enormous onyx{C|{w    '  /_|!!|_\  `    {C|{8rock formation. Small 
+{8   sconces are spaced{c|{w      '   /\   `      {c|{8down the cave every 
+{8   few feet, {Yli{yghti{Yng{C|{w          \/          {C|{8the way. The hall 
+{8           extends to{c|{w       {CDe{cs{8c{Wi{8p{cl{Ces      {c|{8the {Rnorth{8.
+{x
+~
+0 8196 0
+D0
+~
+~
+0 0 70401
+S
+#70401
+{8Down the Hall{x~
+{x
+{8This long hall connects the the {CCh{ca{Wm{cb{Cer {8of the {CDi{csc{Wi{cpl{Ces{8 to the
+{8entrance of their home.The walls are pure black and smooth to the
+{8touch. Every several feet a {Wsconce {8scaters {Yl{yi{Yg{yh{Yt{8 on the path. 
+{x
+~
+0 9216 0
+D0
+~
+~
+0 0 70402
+D2
+~
+~
+0 0 70400
+S
+#70402
+{CCh{ca{Wm{cb{Cer {8of the {CDi{csc{Wi{cpl{Ces{x~
+{x
+{8***{B^{bv{B^{8*{cv{C^{cv{8*{b^{Bv{b^{8*{Cv{c^{Cv{8*{B^{bv{B^{8*{cv{C^{cv{8*{b^{Bv{b^{8*{Cv{c^{Cv{8*{B^{bv{B^{8*{cv{C^{cv{8*{b^{Bv{b^{8*{Cv{c^{Cv{8*{B^{bv{B^{8*{cv{C^{cv{8*{b^{Bv{b^{8***
+{x
+{C The end of the hall opens into a large round room. Also having
+{C been carved from the rock formation, the walls are {8pitch black
+{C and smooth. Large {ci{Cc{ci{Cc{cl{Ce{cs {Chang at all angles from overhead. To
+{C one side of the room, a cluster of everlasting {ci{Cc{ci{Cc{cl{Ce{cs{C drip the
+{C {Wp{wurest{C of {Bw{bater{C into a small pool, providing the {8Disciples{C with
+{C a quench to their thirst. A large heap of {Wf{wur {Wb{wlankets{C rests in
+{C one corner. Though {Ws{wn{Wo{ww{C dusts the floor and {ci{Cc{ce{C hangs down from
+{C above, the room is {Rw{ya{Yr{rm{C, a good place to rest from battle.
+{x
+{8***{B^{bv{B^{8*{cv{C^{cv{8*{b^{Bv{b^{8*{Cv{c^{Cv{8*{B^{bv{B^{8*{cv{C^{cv{8*{b^{Bv{b^{8*{Cv{c^{Cv{8*{B^{bv{B^{8*{cv{C^{cv{8*{b^{Bv{b^{8*{Cv{c^{Cv{8*{B^{bv{B^{8*{cv{C^{cv{8*{b^{Bv{b^{8***
+{x
+~
+0 9216 0
+D0
+~
+~
+0 0 70410
+D1
+~
+~
+0 0 70403
+D2
+~
+~
+0 0 70401
+D3
+~
+~
+0 0 70405
+D4
+~
+~
+0 0 70413
+S
+#70403
+{BL{bibrary {8of the {CDi{csc{Wi{cpl{Ces{x~
+{x
+{8Now to the east of the           {W.--.                   {G.---.
+{8chamber, you stand in        {Y.---{W|{w__{W|           {R.-.     {G|{g---{G|
+{8a large room, full from   {B.--{Y|{y==={W|{w--{W|{8_          {R|{r_{R|     {G|{g---{G|{Y--.
+{8floor to ceiling with     {B|  {Y|{y==={W|  {W|{8'\     {C.---{R!{r-{R|  {M.--{G|   {G|{y--{Y|
+{8all types of books. On    {B|{b%%{Y|   {w|  {W|{8.'\    {C|{c==={R| {R|{B--{B|{m%%{M|   {G|  {Y|
+{8the end of each shelf     {B|{b%%{Y|   {W|  {W|{8\.'\   {C|   {R| {R|{b__{B|  {M|   {G|  {Y|
+{8a {Ws{wnowflake {8has been      {B|  {Y|   {W|  {W|{8 \  \  {C|{c==={R| {R|{b=={B|  {M|   {G|  {Y|
+{8carved into the finely    {B|  {Y|   {W|{w__{W|{8  \.'\ {C|   {R|{r_{R|{b__{B|  {M|{g---{G|{y__{Y|
+{8crafted wood. Here the    {B|  {Y|{y==={W|{w--{W|{8   \.'\{C|{c==={R|{r-{R|{b--{B|{m%%{M|{g---{G|{y--{Y|
+{CDisciples {8can study.      {B^--{Y^---'{W--^{8    `-'{C`---{R^-^{B--^{M--^{G---'{Y--' {8hjw
+{x
+~
+0 9216 0
+D3
+~
+~
+0 0 70402
+D4
+~
+~
+0 0 70404
+S
+#70404
+{WIj{wu{Ca{cqs{Ci{wr{Wuq{8's Loft{x~
+{x
+{WAfter climbing up a ladder in the library, you've arrived in a loft. The
+{Wroom is filled with burning {Cc{ba{Cn{bd{Cl{be{Cs{W and {8incense{W, creating a fog of smoke.
+{WA tall {8drow{W man is sittng amongst some {Cc{ba{Cn{bd{Cl{be{Cs{W on a large {Bs{batin {Wpillow,
+{Whe seems to be meditating. On his long {8black{W robe, a large {ws{Wn{wo{Ww{wf{Wl{wa{Wk{we
+{Wsurrounded by ancient writings has been intricately stitched. A pile of 
+{Wscrolls and books rests neatly in the corner beside him. As you enter,
+{Whe calmly raises his eyes to you. 
+{x
+~
+0 9216 0
+D5
+~
+~
+0 0 70403
+S
+#70405
+hall~
+~
+0 9216 0
+D0
+~
+~
+0 0 70407
+D1
+~
+~
+0 0 70402
+D3
+~
+~
+0 0 70406
+C DoD~
+S
+#70406
+{8The {WS{wn{Wo{ww{Wy {wO{Ww{wl {8Pub{x~
+{x
+{W   __              __           
+{W   \ `-._......_.-` /           
+{W    `.  {8'{w.    .{8'{W  .'            
+{W     //  {w_{W`{8\/{W`{w_{W  \\            {8The atmosphere of the pub is a {bf{Briendly 
+{W    ||  {w/\{8O||O{w/\{W  ||           {8one. Tables and chairs are placed around
+{W    |\  {w\_/{8||{w\_/{W  /|           {8the room and filled with {WD{Ci{cs{wc{Wi{wp{cl{Ce{Ws {8taking
+{W    \ {w'{8.   {Y\/   {W.{w'{W /    {yo{YO{yo{YO{yo  {8some time off to enjoy themselves. A long
+{W    / {w^ `{W'-  {8-{W'{w`  {W \_{w,==|||||  {8onyx bar runs along one wall with {wp{Wo{wl{Wa{wr
+{W   /  _{8-{w^_{W- -{8^_{W --   {w|| |||||  {Wb{we{Wa{wr {8fur covered stools in front of it. The
+{W   | / {w^_ {8-{W^{w_- {8-{w_^{W\--{w|| |||||  {8bartender, {WT{8aaffaqt{Wi{8, can probably be found
+{W   | |{W-_ {8^{w- _{W-{w^_ {8-{W|  {w'==HHHHH  {8sharing a drink with one of his patrons,  
+{W   | \  {w^-{W-_ {8-{w-{W_{w^ {W/     {w"""""  {8unless of course he's passed out again on 
+{W   \_/;-.,____,.-;             {8the bar. 
+{8======{Y(_(_({8=={Y)_)_){8=========     
+{x                                
+{8==================jgs/seh====   {x
+~
+0 9216 0
+D1
+~
+~
+0 0 70405
+D5
+~
+~
+0 0 70408
+S
+#70407
+{BA{bids {8in {CDe{cc{8ept{ci{Con{x~
+~
+0 9216 0
+D2
+~
+~
+0 0 70405
+S
+#70408
+{CF{curtherance {8of {CK{cn{Wo{ww{8l{we{Wd{cg{Ce{x~
+{x
+trainer ataniq
+~
+0 9216 0
+D4
+~
+~
+0 0 70406
+D5
+~
+~
+1 0 70409
+S
+#70409
+dummy room~
+~
+0 9216 0
+D4
+~
+~
+1 0 70408
+S
+#70410
+{8Hall to the {CS{chrine{x~
+{x
+{cThis hall connects the {WC{8hamber {cto the {BS{bhrine{c. Aside from the {BS{bhrine{c itself,
+{cthis is perhaps the most decorated portion of the hall. Though these walls
+{care also carved from the {8onyx stone{c, they have been covered with floor to
+{cceiling {Wm{wi{Wr{wr{Wo{wr{Ws{c. Every ten feet of so is a set of shining {Ws{wilver {carmor. They
+{care poised, ready to fight, and carrying shields bearing the symbol of the
+{CFr{coz{wen {WG{wod{cde{Css{c. The hall is {wbright{c, light being emitted from the hundreds of
+{CI{cc{Ci{cc{Cl{ce{Cs{c that hang from it's ceiling. The light bounces off of the {Wm{wi{Wr{wr{Wo{wr{Ws 
+{cand scatters brilliantly. Soft {8w{Chispers{c can be heard from the north.
+{x
+~
+0 9216 0
+D0
+~
+~
+0 0 70411
+D2
+~
+~
+0 0 70402
+D4
+~
+~
+0 0 70418
+D5
+~
+~
+0 0 70412
+S
+#70411
+{CS{chrine {8of {BS{bh{Ca{cr{Ct{by{Bn{x~
+{x
+{W   ._    _.             {8 _, _,_ __, _ _, _ __,   ___  _,    _, _,_  _, __, ___ , _ _, _ 
+{W   (_)  (_)             {8(_  |_| |_) | |\ | |_     |  / \   (_  |_| /_\ |_)  |  \ | |\ | 
+{W    .\::/.              {8, ) | | | \ | | \| |      |  \ /   , ) | | | | | \  |   \| | \| 
+{W_.-.{w_\\//_{W.-._          {8 -  - - - - - -  . ---    -   -     -  - - - - - -  -    ) -  . 
+{W '-'{w //\\ {W'-'{8                                                                    -'      
+{W    '/::\'              {BAs you e{bnter the{C shrine,{c you're {8struck w{Bith awe.{b The bea{Cuty of
+{W   (_)  (_)   {w_    _    {Bthis pl{bace can {Cbe match{ced only {8by the G{Boddess h{berself. {CThe wall{cs
+{W   '      '  {w/_/  \_\   {Bseem t{bo have b{Ceen cove{cred in a{8 layer o{Bf snow, {band spar{Ckle in t{che
+{w               \\//     {Bsoft {blight fr{Com the n{cumerous {8candles {Blining t{bhe room.{C On the {cfar
+{w           /\_\\{W><{w//_/\ {Bwall{b, a mass{Cive silv{cer snowf{8lake has{B been mo{bunted an{Cd the an{ccient
+{w           \/ //{W><{w\\ \/ {Bwri{btings ha{Cve been {cpainted {8around i{Bt. A fro{bzen alta{Cr is dra{cped 
+{w              _//\\_    {Bwi{bth holy {Ccloth, a{cnd a bea{8utiful s{Bculpture{b sits be{Chind it.{c Pews
+{w             \_\  /_/   {Ba{bre arran{Cged in l{cines for{8 the Dis{Bciples t{bo come a{Cnd worsh{cip.
+{x
+~
+0 9216 0
+D0
+~
+~
+1 0 70415
+D2
+~
+~
+0 0 70410
+S
+#70412
+{CT{cool{Cs {8of the {WT{wrad{We{x~
+{x
+{8Beneath the grand hall now, you find yourself in a small shop. It's been
+{8carved out of the rock, in the shape of a large sphere. The walls are a
+{8bit less smooth than those in the rest of the hall. A counter runs along
+{8the side of the room opposite to the entrance. Behind it is a middle-aged 
+{8dwarven man with glasses perched on his nose. Though slightly cluttered, 
+{8the walls display the finest of equipment. The shop keeper bustles about
+{8busily, examining his wares. 
+{x
+~
+0 9216 0
+D4
+~
+~
+0 0 70410
+S
+#70413
+{bE{8nchanted {cP{8aths{x~
+{x
+{8Above the {CC{chamber{8, this room allows the {BD{bisciples{8 to manuver easily
+{8throughout the realm. Five large {Wp{wortals{8 are here, each one floating
+{8roughly in one direction. A sign hovers next to each one. They read:
+{x
+{MU{mp    {8: {C-{c*{C-{bT{8o {BG{8aalstrom {bT{8emple{C-{c*{C-
+{RN{rorth {8: {B-{b*{B-{cT{8o {CM{8ahn-Tor {c({8before the gate{c){B-{b*{B-
+{BS{bouth {8: {c-{C*{c-{BT{8o {bL{8emtorak {B({8Market{B){c-{C*{c-
+{GE{gast  {8: {b-{B*{b-{CT{8o {cC{8elestial {CT{8emple{b-{B*{b-
+{CW{cest  {8: {Rx{rx{Rx{8Currently Out of Order{Rx{rx{Rx{x
+{x
+~
+0 9220 0
+D0
+~
+~
+0 0 2362
+D1
+~
+~
+0 0 40302
+D2
+~
+~
+0 0 369
+D4
+~
+~
+0 0 3359
+D5
+~
+~
+0 0 70402
+S
+#70414
+{8Meeting Chamber{x~
+~
+0 9216 0
+D2
+~
+~
+0 0 70415
+S
+#70415
+Behind the Altar~
+~
+0 9216 0
+D0
+~
+~
+0 0 70414
+D1
+~
+~
+0 0 70417
+D2
+~
+~
+1 0 70411
+D3
+~
+~
+0 0 70416
+S
+#70416
+{CM{ci{wx{ci{Ck{8's {CH{8aven{x~
+~
+0 9216 0
+D1
+~
+~
+0 0 70415
+S
+#70417
+office??~
+~
+0 9216 0
+D3
+~
+~
+0 0 70415
+S
+#70418
+petshop~
+~
+0 9224 0
+D5
+~
+~
+0 0 70410
+S
+#70419
+pet holder~
+~
+0 4 0
+S
+#70500
+{+A {+h{+i{+d{+d{+e{+n {+c{+a{+v{+e {+e{+n{+t{+r{+a{+n{+c{+e{x~
+{D You are standing within the mouth of dark and muddy cave.  Small
+puddles litter the ground here from the feet of the disciples coming and
+going to heal and rest.  {x 
+~
+0 8200 0
+D0
+~
+~
+0 0 70501
+D1
+~
+~
+0 0 70502
+D2
+~
+~
+0 0 70503
+D3
+~
+~
+0 0 70504
+D5
+~
+~
+0 0 70505
+S
+#70501
+{+T{+r{+a{+i{+n{+i{+n{+g {+o{+f {+t{+h{+e {+d{+i{+s{+c{+i{+p{+l{+e{+s{x~
+{DThe room looks to have been carved into the wall of the cave, judging
+from the long streaks along the walls.  {x 
+~
+0 8 0
+D2
+~
+~
+0 0 70500
+S
+#70502
+{DA place of {-h{-e{-a{-l{-i{-n{-g{x~
+{DThe room looks to have been carved into the wall of the cave, judging
+from the long streaks along the walls.  {x 
+~
+0 1032 0
+D3
+~
+~
+0 0 70500
+S
+#70503
+{+D{+o{+n{+a{+t{+i{+o{+n{+s {+o{+f {+t{+h{+e {+d{+i{+s{+c{+i{+p{+l{+e{+s{x~
+{DThe room looks to have been carved into the wall of the cave, judging
+from the long streaks along the walls.  {x 
+~
+0 8 0
+D0
+~
+~
+0 0 70500
+S
+#70504
+{+T{+h{+e {+d{+i{+s{+c{+i{+p{+l{+e{+s {+b{+l{+a{+c{+k {+m{+a{+r{+k{+e{+t{x~
+{DThe room looks to have been carved into the wall of the cave, judging
+from the long streaks along the walls.  {x 
+~
+0 9224 0
+D1
+~
+~
+0 0 70500
+S
+#70505
+{DThe {whallway{D of {ql{qe{qa{qr{qn{qi{qn{qg{x~
+{DThe room looks to have been carved into the ground of the cave, judging
+from the long streaks along the walls.  {x 
+{RN{rorth {Dis a portal to {pT{ph{pe {pT{pe{pm{pp{pl{pe {pO{pf {pR{po{pl{pa{pn{pd{x
+{BS{bouth {Dstands a man giving {wdisciples {dq{du{de{ds{dt{ds{D.{x
+{GE{gast {Dstand an old feeble man waiting to help you.{x
+ 
+~
+0 8 0
+D0
+~
+~
+0 0 3001
+D1
+~
+~
+0 0 70507
+D2
+~
+~
+0 0 70506
+D4
+~
+~
+0 0 70500
+S
+#70506
+{DRoom of {ql{qe{qa{qr{qn{qi{qn{qg{x~
+{DThe room looks to have been carved into the wall of the cave, judging
+from the long streaks along the walls.  {x 
+~
+0 1024 0
+D0
+~
+~
+0 0 70505
+S
+#70507
+{DThe {oa{on{oc{oi{oe{on{ot {wtrainer{D of the {wdisciples{x.~
+{DThe room looks to have been carved into the ground of the cave, judging
+from the long streaks along the walls.  {x 
+~
+0 1032 0
+D3
+~
+~
+0 0 70505
+S
+#70600
+{xHall of The {YC{ye{Yl{ye{Ys{yt{Yi{ya{Yl {CC{ch{Co{cr{Cu{cs{x~
+High domed glass ceilings look out upon the heavens and allow
+the heavens to look in upon the grand marble hall.  Three broad
+arches lead further into the temple, while a seemingly infinite
+spiral staircase leads to Gaalstrom if one travels downward and
+into unknown darkness if one travels upward.  A set of gorgeous
+golden gates stands to the north, strange light flickering from
+behind their doors.  The fountain in the center of the hall has
+been carved from pure white  marble into the shape of an angel,
+her lips pressed to a horn from which spills clear water.
+~
+0 8204 0
+D0
+~
+~
+1 0 70603
+D1
+~
+~
+0 0 70601
+D2
+~
+~
+0 0 70604
+D3
+~
+~
+0 0 70602
+D5
+~
+~
+0 0 3001
+S
+#70601
+{xThe {YC{ye{Yl{ye{Ys{yt{Yi{ya{Yl{x Lounge~
+This large room set right off the main hall is filled with an
+air of relaxation and the sound of light-hearted laughter.  The
+walls are lined with a comfortable couch where celestians often
+are found catching naps. Upon the far wall hangs a sign reading
+ 
+{x                     {YT{yoday is the day{Y!{x
+~
+0 9224 0
+D3
+~
+~
+0 0 70600
+M 1000 H 1000
+S
+#70602
+{xThe {YC{ye{Yl{ye{Ys{yt{Yi{ya{Yl{x Apothecary~
+A wide workroom, this space is reserved for the many skilled
+alchemists and apothecaries  employed by the Celestial Chorus.
+Day and night, they work on perfecting potions. One among them
+is even trained in the art of magical tattooing.
+~
+0 8200 0
+D1
+~
+~
+0 0 70600
+S
+#70603
+{xThe {YC{ye{Yl{ye{Ys{yt{Yi{ya{Yl {xPortals~
+{CS{ch{wi{Wm{Cme{Wr{wi{cn{Cg p{Wo{Crta{cl{Cs{x surround you, leading to points across the realms.
+{x                 {Y*{C'{Y*{C'{Y*{C'{Y*{C'{Y*{C'{Y*{C'{Y*{C'{Y*{C'{Y*{C'{Y*{C'{Y*{C'{Y*{C'{Y*{C'{Y*{C'{Y*{C'{Y*{C'{Y*{C'{Y*{C'{Y*{C'{Y*{C'{Y*{C'{Y*
+{x                   {RN{rorth{x: Vista of Elemental Canyon
+{x                   {GE{gast {x: Entrance to the Celestial Temple
+{x                   {CW{cest {x: Landing in the Yoshiuki Mountains
+{x                   {WD{Down {x: Before the Keep of Mahn-Tor
+{x                   {MU{mp   {x: Sanctuary of Lemtorak
+~
+0 8 0
+D0
+~
+~
+0 0 9205
+D1
+~
+~
+0 0 40300
+D2
+~
+~
+1 0 70600
+D3
+~
+~
+0 0 40580
+D4
+~
+~
+0 0 355
+D5
+~
+~
+0 0 2377
+S
+#70604
+{xThe {YC{ye{Yl{ye{Ys{yt{Yi{ya{Yl {xHalls~
+~
+0 8200 0
+D0
+~
+~
+0 0 70600
+D1
+~
+~
+0 0 70608
+D2
+~
+~
+0 0 70607
+D3
+~
+~
+0 0 70605
+S
+#70605
+{xThe {YC{ye{Yl{ye{Ys{yt{Yi{ya{Yl {xArena~
+~
+0 8200 0
+D1
+~
+~
+0 0 70604
+S
+#70607
+{xThe {YC{ye{Yl{ye{Ys{yt{Yi{ya{Yl{x Halls~
+~
+0 0 0
+D0
+~
+~
+0 0 70604
+D1
+~
+~
+1 0 70611
+D3
+~
+~
+1 0 70610
+S
+#70608
+{xThe {YC{ye{Yl{ye{Ys{yt{Yi{ya{Yl {xStables~
+Here the heavenly beasts loyal to the chorus are well tended.
+         Please type 'list' to see available pets.
+~
+0 12296 0
+D3
+~
+~
+0 0 70604
+S
+#70609
+{xHolding Room for the {YC{ye{Yl{ye{Ys{yt{Yi{ya{Yl {xBeasts~
+~
+0 4 0
+S
+#70610
+{xLord {CE{clorien's {xOffice~
+~
+0 532488 0
+D1
+~
+~
+1 0 70607
+S
+#70611
+{xThe {YC{ye{Yl{ye{Ys{yt{Yi{ya{Yl{x Courtyard~
+~
+0 8192 2
+D3
+~
+~
+1 0 70607
+S
+#0
+
+
+
+#SPECIALS
+M 70701 spec_questmaster
+M 70007 spec_questmaster
+M 70017 spec_questmaster
+M 70024 spec_breath_any
+M 70106 spec_questmaster
+M 70203 spec_questmaster
+M 70412 spec_questmaster
+M 70502 spec_questmaster
+M 70601 spec_questmaster
+S
+
+
+
+#RESETS
+D 0 70702 0 1
+D 0 70704 2 1
+D 0 70707 0 1
+D 0 70708 2 1
+D 0 70709 0 1
+D 0 70709 2 1
+D 0 70719 0 1
+D 0 70719 2 1
+D 0 70720 2 1
+D 0 70721 0 1
+D 0 70007 0 1
+D 0 70008 2 1
+D 0 70017 0 1
+D 0 70017 2 1
+D 0 70017 5 2
+D 0 70018 4 2
+D 0 70020 0 1
+D 0 70021 2 1
+D 0 70021 3 1
+D 0 70022 1 1
+D 0 70100 2 1
+D 0 70209 3 1
+D 0 70210 1 1
+D 0 70300 1 1
+D 0 70319 3 1
+D 0 70320 1 1
+D 0 70323 5 1
+D 0 70328 4 1
+D 0 70408 5 1
+D 0 70409 4 1
+D 0 70411 0 1
+D 0 70415 2 1
+D 0 70600 0 1
+D 0 70603 2 1
+D 0 70607 1 1
+D 0 70607 3 1
+D 0 70610 1 1
+D 0 70611 3 1
+M 0 70701 1 70701 1
+M 0 70703 1 70703 1
+O 0 70703 0 70703
+M 0 70705 1 70705 1
+G 0 70707 0
+G 0 70708 0
+G 0 70709 0
+G 0 70710 0
+G 0 70711 0
+G 0 70706 0
+G 0 70705 0
+M 0 70709 1 70709 1
+M 0 70708 1 70709 1
+M 0 70715 1 70716 1
+M 0 70717 1 70717 1
+M 0 70716 1 70717 1
+O 0 70712 0 70719
+O 0 70713 0 70719
+P 0 70714 1 70712 1
+M 0 70754 1 70754 1
+M 0 70757 1 70757 1
+M 0 70759 1 70759 1
+M 0 70797 1 70797 1
+O 0 70001 0 70001
+M 0 70001 1 70001 1
+M 0 70023 1 70003 1
+M 0 70024 1 70003 1
+M 0 70004 1 70004 1
+G 0 70015 0
+G 0 70011 0
+G 0 70012 0
+G 0 70013 0
+G 0 70014 0
+G 0 70010 0
+M 0 70003 1 70005 1
+M 0 70002 1 70005 1
+M 0 70007 1 70007 1
+O 0 70100 0 70101
+O 0 70101 0 70102
+M 0 70102 1 70102 1
+M 0 70103 1 70103 1
+G 0 70102 0
+G 0 70103 0
+G 0 70104 0
+G 0 70105 0
+G 0 70106 0
+G 0 70107 0
+G 0 70108 0
+M 0 70104 1 70105 1
+M 0 70105 1 70105 1
+M 0 70106 1 70106 1
+O 0 70201 0 70200
+M 0 70200 1 70201 1
+O 0 70200 0 70201
+M 0 70201 1 70202 1
+G 0 70202 0
+G 0 70204 0
+G 0 70205 0
+G 0 70206 0
+G 0 70207 0
+G 0 70208 0
+M 0 70202 1 70203 1
+M 0 70206 1 70207 1
+M 0 70203 1 70208 1
+O 0 70210 0 70210
+O 0 70209 0 70210
+M 0 70213 1 70213 1
+M 0 70214 1 70213 1
+M 0 70300 10 70309 2
+M 0 70300 10 70310 2
+M 0 70301 1 70317 1
+O 0 70300 0 70317
+M 0 70300 10 70317 1
+M 0 70302 1 70319 1
+O 0 70402 0 70402
+O 0 70499 0 70402
+M 0 70404 1 70404 1
+M 0 70406 1 70406 1
+M 0 70407 1 70407 1
+G 0 70401 0
+G 0 70403 0
+G 0 70404 0
+G 0 70405 0
+M 0 70408 1 70408 1
+O 0 70411 0 70411
+O 0 70410 0 70411
+M 0 70411 1 70411 1
+M 0 70412 1 70412 1
+G 0 70400 0
+O 0 70498 0 70414
+M 0 70413 1 70418 1
+O 0 70501 0 70500
+O 0 70501 0 70501
+M 0 70500 1 70501 1
+M 0 70501 1 70502 1
+O 0 70502 0 70502
+O 0 70501 0 70502
+O 0 70503 0 70503
+O 0 70501 0 70503
+M 0 70504 1 70504 1
+G 0 70504 0
+G 0 70505 0
+G 0 70507 0
+O 0 70501 0 70505
+O 0 70501 0 70506
+M 0 70502 1 70506 1
+O 0 70501 0 70507
+M 0 70503 1 70507 1
+O 0 70603 0 70600
+M 0 70601 1 70601 1
+O 0 70604 0 70601
+M 0 70600 1 70602 1
+G 0 70609 0
+G 0 70607 0
+G 0 70606 0
+G 0 70605 0
+G 0 70608 0
+G 0 70610 0
+M 0 70604 1 70605 1
+M 0 70605 1 70605 1
+M 0 70608 1 70608 1
+M 0 70609 1 70609 1
+M 0 70610 1 70609 1
+S
+
+
+
+#SHOPS
+70705 9 5 8 1 33 100 100 0 23
+70000 9 0 0 0 0 100 100 0 23
+70004 0 9 5 0 0 120 85 0 23
+70103 9 5 8 33 32 100 100 0 23
+70201 9 5 8 32 3 150 50 0 23
+70407 0 0 0 0 0 100 100 0 23
+70412 9 0 0 0 0 100 100 0 23
+70504 0 0 0 0 0 150 150 0 23
+70600 10 5 9 8 3 100 100 0 23
+0
+
+
+
+#MOBPROGS
+#70200
+pmote drops to his knees.
+whine $n
+say Help me! Please!!
+~
+#70201
+A fine leather chair sits here at the desk.~
+#70202
+bow $n
+say Can I have a spellup $n?
+babble $n
+say How bout now? Can I have a spellup now?
+pm mutters some more unintelligible things and wanders off picking his nose.
+~
+#70600
+if ISVISIBLE $n
+    if sex $n != 2
+            say Greetings $n.
+            emote shakes $n's hand.
+            say What may I help you with $n?
+            say I can teach you new skills, train you, send you on a quest or even repent your sins.
+            emote looks at $n.
+    else
+        emote looks at $n.
+        smile
+            say Hello $N! You look very beautiful today!
+            say If you would like I can train you, help you gain new skills, send you on a quest or help you repent.
+            say I am at your service $n.
+            bow $n
+    endif
+else
+    eyebrow
+    say Hello? Who is there?
+    emote looks all around..
+    shrug
+endif
+~
+#70601
+cough
+ 
+~
+#70608
+a {Dblack{x marble pool overflowing with {Rb{rlood{x~
+#70754
+MOB echoaround $n $I accepts the coin from $n and ferries $m across the Acheron.
+MOB echoat $n $I accepts the coin and ferries you across the Acheron.
+MOB transfer $n 70757
+~
+#70756
+MOB echo $I stares blankly from under $l cowl.
+say One must pay the toll of one gold coin before crossing the Acheron.
+~
+#70757
+MOB echoaround $n $I accepts the coin from $n and ferries $m across the Acheron.
+MOB echoat $n $I accepts the coin and ferries you across the Acheron.
+MOB transfer $n 70754
+~
+#70759
+MOB echo $I snarls angrily, blocking the path forward.
+MOB echo {WThe first head says {R({DIC{R) {x'{WFight us!{x'
+MOB echo {WThe second head says {R({DIC{R) {x'{WOr rot among the misery of the Acheron!{x'
+MOB echo The third head looks $r up and down and snorts derisively.
+MOB echo {WThe third head says {R({DIC{R) {x'{WIt hardly looks worth eating...{x'
+~
+#0
+
+#$

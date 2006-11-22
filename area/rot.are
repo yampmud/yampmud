@@ -1,0 +1,760 @@
+#HELPS
+202 Poweritems~
+Power Items in NON hero areas are limited to 1 weapon and
+1 item every 50 vnums. {YALL{x power items MUST have
+p-item in their name. For example, Broadsword sword p-item,
+black dagger p-item.
+
+The formula for powerweapons must be followed accordingly.
+
+The formula is  level x 3 = points, points are used according
+to the chart below.
+
+ Point chart:
+============================
+1 point      = 1 mana
+1 point      = 1 hp
+1 point      = 5 move
+5 points     = 1 save, savingbreath, savingpara, savingrod, etc.
+5 points     = 1 ac
+5 points     = 1 stat (str,dex,con,wis, or int)
+10 points    = 1 hitroll
+10 points    = 1 damroll
+10 points    = vorpal, and sharp, each
+20 points    = vampiric, flaming, shocking, frost, and poison, each
+-10 points   = two handed
+
+For AVdam on Power Weapons set the level 5 levels above the level you
+want it to be and then type autoweapon, then set it back down, use
+the level you want the weapon to be for points, not the level you used
+for AVdam. Also remember to erase the stats given by autoweapon BEFORE
+giving stats according to the formula.
+
+
+Power Items
+
+Power Armor
+
+The formula for power armor is level x 4 = points. Use the chart below
+to see how points are allocated. For the AC on armor set the level 5 levels
+above what you are intending it to be, then autoarmor, then set it back down.
+Also remember to erase autoarmor addaffects before applying new addaffects.
+
+Power Items (Jewelry, Auras, Floating items, and Tattoos)
+
+The formula for power items is level x 6 = points. See chart below. Remember everything but
+jewelry has HALF the armor for its level, jewelry can not have AC. Jewelry includes Rings,
+Earrings, and some necklaces.
+
+Here is the point values:
+============================
+1 point      = 1 mana
+1 point      = 1 hp
+1 point      = 5 move
+5 points     = 1 save, savingbreath, savingpara, savingrod, etc.
+5 points     = 1 ac
+10 points    = 1 hitroll
+10 points    = 1 damroll
+15 points    = 1 stat (1 str,dex,con,wis, or int)
+~
+
+-1 builder coder Application apply~
+Generally speaking, when we need help here on Distortions of Chaos, we'll
+seek it out ourselves.  However, if you wish to apply for a position, the
+following are good guidelines.
+
+First, play a while.  Get to know the mud.  Make sure you like it here and
+have a good understanding of the world and gameplay.  Don't bother submiting
+an application if you don't have at least one character at ancient level.
+
+Second, assuming you've made the first requirement, people should recognize
+your name and be able to verify that you have never been disrespectful or
+cheated or any other icky stuff.  
+
+Third, if you think you've got those two down, email the appropriate information
+for the position you're requesting to dist@bhmm.net AND khaos@bhmm.net.
+
+If you are interested in building, see HELP BUILDERAPP.
+If you are interested in coding, see HELP CODERAPP.
+If you are interested in becoming an immortal, see HELP IMMAPP.
+~
+
+-1 BUILDERAPP~
+We are currently {RHIRING{x builders.  We specifically need people to help
+spruce up existing areas, though we will accept ideas for new areas.  Keep
+in mind that being given immortal access on the build port will not give
+you an immortal on the main port.  This application is for builders only.
+
+{BB{Cuilder {BA{Cpplication{x
+-------------------
+Name(s) of your DoC character(s):
+Mudding Experience (years):
+Building Experience: (include mud/area/builder name details if possible)
+Rom/RoT OLC Knowledge:
+DoC Areas you would like to work on:
+Please provide sample descriptions for at least two mobs and two rooms.
+~
+
+-1 IMMAPP~
+We are currently {RNOT{x hiring new immortals, but feel free to send one
+if you really want.  Who knows, maybe we'll like it.
+
+{RI{Dmmortal {RA{Dpplication{x
+--------------------
+Name(s) of your DoC character(s):
+Mudding Experience (years):
+Immortal Experience (years, mud, imm name):
+Why do you want to be an immortal on DoC?
+What functions would you perform as a DoC immortal?
+
+All DoC immortals are required to roleplay.  Please fill out this empty
+help file with the appropriate information for your potential immortal.
+Keep in mind which other gods are on the mud and be sure that you fill
+a need in the pantheon rather than overlapping the others.
+
+{WN{xame: Provide a name and at least two titles for your deity.
+
+{WS{xymbol:         Choose a holy symbol for your deity.
+{WH{xome Plane:     The possibilities are pretty endless.
+{WA{xlignment:      Using standard D&D alignment scale. Yours and your clerics.
+{WP{xortfolio:      A bunch of concepts and ideas which your deity embodies.
+{WW{xorshipers:     The types of people who would typically worship you.
+{WF{xavored Weapon: What you and your followers prefer to wield.
+
+{WA{xvatar:
+How you commonly appear to people.  Provide one or more possible manifestations.
+
+{WH{xistory:
+How does your deity fit into this world?  Where does it come from?  What does it
+want?  Bonus points if you have followers and/or support for your RP from other
+immortals.  It's good to know how the gods interact with each other and mortals.
+
+See HELP GODLIST for a list of help files pertaining to DoC immortals.
+~
+
+-1 CODERAPP~
+We are currently {GCONSIDERING{x coders.  We need someone with experience,
+especially in debugging, who won't mind working without shell access until
+trust has been earned.  If you would like to submit code changes, fixes, or
+additions, feel free to use this application and include your ideas.
+
+{CC{Goder {CA{Gpplication{x
+-----------------
+Name(s) of your character(s):
+Mud Experience (years):
+Coding Languages Known:
+Coding Experience: (include as much info on muds you've worked on as possible)
+Rom/RoT Coding Experience: (as above)
+Areas of Expertise:
+Ideas for Changes/Fixes/New Code:
+~
+
+-1 ROT~
+RoT is a ROM2.4 derived mud, which is originally based on the Merc 1.0 code.
+The RoT modifications to the ROM source are copyright 1996-1997 by Russ Walsh.
+~
+
+-1 ROM~
+ROM started in early February 1993, using Merc 1.0 code. In July of 1993,  
+ROM II was started, eventually replacing the original ROM.  ROM was up for
+a little over a year, after which the code (version 2.3) was released,
+and various other ROM muds were started, including Rivers of Mud under
+a new management (Zump's ROM), at rom.org 9000.
+
+Alander's current project is Tesseract, the latest version of the ROM code.
+It can be found at hypercube.org 9000.
+
+The following people contributed to the ROM flavor of the merc base code:
+
+Socials --
+    Kelsey and Liralen
+
+New, Improved Valhalla --
+    Liralen
+
+Puff's new special proc and improved poofin/poofout code --
+    Seth
+
+Maps and map shop --
+    Ezra, Regnan (Olympus)
+
+Nirvana zone --
+    Forstall (mobiles rewritten by Alander)
+
+Mob Factory --
+    Pinkfloyd (originally written for ROM, mobiles rewritten by Alander)
+
+Geographically correct Midgaard (tm) - 
+    Alander
+
+Ideas and playtesting --
+    Thousands of dedicated mudders around the world
+
+Beta testing --
+    Ken Blosser, Doug Araya, and Sherene Neil all helped with bug reports
+    and suggestions, saving a lot of headaches
+
+New Thalos area was donated by Onivel of Jedi, who was also the originator
+of the ASCII flags used in the zone files
+
+ROM 2.4 was developed during my time with Moosehead mud, and the release
+shares many of the features I wrote while I was there.  Additional code
+was written by Seth Scott (the new poofin/poofout), and many contributions
+and ideas from the Merc list were used. 
+
+The new features of 2.4 were largely produced in bull sessions with
+Gabrielle (my wife) and Brian Moore, without whom this release wouldn't
+have happened.  In particular, the new privacy code, furniture, and
+wiznet are largely the results of Gabrielle's ideas.
+
+Changes to the standard diku mob and object format, as well as the changes
+to Merc 2.1 source code, were done by Alander over many a late night of
+hair-pulling. Hope you enjoy it.
+
+(my apologies if anyone was forgotten in this list)
+~
+-1 IMMORTAL GOD WIZARD WIZ~
+'Immortal' (often, simply, 'imm') refers to players who have reached
+the highest attainable levels in the game.  Here, anyone of level 203
+or higher is an 'immortal.'  Immortals are capable of exceeding the
+usual game rules, in more drastic and pervasive ways as levels increase;
+examples range from teleportation and invisibility to mortal sight to
+creation of objects, removal of a player's privileges (channels,
+ability to move, or even ability to log in), and ability to promote
+players to immortality.
+
+Since immortals can wreak havoc with game balance, they are (ideally)
+a carefully-chosen and policed group.  An absolute rule of immortal
+behavior is that no immortal can aid or assist any player without
+explicit permission from the higher ranks; in other words, please
+don't ask an immortal to help you kill a mob, gather EQ, etc, or
+you'll likely be either politely or rudely refused, or referred to
+this file.
+
+The duties of immortals, and even the very reasons for their existence,
+are topics of continual and heated debate in various MUD forums, and are
+fraught with misconceptions, poor examples, and outrageous hypocracies. :)
+
+For a list of current immortals on DoC type wizlist or see HELP GODLIST.
+For information on becoming an immortal on DoC, see HELP APPLY.
+~
+
+-1 MERC~
+This mud is based on Merc 2.1, created by Furey, Hatchet, and Kahn.  
+Merc 2.1 is available as Merc_21.tar.gz from ftp.tcp.com and 
+ftp.math.okstate.edu.
+E-mail to 'merc-request@kpc.com' to join the merc mailing list.
+
+Thanks to ...
+  ... Diku Mud for starting it all.
+  ... The Free Software Foundation and DJ Delorie for kick-ass tools.
+  ... Copper Mud and Alfa Mud for releasing their code and worlds.
+  ... Aod of Generic for ... well, everything.  You're a hoopy frood, Aod.
+  ... Alander for many ideas and contributions.
+  ... John Brothers of Silly for permission to use Silly code and worlds.
+  ... Zrin for administering the mailing list.
+  ... Abaddon for proofreading our comm.c.
+  ... Hind, Quin, Vic, Diavolo, Oleg, Trienne, and others for porting help.
+  ... Diavolo, Grodyn, Morgenes, and others for code and bug fixes.
+  ... Raff, Doctor, VampLestat, Nirrad, Tyrst, PinkF, Chris, Glop for worlds.
+  ... the players and imps of Mud Dome, Final Mud, Mud Lite, Vego Mud, Rivers
+      of Mud, Ruhr Mud, and Mystic Realms for bug reports, ideas, new code,
+      and hours of enjoyment.
+~
+
+-1 WORLD DIRECTIONS MAPS~
+All newbies start with a map of Gaalstrom.  To purchase a new one,
+please visit the Gaalstrom General Store.
+
+See HELP AREADIR for directions to other areas from Gaalstrom.
+~
+
+-1 LOGIN~
+{WWhat name do you go by friend?{x ~
+
+-1 GREETING1~.
+{W________   .__           __                   __   .__         
+{W\______ \  |__|  _______/  |_  ____ _______ _/  |_ |__|  ____    ____    ______
+{w |    |  \ |  | /  ___/\   __\/  _ \\_  __ \\   __\|  | /  _ \  /    \  /  ___/
+{w |    `   \|  | \___ \  |  | (  <_> )|  | \/ |  |  |  |(  <_> )|   |  \ \___ \
+{D/_______  /|__|/____  > |__|  \____/ |__|    |__|  |__| \____/ |___|  //____  >
+{D        \/          \/                                              \/      \/
+{W                    _____  {R  _________  .__                      
+{W             ____ _/ ____\ {R  \_   ___ \ |  |__  _____     ____   ______
+{C            /  _ \\   __\  {r  /    \  \/ |  |  \ \__  \   /  _ \ /  ___/
+{c           (  <_> )|  |    {r  \     \____|   Y  \ / __ \_(  <_> )\___ \
+{D            \____/ |__|    {D   \______  /|___|  /(____  / \____//____  >
+{D                           {D          \/      \/      \/             \/
+                               {rBHMM.NET PORT 7200
+        {r@  {r@ {r@ {r@@{D@{r@{R@{r@@{R@{r@{R@{r@{R@@{R@{r@{W@{R@@{W@{R@{W@@@@{R@{W@@@@{R@{W@{R@@{W@{r@{R@{R@@{r@{R@{r@{R@{r@@{R@{r@ {r@@ {r@ {r@  {r@
+{r@@@@{R@{r@@@{R@{r@@{R@{r@{R@{r@{R@@{r@{R@{Y@{R@@{Y@{R@{Y@{R@{Y@@{Y@{R@{W@{Y@@{W@{Y@{W@@@@{Y@{W@@@@{Y@{W@{Y@@{W@{R@{Y@{Y@@{R@{Y@{R@{Y@{R@@{Y@{R@{r@{R@@{r@{R@{r@{R@{r@@{R@{r@@@{R@{r@@@@
+{R####{Y#{R###{Y#{R##{Y#{R#{Y#{R#{Y##{R#{Y#{W#{Y##{W#{Y#{W#{Y#{W##{W#{Y#{W#{W##{W#{W#{W####{W#{W####{W#{W#{W##{W#{Y#{W#{W##{Y#{W#{Y#{W#{Y##{W#{Y#{R#{Y##{R#{Y#{R#{Y#{R##{Y#{R###{Y#{R####
+{Y####{W#{Y###{W#{Y##{W#{Y#{W#{Y#{W##{Y#{W#{W#{W##{W#{W#{W#{W#{W##{W#{W#{W#{W##{W#{W#{W####{W#{W####{W#{W#{W##{W#{W#{W#{W##{W#{W#{W#{W#{W##{W#{W#{Y#{W##{Y#{W#{Y#{W#{Y##{W#{Y###{W#{Y#### 
+{wIf you are creating a new character choose a role-play name or it will be changed.
+~
+
+-1 AUTHORS~
+.
+{wDoC: Carl Otto III, Justin Thomas & Nicole Sativa Kurlish. Diku: Hans Staerfeldt, Katja Nyboe, Tom Madsen, Michael Seifert & Sebastian Hammer  MERC: Hatchet, Furey & Kahn  ROM: Russ Taylor  ROT: Russ Walsh  Quest Code: Ryan Addams  Modified Quest Code: Ryan Jennings  Tier System: Mike Estepp  Special Thanks: Ryan Jennings  Verbose system: Gregor Stipicic. DR 1.0a copyright (c) 2000-2001 DRCrew{W
+~
+
+0 MOTD~
+.
+If you need help try {Yhelp allhelp{x.
+
+{* H{*A{*P{*P{*Y {*H{*O{*U{*R {wis from {M5{m-{M6{w & {C11{c-{C12{w, {YAM{w & {yPM{w, Eastern Time{*!
+{D( Double Experience and Quest Points, Quadruple Damage ){x
+
+{CW{ce're back online{C!  {GR{gace {cand {BC{blass {cchanges are in{M!{C!
+{CB{ce sure to read {Mchanges{c for more details{C.
+
+{D[ {WPress enter to continue {D]
+~
+ 
+102IMOTD~
+{RWelcome Immortal{Y!{x
+{R
+****************************************************
+** Use port 7201 for building, 7202 for coding!   **
+** Pfiles from the live mud are synched to those  **
+** Ports every tick. Changes to your pfile on the **
+** Other ports WILL NOT stay.                     **
+****************************************************
+
+~
+
+-1 PKILL PKILLING PKILLER 'PLAYER KILLING' RAIDING PKSET LOOTING~
+.
+{W1{x) {cTo become a Player Killer, you must type {RPKSET{c before level 50.{x
+   {cAll PK characters start as Loners (IPK) until they join a clan.{x
+
+{W2{x) {cNo PK is to happen if person is Linkdead or AFK, both are shown{x
+   {cto you in the room so you DO know.{x
+
+{W3{x) {cPK is to be kept to SAME tier as the attacker ONLY, no Cross Tier.{x
+
+{W4{x) {cYour {RVictim{c MUST be PK and within 5 levels of you.{x
+
+{W5{x) {cNPKs are not to interfere in PK.  This means that they are not to{x
+   {ctouch anything dropped, disarmed, or otherwise becoming available{x
+   {cfor looting through PK.  Any PK character, however, is free to grab{x
+   {canything falling to the ground as a result of PK.{x
+
+{W6{x) {cYou should not be able to sacrifice any PC corpses, loot piles, or{x
+   {cloot a corpse belonging to someone you did not personally kill. If{x
+   {cyou find this is not the case, report it {Rimmediately{c.{x
+
+{W7{x) {cNo voodoo dolls of NPK characters are to be created or kept except{x
+   {cby permission of the particular character.  This includes PK characters{x
+   {cwho reroll and become NPK.  It is your responsibility to keep track.{x
+
+{W8{x) {cClan hall raiding is encouraged.  Entrances are randomized each tick.{x
+   {cYou are allowed to take anything you want from other PK clan halls.{x
+
+{W9{x) {cDo not ask for immortal reimbursement if you get killed UNLESS the mud{x
+   {ccrashed at the {Rexact{c moment of your death.  Anyone found to be crashing{x
+   {cthe mud to take advantage of this will be severely punished and cause{x
+   {ceveryone to run the risk of losing reimbursement entirely.{x
+
+{W10{x) {cFailure to follow all of these rules when PKing shall result in extreme{x
+    {cpunishment and that will be your only warning.  Repeat offenders will be{x
+    {cvaped.  We expect our players to behave responsibly.{x
+~
+
+203 COMMANDMENTS LAWS 'GOD RULES'~
+.
+                         **********************
+                         ** The Rules of DoC **
+                         **********************
+ 
+1)  Do not kill mortals, do not kill mortals, do not kill mortals.
+    This includes transferring/summoning them to aggressive mobs.
+ 
+2)  Do not cheat for ANY mortal in ANY way, especially your own. 
+    Unless of course you LIKE deletion. Yes this includes tanking,
+    healing/restoring, casting protection spells <armor, sanct>,    
+    and softening up or altering mobs.
+ 
+3)  Do not transfer or summon mobs to mortals or mortals to mobs.
+    They have legs, if they want to kill a mob, they can easilly
+    go there themselves.
+ 
+4)  DO NOT kill the shopkeepers for any reason at ALL.
+ 
+5)  DO NOT use reboot.  <--- Note, simple English.
+ 
+6)  Do not give out free equipment.  You don't need to win brownie
+    points with the mortals.  Quests are fine but handing out items
+    isn't.
+ 
+7)  A note on quests: Quests are a good thing, more or less, BUT 
+    do not give out overly extravagant prizes.  Exercise some 
+    common sense here folks.  Do not load items more than 4 levels
+    below their normal level (i.e. no level 5 ogre gauntlets).
+ 
+8)  Do not undermine the authority of a higher level god.  If you 
+    see that someone has been frozen or nochannelled do not restore
+    their priveleges.  They are being punished for a reason.
+ 
+9)  Do not try to overrule each other.  
+ 
+10) Do not use your god powers to help your mortal characters.  
+    If you do, your imm will be taken away and your mortal will be
+    forced to reroll.
+
+~
+
+-1 RULES~
+1) Player Killing and Stealing may be encouraged here, but it is
+   limited ONLY to PK characters.  This includes voodoo dolls.
+ 
+2) Cheating is considered highly illegal.  If you are caught
+   abusing any bug or any feature the consequences will be HIGH
+   (possible deletion of all characters, permanent site ban).
+   If you find an abusable bug, report it to the staff immediately.
+ 
+3) Multi-Playing in ANY way is considered HIGHLY illegal. If
+   you are caught with two or more characters on at any time
+   expect the same consequences as cheating.  If any two players
+   are connecting from the same IP, they should expect to undergo
+   some sort of multi-play testing to verify that they are two
+   separate players. Please talk to immortals before logging in a
+   second character.
+
+4) Kill stealing is not allowed here. Accidents do happen, but
+   it is your responsibility to check for other players in the area
+   and ask before killing an already hurt mob.
+    
+5) All players are expected to behave with respect, maturity, and
+   responsibility.  Any OOC harassment shown to any player, mortal
+   or immortal, will not be tolerated.  
+
+6) Distortions of Chaos strongly encourages Roleplay and as such
+   will rename any characters created with names that do not fit in
+   with our fantasy roleplay environment.
+ 
+7) Don't spam.  And definitely don't spam another mud's address.
+   If you feel the need to share another mud with someone, post the
+   address once and once only.  Most immortals have only limited
+   toleration for advertisements.
+
+8) Using the channels in any inappropriate manner will not be
+   tolerated.  Keep your IC and OOC separate.  See Help Channel
+   for more information.
+
+9) While we do not object to triggers on the whole, triggers which
+   are used for the express purpose of keeping your character from
+   going idle are a big pet peeve of all of the immortal staff.  If
+   you want to keep your time bonus up, do it the way everyone else
+   does and play actively.  If you aren't here, log off or go AFK.
+   Immortals will punish as they see fit anyone using idle tiggers.
+
+10) Usage Agreement: 
+   The environment on DoC may contain offensive material.
+   To use this site you must obey by any and all laws in your
+   jurisdiction. Additionally, BHMM.net, its affiliates, staff and
+   players will not be held liable for any incurred damages,
+   mental anguish or pain and suffering in any way related to
+   this site, users, or owners. If you do not agree to
+   abide by this agreement or your local laws forbid you to use this 
+   service you must disconnect now.
+
+   Any and all intellectual property contained within is property
+   of its respective owner(s). See the 'CREDITS' command or
+   connection greeting text.
+
+~
+
+0 SUICIDE DELETE~
+Use the delete command to erase unwanted characters, so the name will be
+available for use.  This command must be typed twice to delete a character,
+and you cannot be forced to delete.  Typing delete with an argument will
+return your character to 'safe' status if you change your mind after the
+first delete.  Second tier players should use reroll to recreate a
+character, instead of the delete command.
+~
+
+0 REROLL~
+The reroll command may be used once you reach hero status in the first
+tier of classes, or at any time while playing a second tier character.
+This command must be typed twice to reroll a character, and you cannot
+be forced to reroll.  Typing reroll with an argument will return your
+character to 'safe' status if you change your mind after the first reroll.
+
+After typing reroll the second time, you will be forced to quit.  When
+you reconnect, you will have to re-create your character, but will be
+given the second tier classes to choose from, instead of the first tier
+classes. (see 'help tier')
+
+After rerolling, you will start out in your new class at level 1, so
+this command is similar to deleting and recreating your character.
+
+When you reach the 4th tier level 201 (HERO) you can become an ANCIENT.
+See help ANCIENT.
+
+These are the ONLY things saved when rerolling:
+Money *on hand*. The bank closes your account.
+Password
+Quest points ( AQP, IQP )
+~
+
+-1 NEWCHARTIER~
+
+{G  Tier {g1{W    | {YTier {y2       {W| {RTier {r3{W       | {BTier {b4{x
+  {W====================================================={x
+  {GM{gage{W      | {YW{yizard       {W| {RI{rnvoker      {W| {BS{borcerer{x
+  {GC{gleric{W    | {YP{yriest       {W| {RB{rishop       {W| {BT{bemplar{x
+  {GR{gogue{W     | {YT{yhief        {W| {RM{rercenary   {W | {BA{bssassin{x
+  {GW{garrior{W   | {YB{yerserker    {W| {RG{rladiator   {W | {BK{bnight{x
+  {GT{gracker{W   | {YH{yunter       {W| {RR{ranger      {W | {BS{btrider{x
+  {GD{gruid     {W| {YS{yhaman       {W| {RS{rage        {W | {BE{blder{x
+  {GO{gccultist {W| {YS{ypiritualist {W| {RD{remonologist{W | {BN{becromancer{x
+  {GL{gyricist  {W| {YT{yroubadour   {W| {RM{rinstrel    {W | {BB{bard{x
+
+If you are new here. You need to choose a class in the first tier.
+
+~
+
+0 TIER~
+.
+There are currently a total of 32 classes on Distortions of Chaos,
+split into four seperate tiers.
+
+
+{G  Tier {g1{W    | {YTier {y2       {W| {RTier {r3{W       | {BTier {b4{x
+  {W====================================================={x
+  {GM{gage{W      | {YW{yizard       {W| {RI{rnvoker      {W| {BS{borcerer{x
+  {GC{gleric{W    | {YP{yriest       {W| {RB{rishop       {W| {BT{bemplar{x
+  {GR{gogue{W     | {YT{yhief        {W| {RM{rercenary   {W | {BA{bssassin{x
+  {GW{garrior{W   | {YB{yerserker    {W| {RG{rladiator   {W | {BK{bnight{x
+  {GT{gracker{W   | {YH{yunter       {W| {RR{ranger      {W | {BS{btrider{x
+  {GD{gruid     {W| {YS{yhaman       {W| {RS{rage        {W | {BE{blder{x
+  {GO{gccultist {W| {YS{ypiritualist {W| {RD{remonologist{W | {BN{becromancer{x
+  {GL{gyricist  {W| {YT{yroubadour   {W| {RM{rinstrel    {W | {BB{bard{x
+
+
+Tier 2 is notably stronger than tier 1, and tier 3 is notabaly
+stronger than tier 2 or 1, and tier 4 is notably stronger than 
+all the other tiers.
+
+Though before you advance to tier 2, 3, or 4 you must become a
+Hero (level 201), and must reroll into the next tier (help reroll).
+
+You do NOT have to choose a class in the same slot as your
+previous class, you may choose any class. In other words;
+a Mage does NOT have to become a Wizard, and Gladiator
+does NOT have to become a Berserker.
+
+When you reach the 4th tier level 201 (HERO) you can become an ANCIENT.
+See help ANCIENT.
+~
+
+0 HEALER~
+The healer decided to grab a quick buck, and now charges for his heals.  Some
+services are still free to players of level 30 or below, however.  To see
+a full listing of the healer's services, type 'heal' at his residence. To
+receive healing, bring plenty of money, and type 'heal <spell>'.
+~
+
+
+-1 GAIN~
+The gain command is used to learn new skills from the guildmaster.
+The Gaalstrom Guildmaster is below the Market Place. The following 
+options can be used with gain:
+
+gain list        : list all groups and skills that can be learned
+gain <name>      : add a skill or skill group, at the listed cost
+gain convert     : turns 6 practices into one training session
+gain convert ALL : turns ALL practices into training sessions ( 6 to 1 ratio )
+gain study       : turns 1 training session into 6 practices
+gain study ALL   : turns ALL training sessions into practices ( 1 to 6 ratio )
+
+
+Gain uses training sessions, not practices. (see 'help train')
+Gained skills and groups do NOT increase your experience per level or total
+number of creation points. 
+
+{RNOTE{D:{x For skills and groups with multiple words, please use single
+quotes.  For example, go gain elder default, type: gain 'elder default'
+~
+
+-1 RESTRING~
+Syntax: restring obj <string>
+
+The restring command is used to change the name of an object in your
+inventory.  Your guildmaster can restring items for you.  It will cost
+you 6 IQP.  See Help Reform for information on turning AQP into IQP.
+
+Restringing an object will only change the short name of the object, not
+the long description or keywords associated with that object, so you will
+still have to use the original keywords to use a restrung object.
+
+For example:
+    Object to be restrung is 'an imperial sword',
+
+       > restring sword a battle axe
+
+    This will now show up as 'a battle axe' in your inventory, and will use
+    this string in actions:  '<char> wields a battle axe' or '<char> gets a
+    battle axe'.
+
+    Because the keywords of the object are not changed, to wield or
+    manipulate this object, you will still need to use 'sword' or 'imperial',
+    ie:  get sword     wield sword
+~
+
+203 CLONE~
+Syntax:
+  clone obj <object>
+  clone mob <mobile>
+  clone <name>
+
+The clone command duplicates an object or mobile.  The level of item or mobile
+that may be cloned depends on your level.  The target object or mob must be in
+the same room as you, or in your posession.  Strung and set information is
+preserved by clone, as well as any spell effects and container contents or
+mobile inventory, except for items which are too high for you to clone.  
+Strung extended descriptions on objects are not kept, however.
+~
+
+210 RANDCLAN~
+Syntax: randclan
+
+Randclan will move the entrances to all clan halls to new randomly selected
+locations.  This is automatically done by the system at boot, and once per
+day thereafter, but can be called by an implementor to correct any problems
+in the choice of locations from the last automatic run.
+~
+
+0 SKILLS SPELLS~
+The skills and spells commands are used to display your character's list
+of available skills (or spells, as the case may be).  They are listed in
+order of level, with mana cost (for spells) or percentage (for skills)
+listed where applicable.
+~
+
+
+0 OUTFIT~
+The outfit command, usable by levels 9 and below, equips your character with
+a new set of sub issue gear (banner, weapon, helmet, shield, and vest), 
+courtesy of the Mayor's warehouses.  Only empty equipment slots are affected.
+~
+
+0 AUTO AUTOLIST AUTOLOOT AUTOGOLD AUTOSAC AUTOEXIT AUTOASSIST AUTOSPLIT AUTOSTORE AUTOPEEK~
+ROT uses varies automatic actions, to ease the boredom of always splitting
+gold and sacrificing corpses.  The commands are as follows:
+
+autolist  : list all automatic actions
+autoloot  : take all equipment from dead mobiles
+autogold  : take all gold from dead mobiles
+autosac	  : sacrifice dead monsters (if autoloot is on, only empty corpes)
+autoexit  : display room exits upon entering a room
+autosplit : split up spoils from combat among your group members
+autoassist: makes you help group members in combat
+autostore : saves all tells during combat
+autopeek  : will show inventory during a look <char> (with the peek skill)
+
+Typing a command sets the action , typing it again removes it. 
+~
+
+-1 COUNT~
+The count command displays the number of people (that you can see) logged
+into the mud.  It also displays the highest number observed that day, if
+it is higher.
+~
+ 
+-1 GATE~
+The gate spell is a powerful transportation magic that opens up a portal 
+between your character and another person or creature somewhere else in the
+world.  This portal will transport you and any pet you might have, but not
+other members of your group.  Monsters recieve a save against gate, and
+monster or players more than 3 levels higher than you can not be gated to at 
+all.  God rooms, private rooms, and no recall rooms cannot be gated to, and
+no recall rooms cannot be gated out of.  Finally, any god or hero is also 
+immune to gate, as well as any player who has no summon set.  Clan members 
+may not be gated to except by their fellow Clan members.
+~
+
+102 WEAPONSTATS~
+                                      Weapon Stats                                
+=====================================================================
+This help is to be used as a guide for making weapons.  The point of 
+this is to keep the mud in balance.  The following shows the damdice
+to use for it's level.  DO NOT use any other values.  Round to the 
+nearest level if the weapon is inbetween.
+
+
+Level     AVG      Dice
+=======================
+0          6       3d3
+5          9       3d5
+10        12       4d5
+15        15       5d5
+20        17       5d6
+25        20       5d7
+30        24       6d7
+35        30       6d9
+40        35       7d9
+45        39       6d12
+50        45       7d12
+55        49       7d13
+60        54       9d11
+65        60       10d11
+70        64       8d15
+75        72       8d17
+80        76       9d16
+85        80       10d15
+90        85       10d16
+95        93       11d16
+100       95       10d18
+101       119      14d16
+
+
+Points for weapons.
+============================
+When putting in added affects a weapon recieves points.  To determine 
+this you go by the level of the weapon.  i.e. A level 55 weapon 
+recieves 110 points.  These points can be used according to the chart
+below.  The formula for figuring out the points for a weapon would be
+(weapon level) * 2 = Points. 
+
+
+ Point chart:
+============================
+1 point      = 1 mana
+1 point      = 1 hp
+1 point      = 5 move
+5 points     = 1 save, savingbreath, savingpara, savingrod, etc.
+5 points     = 1 ac
+5 points     = 1 stat (str,dex,con,wis, or int)
+10 points    = 1 hitroll
+10 points    = 1 damroll
+10 points    = vorpal, and sharp, each
+20 points    = vampiric, flaming, shocking, frost, and poison, each
+-10 points   = two handed
+
+You can also add negative effects.  For example a level 65 weapon with
+-30 hps.  You take half of the -30 and add it for extra points, thus 
+the weapon would have 80 points.  Another example is a level 40 weapon
+with -2 damroll would recieve half of those points.  So it would be 50
+points.
+
+Please remember when creating weapons to make diverse weapons.  Not just
+swords, daggers, and the like.  Try to keep a good mix of weapons in your area.
+
+The only exception to these stats are powerweapons.  These stats are onlyto be created after
+checking with an IMM 108+.
+~
+
+-1 AFFECTS AFFECT~
+This command is used to show all the spells affecting your character. At
+low levels, only the spell name will be displayed, at higher levels the
+effects and duration of the spell will also be shown.  Spell effects
+are no longer shown on score (this can be changed by using 'show' command).
+~
+-1 Version~
+.
+See help changes
+~
+0 $~
+#$

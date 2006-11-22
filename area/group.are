@@ -1,0 +1,1933 @@
+#HELPS
+
+-1 'RACE HELP' 'RACE' 'RACES'~
+The following are the selectable PC races available on Distortions of Chaos.
+
+Avian		Bastet		Centaur		Demon
+Draconian	Drow		Dwarf		Eladrin
+Elf		Ent		Fireling	Gnoll
+Gnome		Goblin		Gryphon		Halfelf
+Halfling	Halforc		Heucuva		Howler
+Human		Iceling		Illithid	Imp
+Kitsune		Kuo-Toa		Lupine		Minotaur
+Mutant		Nymph		Obsidimen	Ogre
+Phoenix		Pixie		Satyr		Shade
+Shockling	Thri-Kreen	Titan		Troll
+
+Each race has an individual help file with detailed information. Please see
+those for more information on the specific races.   ( Example: Help Human )
+
+Attributes listed in the individual help files are listed at their maximum
+trainable value without taking class into consideration. An additional two
+points can be added to the primary attribute for the character's class.
+~
+
+-1 Avian~
+Max Attributes  : Str 16/Int 21/Wis 22/Dex 22/Con 19
+Immunities      : None
+Resistances     : Lightning
+Vulnerabilities : Poison, Disease
+Racial Affects  : Flying, Farsight
+Racial Abilities: None
+
+A race of strange bird-like humanoids, the origin of the Avian species is unknown
+though many have speculated elven or gryphon heritage. While most stand nearly as
+tall as humans, there is great variety among the various Avian varieties. Feather
+coloration, height, and wingspan differs from region to region.  While not strong
+or remarkably hearty, Avian are known for the quick reflexes and keen eyes and as
+such make decent assassins.
+~
+
+-1 Bastet~
+Max Attributes  : Str 18/Int 20/Wis 15/Dex 24/Con 18
+Immunities      : None
+Resistances     : Mental, Earth
+Vulnerabilities : Charm, Sound
+Racial Affects  : Haste, Infrared
+Racial Abilities: None
+
+It has long been rumored that a race of catlike people was born of a long-forgotten
+goddess. Few who have seen members of this elusive race describe any two similarly.
+Some are rumored to be shapeshifters who can assume a human-like form with telltale
+signs of their feline heritage, but who can change into cats of different sizes.  A
+few have told of humanoids with the heads and tails of cats. Some are said to stalk
+about in the darkness, while others are reported to love basking in sunlight. Which
+of the rumors are true is unknown to all but the Bastet, the children of an ancient
+goddess.  All the tales, however, hold two things true: these cat-people are always
+fast as lightning with a wit just as quick.
+~
+
+-1 Centaur~
+Max Attributes  : Str 22/Int 16/Wis 20/Dex 20/Con 22
+Immunities      : None
+Resistances     : Nature
+Vulnerabilities : Energy, Negative
+Racial Affects  : Detect Hidden
+Racial Abilities: Enhanced Damage
+
+Strong and sturdy, Centaurs are a strange race with the upper torso of a human which
+rises from the body of a horse. Forest dwellers by nature, many centaurs tend toward
+the profession of tracker or strider, guarding the woods they call home.  Others are
+famed for the skill in battle, while some have taken to studying the movement of the
+stars and the mechanisations of nature herself.  Even the most brutish centaurs seem
+to possess a deep understanding and appreciation for nature and a practical wisdom.
+~
+
+-1 Demon Demon-race 'demon race'~
+Max Attributes  : Str 24/Int 15/Wis 15/Dex 24/Con 22
+Immunities      : None
+Resistances     : Energy, Negative
+Vulnerabilities : Holy, Silver
+Racial Affects  : Frenzy, Haste, Detect Good
+Racial Abilities: Berserk
+
+Born of the darkest pits of Hell, demons are beings of hatred and destruction.
+They come in a variety of forms, from grotesque clawed beasts, to suave ebony-
+skinned overlords, to decadent succubi.   Their motives are as varied as their
+physicalities.  Some kill for the sheer pleasure while others may serve one of
+the many devil lords of hell, and yet others keep their reasons to themselves.
+One thing unites all demons:  the war their homeland constantly wages with the
+heavens. Demons and Eladrin will be eternally at odds, darkness forever at war
+with the light.
+~
+
+-1 Draconian~
+Max Attributes  : Str 23/Int 20/Wis 16/Dex 18/Con 23
+Immunities      : None
+Resistances     : Bash, Charm
+Vulnerabilities : Pierce
+Racial Affects  : Flying
+Racial Abilities: None
+
+A strange crossbreed of humanoid species and dragons, the draconian are scaled
+like their larger parent and bear large wings capable of limited flight.  They
+walk upright like their bipedal parents, their form resembling that of humans.
+They are well muscled and healthy, often snobbish feeling they are of superior
+mind and body to other humanoids. While most Draconian will remain as such all
+their lives, some have found a way to free themselves of their humanoid bodies
+and transform into great dragons.  The process is said to be difficult and has
+been kept a guarded secret by those few who have discovered it.
+
+{RSPECIAL{W:{x Draconians are the only race which may evolve into dragons.
+         See {YHelp Dragon{x for more information.
+~
+
+-1 Dragon~
+Dragons, as a Player Character race, are not currently available. Eventually,
+we intend to permit draconian characters to spend IQP and RP points to evolve
+into dragons, but the system is not yet finished.  When it is, they will have
+the opportunity to choose from different types of dragons (generally speaking
+these will be standard D&D dragon colors) each with their own resistances and
+vulnerabilites, as well as a breath weapon. This file will be updated as soon
+as the changes are in to include the cost of evolution, as well as statistics
+for each dragon type available.
+~
+
+-1 Drow drow-race~
+Max Attributes  : Str 16/Int 21/Wis 16/Dex 24/Con 16
+Immunities      : None
+Resistances     : Charm, Negative, Poison
+Vulnerabilities : Iron, Light
+Racial Affects  : Hide, Infrared
+Racial Abilities: Sneak, Dodge
+
+Hailing from the depths of the world come the drow, darkest of the elven races.
+Most drow deny their relation to the surface elves but it's difficult to ignore
+the physical similarities such as angular faces and sharply pointed ears.  Drow
+society is primarily matriarchal with a rich background in magical arts.  Their
+priesthood abounds, though compared to other races of the realms, their priests
+are not nearly as impressive as their sorcerers and assassins.  Ever-suspicious
+and remarkably cunning, a drow's intellect and speed are her greatest asset.
+~
+
+-1 Dwarf~
+Max Attributes  : Str 23/Int 18/Wis 18/Dex 16/Con 25
+Immunities      : Poison
+Resistances     : Disease, Earth
+Vulnerabilities : Water
+Racial Affects  : Infrared
+Racial Abilities: Berserk
+
+A short and stocky race hailing from mountainous regions, Dwarves tend to be the
+most hearty of all known races, able to resist disease and outdrink anyone. They
+possess a long history and a rich culture, full of what the other races consider
+some of the finest stone and metalwork and some of the driest tomes of genealogy
+found in all of the realms.  Dwarves are known to anger quickly, a fine asset in
+battle, but a poor quality in diplomats. However, they are a well-rounded people
+and tend toward all manner of professions.
+~
+
+-1 Eladrin~
+Max Attributes  : Str 18/Int 20/Wis 23/Dex 18/Con 21
+Immunities      : None
+Resistances     : Holy, Light
+Vulnerabilities : Iron, Negative
+Racial Affects  : Flying, Bless, Detect Evil
+Racial Abilities: Continual Light
+
+Eladrin are beings born of light who live in the Heavens.  Most resemble humans
+of unearthly beauty with a pair of snow white wings set in their backs. They're
+a wise and compassionate race built to guide the earth-dwelling races and fight
+the corruptive forces of Hell.  Their great wisdom lends them to superb healing
+abilities and understanding of the world,  leading many Eladrin to the paths of
+priest or sage. Many, however, are armed as knights to fight in the eternal war
+against darkness, demon-slaying their primary goal.
+~
+
+-1 Elf~
+Max Attributes  : Str 16/Int 25/Wis 20/Dex 23/Con 16
+Immunities      : Charm
+Resistances     : Silver
+Vulnerabilities : Iron
+Racial Affects  : Infrared
+Racial Abilities: Sneak, Hide
+
+One of the most long-lived races, elves are known for the keen intellects, ageless
+wisdom and exotic beauty. They possess sharply pointed ears and angled eyes; their
+cheekbones are high set, their complexions clear. Their lithe bodies are work well
+at archery and light swordplay.  Their extensive studies and sharp minds make them
+fine wizards.  Though elven cultures vary across the realms as greatly as do human
+ones, most elven societies know the secret to creating a finely woven chainmail as
+light as a feather and tough as steel.  
+~
+
+-1 Ent~
+Max Attributes  : Str 20/Int 17/Wis 23/Dex 12/Con 23
+Immunities      : Wood
+Resistances     : Nature
+Vulnerabilities : Fire, Lightning
+Racial Affects  : Briarshield
+Racial Abilities: None
+
+The origin of ents is much debated.  So old is the race that even they have greatly
+forgotten their true begining. Some believe that the ents were born of the earth as
+trees and were blessed with sentience and mobility by strong elven magics and asked
+to guard the forests.  This seems as reasonable an explanation as any.  Ents appear
+to be the largest and oldest of any variety of trees, tall and slow.  They are made
+of wood-like flesh which permits them strength, but not speed.  Their long lives in
+the forests tend to cultivate within them great wisdom and health and many practice
+nature-based magic and healing arts.
+~
+
+-1 Fireling~
+Max Attributes  : Str 22/Int 18/Wis 14/Dex 22/Con 19
+Immunities      : Fire
+Resistances     : Wood
+Vulnerabilities : Cold, Water
+Racial Affects  : Fireshield, Dark Vision
+Racial Abilities: Fast healing
+
+Descended from fire elementals, Firelings resemble bronze-skinned humans with flames
+dancing in their eyes.  Heat radiates from their bodies and their skin is hot to the
+touch. Strong and fast, Firelings can be powerful adversaries. They tend to be quick 
+with a clever quip, but also quick to anger.  The fire which burns inside them fuels
+a strong temper and sharp mind.
+~
+
+-1 Gnoll~
+Max Attributes  : Str 20/Int 15/Wis 15/Dex 23/Con 20
+Immunities      : None
+Resistances     : Charm
+Vulnerabilities : Poison
+Racial Affects  : Berserk, Dark Vision
+Racial Abilities: None
+
+Small, dog-like humanoids, gnolls have long been a slave-race.  Others have abused
+them due to their small size and low intelligence.  Recent generations have proved
+stronger than their forebearers,  using their size and speed to their advantage as
+they fought for their freedom. Now, they keep to themselves, working on developing
+their own culture and afraid that the other races might try to enslave them again.
+They abhor slavery in any form as they  have suffered the brunt of it for too many
+generations.  Solitary gnolls often take to thievery to make their living as there
+is little else beyond manual labor at which they excel.
+~
+
+-1 Gnome~
+Max Attributes  : Str 15/Int 24/Wis 22/Dex 23/Con 16
+Immunities      : None
+Resistances     : Acid, Mental
+Vulnerabilities : Cold, Disease
+Racial Affects  : None
+Racial Abilities: None
+
+Though one of the more common races, gnomes only seem to adventure infrequently.
+Most prefer to stay among their own kind, engaging in alchemical experiments and
+wordplay.  Those who venture out tend toward trickery, though not always in very
+malicious ways, favoring illusion and stealth to more direct forms of combat. It
+is common knowledge that gnomes pick names for themselves which they think sound
+interesting or exciting.  They also pick names for each other.  Most gnomes have
+gathered such greatly long names that they only offer the first few syllables to
+members of other races to avoid confusion, though some of the more sadistic will
+insist others call them by their full name.
+~
+
+-1 Goblin~
+Max Attributes  : Str 16/Int 22/Wis 16/Dex 23/Con 20
+Immunities      : None
+Resistances     : Cold
+Vulnerabilities : Light
+Racial Affects  : Infrared
+Racial Abilities: Sneak
+
+These small, mountain-dwelling creatures are commonly thought to be as dumb as
+the rocks they live among, but goblins tend to be far more clever than many of
+the subterranean races.  Their quick minds and quicker reflexes make them very
+capable thieves and mercenaries, though most humanoids prefer to avoid contact
+with these creatures. Most often, their skin is a greyish green and their eyes
+are black and beady.  They don't generally trust others as goblins have been a
+target of most other races for as long as they can remember.  Perhaps it's the
+tradition of theft and raiding that others dislike so much.
+~
+
+-1 Gryphon~
+Max Attributes  : Str 18/Int 23/Wis 23/Dex 18/Con 18
+Immunities      : None
+Resistances     : Light, Lightning
+Vulnerabilities : Earth, Water
+Racial Affects  : Flying, Farsight
+Racial Abilities: None
+
+Great beings built with the body of a lion and the head, beak, and wings of an
+eagle, Gryphons are imposing to say the least. They are said to build nests of
+gold and have a keen insight into the locations of buried treasures. Born from
+large eggs, gryphons are often raised high in the mountains, isolated from the
+rest of the world.  The few outsiders they see are often treasure hunters come
+to steal the gold from their nests; therefore, gryphons commonly have a strong
+distaste for the other races.  Gryphons are even more impressive mentally than
+physically, making them skilled in all pursuits.
+~
+
+-1 Halfelf~
+Max Attributes  : Str 17/Int 23/Wis 19/Dex 20/Con 18
+Immunities      : None
+Resistances     : Charm, Silver
+Vulnerabilities : None
+Racial Affects  : Farsight
+Racial Abilities: Hide
+
+Most often the product of relationships or rapes between elves and humans,
+half-elves have no society or culture of their own. To the elves, they are
+human, while to the human they are elves. Most feel they have no true home
+and no ties beyond family to either culture.   This drives many half-elves
+to live a nomadic lifestyle and spawned many a fine adventurer.  The elven
+heritage permits them a fine intellect and dexterity, while the human side
+gives them more versatility.  
+~
+
+-1 Halfling~
+Max Attributes  : Str 15/Int 16/Wis 18/Dex 24/Con 24
+Immunities      : None
+Resistances     : Poison, Disease
+Vulnerabilities : None
+Racial Affects  : None
+Racial Abilities: Sneak
+
+When halflings are around, it is wise to keep watch on both your wallet and
+your dinner plate.  They are known for their sleight of hand and their love
+of good food.  Most also come with a tale or two... or twelve.   Boisterous
+when they want to be, halflings can also be stealthy when they choose. Many
+halflings who have ventured away from  the comfort of their kitchens become
+rather successful thieves and assassins.
+~
+
+-1 Halforc~
+Max Attributes  : Str 21/Int 16/Wis 15/Dex 20/Con 23
+Immunities      : None
+Resistances     : Weapon
+Vulnerabilities : Acid, Mental
+Racial Affects  : Berserk
+Racial Abilities: None
+
+Like the half-elves, half-orcs are a product of cross-breeding, though more
+often than not, their conception was forceful. Even within the society they
+are raised, be it human or orc, they are seen as outsiders and often merely
+tolerated for their mother's sake.  They tend to be strong and healthy, but
+lacking in intellect and understanding.   Most learn pretty early on how to
+fight for themselves, and many pick up a blade and take to adventuring at a
+young age.
+~
+
+-1 Heucuva~
+Max Attributes  : Str 25/Int 10/Wis 10/Dex 25/Con 25
+Immunities      : Poison, Disease
+Resistances     : Slash, Pierce, Negative
+Vulnerabilities : Bash, Charm, Holy, Silver
+Racial Affects  : Dark Vision
+Racial Abilities: Second Attack
+
+Of all undead known to the realms, heucuva are among the strongest, toughest,
+and fastest.  While they may resembles skeletons with very little flesh still
+clinging to their bones, heucuvas tend to be much more formiddable opponents.
+How they are created is often debated.  Some claim they were priests who were
+corrupt; they were forsaken by their gods, cursed, and barred from death.  It
+has also been suggested that they were created by a powerful necromancer, who
+was eventually slaughtered at the hands of his own minions. Either way, these
+grotesque beings are a physical match for most foes, but they greatly lack an
+intellect or free will of their own. Many seek to become soldiers or servants
+of powerful organizations, finding life under another's command natural.
+~
+
+-1 Howler~
+Max Attributes  : Str 21/Int 16/Wis 18/Dex 22/Con 18
+Immunities      : Sound
+Resistances     : Cold
+Vulnerabilities : Disease, Light
+Racial Affects  : Infrared
+Racial Abilities: Howl
+
+It is speculated that howlers are a mutation of goblins, smaller and stronger,
+but lacking the wit their cousins possess.   Howlers spend most of their lives
+under ground, their sensitive eyes accustomed to the dark.  Little is known of
+their strange society, but they are known to be cautious and avoid all contact
+with outsiders.  Some, however, have ventured into the light of the surface to
+become adventurers.  Their guarded nature is well-suited for supportive roles,
+such as healer or rogue.  Howlers have been given  their name by surfacers due
+to the painful screeching howl the small creatures can emit.
+~
+
+-1 Human~
+Max Attributes  : Str 19/Int 19/Wis 19/Dex 19/Con 19
+Immunities      : None
+Resistances     : None
+Vulnerabilities : None
+Racial Affects  : None
+Racial Abilities: None
+
+Most populous of all the races, humans are also the most versatile.  They adapt
+well to most situations and are capable in any profession they choose.  Much of
+the land's heroic legends revolve around human adventurers,  though this may be
+due to the fact that most of those tales have been told by humans. While humans
+are not particular strong in any one area, they also do not any possess obvious
+exploitable weaknesses.
+~
+
+-1 Iceling~
+Max Attributes  : Str 20/Int 16/Wis 22/Dex 14/Con 23
+Immunities      : Cold
+Resistances     : Water
+Vulnerabilities : Fire
+Racial Affects  : Iceshield
+Racial Abilities: Fast healing
+
+Descended from elemental ice, Icelings resemble humans with pale skin and chilly
+blue or grey eyes.  They tend to be patient and calculating, taking in the whole
+picture before reacting. Strong of will and body, Icelings make superior priests
+and warriors, bringing deliberate grace to all they do. They view the world from
+a detached perspective, feeling little stir in their cold hearts.  Their bodies,
+like their minds, are cool and clean.
+~
+
+-1 Illithid~
+Max Attributes  : Str 16/Int 25/Wis 21/Dex 18/Con 15
+Immunities      : Mental
+Resistances     : None
+Vulnerabilities : Slash
+Racial Affects  : None
+Racial Abilities: Psionic Blast, Meditation
+
+Most other races find illithids appalling, which is fine by them as they see the
+other races as little more than potential slaves. Using their superior intellect
+and psionic abilities, illithids dominate and destroy the inferior,  weak-minded
+races.  They feast upon the brains of others, thus giving rise to the derogatory
+epitaph mind flayers.  The illithids don't see this as a bad thing.  Very seldom
+do any illithids stray from their own kind, leaving the hive mentality and over-
+mind behind.  Many have a difficult time adjusting to thinking as an individual,
+without all its brethren's thoughts joining it.  Physically, illithids are lanky
+and tall with pasty grey skin. Their skulls are elongated and where their mouths
+would be are four tentacles.  Genders are indistinguishable if not non-existent.
+~
+
+-1 Imp~
+Max Attributes  : Str 14/Int 23/Wis 17/Dex 23/Con 18
+Immunities      : Poison
+Resistances     : Magic
+Vulnerabilities : Charm, Holy, Acid
+Racial Affects  : Haste, Flying
+Racial Abilities: Hide
+
+Smart and fast, imps are unrepentent pranksters. Many imps tend toward malicious
+deeds, leaving the victims of their jokes in pain, anger, anguish, or all three.
+Most imps stand less than one foot tall, though there is plenty of variety among
+the several impish species. Imps are native to hell and may be related to demons
+who also reside in those depths.  As imps are often summoned by wizards, they've
+developed a strong resistance to magics, though they are often weak to the charm
+spells which keep them service-bound.  Imps often rival the summoning wizards in
+intellect and ability, and thus resent such imprisonment.
+~
+
+-1 Kitsune~
+Max Attributes  : Str 15/Int 24/Wis 21/Dex 22/Con 15
+Immunities      : None
+Resistances     : Charm, Fire
+Vulnerabilities : Water
+Racial Affects  : Infrared
+Racial Abilities: None
+
+The term sly as a fox applies to the kitsune in more way than one.  Not only do
+the possess the swift intellect attributed to the creatures, but they also have
+their blood within them.  A rare and magical race, the kitsune often seem to be
+merely human to most, but if one looks closely, there is a touch of mischief in
+their eyes that belies their true nature. Many associate these fox-kin with the
+element of fire, perhaps because most (though not all) have reddish hair. There
+may be some truth to this for nearly all kitsune have a fear of water.
+~
+
+-1 Kuo-Toa~
+Max Attributes  : Str 15/Int 21/Wis 25/Dex 15/Con 19
+Immunities      : Water
+Resistances     : Mental, Poison
+Vulnerabilities : Cold, Lightning
+Racial Affects  : Swim
+Racial Abilities: Wspit, Meditation
+
+An amphibian race with a strange, tribal society, Kuo-Toa are known for the
+potency of their priesthood.  Their squat bodies and long arms are not made
+for combat, though they certainly are capable when necessary.  Instead, the
+Kuo-Toa focus their studies on the divine and arcane arts, often discussing
+the finer points of religion and philosophy for days on end. While they are
+a primarily peaceful society, the Kuo-Toa will fiercely defend their family
+and home with potent magics and finely crafted spears when necessary.
+~
+
+-1 Lupine~
+Max Attributes  : Str 22/Int 16/Wis 14/Dex 22/Con 23
+Immunities      : None
+Resistances     : Iron, Slash
+Vulnerabilities : Pierce, Silver
+Racial Affects  : Infrared
+Racial Abilities: Howl
+
+Half man and half wolf, lupine are strong and fierce.  The origins of these
+hybrids is uncertain, but many view it as a curse which expresses itself in
+many ways. Some, it is said, are able to alternate their form, appearing as
+a man one day and a wolf the next.  Others, however, are caught between the
+two, forever expressing both human and wolflike traits. This latter variety
+is suspected to be the progeny of the prior.  Physically, lupines possess a
+great bit of stength and often use this to their advantage, finding work as
+soldiers or mercenaries.
+~
+
+-1 Minotaur~
+Max Attributes  : Str 24/Int 16/Wis 15/Dex 17/Con 23
+Immunities      : None
+Resistances     : Bash, Slash
+Vulnerabilities : Energy, Mental
+Racial Affects  : Farsight
+Racial Abilities: Enhanced Damage
+
+Minotaurs are undeniably among the most  powerful fighters in the land.  They
+are trained in combat from their youth and possess military prowess which far
+outweighs most other societies.  Their bodies resemble those of strong, well-
+muscled humans, while their heads are those of bulls, often bearing two large
+horns.  While other professions exist within minotaur society, a majority are
+trained as fine warriors.
+~
+
+-1 Mutant~
+Max Attributes  : Str 22/Int 15/Wis 15/Dex 18/Con 25
+Immunities      : None
+Resistances     : Acid, Sound
+Vulnerabilities : Slash
+Racial Affects  : Acidshield
+Racial Abilities: None
+
+Many speculate that mutants began as the subjects of magical and alchemical
+experiments who were tossed aside and forgotten--or perhaps freed--by their
+masters.  Exposure to large varieties of chemicals  and frequent explosions
+has left them resistant to acids and a little hard of hearing.  The changes
+seem to carry over into subsequent generations. They also possess a strange
+toxic aura, making them unwelcome in most societies. Their twisted features
+don't exactly make them well-liked either. Their skin is thin, sometimes to
+the point of translucency.  Physically, however, they can withstand quite a
+beating as well as give one.  An angered mutant is something to fear.
+~
+
+-1 Nymph~
+Max Attributes  : Str 16/Int 20/Wis 23/Dex 18/Con 18
+Immunities      : None
+Resistances     : Nature
+Vulnerabilities : Negative, Slash
+Racial Affects  : None
+Racial Abilities: Charm Person
+
+Nymphs are the spirits of nature, the physical personifications of the woods
+and the mountains, the lakes and the ocean. They are radiantly beautiful and
+possess such allure that most are unable to resist any request they make.  A
+nymph will weaken if kept from her home, or one like it, for too long.  Most
+nymphs are female, though a rare male has existed.  It is said that they are
+born directly from the spirit of the earth, but given their seductive nature
+most dismiss that rumor.
+~
+
+-1 Obsidimen~
+Max Attributes  : Str 25/Int 18/Wis 20/Dex 10/Con 22
+Immunities      : Earth
+Resistances     : Weapon
+Vulnerabilities : Acid, Energy, Sound
+Racial Affects  : Stone Skin
+Racial Abilities: None
+
+It is rare indeed to see an obsidimen far from the mountains for they are part
+of the stone from which they are born. Within the mountain they call home, the
+obsidimen are able to communicate freely with their brethren.  However, if one
+leaves, it finds itself alone with its thoughts.  Obsidimen are massive, their
+bodies made from living stone.  They possess no genders, for they have no need
+of such means of reproduction.  Some, however, feel the need to associate with
+one gender or the other when entering into other societies.  Obsidimen possess
+unmatched patience and take their time in everything they do.  This makes them
+fine craftsmen and excellent scholars.
+
+[Note: This race was blatantly stolen from Earthdawn and modified for DoC.]
+~
+
+-1 Ogre~
+Max Attributes  : Str 23/Int 15/Wis 15/Dex 20/Con 22
+Immunities      : None
+Resistances     : Weapon
+Vulnerabilities : Charm, Mental, Silver
+Racial Affects  : Berserk
+Racial Abilities: None
+
+Ogres are large generally ugly bipeds with thick yellowish or greenish skin and
+poor hygeine.  Most view ogres as big and dumb, finding them easily influenced.
+Often ogre tribes can be found in the employ of somebody who needs grunts to do
+their dirty work. Ogres do, however, have their own rich culture which includes
+a long history of shamanistic magic.  Though not as potent as other mages, ogre
+mages are certainly to be feared, for they are competent in physical and arcane
+combat.  More fearsome, however, is a frenzied ogre barbarian.
+~
+
+-1 Phoenix~
+Max Attributes  : Str 15/Int 23/Wis 23/Dex 21/Con 15
+Immunities      : Fire
+Resistances     : Magic
+Vulnerabilities : Earth, Water
+Racial Affects  : Fireshield, Flying
+Racial Abilities: None
+
+Frail beings of fire, the phoenix are one of the most rare and elusive races.
+Though they are birds, phoenix eggs are a true rarity as very few are born of
+normal unions. Instead the race survives through a cycle of death and rebirth
+which all phoenix undergo.  When a phoenix dies, it is consumed by flames and
+from the remaining ashes, a new phoenix arises.   Most phoenix are remarkably
+intelligent and possess the wisdom of many generations. Magic courses through
+their very core, and thus they are quite skilled in casting.
+~
+
+-1 Pixie~
+Max Attributes  : Str 12/Int 23/Wis 21/Dex 23/Con 16
+Immunities      : None
+Resistances     : Magic, Light
+Vulnerabilities : Bash, Sound
+Racial Affects  : Flying, Detect Magic, Detect Hidden, Detect Invis
+Racial Abilities: Faerie Fire
+
+Pixies are small winged creatures with heads too large for their bodies. They
+have pointed ears and noses and arched eyebrows. Their wings are translucent,
+and rarely stop fluttering.  Most pixies find it tough to stay still and move
+about at an alarmingly fast pace.  While generally friendly, pixies are often
+extremely capricious and given to mischief.  Magic is second nature to pixies
+who possess inate powers,  such as the ability to surround their enemies in a
+bright outline, making the target easier to hit.
+~
+
+-1 Satyr~
+Max Attributes  : Str 19/Int 16/Wis 24/Dex 18/Con 23
+Immunities      : None
+Resistances     : Nature
+Vulnerabilities : Charm, Iron, Negative
+Racial Affects  : Detect Good, Detect Evil, Detect Hidden
+Racial Abilities: None
+
+Satyrs dwell in the forests and revel in the beauty of nature in all its many
+forms, especially the forms of the more beautiful races.  The lower body of a
+satyr is covered in fur ranging from reddish brown to black, possessing a set
+of legs, a tail, and hooved feet like a goat. Their upper bodies, though, are
+generally human-like in form, often fit and well-toned. Satyr society centers
+around revelry, sexuality, and philosophy. They are known for their endurance
+in combat, drinking, and love-making, as well as their ability to debate such
+things as philosophy and theology with the best minds of other cultures.
+~
+
+-1 Shade~
+Max Attributes  : Str 15/Int 18/Wis 20/Dex 24/Con 18
+Immunities      : None
+Resistances     : Weapon
+Vulnerabilities : Holy, Light, Wood
+Racial Affects  : Pass Door
+Racial Abilities: Sneak
+
+It is difficult to tell a shade from a normal shadow.  Shades are beings made
+of darkness itself and are thus difficult to touch or harm physically.  Their
+figures are humanoid,  and while other races find it difficult to distinguish
+one shade from another, shades themselves never have any such trouble.  Their
+very nature, that of shadow and grace,  lends itself well to the darker sides
+of combat. Shades are known for their fine assassins.  Their clergy, dark and
+quiet, are also gaining notariety for their fine understanding of divine arts
+and the darker side of the gods.  
+~
+
+-1 Shockling~
+Max Attributes  : Str 22/Int 16/Wis 14/Dex 24/Con 19
+Immunities      : Lightning
+Resistances     : Energy
+Vulnerabilities : Earth
+Racial Affects  : Shockshield
+Racial Abilities: Fast Healing
+
+Descended from lightning elementals, shocklings resemble humans with golden
+skin and glittering eyes.  Electricity sparks along their skin, making them
+easily distinguishable from humans.  They are fantastically fast and nearly
+as strong.  They are quick to anger, often simply because they enjoy having
+the opportunity to display their combat prowess.
+~
+
+-1 Thri-Kreen~
+Max Attributes  : Str 23/Int 14/Wis 14/Dex 24/Con 20
+Immunities      : Acid
+Resistances     : Poison
+Vulnerabilities : Bash
+Racial Affects  : None
+Racial Abilities: Poison
+
+The insectoid thri-kreen make their homes in the deserts of the land, hunting
+whatever creatures are foolish enough to cross into their domain. Many others
+see their culture as primitive and view the mantis-like thri-kreen as savages
+unfit for more evolved society. The thri-kreen are more likely to act quickly
+and decisively than others, prefering a direct solution to problems and swift
+death for their enemies.  Their bodies are covered with tough exoskeleton and
+their faces bear wicked mandibles.  Their eyes seem cold and emotionless, and
+their language of clicks and trills sounds harsh to outsiders.  Being hunters
+by nature, each thri-kreen thinks of himself as a loner, making interpersonal
+relations difficult to say the least.  
+~
+
+-1 Titan~
+Max Attributes  : Str 25/Int 16/Wis 16/Dex 16/Con 24
+Immunities      : None
+Resistances     : Bash, Lightning
+Vulnerabilities : Energy
+Racial Affects  : Farsight, Detect Invis
+Racial Abilities: None
+
+Physically, titans are one of the most imposing races in the land.  They tower
+over everyone else, save maybe a few elder dragons. They tend to love war, for
+it is where their skill lies. When a titan sets off on his own, it is often in
+search for new opponents, others with which he can test his skills. The titans
+claim to have existed before the gods  and often insist that they are the ones
+who should be in power.  Whether this is true or not, only the gods know.
+~
+
+-1 Troll~
+Max Attributes  : Str 25/Int 13/Wis 13/Dex 16/Con 23
+Immunities      : None
+Resistances     : None
+Vulnerabilities : Fire
+Racial Affects  : Regeneration
+Racial Abilities: Berserk, Fast Healing
+
+Trolls are hideous humanoids usually standing about eight feet tall. Their size
+and strength make them formidable opponents, but it is their natural ability to
+regenerate that makes them truly fearsome. Trolls have their own tribal society
+which is run by the strongest of each clan. As they lack in intellect, strength
+is they only true quality of worth to a troll.  If you are found weak, the clan
+might break off your horns and banish you, a far more severe punishment than to
+simply slay you. Some say that trolls possess a depth of spirit that others can
+not comprehend, from which they find their passion for battle.   Most, however,
+dismiss this claim, finding trolls to be little more than overgrown brutes.
+~
+
+-1 WANDS STAVES SCROLLS INSTRUMENTS~
+Magical items require training to use properly.  If your character lacks the
+necessary skill to use an item, he will fail, possibly destroying it.  The
+item skills are as follows:
+
+scrolls		The reading of magical scrolls and books (see 'help recite')
+staves		The use of staves and similar devices (see 'help brandish')
+wands		The use of wands and similar items (see 'help zap') 
+instruments     The use of enchanted musical instruments (see 'help perform')
+~
+ 
+-1 'GROUP HEADER'~
+The following skills and groups are available to your chacter:
+(this list may be seen again by typing list)
+~
+
+-1 'GROUP HELP'~
+The following commands are available:
+list         display all groups and skills not yet bought
+learned      show all groups and skills bought 
+premise      brief explanation of creation points and skill groups
+add <name>   buy a skill or group
+drop <name>  discard a skill or group
+info <name>  list the skills or spells contained within a group
+help <name>  help on skills and groups, or other help topics
+done	     exit the character generation process
+~
+
+-1 'MENU CHOICE'~
+Choice (add,drop,list,help)?~
+
+-1 'GROUPS' 'INFO' 'PREMISE'~
+The ROT skill system allows you to fully customize your new character, making
+him or her skilled in the skills you choose.  But beware, the skills you pick
+at character creation are the only skills you will ever learn.  Skills are 
+paid for with creation points, and the more creation points you have, the
+harder it is to gain a level.  Furthermore, higher-cost skills are harder to
+practice.
+
+Skill groups are like package deals for characters -- sets of skills or spells
+that are closely related, and hence can be learned as a unit.  There is a 
+default skill group for each class, which can be selected for a balanced 
+selection of skills at a somewhat reduced cost.
+
+The experience breakdown is as follows: 
+points   exp/level     points   exp/level
+40        1000         90        6000
+50        1500         100       8000
+60	  2000         110      12000
+70        3000         120      16000 
+80        4000         130      24000
+The table continues in a similar manner for higher point totals.
+~
+
+-1 'CLASS'~
+Syntax:  class
+         class all
+         class <group>
+
+Typing class by itself will list all spell groups that you currently have.
+The [class all] format will list all groups that are available to your
+particular class.  The [class <group>] method will list all of the spells
+available to your class within that group, along with the level at which
+you recieve the spell.
+~
+
+-1 BASICS 'ROT BASICS'~
+The basic skills:
+
+Every character starts with two skill groups, one for their class and a default
+set that all characters receive.  The default skills are:
+
+recall  	essential escape skill (see help recall)
+scrolls		reading of scrolls and other magical volumes
+staves		use of magical staves
+wands		use of magical wands
+
+for class defaults, check the classes themselves.
+~
+
+-1 MAGE WIZARD INVOKER SORCERER~
+
+{WC{Dlasses{W: {GM{gage {YW{yizard {RI{rnvoker {BS{borcerer{x
+Mages specialize in the casting of spells, offensive ones in particular.
+Mages have the highest-powered magic of any class, and are the only classes
+able to use the draconian.  They are also very skilled at the use of magical 
+items, though their combat skills are the weakest of any class.
+
+All mages have the power to levitate a shield in front of them, freeing
+both hands for weapons or wands or staves.
+
+All mages begin with skill in the dagger. Any other weapon skills must be
+purchased, at a very high rate.  The default skill selection for mages is
+as follows:
+
+skills:
+lore		the lore of magical items
+
+spell groups:
+beguiling	spells that control the mind
+combat		offensive magics, such as fireball and chill touch
+conjuration     spells for creating objects and summoning mephits
+detection	informational magics, such as detect magic and identify
+enhancement	spells that maximize physical potential, such as haste
+illusion	magics for concealing and deceiving
+maladictions	a selection of curses fit for any witch
+protective	defensive magics, ranging from armor to stone skin
+transporation	spells for getting from here to there
+~
+
+-1 CLERIC PRIEST BISHOP TEMPLAR~
+
+{WC{Dlasses{W: {GC{gleric {YP{yriest {RB{rishop {BT{bemplar{x
+Clerics are the most defensively oriented of all the classes.  Most of their
+spells focus on healing or defending the faithful, with their few combat spells
+being far less powerful than those of mages. However, clerics are the best 
+class by far at healing magics, and they posess an impressive area of
+protective magics, as well as fair combat prowess.
+
+Clerics recieve the power to levitate a shield in front of them once they
+reach level 50, freeing both hands for weapons.
+
+All clerics begin with skill in the mace.  Other weapon or shield skills must
+be purchased, many at a very dear cost.  The default skill selection for 
+clerics is as follows:
+
+skills:
+flail		the proper use of flails
+
+spell groups:
+attack		a selection of offensive magics
+benedictions	powerful magics that grant the blessings of the gods
+curative	spells that cure the sick and feeble of their ailments
+conjuration	the creation of physical objects and summoning of archons
+detection	informational magics, such as detect magic and identify
+elemental off.  offensive magics calling on the forces of nature
+healing		spells for treating wounds, from scratches to death blows
+maladictions	an assortment of curses
+protective	defensive magics, including the powerful sanctuary spell
+transportation	spells for getting from here to there
+~
+
+-1 ROGUE THIEF MERCENARY ASSASSIN~
+
+{WC{Dlasses{W: {GR{gogue {YT{yhief {RM{rercenary {BA{bssassin{x
+Thieves are a marginal class. They do few things better than any other class,
+but have the widest range of skills available.  Thieves are specialists at
+thievery and covert actions, being capable of entering areas undetected where
+more powerful adventurers would fear to tread.  They are better fighters than
+clerics, but lack the wide weapon selection of warriors.
+
+All thieves begin with the dagger combat skill, and are learned in steal as 
+well.  Any other weapon skills must be purchased, unless the default selection
+is chosen.  This default skill package includes:
+
+skills:
+sword		swordplay and fencing
+backstab	the art of hitting your opponent by surprise
+circle		the ability to attack from behind, even mid-combat
+disarm		used to deprive your opponent of his weapon
+dodge		the best way to take a punch is not to be there
+hide		the art of remaining undetected in a room
+peek		used to look into a person's belongings
+pick lock	a useful skill for breaking and entering
+second attack	with training, the skilled thief can hit twice as fast
+sneak		with this skill, a thief can walk into a room undetected
+trip		a good way to introduce an opponent to the floor
+charm person    a magical means of gaining an enemy's favor
+~
+
+-1 WARRIOR BERSERKER GLADIATOR KNIGHT~
+
+{WC{Dlasses{W: {GW{garrior {YB{yerserker {RG{rladiator {BK{bnight{x
+Warriors live for combat and the thrill of battle. They are the best fighters
+of all the classes, but lack the subtle skills of thieves and the magical
+talents of mages and priests.  Warriors are best for those who don't mind
+taking the direct approach, even when another method might be called for.
+
+Warriors begin with skill in the sword, and gain a second attack in combat.
+Other weapon skills may be purchased cheaply, or gained in the default skill
+package, which includes the following:
+
+skills:
+weaponsmaster	this group provides knowledge of all weapon types
+bash		a forceful rush with the body, designed to flatten your foes
+berserk		mental preparation for battle
+disarm		used to deprive your opponent of his weapon
+enhanced damage	this skill multiplies your damage in battle
+grip		hold tight to your weapon to defend against disarm
+parry		the art of parrying with weapons
+rescue		allows you to take the blows aimed for a companion
+shield block	the art of parrying with a shield
+stun		deliver more powerful blows with your bash
+third attack	allows the skilled warrior to land three blows in one round
+fourth attack   allows the skilled warrior to land four blows in one round
+~
+
+-1 TRACKER HUNTER RANGER STRIDER~
+
+{WC{Dlasses{W: {GT{gracker {YH{yunter {RR{ranger {BS{btrider{x
+Rangers are travelling warrior-druids, usually solitary and aloof.  They
+are often the protectors of those far from home, travellers who are lost,
+or even bounty hunters who track criminals in order to bring them to
+justice or just to make a buck.  They are sometimes used as scouts for
+armies, and sometimes make up their own force in times of war.
+
+Rangers don't have the pure combat effectiveness of warriors, and lack
+the total control of druidic magic that druids possess, but the combination
+of those disciplines makes them a class to be reckoned with.
+
+All rangers are skilled with spears and gain an extra attack per round.
+They possess the ability to track their opponents.  Additional skills and
+spells may be purchased or gained through the default ranger group, which
+includes the following:
+
+skills:
+weaponsmaster	this group provides knowledge of all weapon types
+dual wield	effective techniques for two-weapon combat
+enhanced damage this skill multiplies your damage in battle
+envenom		skilled use of poisons in combat
+hand to hand	weaponless combat techniques
+kick		the ability to deliver powerful kicks
+parry           the art of parrying with weapons
+third attack	allows the skilled ranger three attacks per round
+
+spell groups:
+curative        spells that cure the sick and feeble of their ailments
+conjuration	spells for creating objects and summoning companions
+healing         spells for treating wounds, from scratches to death blows
+transportation  spells for getting from here to there
+~
+
+-1 DRUID SHAMAN SAGE ELDER~
+
+{WC{Dlasses{W: {GD{gruid {YS{yhaman {RS{rage {BE{blder{x
+Druids are the protectors of nature.  Some spend their lives in forests,
+others in deserts, and some still in seas or mountainous regions.  Where
+a druid can be closer to nature and life than to the constructs of mortals,
+that druid can be happy.
+
+They control a very powerful blend of magic, potent healing spells with
+devastating combat spells, but they don't have transportation spells, as
+druids are not wont to travel.  They aren't always well suited for it.
+
+All druids possess the ability to blend into their surroundings and travel
+undetected with the invisbility spell.  The druid's favored weapon is the
+polearm.  Additional spells and skills may be purchased or gained through
+the default druid group, which includes the following:
+
+skills:
+lore            the lore of magical items
+second attack   with training, the skilled druid can hit twice as fast
+shield block    the art of parrying with a shield
+
+spell groups:
+attack          a selection of offensive magics
+benedictions    powerful magics that grant the blessings of the gods
+conjuration	the art of creating objects and summoning elementals
+curative        spells that cure the sick and feeble of their ailments
+elemental off.  offensive spells calling on the powers of nature
+harmful		minor spells which inflict pain
+healing         spells for treating wounds, from scratches to death blows
+protective      defensive magics, including the powerful sanctuary spell
+~
+
+-1 OCCULTIST SPIRITUALIST DEMONOLOGIST NECROMANCER~
+
+{WC{Dlasses{W: {GO{gccultist {YS{ypiritualist {RD{remonologist {BN{becromancer{x
+Necromancers study the darker side of magic.  Some seek their own immortality
+while others simply enjoy causing others pain.  They are skilled mages in their
+own right, but they have focused their studies on different, more deadly magics.
+They excel in casting curses as well as channeling negative energy.  They possess
+the ability to animate the dead, often with horrific results.
+
+All necromancers are skilled in the use of flails and shield levitation.
+Additional skills and spells may be purchased or gained through the default
+necromancer group, which includes the following:
+
+skills:
+dagger		the proper use of daggers and knives
+
+spell groups:
+beguiling	the magics of manipulation
+combat		a selection of offensive spells
+conjuration	the art of creating objects and resurrecting the dead
+detection	the magics of information, such as detect hidden and identify
+enhancement	spells which maximize physical potential, like haste
+harmful		minor spells which inflict pain
+illusion	the magics of deception and trickery
+maladictions	an assortment of powerful curses, a necromancer specialty
+transportation	spells to move from here to there and back again
+~
+
+-1 LYRICIST TROUBADOUR MINSTREL BARD~
+
+{WC{Dlasses{W: {GL{gyricist {YT{yroubadour {RM{rinstrel {BB{bard{x
+Bards travel the land spreading stories and songs wherever they go.  They
+are masters in gathering information.  Like thieves, their combat ability
+tends to rely on agility rather than pure strength.  However, they are not
+as skilled in such tactices as thieves.  They are learned in minor magics,
+though many of their songs have impressive magical effects.
+
+All bards are able to perform with musical instruments.  They are experts
+in lore and are therefore able to provide useful information about items.
+
+A bard's favored weapon is the whip.  Additional skills and spells may be
+purchased or gained through the default bard group, which includes:
+
+skills:
+dagger		the proper use of daggers and knives
+second attack	skilled bards can gain an additional attack each round
+sneak		the ability to move from room to room undetected
+
+spell groups:
+beguiling	the magics of manipulation and charm
+combat		a small selection of offensive spells
+conjuration	the art of creating objects and summoning songbirds
+detection	the magics of information, such as identify and detects
+enhancement	spells to boost physical prowess, such as haste and inspire
+illusion	the magics of deception and trickery
+transportation	spells to aid movement and create portals
+~
+
+-1 EXOTIC WEAPONS WEAPON WEAPONSMASTER AXE DAGGER FLAIL MACE POLEARM SPEAR SWORD WHIP~
+Each weapon skill applies to a specific group of armaments, and determines how
+well a character fights with a particular weapon.  The weaponsmaster group
+provides talent in all weapons (save exotics), from chair legs to halberds.
+If the character has the parry skill as well, he can parry incoming attacks.
+The chance of parrying is best if the character in question is skilled at 
+both his weapon and his opponent's.
+
+The weapon skills consist of the following:
+
+weaponsmaster	skill group of all weapons listed below (save exotic weaponry)
+axe		the use of axes, ranging from hand to great (but not halberds)
+dagger		the use of knives and daggers, and other stabbing weapons
+flail		skill in ball-and-chain type weapons
+mace		this skill includes clubs and hammers as well as maces
+polearm		the use of pole weapons (except spears), including halberds
+spear		this skill covers both spears and staves, but not polearms
+sword		the warrior's standby, from rapier to claymore
+whip		the use of whips, chains, and bullwhips
+exotic		the use of strange magical weapons
+
+The exotic skill cannot be purchased, and is dependent solely upon level.
+~
+
+-1 TRANSPORT~
+Syntax: cast transport <object> <char>
+
+This spell will transport an obj from your inventory to the inventory of
+another player.  You can turn off the ability to recieve transports using
+the notran command.
+~
+
+-1 'SHIELD BLOCK'~
+Shield block is a rather fancy name for the art of parrying with a shield.
+Characters with no shield block skill will not be able to defend themselves
+well with a shield.  All classes may learn shield block, but only warriors and
+clerics are good at it.  Beware, flails ignore shield blocking attempts, and
+whips have an easier time getting around them.  Axes may split shields in two.
+~
+
+-1 ATTACK~
+The attack spells are essentially powerful curses, fueled by divine energy
+rather than magical power (like the combat spells are). They are less powerful
+than the combat spells, but can still deal out a stinging blow.  Mages and 
+thieves cannot use this group.  The attack spell group consists of the 
+following spells:
+
+demonfire	a powerful, but very evil, spell
+dispel evil	torments evil foes
+dispel good	calls down unholy power on good creatures
+dispel magic	remove an enemy's defensive magics
+earthquake	brings the power of earth to bear against your foes
+heat metal	heats metal equipment to searing temperatures
+ray of truth	sends forth a blinding ray of holy energy
+
+class specific:
+pandemonium	a bard song with devastating chaotic effects
+~
+
+-1 BEGUILING~
+This insideous spell group is used to invade the minds of others.  It consists
+of various charming magics, well suited for turning your foes to your cause.
+Only mages and thieves have access to the beguiling magics, which consist of
+the following:
+
+animate		gives life to severed body parts
+calm            if successful, stops all fighting in the room
+change sex	changes the target's gender for a short while
+charm person	turns an enemy into a trusted friend
+sleep		puts a foe into enchanted slumber
+
+class specific:
+lullaby		a bard song which makes the audience lethargic
+~
+
+-1 BENEDICTIONS~
+Benedictions are priestly spells, used to bestow divine favor upon your allies.
+They are often restricted to those of like alignment.  Only clerics and 
+warriors may use these spells.  The benedictions spell group consists of the
+following:
+
+bless		bestows divine favor upon the target
+frenzy		puts the recipient into beserker rage
+holy word	aids your allies while calling divine wrath upon your foes
+remove curse	removes malevolent magic from players and items
+
+class specific:
+immolation	summons the fires of hell to aid the casting cleric
+gods armor	calls upon the power of the heavens to protect the cleric
+~
+
+-1 COMBAT~
+These sorcerous spells are, in the words of one famous mage, just 'more ways to
+toss energy around'.  They are the most powerful of the damaging spells, and
+considered an essential part of most wizards' collections. Clerics and thieves
+do not have access to these spells.  In order of power, the combat spell group
+contains the following magics:
+
+magic missile	send a weak energy bolt into a foe
+chill touch	weakens your enemy with a frigid grasp
+burning hands	sends a blast of fire into your foe
+shocking grasp	sends a powerful jolt into a foe
+colour spray	blasts your opponent with a rainbow spray, which may blind him
+sonic blast	channels a loud sound-based attack at the enemy
+psionic blast	directs a powerful mental attack at the opponent
+
+class specific:
+divine fury	calls upon the fury of the gods to attack the cleric's foe
+divine wrath	brings the wrath of the gods down upon an enemy of the templar
+meteor storm	a powerful sorcerer can summon meteors to attack his enemy
+coldfire	a deathly green flame summoned by necromancers
+blood blast	blood rains down upon a necromancer's enemy
+death chant	a necromancer's most powerful death magics
+~
+
+-1 CONJURATION~
+The conjuration spell group is used to create objects, of temporary or permanent
+duration and summon various creatures to aid the caster.  Skilled creators can 
+travel without food or drink, and use their powers to create nourishment as required.  
+All casting classes may become learned in this group, which contains these spells:
+
+continual light	creates an eternal light source, makes items glow
+create food	produces a nourishing mushroom
+create rose	creates a beautiful rose
+create spring	calls forth a small but pure spring
+create water	fills any available container with water 
+empower		creates a scroll or potion containing a spell
+floating disc	creates a floating disc of force perfect for hauling treasure
+
+class specific:
+bone barrier	a necromancer can create a wall of bone, blocking exits
+conjure		summons a demon to aid the mage or necromancer
+create bed	creates a comfortable bed of leaves for the strider or druid
+holy mace	a cleric can create a magical mace of divine power
+resurrect	the ability of necromancers to raise the dead
+summon archon	a cleric may summon a heavenly creature to fight with him
+sum. companion	a ranger may summon an animal companion to fight with her
+sum. elemental	a druid may summon an elemental to fight with him
+summon mephit	a sorcerer may summon a creature from the elemental planes
+sum. songbird	a bard may summon a songbird to aid her in combat
+~
+
+-1 CURATIVE~
+The curative spells are used to heal various unpleasant conditions that can
+befall an adventurer.   For healing of damage, see the healing spell group.
+Curative spells cannot be used by mages or thieves.
+
+cancellation	a benign method of removing magical afflictions
+cure blindness	restored sight to the blind
+cure disease	heals the plague
+cure poison	removes the harmful effects of poison
+
+class specific:
+heroes feast	rangers and druids may magically sate their thirst and hunger
+~
+
+-1 DETECTION~
+The detection spells have may uses, all related to gathering information. They
+can be used to see hidden objects, give information about treasure, or even
+scry out the true nature of your foe.  All classes except warriors can use 
+detection spells.
+
+detect evil	reveals the aura of evil monsters
+detect good	similar to above, only for good monsters
+detect hidden	shows the whereabouts of hidden foes
+detect invis	allows the caster to see the unseeable
+detect magic	reveals magical auras to the caster
+detect poison	determines if food is safe to eat
+farsight	searches for living beings near the caster
+identify	gives information about the nature of an object
+infravision	provides the ability to see heat sources in the dark
+know alignment	determines the moral character of a monster or person
+locate object	finds a specific item
+~
+
+-1 DRACONIAN~
+The Draconian spell group deals with the magic of dragons -- in this case, 
+bringing forth the devastating power of their breath weapons upon your foes.
+Only mages have the mental training necessary to cast these spells, and few
+of them ever reach the level of mastery required to use them.
+
+acid breath	 uses the black dragon's attack upon an enemy
+fire breath	 calls forth the flames of a red dragon
+frost breath	 drains the life from a foe with the power a white dragon
+gas breath	 suffocates your enemies with poison gas
+lightning breath summons the electrical fury of a blue dragon 
+~
+
+-1 ENCHANTMENT~
+The enchantment spell group is used to imbue items with magical properties.
+Currently, this spell group consists of enchant weapon and enchant armor, 
+although more will be added in the future.  Only mages may enchant.
+
+enchant weapon	increases the hit and damage bonuses of a weapon
+enchant armor	increases the protective value of armor
+fireproof       shields items from the harmful effects of fire and acid
+recharge	restores power to a depleted wand or staff
+
+class specific:
+blade bless	clerics and bards may give a strong, but temporary blessing
+~
+
+-1 ENHANCEMENT~
+The enhancement spells improve upon the body's potential, allowing feats of
+superhuman strength and speed.  However, these spells may often have harmful
+effects upon the recipient.
+
+giant strength	grants increased strength (available to ancient knights)
+haste		doubles the speed of the target, but slows down healing
+dragon skin	makes the caster's skin as hard as a dragon's
+dragon wisdom	boosts caster's wisdom
+
+class specific:
+anger		fills the knight with anger, raising attack, lowering defense
+blind rage	fills the knight with rage, raising attack, lowering defense
+bloodbath	increases the necromancer's combat effectiveness
+inspire		a bard song able to inspire all allies before combat
+powersurge	a powerful sorcerer spell able to increase hit points and mana
+~
+
+-1 HARMFUL~
+This spell group is the opposite of healing.  The harmful spells are designed
+to tear flesh from bone, rupture arteries, and generally turn the body against
+itself.  Only priests and warriors may use this spell group.
+In order of power, the harmful spells are:
+
+cause light	inflicts minor wounds on an enemy
+cause serious	inflicts wounds on a foe
+cause critical  causes major damage to the target
+harm		the most deadly harmful spell
+~
+
+-1 HEALING~
+The healing spells are used to cure the wounds that adventurers inevitably
+suffer in battle.  For curing other conditions, such as poison, see the
+curative spell group.  Only warriors and priests have access to this group.
+In order of power, the healing spells are:
+
+cure light	heals minor wounds
+cure serious	heals wounds
+cure critical	closes all but the worst wounds
+heal		the most powerful healing spell
+mass healing	casts a heal spell on each player in the room
+refresh		restores energy to tired adventurers
+
+class specific:
+fullheal	a templar spell able to completely restore the target's health
+~
+
+-1 ILLUSION~
+The illusions spells are dedicated to deception and trickery.  They can be
+used to mask appearances, or create distractions for the party.  Currently,
+the illusion group is very small, but it will be expanded in the future.
+Only thieves and mages can cast illusion spells, which consist of the 
+following:
+
+faerie fire	surrounds the target with a pink outline
+faerie fog	summons a fog to dispel other illusions
+invis		turns the target invisible
+mass invis	turns the caster's group invisible
+ventriloquate	allows the caster to put words in someone's mouth
+
+class specific:
+camouflage	the ranger ability to blend into their surroundings
+screen		a thief spell, calling up a smoke screen to hide them
+vanish		turns the sorcerer completely invisible, even to himself
+~
+
+-1 MALADICTIONS~
+Maladictions are a group of curses and other baneful spells, designed to
+cripple, inconvenience, or torture, rather than kill outright.  These spells
+may be cast by any class.
+
+blindess	strikes the target blind
+curse		prevents recalling and weakens the target in combat
+energy drain	drains experience and mana, while strengthening the caster
+plague		causes the target to suffer a slow, painful death from plague
+poison		weaker than plague, but often fatal
+silence		renders the target speechless and unable to cast spells
+slow		slows your enemies down, reducing their rate of attack	
+weaken		drains the strength of the target
+
+class specific:
+cry		a necromancer can cause the victim to burst into tears
+entangle	an elder spell calling upon nature to bind the victim
+soul siphon	a necromancer can leech mana from the enemy and heal himself
+terror		a necromancer spell which causes the enemy to run from combat
+voodoo		necromancers and priests may create useful voodoo dolls
+~
+
+-1 PROTECTIVE~
+The protective spells are used to shield against harm, whether from spells or
+physical attack.  They range from the weak armor spell to the sought-after
+sanctuary charm.  Also included in this group are several spells for dispeling
+hostile magics. Any class may use this group, which consists of the following 
+spells:
+
+armor		provides the target with an extra layer of defense
+protection evil	provides defense from the attacks of evil creatures
+protection good protects from the attacks of good beings
+sanctuary	reduces all damage taken by the recipient by half
+shield		puts a shimmering shield between you and your enemies
+
+class specific:
+divine prot.	a priest calls upon the heavens for protection
+invigorate	a templar spell boosting the caster's health
+prot. voodoo	priests and necromancers can guard against voodoo magic
+~
+
+-1 SHIELDING FIRESHIELD ICESHIELD SHOCKSHIELD ACIDSHIELD POISONSHIELD BRIARSHIELD~
+These arcane and costly spells are only for the most learned of the ranks of
+mages and clerics wandering the land.  They require great amounts of energy
+and can be very devastating.  The following spells are included in this
+group and are listed in order of strength:
+
+iceshield       surrounds target with a thick shell of ice
+fireshield      surrounds target with a flaming inferno
+shockshield     surrounds target with a crackling sphere
+acidshield	surrounds target with an acidic field
+poisonshield	surrounds target with a poisonous cloud
+briarshield	surrounds target with a thorny shield
+
+class specific:
+mana shield	mages and clerics may use mana to absorb some damage dealt to them
+ward		a sorcerer spell which absorbs a single attack
+
+(See Help IFSSCREDIT for ice/fire/shockshield coding credits.)
+~
+
+-1 IFSSCREDIT~
+Credits for iceshield, fireshield, and shockshield.
+
+These spells were coded by Kelson (Micah Bartell) for use with ROM based muds,
+and are released under the GNU license.(use them, edit them, give me mention)
+Questions and comments can be sent to micah@cse.unl.edu.
+~
+
+-1 TRANSPORTATION~
+The transportation group is used for travel, whether by flight, magical
+teleportation, or walking through walls.  All classes may learn these spells,
+which are among the most useful in the game.
+
+fly		allows the target to fly over nearly all obstacles
+gate		transports the caster to the target
+nexus		forms a two-way portal to a far off destination
+pass door	allows the caster to walk through walls
+portal		creates a one-way portal to a destination
+summon		transports the target to the caster
+teleport	sends the target to a random location
+transport	sends the target object to another player
+word of recall	transports the caster to safety in Midgaard
+~
+
+-1 'ELEMENTAL OFFENSE'~
+The elemental offense group calls upon the forces of nature to strike
+at the enemy.  Most spellcasters have some access to this group, though
+druids do far better with it than most.
+
+acid rain	causes acid to rain down from the sky onto the foe
+chain lightning	sends lightning bolts arcing through foes
+downpour	causes a torrent of rain to fall upon the enemy
+dust storm	stirs up dust causing a stinging earth-based attack
+fireball        a powerful spell, great for burning your enemy to ashes
+flamestrike	a strong fire-based attack spell
+gasblast	sends a stream of toxic gas directly at your opponent
+ice storm	causes sharp, cold ice to rain down upon the enemy
+lightning bolt  sends forth a single bolt of lightning into an enemy
+napalm		hits an opponent with disease-ridden flames
+
+class specific:
+earthrise	a strider can cause the ground to rise up and attack
+elemental fury	an elder draws upon the elements to attack all enemies
+~
+
+-1 'ELEMENTAL DEFENSE'~
+The elemental defense group is available to striders and druids, though
+druids have far more skill and range.  The spells call upon the elements
+of nature to modify the caster's skin, improving defense.  The spells,
+in order of strength, include:
+
+mud skin	turns the caster's skin to mud
+moss skin	turns the caster's skin to moss
+bark skin	covers the caster's skin with bark
+stone skin	turns the caster's skin to stone
+stone meld	melds the caster's skin with the element of earth
+steel skin	turns the caster's skin to steel
+emerald skin	surrounds the caster's skin in an emerald aura
+ruby skin	surrounds the caster's skin in a ruby aura
+diamond skin	surrounds the caster's skin in a diamond aura
+~
+
+-1 BLADECRAFT 'SHARP BLADE' 'VORPAL BLADE' 'FROST BLADE' 'SHOCKING BLADE' 'FLAMING BLADE' 'DRAIN BLADE'~
+Practiced enchanters have the ability to imbue a weapon with elemental energy,
+bestowing upon it the ability to deal additional damage in battle. The spell's
+duration is dependant upon the skill of the caster and the weapon's power. 
+
+sharp blade	hones the edge of bladed weapons
+vorpal blade	strengthens all types of weapons
+flaming blade	sheathes the weapon in an aura of flame 
+frost blade	sheathes the weapon in an aura of cold
+shocking blade	sheathes the weapon in an aura of lightning
+drain blade 	causes the weapon to drain life on contact
+~
+
+-1 BACKSTAB~
+Backstab is the favored attack of  thieves, murderers, and other rogues.  It 
+can be used with any weapon type, but is most effective with piercing weapons.
+The damage inflicted by a backstab is determined by the attacker's level, his
+weapon skill, his backstab skill, and the power of his opponent.
+Only thieves may learn the backstab.
+~
+
+-1 BASH~
+The bash skill is a warrior talent, a brute-force attack designed to knock
+your foe to his knees.  Its success depends on many factors, including the
+bash rating, your weight, and the size of your opponent.  Bashing a dragon
+is not generally a wise idea.
+~
+
+-1 BERSERK~
+Only powerful warriors can master berserking, the ability to enter insane rage
+in combat.  Its effects are not altogether unlike the frenzy spell -- a huge
+surge of combat prowess, coupled with a disregard for personal safety.  
+Berserking warriors are less resistant to the effects of magic.
+~
+
+-1 DIRT 'DIRT KICKING'~
+Consider by some to be a cowardly skill, dirt kicking gives the clever 
+combatant a chance to blind his opponent by casting dirt into his eyes.  The
+blindness does not last long, but can provide an edge in combat.  Dexterity
+helps in hitting or avoiding a dirt kick.  Only warriors and thieves may
+learn this skill.
+~
+
+-1 DISARM~
+Disarm is a somewhat showy and unreliable skill, designed to relieve your
+opponent of his weapon.  The best possible chance of disarming occurs when you
+are skilled both your own and your opponent's weapon. Only talented thieves
+and warriors may learn this skill.
+~
+
+-1 DODGE~
+In the words of one wise warrior, 'the best way to block a blow is to not
+be where it lands'.  The dodge skill honors this tradition, by improving the
+character's natural agility to the point where many blows will miss the 
+target. The chance of dodging is also affected by the dexterity of the
+attacker and the target.  Any class may learn dodging.
+~
+
+-1 'ENHANCED DAMAGE'~
+Warriors and skilled thieves can become skilled enough in combat that they are
+able to inflict more damage than other classes.  Enhanced damage is checked
+for with each hit, although with a low skill, the chance of receiving a bonus
+is very low indeed.
+~
+
+-1 ENVENOM~
+The envenom skill is a cowardly skill practiced only by thieves, designed to
+win a battle through alchemy and treachery rather than skill or strength.
+Or, put another way, it's a skill used by the smart to kill the foolish.
+Food, drink, and weapons may be envenomed, with varying effects. Poisoned
+food or drink puts a mild poison spell on the consumer, and is unlikely to
+be more than a minor inconvience (after all, the typical adventurer could
+drink sewer water with only a trace of the runs).  A poisoned weapon, on
+the other hand, can inflict serious damage on an opponent as the poison 
+burns through his bloodstream.  But be careful, blade venom evaporates 
+quickly and is rendered almost powerless by repeated blows in combat.
+~
+
+-1 'HAND TO HAND'~
+Hand to hand combat is a rare skill in the lands of Midgaard.  Learning this
+style of fighting gives the player a weapon even when disarmed -- bare hands.
+Trained hand to hand experts are far more effective than many swordsmen.
+Clerics and warriors are the best at this skill, although thieves and mages
+may also learn it.
+~
+
+-1 KICK~
+Kicking allows the adventurer to receive an extra attack in combat, a powerful
+kick. However, a failed kick may throw an unwary fighter off balance.  Fighters
+and clerics are the most skilled at kicking, although thieves may also learn
+it.
+~
+
+-1 PARRY~
+If at first you fail to dodge, block it.  Parry is useful for deflecting 
+attacks, and is succesful more often than dodge.  Parry requires a weapon for
+full success, the hand-to-hand skill may also be used, but results in reduced
+damage instead of no damage.  The best chance of parrying occurs when the
+defender is skilled in both his and his opponent's weapon type.
+~
+
+-1 RESCUE~
+A friend in need is a friend indeed.  And when in combat, a warrior with
+the rescue skill is just the friend you need.  Rescue allows you to intercede
+in combat, protecting weaker characters from bodily harm. Hopefully the
+favor will be returned.  Success in rescuing depends on the skill rating, as
+well as a comparision of level, dexterity, and speed between the character and
+the target. (note: you rescue a friend, not the monster)
+~
+
+-1 TRIP~
+Back by popular demand.  Trip is a somewhat dastardly attack, and involves
+using any one of a number of methods to bring your opponent down to the ground.
+Tripping large monsters is generally not a good idea, and agile ones will
+find the attack easy to avoid.  Thieves and warriors may learn trip.
+~
+
+-1 'SECOND ATTACK'~
+Training in second attack allows the character a chance at additional strikes
+in combat -- allow a 100% second attack does NOT guarantee 2 attacks every
+round.  Any class may learn this skill, although clerics and mages have a 
+very hard time with it.
+~
+
+-1 'THIRD ATTACK'~
+Training in third attack allows the character a chance at an additional strike
+in a combat, and increases the chance of a second attack as well.  Perfect
+third attack does NOT assure three attacks per round.  Only warriors, rangers,
+and highly skilled thieves may learn this skill.
+~
+
+-1 'FOURTH ATTACK'~
+Training in fourth attack allows the character a chance at an additional strike
+in a combat, and increases the chance of a third attack as well.  Perfect
+fourth attack does NOT assure four attacks per round.  Only warriors, rangers,
+and highly skilled thieves may learn this skill.
+~
+
+-1 'FIFTH ATTACK'~
+Training in fifth attack allows the character a chance at an additional strike
+in a combat, and increases the chance of a fourth attack as well.  Perfect
+fifth attack does NOT assure five attacks per round.  Only warriors and highly
+skilled rangers may learn this skill.
+~
+
+-1 'SIXTH ATTACK'~
+Training in sixth attack allows the character a chance at an additional strike
+in a combat, and increases the chance of a fifth attack as well.  Perfect
+sixth attack does NOT assure six attacks per round.  Only warriors may learn 
+this skill.
+~
+
+-1 'SEVENTH ATTACK'~
+Training in seventh attack allows the character a chance at an additional 
+strike in a combat, and increases the chance of a sixth attack as well.  
+Perfect seventth attack does NOT assure seven attacks per round.  Only 
+warriors may learn this skill.
+~
+
+-1 HIDE SNEAK~
+Hide and sneak are similar skills, both related to remaining undetected.
+Hide has a very high chance of success, but only works for as long as the
+character remains stationary.  Sneak may be used when moving (including to
+sneak by monsters), but has a lower chance of success.  Only warriors and
+thieves may learn these skills.
+~
+
+-1 'FAST HEALING'~
+The fast healing skill improves wound healing rates, whether walking, resting,
+or sleeping. It represents knowledge of healing herbs or just general 
+toughness and stamina.  Fast healing is checked every tick, and it is 
+possible for it to fail.  All class may learn this skill, but mages find it
+very difficult to master, due to their bookish lifestyle.
+~
+
+-1 LORE~
+Lore is a general skill, consisting of knowledge of myths and legends. Use
+of the lore skill gives a chance of obtaining information on an object,
+concerning its power and uses.  It also may occasionally increase the value
+of an object, because more will be known about its worth.  All classes may
+learn lore, although thieves are best at it, and warriors find it very hard
+to use.
+~
+
+-1 HAGGLE HAGGLING~
+Haggling is an indispensable skill to the trader.  It allows a character to
+match wits with a merchant, seeking to get a better price for merchandise,
+or to buy at the lowest possible cost.  Unfortunately, most merchants are 
+already very skilled at haggling, so the untrainined adventurer had best 
+guard his treasure closely.  Thieves are natural masters at haggling, 
+although other classes may learn it as well.
+~
+
+0 PEEK~
+Peek is both a skill and a command.
+
+The peek skill is useful for seeing what a player or monster is carrying,
+the better to use the steal command with.
+
+Syntax: peek <char>
+This will attempt to peek at a characters inventory, you may also make
+this automatic during a: look <char>  by turning on AUTOPEEK.
+~
+
+-1 PICK 'PICK LOCK'~
+Lock picking is one of the prime skills of thieves, allowing them to gain
+access to many secured areas.  Lock picking chances are improved by  
+intelligence, and hindered by the difficulty of the lock. Other classes may
+learn to pick locks, but they will never find it easy.
+~
+
+-1 MEDITATION~
+This skill is similar to fast healing, but relies on the concentration and
+mantras to increase mana recovery when the character is sleeping or resting.
+Thieves and warriors, with their troubled minds and violent attitudes, have
+much trouble learning to meditate.
+~
+
+-1 STEAL~
+Theft is the defining skill of the thief, and is only available to that class.
+It allows items to be stolen from the inventory of monsters and characters,
+and even from shops!  But beware, shop keepers gaurd their merchandise 
+carefully, and attempting to steal from a character earns you a THIEF flag
+if you are caught (making you free game for killing).
+~
+
+-1 'DETECT GOOD'~
+Syntax: cast 'detect good'
+ 
+This spell enables the caster to detect good characters, which will
+reveal a characteristic golden aura.
+~
+
+-1 'DETECT EVIL'~
+Syntax: cast 'detect evil'
+ 
+This spell enables the caster to detect evil characters, which will
+reveal a characteristic red aura.
+~
+
+-1 'DISPEL GOOD'~
+Syntax: cast 'dispel good' <victim>
+ 
+This spell invokes the wrath of the heavens on a good victim. It can be very
+dangerous for casters who are pure of heart.
+~
+
+-1 'DISPEL EVIL'~
+Syntax: cast 'dispel good' <victim>
+ 
+This spell invokes the wrath of hell on an evil victim. It can be very
+dangerous for casters with dark hearts.
+~
+
+-1 'RECHARGE'~
+Syntax: cast 'recharge' <item>
+
+The recharge spell is used to restore energy to depleted wands and staves.
+Fully exhausted items cannot be recharged, and the difficulty of the spell
+is proportional to the number of charges used.  Magic items can only be
+recharged one time successfully.
+~
+
+-1 'DEMONFIRE'~
+Syntax: cast 'demonfire' <target>
+
+Demonfire is a spell of blackest evil, and as such can only be used by those
+who follow the paths of darkness.  It conjures forth demonic spirits to 
+inflict terrible wounds on the enemies of the caster.
+~
+
+-1 'RAY OF TRUTH'~
+Syntax: cast 'ray of truth' <target>
+
+Ray of truth opens a portal to the planes of positive energy, bringing forth
+a beam of light of sufficient purity to harm or or annihilate the servants
+of evil.  It cannot harm the pure of heart, and will turn and strike 
+casters who are tainted by evil.
+~
+
+-1 'PORTAL'~
+Syntax: cast 'portal' <target>
+
+The portal spell is similar to gate, but creates a lasting one-way portal
+to the target creature, instead of transporting the caster.  Portals are
+entered using 'enter' or 'go' command, as in 'go portal'.  Portals cannot
+be made to certain destinations, nor used to escape from gate-proof rooms.
+Portal requires a special source of power to be used, unfortunately the
+secret of this material component has been lost...
+~
+
+-1 'NEXUS'~
+Syntax: cast 'nexus' <target>
+
+This spell is virtually identical to portal (see 'help portal'), with the
+only difference being that while portal creates a one-way gate, a nexus 
+spell makes a two-sided gate.  It also lasts longer than the lower-powered
+portal spell.  Both spells require an additional power source, the secret
+of which has been lost..
+
+Hint: You must have the ability to be able to see in the place you are trying
+to create a portal to.
+
+~
+
+-1 'HEAT METAL'~
+Syntax: cast 'heat metal' <target>
+
+Heat metal is a powerful clerical attack spell, with effects that vary 
+according to the armor of the victim.  It heats up the metal equipment
+(assumed to be all weapons and armor at this point in time) on the target,
+causing him or her to drop them if possible, taking serious burns in the
+process (possibly fatal if the equipment is too heavy to remove easily).
+This spell does no damage to creatures who are immune to fire.
+~
+
+-1 'HOLY WORD'~
+Syntax: cast 'holy word'
+
+Holy word involves the invocation of the full power of a cleric's god, with
+disasterous effects upon the enemies of the priest coupled with powerful
+blessings on the priest's allies.  All creatures of like alignment in the
+room are blessed and filled with righteous divine wrath, while those of
+opposite morals (or both good and evil in the case of neutral priests)
+are struck down by holy (or unholy might) and cursed.  The cleric suffers
+greatly from the strain of this spell, being left unable to move and 
+drained of vitality.  Experience loss is no longer associated with the spell.
+~
+
+-1 FRENZY~
+Syntax: cast 'frenzy' <target>
+
+The frenzy spell fills the target with righteous fury, greatly increasing
+his or her attack skill and damaging capacity.  Unfortunately, this divine
+wrath is coupled with a tendency to ignore threats to personal safety, 
+making the character easier to hit.  Frenzy provides immunity to the calm
+spell (see 'help calm'), and may only be used on those of the caster's 
+alignment.
+~
+
+-1 CALM~
+Syntax: cast 'calm' 
+
+One of the most useful and often overlooked abilities of the master cleric is
+the calm spell, which can put an end to all violence in a room.  Calmed
+creatures will not attack of their own volition, and are at a disadvantage
+in combat as long as the spell soothes their minds.  The more violence 
+activity there is in a room, the harder the spell, and it is all or nothing --
+either all combat in the room is ended (with the exception of those who
+are immune to magic) or none is.
+~
+
+-1 HASTE~
+Syntax: cast 'haste' <target>
+
+The haste spell increases the speed and agility of the recipient, allowing
+an extra attack (or even a backstab) in combat, and improving evasive
+abilities in combat.  However, it produces a great strain on the system,
+such that recuperative abilities are halved.  Haste is capable of negating
+the slow spell. (see 'help slow').
+~
+
+-1 SLOW~
+Syntax: cast 'slow' <target>
+
+Despite popular mythology, slow is not the opposite of haste, but is a spell
+with it's own unique set of effects.  When cast on an unfortunate victim,
+it slows its movements, making it easier to hit and reducing its rate
+of attack.  The effect of slow also double movement costs and halve healing
+rates, due to reduced metabolism.
+~
+
+-1 PLAGUE~
+Syntax: cast 'plague' <target>
+
+The plague spell infests the target with a magical disease of great virulence,
+sapping its strength and causing horrific suffering, possibly leading to
+death.  It is a risky spell to use, as the contagion can spread like
+wildfire if the victim makes it to a populated area.
+~
+
+-1 'CREATE ROSE'~
+Syntax: cast 'create rose'
+
+A romantic spell that creates a fragrant rose, with utterly no practical
+use whatsoever.  The color of the rose reflects the caster's alignment.
+~
+
+-1 'PROTECTION GOOD' 'PROTECTION EVIL'~
+Syntax: cast 'protection evil' <target>
+	cast 'protection good' <target>
+
+The protection spells reduce damage taken from attackers of the appropriate
+ethos, and improve saving throws against all forms of magic. They may not
+be cast on others, and one person cannot carry both defenses at the same
+time.
+~
+0 'GIANT STRENGTH'~
+Syntax: cast 'giant strength' <character>
+ 
+This spell increases the strength of the target character.
+~
+
+-1 'CHAIN LIGHTNING'~
+Syntax : cast 'chain lightning' <target>
+
+Chain lightning is a deadly spell, producing a powerful bolt of lightning
+that arcs from target to target in the room, until its force is fully
+expended.  Allies of the caster may be hit by this spell if they are members 
+of a clan, while the caster himself will not be struck unless no other
+viable target remains.  Chain lightning is most effective when used on
+groups of creatures.
+~
+
+-1 SCAN FARSIGHT~
+scan farsight
+Syntax: scan
+	scan <direction>
+	cast 'farsight'
+
+The scan command allows the user to detect movement in surrounding areas.
+
+The farsight spell expands the caster's consciousness, allowing him or her
+to see far away beings like they were in the same room.  It takes intense
+concentration, often leaving the caster helpless for several minutes.
+The spell may be used for a general scan that reaches a short distance in
+all directions, or with a directional component to see creatures much
+farther away.
+~
+
+-1 MASS HEALING~
+Syntax: cast 'mass healing' 
+
+The mass healing spell, as its name might suggest, performs a healing spell
+on all players in the room.  It also throws in a refresh spell for good
+measure.
+~
+
+-1 'FLOATING DISC'~
+Syntax: cast 'floating disc'
+
+This useful spell creates a floating field of force which follows the caster
+around, allowing him or her to pile treasure high with no fear of weight
+penalties.  It lasts no more than twice the casters level in hours, and
+usually less.  It can hold 10 pounds per level of the caster, with a 
+maximum of five pounds per item.  The spell requires an open float location
+on the character, and the only way to remove the disc is to die or allow it
+to run out of energy.
+~
+
+-1 FIREPROOF~
+Syntax: cast 'fireproof' <object>
+
+The fireproof spell creates a short-lived protective aura around an object,
+to protect it from the harmful effects of acid and flame.  Items protected
+by this spell are not harmed by acid, fire, or the heat metal spell.
+Although inexpensive to use, the spell's short duration makes it impractical
+for protecting large numbers of objects.
+~
+
+-1 ALIAS UNALIAS~
+Syntax: alias
+	alias <word>
+	alias <word> <substitution>
+	unalias <word>
+
+The alias command allows limited shortening of command names.  At this time,
+aliases cannot call other aliases, and cannot generate more than one command.
+Alias by itself lists your current aliases, Alias <word> lists the alias with 
+that name (if such exist), and alias with both a word and and argument 
+produces a new alias.  You cannot alias either alias or unalias to a new
+command.  Examples of use:
+
+alias gc get all corpse --> typing gc will equal typing 'get all corpse'
+alias ff cast 'fireball' --> ff orc will equal 'cast 'fireball' orc'
+
+Only the first word on the line will be subsituted at this time.
+~
+0 $~
+#$

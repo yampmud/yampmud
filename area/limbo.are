@@ -1,0 +1,585 @@
+#AREADATA
+Name Limbo~
+Builders Unlinked~
+VNUMs 1 75
+Credits {DImmOnly{x~
+Security 9
+RepopMsg (null)~
+End
+
+
+
+#MOBILES
+#6
+ruiner~
+{RT{rhe {WRu{win{Der{x~
+{RT{rhe {WRu{win{Der is here...{x
+~
+~
+Human~
+ACF 0 CDEFGLPQTUVXZac 0 -1000 0
+32767 32767 32767d32767+32767 32767d32767+32767 32767d32767+32767 none
+0 0 0 0
+ABCDEFHIJKNO ACDEHIK 0 NS
+rest rest male 0
+ILXc ABCDEFGHIJKV large unknown
+F for AHMV
+#7
+Sassy girl~
+Sassy~
+A slender fine looking girl
+~
+~
+Human~
+A 0 0 0 0 0
+1 0 0d0+0 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand female 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#8
+sugememnon devil~
+{MSu{mge{8me{mmn{Mon {8the {MA{mv{catar of {RM{8urder~
+{8A foul {mde{Mv{mil {8stands here, a palpaple aura of {RM{8urder {8s{rurroundin{8g him.
+~
+~
+Demon~
+AB 0 GVa CDEFGHINSd -1000 0
+600 10000 1000d1000+50000 1000d10000+10000 45d1000+1000 wrath
+-1000 -1000 -1000 -1000
+AEFHKN ABLQ DMO INSY
+stand stand male 1000000
+AHMV ABCDEFGHIJK huge unknown
+M FIGHT 8 60~
+M FIGHT 10 30~
+M FIGHT 9 5~
+#9
+summoned demon~
+a summoned demon~
+A summoned demon flits around here attacking any passer by!
+~
+~
+Demon~
+AF 0 GVa Sd -1000 0
+300 10000 100d500+10000 0d0+0 10d150+100 wrath
+0 0 0 0
+R H MO INSY
+stand stand none 500
+AHMV ABCDEFGHIJK medium unknown
+#0
+
+
+
+#OBJECTS
+#1
+coin silver gcash~
+a silver coin~
+One miserable silver coin.~
+silver~
+money 0 A
+1 0 0 0 0
+0 10 0 P
+#2
+coin gold gcash~
+a gold coin~
+One valuabale gold coin.~
+gold~
+money 0 A
+0 1 0 0 0
+0 10 0 P
+#3
+coins gold gcash~
+%d gold coins~
+A pile of %d gold coins lay here.~
+gold~
+money 0 A
+0 0 0 0 0
+0 10 0 P
+#4
+coins silver gcash~
+%d silver coins~
+A pile of %d silver coins lay here.~
+silver~
+money 0 A
+0 0 0 0 0
+0 10 0 P
+#5
+coins money gcash~
+a pile of money~
+A pile of money.~
+gold~
+money 0 A
+0 0 0 0 0
+0 10 0 P
+#6
+coins platinum gcash~
+a platinum coin~
+One valuable platinum coin.~
+platinum~
+money 0 0
+0 0 0 0 0
+0 10 0 P
+#7
+coins platinum gcash~
+%d platinum coins~
+A pile of %d platinum coins lay here.~
+platinum~
+money 0 A
+0 0 0 0 0
+0 10 0 P
+#8
+?Bloody ?Head ?Muska~
+{DT{Wh{we {RBl{roo{Rdy {CH{ce{Ca{cd {wof {DM{Wu{Ds{Wk{Da{x~
+{DT{Wh{we {RBl{roo{Rdy {CH{ce{Ca{cd {wof {DM{Wu{Ds{Wk{Da{x~
+unknown~
+armor ABSY AQ
+300 300 300 300 0
+110 0 50000 P
+#10
+corpse~
+the corpse of %s~
+The corpse of %s is lying here.~
+meat~
+npc_corpse 0 A
+0 0 0 A 0
+0 1000 0 D
+#11
+corpse~
+{R%s's{x twisted corpse~
+{xThe twisted corpse of {R%s{x lays here.~
+meat~
+pc_corpse O 0
+0 0 0 A 0
+0 1000 0 D
+#12
+%s head~
+the head of %s~
+The severed head of %s is lying here.~
+meat~
+trash 0 AO
+0 0 0 0 0
+0 50 0 D
+#13
+%s heart~
+the heart of %s~
+The torn-out heart of %s is lying here.~
+meat~
+food 0 AO
+16 16 0 0 0
+0 20 0 D
+#14
+%s arm~
+the arm of %s~
+The sliced-off arm of %s is lying here.~
+meat~
+food 0 AO
+20 20 0 0 0
+0 50 0 D
+#15
+%s leg~
+the leg of %s~
+The sliced-off leg of %s is lying here.~
+meat~
+food 0 AO
+20 20 0 0 0
+0 50 0 D
+#16
+%s guts entrails~
+the guts of %s~
+A steaming pile of %s's entrails is lying here.~
+meat~
+food 0 AO
+5 5 0 A 0
+0 20 0 D
+#17
+%s brains brain~
+the brains of %s~
+The splattered brains of %s are lying here.~
+meat~
+food 0 AO
+10 10 0 0 0
+0 20 0 D
+#18
+pool blood~
+{Ra pool of blood{x~
+A small {Rpool of blood{x is here.~
+~
+fountain PT 0
+1 1 'blood' 0 0
+0 0 0 G
+#20
+mushroom~
+a Magic Mushroom~
+A delicious magic mushroom is here.~
+food~
+food 0 A
+8 8 0 0 0
+0 10 0 P
+#21
+ball light~
+a bright ball of light~
+A bright ball of light shimmers in the air.~
+energy~
+light A A
+0 0 999 0 0
+0 0 0 P
+#22
+spring~
+a magical spring~
+A magical spring flows from the ground here.~
+water~
+fountain G 0
+100000 100000 'water' 0 0
+0 0 0 P
+#23
+disc disk floating black~
+a floating disc~
+A floating black disc hangs in the air.~
+energy~
+container GMPUY AQ
+0 E 0 0 0
+0 0 0 P
+#25
+gate portal~
+a shimmering gate~
+A shimmering black gate rises from the ground, leading to parts unknown.~
+shadow~
+portal GOT 0
+0 0 0 0 0
+0 0 0 P
+#30
+pack~
+a pack of {WM{warlboro {RR{red{x 100's~
+A pack of {WM{warlboro {RR{red{x 100's is laying here.~
+paper~
+container 0 AO
+5 AC 0 50 0
+0 0 0 P
+#31
+dispenser machine~
+a Cigarette dispenser~
+A Cigarette dispenser~
+unknown~
+container 0 0
+0 AC 0 0 0
+0 0 0 P
+#32
+cigarette~
+a cigarette~
+A cigarette butt has been dropped here.~
+Tobacco~
+trash 0 AB
+0 0 0 0 0
+0 0 0 P
+#33
+Ice Chest~
+a {Yh{wug{Ye {ci{Cc{ce{x chest~
+A {Yh{wug{Ye {ci{Cc{ce{x chest of drinks is here in the corner.~
+wood~
+container S 0
+0 AC 0 24 0
+0 0 0 P
+#34
+40 oz beer~
+{Ya 40oz{y beer{x bottle~
+{Ya 40oz{y beer{x bottle has been dropped here.~
+Glass~
+drink 0 AO
+16 16 'beer' 0 0
+0 0 0 P
+#35
+bottle vodka~
+a bottle of {wvodka{x~
+A bottle of {wvodka{x has been tossed here.~
+glass~
+drink 0 AO
+16 16 'vodka' 0 0
+0 0 0 P
+#36
+firebreather bottle~
+a bottle of {RF{ri{Rr{re{Rb{rr{Re{ra{Rt{rh{Re{rr{x~
+A bottle of {RF{ri{Rr{re{Rb{rr{Re{ra{Rt{rh{Re{rr{x is sitting here.~
+Glass~
+drink 0 0
+16 16 'firebreather' 0 0
+0 0 0 P
+#37
+stereo~
+a {ylarge{x stereo~
+A {ylarge{x stereo is against the wall.~
+unknown~
+jukebox 0 0
+0 0 0 0 0
+0 0 0 P
+#38
+bar~
+{wA long bar{x~
+{WA long bar{x with 9 stools.~
+unknown~
+furniture 0 0
+8 0 DGJN 100 100
+0 0 0 P
+#39
+coke can~
+a {wcan{x of {RC{roke-{Ra{r-{RC{rola{x~
+A {wcan{x of {RC{roke-{Ra{r-{RC{rola{x is sitting here.~
+unknown~
+drink 0 AO
+16 16 'coke' 0 0
+0 0 0 P
+#40
+rift time strobing~
+a {Cst{cro{Cbi{cng {Yr{yif{Yt{x~
+A {Cst{cro{Cbi{cng {Yr{yif{Yt{x in {rt{Rim{re{x is {Bho{bv{Ber{bi{Bng{x here.~
+space time~
+portal 0 0
+0 K K 8045 0
+0 0 0 P
+#41
+no name~
+(no short description)~
+(no description)~
+unknown~
+trash 0 0
+0 0 0 0 0
+0 0 0 P
+#42
+dim light~
+a {ydim {wlight{x~
+A {ydim {wlight{x floats mid-air over the pool table.~
+unknown~
+light AB 0
+0 0 999 0 0
+0 0 0 P
+#43
+jar vaseline~
+a jar of {yVaseline{x~
+A jar of {yVaseline{x is sitting here.~
+plastic~
+container 0 AO
+0 AC 0 0 0
+0 0 0 P
+#44
+pool table~
+a pool table~
+A pool table sits in the middle of the room.~
+unknown~
+furniture 0 0
+4 0 AD 100 100
+0 0 0 P
+#45
+joint~
+a joint~
+Dude! Someone forgot their joint! Holy shit!~
+weed~
+trash 0 AO
+0 0 0 0 0
+0 0 0 P
+#46
+wooden box~
+a wooden box~
+A wooden box is laying here.~
+wood~
+container 0 AO
+0 AC 0 0 0
+0 0 0 P
+#50
+pill white~
+a shimmering white pill~
+A shimmering white pill has been dropped here.~
+jelly~
+pill AGHTa A
+110 'quest pill' 'drain blade' 'drain blade' 'drain blade'
+0 1 0 P
+#51
+%s voodoo doll~
+a voodoo doll of %s~
+A voodoo doll of %s is lying here.~
+energy~
+treasure G AO
+0 0 0 0 0
+20 5 50 P
+#52
+exit~
+exit~
+Nothing special there.~
+energy~
+exit ORTY 0
+A 0 0 0 0
+1 1 1 P
+#53
+exit chain up~
+the chain~
+The chain disappears in the clouds.~
+iron~
+exit ORTY 0
+BDFGHJKLM 0 0 0 0
+1 1 1 P
+E
+chain~
+The chain reaches the clouds high above you, the bottom link is mangled,
+and almost scrapes the ground.
+~
+#54
+bag~
+a paper bag~
+A small paper bag.~
+leather~
+container 0 A
+50 0 0 5 100
+0 10 0 G
+#55
+Bed Leafs~
+a bed of {yl{ge{ra{yv{ges{x~
+Some {yl{ge{ra{yv{ges{x have gathered into a nice bed.~
+unknown~
+furniture 0 P
+3 600 BEHK 100 100
+0 0 0 P
+#59
+pile items~
+{xa pile of {R%s's{x items~
+{xA pile of {R%s's{x items lay here.~
+pile~
+itempile O 0
+0 0 0 0 0
+0 1000 0 P
+#0
+
+
+
+#ROOMS
+#1
+The Void~
+You are floating in nothing.
+~
+0 12 1
+S
+#2
+Limbo~
+You are floating in a formless void, detached from all sensation of physical
+matter, surrounded by swirling glowing light, which fades into the relative
+darkness around you without any trace of edges or shadow.
+   There is a "No Tipping" notice pinned to the darkness.
+~
+0 8 1
+D4
+~
+~
+0 -1 3001
+S
+#3
+The Corner~
+You are standing with your nose in the corner.  Every time you try to
+turn around, you get slapped upside the head and quickly resume your
+position.
+~
+0 40964 1
+S
+#4
+A Jail Cell~
+Oh man you REALLY fucked up.  Best stop your shit before an IMM gets
+REALLY pissed.  
+~
+0 4 0
+S
+#5
+Limbo~
+You are floating in the formless void 
+~
+0 4 0
+S
+#6
+Inside the fabric of time~
+There are odd stripes and rips of light flashing all around you in
+spherical form. The air wisps about in all directions.
+There is no floor, you are floating!
+~
+0 9220 1
+S
+#7
+Distortions storage room~
+~
+0 558093 0
+D2
+~
+~
+4 0 8045
+S
+#8
+Sugememnon's Lair~
+~
+0 4 0
+S
+#9
+~
+~
+0 4 0
+S
+#50
+~
+~
+0 4 0
+S
+#75
+~
+~
+0 4 0
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 7 2 2
+O 0 40 0 6
+O 0 33 0 7
+P 0 34 24 33 24
+P 0 36 24 33 24
+P 0 35 24 33 24
+P 0 39 24 33 24
+O 0 30 0 7
+P 0 32 20 30 20
+O 0 37 0 7
+O 0 46 0 7
+P 0 45 50 46 50
+O 0 40 0 7
+M 0 8 1 8 1
+S
+
+
+
+#SHOPS
+0
+
+
+
+#MOBPROGS
+#8
+MOB Echo Sugememnon throws his hands out unleashing numerous spells.
+MOB Cast 'leech' $r
+MOB Cast 'leech' $r
+MOB Cast 'leech' $r
+~
+#9
+”öd@e@.{B.{M.{YG{WH{GQ{x] The {Bb{blad{Be{n of the {Ya{yn{Yc{yi{Ye{yn{Yt{y's{x has been droped here.~
+#10
+MOB echo Sugememnon steps back a moment and utters a few words.
+MOB echo A swirling vortex opens overhead and a group of summoned demons come to his aid!
+MOB Mload 9
+MOB Mload 9
+MOB Mload 9
+MOB echo Sugememnon opens his eyes and grins, launching back into an offensive.
+~
+#11
+”öd@e@.{B.{M.{YG{WH{GQ{x] The {Bb{blad{Be{n of the {Ya{yn{Yc{yi{Ye{yn{Yt{y's{x has been droped here.~
+#0
+
+#$

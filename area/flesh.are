@@ -1,0 +1,1381 @@
+#AREADATA
+Name Flesh~
+Builders Unlinked~
+VNUMs 8000 9000
+Credits {DNotDone{x~
+Security 9
+RepopMsg (null)~
+End
+
+
+
+#MOBILES
+#8005
+titan statue guard~
+A titan statue~
+A titan statue stands here guarding the entrance.
+~
+~
+Titan~
+ABF 0 DLa 0 -1000 0
+202 100 1d1+1 0d0+0 1d1+1 chop
+0 0 0 0
+DEI ALMOPQRSX DEGJ BHIKNOT
+stand stand male 50000
+HJ ABCDEFGHIJK large stone
+F for AMV
+#8022
+Fiend~
+A Fiend~
+A fiend is scratching at the walls in pure rage here.
+~
+~
+Kenku~
+ABCF 0 FJLVXa 0 -1000 0
+1 30000 1000d1+1 1d1+1 1d1+1 slash
+0 0 0 0
+DH ABKLMQR I HNOSTY
+stand stand none 0
+AHMV ABCDEFGHIJK medium unknown
+F aff T
+F par P
+#8047
+no name~
+(no short description)~
+(no long description)
+~
+~
+Human~
+A 0 0 0 0 0
+0 0 0d0+0 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#8050
+person~
+a person~
+A person is patiently waiting here.
+~
+~
+Human~
+A 0 0 0 0 0
+0 0 100d100+0 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+sit sit none 0
+AHMV ABCDEFGHIJK medium flesh
+#0
+
+
+
+#OBJECTS
+#8001
+key dispair~
+a key to the pit of dispair~
+A key to the pit of despair is laying here.~
+unknown~
+key UY A
+0 0 0 0 0
+0 0 0 P
+#8003
+humming device~
+a humming device~
+A humming, rusted device is sitting here on the side of the bridge.~
+unknown~
+trash BEJOY 0
+0 0 0 0 0
+0 0 0 P
+E
+device~
+A square humming device is bolted to the bridge. Small cooling fins cover the surface of the device. A good sized pipe has boiling water percolating up to the device. Small amounts of steam exit at a small pipe at the top of the device.
+~
+#8004
+mess hose vein~
+a mess of hoses~
+A mess of hoses here sprawl from the device, pumping blood all through the flesh.~
+unknown~
+trash EJS 0
+0 0 0 0 0
+0 0 0 P
+E
+flesh~
+The flesh you are walking on is very stretched, and scarred. The pore indentations look to be about a quarter foot large.
+~
+E
+hose~
+Looking more closely, Blood and air burp through the hose in a rhythmic pattern. A small amount of blood drips from the connections. Layers of dried blood coat the connections, hanging like dripping wax on a candle.
+~
+#8041
+portal hallway~
+a portal~
+A portal to the hallway is here~
+unknown~
+portal 0 0
+0 0 0 8045 0
+0 0 0 P
+#8044
+no name~
+(no short description)~
+(no description)~
+unknown~
+trash 0 0
+0 0 0 0 0
+0 0 0 P
+#8045
+fireplace~
+a small burning stone fireplace~
+A small burning stone fireplace quietly pops and snaps here.~
+unknown~
+container 0 0
+0 AC 0 3 0
+0 0 0 P
+#8046
+logs pile~
+a pile of fire wood~
+A neatly stacked pile of chopped fire wood is sitting in the corner here.~
+wood~
+trash 0 A
+0 0 0 0 0
+0 0 0 P
+#8047
+window~
+a window~
+A large window is here on the west wall.~
+glass~
+portal 0 0
+0 AB AB 8008 0
+0 0 0 P
+#8048
+cherry wood desk~
+distortions desk~
+A fine cherry-wood desk sits here by the north wall.~
+cherry-wood~
+furniture 0 0
+0 -1 AMNP 0 0
+0 0 0 P
+#8049
+chair leather~
+a leather chair~
+A fine leather chair sits here at the desk.~
+leather~
+furniture 0 0
+1 -1 DEGJ 32767 32767
+0 0 0 P
+#8050
+large book shelf~
+a bookshelf~
+A bookshelf with many odd looking ancient books sits here.~
+wood~
+container 0 0
+0 0 0 0 0
+0 0 0 P
+#8051
+book odd~
+an odd looking book~
+An odd looking book sits here.~
+paper~
+treasure EGJU AO
+0 0 0 0 0
+211 1 0 B
+#8052
+chair two~
+a chair~
+Two chairs sit here in front of the desk for guests.~
+cloth~
+furniture 0 0
+2 -1 E 32767 32767
+0 0 0 P
+#8053
+enchanted key black~
+{Dan enchanted black key{x~
+{Dan enchanted black key is here.{x~
+unknown~
+key BCEGJPUY AO
+0 0 0 0 0
+0 0 0 P
+#8054
+floating silk sheet black bed~
+{+A {-f{-l{-o{-a{-t{-i{-n{-g {+b{+l{+a{+c{+k {+s{+i{+l{+k {+s{+h{+e{+e{+t{x~
+{+A {+b{+l{+a{+c{+k {+s{+i{+l{+k {+s{+h{+e{+e{+t {+j{+u{+s{+t {+fl{+o{+a{+t{+s {+h{+e{+r{+e{+.{+.{x~
+black silk~
+furniture CEFGJPSU 0
+2 0 HK 0 0
+211 0 0 P
+#8055
+glass box topless~
+a topless glass box~
+A large stack of books and other reading material sit here in a topless glass box.~
+glass~
+container 0 0
+0 0 0 0 0
+0 0 0 P
+#8056
+book~
+a book~
+A book is laying on the floor here.~
+paper~
+trash 0 AO
+0 0 0 0 0
+0 0 0 P
+#8057
+newspaper news paper~
+a newspaper~
+A newspaper was left on the ground here.~
+paper~
+trash 0 AO
+0 0 0 0 0
+0 0 0 P
+#8058
+leather bench~
+a white leather bench'~
+Three long white leather benches.~
+leather~
+furniture 0 0
+15 10000 EH 0 0
+0 0 0 P
+#8100
+poster bed~
+{8a large {bf{8our {bp{8oster {bb{8ed draped in {Wb{8lack {Ws{8ilk{x~
+{8A large {bf{8our {bp{8oster {bb{8ed draped in {Wb{8lack {Ws{8ilk is here.{x~
+unknown~
+furniture 0 0
+2 100000 EHK 0 0
+0 0 0 P
+#8500
+altar flesh~
+the altar of flesh~
+Distortions altar of flesh sits here on the mound, constructed of some type of black marble.~
+Marble~
+furniture BCEGJOY 0
+2 100000 EHK -4000 -1500
+0 0 0 P
+#8501
+portal~
+a portal~
+A Portal to Market Square~
+unknown~
+portal 0 0
+0 0 0 3014 0
+0 0 0 P
+#8997
+portal~
+a portal~
+A portal floats here~
+unknown~
+portal 0 0
+0 0 0 8996 0
+0 0 0 P
+#8998
+portal~
+a portal~
+A portal floats here~
+unknown~
+portal 0 0
+0 0 0 8997 0
+0 0 0 P
+#8999
+portal~
+a portal~
+A portal floats here~
+unknown~
+portal 0 0
+0 0 0 8998 0
+0 0 0 P
+#9000
+portal~
+a portal~
+A portal floats here~
+unknown~
+portal 0 0
+0 0 0 8999 0
+0 0 0 P
+#0
+
+
+
+#ROOMS
+#8500
+The altar of flesh~
+Standing here, all you see to the horizon is unbelievable blood and gore.
+There seems to be several feet of sentiment from the decaying flesh.  A
+small mound barely breaks from the gore, and an altar sits on it.  The Altar
+has something inscribed in it.  
+~
+0 20 0
+D0
+~
+~
+0 0 8501
+D1
+~
+~
+0 0 8502
+D2
+~
+~
+0 0 8503
+D3
+~
+~
+0 0 8505
+S
+#8501
+Wandering in the lake of gore~
+You are now wading in the middle of the lake, some sort of an altar lies south of here.
+~
+0 16 0
+D2
+~
+~
+0 0 8500
+S
+#8502
+Wandering in the lake of gore~
+You are now wading in the middle of the lake, some sort of an altar lies west of here.
+~
+0 16 0
+D3
+~
+~
+0 0 8500
+S
+#8503
+Wandering in the lake of gore~
+You are now wading in the middle of the lake, some sort of an altar lies north of here.
+~
+0 16 0
+D0
+~
+~
+0 0 8500
+D2
+~
+~
+0 0 8504
+S
+#8504
+Wandering in the lake of gore~
+You are standing on the edge of the lake of gore.  The blood here is
+falling down into some sort of pipe.  The temple of flesh is south of you.  
+~
+0 16 0
+D0
+~
+~
+0 0 8503
+D5
+~
+~
+0 0 8506
+S
+#8505
+Wandering in the lake of gore~
+You are now wading in the middle of the lake, some sort of an altar lies east of here.
+~
+0 16 0
+D1
+~
+~
+0 0 8500
+S
+#8506
+Inside the pipe~
+You are now swiming inside the pipe. Blood and gore is gushing down the pipe.
+~
+0 8 6
+D4
+~
+~
+0 0 8504
+D5
+~
+~
+0 0 8018
+M -100 H -100
+S
+#8996
+~
+~
+0 16777220 0
+S
+#8997
+~
+~
+0 16777220 0
+S
+#8998
+~
+~
+0 16777220 0
+S
+#8999
+~
+~
+0 16777220 0
+S
+#9000
+Pick a portal.. three are death, one is riches.~
+~
+0 1036 0
+S
+#8000
+The sands of time~
+You are standing before the sand of time. The still unfinished temple of flesh is towering north of here.
+~
+0 0 2
+D0
+~
+~
+0 0 8001
+D1
+~
+~
+0 0 8048
+S
+#8001
+Standing before the bridge~
+Stretching before you is is lengthy, wide bridge made of living flesh. 
+It is pulled across a wide trench.  There is nothing on the sides of the
+bridge guarding you from falling far below.  In the distance you can see a
+large temple.  
+~
+0 0 2
+D0
+~
+~
+0 0 8002
+D2
+~
+~
+0 0 8000
+S
+#8002
+Stepping onto the bridge~
+You are now standing on the living flesh.  It twitches and shivers eerily
+as your feet sink down into the flesh.  The flesh is sewn sloppily in a
+maddening pattern to wooden beams.  The flesh is pulled very tautly from
+beam to beam..  The bridge shifts from side to side as you walk, unsteadily.
+Towering over the bridge is a large temple.  
+~
+0 0 0
+D0
+~
+~
+0 0 8003
+D1
+~
+~
+1 0 8010
+D2
+~
+~
+0 0 8001
+D3
+~
+~
+1 0 8008
+S
+#8003
+In the middle of the bridge~
+You are now walking in the middle of bridge.  The flesh arches from the
+irritation provided by your feet.  You can see down the side of the bridge
+now.  Below, you can see a river of blood and gore slowly crawling to the
+west.  Large, but shallow swallows in the blood ripple to the east against
+the current from the slow steady wind.  The temples shadow covers you.  
+~
+0 0 0
+D0
+~
+~
+0 0 8004
+D1
+~
+~
+1 0 8010
+D2
+~
+~
+0 0 8002
+D3
+~
+~
+1 0 8008
+S
+#8004
+Almost to safety~
+Finally nearing the end of the bridge, the flesh relaxes.. Almost sighing. Two large doors of the temple lay ahead. The hum of the devices still echos around the area quietly.
+~
+0 0 0
+D0
+~
+~
+0 0 8005
+D1
+~
+~
+1 0 8010
+D2
+~
+~
+0 0 8003
+D3
+~
+~
+1 0 8008
+S
+#8005
+Before the steps of the temple~
+You finally made it off the bridge..  The ground here is made black
+marble with white wisps all through it.  The pyramid's doors are amazing. 
+They look almost 50 feet tall.  The doors are bright silver, carved with
+such detail it is staggering.  You can hear a low vibration coming from
+within the whole temple.  It sounds almost like music.  
+~
+0 0 0
+D0
+~
+~
+0 0 8006
+D1
+~
+~
+0 0 8009
+D2
+~
+~
+0 0 8004
+D3
+~
+~
+0 0 8007
+S
+#8006
+Standing at the doors to the temple of flesh~
+You can hear the sound more clearly now.  It sounds like it is coming
+from the top of the temple.  Do you have the courage to open these doors? 
+Stone titan statues stand to the left and the right with large axes.  
+~
+0 0 0
+D0
+The doors glean and shimmer, almost glowing.  Large gothic beasts are
+carved all over the door in some kind of strange flowing manner.  Empty
+figures are standing in a circle holding their hands together around a large
+polished bezeled area in the middle of the door.  
+~
+~
+0 0 8030
+D2
+~
+~
+0 0 8005
+S
+#8007
+~
+~
+0 0 0
+D1
+~
+~
+0 0 8005
+D3
+~
+~
+1 0 8043
+S
+#8008
+The sewer of sins~
+You are in the sewer of sins.  The sewer continues to the east and the
+west.  You are standing in 4 feet of dark thick blood.  Coating and dying
+your skin and clothing red like ink.  The blood is slowly flowing eastward,
+with the wind blowing westward.  The thick damp air is saturated with the
+putrid smell of death.  Black slime covers all of the dark rough stone here.
+Small bits of decaying flesh cover the bottom and the blood swirls and turns
+black as you walk.  The sunken sentiment appears deeper to the east and west
+of the bridge.  
+~
+0 8192 2
+D1
+~
+~
+0 0 8010
+D3
+~
+~
+0 0 8011
+D4
+~
+~
+0 0 8043
+S
+#8009
+~
+~
+0 0 0
+D1
+~
+~
+1 0 8044
+D3
+~
+~
+0 0 8005
+S
+#8010
+The sewer of sins~
+You are in the sewer of sins.  The sewer continues to the east and the
+west.  You are standing in 4 feet of dark thick blood.  Coating and dying
+your skin and clothing red like ink.  The blood is slowly flowing eastward,
+with the wind blowing westward.  The thick damp air is saturated with the
+putrid smell of death.  Black slime covers all of the dark rough stone here.
+Small bits of decaying flesh cover the bottom and the blood swirls and turns
+black as you walk.  The sunken sentiment appears deeper to the east and west
+of the bridge.  
+~
+0 8192 2
+D1
+~
+~
+0 0 8012
+D3
+~
+~
+0 0 8008
+D4
+~
+~
+0 0 8044
+S
+#8011
+Deeper into the sewer of sins~
+The blood and flesh seems a little fresher here..  There is a tunnel
+leading north.  Strange sounds come from within the tunnel, and it is
+completely dark there.  Hanging moss is growing in a crack in the stone. 
+Blood is gushing out of the tunnel here.  
+~
+0 8192 2
+D0
+~
+~
+0 0 8023
+D1
+~
+~
+0 0 8008
+D4
+~
+~
+0 0 8024
+S
+#8012
+Deeper into the sewer of sins~
+The blood and flesh seems a little fresher here..  There is a tunnel
+leading north.  Strange sounds come from within the tunnel, and it is
+completely dark there.  A pair of legs with the shoes still partially
+attacked hang above you.  Blood is gushing out of the tunnel here.  
+~
+0 8196 2
+D0
+~
+~
+0 0 8013
+D3
+~
+~
+0 0 8010
+D4
+~
+~
+0 0 8026
+S
+#8013
+Entering the tunnel~
+Its almost completely dark now.  The blood here is very deep indeed. 
+Guessing at its depth it must be almost 5 feet.  The tunnel itself is round
+and about 6 feet tall.  The slime here makes it very difficult to move
+against the current..  Every once in a while a small wave flows by splashing
+the blood in your face.  You hear a horrible scratching sound northward.  
+~
+0 8201 0
+D0
+~
+~
+0 0 8014
+D2
+~
+~
+0 0 8012
+S
+#8014
+Even deeper...~
+Its completely dark now.  The blood here is very deep indeed.  Guessing
+at its depth it must be almost 5 feet.  As you try and figure out what is
+making that horrid noise, a flash of movement catches your eye and you
+stumble back in suprie.  When you pull yourself togeather you see that a
+fiend inhabits this foul place.  
+~
+0 8201 0
+D0
+~
+~
+0 0 8015
+D2
+~
+~
+0 0 8013
+S
+#8015
+It runs...~
+Its completely dark now.  The blood here is very deep indeed.  Guessing
+at its depth it must be almost 5 feet.  As you try and figure out what is
+making that horrid noise, a flash of movement catches your eye and you
+stumble back in suprie.  When you pull yourself togeather you see that a
+fiend inhabits this foul place.  
+~
+0 8201 0
+D0
+~
+~
+0 0 8016
+D2
+~
+~
+0 0 8014
+D4
+~
+~
+1 0 8029
+S
+#8016
+It runs..~
+Its completely dark now.  The blood here is very deep indeed.  Guessing
+at its depth it must be almost 5 feet.  As you try and figure out what is
+making that horrid noise, a flash of movement catches your eye and you
+stumble back in suprie.  When you pull yourself togeather you see that a
+fiend inhabits this foul place.  
+~
+0 8201 0
+D2
+~
+~
+0 0 8015
+D3
+~
+~
+0 0 8017
+S
+#8017
+It runs even deeper...~
+Its completely dark now.  The blood here is very deep indeed.  You can
+barely stand whitout getting swept off your feet by the swift current.  You
+can just barely see over the waves into the next room.  There, an enormous
+pipe sticks out of the ceiling gushing out the blood that feeds the river. 
+Fighting to stay upright, your instincts tell you to press on.  
+~
+0 8201 0
+D1
+~
+~
+0 0 8016
+D3
+~
+~
+0 0 8018
+S
+#8018
+The great below.~
+After what seems like hours of fighting the current you finally find the
+source of all the horror.  A huge pipe sticks out of the cieling here
+gushing the blood and fleash that feeds the River of Death.  You start to
+feel your stomach give way and think you should leave this terrible place at
+once.  Still, something tells you there is more to this river than meets the
+eye.  But where is all this damn blood comming from?!?!  
+~
+0 8201 0
+D1
+~
+~
+0 0 8017
+D2
+~
+~
+0 0 8030
+D3
+~
+~
+0 0 8019
+D4
+~
+~
+0 0 8506
+S
+#8019
+It runs even deeper...~
+Its completely dark now.  The blood here is very deep indeed.  You can
+barely stand whitout getting swept off your feet by the swift current.  You
+can just barely see over the waves into the next room.  There, an enormous
+pipe sticks out of the ceiling gushing out the blood that feeds the river. 
+Fighting to stay upright, your instincts tell you to press on.  
+~
+0 8201 0
+D1
+~
+~
+0 0 8018
+D3
+~
+~
+0 0 8020
+S
+#8020
+It runs...~
+Its completely dark now.  The blood here is very deep indeed.  Guessing
+at its depth it must be almost 5 feet.  As you try and figure out what is
+making that horrid noise, a flash of movement catches your eye and you
+stumble back in suprie.  When you pull yourself togeather you see that a
+fiend inhabits this foul place.  
+~
+0 8201 0
+D1
+~
+~
+0 0 8019
+D2
+~
+~
+0 0 8021
+S
+#8021
+Even deeper...~
+Its completely dark now.  The blood here is very deep indeed. Guessing at its depth it must be almost 5 feet.  As you try and figure out what is making that horrid noise, a flash of movement catches your eye and you stumble back in suprie. When you pull yourself togeather you see that a fiend inhabits this foul place.
+~
+0 8201 0
+D0
+~
+~
+0 0 8020
+D2
+~
+~
+0 0 8022
+D4
+~
+~
+1 0 8028
+S
+#8022
+It runs...~
+Its completely dark now.  The blood here is very deep indeed. Guessing at its depth it must be almost 5 feet.  As you try and figure out what is making that horrid noise, a flash of movement catches your eye and you stumble back in suprie. When you pull yourself togeather you see that a fiend inhabits this foul place.
+~
+0 8201 0
+D0
+~
+~
+0 0 8021
+D2
+~
+~
+0 0 8023
+S
+#8023
+Entering the tunnel~
+Its almost completely dark now.  The blood here is very deep indeed. 
+Guessing at its depth it must be almost 5 feet.  The tunnel itself is round
+and about 6 feet tall.  The slime here makes it very difficult to move
+against the current..  Every once in a while a small wave flows by splashing
+the blood in your face.  You hear a horrible scratching sound northward.  
+~
+0 5 0
+D0
+~
+~
+0 0 8022
+D2
+~
+~
+0 0 8011
+S
+#8024
+~
+~
+0 0 0
+D2
+~
+~
+0 0 8025
+D5
+~
+~
+0 0 8011
+S
+#8025
+~
+~
+0 0 0
+D0
+~
+~
+0 0 8024
+D4
+~
+~
+0 0 8001
+S
+#8026
+~
+~
+0 0 0
+D2
+~
+~
+0 0 8027
+D5
+~
+~
+0 0 8012
+S
+#8027
+~
+~
+0 0 0
+D0
+~
+~
+0 0 8026
+D4
+~
+~
+0 0 8001
+S
+#8028
+~
+~
+0 0 0
+D4
+~
+~
+0 0 8037
+D5
+~
+~
+1 0 8021
+S
+#8029
+~
+~
+0 0 0
+D4
+~
+~
+0 0 8037
+D5
+~
+~
+1 0 8015
+S
+#8030
+Nothing~
+~
+0 0 0
+D0
+~
+~
+0 0 8018
+D1
+~
+~
+0 0 8032
+D3
+~
+~
+0 0 8033
+S
+#8031
+~
+~
+0 0 0
+D1
+~
+~
+0 0 8035
+D3
+~
+~
+0 0 8034
+D4
+~
+~
+0 0 8036
+S
+#8032
+~
+~
+0 0 0
+D2
+~
+~
+0 0 8035
+D3
+~
+~
+0 0 8030
+S
+#8033
+~
+~
+0 0 0
+D1
+~
+~
+0 0 8030
+D2
+~
+~
+0 0 8034
+S
+#8034
+~
+~
+0 0 0
+D0
+~
+~
+0 0 8033
+D1
+~
+~
+0 0 8031
+S
+#8035
+~
+~
+0 0 0
+D0
+~
+~
+0 0 8032
+D3
+~
+~
+0 0 8031
+S
+#8036
+~
+~
+0 0 0
+D1
+~
+~
+0 0 8038
+D5
+~
+~
+0 0 8031
+S
+#8037
+~
+~
+0 0 0
+D4
+~
+~
+0 0 8041
+D5
+~
+~
+0 0 8042
+S
+#8038
+~
+~
+0 0 0
+D3
+~
+~
+0 0 8036
+D5
+~
+~
+0 0 8039
+S
+#8039
+~
+~
+0 0 0
+D4
+~
+~
+0 0 8038
+D5
+~
+~
+0 0 8040
+S
+#8040
+~
+~
+0 0 0
+D3
+~
+~
+0 0 8041
+D4
+~
+~
+0 0 8039
+S
+#8041
+Lair of the ruiner~
+~
+0 0 0
+D1
+~
+~
+0 0 8040
+S
+#8042
+~
+~
+0 0 0
+D4
+~
+~
+0 0 8006
+S
+#8043
+~
+~
+0 0 0
+D1
+~
+~
+1 0 8007
+D5
+~
+~
+0 0 8008
+S
+#8044
+~
+~
+0 0 0
+D3
+~
+~
+1 0 8009
+D5
+~
+~
+0 0 8010
+S
+#8045
+Distortions quiet office~
+The scents of leather, fine wood, tea and herbs fill the air here.  A The
+room is stylized in all dark muted tones.  Peaceful heavenly music can be
+heard seeping quietly from all directions.  
+~
+0 1036 2
+D0
+Hmm, just a door with 'Storage' carved into the wood.. And a really big lock.
+~
+~
+4 8053 7
+D1
+~
+~
+4 70020 8046
+D2
+~
+~
+4 70020 8052
+D5
+~
+~
+0 0 3014
+M 0 H 0
+S
+#8046
+{DDistortions Bedroom{x~
+{DYou are floating in nothing.
+{x
+~
+0 1032 0
+D1
+~
+~
+1 0 8053
+D3
+~
+~
+4 8053 8045
+O Distortions Shartyn~
+S
+#8047
+{DSomewhere in the darkness{x~
+~
+0 12 1
+S
+#8048
+~
+~
+0 0 0
+D3
+~
+~
+0 0 8000
+S
+#8050
+An Entryway~
+The entryway is made completely of black marble that has light wisps of
+white and grey in it swirled about.  The floor, walls, cieling and even the
+large gothic style carved doors are made of this dark marble.  
+~
+0 8 0
+D0
+~
+~
+1 0 8051
+D2
+~
+~
+1 0 3054
+S
+#8051
+A Great Hallway~
+His hallway seems to be about 50 feet long and tall, but only about 10
+feet wide.  You notice the grey and white whips in the marble seem
+ghost-like, like anguished souls.  A railing made of ivory with onyx ends
+line the walls elegantly.  Large grey candles almost a foot tall and half a
+foot wide are attached to the walls about 4 feet up with ornate cast iron
+holders.  The candles gently light the hallway while flickering, and
+releasing a soft pleasant smell.  It is too dark to see into the next room. 
+~
+0 0 0
+D0
+~
+~
+0 0 8052
+D2
+~
+~
+1 0 8050
+S
+#8052
+A Waiting Room~
+This room is very similar to the hallway with two grey candles mounted
+one on the east and west walls.  Three long comfortable looking white
+leather benches line 3 of the walls here for anyone waiting.  A strange
+ominous door is to the north, made of some strange looking knobby wood.  
+~
+0 0 0
+D0
+~
+~
+4 8053 8045
+D2
+~
+~
+0 0 8051
+S
+#8053
+A closet~
+~
+0 0 0
+D3
+~
+~
+1 0 8046
+O Distortions Shartyn~
+S
+#8099
+~
+~
+0 4 0
+S
+#8100
+{bM{8aster {bB{8edroom{x~
+~
+0 4 0
+O shartyn~
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 8002 1 1
+D 0 8002 3 1
+D 0 8003 1 1
+D 0 8003 3 1
+D 0 8004 1 1
+D 0 8004 3 1
+D 0 8007 3 1
+D 0 8009 1 1
+D 0 8015 4 1
+D 0 8021 4 1
+D 0 8028 5 1
+D 0 8029 5 1
+D 0 8043 1 1
+D 0 8044 3 1
+D 0 8045 0 2
+D 0 8045 1 2
+D 0 8045 2 1
+D 0 8046 1 1
+D 0 8046 3 2
+D 0 8050 0 1
+D 0 8050 2 1
+D 0 8051 2 1
+D 0 8052 0 1
+D 0 8053 3 1
+O 0 8500 0 8500
+O 0 9000 0 9000
+O 0 8999 0 9000
+O 0 8998 0 9000
+O 0 8997 0 9000
+O 0 8004 0 8002
+O 0 8004 0 8002
+O 0 8003 0 8002
+O 0 8004 0 8003
+O 0 8003 0 8003
+O 0 8004 0 8004
+O 0 8004 0 8004
+O 0 8003 0 8004
+M 0 8005 2 8006 2
+M 0 8022 32 8022 2
+O 0 8045 0 8045
+O 0 8046 0 8045
+O 0 8047 0 8045
+O 0 8048 0 8045
+O 0 8049 0 8045
+O 0 8050 0 8045
+P 0 8051 6 8050 6
+O 0 8052 0 8045
+O 0 8054 0 8046
+O 0 8054 0 8047
+O 0 8055 0 8052
+P 0 8056 8 8055 8
+P 0 8057 4 8055 4
+O 0 8058 0 8052
+M 0 8050 3 8052 3
+M 0 8050 1 8052 1
+O 0 8100 0 8100
+S
+
+
+
+#SHOPS
+0
+
+
+
+#MOBPROGS
+#0
+
+#$

@@ -1,0 +1,340 @@
+#AREADATA
+Name Quest Objects~
+Builders Loki Unlinked~
+VNUMs 501 549
+Credits {C  ALL  {x~
+Security 9
+RepopMsg (null)~
+End
+
+
+
+#MOBILES
+#0
+
+
+
+#OBJECTS
+#501
+Blade Ancient Ancients~
+{BB{blad{Be {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+The {BB{blad{Be {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x has beed dropped here.~
+unknown~
+weapon ABMa AN
+sword 46 23 cleave ABCDEGHI
+150 10 36905 P
+A
+17 -300
+#502
+Protection Ancient Ancients~
+{RP{rrotectio{Rn {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+{RP{rrotectio{Rn {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x has been dropped here.~
+unknown~
+armor ABa AD
+546 546 546 545 0
+150 25 654 P
+A
+5 2
+A
+20 -10
+#503
+Gauntlets Ancients~
+{GG{gauntlet{Gs {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+{GG{gauntlet{Gs {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x have been dropped here.~
+unknown~
+armor ABa AH
+213 213 213 212 0
+150 100 254 P
+A
+1 8
+#504
+Tattoo Ancients~
+{RT{Datto{Ro {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+A {RT{Datto{Ro {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x mars a strip of dry skin.~
+unknown~
+armor ABa APTW
+213 213 213 212 0
+150 100 254 P
+#505
+Leggings Ancients~
+{DL{Wegging{Ds {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+{DL{Wegging{Ds {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x have been dropped here.~
+unknown~
+armor ABa AF
+296 296 296 295 0
+150 150 346 P
+A
+2 2
+#506
+Ring Ancients~
+{MR{min{Mg {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+A {MR{min{Mg {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x has been dropped here.~
+unknown~
+armor ABa AB
+213 213 213 212 0
+175 100 254 P
+A
+20 -10
+A
+1 2
+#507
+Cloak Ancients~
+{DC{gloa{Dk {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+A {DC{gloa{Dk {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x has been dropped here.~
+unknown~
+armor ABa AK
+221 221 221 220 0
+175 100 256 P
+A
+20 -20
+#508
+Mask Ancients~
+{CM{cas{Ck {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+A {CM{cas{Ck {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x has been dropped here.~
+unknown~
+armor ABa AR
+213 213 213 212 0
+175 100 254 P
+A
+4 2
+#509
+Bracer Ancients~
+{BB{Drace{Br {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+A {BB{Drace{Br {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x has been dropped here.~
+unknown~
+armor ABa AM
+213 213 213 212 0
+175 100 254 P
+A
+20 -25
+#510
+Shield Ancients~
+{DS{Ghiel{Dd {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+A {DS{Ghiel{Dd {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x has been dropped here.~
+unknown~
+armor ABa AJ
+255 255 255 254 0
+175 125 296 P
+A
+20 -20
+A
+5 1
+#511
+belt ancients~
+{BB{cel{Bt {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+A {BB{cel{Bt {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x has been dropped here.~
+unknown~
+armor ABa AL
+246 246 246 245 0
+175 125 294 P
+A
+20 -10
+#512
+Boots Ancients~
+{DB{moot{Ds {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+The {DB{moot{Ds {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x are here.~
+unknown~
+armor ABa AG
+255 255 255 254 0
+175 150 296 P
+A
+2 4
+#513
+Anklet Ancients~
+{gA{cnkle{gt {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+An {gA{cnkle{gt {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x is here.~
+unknown~
+armor ABa AS
+255 255 255 254 0
+175 150 296 P
+A
+2 1
+A
+20 -20
+#514
+Helm Ancients~
+{YH{yel{Ym {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+A {YH{yel{Ym {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x is here.~
+unknown~
+armor ABa AE
+255 255 255 254 0
+175 150 296 P
+A
+20 -15
+A
+3 1
+#515
+Aura Ancients~
+{CA{Wur{Ca {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+An {CA{Wur{Ca {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x fills the room.~
+unknown~
+armor ABa AU
+213 213 213 212 0
+125 251 254 P
+A
+8 2
+A
+24 -10
+#516
+Orb Ancients~
+{CO{Br{Cb {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+An {CO{Br{Cb {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x floats in midair.~
+unknown~
+armor ABa AQ
+100 100 100 100 0
+175 0 0 P
+A
+4 1
+#517
+Neck Guard Ancients~
+{WN{Deck Guar{Wd {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+A {WN{Deck Guar{Wd {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x has been dropped here.~
+unknown~
+armor ABa AC
+213 213 213 212 0
+175 125 254 P
+A
+20 -60
+#518
+earring ancients~
+{ME{Darrin{Mg {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+An {ME{Darrin{Mg {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x has been discarded here.~
+unknown~
+armor ABa AV
+213 213 213 212 0
+175 125 254 P
+A
+3 1
+A
+4 1
+A
+20 -5
+A
+8 1
+#519
+Sleeves Ancients~
+{RS{cl{Re{ce{Rv{ce{Rs {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+{RS{cl{Re{ce{Rv{ce{Rs {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x lie here.~
+unknown~
+armor ABa AI
+221 221 221 220 0
+0 0 0 P
+A
+17 -200
+#520
+Flame Ancients~
+{RF{Yl{Ra{Ym{Re{x of the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+A {RF{Yl{Ra{Ym{Re{x of the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x lies here.~
+unknown~
+light ABa A
+0 0 999 0 0
+0 0 0 P
+F
+A 0 -1 E
+F
+A 0 -1 Z
+F
+A 0 -1 C
+F
+A 0 -1 G
+F
+A 0 -1 J
+F
+A 0 -1 D
+F
+A 0 -1 F
+#521
+crest ancients~
+{DC{Cres{Dt {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+An ancient crest lies here, long forgotten.~
+unknown~
+armor ABa AO
+281 281 281 234 0
+175 2 523 P
+A
+20 -25
+A
+3 3
+#522
+quest staff ancients~
+{yS{Dt{ya{Df{yf {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+A gnarled old {yS{Dt{ya{Df{yf {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x radiates magic.~
+wood~
+staff ABGSYa AO
+500 200 200 'acid breath' 0
+0 1 0 P
+#523
+backpack ancients~
+{GB{yackpac{Gk{x of the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x~
+A {GB{yackpac{Gk{x of the {YA{yn{Yc{yi{Ye{yn{Yt{ys{x has been left here.~
+unknown~
+container ABa AX
+0 AC 0 0 50
+175 0 0 P
+#547
+old crest ancients~
+{gC{yr{De{ys{gt {xof the {YA{yn{Yc{yi{Ye{yn{Yt{ys {x(Don't use)~
+Please ask an imm to replace me.  The new crest has better saves.~
+unknown~
+armor ABa AO
+100 100 100 100 0
+175 0 0 P
+A
+13 200
+A
+12 200
+A
+19 90
+A
+18 90
+A
+20 -20
+#548
+Restring Ticket~
+{wA {WR{gestrin{Wg {WTicket{x~
+{wA {WR{gestrin{Wg {WTicket{x is here.~
+unknown~
+trash a 0
+0 0 0 0 0
+0 0 0 P
+#549
+Who String Ticket~
+a {WW{ghostrin{Wg{x {YT{yi{Ycket{x~
+A {WW{ghostrin{Wg{x {YT{yi{Ycket{x is here.~
+unknown~
+trash a A
+0 0 0 0 0
+0 0 0 P
+#0
+
+
+
+#ROOMS
+#501
+Quest Test Room~
+~
+0 12 0
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+S
+
+
+
+#SHOPS
+0
+
+
+
+#MOBPROGS
+#0
+
+#$

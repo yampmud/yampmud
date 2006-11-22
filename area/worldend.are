@@ -1,0 +1,661 @@
+#AREADATA
+Name Worlds End~
+Builders Unlinked Khaos~
+VNUMs 1200 1299
+Credits {G QUEST {x~
+Security 9
+RepopMsg (null)~
+End
+
+
+
+#MOBILES
+#1202
+scared stray~
+a {Rs{rc{yar{re{Rd {ys{Dtra{yy{x~
+A scared, stray dog snarls at anything that passes by.
+~
+~
+dog~
+ABF 0 JYZa 0 0 0
+90 65 125d25+1300 0d0+0 25d3+40 bite
+-35 -35 -35 -25
+DH AB 0 HM
+stand stand either 0
+AGV ACDEFHJKUV medium unknown
+#1204
+crowd revelers~
+{xthe {dr{-e{ov{-e{-l{oe{-r{ds{x~
+A crowd of {dr{-e{ov{-e{-l{oe{-r{ds{x drinks and delights in discussions of death and philosophy.
+~
+{xThe crowd is composed of a strange variety of beings
+indeed!  Some are flesh and blood and fur while some
+are made of pure light and others utter darkness. It
+seems they have gathered in remembrance of something
+or someone, and you wonder if perhaps you should ask
+{C"{cWho died?{C"{x or maybe even {C"{cWhere am I?{C"{x
+~
+Human~
+AGI 0 JZ 0 0 0
+222 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 ABCDLQ 0 0
+stand stand none 10000
+AHMV ABCDEFGHIJK large unknown
+#1205
+sycamore tree~
+a {ysycamore {Gt{gree{x~
+A tall sycamore tree provides scant shelter from the rain.
+~
+~
+Ent~
+ABGa 0 JPQZ BHI 0 0
+205 100 200d200+50000 0d0+0 500d3+1000 wrath
+0 0 0 0
+0 ABCDLQX a J
+stand stand none 0
+AH 0 medium unknown
+F vul H
+F for MV
+F par ABCDEFGHIJK
+M EXALL 1205 0~
+#1206
+sea serpent~
+the {Gs{Ce{ca {gs{Ger{gp{Gen{gt{x~
+A huge serpent with {gg{Glo{gw{Gin{gg{x green eyes rises through the storm.
+~
+{xA huge green-scaled beast with glowing eyes rises
+from the waves, descending upon the ship quickly.
+~
+Dragon~
+AB 0 JTV FG -500 0
+222 5000 750d50+25000 500d50+25000 500d10+2500 acbite
+-100 -100 -100 -100
+AFHO ABL EKR FJ
+stand stand none 0
+AHZ ACDEFJKQUVX huge unknown
+F shd D
+F res BH
+F vul I
+F par GHIP
+M FIGHT 1206 25~
+M RANDOM 1208 20~
+M HPCNT 1207 25~
+M DEATH 1207 100~
+#1210
+auroch~
+the {pA{pu{pr{po{pc{ph{x~
+A large auroch with sad black eyes stands in your path.
+~
+~
+Human~
+ABG 0 DFJZ C 100 0
+200 220 1102d73+13333 0d0+0 73d3+232 charge
+-139 -139 -139 -93
+C ABL IQ H
+stand stand none 0
+ACGV ACDEFJKQW large unknown
+F for HM
+F par BGHI
+M EXIT 1210 1~
+#1213
+sandstorm~
+the {ps{pa{pn{pd{ps{pt{po{pr{pm{x~
+The sand whips around at high speeds, stinging your eyes and skin.
+~
+~
+Human~
+ABd 0 DFJPQZ 0 0 0
+1 100 1102d73+13333 0d0+0 73d3+232 sting
+0 0 0 0
+0 ABCDLQ 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+M RANDOM 1214 23~
+#1298
+immquest naked school girl~
+a {Wnaked {Rs{Mc{mh{ro{Rol{rg{mi{Mr{Rl{x~
+A young {Rs{Mc{mh{ro{Rol{rg{mi{Mr{Rl{x stands here, naked and dripping strange fluids.
+~
+It's clear that this girl is both young and beautiful, but she
+also looks a bit mentally deranged as if she was the victim of
+an unthinkable crime.  Her skin is all bared and coated with a
+strange, gooey liquid.  She screams incessantly, horrified.
+~
+Demon~
+AF 0 GVa S -666 0
+300 9999 200d250+9999 0d0+0 10d150+100 scream
+0 0 0 0
+R AB KT FPY
+stand stand female 690
+AHMV ABCDEFGHIJK medium unknown
+F res MO
+F vul N
+#1299
+immquest hentai-oni tentacle beast~
+{CH{Ge{gnt{Ga{Ci{D-{RO{rn{Ri{x~
+The massive tentacle demon {CH{Ge{gnt{Ga{Ci{D-{RO{rn{Ri{x lashes out, looking for nubile young flesh.
+~
+A mass of writing phallic tentacles, this beast comes in search
+of young girls to feed its sadistic fetishes.  Somewhere beyond
+the wild flailing of tentacles, the pleading scream of its last
+victim can be heard. Strange fluids puddle around this monster.
+It's probably not safe to get close, especially not if you wear
+short pleated skirts and white knee high socks.
+~
+Demon~
+A 0 GVa FGISa -999 0
+600 9669 2020d1001+50505 2020d3030+10101 69d999+1001 thrust
+-999 -999 -999 -999
+AHKMN ABLQ DPR HKNX
+stand stand none 996999
+AHMV DEFKLMN huge unknown
+F res MO
+F vul Y
+F par ABCGHIJ
+M FIGHT 1297 60~
+M FIGHT 1298 35~
+M FIGHT 1299 25~
+M FIGHT 1296 10~
+#0
+
+
+
+#OBJECTS
+#1291
+immquest distortions blue halo holy symbol~
+{x[{GI{g.{GQ{guest{x] The {WB{Cl{Bu{be H{Ba{Cl{Wo {xof {YD{yist{wo{yrti{wo{yn{Ys{x~
+A holy symbol of Distortions lies here, the whole world visible within.~
+unknown~
+armor Y AC
+300 300 300 300 0
+1 1 0 P
+A
+13 325
+A
+12 325
+A
+14 325
+A
+18 105
+A
+19 105
+A
+20 -25
+#1292
+immquest khaos disc holy symbol~
+{x[{GI{g.{GQ{guest{x] The {DBlack Disc {xof {*K{*h{*a{*o{*s{x~
+A holy symbol of Khaos lies here, shrouded in darkness.~
+unknown~
+armor Y AC
+300 300 300 300 0
+1 1 0 P
+A
+13 250
+A
+12 250
+A
+14 250
+A
+20 -75
+A
+1 3
+A
+18 105
+A
+19 105
+#1293
+immquest sahtalus broken sword holy symbol~
+{x[{GI{g.{GQ{guest{x] The {DBroken Sword {xof {BS{ba{Dh{wta{Dl{bu{Bs{x~
+A holy symbol of Sahtalus lies here, radiating a vengeful aura.~
+unknown~
+armor Y AC
+300 300 300 300 0
+1 1 0 P
+A
+13 250
+A
+12 250
+A
+14 250
+A
+20 -25
+A
+18 105
+A
+19 130
+A
+4 3
+#1294
+immquest samoth skull dagger holy symbol~
+{x[{GI{g.{GQ{guest{x] The {WSkull {xand {RD{ra{Dgg{re{Rr {xof {RS{ra{Dm{Ro{rt{Dh{x~
+A holy symbol of Samoth lies here, pulsating violently.~
+unknown~
+armor Y AC
+300 300 300 300 0
+1 1 0 P
+A
+13 250
+A
+12 250
+A
+14 250
+A
+20 -25
+A
+18 130
+A
+19 130
+#1295
+immquest shartyn snowflake holy symbol~
+{x[{GI{g.{GQ{guest{x] The {WWhite Snowflake {xof {CS{ch{Da{Wr{Dt{cy{Cn{x~
+A holy symbol of Shartyn lies here, cold to the touch.~
+unknown~
+armor Y AC
+300 300 300 300 0
+1 1 0 P
+A
+13 250
+A
+12 250
+A
+14 250
+A
+20 -25
+A
+18 130
+A
+19 105
+A
+3 3
+#1296
+superior spellcraft gem ImmQuest~
+{nGem {xof {GS{gu{bp{Ber{bi{go{Gr S{gp{bel{Blc{bra{gf{Gt{x~
+A glowing, rotating {ngem{x hovers in the air, pulsating with magical {Ge{gn{be{Br{gg{Gy{x.~
+unknown~
+wand ABGHSY AQ
+500 12 12 'mana shield' 0
+1 3 0 P
+A
+20 -12
+A
+19 20
+A
+18 20
+A
+13 75
+A
+12 725
+A
+4 3
+A
+3 3
+#1297
+dagger wathriel umbarie IQ~
+{DA D{wa{Wgg{we{Dr {rD{Dubbe{rd {D"{+W{+a{+t{+h{+r{+i{+e{+l {+U{+m{+b{+a{+r{+i{+e{D"{x~
+A black-hilted steel dagger lies here, a strange {+s{+h{+a{+d{+o{+w{x lingering over the blade.~
+steel~
+weapon ABMa AN
+dagger 46 23 pierce ABCDEGHI
+211 10 0 P
+#1298
+rondel true consequence IQ~
+{DA {WR{wo{Dnd{we{Wl {rF{Dorge{rd {D"{IT{Ir{Iu{Ie {IC{Io{In{Is{Ie{Iq{Iu{Ie{In{Ic{Ie{D"{x~
+A slender steel dagger lies here, filling any who touch its blue hilt with {Iv{Ie{In{Ig{Ie{If{Iu{Il{x lust.~
+steel~
+weapon ABMa AN
+dagger 46 23 pierce ABCDEGHI
+0 10 36905 P
+#1299
+psychic venom sai~
+{=T{=h{=e {=S{=a{=i {=o{=f {=P{=s{=y{=c{=h{=i{=c {=V{=e{=n{=o{=m{x~
+A viciously sharp sai radiates a {=m{=a{=l{=i{=c{=i{=o{=u{=s{x aura.~
+unknown~
+weapon ABMa AN
+dagger 46 23 mindr ABCDEGHI
+0 0 36905 P
+A
+18 120
+A
+19 120
+A
+13 5000
+A
+17 -300
+#0
+
+
+
+#ROOMS
+#1200
+{D-=({RA{rn {RU{rnfamiliar {RA{rlley{D)=-{x~
+{DAs you wander the city streets, you find yourself strangely {wl{Wos{wt{D.
+You thought you knew these roads, but the dark alleys you're moving
+through now seem so unfamiliar.  The roar of thunder echos down the
+narrow passage,  a crash of {Yl{Wig{Yh{yt{Yn{Win{Yg{D illuminating the dark corners
+where {yv{ge{Drm{gi{yn{D skuttle about looking for more shadow. The corridor is
+somehow darker the farther you travel down it. A bit concerned, you
+turn to go back the way you came, recalling a small road you passed
+a couple minutes ago, but behind you, there is n{yo{wthi{yn{Dg but rock and
+mortar, a tall wall leaving nowhere to turn.  Black rain pours down
+from above, {Cd{cr{be{Bnc{bh{ci{Cg{D you.   You wish to get in from the storm, but
+the dark alley seems your only option.{x
+~
+0 532480 1
+D3
+~
+~
+0 0 1201
+S
+#1201
+{D-=({MF{murther {MD{mown {xthe {RA{rlley{D)=-{x~
+{DVisibility is low between the constant rain and the lack of light.
+You feel your way along the dirty walls, sooty {gsli{Gm{ge{D wrapping around
+your fingers.  You kick at trash cans and refuse,  stumbling through
+the {yn{wa{Wrr{wo{yw{D passageway. Your fingers run over a few boarded up doors.
+No matter how hard you try, you can't seem to pry them open. Another
+lightning strike illuminates the dark alley, showing a northern {Wtu{wrn{D
+a few yards down.  Perhaps there's more luck that way.{x
+~
+0 532481 1
+D0
+~
+~
+0 0 1202
+D1
+~
+~
+0 0 1200
+S
+#1202
+{D-=({xA {YL{yight {xin the {RD{ristance{D)=-{x~
+{D{WW{wi{Dn{wd{Ws{D howl down the alleyway, whipping around your head. The piles
+of rubbish here bristle with life as if animals, and perhaps people,
+have taken shelter from the {Bs{Dt{Yo{Dr{Bm{D under tin lids and paper bags. Off
+in the far distance, a light shimmers faintly.  In the freezing, wet
+night, that yellow {Yg{ylo{Yw{D radiates warmth and welcome.{x
+~
+0 532480 1
+D0
+~
+~
+0 0 1203
+D2
+~
+~
+0 0 1201
+S
+#1203
+{D-=({MB{mefore {xthe {CW{corlds' {CE{cnd {CI{cnn{D)=-{x~
+{DAs you approach the {wl{yi{Yg{yh{wt{D, the storm continues to berrate you.  It
+seems to be a dark building like the rest with little to distinguish
+it from an old {ytavern{D or home  save that its windows are all alight,
+while the rest of the city has gone dark.  Above the door, a sign is
+blowing in the furious winds.  It reads "{CW{corlds' {CE{cnd{D: A {WF{wree {DHouse."{x
+~
+0 532480 1
+D2
+~
+~
+0 0 1202
+S
+#1204
+{C.{c:{C|{DA {WS{Dlight {WM{Discalculation{C|{c:{C.{x~
+{DThis isn't where you meant to be.  Something must have gone {rw{Rr{rong{D
+with that {cga{Ct{ce{D spell.  Instead of your intended destination, you've
+ended up in a strange {ylu{Ym{yi{Yn{Co{yus{D darkness.  Though the black of night
+surrounds you, there is light everywhere, as if the {ws{Wt{Ca{mr{Ws{D were just
+a little closer, {cill{Cu{cmin{Ca{Wt{cin{wg{D everything in strange unearthly {yglo{Yw{D.
+Even the {ydi{wr{yt{D below shimmers as if it were m{we{Dta{Wl{wl{Di{wc{D.  The landscape
+is rich with muted color and r{wol{Wl{win{Dg hills. Against the {wb{Wa{Dck{wd{Wr{Dop of
+{ys{Dta{wr{W-{Cg{cl{Ditt{me{Mr{Ded velvet stands a single building, its windows full of
+light.  The sign above the door reads: {CW{corlds' {CE{cnd{D, a {cf{Dree {ch{Douse.{x
+~
+0 532492 2
+D1
+~
+~
+0 0 1204
+D2
+~
+~
+0 0 1204
+S
+#1205
+{qL{qo{qs{qt {Din the {qW{qo{qo{qd{qs{x~
+{gAs you wander the forest, the sky begins to {Ddarken{g rather rapidly.
+The clouds above are thick and black and foreboding, a heavy thunder
+rolling in with them.  After a long, deep grumbling roar, the clouds
+unleash their downpour, sending you scrambling for shelter beneath a
+large sycamore {Gt{gree.   Scanning the area through the drenching {Cr{ca{wi{Cn{g,
+you find it impossible to locate the path you had been traveling. It
+is difficult to be sure, but off in the distance to the north, there
+just might be a faint {yl{Yi{Wg{Yh{yt{g in the distance, perhaps a cottage where
+you could wait out the storm.{x
+~
+0 532484 3
+D0
+~
+~
+0 0 1205
+S
+#1206
+{D( Aboard {YH{yob's {GL{geviathan {D){x~
+{DWild {Ww{ci{wn{Wd{Cs{D whip all around, the spray of sea water ever-present.
+A storm is brewing and it's coming up fast, the skies growing into
+a dark, ominous grey. When the {Br{Ca{Bin{D really starts to come down, it
+is hard to tell if the water covering the deck is pouring from the
+sky or from the huge w{ba{Bv{De{bs{D crashing against the wooden {yship{D. Never
+in all the time you've served on a ship have you seen a storm like
+this.  Despite that feeling in the pit of your {ms{rtomac{mh{D telling you
+that no one is going to make it out of this one alive you try what
+you can to keep this boat afloat.  That's when you see the glowing
+green {ge{Gye{gs{D rising through the waves...{x
+~
+0 532484 0
+S
+#1207
+{D( Shipwrecked {Din the S{ct{Co{Br{cm{D ){x~
+{yYou wake with sand in your mouth, seaweed tangled in your hair.
+Your skin is sticky with {ws{Wa{wlt {cw{wat{Ce{cr{y, {Rb{rloo{Rd{y, and {ga{Gci{gd{y, but you are
+amazingly still in one piece.  Glancing around,  this beach seems
+vaguely familiar, like something from a half-remembered {md{cr{Ce{ca{mm{y.  A
+heavy {Df{Wo{wg{y hangs over everything, and in this mist the sand almost
+shimmers.  Though the affects of the serpent's {gp{Go{gis{Go{gn{y still cause
+you great pain, your stomach g{Dr{yum{rbl{De{ys, and you know you must seek
+shelter before the storm begins again.  Periodically, you can see
+a {Yl{Wi{wg{Yh{wt{y piercing the fog in the distance.{x
+~
+0 532480 0
+D0
+~
+~
+0 0 1208
+S
+#1208
+{D( A S{ct{Cr{Ga{Cn{cg{De L{yi{Yg{Wh{wth{Wo{Yu{ys{De ){x~
+{yAfter an arduous trek through the fog and sand, you stand before
+a rather large {Dl{yi{Yg{Wh{wth{Wo{Yu{ys{De{y.  Besides the light at its pinacle, many
+more lights illuminate the windows of the lower floors.  The lower
+two floors stretch out like a large home or {Yi{ynn.  On the left side
+stands the lighthouse tower rising up through the {cm{wi{Ws{Dt{y diligantly.
+Sounds of conversation and congregation come from within, offering
+a strangely {Cw{celcomin{Cg{y atmosphere.   You can't help but {Dw{mo{Mnd{me{Dr{y what
+strange folk might be inside such a place on such a night.   Above
+the steps leading to the front door hangs  a fading old sign which
+reads "{GW{gorlds' {GE{gnd {GI{gnn{G: {Da {gf{Dree {gh{Douse{y."{x
+~
+0 532480 0
+D2
+~
+~
+0 0 1207
+S
+#1209
+Wandering the Fields~
+~
+0 532480 0
+D2
+~
+~
+0 0 1210
+S
+#1210
+Caught in the Snowstorm~
+~
+0 532480 0
+D0
+~
+~
+0 0 1209
+D1
+~
+~
+0 0 1211
+S
+#1211
+A Distant Glow~
+~
+0 532480 0
+D1
+~
+~
+0 0 1212
+D3
+~
+~
+0 0 1210
+S
+#1212
+Before the Worlds' End~
+~
+0 532480 0
+D3
+~
+~
+0 0 1211
+S
+#1213
+A Sunny Beach~
+~
+0 532480 0
+D3
+~
+~
+0 0 1214
+S
+#1214
+Trapped in the Sandstorm~
+~
+0 532480 0
+D1
+~
+~
+0 0 1213
+D3
+~
+~
+0 0 1215
+S
+#1215
+A Strange Beach House~
+~
+0 532480 0
+D1
+~
+~
+0 0 1214
+S
+#0
+
+
+
+#SPECIALS
+M 1206 spec_breath_acid
+S
+
+
+
+#RESETS
+M 0 1202 1 1202 1
+M 0 1204 1 1204 1
+M 0 1205 1 1205 1
+M 0 1206 1 1206 1
+M 0 1210 1 1210 1
+M 0 1213 1 1214 1
+S
+
+
+
+#SHOPS
+0
+
+
+
+#MOBPROGS
+#1205
+MOB echo The air {Ycharges{x with {Be{Wlectricit{By{x for an instant.
+MOB asound A loud {yC{YR{wA{WC{YK{x thunders through the area as {yl{Yig{Whtin{Yin{yg{x crashes nearby.
+MOB echoat $n Overhead, you hear a loud creaking and a sound of splintering {ywood{x.
+MOB echoat $n A sudden rush of {Rp{ra{Ri{rn{x radiates from the back of your skull, pulsing
+MOB echoat $n {xthrough your body as the wet {ql{qe{qa{qv{qe{qs{x and {ymud{x below approach rapidly.
+MOB echoat $n Everything goes {Dblack{x.
+MOB echoaround $n $n is {Rs{rtruc{Rk{x by a falling branch and falls unconscious.
+MOB force $n sleep
+~
+#1206
+MOB echo $I lets forth a {Gp{go{yi{gs{Go{gn{yo{gu{Gs s{Ct{co{Cr{Gm{x!!
+MOB cast 'acid bolt' $n
+MOB cast 'gas breath'
+MOB cast 'acid bolt' $n
+MOB cast 'gas breath'
+MOB cast 'acid bolt' $n
+MOB cast 'gas breath'
+MOB cast 'acid bolt' $n
+~
+#1207
+MOB echo Sensing its demise, $I unleashes a {=d{=e{=v{=a{=s{=t{=a{=t{=i{=n{=g {xattack.
+MOB damage $n 25000 50000
+MOB echo The affects of the poison are dizzying.
+MOB echo Your face meets with the deck quickly.
+MOB force $n sleep
+MOB cast sleep $n
+MOB transfer $n 1207
+~
+#1208
+MOB echo $I bares its vicious {Gf{ga{Gng{gs{x and bears down upon the ship.
+~
+#1210
+The sand whips around at high speeds, stinging your eyes and skin.
+~
+#1214
+MOB echo A gust of winds sends the sand down {=t{=e{=a{=r{=i{=n{=g{x at your skin.
+MOB damage all 750 2500
+~
+#1296
+MOB echo $I spews its gooey fluids all over the room!
+MOB cast 'downpour' $r
+MOB cast 'downpour' $r
+~
+#1297
+MOB remember $r
+MOB echo $I violently violates $q with one of its large tentacles!
+MOB damage $q 4000 9000 lethal
+~
+#1298
+MOB echo $I unleashes its demonic magics!
+MOB cast 'ego whip' $r
+MOB cast 'phantasmal killer' $r
+MOB cast 'colour spray' $r
+~
+#1299
+MOB echo A piercing scream is heard from within the beast.
+MOB echo A naked young woman emerges from the tentacles and lunges at the nearest person!
+MOB mload 1298
+molest schoolgirl
+~
+#0
+
+#$

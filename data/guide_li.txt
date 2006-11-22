@@ -1,0 +1,222 @@
+I.  Value guidelines for specific object types.
+
+ A.  Scrolls/Potions/Pills
+
+   i.   The object level should be no less than the minimum level required to
+        cast the spell normally.  (i.e. a heal pill must be at least level 21
+        because that is the level at which clerics can cast it)
+
+   ii.  The maximum level of the spell should not exceed the level of the
+        object by more than 10 or 40%, whichever is GREATER.
+
+   iii. The value of the item should reflect the power of the spell.  The
+        value should be NO LESS than twice the cost to create a homemade
+        scroll or potion.  (i.e. A heal potion should cost no less than
+        10000 gold and sanc no less than 15000 coins.) This value guide
+        applies only if you are putting these items for sale, in a shop.
+
+ B.  Wands/Staves
+   i.   The same level restrictions as Scrolls/Potions/Pills for both
+        object level and spell level.
+
+   ii.  The number of charges should be inversely proportional to the power
+        of the spell.  This also should be modified by the relationship of
+        the level of the spell to the level of the object. (i.e. an level
+        40 object will have more charges of a level 35 spell than it would
+        of a level 40 spell.)
+
+   iii. Here are some guidelines for some of the more powerful and popular
+        spells.
+
+        Spell          Max Charges             Minimum item level.
+
+        Mass Heal        1                       38
+        Mass Sanc        1                       45
+        Heal             2                       21
+        Sanc             3                       20
+        Acid Blast       2                       37
+        Chain Lightning  3                       33
+
+
+
+ C.  Weapons
+
+   i.   For New format weapons, damage is calculated as a roll of dice
+        (like 4d6)
+        If you set a damage of XdY, you can calculate the following:
+
+        Minimum damage= X
+        Maximum damage= X * Y
+        Average damage= ((X * Y) + X)/2  NOT (X*Y)/2, be careful!
+
+   ii.  Average damage is not to exceed (0.5*weapon level) + 4.
+
+  eg.- Average damage on weapons : Maximum should be 5 to start plus 5 for
+    every 10 levels. So, for example, a level 30 weapon maximum average
+    damage would be 5 plus 15 (5 per each 10 levels) for a total of 20.
+
+ D.   Armor
+
+   i.   Values for each AC type should not exceed 1/3 of the item level.
+        eg, a level 40 bracer should not have an AC of more than:
+        -13 -13 -13 -13 -13.... some of the values should be only 1/4 of
+        level.  That level 40 bracer AC ideally should be:
+        -13 -12 -10 -11 -13 for example.
+
+
+II.  AFFECT_flag guidelines for all object types.
+
+   i.   The average 'score' of all 'usable objects' in your area should not
+        exceed 0.60.
+
+   ii.  A 'usable object' is any object intended to be worn/wielded/held.
+        Do not count staves or wands in the average unless they have
+        AFFECT_flags.
+
+   iii. The 'score' for an object is calculated as:
+        (actual 'points')/(maximum allowed 'points')
+
+   iv.  One 'point' is equal to any of the following:
+        +1 Str OR +1 Int OR +1 Wis OR +1 Dex OR +1 Con
+        OR (+1 Hit AND +1 Dam)
+        OR +10 hitpoints OR +10 mana
+        OR -2 Save_spell OR -2 save_breath etc.
+
+   v.   The maximum allowable points are (by level of object):
+
+        Level range   Points
+         1-5            1
+         6-15           2
+         16-25          3
+         26-40          4
+         41-55          5
+         56-70          6
+         71-91          7
+
+
+Example:  You area contains the following EQ.
+
+1. Weapon, level 55, 6d10 (ave 33), +1 dex, +1hit, +1dam (2 pts, score 0.5)
+2. Armor, level 65, AC 16/16/16/5, +1wis, +1int, +20hp, +20mana
+         (6pts, score 1.0)
+3. Treasure, level 43, +1 hitroll, +5 hp, +5mana (1.5pts, score 0.3)
+
+Average score for all objects = 0.6.
+Note: Objects are not allowed to have scores over 1.0, obviously.
+Note: For mana and hp bonuses on objects, do not allow more than one point
+per level. EG a level 25 object could have +25 hp OR +25 mana OR +12 hp
+AND +13 mana, maximum.
+
+
+
+Mobiles
+
+Mobiles should be balanced: a fairly hard fight should harvest a player
+around 50 exp. A VERY tough fight might give the player from 80 to 120 exp.
+The experience that a player will get from a mobile is determined by the
+level of the player vs the level of the mob, and the mobiles alignment.
+the amount of hitpoints the mob has, for example). A level 20 player
+will get around 50 exp for a level 20 mobile, and around 120 experience
+for a level 25 mobile, and higher if the mobile is oppositely aligned.  The
+toughness of the fight, is determined by the hitpoints, damage, hitroll,
+other flags, spec_functions, and the weapon the mob may or may not be
+carrying (which affects the mobs damage).  When determing the hitpoint and
+damroll to put on your mobile, keep in mind how many IMMUNITIES and
+RESISTANCES you are also adding, and what ACT_FLAGS you are adding, as
+well as any spec_functions you might be giving that mobile. The more
+IMMUNITIES and RESISTANCES a mobile has, the tougher it is. If the
+mobile has a special combat function it is also tougher. If so, you
+might give it a hitpoint setting at the lower end of its level range. On
+the other hand, if the mobile has few IMMUNITES and RESISTANCES and no
+special function for combat, plus lots of VULNERABILITIES, you might
+give it hitpoints at the higher end of the hitpoint range.
+
+I. Hitpoints
+
+Hitpoints are determined as a roll of the dice: eg 2d10+100 would give
+that mobile a hitpoint range, on reset, of 100 to 120 hitpoints.
+ - Guide for mobiles:  (hp=hitpoints)
+     Level 1-10   10-15 hp per level   Level 41-60 20-55  hp per level
+     Level 11-20  15-20 hp per level   Level 61-70 35-70 hp per level
+     Level 21-30  15-30 hp per level   Level 71+  50-100 hp per level
+     Level 31-40  20-35 hp per level
+
+II. Mana
+
+Mana is also determined as a roll of the dice, but is not actually
+implemented on MadROM at present. However, treat the mobile as if it can
+use mana, and give it the amount of mana a cleric or warrior
+player (depending on the mobile) at that mobiles level, might have. Ask
+players on the mud for their mana stats. If you don't want to bother
+with this, just put in 1d1+99 for all mobiles, in the mana section.
+
+III.  Hitroll
+
+Affects how often the mobile will hit you, basically.  It doesn't need to
+be very high, as its an added bonus for the mobile. For a level 50
+mobile, a hitroll of 8 is more than fine, and for a level 90 mobile a
+hitroll of 15 would be great.
+
+IV. Damage
+
+Affects how HARD the mobile will hit you.  This value will be augmented
+by the average damage of the weapon the mobile is carrying if you use
+the E (equip command) in the resets section to give the mobile a weapon.
+
+An easy guide to setting the damage for your mobile is to set the damage
+the same way you set average damage for a weapon: 5 + 10 for each level
+
+eg a level 50 mobile would have an average damage of 30 or eg 1d1+30 or
+a range such as 2d5+25. Keep in mind that giving your mobile a weapon
+will give it more damage than what you put in in this value in the
+#MOBILES section.
+
+V. Armor Class
+
+This value is also affected by an armor you give your mobile to wear,
+using the E (equip) command to give eq to your mobile in the RESETS section.
+A quick way to decide what value to give your mobile for its armor class
+is 2/3 of the mobiles level. eg a level 90 mobile would have armor class
+values around 60. You have 5 values to put in here, each explained in
+ozy.doc. Don't make all values the same. Eg for a level 90 mobile you
+might have:
+
+-60 -59 -58 -59 -35
+
+The last value, resistance to magic, is usually a bit lower than the
+resistances to the weapon attacks.
+NB. the values are multiplied by 10 by the mud. So a mobile with -60 AC
+in your area file will have around -600 AC. This is taken into account
+when I am suggesting the values for you to put in.
+
+VI. ACT_FLAGS, IMMUNITIES, RESISTANCES and VULNERABILITIES.
+
+Don't load your mobile up with immunities and resistances OR make it
+wussy with too many vulnerabilities. Choose a few that reflect the
+nature of the creature. Choose MORE the higher level the mobile. Keep in
+mind that the more immunities and resistances the mobile has, the
+tougher it is, and the weaker you might want it in hitpoints and damage.
+Any mobile over level 45 should have Sanctuary, OR be Aggressive, or
+have bash, berserk or frenzy. All at this level or higher should have
+trip and/or dodge and parry.
+
+VII.  Special functions
+
+Special functions for your mobile. Keep in mind that giving your mobile
+special functions may make it anywhere from a little to a LOT tougher.
+
+Of the combat special functions, the least nasty are the spec_breath
+ones. Harder yet is the special_cast_cleric function. Mobiles with
+special_cast_mage and spec_cast_undead are very tough!, and because of
+the possibility of players being edrained, should be given these special
+functions only if they are a prize to fight..eg they hold the key to a
+treasure, or guard the gateway to an area, or wear powerful equipment.
+Ozy.doc has a list of special functions available, and what spells they
+contain.
+
+VII. Gold
+
+Don't load your mobile up with gold. 1000 gold for a level 90 mobiles
+is MORE than enough, 70 gold for a level 60 mobile is rich, and
+mobiles under level 50 should not have more than 30 gold. Those under
+level 30 should have a maximum of 20 gold.

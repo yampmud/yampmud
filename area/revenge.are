@@ -1,0 +1,296 @@
+#AREADATA
+Name Sweet Revenge~
+Builders Unlinked Sahtalus~
+VNUMs 1300 1399
+Credits {G QUEST {x~
+Security 9
+RepopMsg (null)~
+End
+
+
+
+#MOBILES
+#1300
+vengeance dragon spirit~
+{8The {WS{8p{wir{8i{Wt {RD{rr{8ag{ro{Rn{x~
+{8The {Wg{wh{8ast{wl{8y {ws{8piri{wt {8of a {Bs{bl{8a{bi{Bn {Rd{rr{8ag{ro{Rn{x.
+~
+The ghastly spirit of a long slain dragon come back to seek revenge on
+those all of mortal kind.  This truely enourmous beast leaps to attack any
+who cross its path.  Its teeth gleam red with the blood of those already
+devoured.  Run while you still can.  
+~
+Dragon~
+AFM 0 DFJTV DH 0 0
+300 12000 500d50+3000000 50d50+10000 500d50+5000 claw
+-600 -600 -600 -600
+CN AB BCDEHM IN
+stand stand none 5000
+HZ 0 giant unknown
+F vul F
+F for A
+F par ACDEFGHIJKPQUVX
+M DEATH 1304 15~
+M DEATH 1301 100~
+M ENTRY 1300 100~
+M GREET 1300 100~
+M FIGHT 1302 50~
+#1301
+vengeful ghost~
+(no short description)~
+(no long description)
+~
+~
+Human~
+A 0 0 0 0 0
+0 0 0d0+0 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1302
+nightmare beast~
+{8The {RN{ri{wg{8htm{wa{rr{Re {WW{wr{8ai{wt{Wh{x~
+A hideous beast forged of mortal nightmares stands ready to feed.
+~
+In many ways it resembles that of a large hound, its fangs gleaming a
+dark yellow.  The most of its form is almost ethreal, enough to leave one
+running in terror.  His ghastly eyes peer around longing in hunger.  
+~
+Human~
+A 0 V DH -400 0
+300 2000 500d500+150000 5d5+100 50d50+2500 bite
+-400 -400 -400 -400
+EKN LQ CD 0
+stand stand none 5000
+V 0 large unknown
+F for AHM
+F par ABCDEFGHIJK
+M FIGHT 1303 50~
+#1303
+no name~
+(no short description)~
+(no long description)
+~
+~
+Human~
+A 0 0 0 0 0
+0 0 0d0+0 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#0
+
+
+
+#OBJECTS
+#1300
+immquest spirit dragon essence aura~
+{8The {YE{ys{8sen{yc{Ye {8of the {WS{wp{8ir{wi{Wt {RD{rr{8ag{ro{Rn{x~
+{8The spirit of a long dead dragon{x~
+unknown~
+armor AB AU
+500 500 500 500 0
+0 1 100000 P
+F
+R 0 0 M
+F
+V 0 0 N
+A
+19 250
+A
+18 250
+A
+12 500
+A
+13 500
+F
+A 0 0 U
+#1301
+spirit dragon chest~
+{8The {WS{wp{8ir{wi{Wt {RC{rh{8e{rs{Rt{x~
+{8The Chest of the Spirit Dragon holds untold fortune.{x~
+unknown~
+container 0 0
+100 ACD 1302 100 100
+204 500 100 P
+#1302
+key spirit dragon~
+{8A {WG{wh{8a{ws{8t{wl{Wy {YK{ye{Yy{x~
+A large black key lies here.~
+unknown~
+key AB A
+0 0 0 0 0
+211 0 100 P
+#1303
+ring ancient dragon immquest~
+{8A {RC{rr{Ri{rm{Rs{ro{Rn {GD{gra{wg{Wons{wc{gal{Ge {WR{win{Wg{x~
+{8A ring forged of dragonscales, said to harbor an ancient curse{x~
+unknown~
+armor AB AB
+112 112 112 112 0
+0 1 100000 P
+A
+19 150
+A
+18 150
+A
+20 -15
+A
+13 200
+A
+8 2
+F
+A 0 0 C
+F
+A 0 0 D
+F
+A 0 0 E
+F
+A 0 0 F
+F
+A 0 0 G
+F
+A 0 0 Z
+F
+A 0 0 L
+A
+13 325
+#1304
+spirit vortex~
+{8The {WS{wp{8ir{wi{Wt {YV{yo{wrt{Ye{Yx{x~
+{8A Swirling {WV{wo{8rt{we{Wx {8leading to places unknown{x.~
+unknown~
+portal AB 0
+0 0 0 1303 0
+100 0 0 P
+#1305
+cloak of deception~
+{8The {wE{Wt{8hre{Wa{wl {8C{rl{wo{ra{8k {8of {%D{5ec{8ept{5io{%n{x~
+A tattered old cloak appears to be almost see through.~
+unknown~
+armor ABa AK
+200 200 200 200 0
+1 1 50000 P
+A
+2 3
+A
+19 150
+A
+18 125
+A
+20 -30
+A
+14 300
+A
+12 300
+A
+13 300
+F
+A 0 0 Q
+F
+A 0 0 P
+#1306
+Sahtalus Quest Pill~
+{wA {WS{wh{Wi{wm{Wm{we{Wr{wi{Wn{wg {GG{gree{Gn {WP{will{x~
+{wA {WS{wh{Wi{wm{Wm{we{Wr{wi{Wn{wg {GG{gree{Gn {WP{will{x, has been left on the ground here.~
+unknown~
+pill ABYa A
+210 'quest pill' 'quest pill' 'quest pill' '4x'
+1 0 50000 P
+#1307
+woodland staff~
+{8The {yS{8t{ya{8f{yf {8of the {GW{go{yo{8dla{yn{gd{Gs{x~
+{8A heavy wooden staff has been left here.{x~
+unknown~
+staff Aa AO
+202 25 25 'entangle' 0
+1 1 40000 P
+#0
+
+
+
+#ROOMS
+#1300
+{8The Lair of the Dragon Spirit{x~
+~
+0 8193 0
+D2
+~
+~
+0 0 1303
+S
+#1301
+Mprogroom~
+~
+0 4 0
+S
+#1303
+{8A burnt cavern{x~
+~
+0 1 0
+D0
+~
+~
+0 0 1300
+S
+#0
+
+
+
+#SPECIALS
+M 1300 spec_poison
+S
+
+
+
+#RESETS
+O 0 1301 0 1300
+P 0 1303 1 1301 1
+M 0 1300 1 1300 1
+S
+
+
+
+#SHOPS
+0
+
+
+
+#MOBPROGS
+#1300
+if isevil $n
+mob echo $I cackles madly at $n.
+say {RI shall eat your wretched heart $n!{x
+else
+if isgood $n
+mob echo $I gives a cold hearted laugh at $n
+say {RI shall devour your soul!{x
+else
+mob echo $I snarls loudly at $n as they enter the area.
+say {RYou shall perish mortal!{x
+break
+~
+#1301
+say {RHow could I perish before those so weak!!!
+mob echo {8The ground wretches and shivers as the Spirit Dragon withers and fades away.{x
+mob echo {8In his place remains only a chest, a promise of the dragons fortune.{x
+mob oload 1302
+drop key
+~
+#1302
+mob cast 'fire rain' $n
+~
+#1303
+mob cast 'call darkness' $n
+~
+#1304
+{x[{y.{R.{B.{M.{YG{WH{G.{x] {8A {RC{rr{Ri{rm{Rs{ro{Rn {GD{gra{wg{Wons{wc{gal{Ge {WR{win{Wg{x~
+#0
+
+#$

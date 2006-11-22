@@ -1,0 +1,2335 @@
+#AREADATA
+Name Twilight Grove~
+Builders Khaos Unlinked~
+VNUMs 1500 2099
+Credits {r201{D-{RAnc{x~
+Security 9
+RepopMsg (null)~
+End
+
+
+
+#MOBILES
+#1538
+redo me~
+redo me~
+Redo me
+~
+~
+Human~
+A 0 0 0 0 0
+0 0 0d0+0 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1549
+Marisha-Ten~
+the {DGolem {xof {WS{wilver{x~
+The {DGolem {xof {WM{warisha{D-{WT{wen{x, {gS{ya{rg{ge{x of {WS{wilver{x, stands here, glistening.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 1d1+1 1d1+1 none
+0 0 0 0
+0 0 0 0
+stand stand female 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1551
+twilight temple key keeper~
+the {mK{De{wep{De{mr {xof the {DKey{x~
+The {mK{De{wep{De{mr {xof the {DKey{x stands in the center of the {mt{De{wmp{Dl{me{x.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1566
+Sigyn~
+the {DGolem{x of {GA{gc{Di{gd{x~
+The {DGolem {xof {GS{gi{Dg{gy{Gn{x, {gS{ya{rg{ge{x of {GA{gc{Di{gd{x, stands here, slightly corroded.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand female 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1567
+Shafan~
+the {DGolem{x of {RF{Yi{yr{re{x~
+The {DGolem {xof {RS{rh{ya{Yf{ra{Rn{x, {gS{ya{rg{ge{x of {RF{Yi{yr{re{x, stands here, ashes at his feet.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand male 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1568
+Tsi-Noo~
+the {DGolem{x of {WI{Cc{We{x~
+The {DGolem {xof {WT{Cs{Wi{w-{WN{Co{Wo{x, {gS{ya{rg{ge{x of {WI{Cc{We{x, stands here, covered in frost.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand female 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1569
+Ravens Huginn Muninn~
+the {DGolem {xof {BI{bn{Dt{we{Wl{wl{De{bc{Bt{x~
+The {DGolem {xof the {DRav{be{Dns{x, {gS{Ga{yg{re{gs{x of {BI{bn{Dt{we{Wl{wl{De{bc{Bt{x, stands here, ever-observant.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1570
+Oshun~
+the {DGolem {xof {MA{Cl{clu{Cr{Me{x~
+The {DGolem {xof {MO{Cs{ch{mu{Mn{x, {gS{ya{rg{ge{x of {MA{Cl{cl{mu{Mr{Ce{x, stands here, eternally beautiful.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand female 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1571
+Namtar~
+the {DGolem {xof {gA{Gf{Df{gl{yic{gt{Di{Go{gn{x~
+The {DGolem {xof {gN{Ga{Dm{gt{ya{gr{x, {gS{ya{rg{ge{x of {gA{Gf{Df{gl{yic{gt{Di{Go{gn{x, stands here, slowly rotting.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand male 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1572
+Yhi~
+the {DGolem {xof {WL{Yi{yg{Yh{Wt{x~
+The {DGolem {xof {WY{Yh{Wi{x, {gS{ya{rg{ge{x of {WL{Yi{yg{Yh{Wt{x, stands here, glowing softly.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand female 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1573
+Kathar~
+the {DGolem {xof {RW{re{Da{wpo{Dn{rr{Ry{x~
+The {DGolem {xof {RK{ra{Dth{ra{Rr{x, {gS{ya{rg{ge{x of {RW{re{Da{wpo{Dn{rr{Ry{x, stands here, hammer in hand.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand male 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1574
+Ru Shou~
+the {DGolem {xof {YL{oi{og{oh{ot{on{oi{on{Yg{x~
+The {DGolem {xof {YR{yu {YS{wh{Wo{Yu{x, {gS{ya{rg{ge {xof {YL{oi{og{oh{ot{on{oi{on{Yg{x, stands here, sparking.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand male 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1575
+Iara~
+the {DGolem {xof {BW{Ca{ct{Ce{Br{x~
+The {DGolem {xof {BI{ba{Cr{ca{x, {gS{ya{rg{ge {xof {BW{Ca{ct{Ce{Br{x, stands here, sparkling with condensation.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand female 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1576
+Ogoun~
+the {DGolem {xof {DIron{x~
+The {DGolem {xof {DOgo{wu{Dn{x, {gS{ya{rg{ge {xof {DIron{x, stands here, slightly rusted.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand male 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1577
+Mokos~
+the {DGolem {xof {yEa{rr{Dt{yh{x~
+The {DGolem {xof {yM{Do{rk{yos{x, {gS{ya{rg{ge {xof {yEa{rr{Dt{yh{x, stands here, covered in dirt.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand female 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1578
+Ouroboros~
+the {DGolem {xof {WH{wo{gl{Gin{ge{ws{Ws{x~
+The {DGolem {xof {GO{gu{wr{Wobo{wr{go{Gs{x, {gS{ya{rg{ge {xof {WH{wo{gl{Gin{ge{ws{Ws{x, stands here, perpetually perfect.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1579
+Manitou~
+the {DGolem {xof {BE{Gn{ger{Gg{By{x~
+The {DGolem {xof {GM{Ba{bn{gi{bt{Bo{Gu{x, {gS{ya{rg{ge{x of {BE{Gn{ger{Gg{By{x, stands here, humming quietly.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1580
+no name~
+the {DGolem {xof {RN{re{Dga{rti{Dvi{rt{Ry{x~
+The {DGolem {xof {RR{ro{Dbl{ro{Rn{x, {gS{ya{rg{ge{x of {RN{re{Dga{rti{Dvi{rt{Ry{x, stands here, dripping blood.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand male 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1581
+Paoro~
+the {DGolem {xof {cS{Do{wu{Dn{cd{x~
+The {DGolem {xof {cP{Da{wo{Dr{co{x, {gS{ya{rg{ge{x of {cS{Do{wu{Dn{cd{x, stands here, echoing all sound.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand female 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1582
+Tatsuta-hime~
+the {DGolem {xof {yW{go{yod{x~
+The {DGolem {xof {yT{ga{Gt{ys{Gu{gt{ya{D-h{Gi{gm{ye{x, {gS{ya{rg{ge{x of {yW{go{yod{x, stands here, sprouting new leaves.
+~
+~
+Human~
+AB 0 DFJZ 0 0 0
+202 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand female 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1583
+Twilight Temple Guardian~
+Twilight Temple Guardian~
+Twilight Temple Guardian
+~
+~
+Human~
+A 0 0 0 0 0
+0 0 0d0+0 0d0+0 0d0+0 none
+0 0 0 0
+0 0 0 0
+stand stand none 0
+0 0 medium unknown
+F for AHMV
+F par ABCDEFGHIJK
+#1587
+Forge Librarian~
+the {mL{Di{wb{Wrar{wi{Da{mn {xof the {DForge{x~
+The {mL{Di{wb{Wrar{wi{Da{mn {xof the {DForge{x polishes her fine hammer.
+~
+{xLong ashen braids hang from the chin of this broad-shouldered
+dwarf.  Her hair is nearly as long as she is tall and is kept
+tied in sleek braids as well. Her skin is deeply wrinkled and
+chocolate brown. Her dark eyes show the subdued ferocity of a
+warrior who has lain down her sword. In spite of her muscular
+build, there seems to be a gentleness to her every movement.
+~
+Dwarf~
+AB 0 DFJZ 0 0 0
+203 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 L Qb R
+stand stand female 0
+AHMV ABCDEFGHIJK medium unknown
+#1589
+Dusklore Librarian~
+the {mL{Di{wb{Wrar{wi{Da{mn {xof {WD{wu{Ds{mkl{Do{wr{We{x~
+The {mL{Di{wb{Wrar{wi{Da{mn {xof {WD{wu{Ds{mkl{Do{wr{We{x keeps the names of every sage of the grove.
+~
+{xWith branches which stretch to the farthest reaches
+of this tall library,  this ent is old beyond time.
+His trunk would take eight humans with outstretched
+arms to encircle it. His leaves are the bright reds
+and oranges, deep browns and greens, of autumn.  He
+possesses an infinite patience, obvious in his slow
+and deliberate motions, his calm, deep voice.
+~
+Ent~
+AB 0 0 H 0 0
+203 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 X a HJ
+stand stand male 0
+AHMV ABCDEFGHIJK medium unknown
+#1591
+Seals Librarian~
+the {mL{Di{wb{Wrar{wi{Da{mn {xof the {WS{weal{Ws{x~
+The {mL{Di{wb{Wrar{wi{Da{mn {xof the {WS{weal{Ws{x wanders the ancient library in quiet contemplation.
+~
+{xA tall and slender elf, it is difficult to guage this
+man's age.  Though his elegant features and fair skin
+possess an ageless beauty, his violet eyes contain an
+impenetrable depth which comes only with centuries of
+living. His silver hair stretches nearly to the floor
+of the library, trailing behind him as he paces.  His
+small smile seems to have captured a wistful sadness.
+~
+Elf~
+A 0 DFJZ 0 0 0
+203 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 B Y Z
+stand stand male 0
+AHMV ABCDEFGHIJK medium unknown
+#1593
+Sparlklies Librarian~
+the {mL{Di{wb{Wrar{wi{Da{mn {xof {CS{cp{ma{Mr{Ck{Ml{mi{ce{Cs{x~
+The {mL{Di{wb{Wrar{wi{Da{mn {xof {CS{cp{ma{Mr{Ck{Ml{mi{ce{Cs{x flutters about the library aimlessly.
+~
+{xBarely bigger than a lily, this librarian flutters about
+on gossamer wings,  trailing a faint sprinkling of pixie
+dust wherever she goes.  Her wild hair is glittering and
+white; her tiny eyes seem to change in the light.  Magic
+seems to radiate from her small form, echoing around the
+library each time she lets out her bell-like laughter.
+~
+Pixie~
+A 0 DEFJTZ 0 0 0
+203 0 1d1+1 0d0+0 0d0+0 none
+0 0 0 0
+0 0 CS ET
+stand stand female 0
+AHMV ABCDEFGHIJKP medium unknown
+#0
+
+
+
+#OBJECTS
+#1536
+dusk defender greataxe~
+the {WG{wr{De{mat{Da{wx{We {W"{mD{Du{ws{Wk {mD{De{wf{Wen{wd{De{mr{W"{x~
+A massive greataxe with strange runic engravings glows magically.~
+unknown~
+weapon AG AN
+axe 13 108 cleave DEF
+202 20 0 P
+A
+13 330
+A
+14 170
+A
+18 75
+A
+19 150
+A
+1 1
+A
+20 -5
+A
+17 -300
+#1537
+ru shou dagger~
+the {YD{yagger {xof {YR{yu {DS{wh{yo{Yu{x~
+A slender golden dagger lies here, crackling with lightning.~
+gold~
+weapon ABG AN
+dagger 26 46 stab DEG
+202 8 0 P
+A
+13 205
+A
+12 105
+A
+14 305
+A
+18 105
+A
+19 45
+A
+2 1
+A
+20 -15
+#1538
+marisha-ten manriki~
+{WM{war{Wi{wsh{Wa{D-{WT{wen{W'{ws {DM{wa{Wnri{wk{Di{x~
+A silver manriki, a dual-weighted chain, lies here coiled.~
+silver~
+weapon AG AN
+exotic 21 57 pound BGI
+202 10 0 P
+A
+13 350
+A
+12 350
+A
+14 150
+A
+18 75
+A
+19 25
+A
+20 -20
+A
+17 -250
+#1539
+autumnal epoch flail~
+the {gA{yu{rt{Gu{gm{yn{ra{gl {mE{Dp{wo{Dc{mh {gF{yl{ra{gil{x~
+A magical flail engraved with a strange leaf pattern lies here.~
+unknown~
+weapon ABG AN
+flail 22 53 crush ABC
+202 10 0 P
+A
+13 300
+A
+12 275
+A
+14 225
+A
+18 55
+A
+19 55
+A
+20 -15
+#1540
+dusk destroyer diremace~
+the {wD{Di{rr{Rem{ra{Dc{we {W"{mD{Du{ws{Wk {rD{Re{Ds{wt{Wr{wo{Dy{Re{rr{W"{x~
+A massive diremace glows angrily.~
+unknown~
+weapon AG AN
+mace 27 51 smash CFG
+202 20 0 P
+A
+13 225
+A
+12 275
+A
+18 105
+A
+19 105
+A
+1 1
+A
+20 -10
+#1541
+tatsuta-hime naginata~
+{yT{ga{Gt{ys{Gu{gt{ya{D-{yh{Gi{gm{ye{G'{gs {yN{ga{Gg{yin{ga{Gt{ya{x~
+A long naginata with a fine duskwood shaft and finely sharpened blade lies here.~
+unknown~
+weapon BG AN
+polearm 18 76 slice DFI
+202 10 0 P
+A
+13 235
+A
+12 235
+A
+14 235
+A
+18 115
+A
+19 85
+A
+4 1
+A
+20 -20
+A
+17 -225
+#1542
+sunset spear~
+the {rS{yu{Yns{ye{rt {YS{yp{re{Ra{Yr{x~
+A dark wooden spear with a sharp amber tip is glowing softly.~
+unknown~
+weapon AG AN
+staff 24 49 pierce ABDG
+202 8 0 P
+A
+13 280
+A
+12 100
+A
+14 280
+A
+18 105
+A
+19 105
+A
+20 -10
+A
+17 -250
+#1543
+twilight sentinel longsword~
+the {DL{won{Wgsw{wor{Dd {W"{mT{Dw{wi{Wli{wg{Dh{mt S{De{wn{Wti{wn{De{ml{W"{x~
+This is a perfectly-balanced longsword, its hilt wrapped in violet velvet.~
+unknown~
+weapon AG AN
+sword 30 39 slash ADE
+202 5 0 P
+A
+13 275
+A
+12 275
+A
+14 275
+A
+18 50
+A
+19 90
+A
+20 -18
+A
+17 -320
+#1544
+duskrender daggerwhip~
+the {mD{Du{ws{Wk{rr{De{wn{Wd{me{Dr {rD{Da{wg{Wg{me{Dr{wh{Wi{rp{x~
+A long whip of sharp interlinked daggers lies here coiled.~
+unknown~
+weapon BG AN
+whip 25 47 sting CDE
+202 0 0 P
+A
+13 205
+A
+12 365
+A
+14 245
+A
+18 95
+A
+19 65
+A
+20 -11
+A
+17 -100
+#1583
+twilight creation key~
+the {DKey {xof {GC{gr{we{Wat{wi{go{Gn{x~
+This heavy {qm{qo{qs{qs{D-{qc{qo{qv{qe{qr{qe{qd {Dkey{x bears the emblem of the {mT{Dw{wi{Wli{wg{Dh{mt {gS{Ga{yg{re{gs{x.~
+unknown~
+key GIY AO
+0 0 0 0 0
+201 3 0 P
+A
+14 1000
+A
+1 3
+A
+4 3
+#1585
+twilight knowledge key~
+the {DKey {xof {mK{Dn{wo{Wwle{wd{Dg{me{x~
+This ornate shimmering {Dkey {xbears the emblem of the {mT{Dw{wi{Wli{wg{Dh{mt {gS{Ga{yg{re{gs{x.~
+unknown~
+key GY AO
+0 0 0 0 0
+201 3 0 P
+A
+12 1000
+A
+20 -9
+A
+3 3
+#1587
+Duskfall Forge~
+the {mD{Du{ws{Wkf{wa{Dl{ml {DForge{x~
+The {mD{Du{ws{Wkf{wa{Dl{ml {DForge{x stands between the bookshelves in fine condition.~
+unknown~
+container Y P
+10000 E 0 0 0
+0 0 0 P
+#1588
+duskshaper~
+the {DGreathammer {D"{WD{wu{Dsk{msh{Dap{we{Wr{D"{x~
+A massive hammer emblazoned {D"{WD{wu{Dsk{msh{Dap{we{Wr{D"{x is perfect for forging dreams.~
+unknown~
+weapon GY AN
+mace 55 55 pound F
+203 25 0 P
+#1589
+Twilight Roster~
+the {mT{Dw{wi{Wli{wg{Dh{mt {WR{wo{Dst{we{Wr{x~
+A tall podium stands between the shelves, bearing the {mT{Dw{wi{Wli{wg{Dh{mt {WR{wo{Dst{we{Wr{x.~
+unknown~
+furniture AGY P
+2 200000 AD 0 0
+203 0 0 P
+E
+twilight roster~
+{m*{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W- {mT{Dw{wi{Wli{wg{Dh{mt {WR{wo{Dst{we{Wr {W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{m*{D
+|                                       |
+|  {WThe Original Sages  {w({DRead Original{w)  {D|
+|   {WThe Current Sages  {w({DRead Current{w)   {D|
+|                                       |
+{m*{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{m*{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{m*{x
+~
+E
+original~
+{m*{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{D The Original Sages of Twilight Grove {W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{m*
+{D|                                                            {D|
+|{W           Huginn and Munnin, Sages of Intellect            {D|
+|{W                        Iara, Sage of Water                 {D|
+|{W                      Kathar, Sage of Weaponry              {D|
+|{W                     Manitou, Sage of Energy                {D|
+|{W                 Marisha-Ten, Sage of Silver                {D|
+|{W                       Mokos, Sage of Earth                 {D|
+|{W                      Namtar, Sage of Affliction            {D|
+|{W                       Ogoun, Sage of Iron                  {D|
+|{W                       Oshun, Sage of Allure                {D|
+|{W                   Ouroboros, Sage of Holiness              {D|
+|{W                       Paoro, Sage of Sound                 {D|
+|{W                      Roblon, Sage of Negativity            {D|
+|{W                     Ru Shou, Sage of Lightning             {D|
+|{W                      Shafan, Sage of Fire                  {D|
+|{W                       Sigyn, Sage of Acid                  {D|
+|{W                Tatsuta-hime, Sage of Wood                  {D|
+|{W                     Tsi-Noo, Sage of Ice                   {D|
+|{W                         Yhi, Sage of Light                 {D|
+|{W                                                            {D|
+{m*{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{W-{w-{D-{w-{W-{m**{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{W-{w-{D-{w-{W-{w-{D-{m*{x
+~
+E
+current~
+{m*{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W- {DThe Current Sages of Twilight Grove {W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{m*
+{D|                                                           {D|
+{D|                          {mLeaders                          {D|
+{D|                   {WCesan, Sage of Design                   {D|
+{D|                {WYthogtha, Sage of Mentalism                {D|
+{D|                  {WZitzie, Sage of Cosmology                {D|
+{D|                                                           {D|
+{D|                          {mMembers                          {D|
+{D|                   {WBregg, Sage of Verse                    {D|
+{D|                                                           {D|
+{m*{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{w-{W-{w-{D-{m*{x
+~
+#1590
+shimmering dusk orb~
+the {WD{wu{Ds{mk {DO{wr{Wb{x~
+A {ms{Dh{wi{Wm{wme{Wr{wi{Dn{mg {Wo{wr{Wb {xhangs in midair, magically suspended and spinning.~
+unknown~
+container AGIY P
+5 ABCD 0 0 0
+203 0 0 P
+#1591
+seal etcher tattoo gun~
+a {rT{Da{wtt{Do{ro {DGun {xcalled {D"{WS{wea{Wl {mE{Dt{wch{De{mr{D"{x~
+A strange metal contraption with the name {D"{WS{wea{Wl {mE{Dt{wch{De{mr{D"{x engraved on its side lies here.~
+unknown~
+weapon ABGY AN
+exotic 50 50 scratch DG
+203 5 0 P
+#1592
+tattoo ink bottle~
+a {mb{Do{wtt{Dl{me {xof {rm{Ru{Yl{yt{gi{D-{Gc{Bo{bl{mo{Mr{Ce{cd {Dink{x~
+A broad {mb{Do{wtt{Dl{me {xof {rm{Ru{Yl{yt{gi{D-{Gc{Bo{bl{mo{Mr{Ce{cd {Dink{x glows faintly.~
+unknown~
+treasure AY AO
+0 0 0 0 0
+203 2 0 P
+#1609
+serpent spear~
+{GS{ge{Dr{wp{We{Gn{gt {WS{wp{De{ga{Gr{x~
+A long spear lies here, its tip dripping a steady stream of acid.~
+unknown~
+weapon BG AN
+exotic 25 43 acbite CDH
+202 8 0 P
+A
+13 333
+A
+14 333
+A
+18 111
+A
+19 111
+A
+2 1
+A
+5 1
+A
+20 -11
+#0
+
+
+
+#ROOMS
+#1500
+Turning of the Leaves~
+West links somewhere into Forest of Life.
+Desc should include a transition in the colors of the leaves.
+~
+0 0 3
+D1
+~
+~
+0 0 1501
+S
+#1501
+Dusk Descends~
+~
+0 0 3
+D1
+~
+~
+0 0 1502
+D3
+~
+~
+0 0 1500
+S
+#1502
+The Edge of Twilight~
+~
+0 0 3
+D1
+~
+~
+0 0 1503
+D3
+~
+~
+0 0 1501
+S
+#1503
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+North should be the "Holy" section.
+~
+0 0 3
+D1
+~
+~
+0 0 1534
+D2
+~
+~
+0 0 1504
+D3
+~
+~
+0 0 1502
+S
+#1504
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D0
+~
+~
+0 0 1503
+D1
+~
+~
+0 0 1505
+D2
+~
+~
+0 0 1507
+S
+#1505
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+East to Acid.
+~
+0 0 3
+D2
+~
+~
+0 0 1506
+D3
+~
+~
+0 0 1504
+S
+#1506
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D0
+~
+~
+0 0 1505
+D1
+~
+~
+0 0 1508
+D3
+~
+~
+0 0 1507
+S
+#1507
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+South to Mental.
+~
+0 0 3
+D0
+~
+~
+0 0 1504
+D1
+~
+~
+0 0 1506
+S
+#1508
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D2
+~
+~
+0 0 1509
+D3
+~
+~
+0 0 1506
+S
+#1509
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D0
+~
+~
+0 0 1508
+D1
+~
+~
+0 0 1520
+S
+#1510
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D0
+~
+~
+0 0 1511
+D2
+~
+~
+0 0 1533
+S
+#1511
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D0
+~
+~
+0 0 1514
+D1
+~
+~
+0 0 1547
+D2
+~
+~
+0 0 1510
+D3
+~
+~
+0 0 1512
+S
+#1512
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D0
+~
+~
+0 0 1513
+D1
+~
+~
+0 0 1511
+S
+#1513
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+Down to Fire
+~
+0 0 3
+D2
+~
+~
+0 0 1512
+S
+#1514
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+East into Clan Hall
+and Library.
+~
+0 0 3
+D0
+~
+~
+0 0 1515
+D1
+~
+~
+0 0 1584
+D2
+~
+~
+0 0 1511
+S
+#1515
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D0
+~
+~
+0 0 1538
+D1
+~
+~
+0 0 1540
+D2
+~
+~
+0 0 1514
+D3
+~
+~
+0 0 1516
+S
+#1516
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x ~
+~
+0 0 3
+D1
+~
+~
+0 0 1515
+D3
+~
+~
+0 0 1517
+S
+#1517
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D0
+~
+~
+0 0 1518
+D1
+~
+~
+0 0 1516
+S
+#1518
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+East to Wood
+~
+0 0 3
+D0
+~
+~
+0 0 1519
+D2
+~
+~
+0 0 1517
+S
+#1519
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D1
+~
+~
+0 0 1535
+D2
+~
+~
+0 0 1518
+S
+#1520
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+South to Affliction.
+~
+0 0 3
+D1
+~
+~
+0 0 1521
+D3
+~
+~
+0 0 1509
+S
+#1521
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D1
+~
+~
+0 0 1522
+D3
+~
+~
+0 0 1520
+S
+#1522
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+Possible north to Weaponry.
+~
+0 0 3
+D1
+~
+~
+0 0 1524
+D2
+~
+~
+0 0 1523
+D3
+~
+~
+0 0 1521
+S
+#1523
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+East to Light
+~
+0 0 3
+D0
+~
+~
+0 0 1522
+S
+#1524
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D0
+~
+~
+0 0 1531
+D1
+~
+~
+0 0 1525
+D3
+~
+~
+0 0 1522
+S
+#1525
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D2
+~
+~
+0 0 1526
+D3
+~
+~
+0 0 1524
+S
+#1526
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D0
+~
+~
+0 0 1525
+D1
+~
+~
+0 0 1528
+D2
+~
+~
+0 0 1527
+S
+#1527
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+South to Water
+~
+0 0 3
+D0
+~
+~
+0 0 1526
+S
+#1528
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+West to Allure
+~
+0 0 3
+D0
+~
+~
+0 0 1529
+D3
+~
+~
+0 0 1526
+S
+#1529
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+East to Silver
+North connects with path.
+~
+0 0 3
+D2
+~
+~
+0 0 1528
+D3
+~
+~
+0 0 1530
+S
+#1530
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D0
+~
+~
+0 0 1536
+D1
+~
+~
+0 0 1529
+D3
+~
+~
+0 0 1531
+S
+#1531
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+North to more path.
+~
+0 0 3
+D0
+~
+~
+0 0 1546
+D1
+~
+~
+0 0 1530
+D2
+~
+~
+0 0 1524
+D3
+~
+~
+0 0 1532
+S
+#1532
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D1
+~
+~
+0 0 1531
+D3
+~
+~
+0 0 1533
+S
+#1533
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D0
+~
+~
+0 0 1510
+D1
+~
+~
+0 0 1532
+D3
+~
+~
+0 0 1534
+S
+#1534
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D1
+~
+~
+0 0 1533
+D3
+~
+~
+0 0 1503
+S
+#1535
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+North to Energy
+~
+0 0 3
+D2
+~
+~
+0 0 1537
+D3
+~
+~
+0 0 1519
+S
+#1536
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+North to Temple.
+~
+0 0 3
+D0
+~
+~
+4 0 1548
+D2
+~
+~
+0 0 1530
+S
+#1537
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D0
+~
+~
+0 0 1535
+D2
+~
+~
+0 0 1538
+S
+#1538
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+East to Sound
+~
+0 0 3
+D0
+~
+~
+0 0 1537
+D2
+~
+~
+0 0 1515
+S
+#1539
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+East to Cold
+~
+0 0 3
+D0
+~
+~
+0 0 1541
+D3
+~
+~
+0 0 1540
+S
+#1540
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D1
+~
+~
+0 0 1539
+D3
+~
+~
+0 0 1515
+S
+#1541
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D1
+~
+~
+0 0 1542
+D2
+~
+~
+0 0 1539
+S
+#1542
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D0
+~
+~
+0 0 1543
+D1
+~
+~
+0 0 1544
+D3
+~
+~
+0 0 1541
+S
+#1543
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+West to Earth, North to Negative
+~
+0 0 3
+D2
+~
+~
+0 0 1542
+S
+#1544
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D2
+~
+~
+0 0 1545
+D3
+~
+~
+0 0 1542
+S
+#1545
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+South to Lightning
+~
+0 0 3
+D0
+~
+~
+0 0 1544
+D3
+~
+~
+0 0 1546
+S
+#1546
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+~
+0 0 3
+D1
+~
+~
+0 0 1545
+D2
+~
+~
+0 0 1531
+S
+#1547
+{mT{Dw{wi{Wli{wg{Dh{mt {gG{Gr{yo{rv{ge{x~
+South to Iron
+~
+0 0 3
+D3
+~
+~
+0 0 1511
+S
+#1548
+{mT{De{wmp{Dl{me {Dof {mT{Dw{wi{Wli{wg{Dh{mt {DP{was{Dt{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1550
+D1
+~
+~
+0 0 1582
+D2
+~
+~
+4 0 1536
+D3
+~
+~
+0 0 1549
+S
+#1549
+Marisha-Ten/Silver~
+~
+0 1034 0
+D0
+~
+~
+0 0 1554
+D1
+~
+~
+0 0 1548
+D3
+~
+~
+0 0 1566
+S
+#1550
+{mT{De{wmp{Dl{me {Dof {mT{Dw{wi{Wli{wg{Dh{mt {DP{was{Dt{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1551
+D1
+~
+~
+0 0 1560
+D2
+~
+~
+0 0 1548
+D3
+~
+~
+0 0 1554
+S
+#1551
+{mT{De{wmp{Dl{me {Dof {mT{Dw{wi{Wli{wg{Dh{mt {DP{was{Dt{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1552
+D1
+~
+~
+0 0 1565
+D2
+~
+~
+0 0 1550
+D3
+~
+~
+0 0 1559
+S
+#1552
+{mT{De{wmp{Dl{me {Dof {mT{Dw{wi{Wli{wg{Dh{mt {DP{was{Dt{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1553
+D1
+~
+~
+0 0 1564
+D2
+~
+~
+0 0 1551
+D3
+~
+~
+0 0 1558
+S
+#1553
+{mT{De{wmp{Dl{me {Dof {mT{Dw{wi{Wli{wg{Dh{mt {DP{was{Dt{x~
+~
+0 1034 0
+D0
+~
+~
+4 1583 1583
+D1
+~
+~
+0 0 1574
+D2
+~
+~
+0 0 1552
+D3
+~
+~
+0 0 1573
+S
+#1554
+{mT{De{wmp{Dl{me {Dof {mT{Dw{wi{Wli{wg{Dh{mt {DP{was{Dt{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1559
+D1
+~
+~
+0 0 1550
+D2
+~
+~
+0 0 1549
+D3
+~
+~
+0 0 1555
+S
+#1555
+{mT{De{wmp{Dl{me {Dof {mT{Dw{wi{Wli{wg{Dh{mt {DP{was{Dt{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1556
+D1
+~
+~
+0 0 1554
+D2
+~
+~
+0 0 1566
+D3
+~
+~
+0 0 1568
+S
+#1556
+{mT{De{wmp{Dl{me {Dof {mT{Dw{wi{Wli{wg{Dh{mt {DP{was{Dt{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1557
+D1
+~
+~
+0 0 1559
+D2
+~
+~
+0 0 1555
+D3
+~
+~
+0 0 1569
+S
+#1557
+{mT{De{wmp{Dl{me {Dof {mT{Dw{wi{Wli{wg{Dh{mt {DP{was{Dt{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1572
+D1
+~
+~
+0 0 1558
+D2
+~
+~
+0 0 1556
+D3
+~
+~
+0 0 1570
+S
+#1558
+{mT{De{wmp{Dl{me {Dof {mT{Dw{wi{Wli{wg{Dh{mt {DP{was{Dt{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1573
+D1
+~
+~
+0 0 1552
+D2
+~
+~
+0 0 1559
+D3
+~
+~
+0 0 1557
+S
+#1559
+{mT{De{wmp{Dl{me {Dof {mT{Dw{wi{Wli{wg{Dh{mt {DP{was{Dt{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1558
+D1
+~
+~
+0 0 1551
+D2
+~
+~
+0 0 1554
+D3
+~
+~
+0 0 1556
+S
+#1560
+{mT{De{wmp{Dl{me {Dof {mT{Dw{wi{Wli{wg{Dh{mt {DP{was{Dt{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1565
+D1
+~
+~
+0 0 1561
+D2
+~
+~
+0 0 1582
+D3
+~
+~
+0 0 1550
+S
+#1561
+{mT{De{wmp{Dl{me {Dof {mT{Dw{wi{Wli{wg{Dh{mt {DP{was{Dt{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1562
+D1
+~
+~
+0 0 1579
+D2
+~
+~
+0 0 1581
+D3
+~
+~
+0 0 1560
+S
+#1562
+{mT{De{wmp{Dl{me {Dof {mT{Dw{wi{Wli{wg{Dh{mt {DP{was{Dt{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1563
+D1
+~
+~
+0 0 1578
+D2
+~
+~
+0 0 1561
+D3
+~
+~
+0 0 1565
+S
+#1563
+{mT{De{wmp{Dl{me {Dof {mT{Dw{wi{Wli{wg{Dh{mt {DP{was{Dt{x ~
+~
+0 1034 0
+D0
+~
+~
+0 0 1575
+D1
+~
+~
+0 0 1577
+D2
+~
+~
+0 0 1562
+D3
+~
+~
+0 0 1564
+S
+#1564
+{mT{De{wmp{Dl{me {Dof {mT{Dw{wi{Wli{wg{Dh{mt {DP{was{Dt{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1574
+D1
+~
+~
+0 0 1563
+D2
+~
+~
+0 0 1565
+D3
+~
+~
+0 0 1552
+S
+#1565
+{mT{De{wmp{Dl{me {Dof {mT{Dw{wi{Wli{wg{Dh{mt {DP{was{Dt{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1564
+D1
+~
+~
+0 0 1562
+D2
+~
+~
+0 0 1560
+D3
+~
+~
+0 0 1551
+S
+#1566
+Sigyn/Acid~
+~
+0 1034 0
+D0
+~
+~
+0 0 1555
+D1
+~
+~
+0 0 1549
+D3
+~
+~
+0 0 1567
+S
+#1567
+Shafan/Fire~
+~
+0 1034 0
+D0
+~
+~
+0 0 1568
+D1
+~
+~
+0 0 1566
+S
+#1568
+Tsi-Noo/Cold~
+~
+0 1034 0
+D0
+~
+~
+0 0 1569
+D1
+~
+~
+0 0 1555
+D2
+~
+~
+0 0 1567
+S
+#1569
+Huginn & Muninn/Mental~
+~
+0 1034 0
+D0
+~
+~
+0 0 1570
+D1
+~
+~
+0 0 1556
+D2
+~
+~
+0 0 1568
+S
+#1570
+Oshun/Allure~
+~
+0 1034 0
+D0
+~
+~
+0 0 1571
+D1
+~
+~
+0 0 1557
+D2
+~
+~
+0 0 1569
+S
+#1571
+Namtar/Affliction~
+~
+0 1034 0
+D1
+~
+~
+0 0 1572
+D2
+~
+~
+0 0 1570
+S
+#1572
+Yhi/Light~
+~
+0 1034 0
+D1
+~
+~
+0 0 1573
+D2
+~
+~
+0 0 1557
+D3
+~
+~
+0 0 1571
+S
+#1573
+Kathar/Weaponry~
+~
+0 1034 0
+D1
+~
+~
+0 0 1553
+D2
+~
+~
+0 0 1558
+D3
+~
+~
+0 0 1572
+S
+#1574
+Ru Shou/Lightning~
+~
+0 1034 0
+D1
+~
+~
+0 0 1575
+D2
+~
+~
+0 0 1564
+D3
+~
+~
+0 0 1553
+S
+#1575
+Iara/Water~
+~
+0 1034 0
+D1
+~
+~
+0 0 1576
+D2
+~
+~
+0 0 1563
+D3
+~
+~
+0 0 1574
+S
+#1576
+Ogoun/Iron~
+~
+0 1034 0
+D2
+~
+~
+0 0 1577
+D3
+~
+~
+0 0 1575
+S
+#1577
+Mokos/Earth~
+~
+0 1034 0
+D0
+~
+~
+0 0 1576
+D2
+~
+~
+0 0 1578
+D3
+~
+~
+0 0 1563
+S
+#1578
+Ouroboros/Holy~
+~
+0 1034 0
+D0
+~
+~
+0 0 1577
+D2
+~
+~
+0 0 1579
+D3
+~
+~
+0 0 1562
+S
+#1579
+Manitou/Energy~
+~
+0 1034 0
+D0
+~
+~
+0 0 1578
+D2
+~
+~
+0 0 1580
+D3
+~
+~
+0 0 1561
+S
+#1580
+Roblon/Negative~
+~
+0 1034 0
+D0
+~
+~
+0 0 1579
+D3
+~
+~
+0 0 1581
+S
+#1581
+Paoro/Sound~
+~
+0 1034 0
+D0
+~
+~
+0 0 1561
+D1
+~
+~
+0 0 1580
+D3
+~
+~
+0 0 1582
+S
+#1582
+Tatsuta-hime/Wood~
+~
+0 1034 0
+D0
+~
+~
+0 0 1560
+D1
+~
+~
+0 0 1581
+D3
+~
+~
+0 0 1548
+S
+#1583
+~
+~
+0 10 3
+D2
+~
+~
+4 1583 1553
+S
+#1584
+{DA {gP{ra{yt{gh {Dof {mS{Dt{won{De{ms{x~
+~
+0 4 3
+D0
+~
+~
+0 0 1585
+D3
+~
+~
+0 0 1514
+S
+#1585
+{DA {gP{ra{yt{gh {Dof {mS{Dt{won{De{ms{x~
+~
+0 4 3
+D1
+~
+~
+4 1585 1586
+D2
+~
+~
+0 0 1584
+S
+#1586
+{mD{Du{ws{Wkf{wa{Dl{ml {mL{Di{wb{Wr{wa{Dr{my{x~
+~
+0 1026 0
+D0
+~
+~
+0 0 1591
+D1
+~
+~
+0 0 1587
+D3
+~
+~
+4 1585 1585
+S
+#1587
+{mD{Du{ws{Wkf{wa{Dl{ml {mL{Di{wb{Wr{wa{Dr{my{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1590
+D1
+~
+~
+0 0 1588
+D3
+~
+~
+0 0 1586
+S
+#1588
+{mD{Du{ws{Wkf{wa{Dl{ml {mL{Di{wb{Wr{wa{Dr{my{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1589
+D3
+~
+~
+0 0 1587
+S
+#1589
+{mD{Du{ws{Wkf{wa{Dl{ml {mL{Di{wb{Wr{wa{Dr{my{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1594
+D2
+~
+~
+0 0 1588
+D3
+~
+~
+0 0 1590
+S
+#1590
+{mD{Du{ws{Wkf{wa{Dl{ml {mL{Di{wb{Wr{wa{Dr{my {gA{Gt{gr{yi{ru{gm{x~
+Make the Dusklore Lib. have the key to open the orb.
+Make the Keeper of the Key trade the Knowledge Key for the Creation Key.
+~
+0 1026 3
+D0
+~
+~
+0 0 1593
+D1
+~
+~
+0 0 1589
+D2
+~
+~
+0 0 1587
+D3
+~
+~
+0 0 1591
+S
+#1591
+{mD{Du{ws{Wkf{wa{Dl{ml {mL{Di{wb{Wr{wa{Dr{my{x~
+~
+0 1034 0
+D0
+~
+~
+0 0 1592
+D1
+~
+~
+0 0 1590
+D2
+~
+~
+0 0 1586
+S
+#1592
+{mD{Du{ws{Wkf{wa{Dl{ml {mL{Di{wb{Wr{wa{Dr{my{x~
+~
+0 1034 0
+D1
+~
+~
+0 0 1593
+D2
+~
+~
+0 0 1591
+S
+#1593
+{mD{Du{ws{Wkf{wa{Dl{ml {mL{Di{wb{Wr{wa{Dr{my{x~
+~
+0 1034 0
+D1
+~
+~
+0 0 1594
+D2
+~
+~
+0 0 1590
+D3
+~
+~
+0 0 1592
+S
+#1594
+{mD{Du{ws{Wkf{wa{Dl{ml {mL{Di{wb{Wr{wa{Dr{my{x~
+East into Clan Hall.
+~
+0 1034 0
+D2
+~
+~
+0 0 1589
+D3
+~
+~
+0 0 1593
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 1536 0 2
+D 0 1548 2 2
+D 0 1553 0 2
+D 0 1583 2 2
+D 0 1585 1 2
+D 0 1586 3 2
+M 0 1549 1 1549 1
+M 0 1551 1 1551 1
+E 0 1583 0 17
+M 0 1566 1 1566 1
+M 0 1567 1 1567 1
+M 0 1568 1 1568 1
+M 0 1569 1 1569 1
+M 0 1570 1 1570 1
+M 0 1571 1 1571 1
+M 0 1572 1 1572 1
+M 0 1573 1 1573 1
+M 0 1574 1 1574 1
+M 0 1575 1 1575 1
+M 0 1576 1 1576 1
+M 0 1577 1 1577 1
+M 0 1578 1 1578 1
+M 0 1579 1 1579 1
+M 0 1580 1 1580 1
+M 0 1581 1 1581 1
+M 0 1582 1 1582 1
+O 0 1587 0 1587
+M 0 1587 1 1587 1
+E 0 1588 0 16
+M 0 1593 1 1589 1
+O 0 1590 0 1590
+P 0 1585 1 1590 1
+M 0 1591 1 1591 1
+E 0 1591 0 16
+E 0 1592 0 17
+M 0 1589 1 1593 1
+O 0 1589 0 1593
+S
+
+
+
+#SHOPS
+0
+
+
+
+#MOBPROGS
+#0
+
+#$
