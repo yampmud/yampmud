@@ -86,8 +86,6 @@ int sAllocPerm;
  */
 void boot_db()
 {
-  ROOM_INDEX_DATA *pRoomIndex;
-
   /* 
    * Init some data space stuff.
    */
