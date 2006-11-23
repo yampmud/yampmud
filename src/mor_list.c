@@ -4,6 +4,7 @@
 #include "merc.h"
 #include "recycle.h"
 #include "tables.h"
+#include "str_util.h"
 
 CH_CMD(do_rlist)
 {
@@ -28,7 +29,8 @@ CH_CMD(do_rlist)
     if ((pRoomIndex = get_room_index(vnum)))
     {
       found = true;
-      sprintf(buf, "[%-6ld] %-17.16s ", vnum, capitalize(pRoomIndex->name));
+      sprintf(buf, "[%-6ld] %-17.16s ", vnum,
+              strip_color(capitalize(pRoomIndex->name)));
       add_buf(buf1, buf);
       if (++col % 3 == 0)
         add_buf(buf1, "\n\r");
@@ -82,7 +84,7 @@ CH_CMD(do_mlist)
       {
         found = true;
         sprintf(buf, "[%-6ld] %-17.16s ", pMobIndex->vnum,
-                capitalize(pMobIndex->short_descr));
+                strip_color(capitalize(pMobIndex->short_descr)));
         add_buf(buf1, buf);
         if (++col % 3 == 0)
           add_buf(buf1, "\n\r");
@@ -138,7 +140,7 @@ CH_CMD(do_olist)
       {
         found = true;
         sprintf(buf, "[%-6ld] %-17.16s", pObjIndex->vnum,
-                capitalize(pObjIndex->short_descr));
+                strip_color(capitalize(pObjIndex->short_descr)));
         add_buf(buf1, buf);
         if (++col % 3 == 0)
           add_buf(buf1, "\n\r");
