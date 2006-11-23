@@ -520,6 +520,9 @@ const struct cmd_type cmd_table[] = {
   {"mplist", do_mplist, POS_DEAD, IM, 1, LOG_NORMAL, 1},
   {"rtick", do_tick, POS_DEAD, L1, 1, LOG_NORMAL, 1},
   {"hedit", do_hedit, POS_DEAD, ML, 1, LOG_ALWAYS, 1},
+  {"mlist", do_mlist, POS_DEAD, IM, 1, LOG_NORMAL, 1},
+  {"olist", do_olist, POS_DEAD, IM, 1, LOG_NORMAL, 1},
+  {"rlist", do_rlist, POS_DEAD, IM, 1, LOG_NORMAL, 1},
   /* 
    * Commands needed last on list
    */
