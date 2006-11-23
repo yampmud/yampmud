@@ -30,29 +30,29 @@
 
 int strlen_color(char *argument)
 {
-	int length;
+  int length;
 
-	if (!argument || argument[0] == '\0')
-		return 0;
+  if (!argument || argument[0] == '\0')
+    return 0;
 
-	length = 0;
+  length = 0;
 
-	while (*argument != '\0')
-	{
-		if (*argument != '{')
-		{
-			argument++;
-			length++;
-			continue;
-		}
+  while (*argument != '\0')
+  {
+    if (*argument != '{')
+    {
+      argument++;
+      length++;
+      continue;
+    }
 
-		if (*(++argument) == '{')
-			length++;
+    if (*(++argument) == '{')
+      length++;
 
-		argument++;
-	}
+    argument++;
+  }
 
-	return length;
+  return length;
 }
 
 /* CENTER Function
@@ -71,93 +71,93 @@ int strlen_color(char *argument)
 
 char *center(char *argument, int width, char *fill)
 {
-	char buf[MSL];
-	static char buf2[MSL];
-	int length;
-	int lead_chrs;
-	int trail_chrs;
+  char buf[MSL];
+  static char buf2[MSL];
+  int length;
+  int lead_chrs;
+  int trail_chrs;
 
-	if (!argument)
-	{
-		sprintf(log_buf,
-						"ERROR! Please note an imm if you see this message.\n\rPlease include EXACTLY what you did before you got this message.\n\r");
-		return log_buf;
-	}
+  if (!argument)
+  {
+    sprintf(log_buf,
+            "ERROR! Please note an imm if you see this message.\n\rPlease include EXACTLY what you did before you got this message.\n\r");
+    return log_buf;
+  }
 
-  if (!fill || !str_cmp(fill,""))
+  if (!fill || !str_cmp(fill, ""))
     fill = " ";
 
-	length = strlen_color(argument);
+  length = strlen_color(argument);
 
-	if (length >= width)
-		return argument;
+  if (length >= width)
+    return argument;
 
-	lead_chrs = (int) ((width / 2) - (length / 2) + .5);
-	memset(buf2, *fill, lead_chrs);
-	buf2[lead_chrs] = '\0';
-	strcat(buf2, argument);
-	trail_chrs = width - lead_chrs - length;
+  lead_chrs = (int) ((width / 2) - (length / 2) + .5);
+  memset(buf2, *fill, lead_chrs);
+  buf2[lead_chrs] = '\0';
+  strcat(buf2, argument);
+  trail_chrs = width - lead_chrs - length;
 
-	if (trail_chrs > 0)
-	{
-		memset(buf, *fill, trail_chrs);
-		buf[trail_chrs] = '\0';
-		strcat(buf2, buf);
-	}
+  if (trail_chrs > 0)
+  {
+    memset(buf, *fill, trail_chrs);
+    buf[trail_chrs] = '\0';
+    strcat(buf2, buf);
+  }
 
-	return buf2;
+  return buf2;
 }
 
 char *str_to_len(const char *string, int length)
 {
-	char buf[MSL];
-	char *newstr;
-	char temp;
-	int count = 0;
-	int pos = 0;
-	newstr = buf;
-	while (*string && count != length)
-	{
-		temp = *string++;
-		buf[pos++] = temp;
-		if (temp == '{')
-		{
-			buf[pos] = *string++;
-			if (buf[pos] == '{')
-				count++;
-			pos++;
-			continue;
-		}
-		count++;
-	}
-	while (count++ < length)
-		buf[pos++] = ' ';
-	buf[pos] = '\0';
-	return (newstr);
+  char buf[MSL];
+  char *newstr;
+  char temp;
+  int count = 0;
+  int pos = 0;
+  newstr = buf;
+  while (*string && count != length)
+  {
+    temp = *string++;
+    buf[pos++] = temp;
+    if (temp == '{')
+    {
+      buf[pos] = *string++;
+      if (buf[pos] == '{')
+        count++;
+      pos++;
+      continue;
+    }
+    count++;
+  }
+  while (count++ < length)
+    buf[pos++] = ' ';
+  buf[pos] = '\0';
+  return (newstr);
 }
 
 char *strip_color(const char *string)
 {
-	char buf[MSL];
-	char *newstr;
-	int count = 0;
-	char temp;
-	newstr = buf;
-	while (*string && count != MSL)
-	{
-		temp = *string++;
-		if (temp == '{')
-		{
-			temp = *string++;
-			if (temp == '{')
-			{
-				buf[count++] = '{';
-				buf[count++] = temp;
-			}
-			continue;
-		}
-		buf[count++] = temp;
-	}
-	buf[count] = '\0';
-	return (newstr);
+  char buf[MSL];
+  char *newstr;
+  int count = 0;
+  char temp;
+  newstr = buf;
+  while (*string && count != MSL)
+  {
+    temp = *string++;
+    if (temp == '{')
+    {
+      temp = *string++;
+      if (temp == '{')
+      {
+        buf[count++] = '{';
+        buf[count++] = temp;
+      }
+      continue;
+    }
+    buf[count++] = temp;
+  }
+  buf[count] = '\0';
+  return (newstr);
 }
