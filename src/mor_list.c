@@ -38,6 +38,7 @@ CH_CMD(do_rlist)
   if (!found)
   {
     send_to_char("Room(s) not found in this area.\n\r", ch);
+    free_buf(buf1);
     return;
   }
 
@@ -92,6 +93,7 @@ CH_CMD(do_mlist)
   if (!found)
   {
     send_to_char("Mobile(s) not found in this area.\n\r", ch);
+    free_buf(buf1);
     return;
   }
 
@@ -147,6 +149,7 @@ CH_CMD(do_olist)
   if (!found)
   {
     send_to_char("Object(s) not found in this area.\n\r", ch);
+    free_buf(buf1);
     return;
   }
 
