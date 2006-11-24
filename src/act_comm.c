@@ -487,7 +487,7 @@ CH_CMD(do_reroll)
   char player_name[MAX_INPUT_LENGTH], player_prmpt[MAX_INPUT_LENGTH];
   int player_rps, player_rpst, player_ree;
   char newbuf[MSL];
-
+  OBJ_DATA *player_banked;
   int player_plat, player_gold, player_slvr, player_tier, player_comm,
     player_iqp, player_aqp;
   int iClass, iSecv, wNet, ctier, player_trust;
@@ -643,6 +643,7 @@ CH_CMD(do_reroll)
       player_rps = ch->rps;
       player_rpst = ch->rpst;
       player_ree = ch->redeem;
+      player_banked = ch->bankeditems;
 
       /* 
        * "After extract_char the ch is no longer valid!" */
@@ -675,7 +676,7 @@ CH_CMD(do_reroll)
       d->character->rps = player_rps;
       d->character->rpst = player_rpst;
       d->character->redeem = player_ree;
-
+      d->character->bankeditems = player_banked;
 
       SET_BIT(d->character->pcdata->ctier, tier_table[ctier - 1].bit);
       SET_BIT(d->character->act, PLR_REROLL);
@@ -783,7 +784,8 @@ CH_CMD(do_ancient)
   if (ch->platinum < 2000)
   {
     send_to_char
-      ("�You must be carrying 2,000 platinum to become an Ancient.\n\r", ch);
+      ("�You must be carrying 2,000 platinum to become an Ancient.\n\r",
+       ch);
     return;
   }
 

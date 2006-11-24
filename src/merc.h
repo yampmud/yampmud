@@ -1738,6 +1738,7 @@ struct char_data
   NOTE_DATA *pnote;
   OBJ_DATA *carrying;
   OBJ_DATA *on;
+  OBJ_DATA *bankeditems;
   ROOM_INDEX_DATA *in_room;
   ROOM_INDEX_DATA *was_in_room;
   AREA_DATA *zone;

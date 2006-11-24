@@ -51,6 +51,7 @@ CH_CMD(do_bank)
      unnessecary \n\r's.  --Jouster */
 
   CHAR_DATA *mob;
+  OBJ_DATA *obj;
   char buf[MAX_STRING_LENGTH];
   char arg1[MAX_INPUT_LENGTH];
   char arg2[MAX_INPUT_LENGTH];
@@ -81,19 +82,24 @@ CH_CMD(do_bank)
   if (argument[0] == '\0')
   {
     send_to_char("Bank Options:\n\r\n\r", ch);
-    send_to_char("Bank balance: Displays your balance.\n\r", ch);
-    send_to_char("Bank deposit : Deposit platinum into your account.\n\r",
+    send_to_char("Bank balance:  Displays your balance.\n\r", ch);
+    send_to_char("Bank deposit:  Deposit platinum into your account.\n\r",
                  ch);
-    send_to_char
-      ("Bank withdraw : Withdraw platinum from your account.\n\r", ch);
+    send_to_char("Bank withdraw: Withdraw platinum from your account.\n\r",
+                 ch);
 #if defined BANK_TRANSFER
-    send_to_char("Bank transfer  : Transfer platinum to account.\n\r", ch);
+    send_to_char("Bank transfer: Transfer platinum to account.\n\r", ch);
 #endif
 #if defined BANK_INVEST
-    send_to_char("Bank buy #: Buy # shares\n\r", ch);
-    send_to_char("Bank sell #: Sell # shares\n\r", ch);
-    send_to_char("Bank check: Check the current rates of the shares.\n\r",
+    send_to_char("Bank buy #:    Buy # shares\n\r", ch);
+    send_to_char("Bank sell #:   Sell # shares\n\r", ch);
+    send_to_char("Bank check:    Check the current rates of the shares.\n\r",
                  ch);
+    send_to_char("\n\r", ch);
+    send_to_char("Bank store <item>:  Deposit an item into storage.\n\r", ch);
+    send_to_char("Bank remove <item>: Remove an item from storage.\n\r", ch);
+    send_to_char
+      ("Bank list:          List what items you have in storage.\n\r", ch);
 #endif
     return;
   }
@@ -230,6 +236,61 @@ CH_CMD(do_bank)
               "You withdraw %d Platinum.  Your new balance is %ld Platinum.\n\r",
               amount, ch->pcdata->balance);
       send_to_char(buf, ch);
+      return;
+    }
+  }
+
+  if (!str_prefix(arg1, "store"))
+  {
+    /* We want to be able to save quest equipment for rerolling. */
+    /*
+       if(IS_OBJ_STAT(obj, ITEM_QUEST)) 
+       {
+       send_to_char("You can't put quest items in the bank.", ch);
+       return;
+       }
+     */
+
+    obj = get_obj_list(ch, arg2, ch->carrying);
+    if (obj == NULL)
+    {
+      send_to_char("You dont have that.", ch);
+      return;
+    }
+    sprintf(buf, "You put %s in the bank\n\r", obj->short_descr);
+    obj_to_char_bank(obj, ch);
+    send_to_char(buf, ch);
+    return;
+  }
+
+  if (!str_prefix(arg1, "remove"))
+  {
+    obj = get_obj_list(ch, arg2, ch->bankeditems);
+    if (obj == NULL)
+    {
+      send_to_char("You dont have that in the bank.", ch);
+      return;
+    }
+    sprintf(buf, "You take %s from the bank\n\r", obj->short_descr);
+    obj_from_char_bank(obj, ch);
+    send_to_char(buf, ch);
+    return;
+  }
+
+  if (!str_prefix(arg1, "list"))
+  {
+    if (ch->bankeditems == NULL)
+    {
+      send_to_char("You have no items in the bank.\n\r", ch);
+      return;
+    }
+    else
+    {
+      BUFFER *outlist;
+      send_to_char("You Have the following items in the bank:\n\r", ch);
+      outlist = show_list_to_char(ch->bankeditems, ch, true, true);
+      page_to_char(buf_string(outlist), ch);
+      free_buf(outlist);
       return;
     }
   }

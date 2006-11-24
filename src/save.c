@@ -130,6 +130,8 @@ void save_char_obj(CHAR_DATA * ch)
     fwrite_char(ch, fp);
     if (ch->carrying != NULL)
       fwrite_obj(ch, ch->carrying, fp, 0);
+    if (ch->bankeditems != NULL)
+      fwrite_bank(ch, ch->bankeditems, fp, 0);
     /* save the pets */
     if (ch->pet != NULL && ch->pet->in_room == ch->in_room)
       fwrite_pet(ch->pet, fp);
@@ -689,6 +691,8 @@ bool load_char_obj(DESCRIPTOR_DATA * d, char *name)
         fread_obj(ch, fp);
       else if (!str_cmp(word, "PET"))
         fread_pet(ch, fp);
+      else if (!str_cmp(word, "BANK"))
+        fread_bank(ch, fp);
       else if (!str_cmp(word, "END"))
         break;
       else
@@ -1943,4 +1947,454 @@ void backup_char_obj(CHAR_DATA * ch)
 
   send_to_char("A backup of your pfile has been made.\n\r", ch);
   return;
+}
+void fwrite_bank(CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest)
+{
+
+  EXTRA_DESCR_DATA *ed;
+  AFFECT_DATA *paf;
+
+  /* 
+   * Slick recursion to write lists backwards,
+   *   so loading them will load in forwards order.
+   */
+  if (obj->next_content != NULL)
+    fwrite_bank(ch, obj->next_content, fp, iNest);
+
+  fprintf(fp, "#BANK\n");
+  fprintf(fp, "Vnum %ld\n", obj->pIndexData->vnum);
+  if (!obj->pIndexData->new_format)
+    fprintf(fp, "Oldstyle\n");
+  if (obj->enchanted)
+    fprintf(fp, "Enchanted\n");
+  fprintf(fp, "Nest %d\n", iNest);
+
+  /* these data are only used if they do not match the defaults */
+
+  if (obj->name != obj->pIndexData->name)
+    fprintf(fp, "Name %s~\n", obj->name);
+  if (obj->short_descr != obj->pIndexData->short_descr)
+    fprintf(fp, "ShD  %s~\n", obj->short_descr);
+  if (obj->description != obj->pIndexData->description)
+    fprintf(fp, "Desc %s~\n", obj->description);
+  if (obj->extra_flags != obj->pIndexData->extra_flags)
+    fprintf(fp, "ExtF %d\n", obj->extra_flags);
+  if (obj->wear_flags != obj->pIndexData->wear_flags)
+    fprintf(fp, "WeaF %d\n", obj->wear_flags);
+  if (obj->item_type != obj->pIndexData->item_type)
+    fprintf(fp, "Ityp %d\n", obj->item_type);
+  if (obj->weight != obj->pIndexData->weight)
+    fprintf(fp, "Wt   %d\n", obj->weight);
+  if (obj->condition != obj->pIndexData->condition)
+    fprintf(fp, "Cond %d\n", obj->condition);
+
+  /* variable data */
+
+  fprintf(fp, "Wear -1\n");
+  if (obj->level != obj->pIndexData->level)
+    fprintf(fp, "Lev  %d\n", obj->level);
+  if (obj->timer > 0)
+    fprintf(fp, "Time %d\n", obj->timer);
+  if (obj->cost > 0)
+    fprintf(fp, "Cost %d\n", obj->cost);
+  if (obj->value[0] != obj->pIndexData->value[0] ||
+      obj->value[1] != obj->pIndexData->value[1] ||
+      obj->value[2] != obj->pIndexData->value[2] ||
+      obj->value[3] != obj->pIndexData->value[3] ||
+      obj->value[4] != obj->pIndexData->value[4])
+    fprintf(fp, "Val  %ld %ld %ld %ld %ld\n", obj->value[0],
+            obj->value[1], obj->value[2], obj->value[3], obj->value[4]);
+
+  switch (obj->item_type)
+  {
+    case ITEM_POTION:
+    case ITEM_SCROLL:
+      if (obj->value[1] > 0)
+      {
+        fprintf(fp, "Spell 1 '%s'\n", skill_table[obj->value[1]].name);
+      }
+
+      if (obj->value[2] > 0)
+      {
+        fprintf(fp, "Spell 2 '%s'\n", skill_table[obj->value[2]].name);
+      }
+
+      if (obj->value[3] > 0)
+      {
+        fprintf(fp, "Spell 3 '%s'\n", skill_table[obj->value[3]].name);
+      }
+
+      break;
+
+    case ITEM_PILL:
+    case ITEM_STAFF:
+    case ITEM_WAND:
+    case ITEM_INSTRUMENT:
+      if (obj->value[3] > 0)
+      {
+        fprintf(fp, "Spell 3 '%s'\n", skill_table[obj->value[3]].name);
+      }
+
+      break;
+  }
+
+  for (paf = obj->affected; paf != NULL; paf = paf->next)
+  {
+    if (paf->type < 0 || paf->type >= MAX_SKILL)
+      continue;
+    fprintf(fp, "Affc '%s' %3d %3d %3d %3d %3d %10ld\n",
+            skill_table[paf->type].name, paf->where, paf->level,
+            paf->duration, paf->modifier, paf->location, paf->bitvector);
+  }
+
+  for (ed = obj->extra_descr; ed != NULL; ed = ed->next)
+  {
+    fprintf(fp, "ExDe %s~ %s~\n", ed->keyword, ed->description);
+  }
+
+  fprintf(fp, "End\n\n");
+
+  if (obj->contains != NULL)
+    fwrite_bank(ch, obj->contains, fp, iNest + 1);
+
+  return;
+}
+
+void fread_bank(CHAR_DATA * ch, FILE * fp)
+{
+  OBJ_DATA *obj;
+  char *word;
+  int iNest;
+  bool fMatch;
+  bool fNest;
+  bool fVnum;
+  bool first;
+  bool new_format;              /* to prevent errors */
+  bool make_new;                /* update object */
+
+  fVnum = false;
+  obj = NULL;
+  first = true;                 /* used to counter fp offset */
+  new_format = false;
+  make_new = false;
+
+  word = feof(fp) ? "End" : fread_word(fp);
+  if (!str_cmp(word, "Vnum"))
+  {
+    long vnum;
+
+    first = false;              /* fp will be in right place */
+
+    vnum = fread_long(fp);
+    if (get_obj_index(vnum) == NULL)
+    {
+      bug("Fread_bank: bad vnum %ld.", vnum);
+      obj = create_object(get_obj_index(OBJ_VNUM_BAG), -1);
+      new_format = true;
+    }
+    else
+    {
+      obj = create_object(get_obj_index(vnum), -1);
+      new_format = true;
+    }
+
+  }
+
+  if (obj == NULL)              /* either not found or old style */
+  {
+    obj = new_obj();
+    obj->name = str_dup("");
+    obj->short_descr = str_dup("");
+    obj->description = str_dup("");
+  }
+
+  fNest = false;
+  fVnum = true;
+  iNest = 0;
+
+  for (;;)
+  {
+    if (first)
+      first = false;
+    else
+      word = feof(fp) ? "End" : fread_word(fp);
+    fMatch = false;
+
+    switch (UPPER(word[0]))
+    {
+      case '*':
+        fMatch = true;
+        fread_to_eol(fp);
+        break;
+
+      case 'A':
+        if (!str_cmp(word, "AffD"))
+        {
+          AFFECT_DATA *paf;
+          int sn;
+
+          paf = new_affect();
+
+          sn = skill_lookup(fread_word(fp));
+          if (sn < 0)
+            bug("Fread_bank: unknown skill.", 0);
+          else
+            paf->type = sn;
+
+          paf->level = fread_number(fp);
+          paf->duration = fread_number(fp);
+          paf->modifier = fread_number(fp);
+          paf->location = fread_number(fp);
+          paf->bitvector = fread_long(fp);
+          paf->next = obj->affected;
+          obj->affected = paf;
+          fMatch = true;
+          break;
+        }
+        if (!str_cmp(word, "Affc"))
+        {
+          AFFECT_DATA *paf;
+          int sn;
+
+
+          paf = new_affect();
+
+          sn = skill_lookup(fread_word(fp));
+          if (sn < 0)
+            bug("Fread_bank: unknown skill.", 0);
+          else
+            paf->type = sn;
+
+          paf->where = fread_number(fp);
+          paf->level = fread_number(fp);
+          paf->duration = fread_number(fp);
+          paf->modifier = fread_number(fp);
+          paf->location = fread_number(fp);
+          paf->bitvector = fread_long(fp);
+          paf->next = obj->affected;
+          obj->affected = paf;
+          fMatch = true;
+          break;
+        }
+        break;
+
+      case 'C':
+        KEY("Cond", obj->condition, fread_number(fp));
+        KEY("Cost", obj->cost, fread_number(fp));
+        break;
+
+      case 'D':
+        KEYS("Description", obj->description, fread_string(fp));
+        KEYS("Desc", obj->description, fread_string(fp));
+        break;
+
+      case 'E':
+
+        if (!str_cmp(word, "Enchanted"))
+        {
+          obj->enchanted = true;
+          fMatch = true;
+          break;
+        }
+
+        KEY("ExtraFlags", obj->extra_flags, fread_number(fp));
+        KEY("ExtF", obj->extra_flags, fread_number(fp));
+
+        if (!str_cmp(word, "ExtraDescr") || !str_cmp(word, "ExDe"))
+        {
+          EXTRA_DESCR_DATA *ed;
+
+          ed = new_extra_descr();
+
+          ed->keyword = fread_string(fp);
+          ed->description = fread_string(fp);
+          ed->next = obj->extra_descr;
+          obj->extra_descr = ed;
+          fMatch = true;
+        }
+
+        if (!str_cmp(word, "End"))
+        {
+          if (!fNest || (fVnum && obj->pIndexData == NULL))
+          {
+            bug("Fread_bank: incomplete object.", 0);
+            free_obj(obj);
+            return;
+          }
+          else
+          {
+            if (!fVnum)
+            {
+              free_obj(obj);
+              obj = create_object(get_obj_index(OBJ_VNUM_DUMMY), 0);
+            }
+
+            if (!new_format)
+            {
+              obj->next = object_list;
+              object_list = obj;
+              obj->pIndexData->count++;
+            }
+
+            if (!obj->pIndexData->new_format &&
+                obj->item_type == ITEM_ARMOR && obj->value[1] == 0)
+            {
+              obj->value[1] = obj->value[0];
+              obj->value[2] = obj->value[0];
+            }
+            if (make_new)
+            {
+              int wear;
+
+              wear = obj->wear_loc;
+              extract_obj(obj);
+
+              obj = create_object(obj->pIndexData, 0);
+              obj->wear_loc = wear;
+            }
+            if (iNest == 0 || rgObjNest[iNest] == NULL)
+            {
+              obj->next_content = ch->bankeditems;
+              ch->bankeditems = obj;
+            }
+            else
+              obj_to_obj(obj, rgObjNest[iNest - 1]);
+            return;
+          }
+        }
+        break;
+
+      case 'I':
+        KEY("ItemType", obj->item_type, fread_number(fp));
+        KEY("Ityp", obj->item_type, fread_number(fp));
+        break;
+
+      case 'L':
+        KEY("Level", obj->level, fread_number(fp));
+        KEY("Lev", obj->level, fread_number(fp));
+        break;
+
+      case 'N':
+        KEYS("Name", obj->name, fread_string(fp));
+
+        if (!str_cmp(word, "Nest"))
+        {
+          iNest = fread_number(fp);
+          if (iNest < 0 || iNest >= MAX_NEST)
+          {
+            bug("Fread_bank: bad nest %d.", iNest);
+          }
+          else
+          {
+            rgObjNest[iNest] = obj;
+            fNest = true;
+          }
+          fMatch = true;
+        }
+        break;
+
+      case 'O':
+        if (!str_cmp(word, "Oldstyle"))
+        {
+          if (obj->pIndexData != NULL && obj->pIndexData->new_format)
+            make_new = true;
+          fMatch = true;
+        }
+        break;
+
+      case 'S':
+        KEYS("ShortDescr", obj->short_descr, fread_string(fp));
+        KEYS("ShD", obj->short_descr, fread_string(fp));
+
+        if (!str_cmp(word, "Spell"))
+        {
+          int iValue;
+          int sn;
+
+          iValue = fread_number(fp);
+          sn = skill_lookup(fread_word(fp));
+          if (iValue < 0 || iValue > 3)
+          {
+            bug("Fread_bank: bad iValue %d.", iValue);
+          }
+          else if (sn < 0)
+          {
+            bug("Fread_bank: unknown skill.", 0);
+          }
+          else
+          {
+            obj->value[iValue] = sn;
+          }
+          fMatch = true;
+          break;
+        }
+
+        break;
+
+      case 'T':
+        KEY("Timer", obj->timer, fread_number(fp));
+        KEY("Time", obj->timer, fread_number(fp));
+        break;
+
+      case 'V':
+        if (!str_cmp(word, "Values") || !str_cmp(word, "Vals"))
+        {
+          obj->value[0] = fread_long(fp);
+          obj->value[1] = fread_long(fp);
+          obj->value[2] = fread_long(fp);
+          obj->value[3] = fread_long(fp);
+          if (obj->item_type == ITEM_WEAPON && obj->value[0] == 0)
+            obj->value[0] = obj->pIndexData->value[0];
+          fMatch = true;
+          break;
+        }
+
+        if (!str_cmp(word, "Val"))
+        {
+          obj->value[0] = fread_long(fp);
+          obj->value[1] = fread_long(fp);
+          obj->value[2] = fread_long(fp);
+          obj->value[3] = fread_long(fp);
+          obj->value[4] = fread_long(fp);
+
+          fMatch = true;
+          break;
+        }
+
+        if (!str_cmp(word, "Vnum"))
+        {
+          long vnum;
+
+          vnum = fread_long(fp);
+          if ((obj->pIndexData = get_obj_index(vnum)) == NULL)
+            bug("Fread_bank: bad vnum %ld.", vnum);
+          else
+            fVnum = true;
+          fMatch = true;
+          break;
+        }
+        break;
+
+      case 'W':
+        KEY("WearFlags", obj->wear_flags, fread_number(fp));
+        KEY("WeaF", obj->wear_flags, fread_number(fp));
+        KEY("WearLoc", obj->wear_loc, fread_number(fp));
+        KEY("Wear", obj->wear_loc, fread_number(fp));
+        KEY("Weight", obj->weight, fread_number(fp));
+        KEY("Wt", obj->weight, fread_number(fp));
+        break;
+
+    }
+
+    if (!fMatch)
+    {
+      bug("Fread_bank: no match.", 0);
+      fread_to_eol(fp);
+    }
+  }
+  if (obj->pIndexData->vnum == OBJ_VNUM_QDIAMOND)
+  {
+    ch->platinum++;
+    extract_obj(obj);
+  }
 }

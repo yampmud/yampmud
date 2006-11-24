@@ -647,6 +647,13 @@ CHAR_DATA *find_forger args((CHAR_DATA * ch));
 void halt_mud args((int sig));
 void _quit args((int iError, char *file, int line));
 
+/* functions added for item banking */
+void obj_to_char_bank args((OBJ_DATA * obj, CHAR_DATA * ch));
+void obj_from_char_bank args((OBJ_DATA * obj, CHAR_DATA * ch));
+void fread_bank args((CHAR_DATA * ch, FILE * fp));
+void fwrite_bank args((CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest));
+
+
 #undef	CD
 #undef	MID
 #undef	OD

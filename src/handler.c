@@ -1817,6 +1817,43 @@ void obj_to_char(OBJ_DATA * obj, CHAR_DATA * ch)
     update_questobjs(ch, obj);
 }
 
+void obj_to_char_bank(OBJ_DATA * obj, CHAR_DATA * ch)
+{
+  /* Quest equipment allowed for now. */
+  /* Also, I think this check should be performed in the calling function. --nosanity */
+  /*
+     if(!IS_NPC(ch) && IS_OBJ_STAT(obj, ITEM_QUEST))
+     return;  // shouldn't allow quest objects to be put in bank
+   */
+
+  obj_from_char(obj);
+  obj->next_content = ch->bankeditems;
+  ch->bankeditems = obj;
+  obj->carried_by = NULL;
+  obj->in_room = NULL;
+  save_char_obj(ch);
+}
+
+void obj_from_char_bank(OBJ_DATA * obj, CHAR_DATA * ch)
+{
+  OBJ_DATA *prev;
+
+  if (ch->bankeditems == obj)
+    ch->bankeditems = obj->next_content;
+
+  for (prev = ch->bankeditems; prev != NULL; prev = prev->next_content)
+  {
+    if (prev->next_content == obj)
+    {
+      prev->next_content = obj->next_content;
+      break;
+    }
+  }
+
+  obj_to_char(obj, ch);
+  save_char_obj(ch);
+}
+
 /*
  * Take an obj from its character.
  */

@@ -456,6 +456,12 @@ void free_char(CHAR_DATA * ch)
     extract_obj(obj);
   }
 
+  for (obj = ch->bankeditems; obj != NULL; obj = obj_next)
+  {
+    obj_next = obj->next_content;
+    extract_obj(obj);
+  }
+
   for (paf = ch->affected; paf != NULL; paf = paf_next)
   {
     paf_next = paf->next;
