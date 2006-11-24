@@ -3402,7 +3402,7 @@ CH_CMD(do_oload)
   OBJ_INDEX_DATA *pObjIndex;
   OBJ_DATA *obj;
   int level;
-
+  char buf[MAX_STRING_LENGTH];
   argument = one_argument(argument, arg1);
   one_argument(argument, arg2);
 
@@ -3442,13 +3442,21 @@ CH_CMD(do_oload)
 
   obj = create_object(pObjIndex, level);
   if (CAN_WEAR(obj, ITEM_TAKE))
+  {
     obj_to_char(obj, ch);
+    sprintf(buf, "You have summmoned %s into your inventory.\n\r",
+            obj->short_descr);
+  }
   else
+  {
     obj_to_room(obj, ch->in_room);
+    sprintf(buf, "%s materializes in the room.\n\r", capitalize(obj->short_descr));
+  }
   act("$n has created $p!", ch, obj, NULL, TO_ROOM);
   sprintf(log_buf, "%s loads %s.", ch->name, obj->short_descr);
   wiznet(log_buf, ch, obj, WIZ_LOAD, WIZ_SECURE, get_trust(ch));
-  send_to_char("Ok.\n\r", ch);
+
+  send_to_char(buf, ch);
   return;
 }
 
