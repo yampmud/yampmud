@@ -408,7 +408,7 @@ const struct cmd_type cmd_table[] = {
   {"shutdown", do_shutdown, POS_DEAD, ML, 1, LOG_ALWAYS, 1},
   {"wizlock", do_wizlock, POS_DEAD, L2, 1, LOG_ALWAYS, 1},
   {"force", do_force, POS_DEAD, L7, 1, LOG_NORMAL, 1},
-  {"load", do_oload, POS_DEAD, IM, 1, LOG_NORMAL, 1},
+  {"load", do_load, POS_DEAD, IM, 1, LOG_NORMAL, 1},
   {"vload", do_vload, POS_DEAD, L1, 1, LOG_NORMAL, 1},
   {"newlock", do_newlock, POS_DEAD, L1, 1, LOG_ALWAYS, 1},
   {"nochannels", do_nochannels, POS_DEAD, L6, 1, LOG_ALWAYS, 1},
