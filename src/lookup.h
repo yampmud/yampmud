@@ -37,4 +37,3 @@ int position_lookup args((const char *name));
 int sex_lookup args((const char *name));
 int size_lookup args((const char *name));
 HELP_DATA *help_lookup args((char *));
-HELP_AREA *had_lookup args((char *));

@@ -835,24 +835,6 @@ void free_auction(AUCTION_DATA * auction)
   auction_free = auction;
 }
 
-HELP_AREA *new_had(void)
-{
-  HELP_AREA *had;
-  static HELP_AREA zHad;
-
-  if (had_free)
-  {
-    had = had_free;
-    had_free = had_free->next;
-  }
-  else
-    had = alloc_perm(sizeof(*had));
-
-  *had = zHad;
-
-  return had;
-}
-
 HELP_DATA *new_help(void)
 {
   HELP_DATA *help;

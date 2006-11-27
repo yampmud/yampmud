@@ -278,4 +278,3 @@ args((CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num, char *argument));
 bool set_value
 args((CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, char *argument, int value));
 bool oedit_values args((CHAR_DATA * ch, char *argument, int value));
-HELP_AREA *get_help_area args((HELP_DATA * help));

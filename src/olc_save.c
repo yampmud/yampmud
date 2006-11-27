@@ -76,7 +76,6 @@ void save_area_list()
 {
   FILE *fp;
   AREA_DATA *pArea;
-  HELP_AREA *ha;
 
   if ((fp = file_open("../config/area.list", "w")) == NULL)
   {
@@ -89,10 +88,7 @@ void save_area_list()
      * Add any help files that need to be loaded at
      * startup to this section.
      */
-    for (ha = had_list; ha; ha = ha->next)
-      if (ha->area == NULL)
-        fprintf(fp, "%s\n", ha->filename);
-
+    fprintf(fp, "help.are\n");
 
     for (pArea = area_first; pArea; pArea = pArea->next)
     {
@@ -867,21 +863,17 @@ void save_shops(FILE * fp, AREA_DATA * pArea)
   return;
 }
 
-void save_helps(FILE * fp, HELP_AREA * ha)
+void save_helps(FILE * fp, HELP_DATA * help)
 {
-  HELP_DATA *help = ha->first;
-
   fprintf(fp, "#HELPS\n");
 
-  for (; help; help = help->next_area)
+  for (; help; help = help->next)
   {
     fprintf(fp, "%d %s~\n", help->level, help->keyword);
     fprintf(fp, "%s~\n\n", fix_string(help->text));
   }
 
   fprintf(fp, "-1 $~\n\n");
-
-  ha->changed = false;
 
   return;
 }
@@ -919,8 +911,24 @@ void save_area(AREA_DATA * pArea)
   save_shops(fp, pArea);
   save_mobprogs(fp, pArea);
 
-  if (pArea->helps && pArea->helps->first)
-    save_helps(fp, pArea->helps);
+  fprintf(fp, "#$\n");
+
+  file_close(fp);
+  return;
+}
+
+
+void save_help(void)
+{
+  FILE *fp;
+
+  if (!(fp = file_open("help.are", "w")))
+  {
+    bug("Open_area: fopen", 0);
+    perror("help.are");
+  }
+
+  save_helps(fp, help_first);
 
   fprintf(fp, "#$\n");
 
@@ -950,6 +958,7 @@ CH_CMD(do_asave)
       save_area(pArea);
       REMOVE_BIT(pArea->area_flags, AREA_CHANGED);
     }
+    save_help();
     return;
   }
   smash_tilde(argument);
@@ -1002,6 +1011,7 @@ CH_CMD(do_asave)
       save_area(pArea);
       REMOVE_BIT(pArea->area_flags, AREA_CHANGED);
     }
+    save_help();
     send_to_char("You saved the world.\n\r", ch);
     /*  send_to_all_char( "Database saved.\n\r" );                 ROM OLC */
     return;
@@ -1075,7 +1085,6 @@ CH_CMD(do_asave)
         pArea = ((MOB_INDEX_DATA *) ch->desc->pEdit)->area;
         break;
       case ED_HELP:
-        pArea = get_help_area((HELP_DATA *) ch->desc->pEdit)->area;
       default:
         pArea = ch->in_room->area;
         break;

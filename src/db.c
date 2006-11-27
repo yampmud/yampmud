@@ -483,35 +483,11 @@ void load_helps(FILE * fp, char *fname)
 
   for (;;)
   {
-    HELP_AREA *had;
-
     level = fread_number(fp);
     keyword = fread_string(fp);
 
     if (keyword[0] == '$')
       break;
-
-    if (!had_list)
-    {
-      had = new_had();
-      had->filename = str_dup(fname);
-      had->area = current_area;
-      if (current_area)
-        current_area->helps = had;
-      had_list = had;
-    }
-    else if (str_cmp(fname, had_list->filename))
-    {
-      had = new_had();
-      had->filename = str_dup(fname);
-      had->area = current_area;
-      if (current_area)
-        current_area->helps = had;
-      had->next = had_list;
-      had_list = had;
-    }
-    else
-      had = had_list;
 
     pHelp = new_help();
     pHelp->level = level;
@@ -541,15 +517,6 @@ void load_helps(FILE * fp, char *fname)
 
     help_last = pHelp;
     pHelp->next = NULL;
-
-    if (!had->first)
-      had->first = pHelp;
-    if (!had->last)
-      had->last = pHelp;
-
-    had->last->next_area = pHelp;
-    had->last = pHelp;
-    pHelp->next_area = NULL;
 
     top_help++;
   }

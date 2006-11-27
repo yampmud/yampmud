@@ -109,7 +109,6 @@ typedef struct descriptor_data DESCRIPTOR_DATA;
 typedef struct exit_data EXIT_DATA;
 typedef struct extra_descr_data EXTRA_DESCR_DATA;
 typedef struct help_data HELP_DATA;
-typedef struct help_area_data HELP_AREA;
 typedef struct kill_data KILL_DATA;
 typedef struct mem_data MEM_DATA;
 typedef struct mob_index_data MOB_INDEX_DATA;
@@ -426,20 +425,9 @@ struct con_app_type
 struct help_data
 {
   HELP_DATA *next;
-  HELP_DATA *next_area;
   sh_int level;
   char *keyword;
   char *text;
-};
-
-struct help_area_data
-{
-  HELP_AREA *next;
-  HELP_DATA *first;
-  HELP_DATA *last;
-  AREA_DATA *area;
-  char *filename;
-  bool changed;
 };
 
 /*
@@ -2121,7 +2109,6 @@ struct area_data
   int security;                 /* OLC *//* Value 1-9 */
   AREA_DATA *next_sort;
   char *repop_msg;
-  HELP_AREA *helps;
 };
 
 /*

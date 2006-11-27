@@ -53,8 +53,6 @@ GLOBAL(GQUEST gquest_info);
 GLOBAL_DEF(HELP_DATA * help_last, NULL);
 GLOBAL_DEF(HELP_DATA * help_first, NULL);
 GLOBAL_DEF(HELP_DATA * help_free, NULL);
-GLOBAL_DEF(HELP_AREA * had_list, NULL);
-GLOBAL_DEF(HELP_AREA * had_free, NULL);
 
 GLOBAL_DEF(int share_value, SHARE_VALUE);
 
