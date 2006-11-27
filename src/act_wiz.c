@@ -3357,11 +3357,6 @@ CH_CMD(do_load)
     return;
   }
 
-  if (!str_cmp(arg, "voodoo") && (ch->level >= CREATOR))
-  {
-    do_vload(ch, argument);
-    return;
-  }
   /* echo syntax */
   do_load(ch, "");
 }
@@ -3385,6 +3380,13 @@ CH_CMD(do_mload)
   {
     send_to_char("No mob has that vnum.\n\r", ch);
     return;
+  }
+
+  if (!IS_BUILDER(ch, get_vnum_area(pMobIndex->vnum)))
+  {
+     sprintf(buf, "You are not autorized to load %s.\n\r", pMobIndex->short_descr);
+     send_to_char(buf, ch);
+     return;
   }
 
   victim = create_mobile(pMobIndex);
@@ -3434,10 +3436,18 @@ CH_CMD(do_oload)
     send_to_char("No object has that vnum.\n\r", ch);
     return;
   }
+
   if (pObjIndex->item_type == ITEM_EXIT)
   {
     send_to_char("You cannot load an exit object.\n\r", ch);
     return;
+  }
+
+  if (!IS_BUILDER(ch, get_vnum_area(pObjIndex->vnum)))
+  {
+     sprintf(buf, "You are not autorized to load %s.\n\r", pObjIndex->short_descr);
+     send_to_char(buf, ch);
+     return;
   }
 
   obj = create_object(pObjIndex, level);
