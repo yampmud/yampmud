@@ -113,7 +113,7 @@ const struct wiznet_type wiznet_table[] = {
   {"Logins", WIZ_LOGINS, IM},
   {"Sites", WIZ_SITES, IM},
   {"Links", WIZ_LINKS, IM},
-  {"Newies", WIZ_NEWBIE, IM},
+  {"Newbie", WIZ_NEWBIE, IM},
   {"Spam", WIZ_SPAM, 0},
   {"P-Deaths", WIZ_DEATHS, IM},
   {"Resets", WIZ_RESETS, IM},
