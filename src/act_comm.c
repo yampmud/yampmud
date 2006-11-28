@@ -5659,7 +5659,7 @@ CH_CMD(do_newname)
   }
 
   sprintf(strsave, "%s%s", PLAYER_DIR, capitalize(ch->name));
-  sprintf(log_buf, "(NEWNAME) %s has chosen a new name for approval: %s\n\r",
+  sprintf(log_buf, "(AUTHNAME) %s has chosen a new name for approval: %s\n\r",
           ch->name, capitalize(arg1));
   wiznet(log_buf, NULL, NULL, WIZ_NEWBIE, 0, 0);
   strcpy(ch->name, capitalize(arg1));
