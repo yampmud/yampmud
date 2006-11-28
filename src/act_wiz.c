@@ -8318,7 +8318,7 @@ CH_CMD(do_badname)
 
   if (arg[0] == '\0')
   {
-    send_to_char("Usage: denyname <character name>\n\r", ch);
+    send_to_char("Usage: badname <character name>\n\r", ch);
     return;
   }
 
