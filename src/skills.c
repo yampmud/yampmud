@@ -383,7 +383,7 @@ CH_CMD(do_skills)
   if (!strcmp(arg1, "all"))
     showAll = true;
 
-  for (lev = 0; lev < (showAll ? MAX_LEVEL : ch->level); lev++)
+  for (lev = 0; lev <= (showAll ? MAX_LEVEL : ch->level); lev++)
     for (sn = 0; sn < MAX_SKILL; sn++)
     {
 
