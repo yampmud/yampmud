@@ -47,6 +47,7 @@
 #include "magic.h"
 #include "olc.h"
 #include "db.h"
+#include "str_util.h"
 
 CH_CMD(do_rollback)
 {
@@ -8366,5 +8367,116 @@ CH_CMD(do_badname)
      victim);
   save_char_obj(victim);
 
+  return;
+}
+
+CH_CMD(do_mlevel)
+{
+  char arg1[MSL];
+  char arg2[MSL];
+  char buf[MSL];
+  CHAR_DATA *mob;
+  BUFFER *output;
+  int level1, level2, temp, count;
+  bool found;
+
+  argument = one_argument(argument, arg1);
+  argument = one_argument(argument, arg2);
+
+  count = 0;
+
+  if (IS_NPC(ch))
+    return;
+
+  if ((arg1[0] == '\0') || (!is_number(arg1)))
+  {
+    send_to_char("USAGE:\n\r", ch);
+    send_to_char("mlevel <level> will find mobs equal to level.\n\r", ch);
+    send_to_char
+      ("mlevel <level> <level> will find mobs in that level range.\n\r", ch);
+    return;
+  }
+
+  output = new_buf();
+
+  if (arg2[0] == '\0')          //only one level given
+  {
+    level1 = atoi(arg1);
+
+    for (mob = char_list; ((mob != NULL) && (count < 300)); mob = mob->next)
+    {
+      if ((mob->in_room != NULL) && (mob->level == level1))
+      {
+        if (IS_NPC(mob))
+        {
+          found = true;
+          count++;
+          sprintf(buf, "(%3d) [%6ld] %-28s [%6ld] %s\n\r", mob->level,
+                  mob->pIndexData->vnum, strip_color(mob->short_descr),
+                  mob->in_room->vnum, mob->in_room->name);
+          add_buf(output, buf);
+        }
+      }
+    }
+  }
+  else
+  {
+    if (!is_number(arg2))
+    {
+      send_to_char("USAGE:\n\r", ch);
+      send_to_char("mlevel <level> will find mobs equal to level.\n\r", ch);
+      send_to_char
+        ("mlevel <level> <level> will find mobs in that level range.\n\r",
+         ch);
+      free_buf(output);
+      return;
+    }
+
+    level1 = atoi(arg1);
+    level2 = atoi(arg2);
+
+    if (level2 < level1)        // somebody's trying to trick me!
+    {
+      temp = level1;
+      level1 = level2;
+      level2 = temp;
+    }
+
+    if ((level2 - level1) > 1000) // somebody's trying to trick me again!
+      level2 = level1 + 1000;
+
+    for (; level1 <= level2; level1++)
+    {
+      for (mob = char_list; ((mob != NULL) && (count < 300)); mob = mob->next)
+      {
+        if ((mob->in_room != NULL) && (mob->level == level1))
+        {
+          if (IS_NPC(mob))
+          {
+            found = true;
+            count++;
+            sprintf(buf, " (%3d) [%6ld] %-28s [%6ld] %s\n\r", mob->level,
+                    mob->pIndexData->vnum, strip_color(mob->short_descr),
+                    mob->in_room->vnum, mob->in_room->name);
+            add_buf(output, buf);
+          }
+        }
+      }
+    }
+  }
+
+  if (!found)
+  {
+    send_to_char("No mobs found.\n\r", ch);
+    free_buf(output);
+    return;
+  }
+
+  page_to_char(buf_string(output), ch);
+
+  if (count == 300)
+    send_to_char("{RStopped at 300 mobs. \n\r", ch);
+
+  free_buf(output);
   return;
 }

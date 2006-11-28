@@ -261,6 +261,7 @@ DECLARE_DO_FUN(do_member);
 DECLARE_DO_FUN(do_memory);
 DECLARE_DO_FUN(do_mend);
 DECLARE_DO_FUN(do_mfind);
+DECLARE_DO_FUN(do_mlevel);
 DECLARE_DO_FUN(do_mlist);
 DECLARE_DO_FUN(do_mload);
 DECLARE_DO_FUN(do_mob);
