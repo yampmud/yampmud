@@ -42,7 +42,7 @@
 #include "merc.h"
 #include "db.h"
 
-bool check_disabled(const struct cmd_type *command);
+bool check_disabled(const struct cmd_type * command);
 DISABLED_DATA *disabled_first;
 
 #define END_MARKER	"END"       /* for load_disabled() and save_disabled() */

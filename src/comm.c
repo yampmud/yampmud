@@ -1626,11 +1626,15 @@ void bust_a_prompt(CHAR_DATA * ch)
   EXIT_DATA *pexit;
   bool found;
   bool round;
+
   const char *prompt_dir_name[MAX_DIR] =
     { "N", "E", "S", "W", "U", "D", "Ne", "Se", "Sw", "Nw" };
+
   char *door_name[MAX_DIR] =
     { "north", "east", "south", "west", "up", "down", "northeast",
-"southeast", "southwest", "northwest" };
+    "southeast", "southwest", "northwest"
+  };
+
   int door;
 
   sprintf(buf2, "%s", ch->prompt);

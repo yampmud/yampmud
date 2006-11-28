@@ -3384,9 +3384,10 @@ CH_CMD(do_mload)
 
   if (!IS_BUILDER(ch, get_vnum_area(pMobIndex->vnum)))
   {
-     sprintf(buf, "You are not autorized to load %s.\n\r", pMobIndex->short_descr);
-     send_to_char(buf, ch);
-     return;
+    sprintf(buf, "You are not autorized to load %s.\n\r",
+            pMobIndex->short_descr);
+    send_to_char(buf, ch);
+    return;
   }
 
   victim = create_mobile(pMobIndex);
@@ -3445,9 +3446,10 @@ CH_CMD(do_oload)
 
   if (!IS_BUILDER(ch, get_vnum_area(pObjIndex->vnum)))
   {
-     sprintf(buf, "You are not autorized to load %s.\n\r", pObjIndex->short_descr);
-     send_to_char(buf, ch);
-     return;
+    sprintf(buf, "You are not autorized to load %s.\n\r",
+            pObjIndex->short_descr);
+    send_to_char(buf, ch);
+    return;
   }
 
   obj = create_object(pObjIndex, level);
@@ -3460,7 +3462,8 @@ CH_CMD(do_oload)
   else
   {
     obj_to_room(obj, ch->in_room);
-    sprintf(buf, "%s materializes in the room.\n\r", capitalize(obj->short_descr));
+    sprintf(buf, "%s materializes in the room.\n\r",
+            capitalize(obj->short_descr));
   }
   act("$n has created $p!", ch, obj, NULL, TO_ROOM);
   sprintf(log_buf, "%s loads %s.", ch->name, obj->short_descr);
