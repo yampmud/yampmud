@@ -501,3 +501,6 @@ DECLARE_DO_FUN(do_wspit);
 DECLARE_DO_FUN(do_yell);
 DECLARE_DO_FUN(do_zap);
 DECLARE_DO_FUN(do_zecho);
+DECLARE_DO_FUN(do_authname);
+DECLARE_DO_FUN(do_badname);
+DECLARE_DO_FUN(do_newname);

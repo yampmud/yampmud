@@ -207,6 +207,15 @@ void gain_exp(CHAR_DATA * ch, int gain)
 {
   char buf[MAX_STRING_LENGTH];
 
+  /* Characters with unauthorized names can only reach MAX_LEVEL_NOAUTH */
+  if ((ch->level >= MAX_LEVEL_NOAUTH) && (ch->nameauthed == 0))
+  {
+    send_to_char
+      ("You may not gain any more experience until your name is authorized.\n\r",
+       ch);
+    return;
+  }
+
   /*    DESCRIPTOR_DATA*d; */
   if (IS_NPC(ch) || ch->level >= LEVEL_HERO)
     return;

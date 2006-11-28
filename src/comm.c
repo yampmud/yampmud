@@ -2798,6 +2798,8 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
 bool check_parse_name(char *name)
 {
   int e;
+  FILE *fp;
+  char badname[15];
 
   /* 
    * Reserved words.
@@ -2848,6 +2850,32 @@ bool check_parse_name(char *name)
 
   if (strlen(name) > 12)
     return false;
+
+  /* Check to see if the name is in our bad names text file */
+  if ((fp = file_open("../config/text/badname.txt", "r")))
+  {
+
+    while (1)
+    {
+      fgets(badname, 14, fp);
+
+      if (!feof(fp))
+      {
+        if (badname[strlen(badname) - 1] == '\n')
+          badname[strlen(badname) - 1] = '\0';  // strip off the newline, we dont want it.
+        if (!str_cmp(capitalize(name), badname))
+        {
+          file_close(fp);
+          return false;
+        }
+      }
+      else
+      {
+        file_close(fp);
+        break;
+      }
+    }
+  }
 
   /* 
    * Alphanumerics only.

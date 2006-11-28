@@ -370,6 +370,7 @@ const struct cmd_type cmd_table[] = {
   {"bet", do_bet, POS_SLEEPING, 0, 1, LOG_NORMAL, 1},
   {"accept", do_agree, POS_STANDING, 0, 1, LOG_NORMAL, 1},
   {"challenge", do_challenge, POS_STANDING, 0, 1, LOG_NORMAL, 1},
+  {"newname", do_newname, POS_DEAD, 0, 1, LOG_NORMAL, 1},
   /* 
    * Immortal commands.
    */
@@ -503,6 +504,8 @@ const struct cmd_type cmd_table[] = {
   {"aclear", do_aclear, POS_DEAD, IM, 1, LOG_NORMAL, 1},
   {"cscore", do_cscore, POS_DEAD, IM, 1, LOG_NORMAL, 1},
   {"disable", do_disable, POS_DEAD, L1, 1, LOG_ALWAYS, 1},
+  {"authname", do_authname, POS_DEAD, IM, 1, LOG_ALWAYS, 1},
+  {"badname", do_badname, POS_DEAD, IM, 1, LOG_ALWAYS, 1},
 
   /* 
    * OLC   

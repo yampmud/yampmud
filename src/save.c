@@ -429,6 +429,9 @@ void fwrite_char(CHAR_DATA * ch, FILE * fp)
             skill_table[paf->type].name, paf->where, paf->level,
             paf->duration, paf->modifier, paf->location, paf->bitvector);
   }
+  fprintf(fp, "Auth %d\n", ch->nameauthed);
+  if (ch->namedenied > 0)
+    fprintf(fp, "Deny %d\n", ch->namedenied);
 
 
   fwrite_rle(ch->pcdata->explored, fp);
@@ -818,11 +821,15 @@ void fread_char(CHAR_DATA * ch, FILE * fp)
   char buf[MAX_STRING_LENGTH];
   char *word;
   bool fMatch;
+  bool fauth = false;
+  bool fdeny = false;
+
   int count = 0;
   int dcount = 0;
   int fcount = 0;
   int lastlogoff = current_time;
   int percent;
+
 
   sprintf(buf, "Loading %s.", ch->name);
   if (str_cmp(ch->name, ""))
@@ -851,6 +858,13 @@ void fread_char(CHAR_DATA * ch, FILE * fp)
         KEY("Alig", ch->alignment, fread_number(fp));
         KEY("Awin", ch->pcdata->awins, fread_number(fp));
         KEY("Alos", ch->pcdata->alosses, fread_number(fp));
+        if (!str_cmp(word, "Auth"))
+        {
+          ch->nameauthed = fread_number(fp);
+          fauth = true;
+          fMatch = true;
+          break;
+        }
         if (!str_cmp(word, "Alia"))
         {
           if (count >= MAX_ALIAS)
@@ -1059,6 +1073,13 @@ void fread_char(CHAR_DATA * ch, FILE * fp)
       case 'D':
         KEY("Damroll", ch->damroll, fread_number(fp));
         KEY("Dam", ch->damroll, fread_number(fp));
+        if (!str_cmp(word, "Deny"))
+        {
+          ch->namedenied = fread_number(fp);
+          fdeny = true;
+          fMatch = true;
+          break;
+        }
         //KEYS ( "Description", ch->description, fread_string ( fp ) );
         //KEYS ( "Desc", ch->description, fread_string ( fp ) );
         if (!str_cmp(word, "Dupes"))
@@ -1079,6 +1100,13 @@ void fread_char(CHAR_DATA * ch, FILE * fp)
       case 'E':
         if (!str_cmp(word, "End"))
         {
+
+          if (ch->level > MAX_LEVEL_NOAUTH && !ch->nameauthed)
+          {
+            ch->nameauthed = 1;
+            ch->namedenied = 0;
+          }
+
           /* adjust hp mana move up -- here for speed's sake */
           percent = (current_time - lastlogoff) * 25 / (2 * 60 * 60);
 

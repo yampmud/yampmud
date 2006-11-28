@@ -174,7 +174,7 @@ args((int sn, int level, CHAR_DATA * ch, void *vo, int target));
 #define MAX_QUOTES                  4
 #define	MAX_GQUEST_MOB             25
 #define MAX_SUMMON                 32
-
+#define MAX_LEVEL_NOAUTH	   20 /* The Max level someone can get until their name is authed. */
 #define LEVEL_HERO		   (MAX_LEVEL - 10)
 #define LEVEL_ANCIENT              (MAX_LEVEL - 9)
 #define LEVEL_IMMORTAL		   (MAX_LEVEL - 8)
@@ -1868,6 +1868,9 @@ struct char_data
   CHAR_DATA *challenger;        /* person who challenged you */
   CHAR_DATA *challenged;        /* person who you challenged */
   CHAR_DATA *gladiator;         /* ARENA player wagered on */
+
+  int nameauthed;               /* Has the name be authorized */
+  int namedenied;               /* Has the name been denied */
 };
 
 /*

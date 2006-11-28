@@ -2410,7 +2410,8 @@ CH_CMD(do_score_loki)
 
   sprintf(buf, "{GT{gime {GB{gonus{G: {Y%.2f{x\n\r", (ch->btime / 40 + 1));
   send_to_char(buf, ch);
-
+  if (ch->nameauthed == 0)
+    send_to_char("{RYour name has not yet been approved.\n\r", ch);
 }
 
 /* This is NEW score listing for The Mage's Lair */

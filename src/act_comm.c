@@ -5605,3 +5605,73 @@ CH_CMD(do_backup)
   //    send_to_char ( "{YYour P-File has been backed up.{x\n\r", ch );
   return;
 }
+
+CH_CMD(do_newname)
+{
+  FILE *fp;
+  char arg1[MSL], arg2[MSL];
+  char strsave[MAX_INPUT_LENGTH];
+  char buf[MSL];
+  argument = one_argument(argument, arg1);
+  argument = one_argument(argument, arg2);
+
+  if (ch->nameauthed)
+  {
+    send_to_char("Your name has been authorized.  You may not change it.\n\r",
+                 ch);
+    return;
+  }
+
+  if (ch->namedenied == 0)
+  {
+    send_to_char("You may not change your name unless it's been denied.\n\r",
+                 ch);
+    return;
+  }
+
+  if ((arg1[0] == '\0') || (arg2[0] == '\0'))
+  {
+    send_to_char("Usage:  newname <yournewname> <yournewname>\n\r", ch);
+    return;
+  }
+
+  if (strcmp(arg1, arg2))
+  {
+    send_to_char("You must enter the new name twice for verification.\n\r",
+                 ch);
+    return;
+  }
+
+  if (!check_parse_name(arg1))
+  {
+    send_to_char("That name is unavailable.  Please try another.", ch);
+    return;
+  }
+
+  sprintf(buf, "../player/%s", capitalize(arg1));
+
+  if (!((fp = file_open(buf, "r")) == NULL))
+  {
+    file_close(fp);
+    send_to_char
+      ("A character with that name already exists.  Please try another.", ch);
+    return;
+  }
+
+  sprintf(strsave, "%s%s", PLAYER_DIR, capitalize(ch->name));
+  sprintf(log_buf, "(NEWNAME) %s has chosen a new name for approval: %s\n\r",
+          ch->name, capitalize(arg1));
+  wiznet(log_buf, NULL, NULL, WIZ_NEWBIE, 0, 0);
+  strcpy(ch->name, capitalize(arg1));
+  unlink(strsave);
+  ch->namedenied = 0;
+  save_char_obj(ch);
+
+  sprintf(buf, "Your name has been changed to %s..\n\r", ch->name);
+  send_to_char(buf, ch);
+  send_to_char
+    ("Your new name will be reviewed by the administration as soon as possible.\n\r",
+     ch);
+
+  return;
+}

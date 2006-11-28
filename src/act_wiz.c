@@ -8240,3 +8240,128 @@ void do_bprompt(CHAR_DATA * ch, char *argument)
   send_to_char(buf, ch);
   return;
 }
+
+CH_CMD(do_authname)
+{
+  char arg1[MSL];
+  char buf[MSL];
+  CHAR_DATA *victim;
+
+  if (!IS_IMMORTAL(ch))
+    return;
+
+  one_argument(argument, arg1);
+
+  if (arg1[0] == '\0')
+  {
+    send_to_char("Characters waiting on authorization:\n\r", ch);
+
+    for (victim = char_list; victim != NULL; victim = victim->next)
+    {
+      if (!victim->nameauthed)
+      {
+        if (!IS_NPC(victim))
+        {
+          sprintf(buf, "%s  level %d\n\r", victim->name, victim->level);
+          send_to_char(buf, ch);
+        }
+      }
+    }
+
+    return;
+  }
+
+  if ((victim = get_char_world(ch, arg1)) == NULL)
+  {
+    send_to_char("Noone by that name is online.", ch);
+    return;
+  }
+  else if (victim->nameauthed)
+  {
+    send_to_char("That name is already authorized.\n\r", ch);
+    return;
+  }
+  else
+  {
+    sprintf(log_buf, "(AUTHNAME) %s has authorized: %s\n\r", ch->name,
+            victim->name);
+    wiznet(log_buf, NULL, NULL, WIZ_NEWBIE, 0, 0);
+    sprintf(buf, "Authorizing: %s\n\r", victim->name);
+    send_to_char(buf, ch);
+    sprintf(log_buf, "(Authname): %s authorized %s", ch->name, victim->name);
+    log_string(log_buf);
+    victim->nameauthed = 1;
+    victim->namedenied = 0;
+    sprintf(buf,
+            "Your name has been approved.  You may now advance passed level %d.\n\r",
+            MAX_LEVEL_NOAUTH);
+    send_to_char(buf, victim);
+    save_char_obj(victim);
+
+  }
+}
+
+CH_CMD(do_badname)
+{
+  char arg[MSL], buf[MSL];
+  CHAR_DATA *victim;
+  FILE *fp;
+
+  if (!IS_IMMORTAL(ch))
+    return;
+
+  one_argument(argument, arg);
+
+  if (arg[0] == '\0')
+  {
+    send_to_char("Usage: denyname <character name>\n\r", ch);
+    return;
+  }
+
+  if ((victim = get_char_mortal(ch, arg)) == NULL)
+  {
+    send_to_char("Noone with that name is online.\n\r", ch);
+    return;
+  }
+
+  if (victim->nameauthed)
+  {
+    send_to_char("That name has already been authorized.\n\r", ch);
+    return;
+  }
+
+  if (victim->namedenied)
+  {
+    send_to_char("That character's name is already denied,", ch);
+    return;
+  }
+
+  sprintf(log_buf, "(AUTHNAME) %s has denied the name:  %s\n\r", ch->name,
+          victim->name);
+  wiznet(log_buf, NULL, NULL, WIZ_NEWBIE, 0, 0);
+  sprintf(buf, "Denying name: %s\n\r", victim->name);
+  send_to_char(buf, ch);
+  sprintf(log_buf, "(authname): %s denied the name %s\n", ch->name,
+          victim->name);
+  log_string(log_buf);
+
+  if ((fp = file_open("../config/text/badname.txt", "a+")) == NULL)
+  {
+    bug("Unable to open badname.txt\n", 0);
+  }
+  else
+  {
+    sprintf(buf, "%s\n", victim->name);
+    fprintf(fp, buf);
+    file_close(fp);
+  }
+
+  victim->namedenied = 1;
+
+  send_to_char
+    ("Your name has been denied.  You can choose another name with the newname command.\n\r",
+     victim);
+  save_char_obj(victim);
+
+  return;
+}
