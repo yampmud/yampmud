@@ -799,12 +799,6 @@ CH_CMD(do_put)
       return;
     }
 
-    if (IS_OBJ_STAT(obj, ITEM_QUEST))
-    {
-      send_to_char("You can't put a quest item in something.\n\r", ch);
-      return;
-    }
-
     if (WEIGHT_MULT(obj) != 100)
     {
       send_to_char("You have a feeling that would be a bad idea.\n\r", ch);

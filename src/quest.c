@@ -584,7 +584,7 @@ OBJ_DATA *has_questobj(CHAR_DATA * ch)
 {
   OBJ_DATA *obj;
   OBJ_INDEX_DATA *pObj;
-
+  OBJ_DATA *obj2;
   if (!ch || IS_NPC(ch) || ch->pcdata->questobj <= 0)
     return NULL;
 
@@ -594,6 +594,12 @@ OBJ_DATA *has_questobj(CHAR_DATA * ch)
   for (obj = ch->carrying; obj != NULL; obj = obj->next_content)
     if (obj != NULL && obj->pIndexData == pObj)
       return obj;
+  /* its not in their regular inventory, check their bags */
+  for (obj = ch->carrying; obj != NULL; obj = obj->next_content)
+    if (obj != NULL && (obj->contains != NULL))
+      for (obj2 = obj->contains; obj2 != NULL; obj2 = obj2->next)
+        if (obj2 != NULL && obj2->pIndexData == pObj)
+          return obj2;
 
   return NULL;
 }
