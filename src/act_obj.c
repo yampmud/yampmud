@@ -1490,12 +1490,6 @@ CH_CMD(do_give)
     return;
   }
 
-  if (IS_OBJ_STAT(obj, ITEM_QUEST) && ch->level <= IMMORTAL)
-  {
-    send_to_char("You can't give quest items.\n\r", ch);
-    return;
-  }
-
   if ((obj->pIndexData->vnum == OBJ_VNUM_VOODOO) && (ch->level <= HERO))
   {
     send_to_char("You can't give voodoo dolls.\n\r", ch);
