@@ -1,6 +1,7 @@
 CC      = gcc
 PROF    = -ggdb3
 WARN    = -Wall -pipe 
+#FLAGS   = -DMUD_SIG_HANDLER
 C_FLAGS =  $(WARN) $(PROF) $(FLAGS)
 LIBS    = -lcrypt
 L_FLAGS =  $(PROF) $(LIBS)

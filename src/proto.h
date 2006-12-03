@@ -644,7 +644,9 @@ void fread_char args((CHAR_DATA * ch, FILE * fp));
 void fread_pet args((CHAR_DATA * ch, FILE * fp));
 void fread_obj args((CHAR_DATA * ch, FILE * fp));
 CHAR_DATA *find_forger args((CHAR_DATA * ch));
+#if defined(MUD_SIG_HANDLER)
 void halt_mud args((int sig));
+#endif
 void _quit args((int iError, char *file, int line));
 
 /* functions added for item banking */

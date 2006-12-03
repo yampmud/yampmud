@@ -77,7 +77,9 @@ extern int malloc_debug args((int));
 extern int malloc_verify args((void));
 #endif
 
+#if defined(MUD_SIG_HANDLER)
 #include <signal.h>
+#endif
 
 /*
  * Socket and TCP/IP stuff.
@@ -109,6 +111,8 @@ bool write_to_descriptor args((int desc, char *txt, int length));
 
 /* Needs to be global because of do_copyover */
 int port, control;
+
+#if defined(MUD_SIG_HANDLER)
 volatile sig_atomic_t crashed = 0;
 
 static void sigalrm(sig)
@@ -128,11 +132,14 @@ int sig;
   }
   alarm(15);
 }
+#endif
 
 int main(int argc, char **argv)
 {
   struct timeval now_time;
   bool fCopyOver = false;
+
+#if defined(MUD_SIG_HANDLER)
   struct sigaction halt_action, ignore_action, alarm_action;
 
   halt_action.sa_handler = halt_mud;
@@ -159,6 +166,7 @@ int main(int argc, char **argv)
   sigaction(SIGALRM, &alarm_action, NULL);  /* endless loop check */
 
   alarm(300);
+#endif
 
   /* 
    * Memory debugging if needed.
@@ -306,7 +314,10 @@ void game_loop_unix(int control)
   static struct timeval null_time;
   struct timeval last_time;
 
+#if defined(MUD_SIG_HANDLER)
   signal(SIGPIPE, SIG_IGN);
+#endif
+
   gettimeofday(&last_time, NULL);
   current_time = (time_t) last_time.tv_sec;
 
@@ -4026,6 +4037,7 @@ void copyover_recover()
   file_close(fp);
 }
 
+#if defined(MUD_SIG_HANDLER)
 #define	CORE_EXAMINE_SCRIPT	"../area/gdbscript"
 
 void halt_mud(int sig)
@@ -4178,3 +4190,4 @@ void halt_mud(int sig)
     raise(sig);
   }
 }
+#endif
