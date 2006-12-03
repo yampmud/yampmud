@@ -5532,7 +5532,7 @@ OEDIT(oedit_delete)
     }
   }
 
-  sprintf(buf, "Removed object vnum ^C%d^x and ^C%d^x resets.\n\r", index,
+  sprintf(buf, "Removed object vnum {C%d{x and {C%d{x resets.\n\r", index,
           count);
   send_to_char(buf, ch);
   return true;
@@ -5794,7 +5794,7 @@ MEDIT(medit_delete)
   /*     if( ch->mount == NULL )
      medit_delete_kludge = ch; */
 
-  sprintf(buf, "Removed mobile vnum ^C%d^x and ^C%d^x resets.\n\r", index,
+  sprintf(buf, "Removed mobile vnum {C%d{x and {C%d{x resets.\n\r", index,
           count);
   send_to_char(buf, ch);
   return true;
