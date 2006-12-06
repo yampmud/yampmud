@@ -3,7 +3,7 @@ PROF    = -ggdb3
 WARN    = -Wall -pipe 
 #FLAGS   = -DMUD_SIG_HANDLER
 C_FLAGS =  $(WARN) $(PROF) $(FLAGS)
-LIBS    = -lcrypt
+LIBS    = -lcrypt -lsqlite3
 L_FLAGS =  $(PROF) $(LIBS)
 
 C_FILES := $(wildcard *.c)

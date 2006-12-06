@@ -53,6 +53,8 @@
 
 #include "olc.h"
 
+#include "sql_io.h"
+
 extern int _filbuf args((FILE *));
 
 /*
@@ -439,6 +441,7 @@ void new_load_area(FILE * fp)
           pArea->next = NULL;
           current_area = pArea;
           top_area++;
+          store_area(pArea);
           return;
         }
         break;

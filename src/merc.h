@@ -2112,6 +2112,7 @@ struct area_data
   int security;                 /* OLC *//* Value 1-9 */
   AREA_DATA *next_sort;
   char *repop_msg;
+  long long int id;             /* SQL row id */
 };
 
 /*
