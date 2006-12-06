@@ -44,6 +44,7 @@ AREA_DATA *fetch_area(long long id)
     sprintf(log_buf, "SQL error: %s", sqlite3_errmsg(db));
     log_string(log_buf);
     sqlite3_finalize(stmt);
+    sqlite3_free(sql);
     sqlite3_close(db);
     return NULL;
   }
@@ -73,10 +74,15 @@ AREA_DATA *fetch_area(long long id)
     pArea->security = sqlite3_column_int(stmt, 13);
 
     sqlite3_finalize(stmt);
+    sqlite3_free(sql);
     sqlite3_close(db);
     return pArea;
   }
 
+
+  sqlite3_finalize(stmt);
+  sqlite3_free(sql);
+  sqlite3_close(db);
   return NULL;
 }
 
