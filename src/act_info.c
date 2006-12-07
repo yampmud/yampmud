@@ -3241,52 +3241,6 @@ CH_CMD(do_weather)
   return;
 }
 
-/*
-   void do_help( CHAR_DATA *ch, char *argument )
-   {
-   HELP_DATA *pHelp;
-   char argall[MAX_INPUT_LENGTH],argone[MAX_INPUT_LENGTH];
-   char nohelp[MSL];
-   strcpy(nohelp, argument); 
-
-   if ( argument[0] == '\0' )
-   argument = "summary";
-
-   argall[0] = '\0';
-   while (argument[0] != '\0' )
-   {
-   argument = one_argument(argument,argone);
-   if (argall[0] != '\0')
-   strcat(argall," ");
-   strcat(argall,argone);
-   }
-
-   for ( pHelp = help_first; pHelp != NULL; pHelp = pHelp->next )
-   {
-   if ( pHelp->level > get_trust( ch ) )
-   continue;
-
-   if ( is_name( argall, pHelp->keyword ) )
-   {
-   if ( pHelp->level >= 0 && str_cmp( argall, "imotd" ) )
-   {
-   send_to_char( pHelp->keyword, ch );
-   send_to_char( "\n\r", ch );
-   }
-
-   if ( pHelp->text[0] == '.' )
-   page_to_char( pHelp->text+1 ,ch );
-   else
-   page_to_char( pHelp->text  , ch );
-   return;
-   }
-   }
-
-   send_to_char( "No help on that word.\n\rMissing help file logged.\n\r", ch );
-   append_file( ch, HELP_FILE, nohelp );
-   return;
-   }
- */
 CH_CMD(do_help)
 {
   HELP_DATA *pHelp;
