@@ -67,6 +67,7 @@
 #include "merc.h"
 #include "recycle.h"
 #include "tables.h"
+#include "sql_io.h"
 
 /*
  * Malloc debugging stuff.
@@ -127,6 +128,7 @@ int sig;
     fprintf(stderr, "Looping - Last Command: %s\r", last_command);
     // this requires you to add an "if (ch)" before the send_to_char
     // statements in do_copyover.
+    close_sqlite3();
     do_copyover(NULL, "");
     exit(1);
   }
@@ -225,6 +227,7 @@ int main(int argc, char **argv)
   if (fCopyOver == false)
     control = init_socket(port);
 
+  init_sqlite3();
   boot_db();
   arena = FIGHT_OPEN;
   sprintf(madmin_reroll, "someone");
@@ -241,6 +244,7 @@ int main(int argc, char **argv)
   }
 
   game_loop_unix(control);
+  close_sqlite3();
   close(control);
 
   /* 
@@ -3896,6 +3900,8 @@ CH_CMD(do_copyover)
   /* Consider changing all saved areas here, if you use OLC */
 
   do_asave(NULL, "changed");    /* - autosave changed areas */
+
+  close_sqlite3();
 
   sprintf(buf, "\r\rThe gods reshape the world..\r\n");
   /* For each playing descriptor, save its state */

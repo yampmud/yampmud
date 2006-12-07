@@ -13,25 +13,36 @@
 #define DATA_DIR "../data/"
 #define WORLD_DB_FILE DATA_DIR "world.db"
 
+sqlite3 *world_db = NULL;
+
+void init_sqlite3(void)
+{
+  int rc;
+
+  rc = sqlite3_open(WORLD_DB_FILE, &world_db);
+
+  if (rc)
+  {
+    sprintf(log_buf, "Can't open database: %s", sqlite3_errmsg(world_db));
+    log_string(log_buf);
+    sqlite3_close(world_db);
+    quit(1);
+  }
+}
+
+void close_sqlite3(void)
+{
+  sqlite3_close(world_db);
+}
+
 AREA_DATA *fetch_area(long long id)
 {
   AREA_DATA *pArea;
 
-  sqlite3 *db;
   sqlite3_stmt *stmt;
   int rc;
   char *sql;
   const char *tail;
-
-  rc = sqlite3_open(WORLD_DB_FILE, &db);
-
-  if (rc)
-  {
-    sprintf(log_buf, "Can't open database: %s", sqlite3_errmsg(db));
-    log_string(log_buf);
-    sqlite3_close(db);
-    return NULL;
-  }
 
   pArea = new_area();
 
@@ -39,15 +50,14 @@ AREA_DATA *fetch_area(long long id)
     sqlite3_mprintf
     ("SELECT age, area_flags, builders, credits, empty, file_name, high_range, low_range, max_vnum, min_vnum, name, nplayer, repop_message, security FROM areas WHERE id=%d",
      id);
-  rc = sqlite3_prepare(db, sql, strlen(sql), &stmt, &tail);
+  rc = sqlite3_prepare(world_db, sql, strlen(sql), &stmt, &tail);
 
   if (rc != SQLITE_OK)
   {
-    sprintf(log_buf, "SQL error: %s", sqlite3_errmsg(db));
+    sprintf(log_buf, "SQL error: %s", sqlite3_errmsg(world_db));
     log_string(log_buf);
     sqlite3_finalize(stmt);
     sqlite3_free(sql);
-    sqlite3_close(db);
     return NULL;
   }
 
@@ -78,33 +88,20 @@ AREA_DATA *fetch_area(long long id)
 
     sqlite3_finalize(stmt);
     sqlite3_free(sql);
-    sqlite3_close(db);
     return pArea;
   }
 
 
   sqlite3_finalize(stmt);
   sqlite3_free(sql);
-  sqlite3_close(db);
   return NULL;
 }
 
 int store_area(AREA_DATA * pArea)
 {
-  sqlite3 *db;
   char *sql;
   char *zErr;
   int rc;
-
-  rc = sqlite3_open(WORLD_DB_FILE, &db);
-
-  if (rc)
-  {
-    sprintf(log_buf, "Can't open database: %s", sqlite3_errmsg(db));
-    log_string(log_buf);
-    sqlite3_close(db);
-    return rc;
-  }
 
   sql =
     sqlite3_mprintf
@@ -113,7 +110,7 @@ int store_area(AREA_DATA * pArea)
      pArea->empty, pArea->file_name, pArea->high_range, pArea->low_range,
      pArea->max_vnum, pArea->min_vnum, pArea->name, pArea->nplayer,
      pArea->repop_msg, pArea->security);
-  rc = sqlite3_exec(db, sql, NULL, NULL, &zErr);
+  rc = sqlite3_exec(world_db, sql, NULL, NULL, &zErr);
 
   if (rc != SQLITE_OK)
     if (zErr != NULL)
@@ -124,10 +121,9 @@ int store_area(AREA_DATA * pArea)
     }
 
   if (!pArea->id)
-    pArea->id = sqlite3_last_insert_rowid(db);
+    pArea->id = sqlite3_last_insert_rowid(world_db);
 
   sqlite3_free(sql);
-  sqlite3_close(db);
   return 0;
 }
 
@@ -145,36 +141,24 @@ HELP_DATA *fetch_help(long long id)
 {
   HELP_DATA *pHelp;
 
-  sqlite3 *db;
   sqlite3_stmt *stmt;
   int rc;
   char *sql;
   const char *tail;
-
-  rc = sqlite3_open(WORLD_DB_FILE, &db);
-
-  if (rc)
-  {
-    sprintf(log_buf, "Can't open database: %s", sqlite3_errmsg(db));
-    log_string(log_buf);
-    sqlite3_close(db);
-    return NULL;
-  }
 
   pHelp = new_help();
 
   sql =
     sqlite3_mprintf("SELECT level, keyword, htext FROM helps WHERE id=%d",
                     id);
-  rc = sqlite3_prepare(db, sql, strlen(sql), &stmt, &tail);
+  rc = sqlite3_prepare(world_db, sql, strlen(sql), &stmt, &tail);
 
   if (rc != SQLITE_OK)
   {
-    sprintf(log_buf, "SQL error: %s", sqlite3_errmsg(db));
+    sprintf(log_buf, "SQL error: %s", sqlite3_errmsg(world_db));
     log_string(log_buf);
     sqlite3_finalize(stmt);
     sqlite3_free(sql);
-    sqlite3_close(db);
     return NULL;
   }
 
@@ -191,39 +175,26 @@ HELP_DATA *fetch_help(long long id)
 
     sqlite3_finalize(stmt);
     sqlite3_free(sql);
-    sqlite3_close(db);
     return pHelp;
   }
 
 
   sqlite3_finalize(stmt);
   sqlite3_free(sql);
-  sqlite3_close(db);
   return NULL;
 }
 
 int store_help(HELP_DATA * pHelp)
 {
-  sqlite3 *db;
   char *sql;
   char *zErr;
   int rc;
-
-  rc = sqlite3_open(WORLD_DB_FILE, &db);
-
-  if (rc)
-  {
-    sprintf(log_buf, "Can't open database: %s", sqlite3_errmsg(db));
-    log_string(log_buf);
-    sqlite3_close(db);
-    return rc;
-  }
 
   sql =
     sqlite3_mprintf
     ("INSERT OR REPLACE INTO helps (level, keyword, htext) VALUES (%d, %Q, %Q)",
      pHelp->level, pHelp->keyword, pHelp->text);
-  rc = sqlite3_exec(db, sql, NULL, NULL, &zErr);
+  rc = sqlite3_exec(world_db, sql, NULL, NULL, &zErr);
 
   if (rc != SQLITE_OK)
     if (zErr != NULL)
@@ -234,9 +205,8 @@ int store_help(HELP_DATA * pHelp)
     }
 
   if (!pHelp->id)
-    pHelp->id = sqlite3_last_insert_rowid(db);
+    pHelp->id = sqlite3_last_insert_rowid(world_db);
 
   sqlite3_free(sql);
-  sqlite3_close(db);
   return 0;
 }

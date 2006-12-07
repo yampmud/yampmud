@@ -1,5 +1,8 @@
 /* SQLite3 Data Backend Storage and Retrieval */
 
+void init_sqlite3(void);
+void close_sqlite3(void);
+
 #define DATA_DIR "../data/"
 #define WORLD_DB_FILE DATA_DIR "world.db"
 

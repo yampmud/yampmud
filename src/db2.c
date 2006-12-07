@@ -44,6 +44,7 @@
 #include "db.h"
 #include "lookup.h"
 #include "tables.h"
+#include "sql_io.h"
 
 /* values for db2.c */
 /*
@@ -1039,6 +1040,8 @@ bool file_close(FILE * fp)
 
 void _quit(int iError, char *file, int line)
 {
+
+  close_sqlite3();
 
   if (stderr)
   {
