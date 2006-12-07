@@ -3112,54 +3112,6 @@ void _free_string(char *pstr, char *file, int line)
   return;
 }
 
-/*
-   void do_areas( CHAR_DATA *ch, char *argument )
-   {
-   char buf[MAX_STRING_LENGTH];
-   BUFFER *output;
-   AREA_DATA *pArea1;
-   AREA_DATA *pArea2;
-   int iArea;
-   int iAreaHalf;
-   int AreaStrLen;
-   int AreaCnt;
-
-   if (argument[0] != '\0')
-   {
-   send_to_char("No argument is used with this command.\n\r",ch);
-   return;
-   }
-   output = new_buf();
-   iAreaHalf = (top_area + 1) / 2;
-   pArea1    = area_first;
-   pArea2    = area_first;
-   for ( iArea = 0; iArea < iAreaHalf; iArea++ )
-   pArea2 = pArea2->next;
-
-   for ( iArea = 0; iArea < iAreaHalf; iArea++ )
-   {
-   sprintf( buf, "%-39s%-39s\n\r",
-   pArea1->credits, (pArea2 != NULL) ? pArea2->credits : "" ); 
-
-   AreaStrLen = strlen( buf );
-   for( AreaCnt = 0; AreaCnt < AreaStrLen; AreaCnt++)
-   {
-   if (buf[AreaCnt] == 123)
-   buf[AreaCnt] = 91;
-   if (buf[AreaCnt] == 125)
-   buf[AreaCnt] = 93;
-   }
-   add_buf(output,buf);
-   pArea1 = pArea1->next;
-   if ( pArea2 != NULL )
-   pArea2 = pArea2->next;
-   }
-   page_to_char( buf_string(output), ch );
-   free_buf(output);
-   return;
-   }
- */
-
 long convert_level(char *arg)
 /* Code by Nebseni of Clandestine MUD */
 {
@@ -3252,63 +3204,6 @@ void sort_areas_by_level(void)
       break;
   }
 }
-
-/*
-   void do_areas( CHAR_DATA *ch, char *argument )
-   {
-   char buf[MAX_STRING_LENGTH];
-   AREA_DATA *pArea;
-   char        arg1 [ MAX_INPUT_LENGTH ];
-   char        arg2 [ MAX_INPUT_LENGTH ];
-   int lo_level, hi_level;
-   bool found = false;
-   bool col = 0;
-
-   argument = one_argument( argument, arg1 );
-   argument = one_argument( argument, arg2 );
-
-   lo_level = convert_level(arg1) ?
-   URANGE(1,convert_level(arg1),MAX_LEVEL) : 0;
-   hi_level = convert_level(arg2) ?
-   URANGE(1,convert_level(arg2),MAX_LEVEL) : 
-   convert_level(arg1) ? lo_level :
-   IS_IMMORTAL(ch) ? MAX_LEVEL : LEVEL_IMMORTAL - 1;
-
-
-   for ( pArea = area_first_sorted ; ; )
-   {
-   if (pArea == NULL)
-   break;
-   if ( (get_area_level(pArea) / (MAX_LEVEL+1) <= hi_level) &&
-   (get_area_level(pArea) % (MAX_LEVEL+1) >= lo_level) )
-   {
-   found = true;
-   sprintf( buf, "%-39s",pArea->credits);
-   send_to_char( buf, ch );
-   if (col)
-   {
-   send_to_char( "\n\r", ch );
-   }
-   col = !col;
-   }
-   if (pArea != NULL)
-   pArea = pArea->next_sort;
-   else
-   break;
-   }
-
-   if (!found)
-   {
-   send_to_char( "No areas meeting those criteria.\n\r", ch );
-   return;
-   }
-   if (col)
-   {
-   send_to_char( "\n\r", ch );
-   }
-   return;
-   }
- */
 
 CH_CMD(do_areas)
 {
