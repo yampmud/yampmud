@@ -5,5 +5,9 @@
 
 AREA_DATA *fetch_area(long long id);
 int store_area(AREA_DATA * pArea);
+
 RESET_DATA *fetch_reset(long long id);
 void store_reset(RESET_DATA * pReset);
+
+HELP_DATA *fetch_help(long long id);
+int store_help(HELP_DATA * pHelp);

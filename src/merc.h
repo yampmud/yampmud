@@ -428,6 +428,7 @@ struct help_data
   sh_int level;
   char *keyword;
   char *text;
+  long long int id;             /* SQL row id */
 };
 
 /*

@@ -1,2 +1,3 @@
 CREATE TABLE areas (age NUMERIC, area_flags TEXT, builders TEXT, credits TEXT, empty NUMERIC, file_name TEXT UNIQUE, high_range NUMERIC, id INTEGER PRIMARY KEY, low_range NUMERIC, max_vnum NUMERIC, min_vnum NUMERIC, name TEXT, nplayer NUMERIC, repop_message TEXT, security NUMERIC);
+CREATE TABLE helps (id INTEGER PRIMARY KEY, level NUMERIC, keyword TEXT UNIQUE, htext TEXT);
 CREATE TABLE resets (arg1 NUMERIC, arg2 NUMERIC, arg3 NUMERIC, arg4 NUMERIC, command TEXT, room_id NUMERIC);

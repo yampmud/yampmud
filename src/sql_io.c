@@ -8,6 +8,7 @@
 #include <sqlite3.h>
 
 #include "merc.h"
+#include "recycle.h"
 
 #define DATA_DIR "../data/"
 #define WORLD_DB_FILE DATA_DIR "world.db"
@@ -55,7 +56,7 @@ AREA_DATA *fetch_area(long long id)
   if (rc == SQLITE_ROW)
   {
     pArea->age = sqlite3_column_int(stmt, 0);
-    pArea->area_flags = atol((char *) sqlite3_column_text(stmt,1));
+    pArea->area_flags = atol((char *) sqlite3_column_text(stmt, 1));
     free_string(pArea->builders);
     pArea->builders = str_dup((char *) sqlite3_column_text(stmt, 2));
     free_string(pArea->credits);
@@ -138,4 +139,104 @@ RESET_DATA *fetch_reset(long long id)
 void store_reset(RESET_DATA * pReset)
 {
   return;
+}
+
+HELP_DATA *fetch_help(long long id)
+{
+  HELP_DATA *pHelp;
+
+  sqlite3 *db;
+  sqlite3_stmt *stmt;
+  int rc;
+  char *sql;
+  const char *tail;
+
+  rc = sqlite3_open(WORLD_DB_FILE, &db);
+
+  if (rc)
+  {
+    sprintf(log_buf, "Can't open database: %s", sqlite3_errmsg(db));
+    log_string(log_buf);
+    sqlite3_close(db);
+    return NULL;
+  }
+
+  pHelp = new_help();
+
+  sql =
+    sqlite3_mprintf("SELECT level, keyword, htext FROM helps WHERE id=%d",
+                    id);
+  rc = sqlite3_prepare(db, sql, strlen(sql), &stmt, &tail);
+
+  if (rc != SQLITE_OK)
+  {
+    sprintf(log_buf, "SQL error: %s", sqlite3_errmsg(db));
+    log_string(log_buf);
+    sqlite3_finalize(stmt);
+    sqlite3_free(sql);
+    sqlite3_close(db);
+    return NULL;
+  }
+
+  rc = sqlite3_step(stmt);
+
+  if (rc == SQLITE_ROW)
+  {
+    pHelp->level = sqlite3_column_int(stmt, 0);
+    free_string(pHelp->keyword);
+    pHelp->keyword = str_dup((char *) sqlite3_column_text(stmt, 1));
+    free_string(pHelp->text);
+    pHelp->text = str_dup((char *) sqlite3_column_text(stmt, 2));
+    pHelp->id = id;
+
+    sqlite3_finalize(stmt);
+    sqlite3_free(sql);
+    sqlite3_close(db);
+    return pHelp;
+  }
+
+
+  sqlite3_finalize(stmt);
+  sqlite3_free(sql);
+  sqlite3_close(db);
+  return NULL;
+}
+
+int store_help(HELP_DATA * pHelp)
+{
+  sqlite3 *db;
+  char *sql;
+  char *zErr;
+  int rc;
+
+  rc = sqlite3_open(WORLD_DB_FILE, &db);
+
+  if (rc)
+  {
+    sprintf(log_buf, "Can't open database: %s", sqlite3_errmsg(db));
+    log_string(log_buf);
+    sqlite3_close(db);
+    return rc;
+  }
+
+  sql =
+    sqlite3_mprintf
+    ("INSERT OR REPLACE INTO helps (level, keyword, htext) VALUES (%d, %Q, %Q)",
+     pHelp->level, pHelp->keyword, pHelp->text);
+  rc = sqlite3_exec(db, sql, NULL, NULL, &zErr);
+
+  if (rc != SQLITE_OK)
+    if (zErr != NULL)
+    {
+      sprintf(log_buf, "SQL error: %s\n", zErr);
+      log_string(log_buf);
+      sqlite3_free(zErr);
+    }
+
+  if (!pHelp->id)
+    pHelp->id = sqlite3_last_insert_rowid(db);
+
+  sqlite3_free(sql);
+  sqlite3_close(db);
+  return 0;
 }

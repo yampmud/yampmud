@@ -520,6 +520,8 @@ void load_helps(FILE * fp, char *fname)
     help_last = pHelp;
     pHelp->next = NULL;
 
+    store_help(pHelp);
+
     top_help++;
   }
   return;
