@@ -73,6 +73,7 @@ AREA_DATA *fetch_area(long long id)
     free_string(pArea->repop_msg);
     pArea->repop_msg = str_dup((char *) sqlite3_column_text(stmt, 12));
     pArea->security = sqlite3_column_int(stmt, 13);
+    pArea->id = id;
 
     sqlite3_finalize(stmt);
     sqlite3_free(sql);
