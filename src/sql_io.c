@@ -1,6 +1,7 @@
 /* SQLite3 Data Backend Storage and Retrieval */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <time.h>
 
@@ -54,7 +55,7 @@ AREA_DATA *fetch_area(long long id)
   if (rc == SQLITE_ROW)
   {
     pArea->age = sqlite3_column_int(stmt, 0);
-    pArea->area_flags = 1;
+    pArea->area_flags = atol((char *) sqlite3_column_text(stmt,1));
     free_string(pArea->builders);
     pArea->builders = str_dup((char *) sqlite3_column_text(stmt, 2));
     free_string(pArea->credits);
