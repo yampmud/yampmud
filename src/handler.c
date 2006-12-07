@@ -1066,22 +1066,6 @@ int can_carry_w(CHAR_DATA * ch)
 /*
  * See if a string is one of the names of an object.
  */
-/*
-   bool is_name( const char *str, char *namelist )
-   {
-   char name[MAX_INPUT_LENGTH];
-
-   for ( ; ; )
-   {
-   namelist = one_argument( namelist, name );
-   if ( name[0] == '\0' )
-   return false;
-   if ( !str_cmp( str, name ) )
-   return true;
-   }
-   }
- */
-
 bool is_name(char *str, char *namelist)
 {
   char name[MAX_INPUT_LENGTH], part[MAX_INPUT_LENGTH];
