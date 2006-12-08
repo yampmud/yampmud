@@ -335,6 +335,11 @@ struct weather_data
 #define CON_BEGIN_REROLL                19
 #define CON_GET_REFER                   20
 #define CON_WATCH_LOGS                  21
+#define CON_NOTE_TO 22
+#define CON_NOTE_SUBJECT 23
+#define CON_NOTE_EXPIRE 24
+#define CON_NOTE_TEXT 25
+#define CON_NOTE_FINISH 26
 
 struct auction_data
 {
@@ -612,6 +617,7 @@ struct spec_type
 #define NOTE_CHANGES	4
 #define NOTE_SIGN	5
 #define NOTE_WEDDINGS	6
+
 struct note_data
 {
   NOTE_DATA *next;
@@ -624,6 +630,7 @@ struct note_data
   int tcolor;
   char *text;
   time_t date_stamp;
+  time_t expire;
 };
 
 /*
@@ -1873,6 +1880,8 @@ struct char_data
   int namedenied;               /* Has the name been denied */
 };
 
+#include "board.h"
+
 /*
  * Data which only PC's have.
  */
@@ -1891,7 +1900,7 @@ struct pc_data
   char *afktitle;
   char *who_descr;
   char *socket;
-  time_t last_note;
+  time_t last_note[MAX_BOARD];
   time_t last_icn;
   time_t last_penalty;
   time_t last_news;
@@ -1939,8 +1948,8 @@ struct pc_data
   CLN_DATA *clan_data;
   bool pkset;
   bool confirm_pkset;
-
-
+  NOTE_DATA *in_progress;
+  BOARD_DATA *board;
 };
 
 /* Data for generating characters -- only used during generation */

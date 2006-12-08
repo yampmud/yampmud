@@ -223,10 +223,13 @@ void fwrite_char(CHAR_DATA * ch, FILE * fp)
 
   fprintf(fp, "Plyd %d\n", ch->played + (int) (current_time - ch->logon));
 
-  fprintf(fp, "Notb  %ld %ld %ld %ld %ld %ld\n", ch->pcdata->last_note,
-          ch->pcdata->last_icn, ch->pcdata->last_penalty,
-          ch->pcdata->last_news, ch->pcdata->last_changes,
-          ch->pcdata->last_weddings);
+  /* Save note board status */
+  /* Save number of boards in case that number changes */
+  fprintf(fp, "Boards       %d ", MAX_BOARD);
+  int i = 0;
+  for (i = 0; i < MAX_BOARD; i++)
+    fprintf(fp, "%s %ld ", boards[i].short_name, ch->pcdata->last_note[i]);
+  fprintf(fp, "\n");
 
   if (ch->lines > 0)
     fprintf(fp, "Scro %d\n", ch->lines);
@@ -645,6 +648,7 @@ bool load_char_obj(DESCRIPTOR_DATA * d, char *name)
   ch->btime = 1.00;
   ch->bflip = 0;
   bzero(ch->pcdata->explored, MAX_EXPLORE);
+  ch->pcdata->board = &boards[DEFAULT_BOARD];
   found = false;
 
   /* decompress if .gz file exists */
@@ -992,6 +996,34 @@ void fread_char(CHAR_DATA * ch, FILE * fp)
         KEY("Balance", ch->pcdata->balance, fread_number(fp));
         KEY("Btim", ch->btime, fread_number(fp));
         KEY("Bfli", ch->bflip, fread_number(fp));
+
+        if (!str_cmp(word, "Boards"))
+        {
+          int i, num = fread_number(fp);  /* number of boards saved */
+          char *boardname;
+
+          for (; num; num--)    /* for each of the board saved */
+          {
+            boardname = fread_word(fp);
+            i = board_lookup(boardname);  /* find board number */
+
+            if (i == BOARD_NOTFOUND)  /* Does board still exist ? */
+            {
+              sprintf(buf,
+                      "fread_char: %s had unknown board name: %s. Skipped.",
+                      ch->name, boardname);
+              log_string(buf);
+              fread_number(fp); /* read last_note and skip info */
+            }
+            else                /* Save it */
+              ch->pcdata->last_note[i] = fread_number(fp);
+          }                     /* for */
+
+          fMatch = true;
+          break;
+        }
+
+
         break;
 
       case 'C':
@@ -1218,28 +1250,6 @@ void fread_char(CHAR_DATA * ch, FILE * fp)
 
       case 'N':
         KEYS("Name", ch->name, fread_string(fp));
-        KEY("Note", ch->pcdata->last_note, fread_number(fp));
-        if (!str_cmp(word, "Not"))
-        {
-          ch->pcdata->last_note = fread_number(fp);
-          ch->pcdata->last_icn = fread_number(fp);
-          ch->pcdata->last_penalty = fread_number(fp);
-          ch->pcdata->last_news = fread_number(fp);
-          ch->pcdata->last_changes = fread_number(fp);
-          fMatch = true;
-          break;
-        }
-        if (!str_cmp(word, "Notb"))
-        {
-          ch->pcdata->last_note = fread_number(fp);
-          ch->pcdata->last_icn = fread_number(fp);
-          ch->pcdata->last_penalty = fread_number(fp);
-          ch->pcdata->last_news = fread_number(fp);
-          ch->pcdata->last_changes = fread_number(fp);
-          ch->pcdata->last_weddings = fread_number(fp);
-          fMatch = true;
-          break;
-        }
         break;
 
       case 'P':

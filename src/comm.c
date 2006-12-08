@@ -2824,6 +2824,27 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
         return;
       }
 
+    case CON_NOTE_TO:
+      handle_con_note_to(d, argument);
+      break;
+
+    case CON_NOTE_SUBJECT:
+      handle_con_note_subject(d, argument);
+      break;
+
+    case CON_NOTE_EXPIRE:
+      handle_con_note_expire(d, argument);
+      break;
+
+    case CON_NOTE_TEXT:
+      handle_con_note_text(d, argument);
+      break;
+
+    case CON_NOTE_FINISH:
+      handle_con_note_finish(d, argument);
+      break;
+
+
   }
 
   return;

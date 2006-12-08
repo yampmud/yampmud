@@ -287,8 +287,8 @@ void boot_db()
     area_update();
     log_string("Loading Moveable Exits.");
     randomize_entrances(0);
-    log_string("Loading Notes.");
-    load_notes();
+    log_string("Loading Boards.");
+    load_boards();
     load_disabled();
     log_string("Loading Bans.");
     load_bans();

@@ -553,8 +553,6 @@ void expand_arg
 args((char *buf, const char *format, CHAR_DATA * mob, CHAR_DATA * ch,
       const void *arg1, const void *arg2, CHAR_DATA * rch));
 int count_spool args((CHAR_DATA * ch, NOTE_DATA * spool));
-void save_notes args((int type));
-void append_note args((NOTE_DATA * pnote));
 bool is_note_to args((CHAR_DATA * ch, NOTE_DATA * pnote));
 void note_attach args((CHAR_DATA * ch, int type));
 void note_remove args((CHAR_DATA * ch, NOTE_DATA * pnote, bool delete));
@@ -607,10 +605,6 @@ bool check_social args((CHAR_DATA * ch, char *command, char *argument));
 bool consent args((CHAR_DATA * ch, char *argument, char *command));
 
 /* local procedures */
-void load_thread
-args((char *name, NOTE_DATA ** list, int type, time_t free_time));
-void parse_note args((CHAR_DATA * ch, char *argument, int type));
-bool hide_note args((CHAR_DATA * ch, NOTE_DATA * pnote));
 void convert_mob args((MOB_INDEX_DATA * mob));
 void convert_obj args((OBJ_INDEX_DATA * obj));
 void assign_area_vnum args((long vnum));  /* OLC */
