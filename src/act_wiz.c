@@ -8480,3 +8480,115 @@ CH_CMD(do_mlevel)
   free_buf(output);
   return;
 }
+
+CH_CMD(do_olevel)
+{
+  char buf[MAX_INPUT_LENGTH];
+  BUFFER *buffer;
+  OBJ_DATA *obj;
+  bool found;
+  int level1, level2, temp, i, count;
+  char arg1[MSL], arg2[MSL];
+  found = false;
+
+  argument = one_argument(argument, arg1);
+  argument = one_argument(argument, arg2);
+  buffer = new_buf();
+  count = 0;
+
+  if (arg1[0] == '\0')
+  {
+    send_to_char("Usage:\n\r", ch);
+    send_to_char("olevel <level> finds all objects at that level.\n\r", ch);
+    send_to_char
+      ("olevel <level> <level> finds all objects in that level range.\n\r.",
+       ch);
+    free_buf(buffer);
+    return;
+  }
+
+  if (arg2[0] == '\0')
+  {
+    level1 = atoi(arg1);
+
+    for (obj = object_list; (obj != NULL) && (count < 300); obj = obj->next)
+    {
+      if (obj->level == level1)
+      {
+        if (obj->carried_by != NULL && can_see(ch, obj->carried_by) &&
+            obj->carried_by->in_room != NULL)
+        {
+          sprintf(buf, "%3d) %s is carried by %s [Room %ld]\n\r", obj->level,
+                  obj->short_descr, PERS(obj->carried_by, ch),
+                  obj->carried_by->in_room->vnum);
+        }
+        else if (obj->in_room != NULL && can_see_room(ch, obj->in_room))
+        {
+          sprintf(buf, "%3d) %s is in %s [Room %ld]\n\r", obj->level,
+                  obj->short_descr, obj->in_room->name, obj->in_room->vnum);
+        }
+        else
+        {
+          sprintf(buf, "%3d) %s is somewhere\n\r", obj->level,
+                  obj->short_descr);
+        }
+        found = true;
+        count++;
+        buf[0] = UPPER(buf[0]);
+        add_buf(buffer, buf);
+      }
+    }
+  }
+  else
+  {
+    level1 = atoi(arg1);
+    level2 = atoi(arg2);
+
+    if (level1 > level2)
+    {
+      temp = level1;
+      level1 = level2;
+      level2 = temp;
+    }
+
+    for (i = level1; (i <= level2) && (count < 300); i++)
+      for (obj = object_list; (obj != NULL) && (count < 300); obj = obj->next)
+      {
+        if (obj->level == i)
+        {
+          if (obj->carried_by != NULL && can_see(ch, obj->carried_by) &&
+              obj->carried_by->in_room != NULL)
+          {
+            sprintf(buf, "%3d) %s is carried by %s [Room %ld]\n\r",
+                    obj->level, obj->short_descr, PERS(obj->carried_by, ch),
+                    obj->carried_by->in_room->vnum);
+          }
+          else if (obj->in_room != NULL && can_see_room(ch, obj->in_room))
+          {
+            sprintf(buf, "%3d) %s is in %s [Room %ld]\n\r", obj->level,
+                    obj->short_descr, obj->in_room->name, obj->in_room->vnum);
+          }
+          else
+          {
+            sprintf(buf, "%3d) %s is somewhere\n\r", obj->level,
+                    obj->short_descr);
+          }
+          found = true;
+          count++;
+          buf[0] = UPPER(buf[0]);
+          add_buf(buffer, buf);
+        }
+      }
+  }
+
+  if (!found)
+    send_to_char("Nothing like that in heaven or earth.\n\r", ch);
+  else
+    page_to_char(buf_string(buffer), ch);
+
+  if (count == 300)
+    send_to_char("{RStopped at 300 objects.", ch);
+
+  free_buf(buffer);
+  return;
+}

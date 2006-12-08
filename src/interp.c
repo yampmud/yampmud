@@ -507,6 +507,7 @@ const struct cmd_type cmd_table[] = {
   {"mlevel", do_mlevel, POS_DEAD, IM, 1, LOG_NORMAL, 1},
   {"authname", do_authname, POS_DEAD, IM, 1, LOG_ALWAYS, 1},
   {"badname", do_badname, POS_DEAD, IM, 1, LOG_ALWAYS, 1},
+  {"olevel", do_olevel, POS_DEAD, IM, 1, LOG_NORMAL, 1},
 
   /* 
    * OLC   
