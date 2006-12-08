@@ -4843,7 +4843,7 @@ MEDIT(medit_race)
   MOB_INDEX_DATA *pMob;
   int race;
 
-  if (argument[0] != '\0' && (race = race_lookup(argument)) != 0)
+  if (argument[0] != '\0' && (race = race_lookup(argument)) != -1)
   {
     EDIT_MOB(ch, pMob);
 

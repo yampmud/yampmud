@@ -3704,7 +3704,7 @@ CH_CMD(do_who)
         if (iClass == -1)
         {
           iRace = pcrace_lookup(arg);
-          if (iRace == 0 || iRace >= MAX_PC_RACE)
+          if (iRace == -1 || iRace >= MAX_PC_RACE)
           {
             if (!str_prefix(arg, "clan"))
               fClan = true;

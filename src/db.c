@@ -623,7 +623,7 @@ void load_old_mob(FILE * fp)
     /* compute the race BS */
     one_argument(pMobIndex->player_name, name);
 
-    if (name[0] == '\0' || (race = race_lookup(name)) == 0)
+    if (name[0] == '\0' || (race = race_lookup(name)) == -1)
     {
       /* fill in with blanks */
       pMobIndex->race = race_lookup("human");

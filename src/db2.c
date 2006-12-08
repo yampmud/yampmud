@@ -233,7 +233,10 @@ void load_mobiles(FILE * fp)
     pMobIndex->long_descr = fread_string(fp);
     pMobIndex->description = fread_string(fp);
     temp = fread_string(fp);
-    pMobIndex->race = race_lookup(temp);
+    if (race_lookup(temp) == -1)
+      pMobIndex->race = 0;
+    else
+      pMobIndex->race = race_lookup(temp);
     free_string(temp);
 
     pMobIndex->long_descr[0] = UPPER(pMobIndex->long_descr[0]);

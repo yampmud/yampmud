@@ -215,8 +215,6 @@ const struct race_type race_table[] = {
      form,    parts 
      },
    */
-  {"unique", false, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-
   {
    "Avian", true,
    0,
@@ -1042,20 +1040,6 @@ const struct pc_race_type pc_race_table[] = {
      tier
      },
    */
-
-  {
-   "Empty", "Empty",
-   0,
-   {0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0},
-   {"Nothing"},
-   {0, 0, 0, 0, 0},
-   {0, 0, 0, 0, 0},
-   SIZE_MEDIUM,
-   ROOM_VNUM_ALTAR,
-   A | B | C | D},
 
   {
    "Avian", "Avian",

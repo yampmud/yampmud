@@ -5071,7 +5071,7 @@ CH_CMD(do_mset)
 
     race = race_lookup(arg3);
 
-    if (race == 0)
+    if (race == -1)
     {
       send_to_char("That is not a valid race.\n\r", ch);
       return;

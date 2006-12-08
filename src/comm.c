@@ -2396,7 +2396,7 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
 
       race = race_lookup(argument);
 
-      if (race == 0 || !race_table[race].pc_race ||
+      if (race == -1 || !race_table[race].pc_race ||
           !IS_SET(ch->pcdata->ctier, pc_race_table[race].tier))
       {
         write_to_buffer(d, "{RThat is not a valid race.{x\n\r", 0);

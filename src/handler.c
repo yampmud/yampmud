@@ -120,7 +120,7 @@ int race_lookup(const char *name)
       return race;
   }
 
-  return 0;
+  return -1;
 }
 
 int pcrace_lookup(const char *name)
@@ -133,7 +133,7 @@ int pcrace_lookup(const char *name)
       return race;
   }
 
-  return 0;
+  return -1;
 }
 
 
