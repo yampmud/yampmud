@@ -1322,8 +1322,8 @@ void handle_con_note_subject(DESCRIPTOR_DATA * d, char *argument)
     {
       if (ch->pcdata->board->purge_days == -1)
       {
-        ch->pcdata->in_progress->expire = 0
-          printf_to_desc(d, "This note will never expire.\n\r",);
+        ch->pcdata->in_progress->expire = 0;
+        printf_to_desc(d, "This note will never expire.\n\r");
       }
       else
       {
