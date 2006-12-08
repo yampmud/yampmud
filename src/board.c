@@ -49,7 +49,7 @@ BOARD_DATA boards[MAX_BOARD] = {
 
 
   {"Changes", "Latest mud changes", 0, IM, IMPLEMENTOR, "all",
-   DEF_INCLUDE, 60,
+   DEF_INCLUDE, -1,
    NULL, false}
   ,
 
@@ -1306,18 +1306,32 @@ void handle_con_note_subject(DESCRIPTOR_DATA * d, char *argument)
     ch->pcdata->in_progress->subject = str_dup(buf);
     if (IS_IMMORTAL(ch))        /* immortals get to choose number of expire days */
     {
-      printf_to_desc(d,
-                     "\n\rHow many days do you want this note to expire in?\n\r"
-                     "Press Enter for default value for this board, {W%d{x days.\n\r"
-                     "{CExpire{x:  ", ch->pcdata->board->purge_days);
+      if (ch->pcdata->board->purge_days == -1)
+        printf_to_desc(d,
+                       "\n\rHow many days do you want this note to expire in?\n\r"
+                       "Press Enter for default value for this board, which is {Wnever{x.\n\r"
+                       "{CExpire{x:  ", ch->pcdata->board->purge_days);
+      else
+        printf_to_desc(d,
+                       "\n\rHow many days do you want this note to expire in?\n\r"
+                       "Press Enter for default value for this board, {W%d{x days.\n\r"
+                       "{CExpire{x:  ", ch->pcdata->board->purge_days);
       d->connected = CON_NOTE_EXPIRE;
     }
     else
     {
-      ch->pcdata->in_progress->expire =
-        current_time + ch->pcdata->board->purge_days * 24L * 3600L;
-      printf_to_desc(d, "This note will expire %s\r",
-                     ctime(&ch->pcdata->in_progress->expire));
+      if (ch->pcdata->board->purge_days == -1)
+      {
+        ch->pcdata->in_progress->expire = 0
+          printf_to_desc(d, "This note will never expire.\n\r",);
+      }
+      else
+      {
+        ch->pcdata->in_progress->expire =
+          current_time + ch->pcdata->board->purge_days * 24L * 3600L;
+        printf_to_desc(d, "This note will expire %s\r",
+                       ctime(&ch->pcdata->in_progress->expire));
+      }
       write_to_buffer(d,
                       "\n\rPress ENTER to begin writing the text of your note.\n\r",
                       0);
@@ -1353,17 +1367,12 @@ void handle_con_note_expire(DESCRIPTOR_DATA * d, char *argument)
   else
   {
     days = atoi(buf);
-    if (days <= 0)
-    {
-      write_to_buffer(d,
-                      "This is a positive MUD. Use positive numbers only! :)\n\r",
-                      0);
-      write_to_buffer(d, "{CExpire{x:  ", 0);
-      return;
-    }
   }
 
-  expire = current_time + (days * 24L * 3600L); /* 24 hours, 3600 seconds */
+  if (days <= 0)
+    expire = 0;
+  else
+    expire = current_time + (days * 24L * 3600L); /* 24 hours, 3600 seconds */
 
   ch->pcdata->in_progress->expire = expire;
 
