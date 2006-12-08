@@ -8297,7 +8297,7 @@ CH_CMD(do_authname)
     victim->nameauthed = 1;
     victim->namedenied = 0;
     sprintf(buf,
-            "Your name has been approved.  You may now advance passed level %d.\n\r",
+            "Your name has been approved.  You may now advance past level %d.\n\r",
             MAX_LEVEL_NOAUTH);
     send_to_char(buf, victim);
     save_char_obj(victim);
