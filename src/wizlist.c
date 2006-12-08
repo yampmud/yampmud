@@ -181,7 +181,7 @@ CH_CMD(do_wizlist)
     return;
   }
   buffer = new_buf();
-  sprintf(title, "The IMMORTALS of Distortions of Chaos{x");
+  sprintf(title, "The IMMORTALS of Illusions of Grandeur{x");
   sprintf(buf,
           "{W  ___________________________________________________________________________{x\n\r");
   add_buf(buffer, buf);

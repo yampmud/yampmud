@@ -2906,7 +2906,7 @@ void reboot_rot(void)
   {
     d_next = d->next;
     write_to_buffer(d,
-                    "Distortions of Chaos is now going down for a reboot.",
+                    "Illusions of Grandeur is now going down for a reboot.",
                     0);
     if (d->character != NULL)
       save_char_obj(d->character);

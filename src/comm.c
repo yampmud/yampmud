@@ -2693,7 +2693,7 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
       }
 
       write_to_buffer(d,
-                      "\n\rWelcome to Distortions of Chaos.  Please do not feed the immortals.\n\r",
+                      "\n\rWelcome to Illusions of Grandeur.  Please do not feed the immortals.\n\r",
                       0);
       ch->next = char_list;
       char_list = ch;
@@ -2778,7 +2778,7 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
       logins_total++;
       if (IS_IMMORTAL(ch))
       {
-        sprintf(buf, "%s has entered Distortions of Chaos.", ch->name);
+        sprintf(buf, "%s has entered Illusions of Grandeur.", ch->name);
         wiznet(buf, NULL, NULL, WIZ_LOGINS, 0, 0);
       }
       else
@@ -2795,7 +2795,7 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
                   ch->name, mudname);
         do_gmessage(lbuf);
 
-        sprintf(buf, "%s has entered Distortions of Chaos.", ch->name);
+        sprintf(buf, "%s has entered Illusions of Grandeur.", ch->name);
         wiznet(buf, NULL, NULL, WIZ_LOGINS, 0, 0);
       }
       for (i = 0; i < 5; i++)
