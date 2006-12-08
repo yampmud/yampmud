@@ -3592,7 +3592,6 @@ CH_CMD(do_who)
   char whon[MSL];
   char abuf[MSL];
   char utbuf[MSL];
-  char boardbuf[MSL];
   char sexbuf[MSL];
   char pkbuf[MSL];
   char afkbuf[MSL];
@@ -4081,11 +4080,8 @@ CH_CMD(do_who)
       sprintf(utbuf,
               "{wCopyover: {YLess than 2 minutes!{x\n\rCommand LOCKDOWN is {GON{x.\n\r");
 
-    sprintf(boardbuf,
-            " {D| {wThe DoC Discussion Board is located at:      {Chttp://bhmm.net/forum/doc/    {D|\n\r");
     send_to_char(utbuf, ch);
     send_to_char(sepbuf, ch);
-    send_to_char(boardbuf, ch);
     send_to_char(sepbuf, ch);
     if (global_quest)
     {

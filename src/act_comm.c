@@ -4187,16 +4187,7 @@ CH_CMD(do_quit)
 
   save_char_obj(ch);
 
-  send_to_char("\n\r\n\r{R I hope you have enjoyed your stay!\n\r"
-               "{W Remember to visit the DoC Forums!!\n\rhttp://bhmm.net/forum/doc/\n\r"
-               " Thanks. -\n\r"
-               "{W________   .__           __                   __   .__                         \n\r"
-               "{W\\______ \\  |__|  _______/  |_  ____ _______ _/  |_ |__|  ____    ____    ______\n\r"
-               "{w |    |  \\ |  | /  ___/\\   __\\/  _ \\\\_  __ \\\\   __\\|  | /  _ \\  /    \\  /  ___/\n\r"
-               "{w |    `   \\|  | \\___ \\  |  | (  <_> )|  | \\/ |  |  |  |(  <_> )|   |  \\ \\___ \\ \n\r"
-               "{D/_______  /|__|/____  > |__|  \\____/ |__|    |__|  |__| \\____/ |___|  //____  >\n\r"
-               "{D        \\/          \\/                                              \\/      \\/ {x\n\r\n\r",
-               ch);
+  send_to_char("\n\r\n\r{R I hope you have enjoyed your stay!\n\r\n\r", ch);
 
   sprintf(buf, "%s rejoins the real world.", ch->name);
   wiznet(buf, NULL, NULL, WIZ_LOGINS, 0, 0);

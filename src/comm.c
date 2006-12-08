@@ -2044,7 +2044,7 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
         if (newlock)
         {
           write_to_buffer(d,
-                          "Sorry the mud is newlocked at the moment. Email dist@bhmm.net\n\r",
+                          "Sorry, the mud is newlocked at the moment.\n\r",
                           0);
 
           close_socket(d);
@@ -2054,7 +2054,7 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
         if (check_ban(d->host, BAN_NEWBIES))
         {
           write_to_buffer(d,
-                          "New players are not allowed from your site. Email dist@bluehalo.homeunix.org if you think this is in error.\n\r",
+                          "New players are not allowed from your site.\n\r",
                           0);
           close_socket(d);
           return;
