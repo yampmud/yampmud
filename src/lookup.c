@@ -36,9 +36,11 @@
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
+#include <sqlite3.h>
 #include "merc.h"
 #include "tables.h"
 #include "lookup.h"
+#include "sql_io.h"
 
 int flag_lookup(const char *name, const struct flag_type *flag_table)
 {
@@ -112,7 +114,12 @@ int size_lookup(const char *name)
 
 HELP_DATA *help_lookup(char *keyword)
 {
-  HELP_DATA *pHelp;
+  sqlite3_stmt *stmt;
+  char *sql;
+  const char *tail;
+  int rc;
+  long long id;
+
   char temp[MIL], argall[MIL];
 
   argall[0] = '\0';
@@ -125,9 +132,35 @@ HELP_DATA *help_lookup(char *keyword)
     strcat(argall, temp);
   }
 
-  for (pHelp = help_first; pHelp != NULL; pHelp = pHelp->next)
-    if (is_name(argall, pHelp->keyword))
-      return pHelp;
+  sql =
+    sqlite3_mprintf
+    ("SELECT id,keyword FROM helps WHERE keyword LIKE '%%%q%%'", keyword);
+  rc = sqlite3_prepare(world_db, sql, strlen(sql), &stmt, &tail);
 
+  if (rc != SQLITE_OK)
+  {
+    sprintf(log_buf, "SQL error: %s", sqlite3_errmsg(world_db));
+    log_string(log_buf);
+    sqlite3_finalize(stmt);
+    sqlite3_free(sql);
+    return NULL;
+  }
+
+  rc = sqlite3_step(stmt);
+
+  while (rc == SQLITE_ROW)
+  {
+    if (is_name(argall, (char *) sqlite3_column_text(stmt, 1)))
+    {
+      id = sqlite3_column_int64(stmt, 0);
+      sqlite3_finalize(stmt);
+      sqlite3_free(sql);
+      return fetch_help(id);
+    }
+    rc = sqlite3_step(stmt);
+  }
+
+  sqlite3_finalize(stmt);
+  sqlite3_free(sql);
   return NULL;
 }

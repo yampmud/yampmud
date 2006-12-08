@@ -841,13 +841,12 @@ HELP_DATA *new_help(void)
 {
   HELP_DATA *help;
 
-  if (help_free)
-  {
-    help = help_free;
-    help_free = help_free->next;
-  }
-  else
-    help = alloc_perm(sizeof(*help));
+  help = malloc(sizeof(HELP_DATA));
+
+  help->id = 0;
+  help->level = 0;
+  help->keyword = str_dup("");
+  help->text = str_dup("");
 
   return help;
 }
@@ -856,6 +855,5 @@ void free_help(HELP_DATA * help)
 {
   free_string(help->keyword);
   free_string(help->text);
-  help->next = help_free;
-  help_free = help;
+  free(help);
 }

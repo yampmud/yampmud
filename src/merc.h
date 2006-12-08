@@ -424,7 +424,6 @@ struct con_app_type
  */
 struct help_data
 {
-  HELP_DATA *next;
   sh_int level;
   char *keyword;
   char *text;

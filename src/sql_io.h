@@ -1,5 +1,7 @@
 /* SQLite3 Data Backend Storage and Retrieval */
 
+extern sqlite3 *world_db;
+
 void init_sqlite3(void);
 void close_sqlite3(void);
 

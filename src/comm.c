@@ -64,10 +64,12 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <crypt.h>
+#include <sqlite3.h>
 #include "merc.h"
 #include "recycle.h"
 #include "tables.h"
 #include "sql_io.h"
+#include "lookup.h"
 
 /*
  * Malloc debugging stuff.
@@ -538,6 +540,7 @@ void init_descriptor(int control)
   struct hostent *from;
   int desc;
   int size;
+  HELP_DATA *pHelp;
 
   size = sizeof(sock);
   getsockname(control, (struct sockaddr *) &sock, (socklen_t *) & size);
@@ -617,8 +620,23 @@ void init_descriptor(int control)
    * Send the greeting.
    */
   {
-    write_to_buffer(dnew, help_authors, 0);
-    write_to_buffer(dnew, help_greetinga, 0);
+    if ((pHelp = help_lookup("authors")))
+    {
+      write_to_buffer(dnew, pHelp->text, 0);
+      free_help(pHelp);
+      pHelp = NULL;
+    }
+    else
+      write_to_buffer(dnew, help_authors, 0);
+
+    if ((pHelp = help_lookup("greeting")))
+    {
+      write_to_buffer(dnew, pHelp->text, 0);
+      free_help(pHelp);
+      pHelp = NULL;
+    }
+    else
+      write_to_buffer(dnew, help_greetinga, 0);
     if (happy_hour)
       write_to_buffer(dnew, "{R** {YH A P P Y  H O U R ! {R**{w\n\r", 0);
     write_to_buffer(dnew, help_login, 0);

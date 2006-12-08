@@ -42,6 +42,8 @@
 #include <sys/types.h>
 #include <sys/time.h>
 #include <sys/resource.h>
+#include <sqlite3.h>
+
 #define IN_DB_C
 #include "merc.h"
 #include "db.h"
@@ -498,29 +500,23 @@ void load_helps(FILE * fp, char *fname)
     pHelp->text = fread_string(fp);
 
     if (!str_cmp(pHelp->keyword, "greeting1"))
-      help_greetinga = pHelp->text;
+      help_greetinga = str_dup(pHelp->text);
     if (!str_cmp(pHelp->keyword, "greeting1"))
-      help_greetingb = pHelp->text;
+      help_greetingb = str_dup(pHelp->text);
     if (!str_cmp(pHelp->keyword, "greeting1"))
-      help_greetingc = pHelp->text;
+      help_greetingc = str_dup(pHelp->text);
     if (!str_cmp(pHelp->keyword, "greeting1"))
-      help_greetingd = pHelp->text;
+      help_greetingd = str_dup(pHelp->text);
     if (!str_cmp(pHelp->keyword, "greeting1"))
-      help_greetinge = pHelp->text;
+      help_greetinge = str_dup(pHelp->text);
     if (!str_cmp(pHelp->keyword, "authors"))
-      help_authors = pHelp->text;
+      help_authors = str_dup(pHelp->text);
     if (!str_cmp(pHelp->keyword, "login"))
-      help_login = pHelp->text;
-
-    if (help_first == NULL)
-      help_first = pHelp;
-    if (help_last != NULL)
-      help_last->next = pHelp;
-
-    help_last = pHelp;
-    pHelp->next = NULL;
+      help_login = str_dup(pHelp->text);
 
     store_help(pHelp);
+    free_help(pHelp);
+    pHelp = NULL;
 
     top_help++;
   }

@@ -39,6 +39,7 @@
 #include <time.h>
 #include <sys/types.h>
 #include <sys/time.h>
+#include <sqlite3.h>
 
 #include "merc.h"
 #include "db.h"

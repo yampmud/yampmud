@@ -9,12 +9,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <sqlite3.h>
 
 #include "merc.h"
 #include "tables.h"
 #include "olc.h"
 #include "lookup.h"
 #include "recycle.h"
+#include "sql_io.h"
 
 #define IS_NULLSTR(str) ((str) == NULL || (str)[0] == '\0')
 
@@ -114,9 +116,11 @@ HEDIT(hedit_new)
   strcpy(fullarg, argument);
   argument = one_argument(argument, arg);
 
-  if (help_lookup(argument))
+  if ((help = help_lookup(argument)))
   {
     send_to_char("HEdit : help already exists.\n\r", ch);
+    free_help(help);
+    help = NULL;
     return false;
   }
 
@@ -124,15 +128,6 @@ HEDIT(hedit_new)
   help->level = 0;
   help->keyword = str_dup(argument);
   help->text = str_dup("");
-
-  if (help_last)
-    help_last->next = help;
-
-  if (help_first == NULL)
-    help_first = help;
-
-  help_last = help;
-  help->next = NULL;
 
   ch->desc->pEdit = (HELP_DATA *) help;
   ch->desc->editor = ED_HELP;
@@ -186,6 +181,8 @@ void hedit(CHAR_DATA * ch, char *argument)
 
   if (!str_cmp(command, "done"))
   {
+    store_help((HELP_DATA *) ch->desc->pEdit);
+    free_help((HELP_DATA *) ch->desc->pEdit);
     edit_done(ch);
     return;
   }
@@ -202,27 +199,6 @@ void hedit(CHAR_DATA * ch, char *argument)
   interpret(ch, arg);
   return;
 }
-
-/*
-   void do_hedit(CHAR_DATA *ch, char *argument)
-   {
-   HELP_DATA * pHelp;
-
-   if ( IS_NPC(ch) )
-   return;
-
-   if ( (pHelp = help_lookup( argument )) == NULL )
-   {
-   send_to_char( "HEdit : Nonexistent Help.\n\r", ch );
-   return;
-   }
-
-   ch->desc->pEdit    = (void *) pHelp;
-   ch->desc->editor = ED_HELP;
-
-   return;
-   }
- */
 
 void do_hedit(CHAR_DATA * ch, char *argument)
 {
@@ -244,15 +220,12 @@ void do_hedit(CHAR_DATA * ch, char *argument)
         strcat(argall, " ");
       strcat(argall, argone);
     }
-    for (pHelp = help_first; pHelp != NULL; pHelp = pHelp->next)
+    if ((pHelp = help_lookup(argall)))
     {
-      if (is_name(argall, pHelp->keyword))
-      {
-        ch->desc->pEdit = (void *) pHelp;
-        ch->desc->editor = ED_HELP;
-        found = true;
-        return;
-      }
+      ch->desc->pEdit = (void *) pHelp;
+      ch->desc->editor = ED_HELP;
+      found = true;
+      return;
     }
   }
   if (!found)
@@ -277,56 +250,62 @@ void do_hedit(CHAR_DATA * ch, char *argument)
 
 HEDIT(hedit_delete)
 {
-  HELP_DATA *pHelp, *temp;
-  DESCRIPTOR_DATA *d;
+  char *zErr;
+  char *sql;
 
-  EDIT_HELP(ch, pHelp);
+  sql =
+    sqlite3_mprintf("DELETE FROM areas WHERE id=%d",
+                    ((HELP_DATA *) (ch->desc->pEdit))->id);
+  sqlite3_exec(world_db, sql, NULL, NULL, &zErr);
 
-  for (d = descriptor_list; d; d = d->next)
-    if (d->editor == ED_HELP && pHelp == (HELP_DATA *) d->pEdit)
-      edit_done(d->character);
-
-  if (help_first == pHelp)
-    help_first = help_first->next;
-  else
-  {
-    for (temp = help_first; temp; temp = temp->next)
-      if (temp->next == pHelp)
-        break;
-
-    if (!temp)
-    {
-      bugf("hedit_delete : help %s not found in help_first", pHelp->keyword);
-      return false;
-    }
-
-    temp->next = pHelp->next;
-  }
-
-  free_help(pHelp);
+  free_help((HELP_DATA *) ch->desc->pEdit);
+  sqlite3_free(sql);
+  if (zErr != NULL)
+    sqlite3_free(zErr);
 
   send_to_char("Ok.\n\r", ch);
+  edit_done(ch);
   return true;
 }
 
 HEDIT(hedit_list)
 {
+  sqlite3_stmt *stmt;
+  char *sql;
+  const char *tail;
+  int rc;
+
   char buf[MIL];
   int cnt = 0;
-  HELP_DATA *pHelp;
   BUFFER *buffer;
 
-  EDIT_HELP(ch, pHelp);
+  sql = "SELECT level,keyword,id FROM helps WHERE 1 ORDER BY id";
+  rc = sqlite3_prepare(world_db, sql, strlen(sql), &stmt, &tail);
+
+  if (rc != SQLITE_OK)
+  {
+    sprintf(log_buf, "SQL error: %s", sqlite3_errmsg(world_db));
+    log_string(log_buf);
+    sqlite3_finalize(stmt);
+    send_to_char("Could not access help files. Check back later.", ch);
+    return true;
+  }
 
   buffer = new_buf();
 
-  for (pHelp = help_first; pHelp; pHelp = pHelp->next)
+  rc = sqlite3_step(stmt);
+
+  while (rc == SQLITE_ROW)
   {
-    sprintf(buf, "%3d. %-14.14s%s", cnt, pHelp->keyword,
+    sprintf(buf, "%3lld. %-14.14s%s",
+            (long long) sqlite3_column_int64(stmt, 2),
+            (char *) sqlite3_column_text(stmt, 1),
             cnt % 4 == 3 ? "\n\r" : " ");
     add_buf(buffer, buf);
-    cnt++;
+    rc = sqlite3_step(stmt);
   }
+
+  sqlite3_finalize(stmt);
 
   if (cnt % 4)
     add_buf(buffer, "\n\r");

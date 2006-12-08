@@ -40,12 +40,15 @@
 #include <ctype.h>
 #include <time.h>
 #include <crypt.h>
+#include <sqlite3.h>
+
 #include "merc.h"
 #include "magic.h"
 #include "recycle.h"
 #include "tables.h"
 #include "lookup.h"
 #include "db.h"
+#include "sql_io.h"
 
 char *const where_name[] = {
   "{R<{yused as light       {R:{x",
@@ -3243,7 +3246,15 @@ CH_CMD(do_weather)
 
 CH_CMD(do_help)
 {
-  HELP_DATA *pHelp;
+  sqlite3_stmt *stmt;
+  char *sql;
+  const char *tail;
+  int rc;
+
+  int level;
+  char *keyword;
+  char *htext;
+
   char argall[MAX_INPUT_LENGTH], argone[MAX_INPUT_LENGTH];
   char buf[MSL], part[MSL];
   char nohelp[MSL];
@@ -3264,15 +3275,35 @@ CH_CMD(do_help)
     strcat(argall, argone);
   }
 
-  for (pHelp = help_first; pHelp != NULL; pHelp = pHelp->next)
+  sql =
+    sqlite3_mprintf
+    ("SELECT id,level,keyword,htext FROM helps WHERE keyword LIKE '%%%q%%' AND level < %d",
+     argall, get_trust(ch));
+  rc = sqlite3_prepare(world_db, sql, strlen(sql), &stmt, &tail);
+
+  if (rc != SQLITE_OK)
   {
-    if (pHelp->level > get_trust(ch))
-      continue;
-    if (is_name(argall, pHelp->keyword))
+    sprintf(log_buf, "SQL error: %s", sqlite3_errmsg(world_db));
+    log_string(log_buf);
+    sqlite3_finalize(stmt);
+    sqlite3_free(sql);
+    send_to_char("Could not access help files. Check back later.", ch);
+    return;
+  }
+
+  rc = sqlite3_step(stmt);
+
+  while (rc == SQLITE_ROW)
+  {
+    level = sqlite3_column_int(stmt, 1);
+    keyword = (char *) sqlite3_column_text(stmt, 2);
+    htext = (char *) sqlite3_column_text(stmt, 3);
+
+    if (is_name(argall, keyword))
     {
-      if (pHelp->level >= 0)
+      if (level >= 0)
       {
-        one_argument(pHelp->keyword, part);
+        one_argument(keyword, part);
         if ((skill = skill_lookup(part)) != -1)
         {
           if (skill_table[skill].spell_fun == spell_null)
@@ -3301,35 +3332,36 @@ CH_CMD(do_help)
         }
         else
         {
-          send_to_char(pHelp->keyword, ch);
+          send_to_char(keyword, ch);
         }
         send_to_char("\n\r", ch);
         fRegular = true;
       }
-      else if (pHelp->level != -2 /* str_cmp(argall,"motd") &&
-                                     str_cmp(argall,"imotd") */
-        )
+      else if (level != -2)
       {
         send_to_char("{D<{GG{general {Gi{gnformation{D>{x\n\r", ch);
         fRegular = true;
       }
-      output = malloc(strlen(pHelp->text) + 200);
+      output = malloc(strlen(htext) + 200);
       strcpy(output, "");
       /* 
        * Strip leading '.' to allow initial blanks.
        */
-      /* if ( pHelp->text[0] == '.' ) send_to_char( pHelp->text+1, ch );
-         else send_to_char( pHelp->text , ch ); */
-      if (pHelp->text[0] == '.')
-        strcat(output, pHelp->text + 1);
+      if (htext[0] == '.')
+        strcat(output, htext + 1);
       else
-        strcat(output, pHelp->text);
+        strcat(output, htext);
       if (fRegular)
         send_to_char(output, ch);
       free(output);
+      sqlite3_free(sql);
+      sqlite3_finalize(stmt);
       return;
     }
+
+    rc = sqlite3_step(stmt);
   }
+
 
   send_to_char("No help on that word.\n\rMissing help file logged.\n\r", ch);
   append_file(ch, HELP_FILE, nohelp);

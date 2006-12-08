@@ -84,12 +84,6 @@ void save_area_list()
   }
   else
   {
-    /* 
-     * Add any help files that need to be loaded at
-     * startup to this section.
-     */
-    fprintf(fp, "help.are\n");
-
     for (pArea = area_first; pArea; pArea = pArea->next)
     {
       fprintf(fp, "%s\n", pArea->file_name);
@@ -863,22 +857,6 @@ void save_shops(FILE * fp, AREA_DATA * pArea)
   return;
 }
 
-void save_helps(FILE * fp, HELP_DATA * help)
-{
-  fprintf(fp, "#HELPS\n");
-
-  for (; help; help = help->next)
-  {
-    fprintf(fp, "%d %s~\n", help->level, help->keyword);
-    fprintf(fp, "%s~\n\n", fix_string(help->text));
-  }
-
-  fprintf(fp, "-1 $~\n\n");
-
-  return;
-}
-
-
 /*****************************************************************************
  Name:		save_area
  Purpose:	Save an area, note that this format is new.
@@ -918,24 +896,6 @@ void save_area(AREA_DATA * pArea)
 }
 
 
-void save_help(void)
-{
-  FILE *fp;
-
-  if (!(fp = file_open("help.are", "w")))
-  {
-    bug("Open_area: fopen", 0);
-    perror("help.are");
-  }
-
-  save_helps(fp, help_first);
-
-  fprintf(fp, "#$\n");
-
-  file_close(fp);
-  return;
-}
-
 /*****************************************************************************
  Name:		do_asave
  Purpose:	Entry point for saving area data.
@@ -958,7 +918,6 @@ CH_CMD(do_asave)
       save_area(pArea);
       REMOVE_BIT(pArea->area_flags, AREA_CHANGED);
     }
-    save_help();
     return;
   }
   smash_tilde(argument);
@@ -1011,7 +970,6 @@ CH_CMD(do_asave)
       save_area(pArea);
       REMOVE_BIT(pArea->area_flags, AREA_CHANGED);
     }
-    save_help();
     send_to_char("You saved the world.\n\r", ch);
     /*  send_to_all_char( "Database saved.\n\r" );                 ROM OLC */
     return;

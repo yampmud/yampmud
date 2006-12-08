@@ -50,8 +50,6 @@ GLOBAL_DEF(long top_vnum, 0);
 GLOBAL(ROOM_INDEX_DATA * room_index_hash[MAX_KEY_HASH]);
 GLOBAL(GQUEST gquest_info);
 
-GLOBAL_DEF(HELP_DATA * help_last, NULL);
-GLOBAL_DEF(HELP_DATA * help_first, NULL);
 GLOBAL_DEF(HELP_DATA * help_free, NULL);
 
 GLOBAL_DEF(int share_value, SHARE_VALUE);

@@ -190,10 +190,16 @@ int store_help(HELP_DATA * pHelp)
   char *zErr;
   int rc;
 
-  sql =
-    sqlite3_mprintf
-    ("INSERT OR REPLACE INTO helps (level, keyword, htext) VALUES (%d, %Q, %Q)",
-     pHelp->level, pHelp->keyword, pHelp->text);
+  if (pHelp->id == 0)
+    sql =
+      sqlite3_mprintf
+      ("INSERT OR IGNORE INTO helps (level, keyword, htext) VALUES (%d, %Q, %Q)",
+       pHelp->level, pHelp->keyword, pHelp->text);
+  else
+    sql =
+      sqlite3_mprintf
+      ("UPDATE helps SET level=%d, keyword=%Q, htext=%Q WHERE id=%d",
+       pHelp->level, pHelp->keyword, pHelp->text, pHelp->id);
   rc = sqlite3_exec(world_db, sql, NULL, NULL, &zErr);
 
   if (rc != SQLITE_OK)
