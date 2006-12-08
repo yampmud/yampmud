@@ -62,7 +62,6 @@ void advance_level(CHAR_DATA * ch)
 
   sprintf(buf, "the %s",
           title_table[ch->class][ch->level][ch->sex == SEX_FEMALE ? 1 : 0]);
-  /* set_title( ch, buf ); */
 
   add_hp =
     con_app[get_curr_stat(ch, STAT_CON)].hitp +
@@ -144,7 +143,6 @@ void advance_level_quiet(CHAR_DATA * ch)
 
   sprintf(buf, "the %s",
           title_table[ch->class][ch->level][ch->sex == SEX_FEMALE ? 1 : 0]);
-  /* set_title( ch, buf ); */
 
   add_hp =
     con_app[get_curr_stat(ch, STAT_CON)].hitp +
@@ -271,17 +269,6 @@ void gain_exp(CHAR_DATA * ch, int gain)
           break;
       }
     }
-
-    /*
-       for(d = descriptor_list; d != NULL; d = d->next)
-       {
-       if(d->connected == CON_PLAYING 
-       && !IS_SET(d->character->comm, COMM_QUIET));
-       printf_to_char(d->character, "{r!{R*{r!{w-{W>{YC{GH{YE{GE{YR{W<{w-{r!{R*{r! {*%s {Dhas attained level {*%d{Y!{G!{Y!{x\n\r",ch->name,ch->level);
-       }
-
-       }
-     */
   }
   return;
 }
@@ -723,19 +710,6 @@ void weather_update(void)
         IS_AWAKE(d->character) && strlen(buf) > 1)
       send_to_char(buf, d->character);
   }
-  /*
-     if ( time_info.hour < 9 || time_info.hour > 17 )
-     {
-     if (IS_SET(class_table[ch->class].name, Revenant))
-     || (IS_SET(class_table[ch->class].name, Vampire))
-     || (IS_SET(class_table[ch->class].name, Lich))
-     || (IS_SET(class_table[ch->class].name, Cainite))
-     {
-     printf_to_char(ch,"{bThe {Rd{za{x{Rz{zm{x{Ra{zg{x{Rin{zg{x {rrays of the sun {Rb{Yu{Rr{Yn{r your {yskin!{x\n\r");
-     damage = ch->level/20;
-     }
-     }
-   */
   return;
 }
 
@@ -1461,43 +1435,6 @@ void obj_update(void)
     char *message;
 
     obj_next = obj->next;
-    /* go through affects and decrement
-       for ( paf = obj->affected; paf != NULL; paf = paf_next )
-       {
-       paf_next = paf->next;
-       if ( paf->duration > 0 )
-       {
-       paf->duration--;
-       if ( number_range ( 0, 4 ) == 0 && paf->level > 0 )
-       paf->level--;
-       }
-       else if ( paf->duration < 0 );
-       else
-       {
-       if ( paf_next == NULL || paf_next->type != paf->type ||
-       paf_next->duration > 0 )
-       {
-       if ( paf->type > 0 && skill_table[paf->type].msg_obj )
-       {
-       if ( obj->carried_by != NULL )
-       {
-       rch = obj->carried_by;
-       act ( skill_table[paf->type].msg_obj, rch, obj,
-       NULL, TO_CHAR );
-       }
-       if ( obj->in_room != NULL &&
-       obj->in_room->people != NULL )
-       {
-       rch = obj->in_room->people;
-       act ( skill_table[paf->type].msg_obj, rch, obj,
-       NULL, TO_ALL );
-       }
-       }
-       }
-
-       affect_remove_obj ( obj, paf );
-       }
-       } */
 
     if (obj->timer <= 0 || --obj->timer > 0)
       continue;
@@ -1687,7 +1624,6 @@ void update_handler(bool forced)
   if (--pulse_area <= 0 || forced)
   {
     pulse_area = PULSE_AREA;
-    /* number_range( PULSE_AREA / 2, 3 * PULSE_AREA / 2 ); */
     quest_update();
     //        olcautosave (  );
     area_update();

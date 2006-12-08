@@ -609,10 +609,6 @@ OBJ_DATA *has_questobj(CHAR_DATA * ch)
  */
 CH_CMD(do_quest)
 {
-  /*    int sn;
-     AFFECT_DATA paf;
-     int affect_modify = 0, bit = 0, enchant_type, pos, ii;
-   */
   CHAR_DATA *questman;
   OBJ_DATA *obj = NULL;
 
