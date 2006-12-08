@@ -3277,7 +3277,7 @@ CH_CMD(do_help)
 
   sql =
     sqlite3_mprintf
-    ("SELECT id,level,keyword,htext FROM helps WHERE keyword LIKE '%%%q%%' AND level < %d",
+    ("SELECT id,level,keyword,htext FROM helps WHERE keyword LIKE '%%%q%%' AND level <= %d",
      argall, get_trust(ch));
   rc = sqlite3_prepare(world_db, sql, strlen(sql), &stmt, &tail);
 
