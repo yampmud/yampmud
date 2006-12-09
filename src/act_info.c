@@ -3215,8 +3215,8 @@ CH_CMD(do_time)
           month_name[time_info.month]);
   send_to_char(buf, ch);
   sprintf(buf,
-          "{c" mudname " started up at {W%s{x\n\r{cThe system time is {W%s{x\n\r",
-          str_boot_time, (char *) ctime(&current_time));
+          "{c%s started up at {W%s{x\n\r{cThe system time is {W%s{x\n\r",
+          mudname, str_boot_time, (char *) ctime(&current_time));
   send_to_char(buf, ch);
   return;
 }

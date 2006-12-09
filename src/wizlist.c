@@ -181,7 +181,7 @@ CH_CMD(do_wizlist)
     return;
   }
   buffer = new_buf();
-  sprintf(title, "The IMMORTALS of " mudname "{x");
+  sprintf(title, "The IMMORTALS of %s{x", mudname);
   sprintf(buf,
           "{W  ___________________________________________________________________________{x\n\r");
   add_buf(buffer, buf);
