@@ -40,6 +40,7 @@
 #include <unistd.h>
 #include "merc.h"
 #include "recycle.h"
+#include "str_util.h"
 
 WIZ_DATA *wiz_list;
 
@@ -187,12 +188,7 @@ CH_CMD(do_wizlist)
   add_buf(buffer, buf);
   sprintf(buf, "{W /\\_\\%70s\\_\\\n\r", " ");
   add_buf(buffer, buf);
-  lngth = (70 - strlen(title)) / 2;
-  for (; lngth >= 0; lngth--)
-  {
-    strcat(title, " ");
-  }
-  sprintf(buf, "{W|/\\\\_\\{D%72s{W\\_\\\n\r", title);
+  sprintf(buf, "{W|/\\\\_\\{D%72s{W\\_\\\n\r", center(title, 70, " "));
   add_buf(buffer, buf);
   sprintf(buf, "{W\\_/_|_|{x%69s{W|_|\n\r", " ");
   add_buf(buffer, buf);
