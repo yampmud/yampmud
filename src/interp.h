@@ -469,6 +469,7 @@ DECLARE_DO_FUN(do_vdpi);
 DECLARE_DO_FUN(do_vdth);
 DECLARE_DO_FUN(do_vdtr);
 DECLARE_DO_FUN(do_verbose);
+DECLARE_DO_FUN(do_vfree);
 DECLARE_DO_FUN(do_visible);
 DECLARE_DO_FUN(do_violate);
 DECLARE_DO_FUN(do_vload);

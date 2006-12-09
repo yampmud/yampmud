@@ -2905,9 +2905,7 @@ void reboot_rot(void)
   for (d = descriptor_list; d != NULL; d = d_next)
   {
     d_next = d->next;
-    write_to_buffer(d,
-                    mudname " is now going down for a reboot.",
-                    0);
+    write_to_buffer(d, mudname " is now going down for a reboot.", 0);
     if (d->character != NULL)
       save_char_obj(d->character);
     close_socket(d);
@@ -8590,5 +8588,47 @@ CH_CMD(do_olevel)
     send_to_char("{RStopped at 300 objects.", ch);
 
   free_buf(buffer);
+  return;
+}
+
+void do_vfree(CHAR_DATA * ch, char *argument)
+{
+
+  char buf[MAX_STRING_LENGTH];
+  int block = 0;
+  int tmpblock = 0;
+  int blockend = 0;
+  int col = 0;
+  int count = 5;
+  bool found = false;
+
+  if (is_number(argument))
+    count = atoi(argument);
+
+  for (block = 0; block < 327; block++)
+  {
+    tmpblock = block * 100;
+    blockend = tmpblock + 99;
+
+    for (found = false; tmpblock <= blockend && !found; tmpblock++)
+    {
+      if (get_room_index(tmpblock))
+        found = true;
+    }
+
+    if (!found)
+    {
+      sprintf(buf, "{C%5d{r-{C%-5d   ", block * 100, (block * 100) + 99);
+      send_to_char(buf, ch);
+      if (++col % 5 == 0)
+        send_to_char("{x\n\r", ch);
+      if (!--count)
+        break;
+    }
+  }
+
+  if (col % 5 != 0)
+    send_to_char("{x\n\r", ch);
+
   return;
 }
