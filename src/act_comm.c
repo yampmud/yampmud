@@ -4258,16 +4258,7 @@ void force_quit(CHAR_DATA * ch, char *argument)
     gain_exp(ch, 0 - lose);
   }
 
-  send_to_char
-    ("\n\r\n\r{WYour punch hits someone for {g>{G>{W1{G<{g< {Wdamage! {D[{R%0.01{D]{x\n\r",
-     ch);
-  send_to_char
-    ("{WSomeone's pound {D..{w--{r=={R**{W( {Y!! {OI {ON {OS {OT {OA {ON {OT {OL {OY   {OK {OI {OL {OL {OS {Y!! {W){R**{r=={w--{D..{W you for {w>{W>{R2000000000{W<{w< {xdamage! {D[{R%2090373.14{D]{x\n\r\n\r",
-     ch);
-  send_to_char("{cYou have been {RKILLED!!{x\n\r", ch);
-  send_to_char
-    ("\n\r{w3?]?cz_{Sd&#23./M4(g3#.NZlgsF8:7]hCs\n\r\007\n\r\007\n\r\007\n\r\007\n\rNO CARRIER.\n\r",
-     ch);
+  send_to_char("\n\r\n\r{rGoodbye for now!{x\n\r", ch);
   act("$n has left the game.", ch, NULL, NULL, TO_ROOM);
 
   sprintf(log_buf, "%s has quit.", ch->name);
@@ -4276,9 +4267,6 @@ void force_quit(CHAR_DATA * ch, char *argument)
   sprintf(buf, "%s rejoins the real world.", ch->name);
   wiznet(buf, NULL, NULL, WIZ_LOGINS, 0, 0);
 
-  /* 
-   * After extract_char the ch is no longer valid!
-   */
   ch->btime = 1;
   ch->bflip = 1;
   save_char_obj(ch);
@@ -4286,6 +4274,9 @@ void force_quit(CHAR_DATA * ch, char *argument)
   if (d != NULL)
     close_socket(d);
 
+  /* 
+   * After extract_char the ch is no longer valid!
+   */
   extract_char(ch, true);
   return;
 }
