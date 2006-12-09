@@ -2692,10 +2692,10 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
                         "Type 'password null <new password>' to fix.\n\r", 0);
       }
 
-      sprintf(logbuf,
+      sprintf(log_buf,
               "\n\rWelcome to %s.  Please do not feed the immortals.\n\r",
               mudname);
-      write_to_buffer(d, logbuf, 0);
+      write_to_buffer(d, log_buf, 0);
       ch->next = char_list;
       char_list = ch;
       d->connected = CON_PLAYING;
@@ -2779,7 +2779,7 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
       logins_total++;
       if (IS_IMMORTAL(ch))
       {
-        sprintf(buf, "%s has entered %s.", ch->name);
+        sprintf(buf, "%s has entered %s.", ch->name, mudname);
         wiznet(buf, NULL, NULL, WIZ_LOGINS, 0, 0);
       }
       else

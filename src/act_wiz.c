@@ -2905,8 +2905,8 @@ void reboot_rot(void)
   for (d = descriptor_list; d != NULL; d = d_next)
   {
     d_next = d->next;
-    sprintf(logbuf, "%s is now going down for a reboot.", mudname);
-    write_to_buffer(d, logbuf, 0);
+    sprintf(log_buf, "%s is now going down for a reboot.", mudname);
+    write_to_buffer(d, log_buf, 0);
     if (d->character != NULL)
       save_char_obj(d->character);
     close_socket(d);
