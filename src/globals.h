@@ -138,11 +138,11 @@ GLOBAL_DEF(BAN_DATA * ban_list, NULL);
 GLOBAL_DEF(NOTE_DATA * note_list, NULL);
 GLOBAL_DEF(CLN_DATA * cln_list, NULL);
 
-GLOBAL_DEF(char *help_greetinga, "Welcome to Illusions of Grandeur");
-GLOBAL_DEF(char *help_greetingb, "Welcome to Illusions of Grandeur");
-GLOBAL_DEF(char *help_greetingc, "Welcome to Illusions of Grandeur");
-GLOBAL_DEF(char *help_greetingd, "Welcome to Illusions of Grandeur");
-GLOBAL_DEF(char *help_greetinge, "Welcome to Illusions of Grandeur");
+GLOBAL_DEF(char *help_greetinga, "Welcome to " mudname);
+GLOBAL_DEF(char *help_greetingb, "Welcome to " mudname);
+GLOBAL_DEF(char *help_greetingc, "Welcome to " mudname);
+GLOBAL_DEF(char *help_greetingd, "Welcome to " mudname);
+GLOBAL_DEF(char *help_greetinge, "Welcome to " mudname);
 GLOBAL_DEF(char *help_authors, "");
 GLOBAL_DEF(char *help_login, "What are you known as traveller?");
 

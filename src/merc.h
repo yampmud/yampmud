@@ -43,7 +43,7 @@
 typedef int sh_int;
 
 #define WWW_WHO		"/doc/mud/public_html/who.html"
-#define mudname "{WD{wistort{Dions {WO{wf {WC{wha{Dos{x"
+#define mudname "{dD{de{dl{du{ds{di{do{dn{da{dl {dT{de{dn{dd{de{dn{dc{di{de{ds{x"
 
 /*
  * Colour stuff by Lope of Loping Through The MUD
