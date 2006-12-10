@@ -147,7 +147,6 @@ DECLARE_DO_FUN(do_class);
 DECLARE_DO_FUN(do_clead);
 DECLARE_DO_FUN(do_clone);
 DECLARE_DO_FUN(do_close);
-DECLARE_DO_FUN(do_codestat);
 DECLARE_DO_FUN(do_colour);
 DECLARE_DO_FUN(do_combine);
 /*DECLARE_DO_FUN( do_combust ); */

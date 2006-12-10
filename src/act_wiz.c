@@ -194,36 +194,6 @@ CH_CMD(do_repeat)
   }
 }
 
-CH_CMD(do_codestat)
-{
-  char buf[MSL];
-  int sn = 0;
-
-  if (!IS_IMMORTAL(ch) || IS_NPC(ch))
-    return;
-
-  sprintf(buf,
-          "\n\rarena: %s\n\rareancount: %d\n\rmass_arena_players: %d\n\rmass_arena_players_joined: %d\n\rmass_arena_ticks: %d\n\rmass_arena_valid_ticks: %d\n\ris_mass_arena: %s\n\ris_mass_arena_fight: %s\n\rmadmin_reroll: %s\n\r\n\r",
-          arena == 0 ? "FIGHT_OPEN" : arena == 1 ? "FIGHT_START" : arena ==
-          2 ? "FIGHT_BUSY" : arena == 3 ? "FIGHT_LOCK" : "", arenacount,
-          mass_arena_players, mass_arena_players_joined, mass_arena_ticks,
-          mass_arena_valid_ticks, is_mass_arena ? "{Gtrue{x" : "{Rfalse{x",
-          is_mass_arena_fight ? "{Gtrue{x" : "{Rfalse{x", madmin_reroll);
-
-  send_to_char(buf, ch);
-
-  while (sn < MAX_SKILL)
-  {
-    sprintf(buf, "%3d %s\n\r", sn, skill_table[sn].name);
-    send_to_char(buf, ch);
-    sn++;
-  }
-
-  sprintf(buf, "Set max_skill to %d.\n\r", sn);
-  send_to_char(buf, ch);
-  return;
-}
-
 CH_CMD(do_ftick)
 {
   int count;

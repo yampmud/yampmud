@@ -480,7 +480,6 @@ const struct cmd_type cmd_table[] = {
   {"rollback", do_rollback, POS_DEAD, ML, 1, LOG_NORMAL, 1},
   {"docarea", do_docarea, POS_DEAD, ML, 1, LOG_NORMAL, 1},
   {"tick", do_ftick, POS_DEAD, IM, 1, LOG_NORMAL, 1},
-  {"codestat", do_codestat, POS_DEAD, IM, 1, LOG_NORMAL, 1},
   {"repeat", do_repeat, POS_DEAD, IM, 1, LOG_NORMAL, 1},
   {"shutup", do_shutup, POS_DEAD, IM, 1, LOG_NORMAL, 1},
   {"madmin", do_madmin, POS_DEAD, ML, 1, LOG_NORMAL, 1},
