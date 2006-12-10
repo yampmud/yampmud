@@ -4765,6 +4765,9 @@ CH_CMD(do_mset)
       strcpy(buf, "Possible classes are: ");
       for (class = 0; class < MAX_CLASS; class++)
       {
+        if (!class_table[class].name)
+          break;
+
         if (class > 0)
           strcat(buf, " ");
         strcat(buf, class_table[class].name);
