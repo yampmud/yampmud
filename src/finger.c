@@ -67,8 +67,6 @@ CH_CMD(do_finger)
   victim = new_char();
   victim->pcdata = new_pcdata();
   fOld = false;
-  //    sprintf ( buf, "gzip -dfq %s%s.gz", PLAYER_DIR, capitalize ( arg ) );
-  //    system ( buf );
   sprintf(buf, "%s%s", PLAYER_DIR, capitalize(arg));
   if ((fp = file_open(buf, "r")) != NULL)
   {
@@ -114,10 +112,6 @@ CH_CMD(do_finger)
       }
     }
     file_close(fp);
-    //        sprintf ( buf, "gzip -fq %s%s", PLAYER_DIR, capitalize ( arg ) );
-    //        system ( buf );
-    //        sprintf ( buf, "rm -f %s", capitalize ( arg ) );
-    //        system ( buf );
   }
   if (!fOld)
   {
@@ -126,36 +120,6 @@ CH_CMD(do_finger)
     free_char(victim);
     return;
   }
-  if ((victim->level > LEVEL_ANCIENT) && (victim->level > ch->level))
-  {
-    send_to_char("The gods wouldn't like that.\n\r", ch);
-    free_pcdata(victim->pcdata);
-    free_char(victim);
-    return;
-  }
-
-  /*  OLD PRINT
-     printf_to_char ( ch,
-     "{Y====================\n\r" "{Y|{cName{x :{g %-12s{x"
-     "{cLevel{x:{g %-12d{x\n\r" "{Y|{cClass{x:{g %-12s{x"
-     "{cRace{x :{g %-12s{x\n\r" "{Y|{cClan{x :{g %-12s{x"
-     "{cRank{x :{g %-12s{x\n\r"
-     "{Y|{cPK{x   :{g %-12ld{x"
-     "{cPD{x   :{g %-12ld{x\n\r"
-     "{Y|{cAWin{x :{g %-12d{x" "{cAloss{x:{g %-12d{x\n\r"
-     "{Y|{cHours{x:{g %-12d{x" "{cRPs Total/Current {x: {g%-6d / %-6d{x\n\r"
-     "{Y=====================\n\r" "Last Logged off %s{x\r",
-     victim->name, victim->level,
-     class_table[victim->class].name,
-     pc_race_table[victim->race].name,
-     clan_table[victim->clan].exname,
-     clan_rank_table[victim->clan_rank].title_of_rank[victim->sex],
-     victim->pcdata->pkkills, victim->pcdata->pkdeaths,
-     victim->pcdata->awins, victim->pcdata->alosses,
-     ( ( int ) ( victim->played + current_time - victim->logon ) / 3600 ),
-     victim->rpst, victim->rps,
-     ( char * ) ctime ( &victim->llogoff ) );
-   */
 
   printf_to_char(ch,
                  "{W( {+P{+L{+A{+Y{+E{+R {+I{+N{+F{+O{+R{+M{+A{+T{+I{+O{+N{W: {R%-10s"
@@ -168,8 +132,7 @@ CH_CMD(do_finger)
                  "  {CA{crena {CW{cins  {W: {g%-10d"
                  "{CA{crena  {CL{cosses{W: {g%d\n\r"
                  "  {CR{cole-play {CP{coints{W: {g%-3d {C({cCurrent{C)"
-                 " {W/ {g%-3d {C({cTotal{C){x\n\r"
-                 " {W   {+L{+a{+s{+t {+L{+o{+g{+g{+e{+d o{+f{+f {x%-25s{x\n\r",
+                 " {W/ {g%-3d {C({cTotal{C){x\n\r",
                  victim->name, victim->pcdata->title, victim->level,
                  pc_race_table[victim->race].name,
                  class_table[victim->class].name,
@@ -178,7 +141,7 @@ CH_CMD(do_finger)
                                                                   sex],
                  victim->pcdata->pkkills, victim->pcdata->pkdeaths,
                  victim->pcdata->awins, victim->pcdata->alosses, victim->rps,
-                 victim->rpst, (char *) ctime(&victim->llogoff));
+                 victim->rpst);
 
   /* It doesn't like this.
      if ( ( victim = get_char_world ( ch, arg ) ) != NULL && !IS_NPC ( victim ) )
@@ -186,8 +149,6 @@ CH_CMD(do_finger)
      act ( "          $N is on right {=n{=o{=w{x!", ch, NULL, victim, TO_CHAR );
      }
    */
-
-  /* Fixed small error in code so I could compile. -- Dist */
 
   printf_to_char(ch, "\n\r");
   free_pcdata(victim->pcdata);
