@@ -254,7 +254,7 @@ HEDIT(hedit_delete)
   char *sql;
 
   sql =
-    sqlite3_mprintf("DELETE FROM areas WHERE id=%d",
+    sqlite3_mprintf("DELETE FROM helps WHERE id=%d",
                     ((HELP_DATA *) (ch->desc->pEdit))->id);
   sqlite3_exec(world_db, sql, NULL, NULL, &zErr);
 
