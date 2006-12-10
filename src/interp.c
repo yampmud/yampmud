@@ -42,7 +42,7 @@
 #include "merc.h"
 #include "db.h"
 
-bool check_disabled(const struct cmd_type *command);
+bool check_disabled(const struct cmd_type * command);
 DISABLED_DATA *disabled_first;
 
 #define END_MARKER	"END"       /* for load_disabled() and save_disabled() */
@@ -375,7 +375,6 @@ const struct cmd_type cmd_table[] = {
   {"copyover", do_copyover, POS_DEAD, L1, 1, LOG_ALWAYS, 1},
   {"pktoggle", do_pktoggle, POS_DEAD, CHIEF, 1, LOG_NORMAL, 1},
   {"bprompt", do_bprompt, POS_DEAD, HLPER, 1, LOG_NORMAL, 1},
-  {"spam", do_spam, POS_DEAD, HDIMM, 1, LOG_ALWAYS, 1},
   {"warn", do_warn, POS_DEAD, HDIMM, 1, LOG_NORMAL, 1},
   {"redeem", do_redeem, POS_DEAD, 0, 1, LOG_ALWAYS, 1},
   {"autocopy", do_autocopy, POS_DEAD, L1, 1, LOG_ALWAYS, 1},
@@ -478,7 +477,6 @@ const struct cmd_type cmd_table[] = {
   {"award", do_award, POS_DEAD, L5, 1, LOG_NORMAL, 1},
   {"vape", do_vape, POS_DEAD, ML, 1, LOG_NORMAL, 1},
   {"rollback", do_rollback, POS_DEAD, ML, 1, LOG_NORMAL, 1},
-  {"docarea", do_docarea, POS_DEAD, ML, 1, LOG_NORMAL, 1},
   {"tick", do_ftick, POS_DEAD, IM, 1, LOG_NORMAL, 1},
   {"repeat", do_repeat, POS_DEAD, IM, 1, LOG_NORMAL, 1},
   {"shutup", do_shutup, POS_DEAD, IM, 1, LOG_NORMAL, 1},
