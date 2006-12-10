@@ -4867,13 +4867,14 @@ MEDIT(medit_race)
   {
     char buf[MAX_STRING_LENGTH];
 
-    send_to_char("Available races are:", ch);
+    send_to_char("Available races ({R*{x denotes PC races):", ch);
 
     for (race = 0; race_table[race].name != NULL; race++)
     {
       if ((race % 3) == 0)
         send_to_char("\n\r", ch);
-      sprintf(buf, " %-15s", race_table[race].name);
+      sprintf(buf, " %-14s%s", race_table[race].name,
+              race_table[race].pc_race ? "{R*{x" : " ");
       send_to_char(buf, ch);
     }
 
