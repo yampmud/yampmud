@@ -274,7 +274,7 @@ CH_CMD(do_uptime)
 {
   char buf[MAX_STRING_LENGTH];
 
-  sprintf(buf, "DoC booted at %s\n\r", str_boot_time);
+  sprintf(buf, "%s booted at %s\n\r", mudname, str_boot_time);
   send_to_char(buf, ch);
 
 }

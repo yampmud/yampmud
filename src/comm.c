@@ -2329,18 +2329,20 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
       ch->pcdata->socket = str_dup(d->host);
       write_to_buffer(d, echo_on_str, 0);
 
-      write_to_buffer(d,
-                      "Where did you hear about DoC?\n\rPlease put 'None' ( Without quotes ) if you were not referred: ",
-                      0);
+      sprintf(log_buf,
+              "Where did you hear about %s?\n\rPlease put 'None' ( Without quotes ) if you were not referred: ",
+              mudname);
+      write_to_buffer(d, log_buf, 0);
       d->connected = CON_GET_REFER;
       break;
 
     case CON_GET_REFER:
       if (argument[0] == '\0')
       {
-        write_to_buffer(d,
-                        "\n\rYou must enter a description or 'None'..\n\rWhere Did you hear about DoC?",
-                        0);
+        sprintf(log_buf,
+                "\n\rYou must enter a description or 'None'..\n\rWhere did you hear about %s?",
+                mudname);
+        write_to_buffer(d, log_buf, 0);
         return;
       }
       else
