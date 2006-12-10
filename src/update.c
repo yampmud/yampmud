@@ -580,7 +580,9 @@ void mobile_update(void)
         (!IS_SET(ch->act, ACT_OUTDOORS) ||
          !IS_SET(pexit->u1.to_room->room_flags, ROOM_INDOORS)) &&
         (!IS_SET(ch->act, ACT_INDOORS) ||
-         IS_SET(pexit->u1.to_room->room_flags, ROOM_INDOORS)))
+         IS_SET(pexit->u1.to_room->room_flags, ROOM_INDOORS)) &&
+        (IS_SET(ch->act2, ACT2_STAY_SECTOR) &&
+         (pexit->u1.to_room->sector_type == ch->in_room->sector_type)))
     {
       move_char(ch, door, false, false);
     }

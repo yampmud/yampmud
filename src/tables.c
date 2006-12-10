@@ -125,6 +125,7 @@ const struct flag_type act2_flags[] = {
   {"forger", A, true},
   {"dealer", B, true},
   {"banker", C, true},
+  {"stay_sector", D, true},
   {NULL, 0, false}
 };
 

@@ -769,6 +769,7 @@ struct kill_data
 #define ACT2_FORGER              (A)
 #define ACT2_DEALER              (B)
 #define ACT2_BANKER              (C)
+#define ACT2_STAY_SECTOR         (D)
 
 /* damage classes */
 #define DAM_NONE                0

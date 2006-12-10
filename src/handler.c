@@ -3604,6 +3604,8 @@ char *act2_bit_name(int act2_flags)
     strcat(buf, " dealer");
   if (act2_flags & ACT2_BANKER)
     strcat(buf, " banker");
+  if (act2_flags & ACT2_STAY_SECTOR)
+    strcat(buf, " stay_sector");
   return (buf[0] != '\0') ? buf + 1 : "none";
 }
 
