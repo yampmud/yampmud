@@ -338,9 +338,9 @@ int hit_gain(CHAR_DATA * ch)
       gain /= 2;
   }
 
-  gain = gain * ch->in_room->heal_rate / 90;
+  gain = gain * ch->in_room->heal_rate / 100;
   if (ch->on != NULL && ch->on->item_type == ITEM_FURNITURE)
-    gain = gain * ch->on->value[3] / 90;
+    gain = gain * ch->on->value[3] / 100;
   if (IS_AFFECTED(ch, AFF_POISON))
     gain /= 4;
 
@@ -412,9 +412,9 @@ int mana_gain(CHAR_DATA * ch)
       gain /= 2;
   }
 
-  gain = gain * ch->in_room->mana_rate / 90;
+  gain = gain * ch->in_room->mana_rate / 100;
   if (ch->on != NULL && ch->on->item_type == ITEM_FURNITURE)
-    gain = gain * ch->on->value[4] / 90;
+    gain = gain * ch->on->value[4] / 100;
 
   if (IS_AFFECTED(ch, AFF_POISON))
     gain /= 4;
@@ -455,9 +455,9 @@ int move_gain(CHAR_DATA * ch)
       gain /= 2;
   }
 
-  gain = gain * ch->in_room->heal_rate / 90;
+  gain = gain * ch->in_room->heal_rate / 100;
   if (ch->on != NULL && ch->on->item_type == ITEM_FURNITURE)
-    gain = gain * ch->on->value[3] / 90;
+    gain = gain * ch->on->value[3] / 100;
   if (IS_AFFECTED(ch, AFF_POISON))
     gain /= 4;
 
