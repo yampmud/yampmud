@@ -4157,7 +4157,7 @@ CH_CMD(do_quit)
     return;
   }
 
-  if (IS_SET(ch->in_room->room_flags, ROOM_ARENA))
+  if (ch->in_room && IS_SET(ch->in_room->room_flags, ROOM_ARENA))
   {
     send_to_char("Not while in the arena you dont.\n\r", ch);
     return;
