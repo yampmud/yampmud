@@ -204,21 +204,29 @@ void advance_level_quiet(CHAR_DATA * ch)
 void gain_exp(CHAR_DATA * ch, int gain)
 {
   char buf[MAX_STRING_LENGTH];
+  int exp, i;
 
-  /* Characters with unauthorized names can only reach MAX_LEVEL_NOAUTH */
-  if ((ch->level >= MAX_LEVEL_NOAUTH) && (ch->nameauthed == 0))
-  {
-    send_to_char
-      ("You may not gain any more experience until your name is authorized.\n\r",
-       ch);
-    return;
-  }
-
-  /*    DESCRIPTOR_DATA*d; */
   if (IS_NPC(ch) || ch->level >= LEVEL_HERO)
     return;
 
-  ch->exp = UMAX(exp_per_level(ch, ch->pcdata->points), ch->exp + gain);
+  exp = UMAX(exp_per_level(ch, ch->pcdata->points), ch->exp + gain);
+
+  i = 1;
+
+  /* Characters with unauthorized names can only reach MAX_LEVEL_NOAUTH */
+  while (exp_per_level(ch, ch->pcdata->points) * (ch->level + i) < exp)
+  {
+    if ((ch->level + i > MAX_LEVEL_NOAUTH) && (ch->nameauthed == 0))
+    {
+      send_to_char
+        ("Your name must be authorized before you may gain that much experience.\n\r",
+         ch);
+      return;
+    }
+    i++;
+  }
+
+  ch->exp = exp;
   while (ch->level < LEVEL_HERO &&
          ch->exp >= exp_per_level(ch, ch->pcdata->points) * (ch->level + 1))
   {
