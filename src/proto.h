@@ -585,7 +585,6 @@ args((ROOM_INDEX_DATA * scan_room, CHAR_DATA * ch, sh_int depth,
       sh_int door));
 void scan_char
 args((CHAR_DATA * victim, CHAR_DATA * ch, sh_int depth, sh_int door));
-void sign_attach args((CHAR_DATA * ch, int type));
 void list_group_chosen args((CHAR_DATA * ch));
 void load_social args((FILE * fp, struct social_type * social));
 void save_social args((const struct social_type * s, FILE * fp));

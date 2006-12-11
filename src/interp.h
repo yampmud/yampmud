@@ -409,7 +409,6 @@ DECLARE_DO_FUN(do_showskill);
 DECLARE_DO_FUN(do_shutdow);
 DECLARE_DO_FUN(do_shutdown);
 DECLARE_DO_FUN(do_shutup);
-DECLARE_DO_FUN(do_sign);
 DECLARE_DO_FUN(do_sit);
 DECLARE_DO_FUN(do_skills);
 DECLARE_DO_FUN(do_sla);
