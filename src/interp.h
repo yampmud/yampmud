@@ -273,6 +273,7 @@ DECLARE_DO_FUN(do_mquest);
 DECLARE_DO_FUN(do_msedit);
 DECLARE_DO_FUN(do_mset);
 DECLARE_DO_FUN(do_mstat);
+DECLARE_DO_FUN(do_multioload);
 DECLARE_DO_FUN(do_murde);
 DECLARE_DO_FUN(do_murder);
 DECLARE_DO_FUN(do_music);

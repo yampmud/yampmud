@@ -8324,3 +8324,135 @@ void do_vfree(CHAR_DATA * ch, char *argument)
 
   return;
 }
+
+CH_CMD(do_multioload)
+{
+  char arg1[MAX_INPUT_LENGTH];
+  char arg3[MAX_INPUT_LENGTH];
+  char arg4[MAX_INPUT_LENGTH];
+  char buf[MAX_STRING_LENGTH];
+  OBJ_INDEX_DATA *pObjIndex;
+  OBJ_DATA *obj;
+  ROOM_INDEX_DATA *room;
+  int count, numtosum;
+
+  argument = one_argument(argument, arg4);
+  argument = one_argument(argument, arg1);
+  argument = one_argument(argument, arg3);
+
+  if ((arg4[0] == '\0') || (arg1[0] == '\0'))
+  {
+    send_to_char("Syntax: multioload <#> <vnum> [location].\n\r", ch);
+    send_to_char
+      ("Location can be a room vnum or random to place the objects in random rooms.\n\r",
+       ch);
+
+    return;
+  }
+
+  numtosum = atoi(arg4);
+
+  if ((!is_number(arg1)) || (!is_number(arg4)))
+  {
+    do_multioload(ch, "");
+    return;
+  }
+
+  if ((pObjIndex = get_obj_index(atol(arg1))) == NULL)
+  {
+    send_to_char("No object has that vnum.\n\r", ch);
+    return;
+  }
+
+  if (pObjIndex->item_type == ITEM_EXIT)
+  {
+    send_to_char("You cannot load an exit object.\n\r", ch);
+    return;
+  }
+
+  if (!IS_BUILDER(ch, get_vnum_area(pObjIndex->vnum)))
+  {
+    sprintf(buf, "You are not authorized to load %s.\n\r",
+            pObjIndex->short_descr);
+    send_to_char(buf, ch);
+    return;
+  }
+
+  if (arg3[0] == '\0')
+  {
+    for (count = 0; count < numtosum; count++)
+    {
+      obj = create_object(pObjIndex, ch->level);
+      if (CAN_WEAR(obj, ITEM_TAKE))
+      {
+        obj_to_char(obj, ch);
+
+      }
+      else
+      {
+        obj_to_room(obj, ch->in_room);
+      }
+    }
+    if (CAN_WEAR(obj, ITEM_TAKE))
+    {
+      sprintf(buf, "You summon %d %s into your inventory\n\r", numtosum,
+              obj->short_descr);
+      send_to_char(buf, ch);
+    }
+    else
+    {
+      sprintf(buf, "%d %s materialize into the room", numtosum,
+              obj->short_descr);
+      send_to_char(buf, ch);
+    }
+
+    act("$n has created $p!", ch, obj, NULL, TO_ROOM);
+    sprintf(log_buf, "%s multioloads %d %s.", ch->name, numtosum,
+            obj->short_descr);
+    wiznet(log_buf, ch, obj, WIZ_LOAD, WIZ_SECURE, get_trust(ch));
+    return;
+  }
+  else
+  {
+    if (is_number(arg3))
+    {
+      room = get_room_index(atol(arg3));
+      if (room == NULL)
+      {
+        send_to_char("You cannot summon an item to there.\n\r", ch);
+        return;
+      }
+      for (count = 0; count < numtosum; count++)
+      {
+        obj = create_object(pObjIndex, ch->level);
+        obj_to_room(obj, room);
+      }
+      sprintf(buf, "You summon %d %s and send them to %s [%s].\n\r", numtosum,
+              obj->short_descr, room->name, arg3);
+      send_to_char(buf, ch);
+      sprintf(log_buf, "%s multioloads %d %s to %s [%s].", ch->name, numtosum,
+              obj->short_descr, room->name, arg3);
+      wiznet(log_buf, ch, obj, WIZ_LOAD, WIZ_SECURE, get_trust(ch));
+      return;
+    }
+    if (!strcmp("random", arg3))
+    {
+      for (count = 0; count < numtosum; count++)
+      {
+        room = get_random_room(ch);
+        obj = create_object(pObjIndex, ch->level);
+        obj_to_room(obj, room);
+      }
+      sprintf(buf,
+              "You summon %d %s and send them off in random directions.\n\r",
+              numtosum, obj->short_descr);
+      send_to_char(buf, ch);
+      sprintf(log_buf, "%s multioloads and scatters %d %s.", ch->name,
+              numtosum, obj->short_descr);
+      wiznet(log_buf, ch, obj, WIZ_LOAD, WIZ_SECURE, get_trust(ch));
+      return;
+    }
+    do_multioload(ch, "");
+    return;
+  }
+}
