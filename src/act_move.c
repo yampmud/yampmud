@@ -124,7 +124,7 @@ CH_CMD(do_redeem)
   if (!str_cmp(fin, argument))
   {
     send_to_char("Key is correct!\n\r", ch);
-    reward = create_object(get_obj_index(523), 0);
+    reward = create_object(get_obj_index(523));
     obj_to_room(reward, ch->in_room);
     do_get(ch, "back");
     ch->redeem++;

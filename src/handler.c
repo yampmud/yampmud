@@ -448,16 +448,6 @@ bool class_can_use(CHAR_DATA * ch, OBJ_DATA * obj)
   return (ch->class == obj->class);
 }
 
-/* checks mob format */
-bool is_old_mob(CHAR_DATA * ch)
-{
-  if (ch->pIndexData == NULL)
-    return false;
-  else if (ch->pIndexData->new_format)
-    return false;
-  return true;
-}
-
 /* for returning skill information */
 int get_skill(CHAR_DATA * ch, int sn)
 {
@@ -2831,19 +2821,19 @@ OBJ_DATA *create_money(int platinum, int gold, int silver)
 
   if (platinum == 0 && gold == 0 && silver == 1)
   {
-    obj = create_object(get_obj_index(OBJ_VNUM_SILVER_ONE), 0);
+    obj = create_object(get_obj_index(OBJ_VNUM_SILVER_ONE));
   }
   else if (platinum == 0 && gold == 1 && silver == 0)
   {
-    obj = create_object(get_obj_index(OBJ_VNUM_GOLD_ONE), 0);
+    obj = create_object(get_obj_index(OBJ_VNUM_GOLD_ONE));
   }
   else if (platinum == 1 && gold == 0 && silver == 0)
   {
-    obj = create_object(get_obj_index(OBJ_VNUM_PLATINUM_ONE), 0);
+    obj = create_object(get_obj_index(OBJ_VNUM_PLATINUM_ONE));
   }
   else if (gold == 0 && silver == 0)
   {
-    obj = create_object(get_obj_index(OBJ_VNUM_PLATINUM_SOME), 0);
+    obj = create_object(get_obj_index(OBJ_VNUM_PLATINUM_SOME));
     sprintf(buf, obj->short_descr, platinum);
     free_string(obj->short_descr);
     obj->short_descr = str_dup(buf);
@@ -2853,7 +2843,7 @@ OBJ_DATA *create_money(int platinum, int gold, int silver)
   }
   else if (platinum == 0 && silver == 0)
   {
-    obj = create_object(get_obj_index(OBJ_VNUM_GOLD_SOME), 0);
+    obj = create_object(get_obj_index(OBJ_VNUM_GOLD_SOME));
     sprintf(buf, obj->short_descr, gold);
     free_string(obj->short_descr);
     obj->short_descr = str_dup(buf);
@@ -2863,7 +2853,7 @@ OBJ_DATA *create_money(int platinum, int gold, int silver)
   }
   else if (platinum == 0 && gold == 0)
   {
-    obj = create_object(get_obj_index(OBJ_VNUM_SILVER_SOME), 0);
+    obj = create_object(get_obj_index(OBJ_VNUM_SILVER_SOME));
     sprintf(buf, obj->short_descr, silver);
     free_string(obj->short_descr);
     obj->short_descr = str_dup(buf);
@@ -2874,7 +2864,7 @@ OBJ_DATA *create_money(int platinum, int gold, int silver)
 
   else
   {
-    obj = create_object(get_obj_index(OBJ_VNUM_COINS), 0);
+    obj = create_object(get_obj_index(OBJ_VNUM_COINS));
     obj->value[0] = silver;
     obj->value[1] = gold;
     obj->value[2] = platinum;

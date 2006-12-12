@@ -40,8 +40,6 @@ GLOBAL_DEF(int top_obj_index, 0);
 GLOBAL_DEF(int top_affect, 0);
 GLOBAL_DEF(int top_ed, 0);
 GLOBAL_DEF(int top_mprog_index, 0);
-GLOBAL_DEF(int newmobs, 0);
-GLOBAL_DEF(int newobjs, 0);
 GLOBAL_DEF(int top_vnum_mob, 0);
 GLOBAL_DEF(int top_vnum_obj, 0);
 GLOBAL_DEF(int top_vnum_room, 0);

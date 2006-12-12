@@ -946,9 +946,8 @@ CH_CMD(do_quest)
                ch, NULL, questman, TO_ROOM);
             return;
           }
-          else if ((obj =
-                    create_object(get_obj_index
-                                  (quest_table[i].vnum), ch->level)) == NULL)
+          else if ((obj = create_object(get_obj_index(quest_table[i].vnum)))
+                   == NULL)
           {
             send_to_char
               ("That object could not be found, contact an immortal.\n\r",
@@ -1074,8 +1073,7 @@ CH_CMD(do_quest)
         OBJ_DATA *newobj;
 
         if ((newobj =
-             create_object(get_obj_index(quest_table[i].vnum),
-                           ch->level)) == NULL)
+             create_object(get_obj_index(quest_table[i].vnum))) == NULL)
         {
           sprintf(buf,
                   "I could not find a new quest item for you %s.", ch->name);
@@ -1388,7 +1386,7 @@ void generate_quest(CHAR_DATA * ch, CHAR_DATA * questman)
         break;
     }
 
-    questitem = create_object(get_obj_index(objvnum), ch->level);
+    questitem = create_object(get_obj_index(objvnum));
     obj_to_room(questitem, room);
     REMOVE_BIT(ch->act, PLR_CANLOOT);
     free_string(questitem->owner);

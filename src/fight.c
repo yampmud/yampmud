@@ -884,15 +884,8 @@ void one_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt, bool secondary)
    * Hit.
    * Calc damage.
    */
-  if (IS_NPC(ch) && (!ch->pIndexData->new_format || wield == NULL))
-    if (!ch->pIndexData->new_format)
-    {
-      dam = number_range(ch->level / 2, ch->level * 3 / 2);
-      if (wield != NULL)
-        dam += dam / 2;
-    }
-    else
-      dam = dice(ch->damage[DICE_NUMBER], ch->damage[DICE_TYPE]);
+  if (IS_NPC(ch) && (wield == NULL))
+    dam = dice(ch->damage[DICE_NUMBER], ch->damage[DICE_TYPE]);
 
   else
   {
@@ -906,12 +899,7 @@ void one_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt, bool secondary)
       }
       else
       {
-        if (wield->pIndexData->new_format)
-          dam = dice(wield->value[1], wield->value[2]) * skill / 100;
-        else
-          dam =
-            number_range(wield->value[1] * skill / 100,
-                         wield->value[2] * skill / 100);
+        dam = dice(wield->value[1], wield->value[2]) * skill / 100;
       }
 
       if (get_eq_char(ch, WEAR_SHIELD) == NULL) /* no shield = more 
@@ -1379,15 +1367,8 @@ void one_hit_mock(CHAR_DATA * ch, CHAR_DATA * victim, int dt, bool secondary)
    * Hit.
    * Calc damage.
    */
-  if (IS_NPC(ch) && (!ch->pIndexData->new_format || wield == NULL))
-    if (!ch->pIndexData->new_format)
-    {
-      dam = number_range(ch->level / 2, ch->level * 3 / 2);
-      if (wield != NULL)
-        dam += dam / 2;
-    }
-    else
-      dam = dice(ch->damage[DICE_NUMBER], ch->damage[DICE_TYPE]);
+  if (IS_NPC(ch) && (wield == NULL))
+    dam = dice(ch->damage[DICE_NUMBER], ch->damage[DICE_TYPE]);
 
   else
   {
@@ -1401,12 +1382,7 @@ void one_hit_mock(CHAR_DATA * ch, CHAR_DATA * victim, int dt, bool secondary)
       }
       else
       {
-        if (wield->pIndexData->new_format)
-          dam = dice(wield->value[1], wield->value[2]) * skill / 100;
-        else
-          dam =
-            number_range(wield->value[1] * skill / 100,
-                         wield->value[2] * skill / 100);
+        dam = dice(wield->value[1], wield->value[2]) * skill / 100;
       }
 
       if (get_eq_char(ch, WEAR_SHIELD) == NULL) /* no shield = more 
@@ -2783,10 +2759,10 @@ void make_corpse(CHAR_DATA * ch, CHAR_DATA * killer)
       return;
     }
     name = ch->short_descr;
-    corpse = create_object(get_obj_index(OBJ_VNUM_CORPSE_NPC), 0);
+    corpse = create_object(get_obj_index(OBJ_VNUM_CORPSE_NPC));
     corpse->timer = number_range(3, 6);
 
-    pile = create_object(get_obj_index(OBJ_VNUM_ITEMPILE), 0);
+    pile = create_object(get_obj_index(OBJ_VNUM_ITEMPILE));
     pile->timer = number_range(25, 40);
 
     if (ch->gold > 0 || ch->platinum > 0 || ch->silver > 0)
@@ -2802,10 +2778,10 @@ void make_corpse(CHAR_DATA * ch, CHAR_DATA * killer)
   else
   {
     name = ch->name;
-    corpse = create_object(get_obj_index(OBJ_VNUM_CORPSE_PC), 0);
+    corpse = create_object(get_obj_index(OBJ_VNUM_CORPSE_PC));
     corpse->timer = number_range(25, 40);
 
-    pile = create_object(get_obj_index(OBJ_VNUM_ITEMPILE), 0);
+    pile = create_object(get_obj_index(OBJ_VNUM_ITEMPILE));
     pile->timer = number_range(25, 40);
 
     REMOVE_BIT(ch->act, PLR_CANLOOT);
@@ -3152,7 +3128,7 @@ void death_cry(CHAR_DATA * ch)
     char *name;
 
     name = IS_NPC(ch) ? ch->short_descr : ch->name;
-    obj = create_object(get_obj_index(vnum), 0);
+    obj = create_object(get_obj_index(vnum));
     obj->timer = number_range(4, 7);
 
     if (!IS_NPC(ch))

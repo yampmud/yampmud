@@ -292,8 +292,6 @@ OBJ_INDEX_DATA *new_obj_index(void)
   for (value = 0; value < 5; value++) /* 5 - ROM */
     pObj->value[value] = 0;
 
-  pObj->new_format = true;      /* ROM */
-
   return pObj;
 }
 
@@ -379,8 +377,6 @@ MOB_INDEX_DATA *new_mob_index(void)
   pMob->start_pos = POS_STANDING; /* -- Hugin */
   pMob->default_pos = POS_STANDING; /* -- Hugin */
   pMob->wealth = 0;
-
-  pMob->new_format = true;      /* ROM */
 
   return pMob;
 }

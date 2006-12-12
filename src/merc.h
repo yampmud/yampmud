@@ -1658,7 +1658,6 @@ struct mob_index_data
   AREA_DATA *area;              /* OLC */
   long vnum;
   long group;
-  bool new_format;
   sh_int count;
   sh_int killed;
   char *player_name;
@@ -1995,7 +1994,6 @@ struct obj_index_data
   EXTRA_DESCR_DATA *extra_descr;
   AFFECT_DATA *affected;
   AREA_DATA *area;              /* OLC */
-  bool new_format;
   char *name;
   char *short_descr;
   char *description;

@@ -593,7 +593,7 @@ CH_CMD(do_mpoload)
     return;
   }
 
-  obj = create_object(pObjIndex, level);
+  obj = create_object(pObjIndex);
   if ((fWear || !fToroom) && CAN_WEAR(obj, ITEM_TAKE))
   {
     obj_to_char(obj, ch);

@@ -316,7 +316,7 @@ CH_CMD(do_questforge)
     flags ^= flag_value(weapon_type2, flag[i]);
   }
 
-  obj = create_object(get_obj_index(20050), -1);
+  obj = create_object(get_obj_index(20050));
   ch->qps -= 200;
   free_string(obj->name);
   sprintf(buf, "forged %s",

@@ -1886,14 +1886,9 @@ CH_CMD(do_lore)
             send_to_char("unknown\n\r", ch);
             break;
         }
-        if (obj->pIndexData->new_format)
-          sprintf(buf, "Damage is %ldd%ld (average %ld)\n\r",
-                  obj->value[1], obj->value[2],
-                  (1 + obj->value[2]) * obj->value[1] / 2);
-        else
-          sprintf(buf, "Damage is %ld to %ld (average %ld)\n\r",
-                  obj->value[1], obj->value[2],
-                  (obj->value[1] + obj->value[2]) / 2);
+        sprintf(buf, "Damage is %ldd%ld (average %ld)\n\r",
+                obj->value[1], obj->value[2],
+                (1 + obj->value[2]) * obj->value[1] / 2);
         send_to_char(buf, ch);
         /* sprintf(buf,"Weapon type is %s.\n\r", (obj->value[3] > 0 &&
            obj->value[3] < MAX_DAMAGE_MESSAGE) ?
@@ -4305,10 +4300,7 @@ CH_CMD(do_compare)
         }
         else
         {
-          if (obj1->pIndexData->new_format)
-            value1 = (1 + obj1->value[2]) * obj1->value[1];
-          else
-            value1 = obj1->value[1] + obj1->value[2];
+          value1 = (1 + obj1->value[2]) * obj1->value[1];
         }
         if (obj2->clan)
         {
@@ -4316,10 +4308,7 @@ CH_CMD(do_compare)
         }
         else
         {
-          if (obj2->pIndexData->new_format)
-            value2 = (1 + obj2->value[2]) * obj2->value[1];
-          else
-            value2 = obj2->value[1] + obj2->value[2];
+          value2 = (1 + obj2->value[2]) * obj2->value[1];
         }
         break;
     }

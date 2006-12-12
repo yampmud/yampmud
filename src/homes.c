@@ -212,19 +212,19 @@ CH_CMD(do_home)
       {
         if (!str_cmp(arg3, "fish"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_1), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_1));
         }
         else if (!str_cmp(arg3, "turtle"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_2), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_2));
         }
         else if (!str_cmp(arg3, "snake"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_3), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_3));
         }
         else if (!str_cmp(arg3, "spider"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_4), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_4));
         }
         else
         {
@@ -264,19 +264,19 @@ CH_CMD(do_home)
       {
         if (!str_cmp(arg3, "sturdy"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_8), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_8));
         }
         else if (!str_cmp(arg3, "highback"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_6), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_6));
         }
         else if (!str_cmp(arg3, "carved"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_5), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_5));
         }
         else if (!str_cmp(arg3, "cushioned"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_7), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_7));
         }
         else
         {
@@ -316,23 +316,23 @@ CH_CMD(do_home)
       {
         if (!str_cmp(arg3, "oak"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_9), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_9));
         }
         else if (!str_cmp(arg3, "pine"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_10), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_10));
         }
         else if (!str_cmp(arg3, "carved"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_11), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_11));
         }
         else if (!str_cmp(arg3, "polished"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_12), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_12));
         }
         else if (!str_cmp(arg3, "teak"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_13), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_13));
         }
         else
         {
@@ -372,19 +372,19 @@ CH_CMD(do_home)
       {
         if (!str_cmp(arg3, "plush"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_15), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_15));
         }
         else if (!str_cmp(arg3, "padded"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_16), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_16));
         }
         else if (!str_cmp(arg3, "comfortable"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_17), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_17));
         }
         else if (!str_cmp(arg3, "fluffed"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_18), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_18));
         }
         else
         {
@@ -424,23 +424,23 @@ CH_CMD(do_home)
       {
         if (!str_cmp(arg3, "oak"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_25), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_25));
         }
         else if (!str_cmp(arg3, "pine"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_26), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_26));
         }
         else if (!str_cmp(arg3, "carved"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_27), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_27));
         }
         else if (!str_cmp(arg3, "polished"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_28), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_28));
         }
         else if (!str_cmp(arg3, "teak"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_29), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_29));
         }
         else
         {
@@ -477,7 +477,7 @@ CH_CMD(do_home)
         return;
       }
       ch->platinum -= 7500;
-      furn = create_object(get_obj_index(HOME_ITEM_30), 0);
+      furn = create_object(get_obj_index(HOME_ITEM_30));
       printf_to_char(ch, "You have been deducted %d for your purchase.",
                      7500);
       loc_reset = new_reset_data();
@@ -503,7 +503,7 @@ CH_CMD(do_home)
       send_to_char
         ("Your lamp will provide light for your home for a time.\n\r", ch);
       ch->platinum -= 2000;
-      furn = create_object(get_obj_index(HOME_ITEM_31), 0);
+      furn = create_object(get_obj_index(HOME_ITEM_31));
       printf_to_char(ch, "You have been deducted %d for your purchase.",
                      2000);
       loc_reset = new_reset_data();
@@ -537,7 +537,7 @@ CH_CMD(do_home)
       send_to_char
         ("Your lantern will provide light for your home for a time.\n\r", ch);
       ch->platinum -= 1500;
-      furn = create_object(get_obj_index(HOME_ITEM_32), 0);
+      furn = create_object(get_obj_index(HOME_ITEM_32));
       printf_to_char(ch, "You have been deducted %d for your purchase.",
                      1500);
       loc_reset = new_reset_data();
@@ -563,7 +563,7 @@ CH_CMD(do_home)
       send_to_char
         ("Your torch will provide light for your home for a time.\n\r", ch);
       ch->platinum -= 1000;
-      furn = create_object(get_obj_index(HOME_ITEM_33), 0);
+      furn = create_object(get_obj_index(HOME_ITEM_33));
       printf_to_char(ch, "You have been deducted %d for your purchase.",
                      1000);
       loc_reset = new_reset_data();
@@ -590,23 +590,23 @@ CH_CMD(do_home)
       {
         if (!str_cmp(arg3, "oak"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_34), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_34));
         }
         else if (!str_cmp(arg3, "pine"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_35), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_35));
         }
         else if (!str_cmp(arg3, "carved"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_36), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_36));
         }
         else if (!str_cmp(arg3, "polished"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_37), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_37));
         }
         else if (!str_cmp(arg3, "teak"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_38), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_38));
         }
         else
         {
@@ -647,23 +647,23 @@ CH_CMD(do_home)
       {
         if (!str_cmp(arg3, "oak"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_58), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_58));
         }
         if (!str_cmp(arg3, "pine"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_59), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_59));
         }
         if (!str_cmp(arg3, "carved"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_60), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_60));
         }
         if (!str_cmp(arg3, "polished"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_61), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_61));
         }
         if (!str_cmp(arg3, "teak"))
         {
-          furn = create_object(get_obj_index(HOME_ITEM_62), 0);
+          furn = create_object(get_obj_index(HOME_ITEM_62));
         }
         else
         {
@@ -700,7 +700,7 @@ CH_CMD(do_home)
         return;
       }
       ch->platinum -= 1000;
-      furn = create_object(get_obj_index(HOME_ITEM_71), 0);
+      furn = create_object(get_obj_index(HOME_ITEM_71));
       printf_to_char(ch, "You have been deducted %d for your purchase.",
                      1000);
       loc_reset = new_reset_data();
@@ -724,7 +724,7 @@ CH_CMD(do_home)
         return;
       }
       ch->platinum -= 2500;
-      furn = create_object(get_obj_index(HOME_ITEM_72), 0);
+      furn = create_object(get_obj_index(HOME_ITEM_72));
       printf_to_char(ch, "You have been deducted %d for your purchase.",
                      2500);
       loc_reset = new_reset_data();
@@ -748,7 +748,7 @@ CH_CMD(do_home)
         return;
       }
       ch->platinum -= 5000;
-      furn = create_object(get_obj_index(HOME_ITEM_75), 0);
+      furn = create_object(get_obj_index(HOME_ITEM_75));
       loc_reset = new_reset_data();
       loc_reset->command = 'O';
       loc_reset->arg1 = furn->pIndexData->vnum;
@@ -772,7 +772,7 @@ CH_CMD(do_home)
         return;
       }
       ch->platinum -= 7500;
-      furn = create_object(get_obj_index(HOME_ITEM_74), 0);
+      furn = create_object(get_obj_index(HOME_ITEM_74));
       loc_reset = new_reset_data();
       loc_reset->command = 'O';
       loc_reset->arg1 = furn->pIndexData->vnum;
@@ -796,7 +796,7 @@ CH_CMD(do_home)
         return;
       }
       ch->platinum -= 8500;
-      furn = create_object(get_obj_index(HOME_ITEM_73), 0);
+      furn = create_object(get_obj_index(HOME_ITEM_73));
       loc_reset = new_reset_data();
       loc_reset->command = 'O';
       loc_reset->arg1 = furn->pIndexData->vnum;
@@ -820,7 +820,7 @@ CH_CMD(do_home)
         return;
       }
       ch->platinum -= 9900;
-      furn = create_object(get_obj_index(HOME_ITEM_70), 0);
+      furn = create_object(get_obj_index(HOME_ITEM_70));
       loc_reset = new_reset_data();
       loc_reset->command = 'O';
       loc_reset->arg1 = furn->pIndexData->vnum;

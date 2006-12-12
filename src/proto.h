@@ -118,7 +118,6 @@ bool is_clan_obj args((OBJ_DATA * obj));
 bool clan_can_use args((CHAR_DATA * ch, OBJ_DATA * obj));
 bool is_class_obj args((OBJ_DATA * obj));
 bool class_can_use args((CHAR_DATA * ch, OBJ_DATA * obj));
-bool is_old_mob args((CHAR_DATA * ch));
 int get_skill args((CHAR_DATA * ch, int sn));
 int get_weapon_sn args((CHAR_DATA * ch));
 int get_weapon_skill args((CHAR_DATA * ch, int sn));
@@ -384,7 +383,7 @@ void boot_db args((void));
 void area_update args((void));
 CD *create_mobile args((MOB_INDEX_DATA * pMobIndex));
 void clone_mobile args((CHAR_DATA * parent, CHAR_DATA * clone));
-OD *create_object args((OBJ_INDEX_DATA * pObjIndex, int level));
+OD *create_object args((OBJ_INDEX_DATA * pObjIndex));
 void clone_object args((OBJ_DATA * parent, OBJ_DATA * clone));
 void clear_char args((CHAR_DATA * ch));
 char *get_extra_descr args((const char *name, EXTRA_DESCR_DATA * ed));
@@ -463,9 +462,7 @@ void init_mm args((void));
 void load_area args((FILE * fp));
 void new_load_area args((FILE * fp)); /* OLC */
 void load_helps args((FILE * fp, char *fname));
-void load_old_mob args((FILE * fp));
 void load_mobiles args((FILE * fp));
-void load_old_obj args((FILE * fp));
 void load_objects args((FILE * fp));
 void load_resets args((FILE * fp));
 void load_rooms args((FILE * fp));
@@ -605,12 +602,8 @@ bool consent args((CHAR_DATA * ch, char *argument, char *command));
 
 /* local procedures */
 void convert_mob args((MOB_INDEX_DATA * mob));
-void convert_obj args((OBJ_INDEX_DATA * obj));
 void assign_area_vnum args((long vnum));  /* OLC */
 
-void convert_mobile args((MOB_INDEX_DATA * pMobIndex)); /* OLC ROM */
-void convert_objects args((void));  /* OLC ROM */
-void convert_object args((OBJ_INDEX_DATA * pObjIndex)); /* OLC ROM */
 char *format_obj_to_char args((OBJ_DATA * obj, CHAR_DATA * ch, bool fShort));
 BUFFER *show_list_to_char
 args((OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool fShowNothing));

@@ -4134,7 +4134,7 @@ CH_CMD(do_buy)
     for (count = 0; count < number; count++)
     {
       if (IS_SET(obj->extra_flags, ITEM_INVENTORY))
-        t_obj = create_object(obj->pIndexData, obj->level);
+        t_obj = create_object(obj->pIndexData);
       else
       {
         t_obj = obj;

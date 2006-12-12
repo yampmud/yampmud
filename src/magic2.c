@@ -136,7 +136,7 @@ MAGIC(spell_portal)
     extract_obj(stone);
   }
 
-  portal = create_object(get_obj_index(OBJ_VNUM_PORTAL), 0);
+  portal = create_object(get_obj_index(OBJ_VNUM_PORTAL));
   portal->timer = 2 + level / 25;
   portal->value[3] = victim->in_room->vnum;
 
@@ -197,7 +197,7 @@ MAGIC(spell_nexus)
   }
 
   /* portal one */
-  portal = create_object(get_obj_index(OBJ_VNUM_PORTAL), 0);
+  portal = create_object(get_obj_index(OBJ_VNUM_PORTAL));
   portal->timer = 1 + level / 10;
   portal->value[3] = to_room->vnum;
 
@@ -211,7 +211,7 @@ MAGIC(spell_nexus)
     return;
 
   /* portal two */
-  portal = create_object(get_obj_index(OBJ_VNUM_PORTAL), 0);
+  portal = create_object(get_obj_index(OBJ_VNUM_PORTAL));
   portal->timer = 1 + level / 10;
   portal->value[3] = from_room->vnum;
 
@@ -282,11 +282,11 @@ MAGIC(spell_empower)
 
   if ((newtarget == TAR_CHAR_DEFENSIVE) || (newtarget == TAR_CHAR_SELF))
   {
-    object = create_object(get_obj_index(OBJ_VNUM_POTION), 0);
+    object = create_object(get_obj_index(OBJ_VNUM_POTION));
   }
   else
   {
-    object = create_object(get_obj_index(OBJ_VNUM_SCROLL), 0);
+    object = create_object(get_obj_index(OBJ_VNUM_SCROLL));
   }
   object->value[0] = ch->level - 20;
   object->value[1] = new_sn;
@@ -724,7 +724,7 @@ MAGIC(spell_voodoo)
     return;
   }
   one_argument(bpart->name, name);
-  doll = create_object(get_obj_index(OBJ_VNUM_VOODOO), 0);
+  doll = create_object(get_obj_index(OBJ_VNUM_VOODOO));
   sprintf(buf, doll->short_descr, name);
   free_string(doll->short_descr);
   doll->short_descr = str_dup(buf);
@@ -1359,7 +1359,7 @@ MAGIC(spell_create_bed)
 {
   OBJ_DATA *bed;
 
-  bed = create_object(get_obj_index(OBJ_VNUM_BED), 0);
+  bed = create_object(get_obj_index(OBJ_VNUM_BED));
   bed->value[3] = level * 3;    /* hp heal rate */
   bed->value[4] = level * 3;    /* mana heal rate */
   bed->timer = level / 5;
@@ -1465,7 +1465,7 @@ MAGIC(spell_holy_mace)
   AFFECT_DATA *pAf;
 
   /* Make the mace, and have it decay after time */
-  mace = create_object(get_obj_index(OBJ_VNUM_MACE), 0);
+  mace = create_object(get_obj_index(OBJ_VNUM_MACE));
   mace->timer = level / 3;
 
   /* Add the hitroll based on level */

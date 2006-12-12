@@ -575,16 +575,10 @@ void show_obj_stats(CHAR_DATA * ch, OBJ_DATA * obj)
           send_to_char("{!unknown{6.{x\n\r", ch);
           break;
       }
-      if (obj->pIndexData->new_format)
-        sprintf(buf1,
-                "{^D{6amage is {!%ld{6d{!%ld {6({8average {#%ld{6).{x\n\r",
-                obj->value[1], obj->value[2],
-                (1 + obj->value[2]) * obj->value[1] / 2);
-      else
-        sprintf(buf1,
-                "{^D{6amage is {!%ld {6to {!%ld {6({8average {#%ld{6).{x\n\r",
-                obj->value[1], obj->value[2],
-                (obj->value[1] + obj->value[2]) / 2);
+      sprintf(buf1,
+              "{^D{6amage is {!%ld{6d{!%ld {6({8average {#%ld{6).{x\n\r",
+              obj->value[1], obj->value[2],
+              (1 + obj->value[2]) * obj->value[1] / 2);
       send_to_char(buf1, ch);
       if (obj->value[4])        /* weapon flags */
       {

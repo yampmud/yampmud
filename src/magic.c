@@ -1682,7 +1682,7 @@ MAGIC(spell_continual_light)
     return;
   }
 
-  light = create_object(get_obj_index(OBJ_VNUM_LIGHT_BALL), 0);
+  light = create_object(get_obj_index(OBJ_VNUM_LIGHT_BALL));
   obj_to_room(light, ch->in_room);
   act("$n twiddles $s thumbs and $p appears.", ch, light, NULL, TO_ROOM);
   act("You twiddle your thumbs and $p appears.", ch, light, NULL, TO_CHAR);
@@ -1708,7 +1708,7 @@ MAGIC(spell_create_food)
 {
   OBJ_DATA *mushroom;
 
-  mushroom = create_object(get_obj_index(OBJ_VNUM_MUSHROOM), 0);
+  mushroom = create_object(get_obj_index(OBJ_VNUM_MUSHROOM));
   mushroom->value[0] = level / 2;
   mushroom->value[1] = level;
   obj_to_room(mushroom, ch->in_room);
@@ -1723,7 +1723,7 @@ MAGIC(spell_create_rose)
 
   if (ch->alignment > 400)
   {
-    rose = create_object(get_obj_index(OBJ_VNUM_WROSE), 0);
+    rose = create_object(get_obj_index(OBJ_VNUM_WROSE));
     act("$n has created a beautiful {Wwhite rose{x.", ch, rose, NULL,
         TO_ROOM);
     send_to_char("You create a beautiful {Wwhite rose{x.\n\r", ch);
@@ -1732,14 +1732,14 @@ MAGIC(spell_create_rose)
   }
   if (ch->alignment < -400)
   {
-    rose = create_object(get_obj_index(OBJ_VNUM_BROSE), 0);
+    rose = create_object(get_obj_index(OBJ_VNUM_BROSE));
     act("$n has created a beautiful {Dblack rose{x.", ch, rose, NULL,
         TO_ROOM);
     send_to_char("You create a beautiful {Dblack rose{x.\n\r", ch);
     obj_to_char(rose, ch);
     return;
   }
-  rose = create_object(get_obj_index(OBJ_VNUM_RROSE), 0);
+  rose = create_object(get_obj_index(OBJ_VNUM_RROSE));
   act("$n has created a beautiful {Rred rose{x.", ch, rose, NULL, TO_ROOM);
   send_to_char("You create a beautiful {Rred rose{x.\n\r", ch);
   obj_to_char(rose, ch);
@@ -1750,7 +1750,7 @@ MAGIC(spell_create_spring)
 {
   OBJ_DATA *spring;
 
-  spring = create_object(get_obj_index(OBJ_VNUM_SPRING), 0);
+  spring = create_object(get_obj_index(OBJ_VNUM_SPRING));
   spring->timer = level;
   obj_to_room(spring, ch->in_room);
   act("$p flows from the ground.", ch, spring, NULL, TO_ROOM);
@@ -3099,7 +3099,7 @@ MAGIC(spell_floating_disc)
     return;
   }
 
-  disc = create_object(get_obj_index(OBJ_VNUM_DISC), 0);
+  disc = create_object(get_obj_index(OBJ_VNUM_DISC));
   disc->value[0] = ch->level * 10;  /* 10 pounds per level capacity */
   disc->value[3] = ch->level * 5; /* 5 pounds per level max per item */
   disc->timer = ch->level * 2 - number_range(0, level / 2);
@@ -3758,14 +3758,9 @@ MAGIC(spell_identify)
       }
       else
       {
-        if (obj->pIndexData->new_format)
-          sprintf(buf, "Damage is %ldd%ld (average %ld).\n\r",
-                  obj->value[1], obj->value[2],
-                  (1 + obj->value[2]) * obj->value[1] / 2);
-        else
-          sprintf(buf, "Damage is %ld to %ld (average %ld).\n\r",
-                  obj->value[1], obj->value[2],
-                  (obj->value[1] + obj->value[2]) / 2);
+        sprintf(buf, "Damage is %ldd%ld (average %ld).\n\r",
+                obj->value[1], obj->value[2],
+                (1 + obj->value[2]) * obj->value[1] / 2);
       }
       send_to_char(buf, ch);
       if (obj->value[4])        /* weapon flags */

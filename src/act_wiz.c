@@ -1875,9 +1875,8 @@ CH_CMD(do_ostat)
   sprintf(buf, "Name(s): %s\n\r", obj->name);
   send_to_char(buf, ch);
 
-  sprintf(buf, "Vnum: %ld  Format: %s  Type: %s  Resets: %d\n\r",
+  sprintf(buf, "Vnum: %ld  Type: %s  Resets: %d\n\r",
           obj->pIndexData->vnum,
-          obj->pIndexData->new_format ? "new" : "old",
           item_type_name(obj), obj->pIndexData->reset_num);
   send_to_char(buf, ch);
 
@@ -2019,14 +2018,9 @@ CH_CMD(do_ostat)
       }
       else
       {
-        if (obj->pIndexData->new_format)
-          sprintf(buf, "Damage is %ldd%ld (average %ld)\n\r",
-                  obj->value[1], obj->value[2],
-                  (1 + obj->value[2]) * obj->value[1] / 2);
-        else
-          sprintf(buf, "Damage is %ld to %ld (average %ld)\n\r",
-                  obj->value[1], obj->value[2],
-                  (obj->value[1] + obj->value[2]) / 2);
+        sprintf(buf, "Damage is %ldd%ld (average %ld)\n\r",
+                obj->value[1], obj->value[2],
+                (1 + obj->value[2]) * obj->value[1] / 2);
       }
       send_to_char(buf, ch);
 
@@ -2243,8 +2237,7 @@ CH_CMD(do_mstat)
   sprintf(buf,
           "Vnum: %ld  Format: %s  Race: %s  Group: %d  Sex: %s  Room: %ld\n\r",
           IS_NPC(victim) ? victim->pIndexData->vnum : 0,
-          IS_NPC(victim) ? victim->pIndexData->
-          new_format ? "new" : "old" : "pc", race_table[victim->race].name,
+          IS_NPC(victim) ? "npc" : "pc", race_table[victim->race].name,
           IS_NPC(victim) ? victim->group : 0,
           sex_table[victim->sex].name,
           victim->in_room == NULL ? 0 : victim->in_room->vnum);
@@ -2293,7 +2286,7 @@ CH_CMD(do_mstat)
           position_table[victim->position].name, victim->wimpy);
   add_buf(output, buf);
 
-  if (IS_NPC(victim) && victim->pIndexData->new_format)
+  if (IS_NPC(victim))
   {
     sprintf(buf, "Damage: %dd%d  Message:  %s\n\r",
             victim->damage[DICE_NUMBER], victim->damage[DICE_TYPE],
@@ -3152,7 +3145,7 @@ void recursive_clone(CHAR_DATA * ch, OBJ_DATA * obj, OBJ_DATA * clone)
   {
     if (obj_check(ch, c_obj))
     {
-      t_obj = create_object(c_obj->pIndexData, 0);
+      t_obj = create_object(c_obj->pIndexData);
       clone_object(c_obj, t_obj);
       obj_to_obj(t_obj, clone);
       recursive_clone(ch, c_obj, t_obj);
@@ -3223,7 +3216,7 @@ CH_CMD(do_clone)
       send_to_char("You cannot clone an exit object.\n\r", ch);
       return;
     }
-    clone = create_object(obj->pIndexData, 0);
+    clone = create_object(obj->pIndexData);
     clone_object(obj, clone);
     if (obj->carried_by != NULL)
       obj_to_char(clone, ch);
@@ -3270,7 +3263,7 @@ CH_CMD(do_clone)
     {
       if (obj_check(ch, obj))
       {
-        new_obj = create_object(obj->pIndexData, 0);
+        new_obj = create_object(obj->pIndexData);
         clone_object(obj, new_obj);
         recursive_clone(ch, obj, new_obj);
         obj_to_char(new_obj, clone);
@@ -3411,7 +3404,7 @@ CH_CMD(do_oload)
     return;
   }
 
-  obj = create_object(pObjIndex, level);
+  obj = create_object(pObjIndex);
   if (CAN_WEAR(obj, ITEM_TAKE))
   {
     obj_to_char(obj, ch);
@@ -3477,7 +3470,7 @@ CH_CMD(do_vload)
         send_to_char("Cannot find the voodoo doll vnum.\n\r", ch);
         return;
       }
-      obj = create_object(pObjIndex, 0);
+      obj = create_object(pObjIndex);
       name = wch->name;
       sprintf(buf, obj->short_descr, name);
       free_string(obj->short_descr);
@@ -6234,109 +6227,109 @@ CH_CMD(do_pack)
     return;
   }
 
-  pack = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_PACK), 0);
+  pack = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_PACK));
   pack->level = 5;
 
   for (i = 0; i < 7; i++)
   {
-    obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_A), 0);
+    obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_A));
     obj->level = 5;
     obj_to_obj(obj, pack);
   }
   for (i = 0; i < 2; i++)
   {
-    obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_B), 0);
+    obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_B));
     obj->level = 5;
     obj_to_obj(obj, pack);
   }
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_C), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_C));
   obj->level = 5;
   obj_to_obj(obj, pack);
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_D), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_D));
   obj->level = 5;
   obj_to_obj(obj, pack);
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_E), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_E));
   obj->level = 5;
   obj_to_obj(obj, pack);
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_F), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_F));
   obj->level = 5;
   obj_to_obj(obj, pack);
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_G), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_G));
   obj->level = 5;
   obj_to_obj(obj, pack);
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_H), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_H));
   obj->level = 5;
   obj_to_obj(obj, pack);
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_I), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_I));
   obj->level = 5;
   obj_to_obj(obj, pack);
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_J), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_J));
   obj->level = 5;
   obj_to_obj(obj, pack);
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_K), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_K));
   obj->level = 5;
   obj_to_obj(obj, pack);
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_L), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_L));
   obj->level = 5;
   obj_to_obj(obj, pack);
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_M), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_M));
   obj->level = 5;
   obj_to_obj(obj, pack);
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_N), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_N));
   obj->level = 5;
   obj_to_obj(obj, pack);
   for (i = 0; i < 2; i++)
   {
-    obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_O), 0);
+    obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_O));
     obj->level = 5;
     obj_to_obj(obj, pack);
   }
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_P), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_P));
   obj->level = 5;
   obj_to_obj(obj, pack);
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_Q), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_Q));
   obj->level = 5;
   obj_to_obj(obj, pack);
   for (i = 0; i < 2; i++)
   {
-    obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_R), 0);
+    obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_R));
     obj->level = 5;
     obj_to_obj(obj, pack);
   }
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_S), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_S));
   obj->level = 5;
   obj_to_obj(obj, pack);
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_S), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_S));
   obj->level = 5;
   obj_to_obj(obj, pack);
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_S), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_S));
   obj->level = 5;
   obj_to_obj(obj, pack);
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_S), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_S));
   obj->level = 5;
   obj_to_obj(obj, pack);
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_S), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_S));
   obj->level = 5;
   obj_to_obj(obj, pack);
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_T), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_T));
   obj->level = 5;
   obj_to_obj(obj, pack);
   for (i = 0; i < 2; i++)
   {
-    obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_U), 0);
+    obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_U));
     obj->level = 5;
     obj_to_obj(obj, pack);
   }
   for (i = 0; i < 2; i++)
   {
-    obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_V), 0);
+    obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_V));
     obj->level = 5;
     obj_to_obj(obj, pack);
   }
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_W), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_W));
   obj->level = 5;
   obj_to_obj(obj, pack);
-  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_X), 0);
+  obj = create_object(get_obj_index(OBJ_VNUM_SURVIVAL_X));
   obj->level = 5;
   obj_to_obj(obj, pack);
 
@@ -8382,7 +8375,7 @@ CH_CMD(do_multioload)
   {
     for (count = 0; count < numtosum; count++)
     {
-      obj = create_object(pObjIndex, ch->level);
+      obj = create_object(pObjIndex);
       if (CAN_WEAR(obj, ITEM_TAKE))
       {
         obj_to_char(obj, ch);
@@ -8424,7 +8417,7 @@ CH_CMD(do_multioload)
       }
       for (count = 0; count < numtosum; count++)
       {
-        obj = create_object(pObjIndex, ch->level);
+        obj = create_object(pObjIndex);
         obj_to_room(obj, room);
       }
       sprintf(buf, "You summon %d %s and send them to %s [%s].\n\r", numtosum,
@@ -8440,7 +8433,7 @@ CH_CMD(do_multioload)
       for (count = 0; count < numtosum; count++)
       {
         room = get_random_room(ch);
-        obj = create_object(pObjIndex, ch->level);
+        obj = create_object(pObjIndex);
         obj_to_room(obj, room);
       }
       sprintf(buf,

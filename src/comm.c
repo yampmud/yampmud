@@ -2679,7 +2679,7 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
           if ((pObj = get_obj_index(ch->pcdata->questobj)) == NULL)
             end_quest(ch, 0);
           else
-            obj = create_object(pObj, ch->level);
+            obj = create_object(pObj);
 
           if ((pRoom = get_room_index(ch->pcdata->questloc)) == NULL)
             pRoom = get_random_room(ch);
@@ -2741,7 +2741,7 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
 
         do_autoall(ch, "self");
         do_prompt(ch, "all");
-        obj_to_char(create_object(get_obj_index(OBJ_VNUM_MAP), 0), ch);
+        obj_to_char(create_object(get_obj_index(OBJ_VNUM_MAP)), ch);
         char_to_room(ch, get_room_index(ROOM_VNUM_SCHOOL));
         send_to_char("\n\r", ch);
         printf_to_char(ch,

@@ -502,8 +502,6 @@ void fwrite_obj(CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest)
 
   fprintf(fp, "#O\n");
   fprintf(fp, "Vnum %ld\n", obj->pIndexData->vnum);
-  if (!obj->pIndexData->new_format)
-    fprintf(fp, "Oldstyle\n");
   if (obj->enchanted)
     fprintf(fp, "Enchanted\n");
   fprintf(fp, "Nest %d\n", iNest);
@@ -1586,14 +1584,10 @@ void fread_obj(CHAR_DATA * ch, FILE * fp)
   bool fNest;
   bool fVnum;
   bool first;
-  bool new_format;              /* to prevent errors */
-  bool make_new;                /* update object */
 
   fVnum = false;
   obj = NULL;
   first = true;                 /* used to counter fp offset */
-  new_format = false;
-  make_new = false;
 
   word = feof(fp) ? "End" : fread_word(fp);
   if (!str_cmp(word, "Vnum"))
@@ -1606,13 +1600,11 @@ void fread_obj(CHAR_DATA * ch, FILE * fp)
     if (get_obj_index(vnum) == NULL)
     {
       bug("Fread_obj: bad vnum %ld.", vnum);
-      obj = create_object(get_obj_index(OBJ_VNUM_BAG), -1);
-      new_format = true;
+      obj = create_object(get_obj_index(OBJ_VNUM_BAG));
     }
     else
     {
-      obj = create_object(get_obj_index(vnum), -1);
-      new_format = true;
+      obj = create_object(get_obj_index(vnum));
     }
 
   }
@@ -1743,32 +1735,9 @@ void fread_obj(CHAR_DATA * ch, FILE * fp)
             if (!fVnum)
             {
               free_obj(obj);
-              obj = create_object(get_obj_index(OBJ_VNUM_DUMMY), 0);
+              obj = create_object(get_obj_index(OBJ_VNUM_DUMMY));
             }
 
-            if (!new_format)
-            {
-              obj->next = object_list;
-              object_list = obj;
-              obj->pIndexData->count++;
-            }
-
-            if (!obj->pIndexData->new_format &&
-                obj->item_type == ITEM_ARMOR && obj->value[1] == 0)
-            {
-              obj->value[1] = obj->value[0];
-              obj->value[2] = obj->value[0];
-            }
-            if (make_new)
-            {
-              int wear;
-
-              wear = obj->wear_loc;
-              extract_obj(obj);
-
-              obj = create_object(obj->pIndexData, 0);
-              obj->wear_loc = wear;
-            }
             if (iNest == 0 || rgObjNest[iNest] == NULL)
               obj_to_char(obj, ch);
             else
@@ -1813,12 +1782,6 @@ void fread_obj(CHAR_DATA * ch, FILE * fp)
         break;
 
       case 'O':
-        if (!str_cmp(word, "Oldstyle"))
-        {
-          if (obj->pIndexData != NULL && obj->pIndexData->new_format)
-            make_new = true;
-          fMatch = true;
-        }
         break;
 
       case 'S':
@@ -2001,8 +1964,6 @@ void fwrite_bank(CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest)
 
   fprintf(fp, "#BANK\n");
   fprintf(fp, "Vnum %ld\n", obj->pIndexData->vnum);
-  if (!obj->pIndexData->new_format)
-    fprintf(fp, "Oldstyle\n");
   if (obj->enchanted)
     fprintf(fp, "Enchanted\n");
   fprintf(fp, "Nest %d\n", iNest);
@@ -2107,14 +2068,10 @@ void fread_bank(CHAR_DATA * ch, FILE * fp)
   bool fNest;
   bool fVnum;
   bool first;
-  bool new_format;              /* to prevent errors */
-  bool make_new;                /* update object */
 
   fVnum = false;
   obj = NULL;
   first = true;                 /* used to counter fp offset */
-  new_format = false;
-  make_new = false;
 
   word = feof(fp) ? "End" : fread_word(fp);
   if (!str_cmp(word, "Vnum"))
@@ -2127,13 +2084,11 @@ void fread_bank(CHAR_DATA * ch, FILE * fp)
     if (get_obj_index(vnum) == NULL)
     {
       bug("Fread_bank: bad vnum %ld.", vnum);
-      obj = create_object(get_obj_index(OBJ_VNUM_BAG), -1);
-      new_format = true;
+      obj = create_object(get_obj_index(OBJ_VNUM_BAG));
     }
     else
     {
-      obj = create_object(get_obj_index(vnum), -1);
-      new_format = true;
+      obj = create_object(get_obj_index(vnum));
     }
 
   }
@@ -2264,32 +2219,9 @@ void fread_bank(CHAR_DATA * ch, FILE * fp)
             if (!fVnum)
             {
               free_obj(obj);
-              obj = create_object(get_obj_index(OBJ_VNUM_DUMMY), 0);
+              obj = create_object(get_obj_index(OBJ_VNUM_DUMMY));
             }
 
-            if (!new_format)
-            {
-              obj->next = object_list;
-              object_list = obj;
-              obj->pIndexData->count++;
-            }
-
-            if (!obj->pIndexData->new_format &&
-                obj->item_type == ITEM_ARMOR && obj->value[1] == 0)
-            {
-              obj->value[1] = obj->value[0];
-              obj->value[2] = obj->value[0];
-            }
-            if (make_new)
-            {
-              int wear;
-
-              wear = obj->wear_loc;
-              extract_obj(obj);
-
-              obj = create_object(obj->pIndexData, 0);
-              obj->wear_loc = wear;
-            }
             if (iNest == 0 || rgObjNest[iNest] == NULL)
             {
               obj->next_content = ch->bankeditems;
@@ -2332,12 +2264,6 @@ void fread_bank(CHAR_DATA * ch, FILE * fp)
         break;
 
       case 'O':
-        if (!str_cmp(word, "Oldstyle"))
-        {
-          if (obj->pIndexData != NULL && obj->pIndexData->new_format)
-            make_new = true;
-          fMatch = true;
-        }
         break;
 
       case 'S':
