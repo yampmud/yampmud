@@ -1802,8 +1802,6 @@ struct char_data
   int reroll_timer;
   int pk_timer;
   int blackjack_timer;
-  float btime;
-  int bflip;
   float xbonus;
   float qbonus;
   int challenge_timer;

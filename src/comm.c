@@ -1759,9 +1759,6 @@ void bust_a_prompt(CHAR_DATA * ch)
   sprintf(buf, "%d", ch->pk_timer);
   str_replace_c(buf2, "%k", buf);
 
-  sprintf(buf, "%.2f", (ch->btime / 40 + 1));
-  str_replace_c(buf2, "%b", buf);
-
   if (!IS_SET(ch->act, PLR_QUESTOR))
   {
     if (ch->pcdata->nextquest == 0)
@@ -2711,8 +2708,6 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
       REMOVE_BIT(ch->act2, PLR2_MASS_JOINER);
       if (IS_SET(ch->pcdata->verbose, VERBOSE_DAMAGE))
         REMOVE_BIT(ch->pcdata->verbose, VERBOSE_DAMAGE);
-      if (ch->btime < 1 || ch->btime > 4)
-        ch->btime = 1.00;
 
       reset_char(ch);
       sprintf(buf,

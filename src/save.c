@@ -207,11 +207,6 @@ void fwrite_char(CHAR_DATA * ch, FILE * fp)
   if (ch->pk_timer > 0)
     fprintf(fp, "Ptim %d\n", ch->pk_timer);
 
-  if (ch->btime > 0)
-    fprintf(fp, "Btim %d\n", (int) ch->btime);
-  if (ch->bflip > 0)
-    fprintf(fp, "Bfli %d\n", ch->bflip);
-
   fprintf(fp, "Tier %d\n", ch->pcdata->tier); /* add this in */
   fprintf(fp, "Ctier %d\n", ch->pcdata->ctier); /* add this in */
 
@@ -643,8 +638,6 @@ bool load_char_obj(DESCRIPTOR_DATA * d, char *name)
   ch->pcdata->awins = 0;
   ch->pcdata->alosses = 0;
   ch->corner_timer = -1;
-  ch->btime = 1.00;
-  ch->bflip = 0;
   bzero(ch->pcdata->explored, MAX_EXPLORE);
   ch->pcdata->board = &boards[DEFAULT_BOARD];
   found = false;
@@ -992,8 +985,6 @@ void fread_char(CHAR_DATA * ch, FILE * fp)
         KEYS("Bin", ch->pcdata->bamfin, fread_string(fp));
         KEYS("Bout", ch->pcdata->bamfout, fread_string(fp));
         KEY("Balance", ch->pcdata->balance, fread_number(fp));
-        KEY("Btim", ch->btime, fread_number(fp));
-        KEY("Bfli", ch->bflip, fread_number(fp));
 
         if (!str_cmp(word, "Boards"))
         {

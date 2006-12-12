@@ -2393,8 +2393,6 @@ CH_CMD(do_mstat)
           victim->short_descr,
           victim->long_descr[0] != '\0' ? victim->long_descr : "(none)\n\r");
   add_buf(output, buf);
-  sprintf(buf, "Btime: %2.f\n\rBflip: %d\n\r", victim->btime, victim->bflip);
-  add_buf(output, buf);
 
   if (IS_NPC(victim) && victim->spec_fun != 0)
   {
@@ -4607,7 +4605,7 @@ CH_CMD(do_mset)
     send_to_char("    race group platinum gold silver hp\n\r", ch);
     send_to_char("    mana move prac align train thirst\n\r", ch);
     send_to_char("    hunger drunk full quest aqp\n\r", ch);
-    send_to_char("    security pkkills pkdeaths rps btime bflip\n\r", ch);
+    send_to_char("    security pkkills pkdeaths rps\n\r", ch);
     return;
   }
 
@@ -4948,24 +4946,6 @@ CH_CMD(do_mset)
     }
 
     victim->pcdata->condition[COND_FULL] = value;
-    return;
-  }
-
-  if (!str_prefix(arg2, "bflip"))
-  {
-    if (IS_NPC(ch))
-      return;
-
-    victim->bflip = value;
-    return;
-  }
-
-  if (!str_prefix(arg2, "btime"))
-  {
-    if (IS_NPC(ch))
-      return;
-
-    victim->btime = value;
     return;
   }
 

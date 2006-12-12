@@ -4182,9 +4182,6 @@ CH_CMD(do_quit)
     return;
   }
 
-  ch->btime = 1;
-  ch->bflip = 1;
-
   save_char_obj(ch);
 
   send_to_char("\n\r\n\r{R I hope you have enjoyed your stay!\n\r\n\r", ch);
@@ -4267,8 +4264,6 @@ void force_quit(CHAR_DATA * ch, char *argument)
   sprintf(buf, "%s rejoins the real world.", ch->name);
   wiznet(buf, NULL, NULL, WIZ_LOGINS, 0, 0);
 
-  ch->btime = 1;
-  ch->bflip = 1;
   save_char_obj(ch);
 
   if (d != NULL)

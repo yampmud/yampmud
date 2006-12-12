@@ -3388,23 +3388,6 @@ void group_gain(CHAR_DATA * ch, CHAR_DATA * victim)
       send_to_char(buf, gch);
     }
 
-    if (!using_levelup_pill && !happy_hour)
-    {
-      float xpbonus;
-      int oldxp;
-      int bonusxp;
-      char xpbuf[MSL];
-
-      xpbonus = (ch->btime / 40 + 1);
-      oldxp = xp;
-      xp *= (ch->btime / 40 + 1);
-      bonusxp = (xp - oldxp);
-      sprintf(xpbuf,
-              "\n\r{GT{gime {GB{gonus{G: {Y%.2f {G({g%d xp{G){x\n\r",
-              xpbonus, bonusxp);
-      send_to_char(xpbuf, ch);
-    }
-
     if (IS_QUESTOR(ch) && IS_NPC(victim))
     {
       if (ch->pcdata->questmob == victim->pIndexData->vnum)

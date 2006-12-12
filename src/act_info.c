@@ -1196,7 +1196,7 @@ CH_CMD(do_prompt)
 
   if (!str_cmp(argument, "all"))
     strcpy(buf,
-           "{r%h{w-{R%H{whp {b%m{w-{B%M{wm {g%v{w-{G%V{wmv {C%X{wtnl {Y%b{wtb {M%q{wqt{W>{x%c");
+           "{r%h{w-{R%H{whp {b%m{w-{B%M{wm {g%v{w-{G%V{wmv {C%X{wtnl {M%q{wqt{W>{x%c");
   else if (!str_cmp(argument, "all2"))
     strcpy(buf,
            "{c({r%h{c/{R%H{chp {b%m{c/{B%M{cm {y%v{c/{Y%V{cmv{C ({g%X{ctnl{C){c>{x");
@@ -1208,7 +1208,7 @@ CH_CMD(do_prompt)
     }
     else
     {
-      strcpy(buf, "{r%h-{R%Hhp {b%m-{B%Mm {g%v-{G%Vmv {C%Xtl {Y%bx{w>{x");
+      strcpy(buf, "{r%h-{R%Hhp {b%m-{B%Mm {g%v-{G%Vmv {C%Xtl {w>{x");
     }
   }
   else if (!str_cmp(argument, "imm2"))
@@ -1220,7 +1220,7 @@ CH_CMD(do_prompt)
     else
     {
       strcpy(buf,
-             "{r%h{w-{R%H{whp {b%m{w-{B%M{wm {g%v{w-{G%V{wmv {C%X{wtnl {Y%b{wtb {M%q{wqt{W>{x%c");
+             "{r%h{w-{R%H{whp {b%m{w-{B%M{wm {g%v{w-{G%V{wmv {C%X{wtnl {M%q{wqt{W>{x%c");
     }
   }
   else
@@ -2405,8 +2405,6 @@ CH_CMD(do_score_loki)
     printf_to_char(ch, "You have a {RPK{x timer.\n\r");
   }
 
-  sprintf(buf, "{GT{gime {GB{gonus{G: {Y%.2f{x\n\r", (ch->btime / 40 + 1));
-  send_to_char(buf, ch);
   if (ch->nameauthed == 0)
     send_to_char("{RYour name has not yet been approved.\n\r", ch);
 }
@@ -5148,9 +5146,9 @@ CH_CMD(do_omni)
       continue;
     immmatch++;
     sprintf(buf,
-            "{G%-14s  {Y%-3d     {W%-3d     {r%-3d{w     [{R%-6ld{w] %2.f %d{x\n\r",
+            "{G%-14s  {Y%-3d     {W%-3d     {r%-3d{w     [{R%-6ld{w]{x\n\r",
             wch->name, wch->level, wch->invis_level, wch->incog_level,
-            wch->in_room->vnum, wch->btime, wch->bflip);
+            wch->in_room->vnum);
     send_to_char(buf, ch);
   }
 
@@ -5182,12 +5180,12 @@ CH_CMD(do_omni)
       hptemp = 0;
     class = class_table[wch->class].who_name;
     sprintf(buf,
-            "{G%-14s {D%6s{w/{Y%3s    {g%-15s {m%-3d   {R%3d%%   {w[{y%ld{w] %2.f %d{x\n\r",
+            "{G%-14s {D%6s{w/{Y%3s    {g%-15s {m%-3d   {R%3d%%   {w[{y%ld{w]{x\n\r",
             wch->name,
             wch->race <
             MAX_PC_RACE ? pc_race_table[wch->race].who_name : "     ",
             class, capitalize(position_table[wch->position].name),
-            wch->level, hptemp, wch->in_room->vnum, wch->btime, wch->bflip);
+            wch->level, hptemp, wch->in_room->vnum);
     add_buf(output, buf);
   }
 

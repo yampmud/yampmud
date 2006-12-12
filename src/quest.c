@@ -1155,7 +1155,7 @@ CH_CMD(do_quest)
       if (ch->pcdata->questmob == -1 && ch->pcdata->countdown > 0)
       {
         reward = number_range(10000, 15000);
-        points = (number_range(25, 50) * ((ch->btime / 40) + 1));
+        points = number_range(25, 50);
 
         act("$n informs $N $e has completed $s quest.", ch, NULL,
             questman, TO_ROOM);
@@ -1197,7 +1197,7 @@ CH_CMD(do_quest)
         if ((obj = has_questobj(ch)) != NULL)
         {
           reward = number_range(10000, 15000);
-          points = (number_range(25, 50) * ((ch->btime / 40) + 1));
+          points = number_range(25, 50);
 
           act("$n informs $N $e has completed $s quest.", ch, NULL,
               questman, TO_ROOM);

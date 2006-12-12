@@ -1061,9 +1061,6 @@ void char_update(void)
         break;
       }
 
-      if (ch->btime < 1)
-        ch->btime = 1;
-
       if (ch->max_move < 100)
         ch->max_move = 100;
 
@@ -1072,22 +1069,6 @@ void char_update(void)
 
       if (ch->move < 1)
         ch->move = (ch->max_move / 4);
-
-      if (ch->btime >= 120)
-        ch->bflip = 1;
-
-      if (ch->bflip >= 1)
-      {
-        if (ch->btime > 1)
-          --ch->btime;
-
-        if (ch->btime == 1)
-          ch->bflip = 0;
-      }
-
-      if (ch->bflip == 0)
-        if (ch->btime < 120)
-          ++ch->btime;
 
       if ((((ch->played + (int) (current_time - ch->logon)) / 3600) == 10) &&
           str_cmp(ch->pcdata->refer, "None") && !IS_SET(ch->act2, PLR2_REFER)
@@ -1116,12 +1097,6 @@ void char_update(void)
         REMOVE_BIT(ch->act2, PLR2_MASS_ARENA);
       }
 
-      if (++ch->movement_timer >= 10 && ch->bflip == 0)
-        ch->bflip = 2;
-
-      if (ch->bflip == 2 && ch->timer < 2)
-        ch->bflip = 0;
-
       if (ch->challenge_timer > 0)
         --ch->challenge_timer;
 
@@ -1145,8 +1120,6 @@ void char_update(void)
       }
       if (ch->timer > 30 && !IS_IMMORTAL(ch))
       {
-        ch->btime = 1;
-        ch->bflip = 1;
         force_quit(ch, "");
       }
     }
