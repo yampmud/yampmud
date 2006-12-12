@@ -1515,17 +1515,6 @@ int xdamage(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int dam_type,
 
   absorb = 0;
 
-  if (happy_hour)
-  {
-    if (!IS_NPC(ch))
-    {
-      dam *= 4;
-    }
-    else
-    {
-      dam *= 2;
-    }
-  }
   if (victim->position == POS_DEAD || !WR(ch, victim) || !WR(victim, ch))
     return 0;
 

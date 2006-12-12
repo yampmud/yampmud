@@ -820,7 +820,7 @@ void char_update(void)
           ("{W[ {GM {RE {GR {RR {GY   {RC {GH {RR {GI {RS {GT {RM {GA {RS {W] {wHappy hour enabled for the 24th & 25th!\n\r");
       else
         do_gmessage
-          ("{W[{RHAPPY HOUR{W] {YDouble {CXP {c& {CQP {w[{GON{w]\n\r{W[{RHAPPY HOUR{W] {=Da{=ma{=ge {-En{-ha{-nc{-er {w[{GON{w]\n\r");
+          ("{W[{RHAPPY HOUR{W] {YDouble {CXP {c& {CQP {w[{GON{w]\n\r");
 
       happy_hour = true;
     }
