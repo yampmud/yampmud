@@ -331,38 +331,6 @@ const struct flag_type imm_flags[] = {
   {NULL, 0, 0}
 };
 
-const struct flag_type item_extra[] = {
-  {"glowing", A, true},
-  {"humming", B, true},
-  {"dark", C, true},
-  {"lock", D, false},
-  {"evil", E, true},
-  {"invisible", F, true},
-  {"magic", G, true},
-  {"nodrop", H, true},
-  {"bless", I, true},
-  {"anti_good", J, true},
-  {"anti_evil", K, true},
-  {"anti_neutral", L, true},
-  {"noremove", M, true},
-  {"inventory", N, true},
-  {"nopurge", O, true},
-  {"rot_death", P, true},
-  {"vis_death", Q, true},
-  {"nosacrifice", R, true},
-  {"nonmetal", S, false},
-  {"nolocate", T, true},
-  {"melt_drop", U, true},
-  {"had_timer", U, false},
-  {"sell_extract", W, true},
-  {"burn_proof", Y, true},
-  {"nouncurse", Z, true},
-  {"quest", aa, true},
-  {"forced", bb, true},
-  {"questpoint", cc, true},
-  {NULL, 0, 0}
-};
-
 const struct flag_type item_wear[] = {
   {"take", A, true},
   {"finger", B, true},
@@ -667,13 +635,17 @@ const struct flag_type extra_flags[] = {
   {"nopurge", ITEM_NOPURGE, true},
   {"rotdeath", ITEM_ROT_DEATH, true},
   {"visdeath", ITEM_VIS_DEATH, true},
+  {"nosac", ITEM_NO_SAC, true},
   {"nonmetal", ITEM_NONMETAL, true},
+  {"nolocate", ITEM_NOLOCATE, true},
   {"meltdrop", ITEM_MELT_DROP, true},
   {"hadtimer", ITEM_HAD_TIMER, true},
   {"sellextract", ITEM_SELL_EXTRACT, true},
   {"burnproof", ITEM_BURN_PROOF, true},
   {"nouncurse", ITEM_NOUNCURSE, true},
   {"quest", ITEM_QUEST, true},
+  {"forced", ITEM_FORCED, true},
+  {"questpoint", ITEM_QUESTPOINT, true},
   {NULL, 0, 0}
 };
 

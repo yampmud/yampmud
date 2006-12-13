@@ -247,7 +247,7 @@ CH_CMD(do_flag)
       }
       if (!str_prefix(arg3, "extra"))
       {
-        flag_table = item_extra;
+        flag_table = extra_flags;
       }
       else if (!str_prefix(arg3, "wear"))
       {
@@ -529,7 +529,7 @@ CH_CMD(do_flag)
     if (!str_prefix(arg3, "extra"))
     {
       flag = (long *) &obj->extra_flags;
-      flag_table = item_extra;
+      flag_table = extra_flags;
     }
 
     else if (!str_prefix(arg3, "wear"))
