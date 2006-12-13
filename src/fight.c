@@ -3357,9 +3357,9 @@ void group_gain(CHAR_DATA * ch, CHAR_DATA * victim)
     {
       xp *= 2;
 
-      if (xp > 3274)
+      if (xp > 2125)
       {
-        xp = (number_range(3274, 4186));
+        xp = (number_range(2125, 2225));
       }
       sprintf(buf,
               "{BYou receive {W%d{B experience points. {y(Double xp) {x\n\r\n\r",
@@ -3369,9 +3369,9 @@ void group_gain(CHAR_DATA * ch, CHAR_DATA * victim)
     }
     else
     {
-      if (xp > 3274)
+      if (xp > 2125)
       {
-        xp = (number_range(3274, 4186));
+        xp = (number_range(2125, 2225));
       }
       sprintf(buf, "{BYou receive {W%d{B experience points.{x\n\r\n\r", xp);
       send_to_char(buf, gch);
