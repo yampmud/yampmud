@@ -168,7 +168,7 @@ args((int sn, int level, CHAR_DATA * ch, void *vo, int target));
 #define MAX_FORGET		    5
 #define MAX_DUPES		    7
 #define MAX_CLASS		   33
-#define MAX_PC_RACE		   41
+#define MAX_PC_RACE		   40
 #define MAX_CLAN		   18
 #define MAX_LEVEL		  211
 #define MAX_QUOTES                  4
