@@ -465,36 +465,8 @@ void sync_max_ever(void)
   int count;
   DESCRIPTOR_DATA *d;
 
-  count = 0;
-  for (d = descriptor_list; d; d = d->next)
+  if ((fp = file_open(MAX_EVER_FILE, "r")))
   {
-    count++;
-  }
-  cur_on = count;
-
-  if (cur_on > max_on)
-    max_on = cur_on;
-
-  if (max_on > max_ever && max_ever > 1)
-  {
-    max_ever = max_on;
-    if ((fp = file_open(MAX_EVER_FILE, "w")) == NULL)
-    {
-      bug("max_ever_update:  fopen of MAX_EVER_FILE failed", 0);
-      file_close(fp);
-      return;
-    }
-    fprintf(fp, "MAX_EVER %d\n", max_ever);
-    file_close(fp);
-  }
-  else
-  {
-    if (!(fp = file_open(MAX_EVER_FILE, "r")))
-    {
-      file_close(fp);
-      return;
-    }
-
     for (;;)
     {
       char *word;
@@ -507,7 +479,6 @@ void sync_max_ever(void)
         {
           file_close(fp);
           return;
-
         }
       }
       while (isspace(letter));
@@ -520,12 +491,35 @@ void sync_max_ever(void)
         if (number > 0)
           max_ever = number;
         file_close(fp);
-        return;
-
+        break;
       }
     }
   }
 
+  count = 0;
+  for (d = descriptor_list; d; d = d->next)
+  {
+    count++;
+  }
+  cur_on = count;
+
+  if (cur_on > max_on)
+    max_on = cur_on;
+
+  if (max_on > max_ever)
+  {
+    max_ever = max_on;
+
+    if ((fp = file_open(MAX_EVER_FILE, "w")) == NULL)
+    {
+      bug("sync_max_ever:  fopen of MAX_EVER_FILE failed", 0);
+      file_close(fp);
+      return;
+    }
+    fprintf(fp, "MAX_EVER %d\n", max_ever);
+
+    file_close(fp);
+  }
 }
 
 void wiznet(char *string, CHAR_DATA * ch, OBJ_DATA * obj, long flag,
