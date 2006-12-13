@@ -1737,6 +1737,23 @@ int xdamage(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int dam_type,
     return 0;
   }
 
+
+  /* DAMCAP */
+  /* If the victim is your level or higher, cap at 20% of victim's max hp. */
+  if (ch->level - victim->level <= 0)
+    dam = UMIN((victim->max_hit * 20 / 100), dam);
+  else if (ch->level - victim->level == 1)  /* Victim is one level below, cap at 30% */
+    dam = UMIN((victim->max_hit * 30 / 100), dam);
+  else if (ch->level - victim->level == 2)  /* Victim is two levels below, cap at 45% */
+    dam = UMIN((victim->max_hit * 45 / 100), dam);
+  else if (ch->level - victim->level == 3)  /* Victim is three levels below, cap at 65% */
+    dam = UMIN((victim->max_hit * 65 / 100), dam);
+  else if (ch->level - victim->level == 4)  /* Victim is four levels below, cap at 90% */
+    dam = UMIN((victim->max_hit * 90 / 100), dam);
+
+  /* No cap if victim is 5 or more levels below the attacker. */
+
+
   if (show && dam > 0)
     dam_message(ch, victim, dam, dt, immune, verbose, true);
 
