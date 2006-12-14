@@ -3388,6 +3388,7 @@ int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels)
   int xp, xp90, base_exp;
   int align, level_range;
   int change;
+  float bonus = 0.0;
 
   level_range = victim->level - gch->level;
 
@@ -3456,18 +3457,18 @@ int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels)
                                    his own */
   {
     if (is_affected(victim, skill_lookup("sanctuary")))
-      base_exp = (base_exp * 130) / 100;
+      bonus += (base_exp * .30);
     if (is_affected(victim, skill_lookup("haste")))
       if (IS_SET(victim->off_flags, OFF_AREA_ATTACK))
-        base_exp = (base_exp * 120) / 100;
+        bonus += (base_exp * .20);
     if (IS_SET(victim->off_flags, OFF_BACKSTAB))
-      base_exp = (base_exp * 120) / 100;
+      bonus += (base_exp * .20);
     if (IS_SET(victim->off_flags, OFF_FAST))
-      base_exp = (base_exp * 120) / 100;
+      bonus += (base_exp * .20);
     if (IS_SET(victim->off_flags, OFF_DODGE))
-      base_exp = (base_exp * 110) / 100;
+      bonus += (base_exp * .10);
     if (IS_SET(victim->off_flags, OFF_PARRY))
-      base_exp = (base_exp * 110) / 100;
+      bonus += (base_exp * .10);
 
     if (victim->spec_fun != 0)
     {
@@ -3479,17 +3480,17 @@ int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels)
                       "spec_breath_frost") ||
           !str_cmp(spec_name(victim->spec_fun), "spec_breath_gas")
           || !str_cmp(spec_name(victim->spec_fun), "spec_breath_lightning"))
-        base_exp = (base_exp * 125) / 100;
+        bonus += (base_exp * .25);
 
       else if (!str_cmp
                (spec_name(victim->spec_fun), "spec_cast_cleric") ||
                !str_cmp(spec_name(victim->spec_fun),
                         "spec_cast_mage") ||
                !str_cmp(spec_name(victim->spec_fun), "spec_cast_undead"))
-        base_exp = (base_exp * 120) / 100;
+        bonus += (base_exp * .20);
 
       else if (!str_cmp(spec_name(victim->spec_fun), "spec_poison"))
-        base_exp = (base_exp * 110) / 100;
+        bonus += (base_exp * .10);
     }
   }
   /* back to normal code -------------------- */
@@ -3532,7 +3533,7 @@ int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels)
 
   /* calculate exp multiplier for align */
   if (IS_SET(victim->act, ACT_NOALIGN))
-    xp = base_exp;
+    xp = base_exp + bonus;
 
   else if (gch->alignment > 500)  /* for goodie two shoes */
   {
@@ -3621,6 +3622,8 @@ int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels)
       xp = base_exp;
   }
 
+  xp = xp+bonus;
+
   if (gch->level > 99)
     xp = 90 * xp / gch->level;
   /* randomize the rewards */
@@ -3640,7 +3643,7 @@ int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels)
                                    limit */
   }
 
-  while (xp > 5000)
+  while (xp > 2225)
   {
     xp = xp * .95;
   }
