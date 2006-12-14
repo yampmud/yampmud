@@ -1279,9 +1279,10 @@ void reset_room(ROOM_INDEX_DATA * pRoom)
         else
           limit = pReset->arg2;
 
-        if ((LastObj = get_obj_type(pObjToIndex)) == NULL || (LastObj->in_room == NULL && !last) || (pObjIndex->count >= limit) ||
-            (count =
-             count_obj_list(pObjIndex, LastObj->contains)) > pReset->arg4)
+        if ((LastObj = get_obj_type(pObjToIndex)) == NULL ||
+            (LastObj->in_room == NULL && !last) || (pObjIndex->count >= limit)
+            || (count =
+                count_obj_list(pObjIndex, LastObj->contains)) > pReset->arg4)
         {
           last = false;
           break;

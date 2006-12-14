@@ -4038,4 +4038,3 @@ bool remove_voodoo(CHAR_DATA * ch)
 
   return true;
 }
-

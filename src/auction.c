@@ -375,7 +375,8 @@ void auction_channel(char *msg, bool iauc)
   char buf1[MAX_STRING_LENGTH];
   DESCRIPTOR_DATA *d;
 
-  sprintf(buf1, "\n\r%s %s", iauc ? "{8({!I{1mmauctio{!n{8){x" : "{8({7Au{&cti{7on{8){x", msg);
+  sprintf(buf1, "\n\r%s %s",
+          iauc ? "{8({!I{1mmauctio{!n{8){x" : "{8({7Au{&cti{7on{8){x", msg);
 
   for (d = descriptor_list; d != NULL; d = d->next)
   {

@@ -96,16 +96,9 @@ MAGIC(spell_portal)
   CHAR_DATA *victim;
   OBJ_DATA *portal, *stone;
 
-  if ((victim = get_char_world(ch, target_name)) == NULL || victim == ch
-      || victim->in_room == NULL || !can_see_room(ch, victim->in_room) ||
-      IS_SET(victim->in_room->room_flags, ROOM_SAFE) ||
-      IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) ||
-      IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) ||
-      IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) ||
-      IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
-      || victim->level >= level + 3 || (!IS_NPC(victim) && victim->level >= LEVEL_ANCIENT)  /* NOT 
-                                                                                               trust 
-                                                                                             */
+  if ((victim = get_char_world(ch, target_name)) == NULL || victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level >= level + 3 || (!IS_NPC(victim) && victim->level >= LEVEL_ANCIENT) /* NOT 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         trust 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       */
       || (IS_NPC(victim) && IS_SET(victim->imm_flags, IMM_SUMMON)) ||
       (IS_NPC(victim) && saves_spell(level, victim, DAM_NONE)) ||
       (is_clan(victim) &&
@@ -162,8 +155,9 @@ MAGIC(spell_nexus)
       IS_SET(to_room->room_flags, ROOM_SOLITARY) ||
       IS_SET(to_room->room_flags, ROOM_NO_RECALL) ||
       IS_SET(from_room->room_flags, ROOM_NO_RECALL)
-      || victim->level >= level + 3 || (!IS_NPC(victim) && victim->level >= LEVEL_ANCIENT)
-      || (IS_NPC(victim) && IS_SET(victim->imm_flags, IMM_SUMMON)) ||
+      || victim->level >= level + 3 || (!IS_NPC(victim) &&
+                                        victim->level >= LEVEL_ANCIENT) ||
+      (IS_NPC(victim) && IS_SET(victim->imm_flags, IMM_SUMMON)) ||
       (IS_NPC(victim) && saves_spell(level, victim, DAM_NONE)) ||
       (is_clan(victim) &&
        (!is_same_clan(ch, victim) || clan_table[victim->clan].independent)))

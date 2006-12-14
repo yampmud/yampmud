@@ -3581,7 +3581,9 @@ MEDIT(medit_show)
             flag_string(act2_flags, pMob->act2));
     send_to_char(buf, ch);
   }
-  sprintf(buf, "Vnum:        [%ld]\n\rSex:         [%s]\n\r", pMob->vnum, pMob->sex == SEX_MALE ? "male" : pMob->sex == SEX_FEMALE ? "female" : pMob->sex == 3 ? "random" : "neutral");
+  sprintf(buf, "Vnum:        [%ld]\n\rSex:         [%s]\n\r", pMob->vnum,
+          pMob->sex == SEX_MALE ? "male" : pMob->sex ==
+          SEX_FEMALE ? "female" : pMob->sex == 3 ? "random" : "neutral");
 
   send_to_char(buf, ch);
 

@@ -3184,16 +3184,9 @@ MAGIC(spell_gate)
   CHAR_DATA *victim;
   bool gate_pet;
 
-  if ((victim = get_char_world(ch, target_name)) == NULL || victim == ch
-      || victim->in_room == NULL || !can_see_room(ch, victim->in_room) ||
-      IS_SET(victim->in_room->room_flags, ROOM_SAFE) ||
-      IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) ||
-      IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) ||
-      IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) ||
-      IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
-      || victim->level >= level + 5 || (is_clan(ch) && (is_clan(victim) && ((!is_same_clan(ch, victim) && (clan_table[ch->clan].pkill) && (clan_table[victim->clan].pkill)) || clan_table[victim->clan].independent))) || (!IS_NPC(victim) && victim->level >= LEVEL_ANCIENT) /* NOT 
-                                                                                                                                                                                                                                                                                 trust 
-                                                                                                                                                                                                                                                                               */
+  if ((victim = get_char_world(ch, target_name)) == NULL || victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level >= level + 5 || (is_clan(ch) && (is_clan(victim) && ((!is_same_clan(ch, victim) && (clan_table[ch->clan].pkill) && (clan_table[victim->clan].pkill)) || clan_table[victim->clan].independent))) || (!IS_NPC(victim) && victim->level >= LEVEL_ANCIENT)  /* NOT 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             trust 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           */
       || (IS_NPC(victim) && IS_SET(victim->imm_flags, IMM_SUMMON)) ||
       (IS_NPC(victim) && saves_spell(level, victim, DAM_OTHER)))
   {
