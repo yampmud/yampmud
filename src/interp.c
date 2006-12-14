@@ -372,7 +372,6 @@ const struct cmd_type cmd_table[] = {
    * Immortal commands.
    */
   {"itake", do_itake, POS_DEAD, ML, 1, LOG_ALWAYS, 1},
-  {"copyover", do_copyover, POS_DEAD, L1, 1, LOG_ALWAYS, 1},
   {"pktoggle", do_pktoggle, POS_DEAD, CHIEF, 1, LOG_NORMAL, 1},
   {"bprompt", do_bprompt, POS_DEAD, HLPER, 1, LOG_NORMAL, 1},
   {"warn", do_warn, POS_DEAD, HDIMM, 1, LOG_NORMAL, 1},
