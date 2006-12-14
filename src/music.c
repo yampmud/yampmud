@@ -103,12 +103,6 @@ void song_update(void)
     if (obj->item_type != ITEM_JUKEBOX || obj->value[1] < 0)
       continue;
 
-    /*        if ( obj->value[1] >= MAX_SONGS )
-       {
-       obj->value[1] = -1;
-       continue;
-       } */
-
     if (obj->value[0] < 0)
     {
       sprintf(buf, "$p starts playing {N%s, %s{x.",

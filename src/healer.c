@@ -88,11 +88,6 @@ CH_CMD(do_heal)
       ("  {Wrefresh{x:{c restore movement     {y    5 {Ygold{x\n\r", ch);
     send_to_char
       ("  {Wmana{x   : {crestore mana	  {y         10 {Ygold{x\n\r", ch);
-    // send_to_char(" acid : acidshield 4 plat\n\r",ch);
-    //      send_to_char("  shock  : shockshield            3 plat\n\r",ch); 
-    //        send_to_char("  fire   : fireshield             2 plat\n\r",ch);
-    //        send_to_char("  ice    : iceshield              1 plat\n\r",ch);
-    //        send_to_char("  pshield: poisonshield          50 gold\n\r",ch);
 
     send_to_char
       ("  {WCancel {x:{c Cancellation{y            90 {Ygold{x\n\r", ch);
@@ -187,42 +182,6 @@ CH_CMD(do_heal)
     words = "candusima";
     cost = 500;
   }
-  /*
-     else if (!str_prefix(arg, "acid"))
-     {
-     spell = spell_acidshield;
-     sn    = skill_lookup("acidshield");
-     words = "acidshield";
-     cost  = 40000;
-     }
-     else if (!str_prefix(arg, "shock"))
-     {
-     spell = spell_shockshield;
-     sn    = skill_lookup("shockshield");
-     words = "shockshield";
-     cost  = 30000;
-     }
-     else if (!str_prefix(arg, "fire"))
-     {
-     spell = spell_fireshield;
-     sn    = skill_lookup("fireshield");
-     words = "fireshield";
-     cost  = 20000;
-     }
-     else if (!str_prefix(arg, "ice"))
-     {
-     spell = spell_iceshield;
-     sn    = skill_lookup("iceshield");
-     words = "iceshield";
-     cost  = 10000;
-     }
-     else if (!str_prefix(arg, "pshield"))
-     {
-     spell = spell_poisonshield;
-     sn    = skill_lookup("poisonshield");
-     words = "poisonshield";
-     cost  = 5000;
-     } */
   else
   {
     act("$N says '{aType 'heal' for a list of spells.{x'", ch, NULL, mob,

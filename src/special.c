@@ -1516,13 +1516,11 @@ bool spec_mayor(CHAR_DATA * ch)
       break;
 
     case 'O':
-      /*  do_unlock( ch, "gate" ); */
       do_open(ch, "gate");
       break;
 
     case 'C':
       do_close(ch, "gate");
-      /*  do_lock( ch, "gate" ); */
       break;
 
     case '.':

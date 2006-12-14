@@ -502,36 +502,6 @@ MAGIC(spell_soul_siphon)
   return;
 }
 
-/*
-   MAGIC ( spell_banish )
-   {
-   CHAR_DATA *victim;
-   AFFECT_DATA af;
-
-   victim = ( CHAR_DATA * ) vo;
-
-   if ( IS_AFFECTED ( victim, AFF_BANISH ) ||
-   saves_spell ( level, victim, DAM_NEGATIVE ) )
-   return;
-   af.where = TO_AFFECTS;
-   af.type = sn;
-   af.level = level;
-   af.duration = 3 * level;
-   af.location = APPLY_HITROLL;
-   af.modifier = -1 * ( level / 5 );
-   af.bitvector = AFF_BANISH;
-   affect_to_char ( victim, &af );
-
-   af.location = APPLY_SAVING_SPELL;
-   af.modifier = level / 8;
-   affect_to_char ( victim, &af );
-
-   send_to_char ( "You have been banished.\n\r", victim );
-   if ( ch != victim )
-   act ( "$N has been banished.", ch, NULL, victim, TO_CHAR );
-   return;
-   } */
-
 MAGIC(spell_earthrise)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;

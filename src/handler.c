@@ -1126,34 +1126,6 @@ bool is_exact_name(char *str, char *namelist)
   }
 }
 
-/* enchanted stuff for eq */
-void affect_enchant(OBJ_DATA * obj)
-{
-  /* okay, move all the old flags into new vectors if we have to */
-  /*    if ( !obj->enchanted )
-     {
-     AFFECT_DATA *paf, *af_new;
-
-     obj->enchanted = true;
-
-     for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
-     {
-     af_new = new_affect (  );
-
-     af_new->next = obj->affected;
-     obj->affected = af_new;
-
-     af_new->where = paf->where;
-     af_new->type = UMAX ( 0, paf->type );
-     af_new->level = paf->level;
-     af_new->duration = paf->duration;
-     af_new->location = paf->location;
-     af_new->modifier = paf->modifier;
-     af_new->bitvector = paf->bitvector;
-     }
-     } */
-}
-
 void affect_modify(CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd)
 {
   OBJ_DATA *wield;
@@ -1795,10 +1767,6 @@ void obj_to_char_bank(OBJ_DATA * obj, CHAR_DATA * ch)
 {
   /* Quest equipment allowed for now. */
   /* Also, I think this check should be performed in the calling function. --nosanity */
-  /*
-     if(!IS_NPC(ch) && IS_OBJ_STAT(obj, ITEM_QUEST))
-     return;  // shouldn't allow quest objects to be put in bank
-   */
 
   obj_from_char(obj);
   obj->next_content = ch->bankeditems;
@@ -2337,9 +2305,6 @@ void extract_char(CHAR_DATA * ch, bool fPull)
   {
     bug("Extract_char: NULL. Attempting fix", 0);
     char_to_room(ch, get_room_index(ROOM_VNUM_LIMBO));
-    /*
-     *  return;
-     */
   }
 
   nuke_pets(ch);
@@ -4074,35 +4039,3 @@ bool remove_voodoo(CHAR_DATA * ch)
   return true;
 }
 
-/*
-   void check_spirit( CHAR_DATA *ch, CHAR_DATA *victim )
-   {
-   char buf[MAX_STRING_LENGTH];
-   CHAR_DATA *spirit;
-
-
-
-   if ( number_range(0,24) != 0 || !IS_NPC(victim))
-   return;
-
-   spirit = create_mobile ( victim->pIndexData );
-   SET_BIT ( spirit->form,
-   FORM_INSTANT_DECAY|FORM_UNDEAD|FORM_INTANGIBLE );
-   SET_BIT ( spirit->act, ACT_AGGRESSIVE );
-   SET_BIT ( spirit->affected_by, AFF_PASS_DOOR );
-
-   sprintf(buf,"the spirit of %s",victim->short_descr);
-   spirit->short_descr = str_dup(buf);
-
-   sprintf(buf,"spirit %s",victim->name);
-   spirit->name = str_dup(buf);
-
-   char_to_room( spirit, ch->in_room );
-
-   act("You cower in fear as $N appears before you!",ch,NULL,spirit,TO_CHAR);
-   act("$N suddenly appears and attacks $n!",ch,NULL,spirit,TO_ROOM);
-
-   multi_hit( spirit, ch, TYPE_UNDEFINED );
-
-   return;
-   } */

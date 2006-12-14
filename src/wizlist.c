@@ -137,16 +137,6 @@ CH_CMD(do_wizlist)
   argument = one_argument(argument, arg2);
   argument = one_argument(argument, arg3);
 
-  /*
-   * Uncomment the following to use the old method of having
-   * a fixed wizlist in the rot.are file.
-   */
-
-  /*
-     do_help(ch,"wizlist");
-     return;
-   */
-
   if ((arg1[0] != '\0') && (ch->level == MAX_LEVEL))
   {
     if (!str_prefix(arg1, "add"))

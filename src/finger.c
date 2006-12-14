@@ -143,13 +143,6 @@ CH_CMD(do_finger)
                  victim->pcdata->awins, victim->pcdata->alosses, victim->rps,
                  victim->rpst);
 
-  /* It doesn't like this.
-     if ( ( victim = get_char_world ( ch, arg ) ) != NULL && !IS_NPC ( victim ) )
-     {
-     act ( "          $N is on right {=n{=o{=w{x!", ch, NULL, victim, TO_CHAR );
-     }
-   */
-
   printf_to_char(ch, "\n\r");
   free_pcdata(victim->pcdata);
   free_char(victim);

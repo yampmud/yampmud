@@ -773,14 +773,9 @@ void char_update(void)
 
   is_xmas = false;
 
-  //    do_htmlout();
-
   uptime_ticks++;
 
-  //expire_notes (  );
   randomize_entrances(ROOM_VNUM_CLANS);
-
-  //    do_asave ( NULL, "changed" );
 
   if (hour_ticks == 60)
   {
@@ -1410,7 +1405,6 @@ void obj_update(void)
 {
   OBJ_DATA *obj;
   OBJ_DATA *obj_next;
-  //    AFFECT_DATA *paf, *paf_next;
 
   for (obj = object_list; obj != NULL; obj = obj_next)
   {
@@ -1608,10 +1602,7 @@ void update_handler(bool forced)
   {
     pulse_area = PULSE_AREA;
     quest_update();
-    //        olcautosave (  );
     area_update();
-    // gquest_update();
-    // gquest_wait();
   }
   /*
      if ( --pulse_tele <= 0 || forced )

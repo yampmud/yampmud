@@ -58,7 +58,6 @@ char *fix_string(const char *str)
   {
     if (str[i + o] == '\r' || str[i + o] == '~')
       o++;
-    /* strfix[i] = str[i+o]; */
     if ((strfix[i] = str[i + o]) == '\0')
       break;
 
@@ -971,7 +970,6 @@ CH_CMD(do_asave)
       REMOVE_BIT(pArea->area_flags, AREA_CHANGED);
     }
     send_to_char("You saved the world.\n\r", ch);
-    /*  send_to_all_char( "Database saved.\n\r" );                 ROM OLC */
     return;
   }
 

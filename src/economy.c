@@ -242,15 +242,6 @@ CH_CMD(do_bank)
 
   if (!str_prefix(arg1, "store"))
   {
-    /* We want to be able to save quest equipment for rerolling. */
-    /*
-       if(IS_OBJ_STAT(obj, ITEM_QUEST)) 
-       {
-       send_to_char("You can't put quest items in the bank.", ch);
-       return;
-       }
-     */
-
     obj = get_obj_list(ch, arg2, ch->carrying);
     if (obj == NULL)
     {

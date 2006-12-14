@@ -138,8 +138,6 @@ void acid_effect(void *vo, int level, int dam, int target)
       bool af_found = false;
       int i;
 
-      affect_enchant(obj);
-
       for (paf = obj->affected; paf != NULL; paf = paf->next)
       {
         if (paf->location == APPLY_AC)
@@ -304,27 +302,6 @@ void fire_effect(void *vo, int level, int dam, int target)
   {
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     OBJ_DATA *obj, *obj_next;
-
-    /*
-
-       if (!IS_AFFECTED(victim,AFF_BLIND)
-       &&  !saves_spell(level / 4 + dam / 20, victim,DAM_FIRE))
-       {
-       AFFECT_DATA af;
-       act("$n is blinded by smoke!",victim,NULL,NULL,TO_ROOM);
-       act("Your eyes tear up from smoke...you can't see a thing!",
-       victim,NULL,NULL,TO_CHAR);
-
-       af.where        = TO_AFFECTS;
-       af.type         = ;
-       af.level        = level;
-       af.duration     = number_range(0,level/10);
-       af.location     = APPLY_HITROLL;
-       af.modifier     = level/-10;
-       af.bitvector    = AFF_BLIND;
-
-       affect_to_char(victim,&af);
-       } */
 
     /* getting thirsty */
     if (!IS_NPC(victim))

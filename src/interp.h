@@ -149,7 +149,6 @@ DECLARE_DO_FUN(do_clone);
 DECLARE_DO_FUN(do_close);
 DECLARE_DO_FUN(do_colour);
 DECLARE_DO_FUN(do_combine);
-/*DECLARE_DO_FUN( do_combust ); */
 DECLARE_DO_FUN(do_commands);
 DECLARE_DO_FUN(do_compact);
 DECLARE_DO_FUN(do_compare);
@@ -203,7 +202,6 @@ DECLARE_DO_FUN(do_freeze);
 DECLARE_DO_FUN(do_ftick);
 DECLARE_DO_FUN(do_game);
 DECLARE_DO_FUN(do_gain);
-/*DECLARE_DO_FUN( do_garrote ); */
 DECLARE_DO_FUN(do_get);
 DECLARE_DO_FUN(do_ghost);
 DECLARE_DO_FUN(do_give);
@@ -212,7 +210,6 @@ DECLARE_DO_FUN(do_gocial);
 DECLARE_DO_FUN(do_gossip);
 DECLARE_DO_FUN(do_goto);
 DECLARE_DO_FUN(do_gouge);
-/*DECLARE_DO_FUN( do_gquest ); */
 DECLARE_DO_FUN(do_grats);
 DECLARE_DO_FUN(do_group);
 DECLARE_DO_FUN(do_groups);
@@ -396,7 +393,6 @@ DECLARE_DO_FUN(do_second);
 DECLARE_DO_FUN(do_sedit);
 DECLARE_DO_FUN(do_sell);
 DECLARE_DO_FUN(do_set);
-/*DECLARE_DO_FUN( do_sever ); */
 DECLARE_DO_FUN(do_scan);
 DECLARE_DO_FUN(do_score);
 DECLARE_DO_FUN(do_score_loki);

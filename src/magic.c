@@ -400,13 +400,6 @@ CH_CMD(do_cast)
           return;
         }
       }
-      /*
-         if ( ch == victim )
-         {
-         send_to_char( "You can't do that to yourself.\n\r", ch );
-         return;
-         }
-       */
 
       if (!IS_NPC(ch))
       {
@@ -2426,14 +2419,6 @@ MAGIC(spell_dispel_magic)
   if (check_dispel(level, victim, skill_lookup("protection good")))
     found = true;
 
-  /*  There's another sanc check (as SHD) below.
-     if ( check_dispel ( level, victim, skill_lookup ( "sanctuary" ) ) )
-     {
-     act ( "The white aura around $n's body vanishes.", victim, NULL, NULL,
-     TO_ROOM );
-     found = true;
-     } */
-
   if (check_dispel(level, victim, skill_lookup("terror")))
   {
     act("$n is no longer so afraid.", victim, NULL, NULL, TO_ROOM);
@@ -3206,8 +3191,6 @@ MAGIC(spell_gate)
       IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) ||
       IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) ||
       IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
-      // || (IS_NPC(victim) && is_gqmob(ch, victim->pIndexData->vnum) !=
-      // -1) 
       || victim->level >= level + 5 || (is_clan(ch) && (is_clan(victim) && ((!is_same_clan(ch, victim) && (clan_table[ch->clan].pkill) && (clan_table[victim->clan].pkill)) || clan_table[victim->clan].independent))) || (!IS_NPC(victim) && victim->level >= LEVEL_ANCIENT) /* NOT 
                                                                                                                                                                                                                                                                                  trust 
                                                                                                                                                                                                                                                                                */

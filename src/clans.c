@@ -92,21 +92,6 @@ const struct clan_type clan_table[MAX_CLAN] = {
    OBJ_VNUM_PIT,
    false, true, "Keepers of the Tain"},
 
-  /*    {"NStalker", "{WN{wi{Dght{WS{wt{Dalker{x",
-     70015, 70015,
-     OBJ_VNUM_PIT,
-     false, true, "NightStalkers"},
-
-     {"HoS", " {MH{ma{Drb{win{Dge{mr{Ms{x ",
-     70200, 70200,
-     OBJ_VNUM_PIT,
-     false, true, "Harbingers of Skulls"},
-
-     {"TCC", " {YC{ye{Yl{ye{Ys{yt{Yi{ya{Yl{ys{x ",
-     70600, 70600,
-     OBJ_VNUM_PIT,
-     false, true, "Celestial Chorus"}, */
-
   {"clan7", " none ",
    ROOM_VNUM_ALTAR, ROOM_VNUM_ALTAR,
    OBJ_VNUM_PIT,
@@ -825,26 +810,7 @@ void update_clanlist(CHAR_DATA * ch, int clannum, bool add, bool clead)
     {
       if (clead)
       {
-        if (!add)
-        {
-          /*                    prev = NULL;
-             for ( curr = pcln->list; curr != NULL;
-             prev = curr, curr = curr->next )
-             {
-             if ( !str_cmp ( ch->name, curr->name ) )
-             {
-             if ( prev == NULL )
-             pcln->list = pcln->list->next;
-             else
-             prev->next = curr->next;
-
-             free_mbr ( curr );
-             save_clanlist ( clannum ); 
-             }
-             }
-             return; */
-        }
-        else
+        if (add)
         {
           curr = new_mbr();
           curr->name = str_dup(ch->name);
@@ -1015,9 +981,6 @@ CH_CMD(do_promote)
       ("You can not promote a player who is not in your clan.\n\r", ch);
     return;
   }
-
-  /* if ( !is_clead(ch)) { send_to_char("This player is not qualified to
-     lead.\n\r",ch); return; } */
 
   victim->clan_rank = atoi(arg2);
 

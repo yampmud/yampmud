@@ -407,12 +407,7 @@ void show_char_to_char_0(CHAR_DATA * victim, CHAR_DATA * ch)
   }
   if (!IS_NPC(victim) && IS_SET(victim->act, PLR_TWIT))
     strcat(buf, "({rTWIT{x)");
-  // make sure victim is an NPC - M.
-  /*  if (!IS_NPC(ch) && is_gqmob(ch, victim->pIndexData->vnum) != -1)
-     {
-     strcat(buf, "(Gquest) ");
-     }
-   */
+
   if (buf[0] != '\0')
   {
     strcat(buf, " ");
@@ -681,9 +676,6 @@ void show_char_to_char_1(CHAR_DATA * victim, CHAR_DATA * ch)
         found = true;
       }
       sprintf(buf, "%s\n\r", format_obj_to_char(obj, ch, true));
-
-      //            sprintf ( buf, "%s%s\n\r", where_name[iWear],
-      //                      format_obj_to_char ( obj, ch, true ) );
       add_buf(output, buf);
     }
   }
@@ -837,13 +829,6 @@ CH_CMD(do_scroll)
   }
 
   lines = atoi(arg);
-
-  /*    if ( lines == 0 )
-     {
-     send_to_char ( "Paging disabled.\n\r", ch );
-     ch->lines = 0;
-     return;
-     } */
 
   if (lines < 10 || lines > 50)
   {
@@ -1890,10 +1875,6 @@ CH_CMD(do_lore)
                 obj->value[1], obj->value[2],
                 (1 + obj->value[2]) * obj->value[1] / 2);
         send_to_char(buf, ch);
-        /* sprintf(buf,"Weapon type is %s.\n\r", (obj->value[3] > 0 &&
-           obj->value[3] < MAX_DAMAGE_MESSAGE) ?
-           attack_table[obj->value[3]].noun : "undefined");
-           send_to_char(buf,ch); */
         if (obj->value[4])      /* weapon flags */
         {
           sprintf(buf, "Weapons flags: %s\n\r",
@@ -2669,7 +2650,6 @@ CH_CMD(do_score_new)
   char buf[MSL];
   BUFFER *output;
 
-  /* int i; */
   output = new_buf();
   sprintf(buf, "\n\r");
   add_buf(output, buf);
@@ -2737,9 +2717,7 @@ CH_CMD(do_score)
           "{WYou have {y%d{W practices and {y%d{W training sessions.{x\n\r",
           ch->practice, ch->train);
   add_buf(output, buf);
-  /* if (is_clan(ch)) { sprintf( buf, "{xYou are in the [{G%s{x] clan, which
-     is a %s clan.\n\r", clan_table[ch->clan].who_name, is_pkill(ch) ?
-     "{RPkill{x" : "{WNon-Pkill{x"); add_buf(output,buf); } */
+
   sprintf(buf,
           "{WYou are carrying {g%d{x/{G%d{W items with weight {g%ld{x/{G%d{W pounds.{x\n\r",
           ch->carry_number, can_carry_n(ch),
@@ -3744,10 +3722,7 @@ CH_CMD(do_who)
    */
   nMatch = 0;
   buf[0] = '\0';
-  /*    sprintf ( buf,
-     "\n\r                    {CP{clay{Ders {CC{conne{Dcted {CT{co %s{w:{x\n\r",
-     mudname );
-     send_to_char ( buf, ch ); */
+
   send_to_char(sepbuf, ch);
   sprintf(buf,
           " {D| {wSex Lvl Race Class {D[  {wFlags  {D] [    {wClan    {D] {wName   Title {D|  {CSee help who {D|\n\r");
@@ -3787,11 +3762,6 @@ CH_CMD(do_who)
             continue;
           if (ccount != wch->clan)
             continue;
-
-          // We want to see invis people as "someone"
-          //                    if ( !can_see ( ch, wch ) && 
-          //                         IS_SHIELDED ( wch, SHD_INVISIBLE ) )
-          //                        continue;
 
           if (!can_see(ch, wch) && wch->level >= SQUIRE &&
               ch->level < wch->level)
@@ -4964,8 +4934,6 @@ CH_CMD(do_practice)
       if (ch->pcdata->learned[sn] < adept)
       {
         act("You practice $T.", ch, NULL, skill_table[sn].name, TO_CHAR);
-        // act ( "$n practices $T.", ch, NULL, skill_table[sn].name,
-        // TO_ROOM );
       }
       else
       {
@@ -5210,15 +5178,14 @@ CH_CMD(do_anew)
 
   sprintf(result, "{m[{W%-9s{m] {m({W%-27s{m  ){W %-10s{x\n\r\n\r",
           "Lvl Range", "Area Name", "Credits");
-  // sprintf(
-  // result,"{c************************************************************{x\n\r");
+
   for (pArea = area_first; pArea; pArea = pArea->next)
   {
     sprintf(buf, "{m[{W%-9s{m] {m({W%-29.29s{m){W %-10.10s{x\n\r",
             "Lvl Range", pArea->name, pArea->builders);
     strcat(result, buf);
   }
-  //    sprintf( result,"{c************************************************************{x\n\r");
+
   send_to_char(result, ch);
   return;
 }

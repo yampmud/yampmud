@@ -791,7 +791,6 @@ bool parse_gen_groups(CHAR_DATA * ch, char *argument)
   if (!str_prefix(arg, "learned"))
   {
     list_group_chosen(ch);
-    //        send_to_char("Sorry that is currently a buggy choice, but will be fixed soon.\n\r",ch);
     return true;
   }
 
@@ -1173,17 +1172,12 @@ CH_CMD(do_showskill)
 
   sprintf(buf, "{xClasses and levels for %s{x:\n\r", skill_table[skill].name);
   send_to_char(buf, ch);
-  /* send_to_char("{CClass Level Gain{x\n\r",ch); */
-  /* send_to_char("{C----------- ----- ----{x\n\r",ch); */
   i = 0;
   for (class = 0; class < MAX_CLASS; class++)
   {
     if (skill_table[skill].skill_level[class] > LEVEL_ANCIENT)
       continue;
     i++;
-    /* sprintf(buf,"{m%-11s {c%5d {m%4d{x\n\r",class_table[class].name,
-       skill_table[skill].skill_level[class],
-       skill_table[skill].rating[class]); */
     sprintf(buf, "{C%-13s{x: {c%3d  {x", class_table[class].name,
             skill_table[skill].skill_level[class]);
     buf[2] = UPPER(buf[2]);

@@ -103,7 +103,6 @@ MAGIC(spell_portal)
       IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) ||
       IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) ||
       IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
-      //    || (IS_NPC(victim) && is_gqmob(ch, victim->pIndexData->vnum) != -1) 
       || victim->level >= level + 3 || (!IS_NPC(victim) && victim->level >= LEVEL_ANCIENT)  /* NOT 
                                                                                                trust 
                                                                                              */
@@ -163,10 +162,7 @@ MAGIC(spell_nexus)
       IS_SET(to_room->room_flags, ROOM_SOLITARY) ||
       IS_SET(to_room->room_flags, ROOM_NO_RECALL) ||
       IS_SET(from_room->room_flags, ROOM_NO_RECALL)
-      //    || (IS_NPC(victim) && is_gqmob(ch, victim->pIndexData->vnum) != -1)  
-      || victim->level >= level + 3 || (!IS_NPC(victim) && victim->level >= LEVEL_ANCIENT)  /* NOT 
-                                                                                               trust 
-                                                                                             */
+      || victim->level >= level + 3 || (!IS_NPC(victim) && victim->level >= LEVEL_ANCIENT)
       || (IS_NPC(victim) && IS_SET(victim->imm_flags, IMM_SUMMON)) ||
       (IS_NPC(victim) && saves_spell(level, victim, DAM_NONE)) ||
       (is_clan(victim) &&
@@ -340,19 +336,6 @@ MAGIC(spell_conjure)
     send_to_char("You failed.\n\r", ch);
     return;
   }
-  /*    if ( stone != NULL && stone->item_type == ITEM_DEMON_STONE )
-     {
-     act ( "You draw upon the power of $p.", ch, stone, NULL,
-     TO_CHAR );
-     act ( "$n draws upon the power of $p.", ch, stone, NULL,
-     TO_ROOM );
-     act ( "It flares brightly and explodes into dust.", ch, stone,
-     NULL, TO_CHAR );
-     act ( "It flares brightly and explodes into dust.", ch, stone,
-     NULL, TO_ROOM );
-     extract_obj ( stone );
-     return;
-     } */
 
   if (ch->familiar != NULL)
   {
@@ -486,18 +469,6 @@ MAGIC(spell_iceshield)
     return;
   }
 
-  /*
-     if ( (skill_table[sn].skill_level[victim->class] > LEVEL_ANCIENT)
-     && (victim->level < LEVEL_IMMORTAL) )
-     {
-     send_to_char("You are surrounded by an {Cicy{x shield.\n\r", victim);
-     act("$n is surrounded by an {Cicy{x shield.",victim, NULL,NULL,TO_ROOM);
-     send_to_char("Your {Cicy{x shield quickly melts away.\n\r", victim);
-     act("$n's {Cicy{x shield quickly melts away.",victim, NULL,NULL,TO_ROOM);
-     return;
-     }
-   */
-
   af.where = TO_SHIELDS;
   af.type = sn;
   af.level = level;
@@ -534,18 +505,6 @@ MAGIC(spell_fireshield)
     send_to_char("You failed.\n\r", ch);
     return;
   }
-
-  /*
-     if ( (skill_table[sn].skill_level[victim->class] > LEVEL_ANCIENT)
-     && (victim->level < LEVEL_IMMORTAL) )
-     {
-     send_to_char("You are surrounded by a {Rfiery{x shield.\n\r", victim);
-     act("$n is surrounded by a {Rfiery{x shield.",victim, NULL,NULL,TO_ROOM);
-     send_to_char("Your {Rfirey{x shield gutters out.\n\r", victim);
-     act("$n's {Rfirey{x shield gutters out.",victim, NULL,NULL,TO_ROOM);
-     return;
-     }
-   */
 
   af.where = TO_SHIELDS;
   af.type = sn;
@@ -584,18 +543,6 @@ MAGIC(spell_shockshield)
     send_to_char("You failed.\n\r", ch);
     return;
   }
-
-  /*
-     if ( (skill_table[sn].skill_level[victim->class] > LEVEL_ANCIENT)
-     && (victim->level < LEVEL_IMMORTAL) )
-     {
-     send_to_char("You are surrounded by a {Bcrackling{x shield.\n\r", victim);
-     act("$n is surrounded by a {Bcrackling{x shield.",victim, NULL,NULL,TO_ROOM);
-     send_to_char("Your {Bcrackling{x shield sizzles and fades.\n\r", victim);
-     act("$n's {Bcrackling{x shield sizzles and fades.",victim, NULL,NULL,TO_ROOM);
-     return;
-     }
-   */
 
   af.where = TO_SHIELDS;
   af.type = sn;
@@ -842,18 +789,6 @@ MAGIC(spell_briarshield)
     send_to_char("You failed.\n\r", ch);
     return;
   }
-
-  /*
-     if ( (skill_table[sn].skill_level[victim->class] > LEVEL_ANCIENT)
-     && (victim->level < LEVEL_IMMORTAL) )
-     {
-     send_to_char("You are surrounded by a {Bcrackling{x shield.\n\r", victim);
-     act("$n is surrounded by a {Bcrackling{x shield.",victim, NULL,NULL,TO_ROOM);
-     send_to_char("Your {Bcrackling{x shield sizzles and fades.\n\r", victim);
-     act("$n's {Bcrackling{x shield sizzles and fades.",victim, NULL,NULL,TO_ROOM);
-     return;
-     }
-   */
 
   af.where = TO_SHIELDS;
   af.type = sn;
@@ -1297,14 +1232,6 @@ MAGIC(spell_blade_bless)
       send_to_char("That isn't a weapon.\n\r", ch);
       return;
     }
-    /* if (IS_OBJ_STAT(obj,ITEM_EVIL)) { AFFECT_DATA *paf;
-
-       paf = affect_find(obj->affected,gsn_curse); if
-       (!saves_dispel(level,paf != NULL ? paf->level : obj->level,0)) { if
-       (paf != NULL) affect_remove_obj(obj,paf); act("$p glows soft
-       gold.",ch,obj,NULL,TO_ALL); REMOVE_BIT(obj->extra_flags,ITEM_EVIL);
-       return; } else { act("The evil of $p resists your blessings.",
-       ch,obj,NULL,TO_CHAR); return; } } */
 
     af.where = TO_OBJECT;
     af.type = sn;
@@ -1349,9 +1276,7 @@ MAGIC(spell_invigorate)
   affect_to_char(victim, &af);
 
   act("$n is invigorated!", victim, NULL, NULL, TO_ROOM);
-  /* send_to_char("You are invigorated!\n\r",ch); */
 
-  //    ch->hit = ch->max_hit;
   return;
 }
 
@@ -1569,11 +1494,7 @@ MAGIC(spell_summon_familiar)
   {
     familiar->perm_stat[i] = ch->perm_stat[i];
   }
-  /*
-     familiar->max_hit    = IS_NPC(ch)? URANGE(ch->max_hit,1 * ch->max_hit,30000)
-     : URANGE(ch->pcdata->perm_hit,ch->hit,30000);
-     familiar->hit        = familiar->max_hit;
-   */
+
   familiar->max_hit = IS_NPC(ch) ? ch->max_hit : ch->pcdata->perm_hit / 2;
   familiar->hit = familiar->max_hit;
   familiar->max_mana = IS_NPC(ch) ? ch->max_mana : ch->pcdata->perm_mana / 2;

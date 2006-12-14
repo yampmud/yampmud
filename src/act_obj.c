@@ -91,9 +91,6 @@ bool can_loot(CHAR_DATA * ch, OBJ_DATA * obj)
   if (!IS_NPC(owner) && IS_SET(owner->act, PLR_CANLOOT))
     return true;
 
-  //    if ( is_same_group ( ch, owner ) )
-  //        return true;
-
   return false;
 }
 
@@ -151,17 +148,6 @@ BUFFER *get_obj(CHAR_DATA * ch, OBJ_DATA * obj, OBJ_DATA * container,
       }
   }
 
-  if (IS_OBJ_STAT(obj, ITEM_QUEST) && ch->level <= HERO)
-  {
-    /*        if ( !can_quest ( ch ) )
-       {
-       sprintf ( buf, "%s: You already have a quest item.\n\r",
-       obj->short_descr );
-       add_buf ( output, buf );
-       return output;
-       } */
-  }
-
   if (IS_QUESTOR(ch) && ch->pcdata->questobj > 0)
   {
     if (ch->pcdata->questobj == obj->pIndexData->vnum)
@@ -170,8 +156,6 @@ BUFFER *get_obj(CHAR_DATA * ch, OBJ_DATA * obj, OBJ_DATA * container,
       send_to_char("{RYou have almost completed your QUEST!{x\n\r", ch);
       send_to_char
         ("{RReturn to the questmaster before your time runs out!{x\n\r", ch);
-      /* sprintf(buf, "$N has found %s, their questobject.",
-         obj->short_descr); wiznet(buf, ch, NULL, WIZ_QUESTS, 0, 0); */
     }
   }
 
@@ -559,14 +543,6 @@ CH_CMD(do_donate)
     send_to_char("You have a feeling that would be a bad idea.\n\r", ch);
     return;
   }
-  /*
-     if (get_obj_weight( obj ) + get_true_weight( container )
-     > (container->value[0] * 10) 
-     ||  get_obj_weight(obj) > (container->value[3] * 10))
-     {
-     send_to_char( "The donation pit can't hold that.\n\r", ch );
-     return;
-     } */
 
   if (!CAN_WEAR(container, ITEM_TAKE))
   {

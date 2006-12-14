@@ -64,10 +64,8 @@ void get_summon_type(CHAR_DATA * ch, char *argument, int sn)
   CHAR_DATA *victim;
   CHAR_DATA *gch;
   MOB_INDEX_DATA *pMobIndex;
-
   OBJ_DATA *corpse;
-  //    OBJ_DATA *corpse_item;
-  //    OBJ_DATA *corpse_item_next;
+
 
   int vnum, i, summon_id;
   int corpse_item_count;
@@ -279,26 +277,8 @@ void get_summon_type(CHAR_DATA * ch, char *argument, int sn)
 
       // If there are any contents, drop them to the floor.
       if (corpse->contains)
-
-        /* For some annoying reason I can't figure out why the for loop never finds the EOF.
-           for ( corpse = object_list; container != NULL; container = container->next )
-           {
-           corpse_item_next = corpse->next_content;
-
-           obj_from_obj ( corpse_item );
-           obj_to_room ( corpse_item, ch->in_room );
-           REMOVE_BIT ( corpse_item->extra_flags, ITEM_HAD_TIMER );
-           corpse_item_count++;
-           }
-
-           if ( corpse_item_count > 0 )
-           {
-           sprintf ( corpse_item_buf, "%d items fall from $P.", corpse_item_count );
-           act ( corpse_item_buf, ch, corpse_item, corpse, TO_ROOM );
-           act ( corpse_item_buf, ch, corpse_item, corpse, TO_CHAR );
-           }
-         */
         obj_from_room(corpse);
+
       extract_obj(corpse);
     }
     else

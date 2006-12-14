@@ -197,12 +197,6 @@ CH_CMD(do_challenge)
        ch);
     return;
   }
-  /*    if ( ch->hit < ch->max_hit )
-     {
-     send_to_char ( "You must be fully healed to fight in the arena.\n\r",
-     ch );
-     return;
-     } */
   if (arg1[0] == '\0')
   {
     send_to_char("You must specify whom you wish to challenge.\n\r", ch);
@@ -242,12 +236,7 @@ CH_CMD(do_challenge)
     send_to_char("You have a PK timer still.\n\r", ch);
     return;
   }
-  /*    if ( victim->hit < victim->max_hit )
-     {
-     send_to_char
-     ( "That player is not healthy enough to fight right now.\n\r", ch );
-     return;
-     } */
+
   if (victim->desc == NULL)
   {
     send_to_char
@@ -392,27 +381,7 @@ CH_CMD(do_agree)
   lvl2 = victim->hit;
   odd1 = (lvl1 / lvl2);
   odd2 = (lvl2 / lvl1);
-  /*
-     sprintf ( buf1,
-     "{W[{RARENA{W] {R%s{W: Wins: {R%d{W Losses: {R%d{W Odds: {R%.2f{x\n\r",
-     victim->name, victim->pcdata->awins, victim->pcdata->alosses,
-     odd1 );
-     sprintf ( buf2,
-     "{W[{RARENA{W] {R%s{W: Wins: {R%d{W Losses: {R%d{W Odds: {R%.2f{x\n\r",
-     ch->name, ch->pcdata->awins, ch->pcdata->alosses, odd2 );
-     strcpy ( buf3,
-     "{W[{RARENA{W] To place a bet type: {RBET{W <{Rplatinum{W> <{Rplayer{W>{x\n\r" );
 
-     for ( d = descriptor_list; d; d = d->next )
-     {
-     if ( d->connected == CON_PLAYING )
-     {
-     send_to_char ( buf1, d->character );
-     send_to_char ( buf2, d->character );
-     //            send_to_char ( buf3, d->character );
-     d->character->gladiator = NULL;
-     }
-     } */
   /* == now move them both to an arena for the fun == */
   send_to_char("You make your way into the arena.\n\r", ch);
   char_from_room(ch);

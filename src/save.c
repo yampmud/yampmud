@@ -140,13 +140,6 @@ void save_char_obj(CHAR_DATA * ch)
   file_close(fp);
   rename(TEMP_FILE, strsave);
   remove(TEMP_FILE);
-
-  /* gzip compress pfiles
-     sprintf ( buf, "gzip -fq --best %s", strsave );
-     system ( buf );
-     sprintf ( buf, "rm -f %s", strsave );
-     system ( buf );
-   */
   return;
 }
 
@@ -642,17 +635,6 @@ bool load_char_obj(DESCRIPTOR_DATA * d, char *name)
   ch->pcdata->board = &boards[DEFAULT_BOARD];
   found = false;
 
-  /* decompress if .gz file exists */
-  sprintf(strsave, "%s%s%s", PLAYER_DIR, capitalize(name), ".gz");
-  if ((fp = file_open(strsave, "r")) != NULL)
-  {
-    file_close(fp);
-    //        sprintf ( buf, "gzip -dfq %s", strsave );
-    //        system ( buf );
-    //        sprintf ( buf, "rm -f %s", strsave );
-    //        system ( buf );
-  }
-
   sprintf(strsave, "%s%s", PLAYER_DIR, capitalize(name));
   if ((fp = file_open(strsave, "r")) != NULL)
   {
@@ -726,7 +708,6 @@ bool load_char_obj(DESCRIPTOR_DATA * d, char *name)
     ch->vuln_flags = ch->vuln_flags | race_table[ch->race].vuln;
     ch->form = race_table[ch->race].form;
     ch->parts = race_table[ch->race].parts;
-    /* end_quest(ch, 0); */
 
     /* ream gold */
     if (found && ch->version < 4)
@@ -742,45 +723,6 @@ bool load_char_obj(DESCRIPTOR_DATA * d, char *name)
     SET_BIT(ch->pcdata->verbose, VERBOSE_SHIELD_COMP);
   return found;
 }
-
-/*
-   bool load_char_reroll( DESCRIPTOR_DATA *d, char *name )
-   {
-   CHAR_DATA *ch;
-   bool found;
-   int stat;
-
-   ch = new_char();
-   ch->pcdata = new_pcdata();
-
-   d->character     = ch;
-   ch->desc       = d;
-   ch->name       = str_dup( name );
-   ch->id       = get_pc_id();
-   ch->race       = race_lookup("human");
-   ch->act        = PLR_NOSUMMON;
-   ch->comm       = COMM_COMBINE 
-   | COMM_PROMPT
-   | COMM_STORE;
-   ch->prompt         = str_dup("<{R%hhp {M%mm {G%vmv{x>");
-   ch->pcdata->confirm_delete   = false;
-   ch->pcdata->pwd      = str_dup( "" );
-   ch->pcdata->bamfin     = str_dup( "" );
-   ch->pcdata->bamfout      = str_dup( "" );
-   ch->pcdata->who_descr    = str_dup( "" );
-   ch->pcdata->title      = str_dup( "" );
-   ch->pcdata->tier     = 1;
-   for (stat =0; stat < MAX_STATS; stat++)
-   ch->perm_stat[stat]    = 13;
-   ch->pcdata->condition[COND_THIRST] = 48; 
-   ch->pcdata->condition[COND_FULL] = 48;
-   ch->pcdata->condition[COND_HUNGER] = 48;
-   ch->pcdata->pkdeaths               = 0;
-   ch->pcdata->pkkills                  = 0;
-
-   found = false;
-   return found;
-   } */
 
 /*
  * Read in a char.
@@ -1101,8 +1043,6 @@ void fread_char(CHAR_DATA * ch, FILE * fp)
           fMatch = true;
           break;
         }
-        //KEYS ( "Description", ch->description, fread_string ( fp ) );
-        //KEYS ( "Desc", ch->description, fread_string ( fp ) );
         if (!str_cmp(word, "Dupes"))
         {
           if (dcount >= MAX_DUPES)
@@ -1171,7 +1111,6 @@ void fread_char(CHAR_DATA * ch, FILE * fp)
 
           temp = fread_word(fp);
           gn = group_lookup(temp);
-          /* gn = group_lookup( fread_word( fp ) ); */
           if (gn < 0)
           {
             fprintf(stderr, "%s", temp);
@@ -1327,7 +1266,6 @@ void fread_char(CHAR_DATA * ch, FILE * fp)
           value = fread_number(fp);
           temp = fread_word(fp);
           sn = skill_lookup(temp);
-          /* sn = skill_lookup( fread_word( fp ) ); */
           if (sn < 0 || sn > MAX_SKILL)
           {
             fprintf(stderr, "%s", temp);
@@ -1408,8 +1346,6 @@ void fread_pet(CHAR_DATA * ch, FILE * fp)
   char *word;
   CHAR_DATA *pet;
   bool fMatch;
-  //    int lastlogoff = current_time;
-  //    int percent;
 
   /* first entry had BETTER be the vnum or we barf */
   word = feof(fp) ? "END" : fread_word(fp);
@@ -1931,11 +1867,6 @@ void backup_char_obj(CHAR_DATA * ch)
   }
   file_close(fp);
   rename(TEMP_FILE, strsave);
-
-  //    sprintf ( buf, "gzip -fq --best %s", strsave );
-  //    system ( buf );
-  //    sprintf ( buf, "rm -f %s", strsave );
-  //    system ( buf );
 
   send_to_char("A backup of your pfile has been made.\n\r", ch);
   return;

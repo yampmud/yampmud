@@ -225,8 +225,7 @@ CH_CMD(do_questforge)
     send_to_char("Does this look like the journeymen guild?\n\r", ch);
     return;
   }
-  if (arg1[0] == '\0'           /* ||arg2[0]=='\0'||flag[0][0]=='\0'||flag[1][0]=='\0'||
-                                   flag[2][0]=='\0' */ )
+  if (arg1[0] == '\0')
   {
     send_to_char
       ("{cSyntax{D:{x qforge <weaponclass> <damagetype> <flag1> <flag2> <flag3>\n\r",
@@ -827,8 +826,6 @@ CH_CMD(do_verbose)
     printf_to_char(ch,
                    "{CW{ceapon flags{D  :    %s\n\r{CD{codge/etc.  {D  :    %s{x\n\r",
                    VER_OO(ch, VERBOSE_FLAGS), VER_OO(ch, VERBOSE_DODGE));
-    //        printf_to_char ( ch, "{CD{camage Spam{D   :    %s{x\n\r",
-    //                         VER_OO ( ch, VERBOSE_DAMAGE ) );
 
     printf_to_char(ch, "{CO{cbject effects{D:    %s{x\n\r",
                    VER_OO(ch, VERBOSE_BURN));
@@ -876,12 +873,6 @@ CH_CMD(do_verbose)
     {
       REMOVE_BIT(ch->pcdata->verbose, VERBOSE_DAMAGE);
       send_to_char("{cDamage messages are no longer summarized.{x\n\r", ch);
-    }
-    else
-    {
-      //            SET_BIT ( ch->pcdata->verbose, VERBOSE_DAMAGE );
-      //            send_to_char ( "{cDamage messages are now summarized.{x\n\r",
-      //                           ch );
     }
     return;
   }
@@ -1003,13 +994,6 @@ CH_CMD(do_channels)
     send_to_char("{w[{GON{w]{x\n\r", ch);
   else
     send_to_char("{w[{ROFF{w]\n\r", ch);
-  /*
-     send_to_char ( "{WGlobal Social{x ", ch );
-     if ( !IS_SET ( ch->comm, COMM_NOGOC ) )
-     send_to_char ( "{w[{GON{w]{x\n\r", ch );
-     else
-     send_to_char ( "{w[{ROFF{w]\n\r", ch );
-   */
 
   send_to_char("{WGlobal Emote{x  ", ch);
   if (!IS_SET(ch->comm, COMM_NOGMOTE))
@@ -1494,16 +1478,6 @@ CH_CMD(do_anctalk)
 
 }
 
-/* char *matag ( CHAR_DATA * ch )
-   {
-   char arg[MSL];
-
-   sprintf ( arg, "{x{D[{CM{cA{D]{x" );
-
-   if ( IS_SET ( ch->act2, PLR_MADMIN ) )
-   return arg;
-   } */
-
 char *pcolor(CHAR_DATA * ch, const char *s, int tcolor)
 {
 
@@ -1585,8 +1559,6 @@ char *pcolor(CHAR_DATA * ch, const char *s, int tcolor)
       }
       else
       {
-        //if ( *s == '{' )
-        //  ttemp = 0;
         *p++ = *s;
       }
     }
@@ -1620,7 +1592,6 @@ char *pcolorr(CHAR_DATA * ch, const char *g, int tcolor)
     ttemp = number_range(1, 11);
 
   for (; *g != '\0'; ++g)
-    //        if ( !isspace ( *g ) && *g != '{' )
     if (skip == 0)
     {
       if (!isspace(*g))
@@ -1680,8 +1651,6 @@ char *pcolorr(CHAR_DATA * ch, const char *g, int tcolor)
       }
       else
       {
-        //if ( *g == '{' )
-        //  ttemp = 0;
         *q++ = *g;
       }
     }
@@ -2276,8 +2245,7 @@ CH_CMD(do_gmote)
          ch);
       return;
     }
-    //        argument = makedrunk ( argument, ch );
-    //        argument = pcolor ( ch, argument, 0 );
+
     REMOVE_BIT(ch->comm, COMM_NOQUOTE);
 
     sprintf(buf, "{C[{-G{-l{-o{-b{-a{-l {-E{-m{-o{-t{-e{C] {w%s %s{x\n\r",
@@ -3444,15 +3412,6 @@ CH_CMD(do_reply)
     act_new("$E is not receiving tells.", ch, 0, victim, TO_CHAR, POS_DEAD);
     return;
   }
-
-  /* Removed....Vengeance */
-  /*
-     if (!IS_IMMORTAL(victim) && !IS_AWAKE(ch))
-     {
-     send_to_char( "In your dreams, or what?\n\r", ch );
-     return;
-     }
-   */
 
   if (IS_SET(victim->comm, COMM_AFK))
   {
@@ -5294,22 +5253,6 @@ CH_CMD(do_gocial)
   int count;
   char buf2[MAX_STRING_LENGTH];
 
-  /*    if ( argument[0] == '\0' )
-     {
-     if ( IS_SET ( ch->comm, COMM_NOGOC ) )
-     {
-     send_to_char ( "Global social channel is now {w[{GON{w]{x.\n\r", ch );
-     REMOVE_BIT ( ch->comm, COMM_NOGOC );
-     return;
-     }
-     else
-     {
-     send_to_char ( "Global social channel is now {w[{ROFF{w].\n\r", ch );
-     SET_BIT ( ch->comm, COMM_NOGOC );
-     return;
-     }
-     } */
-
   argument = one_argument(argument, command);
 
   found = false;
@@ -5334,12 +5277,6 @@ CH_CMD(do_gocial)
     send_to_char("You must turn off quiet mode first.\n\r", ch);
     return;
   }
-
-  /*    if ( !IS_NPC ( ch ) && IS_SET ( ch->comm, COMM_NOGOC ) )
-     {
-     send_to_char ( "But you have the gossip channel turned off!\n\r", ch );
-     return;
-     } */
 
   if (!IS_NPC(ch) && IS_SET(ch->comm, COMM_NOCHANNELS))
   {

@@ -1931,7 +1931,6 @@ struct pc_data
   int plr_wager;                /* ARENA amount wagered */
   int awins;                    /* ARENA number of wins */
   int alosses;                  /* ARENA number of losses */
-  /* int            clan_rank; *//* 0 for unguilded and loner 1-10 otherwise */
   sh_int nextquest;
   sh_int countdown;
   long questobj;

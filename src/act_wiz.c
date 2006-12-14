@@ -2843,7 +2843,6 @@ void reboot_rot(void)
 {
   DESCRIPTOR_DATA *d, *d_next;
 
-  // save_gquest_data();
   sprintf(log_buf, "Rebooting ROT.");
   log_string(log_buf);
   for (d = descriptor_list; d != NULL; d = d_next)
@@ -2878,7 +2877,6 @@ CH_CMD(do_shutdown)
     do_echo(ch, buf);
   do_force(ch, "all backup");
   do_backup(ch, "");
-  // save_gquest_data();
   merc_down = true;
   for (d = descriptor_list; d != NULL; d = d_next)
   {
@@ -3689,9 +3687,6 @@ CH_CMD(do_knight)
 
   argument = one_argument(argument, arg1);
 
-  /* if (!IS_SET(ch->act, PLR_KEY)) { send_to_char( "This function is not
-     currently implemented.\n\r", ch ); return; } */
-
   if (arg1[0] == '\0')
   {
     send_to_char("Syntax: knight <char>.\n\r", ch);
@@ -3749,9 +3744,6 @@ CH_CMD(do_squire)
   int iLevel;
 
   argument = one_argument(argument, arg1);
-
-  /* if (!IS_SET(ch->act, PLR_KEY)) { send_to_char( "This function is not
-     currently implemented.\n\r", ch ); return; } */
 
   if (arg1[0] == '\0')
   {
@@ -7389,7 +7381,6 @@ CH_CMD(do_addapply)
     }
   }
 
-  affect_enchant(obj);
   /* create the affect */
   paf.where = TO_AFFECTS;
   paf.type = 0;
@@ -7695,14 +7686,6 @@ CH_CMD(do_questreset)
     return;
   }
 
-  /*  if (IS_SET(victim->act,PLR_QUESTOR))
-     REMOVE_BIT(victim->act,PLR_QUESTOR);
-     victim->pcdata->questgiver    = NULL;
-     victim->pcdata->countdown     = 0;
-     victim->pcdata->questmob      = 0;
-     victim->pcdata->questobj      = 0;
-     victim->pcdata->nextquest     = 0;                                         
-   */
   end_quest(victim, 0);
   printf_to_char(victim, "%s has cleared your quest.\n\r", PERS(ch, victim));
   printf_to_char(ch, "You clear %s's quest.\n\r", victim->name);

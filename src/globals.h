@@ -66,7 +66,6 @@ GLOBAL(char bug_buf[2 * MAX_INPUT_LENGTH]);
 GLOBAL(time_t current_time);
 GLOBAL_DEF(bool fLogAll, false);
 GLOBAL_DEF(bool islogonly, false);
-//GLOBAL_DEF ( FILE * fpReserve, NULL );
 GLOBAL(KILL_DATA kill_table[MAX_LEVEL]);
 GLOBAL(char log_buf[2 * MAX_INPUT_LENGTH]);
 

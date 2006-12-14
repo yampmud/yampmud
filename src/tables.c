@@ -153,7 +153,6 @@ const struct flag_type plr_flags[] = {
   {"key", bb, false},
   {"noclan", cc, false},
   {"questor", S, true},
-  // {"gquest", ee, true},
   {NULL, 0, 0}
 };
 
@@ -458,9 +457,7 @@ const struct flag_type comm_flags[] = {
   {"noclan", COMM_NOCLAN, true},
   {"nosocial", COMM_NOSOCIAL, true},
   {"noquote", COMM_NOQUOTE, true},
-  /* { "shoutsoff", COMM_SHOUTSOFF, true }, */
   {"noarena", COMM_NOARENA, true},
-  /* { "true_trust", COMM_true_TRUST, true }, */
   {"compact", COMM_COMPACT, true},
   {"brief", COMM_BRIEF, true},
   {"noannounce", COMM_NOANNOUNCE, true},
@@ -471,7 +468,6 @@ const struct flag_type comm_flags[] = {
   {"telnet_ga", COMM_TELNET_GA, true},
   {"show_affects", COMM_SHOW_AFFECTS, true},
   {"nograts", COMM_NOGRATS, true},
-  /* { "wiped", COMM_WIPED, false }, */
   {"noemote", COMM_NOEMOTE, false},
   {"noshout", COMM_NOSHOUT, false},
   {"notell", COMM_NOTELL, false},
@@ -602,7 +598,6 @@ const struct flag_type type_flags[] = {
   {"itempile", ITEM_ITEMPILE, true},
   {"fountain", ITEM_FOUNTAIN, true},
   {"pill", ITEM_PILL, true},
-  /* { "protect", ITEM_PROTECT, true }, */
   {"map", ITEM_MAP, true},
   {"portal", ITEM_PORTAL, true},
   {"warpstone", ITEM_WARP_STONE, true},
@@ -667,7 +662,6 @@ const struct flag_type wear_flags[] = {
   {"hold", ITEM_HOLD, true},
   {"nosac", ITEM_NO_SAC, true},
   {"wearfloat", ITEM_WEAR_FLOAT, true},
-  /*    {   "twohands",            ITEM_TWO_HANDS,         true    }, */
   {"face", ITEM_WEAR_FACE, true},
   {"ankle", ITEM_WEAR_ANKLE, true},
   {"tattoo", ITEM_WEAR_TATTOO, true},

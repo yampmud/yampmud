@@ -210,9 +210,6 @@ void add_apply(OBJ_DATA * obj, int loc, int mod, int where, int type, int dur,
   if (obj == NULL)
     return;
 
-  if (!obj->enchanted)
-    affect_enchant(obj);
-
   pAf.location = loc;
   pAf.modifier = mod;
   pAf.where = where;
@@ -612,7 +609,6 @@ CH_CMD(do_quest)
   CHAR_DATA *questman;
   OBJ_DATA *obj = NULL;
 
-  //    EXTRA_DESCR_DATA *ed;
   OBJ_INDEX_DATA *questinfoobj;
   MOB_INDEX_DATA *questinfo;
   char buf[MSL];
@@ -623,7 +619,6 @@ CH_CMD(do_quest)
   int people_online;
 
   people_online = 0;
-  //    enchant_type = APPLY_SPELL_AFFECT;
 
   if (!ch)
     return;
@@ -797,89 +792,6 @@ CH_CMD(do_quest)
     return;
   }
 
-  /*        if ( !str_cmp ( arg1, "spell" ) )
-     {
-     if ( ch->pcdata->questpoints < 250 )
-     {
-     send_to_char ( "I would love to. But you need to complete some more quests first.\n\r", ch );
-     return;
-     }
-
-     if (
-     !str_cmp ( arg2, "haste" ) ||
-     !str_cmp ( arg2, "shield" ) ||
-     !str_cmp ( arg2, "armor" ) ||
-     !str_cmp ( arg2, "sanctuary" ) ||
-     !str_cmp ( arg2, "bless" ) ||
-     !str_cmp ( arg2, "frenzy" ) ||
-     !str_cmp ( arg2, "fly" ) ||
-     !str_cmp ( arg2, "farsight" ) ||
-     !str_cmp ( arg2, "dragon skin" ) ||
-     !str_cmp ( arg2, "stone skin" ) )
-     {
-     send_to_char ( "You hand your item to the quest master.\n\r", ch );
-     }
-     else
-     {
-     send_to_char ( "That spell is not available. help qspells.\n\r", ch );
-     return;
-     }
-
-     sprintf ( buf, "%s attempted to add a spell to an item: %s %s", ch->name, arg2, arg3 );
-     log_string ( buf );
-
-     if ( arg3[0] == '\0' )
-     {
-     send_to_char( "Yes, but what item and spell?\n\rTry help quest my friend.\n\r", ch );
-     return;
-     }
-
-     if ( ( obj = get_obj_carry ( ch, arg3 ) ) == NULL )
-     {
-     send_to_char ( "I\'m afraid you dont have that item.\n\r", ch );
-     return;
-     }
-
-     if ( !can_drop_obj ( ch, obj ) )
-     {
-     send_to_char ( "{RYou can't let go of it{z!!{x\n\r", ch );
-     return;
-     }
-
-     if ( ( sn = find_spell ( ch, arg2 ) ) < 0 || IS_NPC ( ch ) )
-     {
-     send_to_char ( "I\'m quite sorry. I can\'t put that spell on your item.\n\rThe quest master hands you back your item.\n\r", ch );
-     return;
-     }
-     else
-     {
-     send_to_char ( "Let me see here..\n\r", ch );
-     }
-     for ( pos = 0; affect_flags[pos].name != NULL; pos++ )
-     if ( !str_cmp ( affect_flags[pos].name, arg2 ) )
-     bit = affect_flags[pos].bit;
-
-     affect_enchant ( obj );
-     paf.where = TO_AFFECTS;
-     paf.type = 0;
-     paf.level = 202;
-     paf.duration = -1;
-     paf.location = enchant_type;
-     paf.modifier = affect_modify;
-     paf.bitvector = bit;
-     for ( ii = 0; arg2[i] != '\0'; i++ )
-     {
-     if ( arg2[ii] == '_' )
-     arg2[ii] = ' ';
-     }
-
-     paf.type = skill_lookup ( arg2 );
-     affect_to_obj ( obj, &paf ); 
-     ch->pcdata->questpoints -= 250;
-     send_to_char ( "Ahh yes. Very good. Here you go.\n\rThe quest master hands you your item back.\n\r", ch );
-     return;
-     } */
-
   /* 
    * And, of course, you will need to change the following lines for YOUR
    * quest item information. Quest items on Moongate are unbalanced, very
@@ -894,7 +806,6 @@ CH_CMD(do_quest)
     for (i = 0; quest_table[i].who_name != NULL; i++)
       printf_to_char(ch, "\t%-5dqp ........ %s{x\n\r",
                      quest_table[i].cost, quest_table[i].who_name);
-    //        printf_to_char(ch,"        500  qp ........ {R25 {WI{wqp ({Wquest buy iqp{x){x\n\r");  
     send_to_char("\tTo buy an item, type 'QUEST BUY <item>'.\n\r", ch);
     send_to_char("\tFor more info on quest items type 'help qitems'\n\r", ch);
     return;
@@ -925,7 +836,6 @@ CH_CMD(do_quest)
         return;
       }
     }
-    // backup_char_obj ( ch );
 
     for (i = 0; quest_table[i].name != NULL; i++)
     {
@@ -964,12 +874,6 @@ CH_CMD(do_quest)
               append_file(ch, QUEST_FILE, buf);
             }
           }
-          /* this is my object owner code
-
-             ed = new_extra_descr(); ed->keyword =
-             str_dup(KEYWD_OWNER); ed->description =
-             str_dup(ch->name); ed->next = obj->extra_descr;
-             obj->extra_descr = ed; */
 
           if (!IS_SET(obj->pIndexData->extra_flags, ITEM_QUEST))
           {
@@ -1081,13 +985,6 @@ CH_CMD(do_quest)
         }
         else
         {
-          /* this is my object owner code
-
-             ed = new_extra_descr(); ed->keyword =
-             str_dup(KEYWD_OWNER); ed->description =
-             str_dup(ch->name); ed->next = obj->extra_descr;
-             obj->extra_descr = ed; */
-
           obj_to_char(newobj, ch);
           extract_obj(obj);
           ch->pcdata->questpoints -= 75;
@@ -1189,7 +1086,6 @@ CH_CMD(do_quest)
         end_quest(ch, 5);
         add_cost(ch, reward, VALUE_GOLD);
         ch->pcdata->questpoints += points;
-        // backup_char_obj ( ch );
         return;
       }
       else if (ch->pcdata->questobj > 0 && ch->pcdata->countdown > 0)
@@ -1235,7 +1131,6 @@ CH_CMD(do_quest)
           add_cost(ch, reward, VALUE_GOLD);
           ch->pcdata->questpoints += points;
           extract_obj(obj);
-          // backup_char_obj ( ch );
           return;
         }
         else
@@ -1326,7 +1221,6 @@ void generate_quest(CHAR_DATA * ch, CHAR_DATA * questman)
                ACT_IS_PRIEST | ACT_GAIN) ||
         IS_SET(victim->affected_by, AFF_CHARM) ||
         questman->pIndexData == victim->pIndexData ||
-        /* IS_SET ( victim->act, ACT_SENTINEL ) || */
         IS_SET(victim->in_room->room_flags,
                ROOM_PRIVATE | ROOM_SOLITARY | ROOM_SAFE) ||
         strstr(victim->in_room->area->builders, "Unlinked"))
@@ -1574,7 +1468,6 @@ void do_mob_tell(CHAR_DATA * ch, CHAR_DATA * victim, char *argument)
   sprintf(buf, "{R%s{R tells you '{W%s{R'{x\n\r", victim->short_descr,
           argument);
   send_to_char(buf, ch);
-  //    ch->reply = victim;
   return;
 }
 

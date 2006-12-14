@@ -95,7 +95,6 @@ void affect_check args((CHAR_DATA * ch, int where, int vector));
 int count_users args((OBJ_DATA * obj));
 void deduct_cost args((CHAR_DATA * ch, int cost, int value));
 void add_cost args((CHAR_DATA * ch, int cost, int value));
-void affect_enchant args((OBJ_DATA * obj));
 int check_immune args((CHAR_DATA * ch, int dam_type));
 int liq_lookup args((const char *name));
 int material_lookup args((const char *name));

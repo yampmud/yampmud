@@ -180,7 +180,6 @@ const struct cmd_type cmd_table[] = {
   {"brief", do_brief, POS_DEAD, 0, 1, LOG_NORMAL, 1},
   {"color", do_colour, POS_DEAD, 0, 1, LOG_NORMAL, 1},
   {"compact", do_compact, POS_DEAD, 0, 1, LOG_NORMAL, 1},
-  //    {"description", do_description, POS_DEAD, 0, 1, LOG_NORMAL, 1},
   {"long", do_long, POS_DEAD, 0, 1, LOG_NORMAL, 1},
   {"nofollow", do_nofollow, POS_DEAD, 0, 1, LOG_NORMAL, 1},
   {"noloot", do_noloot, POS_DEAD, 0, 1, LOG_NORMAL, 1},
@@ -745,25 +744,6 @@ void interpret(CHAR_DATA * ch, char *argument)
    * Dispatch the command.
    */
   (*cmd_table[cmd].do_fun) (ch, argument);
-
-  /*    if ( string_count != nAllocString )
-     {
-     sprintf ( log_buf, "%s in strings :: %s : %s. %d to %d, a%s of %d",
-     ( string_count < nAllocString ? "Increase" : "Decrease" ),
-     ch->name, cmd_table[cmd].name, string_count, nAllocString,
-     ( string_count < nAllocString ? "n increase" : " decrease" ),
-     abs ( ( nAllocString - string_count ) ) );
-     wiznet ( log_buf, NULL, NULL, WIZ_MEM, 0, 0 );
-     }
-     if ( perm_count != nAllocPerm )
-     {
-     sprintf ( log_buf, "%s in perms :: %s : %s. %d to %d, a%s of %d",
-     ( perm_count < nAllocPerm ? "Increase" : "Decrease" ),
-     ch->name, cmd_table[cmd].name, perm_count, nAllocPerm,
-     ( perm_count < nAllocPerm ? "n increase" : " decrease" ),
-     abs ( ( nAllocPerm - perm_count ) ) );
-     wiznet ( log_buf, NULL, NULL, WIZ_MEM, 0, 0 );
-     } */
 
   tail_chain();
   return;

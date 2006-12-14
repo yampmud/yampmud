@@ -417,14 +417,6 @@ AEDIT(aedit_show)
   sprintf(buf, "Name:     [%5d] %s\n\r", pArea->vnum, pArea->name);
   send_to_char(buf, ch);
 
-#if 0                           /* ROM OLC */
-  sprintf(buf, "Recall:   [%5d] %s\n\r", pArea->recall,
-          get_room_index(pArea->recall) ? get_room_index(pArea->
-                                                         recall)->
-          name : "none");
-  send_to_char(buf, ch);
-#endif /* ROM */
-
   sprintf(buf, "File:     %s\n\r", pArea->file_name);
   send_to_char(buf, ch);
 
@@ -605,38 +597,6 @@ AEDIT(aedit_age)
   send_to_char("Age set.\n\r", ch);
   return true;
 }
-
-#if 0                           /* ROM OLC */
-AEDIT(aedit_recall)
-{
-  AREA_DATA *pArea;
-  char room[MAX_STRING_LENGTH];
-  long value;
-
-  EDIT_AREA(ch, pArea);
-
-  one_argument(argument, room);
-
-  if (!is_number(argument) || argument[0] == '\0')
-  {
-    send_to_char("Syntax:  recall [#xrvnum]\n\r", ch);
-    return false;
-  }
-
-  value = atol(room);
-
-  if (!get_room_index(value))
-  {
-    send_to_char("AEdit:  Room vnum does not exist.\n\r", ch);
-    return false;
-  }
-
-  pArea->recall = value;
-
-  send_to_char("Recall set.\n\r", ch);
-  return true;
-}
-#endif /* ROM OLC */
 
 AEDIT(aedit_security)
 {
@@ -1174,13 +1134,10 @@ bool change_exit(CHAR_DATA * ch, char *argument, int door)
     pRoom->exit[door]->u1.to_room = get_room_index(value);  /* ROM OLC */
     pRoom->exit[door]->orig_door = door;
 
-    /*  pRoom->exit[door]->vnum = value;                Can't set vnum in ROM */
-
     pRoom = get_room_index(value);
     door = rev_dir[door];
     pExit = new_exit();
     pExit->u1.to_room = ch->in_room;
-    /*  pExit->vnum             = ch->in_room->vnum;    Can't set vnum in ROM */
     pExit->orig_door = door;
     pRoom->exit[door] = pExit;
 
@@ -1227,7 +1184,6 @@ bool change_exit(CHAR_DATA * ch, char *argument, int door)
 
     pRoom->exit[door]->u1.to_room = get_room_index(value);  /* ROM OLC */
     pRoom->exit[door]->orig_door = door;
-    /*  pRoom->exit[door]->vnum = value;                 Can't set vnum in ROM */
 
     send_to_char("One-way link established.\n\r", ch);
     return true;
@@ -1246,11 +1202,6 @@ bool change_exit(CHAR_DATA * ch, char *argument, int door)
       send_to_char("Salida no existe.\n\r", ch);
       return false;
     }
-
-    /*  if ( !pRoom->exit[door] )
-       {
-       pRoom->exit[door] = new_exit();
-       } */
 
     value = atol(arg);
 
@@ -1287,11 +1238,6 @@ bool change_exit(CHAR_DATA * ch, char *argument, int door)
       return false;
     }
 
-    /*  if ( !pRoom->exit[door] )
-       {
-       pRoom->exit[door] = new_exit();
-       } */
-
     free_string(pRoom->exit[door]->keyword);
     if (str_cmp(arg, "none"))
       pRoom->exit[door]->keyword = str_dup(arg);
@@ -1311,11 +1257,6 @@ bool change_exit(CHAR_DATA * ch, char *argument, int door)
         send_to_char("Salida no existe.\n\r", ch);
         return false;
       }
-
-      /*      if ( !pRoom->exit[door] )
-         {
-         pRoom->exit[door] = new_exit();
-         } */
 
       string_append(ch, &pRoom->exit[door]->description);
       return true;
@@ -2539,7 +2480,6 @@ bool set_obj_values(CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
       {
         default:
           do_help(ch, "ITEM_DRINK");
-          /* OLC        do_help( ch, "liquids" );    */
           return false;
         case 0:
           send_to_char("MAXIMUM AMOUT OF LIQUID HOURS SET.\n\r\n\r", ch);
@@ -2566,7 +2506,6 @@ bool set_obj_values(CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
       {
         default:
           do_help(ch, "ITEM_FOUNTAIN");
-          /* OLC        do_help( ch, "liquids" );    */
           return false;
         case 0:
           send_to_char("MAXIMUM AMOUT OF LIQUID HOURS SET.\n\r\n\r", ch);
@@ -2688,20 +2627,6 @@ OEDIT(oedit_show)
   sprintf(buf, "Short desc:  %s\n\rLong desc:\n\r     %s\n\r",
           pObj->short_descr, pObj->description);
   send_to_char(buf, ch);
-  /*
-     for ( cnt = 0, paf = pObj->affected; paf; paf = paf->next )
-     {
-     if ( cnt == 0 )
-     {
-     send_to_char( "Number Modifier Affects\n\r", ch );
-     send_to_char( "------ -------- -------\n\r", ch );
-     }
-     sprintf( buf, "[%4d] %-8d %s\n\r", cnt,
-     paf->modifier,
-     flag_string( apply_flags, paf->location ) );
-     send_to_char( buf, ch );
-     cnt++;
-     } */
 
   for (cnt = 0, paf = pObj->affected; paf; paf = paf->next)
   {
@@ -2732,112 +2657,6 @@ OEDIT(oedit_show)
 
   return false;
 }
-
-/*
- * Need to issue warning if flag isn't valid. -- does so now -- Hugin.
- */
-/*
-   OEDIT( oedit_addaffect )
-   {
-   int value;
-   OBJ_INDEX_DATA *pObj;
-   AFFECT_DATA *pAf;
-   char loc[MAX_STRING_LENGTH];
-   char mod[MAX_STRING_LENGTH];
-
-   EDIT_OBJ(ch, pObj);
-
-   argument = one_argument( argument, loc );
-   one_argument( argument, mod );
-
-   if ( loc[0] == '\0' || mod[0] == '\0' || !is_number( mod ) )
-   {
-   send_to_char( "Syntax:  addaffect [location] [#xmod]\n\r", ch );
-   return false;
-   }
-
-   if ( ( value = flag_value( apply_flags, loc ) ) == NO_FLAG )
-   {
-   send_to_char( "Valid affects are:\n\r", ch );
-   show_help( ch, "apply" );
-   return false;
-   }
-
-   pAf             =   new_affect();
-   pAf->location   =   value;
-   pAf->modifier   =   atoi( mod );
-   pAf->where     =   TO_OBJECT;
-   pAf->type       =   -1;
-   pAf->duration   =   -1;
-   pAf->bitvector  =   0;
-   pAf->level      =  pObj->level;
-   pAf->next       =   pObj->affected;
-   pObj->affected  =   pAf;
-
-   send_to_char( "Affect added.\n\r", ch);
-   return true;
-   } */
-/*
-   OEDIT( oedit_addaffect )
-   {
-   int value,bv,typ;
-   OBJ_INDEX_DATA *pObj;
-   AFFECT_DATA *pAf;
-   char loc[MAX_STRING_LENGTH];
-   char mod[MAX_STRING_LENGTH];
-   char type[MAX_STRING_LENGTH];
-   char bvector[MAX_STRING_LENGTH];
-
-   EDIT_OBJ(ch, pObj);
-
-   argument = one_argument( argument, type );
-   argument = one_argument( argument, loc );
-   argument = one_argument( argument, mod );
-   one_argument( argument, bvector );
-
-   if ( type[0] == '\0' || ( typ = flag_value( apply_types, type ) ) == NO_FLAG )
-   {
-   send_to_char( "Invalid apply type. Valid apply types are:\n\r", ch);
-   show_help( ch, "apptype" );
-   return false;
-   }
-
-   if ( loc[0] == '\0' || ( value = flag_value( apply_flags, loc ) ) == NO_FLAG )
-   {
-   send_to_char( "Valid applys are:\n\r", ch );
-   show_help( ch, "apply" );
-   return false;
-   }
-
-   if ( bvector[0] == '\0' || ( bv = flag_value( bitvector_type[typ].table, bvector ) ) == NO_FLAG )
-   {
-   send_to_char( "Invalid bitvector type.\n\r", ch );
-   send_to_char( "Valid bitvector types are:\n\r", ch );
-   show_help( ch, bitvector_type[typ].help );
-   return false;
-   }
-
-   if ( mod[0] == '\0' || !is_number( mod ) )
-   {
-   send_to_char( "Syntax:  addapply [type] [location] [#xmod] [bitvector]\n\r", ch );
-   return false;
-   }
-
-   pAf             =   new_affect();
-   pAf->location   =   value;
-   pAf->modifier   =   atoi( mod );
-   pAf->where     =   apply_types[typ].bit;
-   pAf->type      = -1;
-   pAf->duration   =   -1;
-   pAf->bitvector  =   bv;
-   pAf->level      =  pObj->level;
-   pAf->next       =   pObj->affected;
-   pObj->affected  =   pAf;
-
-   send_to_char( "Apply added.\n\r", ch);
-   return true;
-   }
- */
 
 OEDIT(oedit_addaffect)
 {
@@ -3762,10 +3581,8 @@ MEDIT(medit_show)
             flag_string(act2_flags, pMob->act2));
     send_to_char(buf, ch);
   }
-  sprintf(buf, "Vnum:        [%ld]\n\rSex:         [%s]\n\r", pMob->vnum, pMob->sex == SEX_MALE ? "male" : pMob->sex == SEX_FEMALE ? "female" : pMob->sex == 3 ? "random" : "neutral"); /* ROM 
-                                                                                                                                                                                           magic 
-                                                                                                                                                                                           number 
-                                                                                                                                                                                         */
+  sprintf(buf, "Vnum:        [%ld]\n\rSex:         [%s]\n\r", pMob->vnum, pMob->sex == SEX_MALE ? "male" : pMob->sex == SEX_FEMALE ? "female" : pMob->sex == 3 ? "random" : "neutral");
+
   send_to_char(buf, ch);
 
   sprintf(buf, "Group:       [%5ld]\n\r", pMob->group);
@@ -3841,9 +3658,6 @@ MEDIT(medit_show)
 
   sprintf(buf, "Size:        [%s]\n\r", flag_string(size_flags, pMob->size));
   send_to_char(buf, ch);
-
-  /*    sprintf ( buf, "Material:    [%s]\n\r", pMob->material );
-     send_to_char ( buf, ch ); */
 
   sprintf(buf, "Start pos.   [%s]\n\r",
           flag_string(position_flags, pMob->start_pos));
@@ -5281,7 +5095,6 @@ MEDIT(medit_autohard)
   }
   ac_n = 88 - (pMob->level * 12.05) - ((pMob->level / 10) ^ 2);
   ac_x = 88 - (pMob->level * 10.02) - ((pMob->level / 10) ^ 2);
-  // sprintf(temp, "%d %d %d %d", ac_n, ac_n, ac_n, ac_x);
   pMob->ac[AC_PIERCE] = ac_n;
   pMob->ac[AC_BASH] = ac_n;
   pMob->ac[AC_SLASH] = ac_n;
@@ -5337,7 +5150,6 @@ MEDIT(medit_autoeasy)
   }
   ac_n = 99 - (pMob->level * 6.37) - ((pMob->level / 10) ^ 2);
   ac_x = 99 - (pMob->level * 4.27) - ((pMob->level / 10) ^ 2);
-  // sprintf(temp, "%d %d %d %d", ac_n, ac_n, ac_n, ac_x);
   pMob->ac[AC_PIERCE] = ac_n;
   pMob->ac[AC_BASH] = ac_n;
   pMob->ac[AC_SLASH] = ac_n;
@@ -5411,11 +5223,6 @@ OEDIT(oedit_delete)
 
   iHash = index % MAX_KEY_HASH;
 
-  /* DEBUG CODE - uncomment this if you have doubts */
-  /* printf("\nObject hash for location %d:\n", iHash); for ( tObj =
-     obj_index_hash[iHash]; tObj != NULL; tObj = tObj->next ) printf("name:
-     %s vnum: %d\n", tObj->name, tObj->vnum ); */
-
   sObj = obj_index_hash[iHash];
 
   if (sObj->next == NULL)       /* only entry */
@@ -5435,37 +5242,10 @@ OEDIT(oedit_delete)
     }
   }
 
-  /* If you uncomment this you also need to find every instance of the object 
-     that exists in the mud and extract them otherwise each of thier
-     pIndexData will be pointing at free memory. (Which may or may not
-     contain the actual info) As it is all the objects will be removed the
-     reboot/login automatically by fread_obj when it cant find the index */
-
-  /* free_string( pObj->name ); free_string( pObj->short_descr );
-     free_string( pObj->description );
-
-     for( pAf = pObj->affected; pAf; pAf = pAf->next ) free_affect( pAf );
-
-     for( pExtra = pObj->extra_descr; pExtra; pExtra = pExtra->next )
-     free_extra_descr( pExtra );
-
-     free( pObj ); */
-
-  /* DEBUG CODE - uncomment this if you have doubts */
-  /* printf("\nObject hash for location %d after removal:\n", iHash); for (
-     tObj = obj_index_hash[iHash]; tObj != NULL; tObj = tObj->next )
-     printf("name: %s vnum: %d\n", tObj->name, tObj->vnum ); */
-
-  /* DEBUG CODE */
-  // printf( "\ntop_vnum_obj before: %d\n", top_vnum_obj );
-
   if (top_vnum_obj == index)
     for (i = 1; i < index; i++)
       if (get_obj_index(i))
         top_vnum_obj = i;
-
-  /* DEBUG CODE */
-  // printf( "top_vnum_obj after: %d\n", top_vnum_obj );
 
   top_obj_index--;
 
@@ -5487,16 +5267,6 @@ OEDIT(oedit_delete)
             if ((pReset->arg1 == index) ||
                 ((pReset->command == 'P') && (pReset->arg3 == index)))
             {
-              // printf("\nprev: %d prev->next: %d\n", prev,
-              // prev->next );
-
-              /* DEBUG CODE - uncomment this if you havedoubts */
-              /* printf("\nReset info for room %d:\n",
-                 pRoom->vnum ); for( tReset = pRoom->reset_first; 
-                 tReset; tReset = tReset->next ) printf("command: 
-                 %c vnum: %d memloc:%d\n", tReset->command,
-                 tReset->arg1, tReset ); */
-
               if (pRoom->reset_first == pReset)
               {
                 pRoom->reset_first = pReset->next;
@@ -5515,17 +5285,6 @@ OEDIT(oedit_delete)
 
               count++;
               SET_BIT(pRoom->area->area_flags, AREA_CHANGED);
-
-              /* DEBUG CODE - uncomment this if you have doubts */
-              /* printf("\nReset info for room %d after
-                 removal:\n", pRoom->vnum ); for( tReset =
-                 pRoom->reset_first; tReset; tReset =
-                 tReset->next ) printf("command: %c vnum: %d
-                 memloc:%d\n", tReset->command, tReset->arg1,
-                 tReset ); */
-
-              // printf("\nprev: %d prev->next: %d\n", prev,
-              // prev->next );
             }
         }
         prev = pReset;
@@ -5587,11 +5346,6 @@ MEDIT(medit_delete)
 
   iHash = index % MAX_KEY_HASH;
 
-  /* DEBUG CODE - uncomment this if you have doubts */
-  /* printf("\nMobile hash for location %d:\n", iHash); for ( tMob =
-     mob_index_hash[iHash]; tMob != NULL; tMob = tMob->next )
-     printf("short_desc: %s vnum: %d\n", tMob->short_descr, tMob->vnum ); */
-
   sMob = mob_index_hash[iHash];
 
   if (sMob->next == NULL)       /* only entry */
@@ -5609,13 +5363,6 @@ MEDIT(medit_delete)
       }
     }
   }
-
-  /* See oedit_delete for why i dont free pMob here */
-
-  /* DEBUG CODE - uncomment this if you have doubts */
-  /* printf("\nMobile hash for location %d after removal:\n", iHash); for (
-     tMob = mob_index_hash[iHash]; tMob != NULL; tMob = tMob->next )
-     printf("short_desc: %s vnum: %d\n", tMob->short_descr, tMob->vnum ); */
 
   if (top_vnum_mob == index)
     for (i = 1; i < index; i++)
@@ -5641,13 +5388,6 @@ MEDIT(medit_delete)
             {
               foundmob = true;
 
-              /* DEBUG CODE - uncomment this if you have doubts */
-              /* printf("\nReset info for room %d:\n",
-                 pRoom->vnum ); for( tReset = pRoom->reset_first; 
-                 tReset; tReset = tReset->next ) printf("command: 
-                 %c vnum: %d\n", tReset->command, tReset->arg1 ); 
-               */
-
               if (pRoom->reset_first == pReset)
               {
                 pRoom->reset_first = pReset->next;
@@ -5664,14 +5404,6 @@ MEDIT(medit_delete)
 
               count++;
               SET_BIT(pRoom->area->area_flags, AREA_CHANGED);
-
-              /* DEBUG CODE - uncomment this if you have doubts */
-              /* printf("\nReset info for room %d after
-                 removal:\n", pRoom->vnum ); for( tReset =
-                 pRoom->reset_first; tReset; tReset =
-                 tReset->next ) printf("command: %c vnum: %d\n",
-                 tReset->command, tReset->arg1 ); */
-
             }
             else
               foundmob = false;
@@ -5681,16 +5413,6 @@ MEDIT(medit_delete)
           case 'G':
             if (foundmob)
             {
-              // printf( "Removing: command: %c vnum: %d\n",
-              // pReset->command, pReset->arg1 );
-
-              /* DEBUG CODE - uncomment this if you have doubts */
-              /* printf("\nReset info for room %d:\n",
-                 pRoom->vnum ); for( tReset = pRoom->reset_first; 
-                 tReset; tReset = tReset->next ) printf("command: 
-                 %c vnum: %d\n", tReset->command, tReset->arg1 ); 
-               */
-
               exist = false;
 
               for (i = 0; dobj[i] != -1; i++)
@@ -5706,10 +5428,6 @@ MEDIT(medit_delete)
               {
                 dobj[i] = pReset->arg1;
                 dobj[i + 1] = -1;
-
-                /* DEBUG CODE */
-                /* for( i = 0; dobj[i] != -1; i++ ) printf(
-                   "dobj[%d] : %d\n", i, dobj[i] ); */
               }
 
               if (pRoom->reset_first == pReset)
@@ -5728,13 +5446,6 @@ MEDIT(medit_delete)
 
               count++;
               SET_BIT(pRoom->area->area_flags, AREA_CHANGED);
-
-              /* DEBUG CODE - uncomment this if you have doubts */
-              /* printf("\nReset info for room %d after
-                 removal:\n", pRoom->vnum ); for( tReset =
-                 pRoom->reset_first; tReset; tReset =
-                 tReset->next ) printf("command: %c vnum: %d\n",
-                 tReset->command, tReset->arg1 ); */
             }
 
             break;
@@ -5750,13 +5461,6 @@ MEDIT(medit_delete)
               printf("Removing: command: %c  vnum: %ld\n",
                      pReset->command, pReset->arg1);
 
-              /* DEBUG CODE - uncomment this if you have doubts */
-              /* printf("\nReset info for room %d:\n",
-                 pRoom->vnum ); for( tReset = pRoom->reset_first; 
-                 tReset; tReset = tReset->next ) printf("command: 
-                 %c vnum: %d\n", tReset->command, tReset->arg1 ); 
-               */
-
               if (pRoom->reset_first == pReset)
               {
                 pRoom->reset_first = pReset->next;
@@ -5773,27 +5477,12 @@ MEDIT(medit_delete)
 
               count++;
               SET_BIT(pRoom->area->area_flags, AREA_CHANGED);
-
-              /* DEBUG CODE - uncomment this if you have doubts */
-              /* printf("\nReset info for room %d after
-                 removal:\n", pRoom->vnum ); for( tReset =
-                 pRoom->reset_first; tReset; tReset =
-                 tReset->next ) printf("command: %c vnum: %d\n",
-                 tReset->command, tReset->arg1 ); */
             }
         }
         prev = pReset;
       }
     }
   }
-
-  /* This is a dumb way to fix what is probably someone elses problem */
-  /* The reason for the kludge is that sometime after the exit of
-     medit_delete */
-  /* ch->mount becomes 0x10000000 and I have no idea how or where */
-  /* Narbo */
-  /*     if( ch->mount == NULL )
-     medit_delete_kludge = ch; */
 
   sprintf(buf, "Removed mobile vnum {C%d{x and {C%d{x resets.\n\r", index,
           count);

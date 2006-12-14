@@ -398,43 +398,6 @@ void move_char(CHAR_DATA * ch, int door, bool follow, bool quiet)
   {
     int move;
 
-    /* We don't need a guild test.  It's messing up my vnums and we don't use it.
-       int iClass, iGuild;
-       bool ts1;
-       bool ts2;
-
-       ts1 = false;
-       ts2 = false;
-
-       for ( iClass = 0; iClass < MAX_CLASS; iClass++ )
-       {
-       for ( iGuild = 0; iGuild < MAX_GUILD; iGuild++ )
-       {
-       if ( iClass != ch->class &&
-       to_room->vnum == class_table[iClass].guild[iGuild] )
-       {
-       ts1 = true;
-       }
-       if ( iClass == ch->class &&
-       to_room->vnum == class_table[iClass].guild[iGuild] )
-       {
-       ts2 = true;
-       }
-       }
-       }
-
-       if ( ts2 )
-       {
-       ts1 = false;
-       }
-       if ( ts1 )
-       {
-       if ( !quiet )
-       send_to_char ( "You aren't allowed in there.\n\r", ch );
-       return;
-       }   
-       End of Guild check  */
-
     if (in_room->sector_type == SECT_AIR || to_room->sector_type == SECT_AIR)
     {
       if (!IS_AFFECTED(ch, AFF_FLYING) && !IS_IMMORTAL(ch))
@@ -2023,8 +1986,6 @@ CH_CMD(do_wake)
     return;
   }
 
-  /* if ( IS_AFFECTED(victim, AFF_SLEEP) ) { act( "You can't wake $M!", ch,
-     NULL, victim, TO_CHAR ); return; } */
   act_new("$n wakes you.", ch, NULL, victim, TO_VICT, POS_SLEEPING);
   do_stand(victim, "");
   return;

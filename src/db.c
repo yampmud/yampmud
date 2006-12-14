@@ -397,7 +397,6 @@ void new_load_area(FILE * fp)
   pArea->min_vnum = 0;
   pArea->max_vnum = 0;
   pArea->area_flags = 0;
-  /*  pArea->recall       = ROOM_VNUM_TEMPLE;        ROM OLC */
 
   for (;;)
   {
@@ -1032,14 +1031,8 @@ void load_specials(FILE * fp)
  */
 void fix_exits(void)
 {
-  /*    extern const sh_int rev_dir [];
-     char buf[MAX_STRING_LENGTH]; */
   ROOM_INDEX_DATA *pRoomIndex;
-
-  /*    ROOM_INDEX_DATA *to_room; */
   EXIT_DATA *pexit;
-
-  /*    EXIT_DATA *pexit_rev; */
   int iHash;
   int door;
 
@@ -1068,36 +1061,6 @@ void fix_exits(void)
         SET_BIT(pRoomIndex->room_flags, ROOM_NO_MOB);
     }
   }
-  /*
-     for ( iHash = 0; iHash < MAX_KEY_HASH; iHash++ )
-     {
-     for ( pRoomIndex  = room_index_hash[iHash];
-     pRoomIndex != NULL;
-     pRoomIndex  = pRoomIndex->next )
-     {
-     for ( door = 0; door <= 5; door++ )
-     {
-     if ( ( pexit     = pRoomIndex->exit[door]       ) != NULL
-     &&   ( to_room   = pexit->u1.to_room            ) != NULL
-     &&   ( pexit_rev = to_room->exit[rev_dir[door]] ) != NULL
-     &&   pexit_rev->u1.to_room != pRoomIndex 
-     &&   (pRoomIndex->vnum < 1200 || pRoomIndex->vnum > 1299)
-     &&   (pRoomIndex->vnum != 10525)
-     &&   (pRoomIndex->vnum != 8705)
-     &&   (pRoomIndex->vnum != 8717))
-     {
-     sprintf( buf, "Fix_exits: %d:%d -> %d:%d -> %d.",
-     pRoomIndex->vnum, door,
-     to_room->vnum,    rev_dir[door],
-     (pexit_rev->u1.to_room == NULL)
-     ? 0 : pexit_rev->u1.to_room->vnum );
-     bug( buf, 0 );
-     }
-     }
-     }
-     }
-   */
-  return;
 }
 
 /*
@@ -1285,8 +1248,6 @@ void reset_room(ROOM_INDEX_DATA * pRoom)
           continue;
         }
 
-        /*                if ( pRoom->area->nplayer > 0 ||
-           count_obj_list ( pObjIndex, pRoom->contents ) > 0 ) */
         if (count_obj_list(pObjIndex, pRoom->contents) > 0)
         {
           last = false;
@@ -1318,21 +1279,7 @@ void reset_room(ROOM_INDEX_DATA * pRoom)
         else
           limit = pReset->arg2;
 
-        /*                if ( pRoom->area->nplayer > 0 ||
-           ( LastObj = get_obj_type ( pObjToIndex ) ) == NULL ||
-           ( LastObj->in_room == NULL && !last ) ||
-           ( pObjIndex->count >=
-           limit )
-           || ( count =
-           count_obj_list ( pObjIndex,
-           LastObj->contains ) ) > */
-
-        if ((LastObj = get_obj_type(pObjToIndex)) == NULL || (LastObj->in_room == NULL && !last) || (pObjIndex->count >= limit  /* && 
-                                                                                                                                   number_range(0,4) 
-                                                                                                                                   != 
-                                                                                                                                   0 
-                                                                                                                                 */
-            ) ||
+        if ((LastObj = get_obj_type(pObjToIndex)) == NULL || (LastObj->in_room == NULL && !last) || (pObjIndex->count >= limit) ||
             (count =
              count_obj_list(pObjIndex, LastObj->contains)) > pReset->arg4)
         {
@@ -1843,10 +1790,6 @@ OBJ_DATA *create_object(OBJ_INDEX_DATA * pObjIndex)
       break;
   }
 
-  /*    for ( paf = pObjIndex->affected; paf != NULL; paf = paf->next )
-     if ( paf->location == APPLY_SPELL_AFFECT )
-     affect_to_obj ( obj, paf ); */
-
   obj->next = object_list;
   object_list = obj;
   pObjIndex->count++;
@@ -1881,12 +1824,6 @@ void clone_object(OBJ_DATA * parent, OBJ_DATA * clone)
 
   for (i = 0; i < 5; i++)
     clone->value[i] = parent->value[i];
-
-  /* affects */
-  /*    clone->enchanted = parent->enchanted;
-
-     for ( paf = parent->affected; paf != NULL; paf = paf->next )
-     affect_to_obj ( clone, paf ); */
 
   /* extended desc */
   for (ed = parent->extra_descr; ed != NULL; ed = ed->next)
@@ -2774,15 +2711,6 @@ CH_CMD(do_areas)
       if (!strstr(pArea->builders, "Unlinked"))
         printf_to_char(ch, "{W[%-9s{W] " "{c%-30s " "{x({D%s{x)\n\r",
                        pArea->credits, pArea->name, pArea->builders);
-
-      /*            printf_to_char ( ch, "%-39s", pArea->credits ); 
-
-         if ( col )
-         {
-         printf_to_char ( ch, "\n\r" );
-         }
-         col = !col;
-       */
     }
     if (pArea != NULL)
       pArea = pArea->next_sort;
@@ -3471,26 +3399,12 @@ void bug(const char *str, int param)
 
     sprintf(buf, "[*****] FILE: %s LINE: %d", strArea, iLine);
     log_string(buf);
-    /* RT removed because we don't want bugs shutting the mud 
-       if ( ( fp = file_open( "shutdown.txt", "a" ) ) != NULL )
-       {
-       fprintf( fp, "[*****] %s\n", buf );
-       file_close( fp );
-       }
-     */
   }
 
   strcpy(buf, "[*****] BUG: ");
   sprintf(buf + strlen(buf), str, param);
   log_string(buf);
   wiznet(buf, NULL, NULL, WIZ_BUGS, 0, 0);
-  /* RT removed due to bug-file spamming 
-     if ( ( fp = file_open( BUG_FILE, "a" ) ) != NULL )
-     {
-     fprintf( fp, "%s\n", buf );
-     file_close( fp );
-     }
-   */
 
   return;
 }

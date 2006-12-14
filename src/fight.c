@@ -1581,14 +1581,6 @@ int xdamage(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int dam_type,
        (IS_SHIELDED(victim, SHD_PROTECT_GOOD) && IS_GOOD(ch))))
     dam -= dam / 4;
 
-  /*    if ( (dam > 1) && (dt>0) && (dt < TYPE_HIT ) &&
-     (skill_table[dt].spell_fun!=spell_null))
-     {
-     if(is_affected(victim,gsn_resistance)
-     && (number_percent() < (50-(ch->level/5)+(victim->level/10))))
-     dam= dam/5;
-     } */
-
   immune = false;
 
   /* 
@@ -2275,11 +2267,8 @@ bool is_safe(CHAR_DATA * ch, CHAR_DATA * victim)
         send_to_char("You can't fight your own clan members.\n\r", ch);
         return true;
       }
-    }                           /* 
-                                   if (can_pk(ch,victim)) return false; */
-    /*         if (!IS_NPC(victim))
-       return true;
-     */ }
+    }
+  }
   return false;
 }
 
@@ -2458,9 +2447,7 @@ bool is_safe_spell(CHAR_DATA * ch, CHAR_DATA * victim, bool area)
 
     /* player doing the killing */
     else
-    {                           /* 
-                                   if (ON_GQUEST(ch) || ON_GQUEST(victim))
-                                   return true; */
+    {
       if (IS_SET(victim->act, PLR_TWIT))
         return false;
 
@@ -2537,16 +2524,10 @@ bool check_parry(CHAR_DATA * ch, CHAR_DATA * victim)
 
   if (victim->stunned)
     return false;
-  /*
-     if (!can_see(ch,victim))
-     chance /= 2;
-   */
+
   if (number_percent() >= chance + victim->level - ch->level)
     return false;
-  /*
-     act( "{iYou parry $n's attack.{x",  ch, NULL, victim, TO_VICT    );
-     act( "{h$N parries your attack.{x", ch, NULL, victim, TO_CHAR    );
-   */
+
   xact_new("{iYou parry $n's attack.{x", ch, NULL, victim, TO_VICT,
            POS_RESTING, VERBOSE_DODGE);
   xact_new("{h$N parries your attack.{x", ch, NULL, victim, TO_CHAR,
@@ -2587,11 +2568,7 @@ bool check_shield_block(CHAR_DATA * ch, CHAR_DATA * victim)
 
   if (victim->stunned)
     return false;
-  /*
-     act( "{iYou block $n's attack with your shield.{x",  ch, NULL, victim,TO_VICT);
-     act( "{h$N blocks your attack with a shield.{x", ch, NULL, victim,TO_CHAR);
-     check_improve(victim,gsn_shield_block,true,6);
-   */
+
   xact_new("{iYou block $n's attack with your shield.{x", ch, NULL, victim,
            TO_VICT, POS_RESTING, VERBOSE_DODGE);
   xact_new("{h$N blocks your attack with a shield.{x", ch, NULL, victim,
@@ -2622,10 +2599,7 @@ bool check_dodge(CHAR_DATA * ch, CHAR_DATA * victim)
 
   if (victim->stunned)
     return false;
-  /*
-     act( "{iYou dodge $n's attack.{x", ch, NULL, victim, TO_VICT    );
-     act( "{h$N dodges your attack.{x", ch, NULL, victim, TO_CHAR    );
-   */
+
   xact_new("{iYou dodge $n's attack.{x", ch, NULL, victim, TO_VICT,
            POS_RESTING, VERBOSE_DODGE);
   xact_new("{h$N dodges your attack.{x", ch, NULL, victim, TO_CHAR,
@@ -3209,8 +3183,7 @@ void raw_kill(CHAR_DATA * victim, CHAR_DATA * killer)
 
   death_cry(victim);
   stop_fighting(victim, true);
-  /* tattoo = get_eq_char(victim, WEAR_TATTOO); if (tattoo != NULL)
-     obj_from_char(tattoo); */
+
   if ((tattoo = get_eq_char(victim, WEAR_TATTOO)) != NULL)  /* keep
                                                                tattoo */
     obj_from_char(tattoo);
@@ -3326,31 +3299,7 @@ void group_gain(CHAR_DATA * ch, CHAR_DATA * victim)
       send_to_char("You are too low for this group.\n\r", gch);
       continue;
     }
-    /*
-       if (IS_NPC(victim) && !IS_NPC(ch) &&
-       gquest_info.running == GQUEST_RUNNING && ON_GQUEST(ch) &&
-       (i = is_gqmob(ch, victim->pIndexData->vnum)) != -1)
-       {
-       ch->pcdata->gq_mobs[i] = -1;
-       send_to_char("Congratulations, that that mob was part of your global quest!\n\r",ch);
-       send_to_char("You receive an extra 3 Quest Points", ch);
-       ch->pcdata->questpoints += 3;
-       if (chance((MAX_GQUEST_MOB - gquest_info.mob_count) / 2 + gquest_info.mob_count))
-       {
-       send_to_char("You receive an {YADITIONAL{x 1 quest point!!\n\r", ch);
-       ch->pcdata->questpoints += 1;
-       }
 
-       else
-       send_to_char(".\n\r", ch);
-
-       sprintf(buf, "%s has killed %s, a global questmob.", ch->name, victim->short_descr);
-       wiznet(buf, ch, NULL, 0, 0, 0);
-
-       if (count_gqmobs(ch) == gquest_info.mob_count)
-       send_to_char("You are now ready to complete the global quest. Type 'GQUEST COMPLETE' to finish.\n\r", ch);
-       }
-     */
     xp = xp_compute(gch, victim, group_levels);
 
     if (gch->affected)
@@ -3672,14 +3621,6 @@ int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels)
       xp = base_exp;
   }
 
-  /*(   
-     if (gch->level < 26)
-     xp = 10 * xp / (gch->level + 20);
-
-
-     if (gch->level > 26 )
-     xp =  10 * xp / (gch->level - 60 );
-   */
   if (gch->level > 99)
     xp = 90 * xp / gch->level;
   /* randomize the rewards */
@@ -3891,20 +3832,6 @@ void dam_message(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
               vp, dam, punct, pbuf);
     }
   }
-  /*    else
-     {
-     if ( dt >= 0 && dt < MAX_SKILL )
-     attack = skill_table[dt].noun_damage;
-     else if ( dt >= TYPE_HIT
-     && dt < TYPE_HIT + MAX_DAMAGE_MESSAGE) 
-     attack = attack_table[dt - TYPE_HIT].noun;
-     else
-     {
-     bug( "Dam_message: bad dt %d.", dt );
-     dt  = TYPE_HIT;
-     attack  = attack_table[0].name;
-     }
-   */
   else
   {
     if (dt >= 0 && dt < MAX_SKILL)
@@ -4510,10 +4437,6 @@ CH_CMD(do_bash)
   /* size and weight */
   chance += ch->carry_weight / 250;
   chance -= victim->carry_weight / 200;
-
-  /* 
-     if ( ch->size < victim->size ) chance += ( ch->size - victim->size ) *
-     15; else chance += ( ch->size - victim->size ) * 10; */
 
   /* stats *//* curbash */
   chance += (get_curr_stat(ch, STAT_STR) * 5) / 2;
@@ -5415,122 +5338,6 @@ CH_CMD(do_backstab)
   return;
 }
 
-/* Create Wednesday November 8th 2000 by Belmakor for Kindred Spirits. 
-   Any usage must retain this header */
-/*
-   void do_garrote( CHAR_DATA *ch, char *argument ) 
-   { 
-   char arg[MAX_INPUT_LENGTH]; 
-   CHAR_DATA *victim; 
-   int dam; 
-   int chance; 
-
-   one_argument( argument, arg ); 
-
-   if ( (chance = get_skill(ch,gsn_garrote)) == 0 
-   ||   (!IS_NPC(ch) 
-   &&    ch->level < skill_table[gsn_garrote].skill_level[ch->class])) 
-   { 
-   send_to_char("Garrote?  What's that?{x\n\r",ch); 
-   return; 
-   } 
-
-   if (arg[0] == '\0') 
-   { 
-   send_to_char("Garrote whom?\n\r",ch); 
-   return; 
-   } 
-
-   if (ch->fighting != NULL) 
-   { 
-   send_to_char("{hYou're facing the wrong end.{x\n\r",ch); 
-   return; 
-   } 
-
-   else if ((victim = get_char_room(ch,arg)) == NULL) 
-   { 
-   send_to_char("They aren't here.\n\r",ch); 
-   return; 
-   } 
-
-   if ( victim == ch ) 
-   { 
-   send_to_char( "How can you sneak up on yourself?\n\r", ch ); 
-   return; 
-   } 
-
-   if ( is_safe( ch, victim ) ) 
-   return; 
-
-   if (IS_NPC(victim) && 
-   victim->fighting != NULL && 
-   !is_same_group(ch,victim->fighting) 
-   && !IS_SET(victim->in_room->room_flags, ROOM_ARENA)) 
-   { 
-   send_to_char("Kill stealing is not permitted.\n\r",ch); 
-   return; 
-   } 
-   if ( victim->hit < victim->max_hit / 4) 
-   { 
-   act( "$N is hurt and suspicious ... you can't sneak up.", 
-   ch, NULL, victim, TO_CHAR ); 
-   return; 
-   } 
-
-   if ( ( ch->fighting == NULL ) 
-   && ( !IS_NPC( ch ) ) 
-   && ( !IS_NPC( victim ) ) ) 
-   { 
-   ch->attacker = true; 
-   victim->attacker = false; 
-   } 
-
-
-   chance += get_curr_stat(ch,STAT_DEX); 
-   chance -= get_curr_stat(victim,STAT_DEX); 
-
-   if (IS_SET(ch->off_flags,OFF_FAST) || IS_AFFECTED(ch,AFF_HASTE)) 
-   chance += 25; 
-   if (IS_SET(victim->off_flags,OFF_FAST) || IS_AFFECTED(victim,AFF_HASTE)) 
-   chance -= 10; 
-
-   chance += (ch->level - victim->
-   if (chance % 5 == 0) 
-   chance += 1; 
-   if (number_percent() < chance) 
-   { 
-   AFFECT_DATA af; 
-   act("{k$n is choked by a wire around the neck!{x",victim,NULL,NULL,TO_ROOM); 
-   act("{i$n slips a wire around your neck!{x",ch,NULL,victim,TO_VICT); 
-   dam = number_range ( (ch->level * 50 ), (450 ) ); 
-   damage(ch,victim,dam,gsn_garrote,DAM_ENERGY,true); 
-   send_to_char("{7You choke and gag!{x\n\r",victim); 
-   check_improve(ch,gsn_garrote,true,2); 
-   if ( !IS_IMMORTAL ( ch) )
-   WAIT_STATE(ch,skill_table[gsn_garrote].beats); 
-
-
-
-   af.where    = TO_AFFECTS; 
-   af.type    = gsn_garrote; 
-   af.level    = ch->level; 
-   af.duration    = 3; 
-   af.location    = APPLY_HITROLL; 
-   af.modifier    = -6; 
-   af.bitvector    = AFF_GARROTE; 
-
-   affect_to_char(victim,&af); 
-   } 
-   else 
-   { 
-   damage(ch,victim,0,gsn_garrote,DAM_NONE,true); 
-   check_improve(ch,gsn_garrote,false,2); 
-   if ( !IS_IMMORTAL ( ch) )
-   WAIT_STATE(ch,skill_table[gsn_garrote].beats); 
-   } 
-   } 
- */
-
 CH_CMD(do_blackjack)
 {
   char buf[MSL];
@@ -5631,10 +5438,6 @@ CH_CMD(do_blackjack)
        ch, NULL, victim, TO_VICT);
     printf_to_char(ch,
                    "{xYou {Dwhack{x your target upside the head!! \n\rThey are knocked out {ccold{x!!");
-    /* This damaged the victim too, but i couldnt get it the numbers right.
-
-       damage(ch,victim,number_range(2,5),gsn_blackjack,DAM_NONE,false);
-     */
 
     send_to_char("You are knocked out cold!\n\r", victim);
     ch->blackjack_timer = (number_range(2, 5));
@@ -5654,10 +5457,6 @@ CH_CMD(do_blackjack)
   }
   else
   {
-    /* Another try
-
-       damage(ch,victim,0,gsn_blackjack,DAM_NONE,true);
-     */
     check_improve(ch, gsn_blackjack, false, 2);
   }
 }
@@ -5809,10 +5608,6 @@ bool check_critical(CHAR_DATA * ch, CHAR_DATA * victim)
       (get_skill(ch, gsn_critical) < 1))
     return false;
 
-  /* Now, if it passed all the tests... */
-
-  //    act ( "$p CRITICALLY STRIKES $n!", victim, obj, NULL, TO_NOTVICT );
-  //    act ( "{RCRITICAL {YSTRIKE!{x", ch, NULL, victim, TO_VICT );
   check_improve(ch, gsn_critical, true, 6);
   return true;
 }
@@ -6611,9 +6406,6 @@ CH_CMD(do_sharpen)
     send_to_char("Your weapon is now complete.\n\r", ch);
     obj->value[1] += 1;
     obj->value[2] += 1;
-    /* if (chance(10)) { printf_to_char(ch,"You must have been assisted by
-       the gods as you crated a {YVORPAL{x weapon!"); af.bitvector =
-       WEAPON_VORPAL; return; } else */
 
     af.where = TO_WEAPON;
     af.type = gsn_sharpen;
@@ -6898,8 +6690,7 @@ CH_CMD(do_stake)
     send_to_char("You cannot stake this mob.\n\r", ch);
     return;
   }
-  /* if (IS_NPC(victim) && (!IS_SET(victim->act,ACT_UNDEAD))) {
-     send_to_char("You cannot stake the living.\n\r",ch); return; } */
+
   if (victim == ch)
   {
     send_to_char("You aren't undead.. you cannot stake yourself.\n\r", ch);
@@ -7053,12 +6844,6 @@ CH_CMD(do_nervestrike)
     return;
   }
 
-  /*    if ( !can_see ( ch, victim ) )
-     {
-     send_to_char ( "You stumble blindly into a wall.\n\r", ch );
-     return;
-     } */
-
   if (ch->stunned)
   {
     send_to_char("You're still a little woozy.\n\r", ch);
@@ -7186,7 +6971,6 @@ CH_CMD(do_whirlwind)
       found = true;
       act("$n turns towards YOU!", ch, NULL, pChar, TO_VICT);
       multi_hit(ch, pChar, gsn_whirlwind);
-      /* one_hit( ch, pChar, gsn_whirlwind, false ); */
     }
     if (!IS_NPC(pChar))
     {

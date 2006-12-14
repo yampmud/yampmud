@@ -972,18 +972,6 @@ const struct race_type race_table[] = {
    0,
    A | G | W, A | C | D | E | F | H | K | P},
 
-  /*    {
-     "troll", false,
-     0,
-     0,
-     AFF_REGENERATION | AFF_INFRARED | AFF_DETECT_HIDDEN,
-     OFF_BERSERK,
-     0,
-     RES_CHARM | RES_BASH,
-     VULN_FIRE | VULN_ACID,
-     0,
-     A | B | H | M | V, A | B | C | D | E | F | G | H | I | J | K | U | V}, */
-
   {
    "water fowl", false,
    0,

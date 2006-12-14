@@ -773,7 +773,7 @@ char *getline(char *str, char *buf)
       str += 2;
     else
       str += 1;
-  }                             /* para que quedemos en el inicio de la prox linea */
+  }
 
   buf[tmp] = '\0';
 
