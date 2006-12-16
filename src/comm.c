@@ -116,8 +116,6 @@ bool write_to_descriptor args((int desc, char *txt, int length));
 int port, control;
 
 #if defined(MUD_SIG_HANDLER)
-volatile sig_atomic_t crashed = 0;
-
 static void sigalrm(sig)
 int sig;
 {
@@ -142,32 +140,25 @@ int main(int argc, char **argv)
 {
   struct timeval now_time;
   bool fCopyOver = false;
+  FILE *fp = NULL;
+
+  struct rlimit core_limit;
+
+  getrlimit(RLIMIT_CORE, &core_limit);
+  core_limit.rlim_cur = core_limit.rlim_max;
+  setrlimit(RLIMIT_CORE, &core_limit);
 
 #if defined(MUD_SIG_HANDLER)
-  struct sigaction halt_action, ignore_action, alarm_action;
-
-  halt_action.sa_handler = halt_mud;
-  sigemptyset(&halt_action.sa_mask);
-  halt_action.sa_flags = SA_NOMASK;
-
-  ignore_action.sa_handler = SIG_IGN;
-  sigemptyset(&ignore_action.sa_mask);
-  ignore_action.sa_flags = 0;
-
-  alarm_action.sa_handler = sigalrm;
-  sigemptyset(&alarm_action.sa_mask);
-  alarm_action.sa_flags = SA_NOMASK;
-
-  sigaction(SIGPIPE, &ignore_action, NULL); /* who cares about pipes? */
-  sigaction(SIGHUP, &ignore_action, NULL);  /* stay alive if user quits */
-  sigaction(SIGINT, &halt_action, NULL);  /* interrupted at keyboard */
-  sigaction(SIGQUIT, &halt_action, NULL); /* quit at keyboard */
-  sigaction(SIGILL, &halt_action, NULL);  /* illegal instruction */
-  sigaction(SIGFPE, &halt_action, NULL);  /* floating point error */
-  sigaction(SIGSEGV, &halt_action, NULL); /* invalid memory reference */
-  sigaction(SIGTERM, &halt_action, NULL); /* terminate */
-  sigaction(SIGBUS, &halt_action, NULL);  /* out of memory?? */
-  sigaction(SIGALRM, &alarm_action, NULL);  /* endless loop check */
+  signal(SIGPIPE, SIG_IGN);
+  signal(SIGHUP, SIG_IGN);
+  signal(SIGINT, halt_mud);
+  signal(SIGQUIT, halt_mud);
+  signal(SIGILL, halt_mud);
+  signal(SIGFPE, halt_mud);
+  signal(SIGSEGV, halt_mud);
+  signal(SIGTERM, halt_mud);
+  signal(SIGBUS, halt_mud);
+  signal(SIGALRM, sigalrm);
 
   alarm(300);
 #endif
@@ -188,9 +179,17 @@ int main(int argc, char **argv)
 
   boot_time = current_time;
 
-  /* 
-   * Reserve one channel for our use.
+  /*
+   * Rename any core file that exists.
+   * Yes, this is an ugly hack.
    */
+  if ((fp = fopen("core", "r")))
+  {
+    fclose(fp);
+    sprintf(log_buf, "mv core core.%ld", current_time);
+    system(log_buf);
+  }
+
 
   /* 
    * Get the port number. */
@@ -319,10 +318,6 @@ void game_loop_unix(int control)
 {
   static struct timeval null_time;
   struct timeval last_time;
-
-#if defined(MUD_SIG_HANDLER)
-  signal(SIGPIPE, SIG_IGN);
-#endif
 
   gettimeofday(&last_time, NULL);
   current_time = (time_t) last_time.tv_sec;
@@ -4088,149 +4083,35 @@ void halt_mud(int sig)
 {
   DESCRIPTOR_DATA *d;
   CHAR_DATA *ch;
-  struct sigaction default_action;
-  int i;
   pid_t forkpid;
 
   wait(NULL);
-  if (!crashed)
+  fprintf(stderr, "GAME CRASHED (SIGNAL %d).\nLast command: %s\n", sig,
+          last_command);
+  for (d = descriptor_list; d != NULL; d = d_next)
   {
-    crashed++;
-    fprintf(stderr, "GAME CRASHED (SIGNAL %d).\rLast command: %s\r", sig,
-            last_command);
-    for (d = descriptor_list; d != NULL; d = d_next)
+    d_next = d->next;
+    ch = CH(d);
+    if (!ch)
     {
-      d_next = d->next;
-      ch = CH(d);
-      if (!ch)
-      {
-        close_socket(d);
-        continue;
-      }
-      if (IS_NPC(ch))
-        continue;
-      write_to_descriptor(d->descriptor,
-                          "\n\rThe mud has CRASHED.\007\n\r", 0);
-      write_to_descriptor(d->descriptor, "\n\rThe mud has CRASHED.\n\r", 0);
-      write_to_descriptor(d->descriptor, "\n\rThe mud has CRASHED.\n\r", 0);
-    }
-
-    // try to save all characters - save_char_obj has sanity checking
-    for (d = descriptor_list; d != NULL; d = d_next)
-    {
-      d_next = d->next;
-      ch = CH(d);
-      if (!ch)
-      {
-        close_socket(d);
-        continue;
-      }
-      //            save_char_obj ( ch );
-    }
-
-    // success - proceed with fork/copyover plan.  Otherwise will go to
-    // next section and crash with a full reboot to recover
-    if ((forkpid = fork()) > 0)
-    {
-      // Parent process copyover and exit 
-      waitpid(forkpid, NULL, WNOHANG | WUNTRACED);
-      // this requires you to add an "if (ch)" before the send_to_char
-      // statements in do_copyover.
-      do_copyover(NULL, "");
-      exit(0);
-    }
-    else if (forkpid < 0)
-    {
-      exit(1);
-    }
-    // Child process proceed to dump
-    // Close all files!
-    for (i = 255; i >= 0; i--)
-      close(i);
-
-    // Dup /dev/null to STD{IN,OUT,ERR}
-    open("/dev/null", O_RDWR);
-    dup(0);
-    dup(0);
-
-    default_action.sa_handler = SIG_DFL;
-    sigaction(sig, &default_action, NULL);
-
-    // I run different scripts depending on my port
-    if (!fork())
-    {
-      //            execl ( CORE_EXAMINE_SCRIPT, CORE_EXAMINE_SCRIPT, ( char * ) NULL );
-      exit(0);
-    }
-    else
-      return;
-    raise(sig);
-  }
-
-  if (crashed == 1)
-  {
-    crashed++;
-
-    for (d = descriptor_list; d != NULL; d = d_next)
-    {
-      d_next = d->next;
-      ch = d->original ? d->original : d->character;
-      if (ch == NULL)
-      {
-        close_socket(d);
-        continue;
-      }
-      if (IS_NPC(ch))
-        continue;
-      write_to_descriptor(d->descriptor,
-                          "** Error saving character files; conducting full reboot. **\007\n\r",
-                          0);
       close_socket(d);
       continue;
     }
-    fprintf(stderr, "CHARACTERS NOT SAVED.\r");
-    default_action.sa_handler = SIG_DFL;
-    sigaction(sig, &default_action, NULL);
-
-    if (!fork())
-    {
-      kill(getppid(), sig);
-      exit(1);
-    }
-    else
-      return;
-    raise(sig);
+    if (IS_NPC(ch))
+      continue;
+    write_to_descriptor(d->descriptor, "\n\rThe mud has CRASHED.\007\n\r", 0);
+    write_to_descriptor(d->descriptor, "\n\rThe mud has CRASHED.\n\r", 0);
+    write_to_descriptor(d->descriptor, "\n\rThe mud has CRASHED.\n\r", 0);
   }
 
-  if (crashed == 2)
+  if ((forkpid = fork()) == 0)
   {
-    crashed++;
-    fprintf(stderr, "TOTAL GAME CRASH.");
-    default_action.sa_handler = SIG_DFL;
-    sigaction(sig, &default_action, NULL);
-
-    if (!fork())
-    {
-      kill(getppid(), sig);
-      exit(1);
-    }
-    else
-      return;
-    raise(sig);
+    do_copyover(NULL, "");
+    exit(0);
   }
-
-  if (crashed == 3)
+  else if (forkpid > 0)
   {
-    default_action.sa_handler = SIG_DFL;
-    sigaction(sig, &default_action, NULL);
-
-    if (!fork())
-    {
-      kill(getppid(), sig);
-      exit(1);
-    }
-    else
-      return;
+    signal(sig, SIG_DFL);
     raise(sig);
   }
 }
