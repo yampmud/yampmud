@@ -30,5 +30,5 @@ int strlen_color(char *);
 char *center(char *, int, char *);
 char *str_to_len(const char *, int);
 char *strip_color(const char *);
-
+int which_keyword(char *keyword, ...);
 #endif

@@ -161,3 +161,50 @@ char *strip_color(const char *string)
   buf[count] = '\0';
   return (newstr);
 }
+
+
+/*
+ * which_keyword
+ * Copyright (c) 2000 Fatal Dimensions
+ * See LICENSE.FD.
+ */
+/* 
+ * which_keyword
+ *
+ * This function takes a string keyword and a variable number of strings
+ * If the keyword matches any of the given strings, it returns its index, making
+ * the function suitable for switches. The last argument must be NULL.
+ *
+ * Example:
+ *   which_keyword("song", "author", "song", "album", NULL);  => 2
+ * 
+ */
+int which_keyword(char *keyword, ...)
+{
+  va_list ap;
+  int i = 1;
+  char *arg;
+  char k[MAX_STRING_LENGTH];
+
+  if (!keyword || !keyword[0])
+    return -1;
+
+  va_start(ap, keyword);
+  keyword = one_argument(keyword, k);
+  do
+  {
+    arg = va_arg(ap, char *);
+    if (arg)
+    {
+      if (!str_prefix(k, arg))
+      {
+        va_end(ap);
+        return i;
+      }
+    }
+    i++;
+  }
+  while (arg);
+  va_end(ap);
+  return 0;
+}
