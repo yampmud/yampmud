@@ -48,6 +48,7 @@
 #include "olc.h"
 #include "db.h"
 #include "str_util.h"
+#include "fd_property.h"
 
 CH_CMD(do_rollback)
 {
@@ -1842,6 +1843,8 @@ CH_CMD(do_rstat)
     }
   }
 
+  show_properties(ch,location->property,"temp");
+
   return;
 }
 
@@ -2187,6 +2190,8 @@ CH_CMD(do_ostat)
       }
     }
 
+  show_properties(ch,obj->property,"temp");
+
   return;
 }
 
@@ -2441,6 +2446,9 @@ CH_CMD(do_mstat)
 
   page_to_char(buf_string(output), ch);
   free_buf(output);
+
+  show_properties(ch,victim->property,"temp");
+
   return;
 }
 
@@ -4568,6 +4576,10 @@ CH_CMD(do_sset)
   return;
 }
 
+void set_mob_property(CHAR_DATA *, CHAR_DATA *, char *);
+void set_object_property(CHAR_DATA *, OBJ_DATA *, char *);
+void set_room_property(CHAR_DATA *, ROOM_INDEX_DATA *, char *);
+
 CH_CMD(do_mset)
 {
   char arg1[MAX_INPUT_LENGTH];
@@ -4591,7 +4603,7 @@ CH_CMD(do_mset)
     send_to_char("    race group platinum gold silver hp\n\r", ch);
     send_to_char("    mana move prac align train thirst\n\r", ch);
     send_to_char("    hunger drunk full quest aqp\n\r", ch);
-    send_to_char("    security pkkills pkdeaths rps\n\r", ch);
+    send_to_char("    security pkkills pkdeaths rps property\n\r", ch);
     return;
   }
 
@@ -4613,6 +4625,11 @@ CH_CMD(do_mset)
   /* 
    * Set something.
    */
+  if (!str_cmp(arg2, "property"))
+  {
+    set_mob_property(ch, victim, arg3);
+    return;
+  }
   if (!str_cmp(arg2, "str"))
   {
     if (value < 3 || value > get_max_train(victim, STAT_STR))
@@ -5305,7 +5322,7 @@ CH_CMD(do_oset)
     send_to_char("  set obj <object> <field> <value>\n\r", ch);
     send_to_char("  Field being one of:\n\r", ch);
     send_to_char("    value0 value1 value2 value3 value4 (v1-v4)\n\r", ch);
-    send_to_char("    level weight cost timer clan guild\n\r", ch);
+    send_to_char("    level weight cost timer clan guild property\n\r", ch);
     return;
   }
 
@@ -5368,6 +5385,11 @@ CH_CMD(do_oset)
   /* 
    * Set something.
    */
+  if (!str_cmp(arg2, "property"))
+  {
+    set_object_property(ch, obj, arg3);
+    return;
+  }
   if (!str_cmp(arg2, "value0") || !str_cmp(arg2, "v0"))
   {
     if (obj->item_type == ITEM_WEAPON)
@@ -5488,7 +5510,7 @@ CH_CMD(do_rset)
   char arg2[MAX_INPUT_LENGTH];
   char arg3[MAX_INPUT_LENGTH];
   ROOM_INDEX_DATA *location;
-  long value;
+  long value = 0;
 
   smash_tilde(argument);
   argument = one_argument(argument, arg1);
@@ -5500,7 +5522,7 @@ CH_CMD(do_rset)
     send_to_char("Syntax:\n\r", ch);
     send_to_char("  set room <location> <field> <value>\n\r", ch);
     send_to_char("  Field being one of:\n\r", ch);
-    send_to_char("    sector\n\r", ch);
+    send_to_char("    sector property\n\r", ch);
     return;
   }
 
@@ -5520,12 +5542,8 @@ CH_CMD(do_rset)
   /* 
    * Snarf the value.
    */
-  if (!is_number(arg3))
-  {
-    send_to_char("Value must be numeric.\n\r", ch);
-    return;
-  }
-  value = atol(arg3);
+  if (is_number(arg3))
+    value = atol(arg3);
 
   /* 
    * Set something.
@@ -5539,6 +5557,12 @@ CH_CMD(do_rset)
   if (!str_prefix(arg2, "sector"))
   {
     location->sector_type = value;
+    return;
+  }
+
+  if (!str_prefix(arg2, "property"))
+  {
+    set_room_property(ch, location, arg3);
     return;
   }
 
@@ -8405,4 +8429,274 @@ CH_CMD(do_multioload)
     do_multioload(ch, "");
     return;
   }
+}
+
+void set_object_property(CHAR_DATA * ch, OBJ_DATA * obj, char *argument)
+{
+  char stype[MAX_STRING_LENGTH];
+  char key[MAX_STRING_LENGTH];
+  char svalue[MAX_STRING_LENGTH];
+  long l;
+  int i;
+  bool b;
+  char c;
+
+  argument = one_argument(argument, key);
+  argument = one_argument(argument, stype);
+  argument = one_argument(argument, svalue);
+
+  if (svalue == NULL || svalue[0] == 0)
+  {
+    send_to_char("Usage: set obj property <key> <type> <value>\n\r", ch);
+    send_to_char("  Where <type> is \"bool\", \"int\", \"long\", \"char\","
+                 "\"string\n\r", ch);
+    return;
+  }
+
+  if (!does_property_exist_s(key, stype))
+  {
+    send_to_char("Unknown property, see `{Wpropertylist{x` for overview.\n\r",
+                 ch);
+    return;
+  }
+
+  switch (which_keyword(stype, "bool", "int", "long", "char", "string", NULL))
+  {
+    case 1:
+      switch (which_keyword(svalue, "true", "false", "delete", NULL))
+      {
+        case 1:
+          b = true;
+          break;
+        case 2:
+          b = false;
+          break;
+        case 3:
+          DeleteObjectProperty(obj, PROPERTY_BOOL, key);
+          return;
+        default:
+          set_object_property(ch, obj, "");
+          return;
+      }
+      SetObjectProperty(obj, PROPERTY_BOOL, key, &b);
+      break;
+    case 2:
+      if (!strcmp(svalue, "delete"))
+        DeleteObjectProperty(obj, PROPERTY_INT, key);
+      else
+      {
+        i = atoi(svalue);
+        SetObjectProperty(obj, PROPERTY_INT, key, &i);
+      }
+      break;
+    case 3:
+      if (!strcmp(svalue, "delete"))
+        DeleteObjectProperty(obj, PROPERTY_LONG, key);
+      else
+      {
+        l = atol(svalue);
+        SetObjectProperty(obj, PROPERTY_LONG, key, &l);
+      }
+      break;
+    case 4:
+      if (!strcmp(svalue, "delete"))
+        DeleteObjectProperty(obj, PROPERTY_CHAR, key);
+      else
+      {
+        c = svalue[0];
+        SetObjectProperty(obj, PROPERTY_CHAR, key, &c);
+      }
+      break;
+    case 5:
+      if (!strcmp(svalue, "delete"))
+        DeleteObjectProperty(obj, PROPERTY_STRING, key);
+      else
+        SetObjectProperty(obj, PROPERTY_STRING, key, svalue);
+      break;
+    default:
+      set_object_property(ch, obj, "");
+      return;
+  }
+
+  send_to_char("Done.\n\r", ch);
+}
+
+void set_room_property(CHAR_DATA * ch, ROOM_INDEX_DATA * room, char *argument)
+{
+  char stype[MAX_STRING_LENGTH];
+  char key[MAX_STRING_LENGTH];
+  char svalue[MAX_STRING_LENGTH];
+  long l;
+  int i;
+  bool b;
+  char c;
+
+  argument = one_argument(argument, key);
+  argument = one_argument(argument, stype);
+  argument = one_argument(argument, svalue);
+
+  if (svalue == NULL || svalue[0] == 0)
+  {
+    send_to_char("Usage: set room property <key> <type> <value>\n\r", ch);
+    send_to_char("  Where <type> is \"bool\", \"int\", \"long\", \"char\","
+                 "\"string\n\r", ch);
+    return;
+  }
+
+  if (!does_property_exist_s(key, stype))
+  {
+    send_to_char("Unknown property, see `{Wpropertylist{x` for overview.\n\r",
+                 ch);
+    return;
+  }
+
+  switch (which_keyword(stype, "bool", "int", "long", "char", "string", NULL))
+  {
+    case 1:
+      switch (which_keyword(svalue, "true", "false", "delete", NULL))
+      {
+        case 1:
+          b = true;
+          break;
+        case 2:
+          b = false;
+          break;
+        case 3:
+          DeleteRoomProperty(room, PROPERTY_BOOL, key);
+          return;
+        default:
+          set_room_property(ch, room, "");
+          return;
+      }
+      SetRoomProperty(room, PROPERTY_BOOL, key, &b);
+      break;
+    case 2:
+      if (!strcmp(svalue, "delete"))
+        DeleteRoomProperty(room, PROPERTY_INT, key);
+      else
+      {
+        i = atoi(svalue);
+        SetRoomProperty(room, PROPERTY_INT, key, &i);
+      }
+      break;
+    case 3:
+      if (!strcmp(svalue, "delete"))
+        DeleteRoomProperty(room, PROPERTY_LONG, key);
+      else
+      {
+        l = atol(svalue);
+        SetRoomProperty(room, PROPERTY_LONG, key, &l);
+      }
+      break;
+    case 4:
+      if (!strcmp(svalue, "delete"))
+        DeleteRoomProperty(room, PROPERTY_CHAR, key);
+      else
+      {
+        c = svalue[0];
+        SetRoomProperty(room, PROPERTY_CHAR, key, &c);
+      }
+      break;
+    case 5:
+      if (!strcmp(svalue, "delete"))
+        DeleteRoomProperty(room, PROPERTY_STRING, key);
+      else
+        SetRoomProperty(room, PROPERTY_STRING, key, svalue);
+      break;
+    default:
+      set_room_property(ch, room, "");
+      return;
+  }
+
+  send_to_char("Done.\n\r", ch);
+}
+
+void set_mob_property(CHAR_DATA * ch, CHAR_DATA * victim, char *argument)
+{
+  char stype[MAX_STRING_LENGTH];
+  char key[MAX_STRING_LENGTH];
+  char svalue[MAX_STRING_LENGTH];
+  long l;
+  int i;
+  bool b;
+  char c;
+
+  argument = one_argument(argument, key);
+  argument = one_argument(argument, stype);
+  argument = one_argument(argument, svalue);
+
+  if (svalue == NULL || svalue[0] == 0)
+  {
+    send_to_char("Usage: set char property <key> <type> <value>\n\r", ch);
+    send_to_char("  Where <type> is \"bool\", \"int\", \"long\", \"char\","
+                 "\"string\n\r", ch);
+    return;
+  }
+
+  if (!does_property_exist_s(key, stype))
+  {
+    send_to_char("Unknown property, see `{Wpropertylist{x` for overview.\n\r",
+                 ch);
+    return;
+  }
+
+  switch (which_keyword(stype, "bool", "int", "long", "char", "string", NULL))
+  {
+    case 1:
+      switch (which_keyword(svalue, "true", "false", "delete", NULL))
+      {
+        case 1:
+          b = true;
+          break;
+        case 2:
+          b = false;
+          break;
+        case 3:
+          DeleteCharProperty(victim, PROPERTY_BOOL, key);
+          return;
+        default:
+          set_mob_property(ch, victim, "");
+          return;
+      }
+      SetCharProperty(victim, PROPERTY_BOOL, key, &b);
+      break;
+    case 2:
+      if (!strcmp(svalue, "delete"))
+        DeleteCharProperty(victim, PROPERTY_INT, key);
+      else
+      {
+        i = atoi(svalue);
+        SetCharProperty(victim, PROPERTY_INT, key, &i);
+      }
+      break;
+    case 3:
+      if (!strcmp(svalue, "delete"))
+        DeleteCharProperty(victim, PROPERTY_LONG, key);
+      else
+      {
+        l = atol(svalue);
+        SetCharProperty(victim, PROPERTY_LONG, key, &l);
+      }
+      break;
+    case 4:
+      if (!strcmp(svalue, "delete"))
+        DeleteCharProperty(victim, PROPERTY_CHAR, key);
+      else
+      {
+        c = svalue[0];
+        SetCharProperty(victim, PROPERTY_CHAR, key, &c);
+      }
+      break;
+    case 5:
+      if (!strcmp(svalue, "delete"))
+        DeleteCharProperty(victim, PROPERTY_STRING, key);
+      else
+        SetCharProperty(victim, PROPERTY_STRING, key, svalue);
+      break;
+    default:
+      set_mob_property(ch, victim, "");
+      return;
+  }
+
+  send_to_char("Done.\n\r", ch);
 }

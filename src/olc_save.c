@@ -30,6 +30,7 @@
 #include "olc.h"
 #include "tables.h"
 #include "db.h"
+#include "fd_property.h"
 
 #define DIF(a,b) (~((~a)|(b)))
 
@@ -241,6 +242,9 @@ void save_mobile(FILE * fp, MOB_INDEX_DATA * pMobIndex)
             mprog_type_to_name(pMprog->trig_type), pMprog->vnum,
             pMprog->trig_phrase);
   }
+
+  save_property(fp, "P", pMobIndex->property, "save_mobile",
+                pMobIndex->player_name);
 
   return;
 }
@@ -470,6 +474,8 @@ void save_object(FILE * fp, OBJ_INDEX_DATA * pObjIndex)
     fprintf(fp, "E\n%s~\n%s~\n", pEd->keyword, fix_string(pEd->description));
   }
 
+  save_property(fp, "P", pObjIndex->property, "save_object", pObjIndex->name);
+
   return;
 }
 
@@ -567,6 +573,9 @@ void save_rooms(FILE * fp, AREA_DATA * pArea)
 
         if (pRoomIndex->owner && str_cmp(pRoomIndex->owner, ""))
           fprintf(fp, "O %s~\n", pRoomIndex->owner);
+
+        save_property(fp, "P", pRoomIndex->property, "save_rooms",
+                      pRoomIndex->name);
 
         fprintf(fp, "S\n");
       }

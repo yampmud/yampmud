@@ -126,6 +126,8 @@ typedef struct mprog_list MPROG_LIST;
 typedef struct mprog_code MPROG_CODE;
 typedef struct auction_data AUCTION_DATA;
 typedef struct gquest_data GQUEST;
+typedef struct property_type PROPERTY;
+typedef struct property_index_type PROPERTY_INDEX_TYPE;
 
 /*
  * Function types.
@@ -1692,6 +1694,7 @@ struct mob_index_data
   long mprog_flags;
   char *die_descr;
   char *say_descr;
+  PROPERTY *property;
 };
 
 /* memory settings */
@@ -1876,6 +1879,7 @@ struct char_data
 
   int nameauthed;               /* Has the name be authorized */
   int namedenied;               /* Has the name been denied */
+  PROPERTY *property;
 };
 
 #include "board.h"
@@ -2008,6 +2012,7 @@ struct obj_index_data
   long value[5];
   sh_int clan;
   sh_int class;
+  PROPERTY *property;
 };
 
 /*
@@ -2045,6 +2050,7 @@ struct obj_data
   long value[5];
   sh_int clan;
   sh_int class;
+  PROPERTY *property;
 };
 
 /*
@@ -2145,6 +2151,7 @@ struct room_index_data
   sh_int mana_rate;
   sh_int clan;
   int tele_dest;
+  PROPERTY *property;
 };
 
 /*

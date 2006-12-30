@@ -500,6 +500,8 @@ const struct cmd_type cmd_table[] = {
   {"authname", do_authname, POS_DEAD, IM, 1, LOG_ALWAYS, 1},
   {"badname", do_badname, POS_DEAD, IM, 1, LOG_ALWAYS, 1},
   {"olevel", do_olevel, POS_DEAD, IM, 1, LOG_NORMAL, 1},
+  {"propertylist", do_propertylist, POS_DEAD, IM, 1, LOG_NORMAL, 1},
+  {"propedit", do_propedit, POS_DEAD, ML, 1, LOG_NORMAL, 1},
 
   /* 
    * OLC   

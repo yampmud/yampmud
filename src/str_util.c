@@ -25,6 +25,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
+#include <stdarg.h>
 #include "merc.h"
 #include "str_util.h"
 

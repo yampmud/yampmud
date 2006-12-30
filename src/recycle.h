@@ -148,3 +148,9 @@ void free_auction(AUCTION_DATA * auction);
 
 HELP_DATA *new_help args((void));
 void free_help args((HELP_DATA * pHelp));
+
+PROPERTY *new_property(void);
+void free_property(PROPERTY * pProperty);
+
+PROPERTY_INDEX_TYPE *new_property_index(void);
+void free_property_index(PROPERTY_INDEX_TYPE * pProperty);

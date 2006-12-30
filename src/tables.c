@@ -37,6 +37,7 @@
 #include <time.h>
 #include "merc.h"
 #include "tables.h"
+#include "fd_property.h"
 
 /*
  * Log Off Quotes
@@ -951,4 +952,17 @@ const struct bit_type bitvector_type[] = {
   {res_flags, "res"},
   {vuln_flags, "vuln"},
   {weapon_type2, "weapon"}
+};
+
+//
+// property name table
+//
+const struct table_type property_table[] = {
+  {"undef", PROPERTY_UNDEF},
+  {"int", PROPERTY_INT},
+  {"long", PROPERTY_LONG},
+  {"bool", PROPERTY_BOOL},
+  {"string", PROPERTY_STRING},
+  {"char", PROPERTY_CHAR},
+  {NULL, 0,}
 };

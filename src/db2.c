@@ -46,6 +46,8 @@
 #include "lookup.h"
 #include "tables.h"
 #include "sql_io.h"
+#include "fd_property.h"
+#include "str_util.h"
 
 /*
  * Snarf a mob section.  new style
@@ -234,6 +236,60 @@ void load_mobiles(FILE * fp)
         pMprog->next = pMobIndex->mprogs;
         pMobIndex->mprogs = pMprog;
       }
+
+      else if (letter == 'P')
+      {                         // property
+        char key[MAX_STRING_LENGTH];
+        char type[MAX_STRING_LENGTH];
+        char value[MAX_STRING_LENGTH];
+        int i;
+        bool b;
+        char c;
+        long l;
+
+        strcpy(key, fread_string_temp(fp));
+        strcpy(type, fread_string_temp(fp));
+        strcpy(value, fread_string_temp(fp));
+
+        switch (which_keyword(type, "int", "bool", "string",
+                              "char", "long", NULL))
+        {
+          case 1:
+            i = atoi(value);
+            SetDCharProperty(pMobIndex, PROPERTY_INT, key, &i);
+            break;
+          case 2:
+            switch (which_keyword(value, "true", "false", NULL))
+            {
+              case 1:
+                b = true;
+                SetDCharProperty(pMobIndex, PROPERTY_BOOL, key, &b);
+                break;
+              case 2:
+                b = false;
+                SetDCharProperty(pMobIndex, PROPERTY_BOOL, key, &b);
+                break;
+              default:
+                ;
+            }
+            break;
+          case 3:
+            SetDCharProperty(pMobIndex, PROPERTY_STRING, key, value);
+            break;
+          case 4:
+            c = value[0];
+            SetDCharProperty(pMobIndex, PROPERTY_CHAR, key, &c);
+            break;
+          case 5:
+            l = atol(value);
+            SetDCharProperty(pMobIndex, PROPERTY_LONG, key, &l);
+            break;
+          default:
+            bugf("Property: unknown keyword '%s'", type);
+        }
+
+      }
+
       else
       {
         ungetc(letter, fp);
@@ -509,6 +565,60 @@ void load_objects(FILE * fp)
         temp = fread_string(fp);
         pObjIndex->class = class_lookup(temp);
         free_string(temp);
+      }
+
+
+
+      else if (letter == 'P')
+      {                         // property
+        char key[MAX_STRING_LENGTH];
+        char type[MAX_STRING_LENGTH];
+        char value[MAX_STRING_LENGTH];
+        int i;
+        bool b;
+        char c;
+        long l;
+
+        strcpy(key, fread_string_temp(fp));
+        strcpy(type, fread_string_temp(fp));
+        strcpy(value, fread_string_temp(fp));
+
+        switch (which_keyword(type, "int", "bool", "string",
+                              "char", "long", NULL))
+        {
+          case 1:
+            i = atoi(value);
+            SetDObjectProperty(pObjIndex, PROPERTY_INT, key, &i);
+            break;
+          case 2:
+            switch (which_keyword(value, "true", "false", NULL))
+            {
+              case 1:
+                b = true;
+                SetDObjectProperty(pObjIndex, PROPERTY_BOOL, key, &b);
+                break;
+              case 2:
+                b = false;
+                SetDObjectProperty(pObjIndex, PROPERTY_BOOL, key, &b);
+                break;
+              default:
+                ;
+            }
+            break;
+          case 3:
+            SetDObjectProperty(pObjIndex, PROPERTY_STRING, key, value);
+            break;
+          case 4:
+            c = value[0];
+            SetDObjectProperty(pObjIndex, PROPERTY_CHAR, key, &c);
+            break;
+          case 5:
+            l = atol(value);
+            SetDObjectProperty(pObjIndex, PROPERTY_LONG, key, &l);
+            break;
+          default:
+            bugf("Property: unknown keyword '%s'", type);
+        }
       }
 
       else

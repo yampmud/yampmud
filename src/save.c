@@ -34,6 +34,7 @@
 
 #include <sys/types.h>
 #include <ctype.h>
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -43,6 +44,8 @@
 #include "lookup.h"
 #include "tables.h"
 #include "olc.h"
+#include "fd_property.h"
+#include "str_util.h"
 
 extern int _filbuf args((FILE *));
 
@@ -426,6 +429,7 @@ void fwrite_char(CHAR_DATA * ch, FILE * fp)
 
 
   fwrite_rle(ch->pcdata->explored, fp);
+  save_property(fp, "Prop", ch->property, "fwrite_char", ch->name);
   fprintf(fp, "End\n\n");
   return;
 }
@@ -468,6 +472,8 @@ void fwrite_pet(CHAR_DATA * pet, FILE * fp)
             skill_table[paf->type].name, paf->where, paf->level,
             paf->duration, paf->modifier, paf->location, paf->bitvector);
   }
+
+  save_property(fp, "Prop", pet->property, "fwrite_pet", pet->name);
 
   fprintf(fp, "End\n");
   return;
@@ -576,6 +582,8 @@ void fwrite_obj(CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest)
   {
     fprintf(fp, "ExDe %s~ %s~\n", ed->keyword, ed->description);
   }
+
+  save_property(fp, "Prop", obj->property, "fwrite_obj", obj->name);
 
   fprintf(fp, "End\n\n");
 
@@ -1198,6 +1206,67 @@ void fread_char(CHAR_DATA * ch, FILE * fp)
         KEY("Pkkl", ch->pcdata->pkkills, fread_number(fp));
         KEY("Pkset", ch->pcdata->pkset, fread_number(fp));
         KEY("Ptim", ch->pk_timer, fread_number(fp));
+        if (!str_cmp(word, "Prop"))
+        {
+          char *key;
+          char *type;
+          char *value;
+          int i;
+          bool b;
+          char c;
+          long l;
+
+          key = fread_string(fp);
+          type = fread_string(fp);
+          value = fread_string(fp);
+
+          switch (which_keyword(type, "int", "bool", "string",
+                                "char", "long", NULL))
+          {
+            case 1:
+              i = atoi(value);
+              SetCharProperty(ch, PROPERTY_INT, key, &i);
+              fMatch = true;
+              break;
+            case 2:
+              switch (which_keyword(value, "true", "false", NULL))
+              {
+                case 1:
+                  b = true;
+                  SetCharProperty(ch, PROPERTY_BOOL, key, &b);
+                  fMatch = true;
+                  break;
+                case 2:
+                  b = false;
+                  SetCharProperty(ch, PROPERTY_BOOL, key, &b);
+                  fMatch = true;
+                  break;
+                default:
+                  break;
+              }
+              break;
+            case 3:
+              SetCharProperty(ch, PROPERTY_STRING, key, value);
+              fMatch = true;
+              break;
+            case 4:
+              c = value[0];
+              SetCharProperty(ch, PROPERTY_CHAR, key, &c);
+              fMatch = true;
+              break;
+            case 5:
+              l = atol(value);
+              SetCharProperty(ch, PROPERTY_LONG, key, &l);
+              fMatch = true;
+              break;
+            default:
+              break;
+          }
+          free_string(key);
+          free_string(type);
+          free_string(value);
+          break;
+        }
         break;
 
       case 'Q':
@@ -1484,6 +1553,67 @@ void fread_pet(CHAR_DATA * ch, FILE * fp)
 
       case 'P':
         KEY("Ptype", pet->ptype, fread_number(fp));
+        if (!str_cmp(word, "Prop"))
+        {
+          char *key;
+          char *type;
+          char *value;
+          int i;
+          bool b;
+          char c;
+          long l;
+
+          key = fread_string(fp);
+          type = fread_string(fp);
+          value = fread_string(fp);
+
+          switch (which_keyword(type, "int", "bool", "string",
+                                "char", "long", NULL))
+          {
+            case 1:
+              i = atoi(value);
+              SetCharProperty(pet, PROPERTY_INT, key, &i);
+              fMatch = true;
+              break;
+            case 2:
+              switch (which_keyword(value, "true", "false", NULL))
+              {
+                case 1:
+                  b = true;
+                  SetCharProperty(pet, PROPERTY_BOOL, key, &b);
+                  fMatch = true;
+                  break;
+                case 2:
+                  b = false;
+                  SetCharProperty(pet, PROPERTY_BOOL, key, &b);
+                  fMatch = true;
+                  break;
+                default:
+                  break;
+              }
+              break;
+            case 3:
+              SetCharProperty(pet, PROPERTY_STRING, key, value);
+              fMatch = true;
+              break;
+            case 4:
+              c = value[0];
+              SetCharProperty(pet, PROPERTY_CHAR, key, &c);
+              fMatch = true;
+              break;
+            case 5:
+              l = atol(value);
+              SetCharProperty(pet, PROPERTY_LONG, key, &l);
+              fMatch = true;
+              break;
+            default:
+              break;
+          }
+          free_string(key);
+          free_string(type);
+          free_string(value);
+          break;
+        }
         break;
 
       case 'S':
@@ -1709,6 +1839,80 @@ void fread_obj(CHAR_DATA * ch, FILE * fp)
         break;
 
       case 'O':
+        break;
+
+      case 'P':
+        if (!str_cmp(word, "Prop"))
+        {
+          char *temp;
+          char key[MAX_STRING_LENGTH];
+          char type[MAX_STRING_LENGTH];
+          char value[MAX_STRING_LENGTH];
+          int i;
+          bool b;
+          char c;
+          long l;
+
+          // try to see the difference between '..' .. '..' and ..~ ..~ ..~
+          c = fread_letter(fp);
+          ungetc(c, fp);
+          if (c == '\'')
+          {
+            temp = fread_string_eol(fp);
+            temp = one_argument(temp, key);
+            temp = one_argument(temp, type);
+            temp = one_argument(temp, value);
+          }
+          else
+          {
+            temp = fread_string(fp);
+            strncpy(key, temp, MAX_STRING_LENGTH);
+            temp = fread_string(fp);
+            strncpy(type, temp, MAX_STRING_LENGTH);
+            temp = fread_string(fp);
+            strncpy(value, temp, MAX_STRING_LENGTH);
+          }
+
+          switch (which_keyword(type, "int", "bool", "string",
+                                "char", "long", NULL))
+          {
+            case 1:
+              i = atoi(value);
+              SetObjectProperty(obj, PROPERTY_INT, key, &i);
+              fMatch = true;
+              break;
+            case 2:
+              switch (which_keyword(value, "true", "false", NULL))
+              {
+                case 1:
+                  b = true;
+                  SetObjectProperty(obj, PROPERTY_BOOL, key, &b);
+                  fMatch = true;
+                  break;
+                case 2:
+                  b = false;
+                  SetObjectProperty(obj, PROPERTY_BOOL, key, &b);
+                  fMatch = true;
+                  break;
+              }
+              break;
+            case 3:
+              SetObjectProperty(obj, PROPERTY_STRING, key, value);
+              fMatch = true;
+              break;
+            case 4:
+              c = value[0];
+              SetObjectProperty(obj, PROPERTY_CHAR, key, &c);
+              fMatch = true;
+              break;
+            case 5:
+              l = atol(value);
+              SetObjectProperty(obj, PROPERTY_LONG, key, &l);
+              fMatch = true;
+              break;
+          }
+          break;
+        }
         break;
 
       case 'S':

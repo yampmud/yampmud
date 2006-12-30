@@ -72,6 +72,12 @@ struct clan_titles
   char *title_of_rank[3];
 };
 
+struct table_type
+{
+  char *name;
+  int value;
+};
+
 /* game tables */
 extern const struct clan_type clan_table[MAX_CLAN];
 extern const struct position_type position_table[];
@@ -119,3 +125,5 @@ extern const struct flag_type weapon_class[];
 extern const struct flag_type weapon_type2[];
 extern const struct flag_type furniture_flags[];
 extern const struct flag_type apply_types[];
+
+extern const struct table_type property_table[];

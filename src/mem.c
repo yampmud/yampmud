@@ -21,6 +21,7 @@
 #include "merc.h"
 #include "recycle.h"
 #include "db.h"
+#include "fd_property.h"
 
 /*
  * Globals
@@ -193,6 +194,7 @@ void free_room_index(ROOM_INDEX_DATA * pRoom)
   int door;
   EXTRA_DESCR_DATA *pExtra;
   RESET_DATA *pReset;
+  PROPERTY *pProp, *pProp_next;
 
   free_string(pRoom->name);
   free_string(pRoom->description);
@@ -212,6 +214,14 @@ void free_room_index(ROOM_INDEX_DATA * pRoom)
   for (pReset = pRoom->reset_first; pReset; pReset = pReset->next)
   {
     free_reset_data(pReset);
+  }
+
+  pProp = pRoom->property;
+  while (pProp)
+  {
+    pProp_next = pProp->next;
+    free_property(pProp);
+    pProp = pProp_next;
   }
 
   pRoom->next = room_index_free;

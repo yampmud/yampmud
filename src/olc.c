@@ -252,6 +252,7 @@ const struct olc_cmd_type redit_table[] = {
   {"mshow", redit_mshow},
   {"oshow", redit_oshow},
   {"owner", redit_owner},
+  {"property", redit_property},
 
   {"?", show_help},
   {"version", show_version},
@@ -289,6 +290,7 @@ const struct olc_cmd_type oedit_table[] = {
   {"condition", oedit_condition}, /* ROM */
   {"autoweapon", oedit_autoweapon},
   {"autoarmor", oedit_autoarmor},
+  {"property", oedit_property},
 
   {"?", show_help},
   {"version", show_version},
@@ -340,6 +342,7 @@ const struct olc_cmd_type medit_table[] = {
   {"autoset", medit_autoset},
   {"autoeasy", medit_autoeasy},
   {"autohard", medit_autohard},
+  {"property", medit_property},
   {"?", show_help},
   {"version", show_version},
 

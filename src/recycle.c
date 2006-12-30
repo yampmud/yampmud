@@ -39,6 +39,7 @@
 #include <stdlib.h>
 #include "merc.h"
 #include "recycle.h"
+#include "fd_property.h"
 
 /* stuff for recycling ban structures */
 BAN_DATA *ban_free;
@@ -326,6 +327,7 @@ void free_obj(OBJ_DATA * obj)
 {
   AFFECT_DATA *paf, *paf_next;
   EXTRA_DESCR_DATA *ed, *ed_next;
+  PROPERTY *pProp, *pProp_next;
 
   if (!IS_VALID(obj))
     return;
@@ -349,6 +351,15 @@ void free_obj(OBJ_DATA * obj)
   free_string(obj->short_descr);
   free_string(obj->owner);
   free_string(obj->killer);
+
+  pProp = obj->property;
+  while (pProp)
+  {
+    pProp_next = pProp->next;
+    free_property(pProp);
+    pProp = pProp_next;
+  }
+
   INVALIDATE(obj);
 
   obj->next = obj_free;
@@ -411,6 +422,7 @@ void free_char(CHAR_DATA * ch)
   OBJ_DATA *obj_next;
   AFFECT_DATA *paf;
   AFFECT_DATA *paf_next;
+  PROPERTY *prop, *prop_next;
 
   if (!IS_VALID(ch))
     return;
@@ -434,6 +446,14 @@ void free_char(CHAR_DATA * ch)
   {
     paf_next = paf->next;
     affect_remove(ch, paf);
+  }
+
+  prop = ch->property;
+  while (prop)
+  {
+    prop_next = prop->next;
+    free_property(prop);
+    prop = prop_next;
   }
 
   free_string(ch->name);
@@ -822,4 +842,95 @@ void free_help(HELP_DATA * help)
   free_string(help->keyword);
   free_string(help->text);
   free(help);
+}
+
+//
+// PROPERTY_INDEX
+//
+PROPERTY_INDEX_TYPE *property_index_free = NULL;
+int property_index_allocated = 0;
+int property_index_inuse = 0;
+
+PROPERTY_INDEX_TYPE *new_property_index(void)
+{
+  PROPERTY_INDEX_TYPE *pProp;
+
+  if (property_index_free == NULL)
+  {
+    pProp = alloc_perm(sizeof(PROPERTY_INDEX_TYPE));
+    property_index_allocated++;
+  }
+  else
+  {
+    pProp = property_index_free;
+    property_index_free = property_index_free->next;
+  }
+
+  property_index_inuse++;
+  memset((void *) pProp, 0, sizeof(PROPERTY_INDEX_TYPE));
+  VALIDATE(pProp);
+
+  pProp->key = str_dup("");
+
+  return pProp;
+}
+
+void free_property_index(PROPERTY_INDEX_TYPE * pProp)
+{
+  if (!IS_VALID(pProp))
+    return;
+
+  free_string(pProp->key);
+
+  property_index_inuse--;
+  INVALIDATE(pProp);
+
+  pProp->next = property_index_free;
+  property_index_free = pProp;
+}
+
+
+//
+// PROPERTY
+//
+PROPERTY *property_free = NULL;
+int property_allocated = 0;
+int property_inuse = 0;
+
+PROPERTY *new_property(void)
+{
+  PROPERTY *property;
+
+  if (property_free == NULL)
+  {
+    property = alloc_perm(sizeof(PROPERTY));
+    property_allocated++;
+  }
+  else
+  {
+    property = property_free;
+    property_free = property_free->next;
+  }
+
+  property_inuse++;
+  memset((void *) property, 0, sizeof(PROPERTY));
+  VALIDATE(property);
+
+  property->sValue = str_dup("");
+
+  return property;
+}
+
+void free_property(PROPERTY * property)
+{
+  if (!IS_VALID(property))
+    return;
+
+  free_string(property->sValue);
+
+  property_inuse--;
+  INVALIDATE(property);
+
+  property->next = property_free;
+  property_free = property;
 }

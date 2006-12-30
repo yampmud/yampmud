@@ -152,6 +152,7 @@ DECLARE_OLC_FUN(redit_mana);
 DECLARE_OLC_FUN(redit_tele);
 DECLARE_OLC_FUN(redit_clan);
 DECLARE_OLC_FUN(redit_owner);
+DECLARE_OLC_FUN(redit_property);
 
 /*
  * Object Editor Prototypes
@@ -173,6 +174,7 @@ DECLARE_OLC_FUN(oedit_value4);  /* ROM */
 DECLARE_OLC_FUN(oedit_weight);
 DECLARE_OLC_FUN(oedit_cost);
 DECLARE_OLC_FUN(oedit_ed);
+DECLARE_OLC_FUN(oedit_property);
 
 DECLARE_OLC_FUN(oedit_extra);   /* ROM */
 DECLARE_OLC_FUN(oedit_wear);    /* ROM */
@@ -227,6 +229,7 @@ DECLARE_OLC_FUN(medit_delmprog);  /* ROM */
 DECLARE_OLC_FUN(medit_autoset);
 DECLARE_OLC_FUN(medit_autoeasy);
 DECLARE_OLC_FUN(medit_autohard);
+DECLARE_OLC_FUN(medit_property);
 
 /* Mobprog editor */
 

@@ -396,6 +396,7 @@ long fread_long args((FILE * fp));
 long fread_flag args((FILE * fp));
 char *fread_string args((FILE * fp));
 char *fread_string_eol args((FILE * fp));
+char *fread_string_temp args((FILE * fp));
 void fread_to_eol args((FILE * fp));
 char *fread_word args((FILE * fp));
 long flag_convert args((char letter));

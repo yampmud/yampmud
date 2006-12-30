@@ -328,6 +328,8 @@ DECLARE_DO_FUN(do_prefi);
 DECLARE_DO_FUN(do_prefix);
 DECLARE_DO_FUN(do_promote);
 DECLARE_DO_FUN(do_prompt);
+DECLARE_DO_FUN(do_propedit);
+DECLARE_DO_FUN(do_propertylist);
 DECLARE_DO_FUN(do_protect);
 DECLARE_DO_FUN(do_psay);
 DECLARE_DO_FUN(do_punload);

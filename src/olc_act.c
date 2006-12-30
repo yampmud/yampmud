@@ -25,6 +25,8 @@
 #include "lookup.h"
 #include "magic.h"
 #include "db.h"
+#include "fd_property.h"
+#include "str_util.h"
 
 /* Return true if area changed, false if not. */
 #define REDIT( fun )		bool fun( CHAR_DATA *ch, char *argument )
@@ -993,6 +995,8 @@ REDIT(redit_show)
   }
 
   send_to_char(buf1, ch);
+  show_properties(ch, pRoom->property, "perm");
+
   return false;
 }
 
@@ -1699,6 +1703,105 @@ REDIT(redit_mreset)
   act("$n has created $N!", ch, NULL, newmob, TO_ROOM);
   return true;
 }
+
+bool redit_property(CHAR_DATA * ch, char *argument)
+{
+  ROOM_INDEX_DATA *pRoom;
+  char stype[MAX_STRING_LENGTH];
+  char key[MAX_STRING_LENGTH];
+  char *svalue;
+  long l;
+  int i;
+  bool b, delete;
+  char c;
+
+  EDIT_ROOM(ch, pRoom);
+
+  argument = one_argument(argument, key);
+  argument = one_argument(argument, stype);
+  svalue = argument;
+
+  delete = str_cmp(svalue, "delete") ? false : true;
+
+  if (svalue == NULL || svalue[0] == 0)
+  {
+    send_to_char("Usage: property <key> <type> <value>\n\r", ch);
+    send_to_char("  Where <type> is \"bool\", \"int\", \"long\", \"char\","
+                 "\"string\n\r", ch);
+    return false;
+  }
+
+  if (!does_property_exist_s(key, stype))
+  {
+    send_to_char("Unknown property, see `{Wpropertylist{x` for overview.\n\r",
+                 ch);
+    return false;
+  }
+
+  switch (which_keyword(stype, "bool", "int", "long", "char", "string", NULL))
+  {
+    case 1:
+      if (delete)
+        DeleteRoomProperty(pRoom, PROPERTY_BOOL, key);
+      else
+      {
+        switch (which_keyword(svalue, "true", "false", NULL))
+        {
+          case 1:
+            b = true;
+            break;
+          case 2:
+            b = false;
+            break;
+          default:
+            redit_property(ch, "");
+            return false;
+        }
+        SetRoomProperty(pRoom, PROPERTY_BOOL, key, &b);
+      }
+      break;
+    case 2:
+      if (delete)
+        DeleteRoomProperty(pRoom, PROPERTY_INT, key);
+      else
+      {
+        i = atoi(svalue);
+        SetRoomProperty(pRoom, PROPERTY_INT, key, &i);
+      }
+      break;
+    case 3:
+      if (delete)
+        DeleteRoomProperty(pRoom, PROPERTY_LONG, key);
+      else
+      {
+        l = atol(svalue);
+        SetRoomProperty(pRoom, PROPERTY_LONG, key, &l);
+      }
+      break;
+    case 4:
+      if (delete)
+        DeleteRoomProperty(pRoom, PROPERTY_CHAR, key);
+      else
+      {
+        c = svalue[0];
+        SetRoomProperty(pRoom, PROPERTY_CHAR, key, &c);
+      }
+      break;
+    case 5:
+      if (delete)
+        DeleteRoomProperty(pRoom, PROPERTY_STRING, key);
+      else
+        SetRoomProperty(pRoom, PROPERTY_STRING, key, svalue);
+      break;
+    default:
+      redit_property(ch, "");
+      return false;
+  }
+
+  return true;
+}
+
+
 
 struct wear_type
 {
@@ -2655,6 +2758,8 @@ OEDIT(oedit_show)
 
   show_obj_values(ch, pObj);
 
+  show_properties(ch, pObj->property, "perm");
+
   return false;
 }
 
@@ -3557,6 +3662,107 @@ OEDIT(oedit_autoarmor)
   return true;
 }
 
+
+bool oedit_property(CHAR_DATA * ch, char *argument)
+{
+  OBJ_INDEX_DATA *pObj;
+  char stype[MAX_STRING_LENGTH];
+  char key[MAX_STRING_LENGTH];
+  char *svalue;
+  long l;
+  int i;
+  bool b, delete;
+  char c;
+
+  EDIT_OBJ(ch, pObj);
+
+  argument = one_argument(argument, key);
+  argument = one_argument(argument, stype);
+  svalue = argument;
+
+  delete = str_cmp(svalue, "delete") ? false : true;
+
+  if (svalue == NULL || svalue[0] == 0)
+  {
+    send_to_char("Usage: property <key> <type> <value>\n\r", ch);
+    send_to_char("  Where <type> is \"bool\", \"int\", \"long\", \"char\","
+                 "\"string\n\r", ch);
+    return false;
+  }
+
+  if (!does_property_exist_s(key, stype))
+  {
+    send_to_char("Unknown property, see `{Wpropertylist{x` for overview.\n\r",
+                 ch);
+    return false;
+  }
+
+  switch (which_keyword(stype, "bool", "int", "long", "char", "string", NULL))
+  {
+    case 1:
+      if (delete)
+        DeleteDObjectProperty(pObj, PROPERTY_BOOL, key);
+      else
+      {
+        switch (which_keyword(svalue, "true", "false", NULL))
+        {
+          case 1:
+            b = true;
+            break;
+          case 2:
+            b = false;
+            break;
+          default:
+            oedit_property(ch, "");
+            return false;
+        }
+        SetDObjectProperty(pObj, PROPERTY_BOOL, key, &b);
+      }
+      break;
+    case 2:
+      if (delete)
+        DeleteDObjectProperty(pObj, PROPERTY_INT, key);
+      else
+      {
+        i = atoi(svalue);
+        SetDObjectProperty(pObj, PROPERTY_INT, key, &i);
+      }
+      break;
+    case 3:
+      if (delete)
+        DeleteDObjectProperty(pObj, PROPERTY_LONG, key);
+      else
+      {
+        l = atol(svalue);
+        SetDObjectProperty(pObj, PROPERTY_LONG, key, &l);
+      }
+      break;
+    case 4:
+      if (delete)
+        DeleteDObjectProperty(pObj, PROPERTY_CHAR, key);
+      else
+      {
+        c = svalue[0];
+        SetDObjectProperty(pObj, PROPERTY_CHAR, key, &c);
+      }
+      break;
+    case 5:
+      if (delete)
+        DeleteDObjectProperty(pObj, PROPERTY_STRING, key);
+      else
+        SetDObjectProperty(pObj, PROPERTY_STRING, key, svalue);
+      break;
+    default:
+      oedit_property(ch, "");
+      return false;
+  }
+
+  send_to_char("Done\n\r", ch);
+
+  return true;
+}
+
+
 /*
  * Mobile Editor Functions.
  */
@@ -3740,6 +3946,8 @@ MEDIT(medit_show)
       cnt++;
     }
   }
+
+  show_properties(ch, pMob->property, "perm");
 
   return false;
 }
@@ -5188,6 +5396,7 @@ MEDIT(medit_autoeasy)
   return true;
 }
 
+
 OEDIT(oedit_delete)
 {
   OBJ_INDEX_DATA *pObj;
@@ -5489,5 +5698,105 @@ MEDIT(medit_delete)
   sprintf(buf, "Removed mobile vnum {C%d{x and {C%d{x resets.\n\r", index,
           count);
   send_to_char(buf, ch);
+  return true;
+}
+
+
+bool medit_property(CHAR_DATA * ch, char *argument)
+{
+  MOB_INDEX_DATA *pMob;
+  char stype[MAX_STRING_LENGTH];
+  char key[MAX_STRING_LENGTH];
+  char *svalue;
+  long l;
+  int i;
+  bool b, delete;
+  char c;
+
+  EDIT_MOB(ch, pMob);
+
+  argument = one_argument(argument, key);
+  argument = one_argument(argument, stype);
+  svalue = argument;
+
+  delete = str_cmp(svalue, "delete") ? false : true;
+
+  if (svalue == NULL || svalue[0] == 0)
+  {
+    send_to_char("Usage: property <key> <type> <value>\n\r", ch);
+    send_to_char("  Where <type> is \"bool\", \"int\", \"long\", \"char\","
+                 "\"string\n\r", ch);
+    return false;
+  }
+
+  if (!does_property_exist_s(key, stype))
+  {
+    send_to_char("Unknown property, see `{Wpropertylist{x` for overview.\n\r",
+                 ch);
+    return false;
+  }
+
+  switch (which_keyword(stype, "bool", "int", "long", "char", "string", NULL))
+  {
+    case 1:
+      if (delete)
+        DeleteDCharProperty(pMob, PROPERTY_BOOL, key);
+      else
+      {
+        switch (which_keyword(svalue, "true", "false", NULL))
+        {
+          case 1:
+            b = true;
+            break;
+          case 2:
+            b = false;
+            break;
+          default:
+            medit_property(ch, "");
+            return false;
+        }
+        SetDCharProperty(pMob, PROPERTY_BOOL, key, &b);
+      }
+      break;
+    case 2:
+      if (delete)
+        DeleteDCharProperty(pMob, PROPERTY_INT, key);
+      else
+      {
+        i = atoi(svalue);
+        SetDCharProperty(pMob, PROPERTY_INT, key, &i);
+      }
+      break;
+    case 3:
+      if (delete)
+        DeleteDCharProperty(pMob, PROPERTY_LONG, key);
+      else
+      {
+        l = atol(svalue);
+        SetDCharProperty(pMob, PROPERTY_LONG, key, &l);
+      }
+      break;
+    case 4:
+      if (delete)
+        DeleteDCharProperty(pMob, PROPERTY_CHAR, key);
+      else
+      {
+        c = svalue[0];
+        SetDCharProperty(pMob, PROPERTY_CHAR, key, &c);
+      }
+      break;
+    case 5:
+      if (delete)
+        DeleteDCharProperty(pMob, PROPERTY_STRING, key);
+      else
+        SetDCharProperty(pMob, PROPERTY_STRING, key, svalue);
+      break;
+    default:
+      medit_property(ch, "");
+      return false;
+  }
+
+  send_to_char("Done.\n\r", ch);
+
   return true;
 }

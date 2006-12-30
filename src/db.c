@@ -54,8 +54,9 @@
 #undef IN_DB_C
 
 #include "olc.h"
-
 #include "sql_io.h"
+#include "fd_property.h"
+#include "str_util.h"
 
 extern int _filbuf args((FILE *));
 
@@ -180,6 +181,8 @@ void boot_db()
         *skill_table[sn].pgsn = sn;
     }
   }
+
+  load_properties();
 
   /* 
    * Read in all the area files.
@@ -849,6 +852,57 @@ void load_rooms(FILE * fp)
         pRoomIndex->owner = fread_string(fp);
       }
 
+      else if (letter == 'P')
+      {
+        char key[MAX_STRING_LENGTH];
+        char type[MAX_STRING_LENGTH];
+        char value[MAX_STRING_LENGTH];
+        int i;
+        bool b;
+        char c;
+        long l;
+
+        strcpy(key, fread_string_temp(fp));
+        strcpy(type, fread_string_temp(fp));
+        strcpy(value, fread_string_temp(fp));
+
+        switch (which_keyword(type, "int", "bool", "string",
+                              "char", "long", NULL))
+        {
+          case 1:
+            i = atoi(value);
+            SetRoomProperty(pRoomIndex, PROPERTY_INT, key, &i);
+            break;
+          case 2:
+            switch (which_keyword(value, "true", "false", NULL))
+            {
+              case 1:
+                b = true;
+                SetRoomProperty(pRoomIndex, PROPERTY_BOOL, key, &b);
+                break;
+              case 2:
+                b = false;
+                SetRoomProperty(pRoomIndex, PROPERTY_BOOL, key, &b);
+                break;
+              default:
+                ;
+            }
+            break;
+          case 3:
+            SetRoomProperty(pRoomIndex, PROPERTY_STRING, key, value);
+            break;
+          case 4:
+            c = value[0];
+            SetRoomProperty(pRoomIndex, PROPERTY_CHAR, key, &c);
+            break;
+          case 5:
+            l = atol(value);
+            SetRoomProperty(pRoomIndex, PROPERTY_LONG, key, &l);
+            break;
+          default:
+            bugf("Property: unknown keyword %s", type);
+        }
+      }
       else
       {
         bug("Load_rooms: vnum %ld has flag not 'DES'.", vnum);
@@ -1619,6 +1673,7 @@ void clone_mobile(CHAR_DATA * parent, CHAR_DATA * clone)
 {
   int i;
   AFFECT_DATA *paf;
+  PROPERTY *prop;
 
   if (parent == NULL || clone == NULL || !IS_NPC(parent))
     return;
@@ -1690,6 +1745,14 @@ void clone_mobile(CHAR_DATA * parent, CHAR_DATA * clone)
   /* now add the affects */
   for (paf = parent->affected; paf != NULL; paf = paf->next)
     affect_to_char(clone, paf);
+
+  for (prop = parent->property; prop; prop = prop->next)
+    if (prop->sValue == NULL || prop->sValue[0] == 0)
+      SetCharProperty(clone, prop->propIndex->type, prop->propIndex->key,
+                      &prop->iValue);
+    else
+      SetCharProperty(clone, prop->propIndex->type, prop->propIndex->key,
+                      prop->sValue);
 }
 
 /*
@@ -1804,6 +1867,7 @@ void clone_object(OBJ_DATA * parent, OBJ_DATA * clone)
   int i;
   //    AFFECT_DATA *paf;
   EXTRA_DESCR_DATA *ed, *ed_new;
+  PROPERTY *prop;
 
   if (parent == NULL || clone == NULL)
     return;
@@ -1836,6 +1900,13 @@ void clone_object(OBJ_DATA * parent, OBJ_DATA * clone)
     clone->extra_descr = ed_new;
   }
 
+  for (prop = parent->property; prop; prop = prop->next)
+    if (prop->sValue == NULL || prop->sValue[0] == 0)
+      SetObjectProperty(clone, prop->propIndex->type, prop->propIndex->key,
+                        &prop->iValue);
+    else
+      SetObjectProperty(clone, prop->propIndex->type, prop->propIndex->key,
+                        prop->sValue);
 }
 
 /*
@@ -2367,6 +2438,63 @@ char *fread_string_eol(FILE * fp)
     }
   }
 }
+
+//
+// Read a string from a file and store it in a static buffer (hence the temp).
+//
+char *fread_string_temp(FILE * fp)
+{
+  char *plast;
+  char c;
+  static char stringread[32768];
+  // Make it big. very big. MSL isn't enough.
+  // MSL is only 4608 bytes. The reading of
+  // the beenthere data is 2*MAX_VNUMS/8,
+  // which is 8192 bytes.
+  plast = stringread;
+
+  /*
+   * Skip blanks.
+   * Read first char.
+   */
+  do
+  {
+    c = getc(fp);
+  }
+  while (isspace(c));
+
+  if ((*plast++ = c) == '~')
+    return &str_empty[0];
+
+  for (;;)
+  {
+    switch (*plast = getc(fp))
+    {
+      default:
+        plast++;
+        break;
+
+      case EOF:
+        bugf("fread_string(): EOF");
+        abort();
+        exit(1);
+
+      case '\n':
+        plast++;
+        *plast++ = '\r';
+        break;
+
+      case '\r':
+        break;
+
+      case '~':
+        plast++;
+        plast[-1] = 0;
+        return stringread;
+    }
+  }
+}
+
 
 /*
  * Read to end of line (for comments).
