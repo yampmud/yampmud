@@ -1843,7 +1843,7 @@ CH_CMD(do_rstat)
     }
   }
 
-  show_properties(ch,location->property,"temp");
+  show_properties(ch, location->property, "temp");
 
   return;
 }
@@ -2190,7 +2190,7 @@ CH_CMD(do_ostat)
       }
     }
 
-  show_properties(ch,obj->property,"temp");
+  show_properties(ch, obj->property, "temp");
 
   return;
 }
@@ -2447,7 +2447,7 @@ CH_CMD(do_mstat)
   page_to_char(buf_string(output), ch);
   free_buf(output);
 
-  show_properties(ch,victim->property,"temp");
+  show_properties(ch, victim->property, "temp");
 
   return;
 }

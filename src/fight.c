@@ -3622,7 +3622,7 @@ int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels)
       xp = base_exp;
   }
 
-  xp = xp+bonus;
+  xp = xp + bonus;
 
   if (gch->level > 99)
     xp = 90 * xp / gch->level;
