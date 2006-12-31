@@ -313,7 +313,7 @@ void load_area(FILE * fp)
 {
   AREA_DATA *pArea;
 
-  pArea = alloc_perm(sizeof(*pArea));
+  pArea = new_area();
   /* pArea->reset_first = NULL; pArea->reset_last = NULL; */
   fread_string(fp);
   pArea->file_name = fread_string(fp);
@@ -388,7 +388,7 @@ void new_load_area(FILE * fp)
   char *word;
   bool fMatch;
 
-  pArea = alloc_perm(sizeof(*pArea));
+  pArea = new_area();
   pArea->age = 15;
   pArea->nplayer = 0;
   pArea->file_name = str_dup(strArea);

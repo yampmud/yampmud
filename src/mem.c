@@ -27,7 +27,6 @@
  * Globals
  */
 
-AREA_DATA *area_free;
 EXIT_DATA *exit_free;
 ROOM_INDEX_DATA *room_index_free;
 OBJ_INDEX_DATA *obj_index_free;
@@ -60,19 +59,13 @@ void free_reset_data(RESET_DATA * pReset)
 
 AREA_DATA *new_area(void)
 {
+  static int top_area_vnum = 0;
   AREA_DATA *pArea;
   char buf[MAX_INPUT_LENGTH];
 
-  if (!area_free)
-  {
-    pArea = alloc_perm(sizeof(*pArea));
-    top_area++;
-  }
-  else
-  {
-    pArea = area_free;
-    area_free = area_free->next;
-  }
+  pArea = (AREA_DATA *) malloc(sizeof(*pArea));
+  top_area++;
+  top_area_vnum++;
 
   pArea->next = NULL;
   pArea->name = str_dup("New area");
@@ -87,7 +80,7 @@ AREA_DATA *new_area(void)
   pArea->empty = true;          /* ROM patch */
   sprintf(buf, "area%d.are", pArea->vnum);
   pArea->file_name = str_dup(buf);
-  pArea->vnum = top_area - 1;
+  pArea->vnum = top_area_vnum;
 
   return pArea;
 }
@@ -98,9 +91,8 @@ void free_area(AREA_DATA * pArea)
   free_string(pArea->file_name);
   free_string(pArea->builders);
   free_string(pArea->credits);
-
-  pArea->next = area_free->next;
-  area_free = pArea;
+  top_area--;
+  free(pArea);
   return;
 }
 
