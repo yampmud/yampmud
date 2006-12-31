@@ -684,26 +684,15 @@ void free_help(HELP_DATA * help)
 //
 // PROPERTY_INDEX
 //
-PROPERTY_INDEX_TYPE *property_index_free = NULL;
 int property_index_allocated = 0;
-int property_index_inuse = 0;
 
 PROPERTY_INDEX_TYPE *new_property_index(void)
 {
   PROPERTY_INDEX_TYPE *pProp;
 
-  if (property_index_free == NULL)
-  {
-    pProp = alloc_perm(sizeof(PROPERTY_INDEX_TYPE));
-    property_index_allocated++;
-  }
-  else
-  {
-    pProp = property_index_free;
-    property_index_free = property_index_free->next;
-  }
+  pProp = alloc_perm(sizeof(PROPERTY_INDEX_TYPE));
+  property_index_allocated++;
 
-  property_index_inuse++;
   memset((void *) pProp, 0, sizeof(PROPERTY_INDEX_TYPE));
   VALIDATE(pProp);
 
@@ -714,16 +703,11 @@ PROPERTY_INDEX_TYPE *new_property_index(void)
 
 void free_property_index(PROPERTY_INDEX_TYPE * pProp)
 {
-  if (!IS_VALID(pProp))
-    return;
-
   free_string(pProp->key);
 
-  property_index_inuse--;
+  property_index_allocated--;
   INVALIDATE(pProp);
-
-  pProp->next = property_index_free;
-  property_index_free = pProp;
+  free(pProp);
 }
 
 
