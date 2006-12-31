@@ -171,20 +171,11 @@ void free_gen_data(GEN_DATA * gen)
   free(gen);
 }
 
-/* stuff for recycling extended descs */
-EXTRA_DESCR_DATA *extra_descr_free;
-
 EXTRA_DESCR_DATA *new_extra_descr(void)
 {
   EXTRA_DESCR_DATA *ed;
 
-  if (extra_descr_free == NULL)
-    ed = alloc_perm(sizeof(*ed));
-  else
-  {
-    ed = extra_descr_free;
-    extra_descr_free = extra_descr_free->next;
-  }
+  ed = (EXTRA_DESCR_DATA *) malloc(sizeof(*ed));
 
   ed->keyword = &str_empty[0];
   ed->description = &str_empty[0];
@@ -200,9 +191,7 @@ void free_extra_descr(EXTRA_DESCR_DATA * ed)
   free_string(ed->keyword);
   free_string(ed->description);
   INVALIDATE(ed);
-
-  ed->next = extra_descr_free;
-  extra_descr_free = ed;
+  free(ed);
 }
 
 /* stuff for recycling affects */
