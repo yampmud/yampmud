@@ -714,26 +714,15 @@ void free_property_index(PROPERTY_INDEX_TYPE * pProp)
 //
 // PROPERTY
 //
-PROPERTY *property_free = NULL;
 int property_allocated = 0;
-int property_inuse = 0;
 
 PROPERTY *new_property(void)
 {
   PROPERTY *property;
 
-  if (property_free == NULL)
-  {
-    property = alloc_perm(sizeof(PROPERTY));
-    property_allocated++;
-  }
-  else
-  {
-    property = property_free;
-    property_free = property_free->next;
-  }
+  property = (PROPERTY *) malloc(sizeof(PROPERTY));
+  property_allocated++;
 
-  property_inuse++;
   memset((void *) property, 0, sizeof(PROPERTY));
   VALIDATE(property);
 
@@ -744,14 +733,9 @@ PROPERTY *new_property(void)
 
 void free_property(PROPERTY * property)
 {
-  if (!IS_VALID(property))
-    return;
-
   free_string(property->sValue);
 
-  property_inuse--;
+  property_allocated--;
   INVALIDATE(property);
-
-  property->next = property_free;
-  property_free = property;
+  free(property);
 }
