@@ -194,21 +194,12 @@ void free_extra_descr(EXTRA_DESCR_DATA * ed)
   free(ed);
 }
 
-/* stuff for recycling affects */
-AFFECT_DATA *affect_free;
-
 AFFECT_DATA *new_affect(void)
 {
   static AFFECT_DATA af_zero;
   AFFECT_DATA *af;
 
-  if (affect_free == NULL)
-    af = alloc_perm(sizeof(*af));
-  else
-  {
-    af = affect_free;
-    affect_free = affect_free->next;
-  }
+  af = (AFFECT_DATA *) malloc(sizeof(*af));
 
   *af = af_zero;
 
@@ -222,8 +213,7 @@ void free_affect(AFFECT_DATA * af)
     return;
 
   INVALIDATE(af);
-  af->next = affect_free;
-  affect_free = af;
+  free(af);
 }
 
 /* stuff for recycling objects */

@@ -2962,11 +2962,9 @@ CH_CMD(do_dump)
   count2 = 0;
   for (d = descriptor_list; d != NULL; d = d->next)
     count++;
-  for (d = descriptor_free; d != NULL; d = d->next)
-    count2++;
 
-  fprintf(fp, "Descs	%4d (%8d bytes), %2d free (%d bytes)\n", count,
-          count * (sizeof(*d)), count2, count2 * (sizeof(*d)));
+  fprintf(fp, "Descs	%4d (%8d bytes)\n", count,
+          count * (sizeof(*d)));
 
   /* object prototypes */
   for (vnum = 0; nMatch < top_obj_index; vnum++)
@@ -2995,13 +2993,8 @@ CH_CMD(do_dump)
   fprintf(fp, "Objs	%4d (%8d bytes), %2d free (%d bytes)\n", count,
           count * (sizeof(*obj)), count2, count2 * (sizeof(*obj)));
 
-  /* affects */
-  count = 0;
-  for (af = affect_free; af != NULL; af = af->next)
-    count++;
-
-  fprintf(fp, "Affects	%4d (%8d bytes), %2d free (%d bytes)\n", aff_count,
-          aff_count * (sizeof(*af)), count, count * (sizeof(*af)));
+  fprintf(fp, "Affects	%4d (%8d bytes)\n", aff_count,
+          aff_count * (sizeof(*af)));
 
   /* rooms */
   fprintf(fp, "Rooms	%4d (%8d bytes)\n", top_room,

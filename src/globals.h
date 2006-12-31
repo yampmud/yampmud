@@ -147,7 +147,6 @@ GLOBAL_DEF(char *help_login, "What are you known as traveller?");
 GLOBAL_DEF(OBJ_DATA * obj_free, NULL);
 GLOBAL_DEF(CHAR_DATA * char_free, NULL);
 GLOBAL_DEF(PC_DATA * pcdata_free, NULL);
-GLOBAL_DEF(AFFECT_DATA * affect_free, NULL);
 GLOBAL_DEF(bool fBootDb, false);
 GLOBAL(MOB_INDEX_DATA * mob_index_hash[MAX_KEY_HASH]);
 GLOBAL(OBJ_INDEX_DATA * obj_index_hash[MAX_KEY_HASH]);
