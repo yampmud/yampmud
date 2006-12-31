@@ -27,7 +27,6 @@
  * Globals
  */
 
-EXIT_DATA *exit_free;
 ROOM_INDEX_DATA *room_index_free;
 OBJ_INDEX_DATA *obj_index_free;
 SHOP_DATA *shop_free;
@@ -100,16 +99,8 @@ EXIT_DATA *new_exit(void)
 {
   EXIT_DATA *pExit;
 
-  if (!exit_free)
-  {
-    pExit = alloc_perm(sizeof(*pExit));
-    top_exit++;
-  }
-  else
-  {
-    pExit = exit_free;
-    exit_free = exit_free->next;
-  }
+  pExit = (EXIT_DATA *) malloc(sizeof(*pExit));
+  top_exit++;
 
   pExit->u1.to_room = NULL;     /* ROM OLC */
   pExit->next = NULL;
@@ -125,11 +116,10 @@ EXIT_DATA *new_exit(void)
 
 void free_exit(EXIT_DATA * pExit)
 {
+  top_exit--;
   free_string(pExit->keyword);
   free_string(pExit->description);
-
-  pExit->next = exit_free;
-  exit_free = pExit;
+  free(pExit);
   return;
 }
 
