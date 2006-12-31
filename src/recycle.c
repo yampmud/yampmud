@@ -102,20 +102,12 @@ void free_cln(CLN_DATA * cln)
   free(cln);
 }
 
-MBR_DATA *mbr_free;
-
 MBR_DATA *new_mbr(void)
 {
   static MBR_DATA mbr_zero;
   MBR_DATA *mbr;
 
-  if (mbr_free == NULL)
-    mbr = alloc_perm(sizeof(*mbr));
-  else
-  {
-    mbr = mbr_free;
-    mbr_free = mbr_free->next;
-  }
+  mbr = (MBR_DATA *) malloc(sizeof(*mbr));
 
   *mbr = mbr_zero;
   VALIDATE(mbr);
@@ -125,14 +117,9 @@ MBR_DATA *new_mbr(void)
 
 void free_mbr(MBR_DATA * mbr)
 {
-  if (!IS_VALID(mbr))
-    return;
-
   free_string(mbr->name);
   INVALIDATE(mbr);
-
-  mbr->next = mbr_free;
-  mbr_free = mbr;
+  free(mbr);
 }
 
 /* stuff for recycling descriptors */
