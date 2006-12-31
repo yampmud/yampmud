@@ -690,7 +690,7 @@ PROPERTY_INDEX_TYPE *new_property_index(void)
 {
   PROPERTY_INDEX_TYPE *pProp;
 
-  pProp = alloc_perm(sizeof(PROPERTY_INDEX_TYPE));
+  pProp = (PROPERTY_INDEX_TYPE *) malloc(sizeof(PROPERTY_INDEX_TYPE));
   property_index_allocated++;
 
   memset((void *) pProp, 0, sizeof(PROPERTY_INDEX_TYPE));
