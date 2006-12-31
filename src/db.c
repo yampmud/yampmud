@@ -2943,11 +2943,8 @@ CH_CMD(do_dump)
     for (af = fch->affected; af != NULL; af = af->next)
       aff_count++;
   }
-  for (fch = char_free; fch != NULL; fch = fch->next)
-    count2++;
 
-  fprintf(fp, "Mobs	%4d (%8d bytes), %2d free (%d bytes)\n", count,
-          count * (sizeof(*fch)), count2, count2 * (sizeof(*fch)));
+  fprintf(fp, "Mobs	%4d (%8d bytes)\n", count, count * (sizeof(*fch)));
 
   /* pcdata */
   count = 0;

@@ -270,22 +270,13 @@ void free_obj(OBJ_DATA * obj)
   free(obj);
 }
 
-/* stuff for recyling characters */
-CHAR_DATA *char_free;
-
 CHAR_DATA *new_char(void)
 {
   static CHAR_DATA ch_zero;
   CHAR_DATA *ch;
   int i;
 
-  if (char_free == NULL)
-    ch = alloc_perm(sizeof(*ch));
-  else
-  {
-    ch = char_free;
-    char_free = char_free->next;
-  }
+  ch = (CHAR_DATA *) malloc(sizeof(*ch));
 
   *ch = ch_zero;
   VALIDATE(ch);
@@ -328,9 +319,6 @@ void free_char(CHAR_DATA * ch)
   AFFECT_DATA *paf_next;
   PROPERTY *prop, *prop_next;
 
-  if (!IS_VALID(ch))
-    return;
-
   if (IS_NPC(ch))
     mobile_count--;
 
@@ -372,10 +360,8 @@ void free_char(CHAR_DATA * ch)
   if (ch->pcdata != NULL)
     free_pcdata(ch->pcdata);
 
-  ch->next = char_free;
-  char_free = ch;
-
   INVALIDATE(ch);
+  free(ch);
   return;
 }
 
