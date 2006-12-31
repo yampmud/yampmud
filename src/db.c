@@ -2947,12 +2947,7 @@ CH_CMD(do_dump)
   fprintf(fp, "Mobs	%4d (%8d bytes)\n", count, count * (sizeof(*fch)));
 
   /* pcdata */
-  count = 0;
-  for (pc = pcdata_free; pc != NULL; pc = pc->next)
-    count++;
-
-  fprintf(fp, "Pcdata	%4d (%8d bytes), %2d free (%d bytes)\n", num_pcs,
-          num_pcs * (sizeof(*pc)), count, count * (sizeof(*pc)));
+  fprintf(fp, "Pcdata	%4d (%8d bytes)\n", num_pcs, num_pcs * (sizeof(*pc)));
 
   /* descriptors */
   count = 0;

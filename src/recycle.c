@@ -365,8 +365,6 @@ void free_char(CHAR_DATA * ch)
   return;
 }
 
-PC_DATA *pcdata_free;
-
 PC_DATA *new_pcdata(void)
 {
   int alias;
@@ -374,13 +372,7 @@ PC_DATA *new_pcdata(void)
   static PC_DATA pcdata_zero;
   PC_DATA *pcdata;
 
-  if (pcdata_free == NULL)
-    pcdata = alloc_perm(sizeof(*pcdata));
-  else
-  {
-    pcdata = pcdata_free;
-    pcdata_free = pcdata_free->next;
-  }
+  pcdata = (PC_DATA *) malloc(sizeof(*pcdata));
 
   *pcdata = pcdata_zero;
 
@@ -408,9 +400,6 @@ void free_pcdata(PC_DATA * pcdata)
 {
   int alias;
 
-  if (!IS_VALID(pcdata))
-    return;
-
   free_string(pcdata->pwd);
   free_string(pcdata->bamfin);
   free_string(pcdata->bamfout);
@@ -434,8 +423,7 @@ void free_pcdata(PC_DATA * pcdata)
     free_string(pcdata->dupes[alias]);
   }
   INVALIDATE(pcdata);
-  pcdata->next = pcdata_free;
-  pcdata_free = pcdata;
+  free(pcdata);
 
   return;
 }
