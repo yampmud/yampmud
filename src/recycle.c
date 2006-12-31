@@ -42,20 +42,12 @@
 #include "fd_property.h"
 
 /* stuff for recycling ban structures */
-BAN_DATA *ban_free;
-
 BAN_DATA *new_ban(void)
 {
   static BAN_DATA ban_zero;
   BAN_DATA *ban;
 
-  if (ban_free == NULL)
-    ban = alloc_perm(sizeof(*ban));
-  else
-  {
-    ban = ban_free;
-    ban_free = ban_free->next;
-  }
+  ban = (BAN_DATA *) malloc(sizeof(*ban));
 
   *ban = ban_zero;
   VALIDATE(ban);
@@ -65,14 +57,9 @@ BAN_DATA *new_ban(void)
 
 void free_ban(BAN_DATA * ban)
 {
-  if (!IS_VALID(ban))
-    return;
-
   free_string(ban->name);
   INVALIDATE(ban);
-
-  ban->next = ban_free;
-  ban_free = ban;
+  free(ban);
 }
 
 /* stuff for recycling wizlist structures */
