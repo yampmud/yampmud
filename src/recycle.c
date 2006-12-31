@@ -454,10 +454,6 @@ long get_mob_id(void)
 
 MEM_DATA *mem_data_free;
 
-/* procedures and constants needed for buffering */
-
-BUFFER *buf_free;
-
 MEM_DATA *new_mem_data(void)
 {
   MEM_DATA *memory;
@@ -489,6 +485,8 @@ void free_mem_data(MEM_DATA * memory)
   INVALIDATE(memory);
 }
 
+/* procedures and constants needed for buffering */
+
 /* buffer sizes */
 const int buf_size[MAX_BUF_LIST] = {
   16, 32, 64, 128, 256, 1024, 2048, 4096, 8192, 16384, 32768, 65536
@@ -513,13 +511,7 @@ BUFFER *new_buf()
 {
   BUFFER *buffer;
 
-  if (buf_free == NULL)
-    buffer = alloc_perm(sizeof(*buffer));
-  else
-  {
-    buffer = buf_free;
-    buf_free = buf_free->next;
-  }
+  buffer = (BUFFER *) malloc(sizeof(*buffer));
 
   buffer->next = NULL;
   buffer->state = BUFFER_SAFE;
@@ -536,13 +528,7 @@ BUFFER *new_buf_size(int size)
 {
   BUFFER *buffer;
 
-  if (buf_free == NULL)
-    buffer = alloc_perm(sizeof(*buffer));
-  else
-  {
-    buffer = buf_free;
-    buf_free = buf_free->next;
-  }
+  buffer = (BUFFER *) malloc(sizeof(*buffer));
 
   buffer->next = NULL;
   buffer->state = BUFFER_SAFE;
@@ -561,17 +547,12 @@ BUFFER *new_buf_size(int size)
 
 void free_buf(BUFFER * buffer)
 {
-  if (!IS_VALID(buffer))
-    return;
-
   free_mem(buffer->string, buffer->size);
   buffer->string = NULL;
   buffer->size = 0;
   buffer->state = BUFFER_FREED;
   INVALIDATE(buffer);
-
-  buffer->next = buf_free;
-  buf_free = buffer;
+  free(buffer);
 }
 
 bool add_buf(BUFFER * buffer, char *string)
