@@ -150,21 +150,13 @@ void free_descriptor(DESCRIPTOR_DATA * d)
   free(d);
 }
 
-/* stuff for recycling gen_data */
-GEN_DATA *gen_data_free;
-
 GEN_DATA *new_gen_data(void)
 {
   static GEN_DATA gen_zero;
   GEN_DATA *gen;
 
-  if (gen_data_free == NULL)
-    gen = alloc_perm(sizeof(*gen));
-  else
-  {
-    gen = gen_data_free;
-    gen_data_free = gen_data_free->next;
-  }
+  gen = (GEN_DATA *) malloc(sizeof(*gen));
+
   *gen = gen_zero;
   VALIDATE(gen);
   return gen;
@@ -176,9 +168,7 @@ void free_gen_data(GEN_DATA * gen)
     return;
 
   INVALIDATE(gen);
-
-  gen->next = gen_data_free;
-  gen_data_free = gen;
+  free(gen);
 }
 
 /* stuff for recycling extended descs */
