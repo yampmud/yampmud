@@ -82,26 +82,24 @@ void free_wiz(WIZ_DATA * wiz)
   free(wiz);
 }
 
-/* stuff for recycling clanlist structures */
-CLN_DATA *cln_free;
-
 CLN_DATA *new_cln(void)
 {
   static CLN_DATA cln_zero;
   CLN_DATA *cln;
 
-  if (cln_free == NULL)
-    cln = alloc_perm(sizeof(*cln));
-  else
-  {
-    cln = cln_free;
-    cln_free = cln_free->next;
-  }
+  cln = (CLN_DATA *) malloc(sizeof(*cln));
 
   *cln = cln_zero;
   VALIDATE(cln);
   cln->name = &str_empty[0];
   return cln;
+}
+
+void free_cln(CLN_DATA * cln)
+{
+  free_string(cln->name);
+  INVALIDATE(cln);
+  free(cln);
 }
 
 MBR_DATA *mbr_free;
