@@ -33,22 +33,13 @@ ROOM_INDEX_DATA *room_index_free;
 OBJ_INDEX_DATA *obj_index_free;
 SHOP_DATA *shop_free;
 MOB_INDEX_DATA *mob_index_free;
-RESET_DATA *reset_free;
 
 RESET_DATA *new_reset_data(void)
 {
   RESET_DATA *pReset;
 
-  if (!reset_free)
-  {
-    pReset = alloc_perm(sizeof(*pReset));
-    top_reset++;
-  }
-  else
-  {
-    pReset = reset_free;
-    reset_free = reset_free->next;
-  }
+  pReset = (RESET_DATA *) malloc(sizeof(*pReset));
+  top_reset++;
 
   pReset->next = NULL;
   pReset->command = 'X';
@@ -62,8 +53,8 @@ RESET_DATA *new_reset_data(void)
 
 void free_reset_data(RESET_DATA * pReset)
 {
-  pReset->next = reset_free;
-  reset_free = pReset;
+  top_reset--;
+  free(pReset);
   return;
 }
 

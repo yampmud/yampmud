@@ -580,7 +580,7 @@ void load_resets(FILE * fp)
       continue;
     }
 
-    pReset = alloc_perm(sizeof(*pReset));
+    pReset = new_reset_data();
     pReset->command = letter;
     /* if_flag */ fread_number(fp);
     pReset->arg1 = fread_long(fp);
