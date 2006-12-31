@@ -122,21 +122,12 @@ void free_mbr(MBR_DATA * mbr)
   free(mbr);
 }
 
-/* stuff for recycling descriptors */
-DESCRIPTOR_DATA *descriptor_free;
-
 DESCRIPTOR_DATA *new_descriptor(void)
 {
   static DESCRIPTOR_DATA d_zero;
   DESCRIPTOR_DATA *d;
 
-  if (descriptor_free == NULL)
-    d = alloc_perm(sizeof(*d));
-  else
-  {
-    d = descriptor_free;
-    descriptor_free = descriptor_free->next;
-  }
+  d = (DESCRIPTOR_DATA *) malloc(sizeof(*d));
 
   *d = d_zero;
   VALIDATE(d);
@@ -153,14 +144,10 @@ DESCRIPTOR_DATA *new_descriptor(void)
 
 void free_descriptor(DESCRIPTOR_DATA * d)
 {
-  if (!IS_VALID(d))
-    return;
-
   free_string(d->host);
   free_mem(d->outbuf, d->outsize);
   INVALIDATE(d);
-  d->next = descriptor_free;
-  descriptor_free = d;
+  free(d);
 }
 
 /* stuff for recycling gen_data */
