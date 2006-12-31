@@ -615,13 +615,7 @@ MPROG_LIST *new_mprog(void)
   static MPROG_LIST mp_zero;
   MPROG_LIST *mp;
 
-  if (mprog_free == NULL)
-    mp = alloc_perm(sizeof(*mp));
-  else
-  {
-    mp = mprog_free;
-    mprog_free = mprog_free->next;
-  }
+  mp = (MPROG_LIST *) malloc(sizeof(*mp));
 
   *mp = mp_zero;
   mp->vnum = 0;
@@ -634,14 +628,10 @@ MPROG_LIST *new_mprog(void)
 
 void free_mprog(MPROG_LIST * mp)
 {
-  if (!IS_VALID(mp))
-    return;
-
   free_string(mp->code);
   free_string(mp->trig_phrase);
   INVALIDATE(mp);
-  mp->next = mprog_free;
-  mprog_free = mp;
+  free(mp);
 }
 
 /* Stuff for recycling imm/auction shit */
