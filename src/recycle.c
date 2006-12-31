@@ -635,19 +635,12 @@ void free_mprog(MPROG_LIST * mp)
 }
 
 /* Stuff for recycling imm/auction shit */
-AUCTION_DATA *auction_free;
 AUCTION_DATA *new_auction(void)
 {
   static AUCTION_DATA auc_zero;
   AUCTION_DATA *auction;
 
-  if (auction_free == NULL)
-    auction = alloc_perm(sizeof(*auction));
-  else
-  {
-    auction = auction_free;
-    auction_free = auction_free->next;
-  }
+  auction = (AUCTION_DATA *) malloc(sizeof(*auction));
 
   *auction = auc_zero;
   VALIDATE(auction);
@@ -656,9 +649,6 @@ AUCTION_DATA *new_auction(void)
 
 void free_auction(AUCTION_DATA * auction)
 {
-  if (!IS_VALID(auction))
-    return;
-
   auction->current_bid = 0;
   auction->platinum_held = 0;
   auction->high_bidder = NULL;
@@ -667,9 +657,7 @@ void free_auction(AUCTION_DATA * auction)
   auction->owner = NULL;
   auction->status = 0;
   INVALIDATE(auction);
-
-  auction->next = auction_free;
-  auction_free = auction;
+  free(auction);
 }
 
 HELP_DATA *new_help(void)
