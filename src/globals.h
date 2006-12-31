@@ -144,7 +144,6 @@ GLOBAL_DEF(char *help_authors, "");
 GLOBAL_DEF(char *help_login, "What are you known as traveller?");
 
 /* externals for counting purposes */
-GLOBAL_DEF(OBJ_DATA * obj_free, NULL);
 GLOBAL_DEF(CHAR_DATA * char_free, NULL);
 GLOBAL_DEF(PC_DATA * pcdata_free, NULL);
 GLOBAL_DEF(bool fBootDb, false);

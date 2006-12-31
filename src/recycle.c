@@ -216,21 +216,13 @@ void free_affect(AFFECT_DATA * af)
   free(af);
 }
 
-/* stuff for recycling objects */
-OBJ_DATA *obj_free;
-
 OBJ_DATA *new_obj(void)
 {
   static OBJ_DATA obj_zero;
   OBJ_DATA *obj;
 
-  if (obj_free == NULL)
-    obj = alloc_perm(sizeof(*obj));
-  else
-  {
-    obj = obj_free;
-    obj_free = obj_free->next;
-  }
+  obj = (OBJ_DATA *) malloc(sizeof(*obj));
+
   *obj = obj_zero;
   VALIDATE(obj);
 
@@ -275,9 +267,7 @@ void free_obj(OBJ_DATA * obj)
   }
 
   INVALIDATE(obj);
-
-  obj->next = obj_free;
-  obj_free = obj;
+  free(obj);
 }
 
 /* stuff for recyling characters */
