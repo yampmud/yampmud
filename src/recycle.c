@@ -62,21 +62,12 @@ void free_ban(BAN_DATA * ban)
   free(ban);
 }
 
-/* stuff for recycling wizlist structures */
-WIZ_DATA *wiz_free;
-
 WIZ_DATA *new_wiz(void)
 {
   static WIZ_DATA wiz_zero;
   WIZ_DATA *wiz;
 
-  if (wiz_free == NULL)
-    wiz = alloc_perm(sizeof(*wiz));
-  else
-  {
-    wiz = wiz_free;
-    wiz_free = wiz_free->next;
-  }
+  wiz = (WIZ_DATA *) malloc(sizeof(*wiz));
 
   *wiz = wiz_zero;
   VALIDATE(wiz);
@@ -86,14 +77,9 @@ WIZ_DATA *new_wiz(void)
 
 void free_wiz(WIZ_DATA * wiz)
 {
-  if (!IS_VALID(wiz))
-    return;
-
   free_string(wiz->name);
   INVALIDATE(wiz);
-
-  wiz->next = wiz_free;
-  wiz_free = wiz;
+  free(wiz);
 }
 
 /* stuff for recycling clanlist structures */
