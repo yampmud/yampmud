@@ -59,6 +59,9 @@ AREA_DATA *new_area(void)
   top_area_vnum++;
 
   pArea->next = NULL;
+  pArea->next_sort = NULL;
+  pArea->reset_first = NULL;
+  pArea->reset_last = NULL;
   pArea->name = str_dup("New area");
   pArea->area_flags = AREA_ADDED;
   pArea->security = 1;
@@ -69,9 +72,13 @@ AREA_DATA *new_area(void)
   pArea->age = 0;
   pArea->nplayer = 0;
   pArea->empty = true;          /* ROM patch */
+  pArea->vnum = top_area_vnum;
   sprintf(buf, "area%d.are", pArea->vnum);
   pArea->file_name = str_dup(buf);
-  pArea->vnum = top_area_vnum;
+  pArea->low_range = 0;
+  pArea->high_range = 0;
+  pArea->repop_msg = NULL;
+  pArea->id = 0;
 
   return pArea;
 }
@@ -95,13 +102,14 @@ EXIT_DATA *new_exit(void)
   top_exit++;
 
   pExit->u1.to_room = NULL;     /* ROM OLC */
+  pExit->u1.vnum = 0;
   pExit->next = NULL;
-  /*  pExit->vnum         =   0;                        ROM OLC */
   pExit->exit_info = 0;
   pExit->key = 0;
   pExit->keyword = &str_empty[0];
   pExit->description = &str_empty[0];
   pExit->rs_flags = 0;
+  pExit->orig_door = 0;
 
   return pExit;
 }
@@ -128,9 +136,17 @@ ROOM_INDEX_DATA *new_room_index(void)
   pRoom->contents = NULL;
   pRoom->extra_descr = NULL;
   pRoom->area = NULL;
+  pRoom->property = NULL;
 
   for (door = 0; door < MAX_DIR; door++)
+  {
     pRoom->exit[door] = NULL;
+    pRoom->old_exit[door] = NULL;
+  }
+
+  pRoom->reset_first = NULL;
+  pRoom->reset_last = NULL;
+
 
   pRoom->name = &str_empty[0];
   pRoom->description = &str_empty[0];
@@ -142,6 +158,7 @@ ROOM_INDEX_DATA *new_room_index(void)
   pRoom->clan = 0;
   pRoom->heal_rate = 100;
   pRoom->mana_rate = 100;
+  pRoom->tele_dest = 0;
 
   return pRoom;
 }
@@ -232,9 +249,11 @@ OBJ_INDEX_DATA *new_obj_index(void)
   pObj->short_descr = str_dup("(no short description)");
   pObj->description = str_dup("(no description)");
   pObj->vnum = 0;
+  pObj->reset_num = 0;
   pObj->item_type = ITEM_TRASH;
   pObj->extra_flags = 0;
   pObj->wear_flags = 0;
+  pObj->level = 0;
   pObj->count = 0;
   pObj->weight = 0;
   pObj->cost = 0;
@@ -242,6 +261,9 @@ OBJ_INDEX_DATA *new_obj_index(void)
   pObj->condition = 100;        /* ROM */
   for (value = 0; value < 5; value++) /* 5 - ROM */
     pObj->value[value] = 0;
+  pObj->clan = 0;
+  pObj->class = 0;
+  pObj->property = NULL;
 
   return pObj;
 }
@@ -281,12 +303,14 @@ MOB_INDEX_DATA *new_mob_index(void)
   pMob->next = NULL;
   pMob->spec_fun = NULL;
   pMob->pShop = NULL;
+  pMob->mprogs = NULL;
   pMob->area = NULL;
   pMob->player_name = str_dup("no name");
   pMob->short_descr = str_dup("(no short description)");
   pMob->long_descr = str_dup("(no long description)\n\r");
   pMob->description = &str_empty[0];
   pMob->vnum = 0;
+  pMob->group = 0;
   pMob->count = 0;
   pMob->killed = 0;
   pMob->sex = 0;
@@ -294,6 +318,7 @@ MOB_INDEX_DATA *new_mob_index(void)
   pMob->act = ACT_IS_NPC;
   pMob->act2 = 0;
   pMob->affected_by = 0;
+  pMob->shielded_by = 0;
   pMob->alignment = 0;
   pMob->hitroll = 0;
   pMob->race = race_lookup("human");  /* - Hugin */
@@ -321,6 +346,11 @@ MOB_INDEX_DATA *new_mob_index(void)
   pMob->start_pos = POS_STANDING; /* -- Hugin */
   pMob->default_pos = POS_STANDING; /* -- Hugin */
   pMob->wealth = 0;
+  pMob->dam_type = 0;
+  pMob->mprog_flags = 0;
+  pMob->die_descr = &str_empty[0];
+  pMob->say_descr = &str_empty[0];
+  pMob->property = NULL;
 
   return pMob;
 }

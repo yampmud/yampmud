@@ -48,6 +48,7 @@
 #include "sql_io.h"
 #include "fd_property.h"
 #include "str_util.h"
+#include "recycle.h"
 
 /*
  * Snarf a mob section.  new style
@@ -222,7 +223,7 @@ void load_mobiles(FILE * fp)
         char *word;
         int trigger = 0;
 
-        pMprog = new_mpcode();
+        pMprog = new_mprog();
         word = fread_word(fp);
         if (!(trigger = flag_lookup(word, mprog_flags)))
         {
