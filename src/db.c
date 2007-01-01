@@ -730,7 +730,7 @@ void load_rooms(FILE * fp)
     }
     fBootDb = true;
 
-    pRoomIndex = new_room();
+    pRoomIndex = new_room_index();
     pRoomIndex->owner = str_dup("");
     pRoomIndex->people = NULL;
     pRoomIndex->contents = NULL;
