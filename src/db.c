@@ -833,12 +833,11 @@ void load_rooms(FILE * fp)
       {
         EXTRA_DESCR_DATA *ed;
 
-        ed = alloc_perm(sizeof(*ed));
+        ed = new_extra_descr();
         ed->keyword = fread_string(fp);
         ed->description = fread_string(fp);
         ed->next = pRoomIndex->extra_descr;
         pRoomIndex->extra_descr = ed;
-        top_ed++;
       }
 
       else if (letter == 'O')

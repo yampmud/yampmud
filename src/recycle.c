@@ -176,6 +176,7 @@ EXTRA_DESCR_DATA *new_extra_descr(void)
   EXTRA_DESCR_DATA *ed;
 
   ed = (EXTRA_DESCR_DATA *) malloc(sizeof(*ed));
+  top_ed++;
 
   ed->keyword = &str_empty[0];
   ed->description = &str_empty[0];
@@ -185,9 +186,7 @@ EXTRA_DESCR_DATA *new_extra_descr(void)
 
 void free_extra_descr(EXTRA_DESCR_DATA * ed)
 {
-  if (!IS_VALID(ed))
-    return;
-
+  top_ed--;
   free_string(ed->keyword);
   free_string(ed->description);
   INVALIDATE(ed);
