@@ -1014,7 +1014,7 @@ void load_shops(FILE * fp)
     MOB_INDEX_DATA *pMobIndex;
     int iTrade;
 
-    pShop = alloc_perm(sizeof(*pShop));
+    pShop = new_shop();
     pShop->keeper = fread_long(fp);
     if (pShop->keeper == 0)
       break;
