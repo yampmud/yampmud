@@ -450,19 +450,11 @@ long get_mob_id(void)
   return val;
 }
 
-MEM_DATA *mem_data_free;
-
 MEM_DATA *new_mem_data(void)
 {
   MEM_DATA *memory;
 
-  if (mem_data_free == NULL)
-    memory = alloc_mem(sizeof(*memory));
-  else
-  {
-    memory = mem_data_free;
-    mem_data_free = mem_data_free->next;
-  }
+  memory = (MEM_DATA *) malloc(sizeof(*memory));
 
   memory->next = NULL;
   memory->id = 0;
@@ -475,12 +467,8 @@ MEM_DATA *new_mem_data(void)
 
 void free_mem_data(MEM_DATA * memory)
 {
-  if (!IS_VALID(memory))
-    return;
-
-  memory->next = mem_data_free;
-  mem_data_free = memory;
   INVALIDATE(memory);
+  free(memory);
 }
 
 /* procedures and constants needed for buffering */
@@ -604,9 +592,6 @@ char *buf_string(BUFFER * buffer)
 {
   return buffer->string;
 }
-
-/* stuff for recycling mobprograms */
-MPROG_LIST *mprog_free;
 
 MPROG_LIST *new_mprog(void)
 {
