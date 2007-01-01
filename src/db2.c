@@ -88,7 +88,7 @@ void load_mobiles(FILE * fp)
     }
     fBootDb = true;
 
-    pMobIndex = alloc_perm(sizeof(*pMobIndex));
+    pMobIndex = new_mob_index();
     pMobIndex->vnum = vnum;
     pMobIndex->area = area_last;  /* OLC */
     pMobIndex->player_name = fread_string(fp);

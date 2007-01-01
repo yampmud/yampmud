@@ -23,11 +23,6 @@
 #include "db.h"
 #include "fd_property.h"
 
-/*
- * Globals
- */
-
-MOB_INDEX_DATA *mob_index_free;
 
 RESET_DATA *new_reset_data(void)
 {
@@ -280,16 +275,8 @@ MOB_INDEX_DATA *new_mob_index(void)
 {
   MOB_INDEX_DATA *pMob;
 
-  if (!mob_index_free)
-  {
-    pMob = alloc_perm(sizeof(*pMob));
-    top_mob_index++;
-  }
-  else
-  {
-    pMob = mob_index_free;
-    mob_index_free = mob_index_free->next;
-  }
+  pMob = (MOB_INDEX_DATA *) malloc(sizeof(*pMob));
+  top_mob_index++;
 
   pMob->next = NULL;
   pMob->spec_fun = NULL;
@@ -340,6 +327,7 @@ MOB_INDEX_DATA *new_mob_index(void)
 
 void free_mob_index(MOB_INDEX_DATA * pMob)
 {
+  top_mob_index--;
   free_string(pMob->player_name);
   free_string(pMob->short_descr);
   free_string(pMob->long_descr);
@@ -348,8 +336,7 @@ void free_mob_index(MOB_INDEX_DATA * pMob)
   free_string(pMob->material);
   free_shop(pMob->pShop);
 
-  pMob->next = mob_index_free;
-  mob_index_free = pMob;
+  free(pMob);
   return;
 }
 
