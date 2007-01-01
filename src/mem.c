@@ -27,7 +27,6 @@
  * Globals
  */
 
-OBJ_INDEX_DATA *obj_index_free;
 MOB_INDEX_DATA *mob_index_free;
 
 RESET_DATA *new_reset_data(void)
@@ -227,16 +226,8 @@ OBJ_INDEX_DATA *new_obj_index(void)
   OBJ_INDEX_DATA *pObj;
   int value;
 
-  if (!obj_index_free)
-  {
-    pObj = alloc_perm(sizeof(*pObj));
-    top_obj_index++;
-  }
-  else
-  {
-    pObj = obj_index_free;
-    obj_index_free = obj_index_free->next;
-  }
+  pObj = (OBJ_INDEX_DATA *) malloc(sizeof(*pObj));
+  top_obj_index++;
 
   pObj->next = NULL;
   pObj->extra_descr = NULL;
@@ -265,6 +256,8 @@ void free_obj_index(OBJ_INDEX_DATA * pObj)
   EXTRA_DESCR_DATA *pExtra;
   AFFECT_DATA *pAf;
 
+  top_obj_index--;
+
   free_string(pObj->name);
   free_string(pObj->short_descr);
   free_string(pObj->description);
@@ -279,8 +272,7 @@ void free_obj_index(OBJ_INDEX_DATA * pObj)
     free_extra_descr(pExtra);
   }
 
-  pObj->next = obj_index_free;
-  obj_index_free = pObj;
+  free(pObj);
   return;
 }
 

@@ -347,7 +347,7 @@ void load_objects(FILE * fp)
     }
     fBootDb = true;
 
-    pObjIndex = alloc_perm(sizeof(*pObjIndex));
+    pObjIndex = new_obj_index();
     pObjIndex->vnum = vnum;
     pObjIndex->area = area_last;  /* OLC */
     pObjIndex->reset_num = 0;
