@@ -27,7 +27,6 @@
  * Globals
  */
 
-ROOM_INDEX_DATA *room_index_free;
 OBJ_INDEX_DATA *obj_index_free;
 SHOP_DATA *shop_free;
 MOB_INDEX_DATA *mob_index_free;
@@ -128,16 +127,8 @@ ROOM_INDEX_DATA *new_room_index(void)
   ROOM_INDEX_DATA *pRoom;
   int door;
 
-  if (!room_index_free)
-  {
-    pRoom = alloc_perm(sizeof(*pRoom));
-    top_room++;
-  }
-  else
-  {
-    pRoom = room_index_free;
-    room_index_free = room_index_free->next;
-  }
+  pRoom = (ROOM_INDEX_DATA *) malloc(sizeof(*pRoom));
+  top_room++;
 
   pRoom->next = NULL;
   pRoom->people = NULL;
@@ -169,6 +160,8 @@ void free_room_index(ROOM_INDEX_DATA * pRoom)
   RESET_DATA *pReset;
   PROPERTY *pProp, *pProp_next;
 
+  top_room--;
+
   free_string(pRoom->name);
   free_string(pRoom->description);
   free_string(pRoom->owner);
@@ -197,8 +190,7 @@ void free_room_index(ROOM_INDEX_DATA * pRoom)
     pProp = pProp_next;
   }
 
-  pRoom->next = room_index_free;
-  room_index_free = pRoom;
+  free(pRoom);
   return;
 }
 
