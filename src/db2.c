@@ -460,7 +460,7 @@ void load_objects(FILE * fp)
       {
         AFFECT_DATA *paf;
 
-        paf = alloc_perm(sizeof(*paf));
+        paf = new_affect();
         paf->where = TO_OBJECT;
         paf->type = -1;
         paf->level = pObjIndex->level;
@@ -470,14 +470,13 @@ void load_objects(FILE * fp)
         paf->bitvector = 0;
         paf->next = pObjIndex->affected;
         pObjIndex->affected = paf;
-        top_affect++;
       }
 
       else if (letter == 'F')
       {
         AFFECT_DATA *paf;
 
-        paf = alloc_perm(sizeof(*paf));
+        paf = new_affect();
         letter = fread_letter(fp);
         switch (letter)
         {
@@ -508,7 +507,6 @@ void load_objects(FILE * fp)
         paf->bitvector = fread_flag(fp);
         paf->next = pObjIndex->affected;
         pObjIndex->affected = paf;
-        top_affect++;
       }
 
       else if (letter == 'E')

@@ -202,6 +202,7 @@ AFFECT_DATA *new_affect(void)
   af = (AFFECT_DATA *) malloc(sizeof(*af));
 
   *af = af_zero;
+  top_affect++;
 
   VALIDATE(af);
   return af;
@@ -209,9 +210,7 @@ AFFECT_DATA *new_affect(void)
 
 void free_affect(AFFECT_DATA * af)
 {
-  if (!IS_VALID(af))
-    return;
-
+  top_affect--;
   INVALIDATE(af);
   free(af);
 }
