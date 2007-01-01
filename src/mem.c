@@ -28,7 +28,6 @@
  */
 
 OBJ_INDEX_DATA *obj_index_free;
-SHOP_DATA *shop_free;
 MOB_INDEX_DATA *mob_index_free;
 
 RESET_DATA *new_reset_data(void)
@@ -199,16 +198,8 @@ SHOP_DATA *new_shop(void)
   SHOP_DATA *pShop;
   int buy;
 
-  if (!shop_free)
-  {
-    pShop = alloc_perm(sizeof(*pShop));
-    top_shop++;
-  }
-  else
-  {
-    pShop = shop_free;
-    shop_free = shop_free->next;
-  }
+  pShop = (SHOP_DATA *) malloc(sizeof(*pShop));
+  top_shop++;
 
   pShop->next = NULL;
   pShop->keeper = 0;
@@ -226,8 +217,8 @@ SHOP_DATA *new_shop(void)
 
 void free_shop(SHOP_DATA * pShop)
 {
-  pShop->next = shop_free;
-  shop_free = pShop;
+  top_shop--;
+  free(pShop);
   return;
 }
 
