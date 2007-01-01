@@ -346,16 +346,8 @@ MPROG_CODE *new_mpcode(void)
 {
   MPROG_CODE *NewCode;
 
-  if (!mpcode_free)
-  {
-    NewCode = alloc_perm(sizeof(*NewCode));
-    top_mprog_index++;
-  }
-  else
-  {
-    NewCode = mpcode_free;
-    mpcode_free = mpcode_free->next;
-  }
+  NewCode = (MPROG_CODE *) malloc(sizeof(*NewCode));
+  top_mprog_index++;
 
   NewCode->vnum = 0;
   NewCode->code = str_dup("");
@@ -366,8 +358,8 @@ MPROG_CODE *new_mpcode(void)
 
 void free_mpcode(MPROG_CODE * pMcode)
 {
+  top_mprog_index--;
   free_string(pMcode->code);
-  pMcode->next = mpcode_free;
-  mpcode_free = pMcode;
+  free(pMcode);
   return;
 }

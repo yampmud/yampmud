@@ -958,7 +958,7 @@ void load_mobprogs(FILE * fp)
     }
     fBootDb = true;
 
-    pMprog = alloc_perm(sizeof(*pMprog));
+    pMprog = new_mpcode();
     pMprog->vnum = vnum;
     pMprog->code = fread_string(fp);
     if (mprog_list == NULL)
@@ -968,7 +968,6 @@ void load_mobprogs(FILE * fp)
       pMprog->next = mprog_list;
       mprog_list = pMprog;
     }
-    top_mprog_index++;
   }
   return;
 }

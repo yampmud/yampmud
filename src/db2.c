@@ -222,7 +222,7 @@ void load_mobiles(FILE * fp)
         char *word;
         int trigger = 0;
 
-        pMprog = alloc_perm(sizeof(*pMprog));
+        pMprog = new_mpcode();
         word = fread_word(fp);
         if (!(trigger = flag_lookup(word, mprog_flags)))
         {
