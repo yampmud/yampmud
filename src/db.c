@@ -795,7 +795,7 @@ void load_rooms(FILE * fp)
           quit(1);
         }
 
-        pexit = alloc_perm(sizeof(*pexit));
+        pexit = new_exit();
         pexit->description = fread_string(fp);
         pexit->keyword = fread_string(fp);
         pexit->exit_info = 0;
