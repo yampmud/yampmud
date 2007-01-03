@@ -278,8 +278,8 @@ BUFFER *show_list_to_char(OBJ_DATA * list, CHAR_DATA * ch, bool fShort,
   /* 
    * Clean up.
    */
-  free(prgpstrShow, count * sizeof(char *));
-  free(prgnShow, count * sizeof(int));
+  free(prgpstrShow);
+  free(prgnShow);
 
   return output;
 }
