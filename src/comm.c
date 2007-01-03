@@ -1856,9 +1856,10 @@ void write_to_buffer(DESCRIPTOR_DATA * d, const char *txt, int length)
       close_socket(d);
       return;
     }
-    outbuf = alloc_mem(2 * d->outsize);
+    outbuf = malloc(2 * d->outsize);
+    memset(outbuf,0,2*d->outsize);
     strncpy(outbuf, d->outbuf, d->outtop);
-    free_mem(d->outbuf, d->outsize);
+    free(d->outbuf);
     d->outbuf = outbuf;
     d->outsize *= 2;
   }
