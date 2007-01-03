@@ -11,8 +11,6 @@
  * Original note board system (c) 1995-96 Erwin S. Andreasen
  */
 
-NOTE_DATA *note_free;
-
 void printf_to_desc(DESCRIPTOR_DATA * d, char *fmt, ...)
 {
   char buf[MSL];
@@ -136,8 +134,7 @@ void free_note(NOTE_DATA * note)
   if (note->text)
     free_string(note->text);
 
-  note->next = note_free;
-  note_free = note;
+  free(note);
 }
 
 /* allocate memory for a new note or recycle */
@@ -145,13 +142,7 @@ NOTE_DATA *new_note()
 {
   NOTE_DATA *note;
 
-  if (note_free)
-  {
-    note = note_free;
-    note_free = note_free->next;
-  }
-  else
-    note = (NOTE_DATA *) alloc_mem(sizeof(NOTE_DATA));
+  note = (NOTE_DATA *) malloc(sizeof(NOTE_DATA));
 
   /* Zero all the field - Envy does not gurantee zeroed memory */
   note->next = NULL;
