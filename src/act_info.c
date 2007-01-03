@@ -195,8 +195,10 @@ BUFFER *show_list_to_char(OBJ_DATA * list, CHAR_DATA * ch, bool fShort,
   count = 0;
   for (obj = list; obj != NULL; obj = obj->next_content)
     count++;
-  prgpstrShow = alloc_mem(count * sizeof(char *));
-  prgnShow = alloc_mem(count * sizeof(int));
+  prgpstrShow = malloc(count * sizeof(char *));
+  memset(prgpstrShow, 0, count * sizeof(char *));
+  prgnShow = malloc(count * sizeof(int));
+  memset(prgnShow, 0, count * sizeof(int));
   nShow = 0;
 
   /* 
@@ -276,8 +278,8 @@ BUFFER *show_list_to_char(OBJ_DATA * list, CHAR_DATA * ch, bool fShort,
   /* 
    * Clean up.
    */
-  free_mem(prgpstrShow, count * sizeof(char *));
-  free_mem(prgnShow, count * sizeof(int));
+  free(prgpstrShow, count * sizeof(char *));
+  free(prgnShow, count * sizeof(int));
 
   return output;
 }
