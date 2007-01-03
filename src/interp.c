@@ -818,7 +818,7 @@ void do_disable(CHAR_DATA * ch, char *argument)
     }
 
     free_string(p->disabled_by);  /* free name of disabler */
-    free_mem(p, sizeof(DISABLED_DATA)); /* free node */
+    free(p); /* free node */
     save_disabled();            /* save to disk */
     send_to_char("Command enabled.\n\r", ch);
   }
@@ -855,7 +855,8 @@ void do_disable(CHAR_DATA * ch, char *argument)
 
     /* Disable the command */
 
-    p = alloc_mem(sizeof(DISABLED_DATA));
+    p = (DISABLED_DATA *) malloc(sizeof(DISABLED_DATA));
+    memset(p, 0, sizeof(DISABLED_DATA));
 
     p->command = &cmd_table[i];
     p->disabled_by = str_dup(ch->name); /* save name of disabler */
@@ -916,7 +917,8 @@ void load_disabled()
     }
     else                        /* add new disabled command */
     {
-      p = alloc_mem(sizeof(DISABLED_DATA));
+      p = (DISABLED_DATA *) malloc(sizeof(DISABLED_DATA));
+      memset(p, 0, sizeof(DISABLED_DATA));
       p->command = &cmd_table[i];
       p->level = fread_number(fp);
       p->disabled_by = str_dup(fread_word(fp));
