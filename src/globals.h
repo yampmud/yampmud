@@ -150,7 +150,6 @@ GLOBAL(OBJ_INDEX_DATA * obj_index_hash[MAX_KEY_HASH]);
 GLOBAL_DEF(FILE * fpArea, NULL);
 GLOBAL(char strArea[MAX_INPUT_LENGTH]);
 
-GLOBAL_DEF(int nAllocPerm, 0);
 GLOBAL_DEF(int nAllocString, 0);
 
 GLOBAL_DEF(int maxSocial, 0);   /* Max number of socials */

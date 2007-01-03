@@ -2268,8 +2268,6 @@ struct mprog_code
   pstr = str_dup( (nstr) );                     \
 }
 
-#define free_mem( pMem, sMem )  _free_mem(pMem, sMem, __FILE__, __LINE__)
-
 #define free_string( pstr )  _free_string(pstr, __FILE__, __LINE__)
 
 /*

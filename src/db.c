@@ -74,16 +74,8 @@ char *top_string;
  * Tune the others only if you understand what you're doing.
  */
 #define			MAX_STRING	2100*1024
-#define			MAX_PERM_BLOCK	131072
-#define			MAX_MEM_LIST	12
-
-void *rgFreeList[MAX_MEM_LIST];
-const int rgSizeList[MAX_MEM_LIST] = {
-  16, 32, 64, 128, 256, 1024, 2048, 4096, 8192, 16384, 32768, 65536 - 64
-};
 
 int sAllocString;
-int sAllocPerm;
 
 /*
  * Big mama top level function.
@@ -2561,124 +2553,6 @@ char *fread_word(FILE * fp)
 }
 
 /*
- * Allocate some ordinary memory,
- *   with the expectation of freeing it someday.
- */
-void *alloc_mem(int sMem)
-{
-  void *pMem;
-  int *magic;
-  int iList;
-
-  sMem += sizeof(*magic);
-
-  for (iList = 0; iList < MAX_MEM_LIST; iList++)
-  {
-    if (sMem <= rgSizeList[iList])
-      break;
-  }
-
-  if (iList == MAX_MEM_LIST)
-  {
-    bug("Alloc_mem: size %d too large.", sMem);
-    quit(1);
-  }
-
-  if (rgFreeList[iList] == NULL)
-  {
-    pMem = alloc_perm(rgSizeList[iList]);
-  }
-  else
-  {
-    pMem = rgFreeList[iList];
-    rgFreeList[iList] = *((void **) rgFreeList[iList]);
-  }
-
-  magic = (int *) pMem;
-  *magic = MAGIC_NUM;
-  pMem += sizeof(*magic);
-
-  return pMem;
-}
-
-/*
- * Free some memory.
- * Recycle it back onto the free list for blocks of that size.
- */
-void _free_mem(void *pMem, int sMem, char *file, int line)
-{
-  int iList;
-  int *magic;
-
-  pMem -= sizeof(*magic);
-  magic = (int *) pMem;
-
-  if (*magic != MAGIC_NUM)
-  {
-    bugf("Attempt to recyle invalid memory of size %d -> %s:%d", sMem,
-         file, line);
-    bug((char *) pMem + sizeof(*magic), 0);
-    return;
-  }
-
-  *magic = 0;
-  sMem += sizeof(*magic);
-
-  for (iList = 0; iList < MAX_MEM_LIST; iList++)
-  {
-    if (sMem <= rgSizeList[iList])
-      break;
-  }
-
-  if (iList == MAX_MEM_LIST)
-  {
-    bugf("Free_mem: size %d too large. -> %s:%d", sMem, file, line);
-    quit(1);
-  }
-
-  *((void **) pMem) = rgFreeList[iList];
-  rgFreeList[iList] = pMem;
-
-  return;
-}
-
-/*
- * Allocate some permanent memory.
- * Permanent memory is never freed,
- *   pointers into it may be copied safely.
- */
-void *alloc_perm(int sMem)
-{
-  static char *pMemPerm;
-  static int iMemPerm;
-  void *pMem;
-
-  while (sMem % sizeof(long) != 0)
-    sMem++;
-  if (sMem > MAX_PERM_BLOCK)
-  {
-    bug("Alloc_perm: %d too large.", sMem);
-    quit(1);
-  }
-
-  if (pMemPerm == NULL || iMemPerm + sMem > MAX_PERM_BLOCK)
-  {
-    iMemPerm = 0;
-    if ((pMemPerm = calloc(1, MAX_PERM_BLOCK)) == NULL)
-    {
-      perror("Alloc_perm");
-      quit(1);
-    }
-  }
-
-  pMem = pMemPerm + iMemPerm;
-  iMemPerm += sMem;
-  nAllocPerm += 1;
-  sAllocPerm += sMem;
-  return pMem;
-}
-
-/*
  * Duplicate a string into dynamic memory.
  * Fread_strings are read-only and shared.
  */
@@ -2692,7 +2566,8 @@ char *str_dup(const char *str)
   if (str >= string_space && str < top_string)
     return (char *) str;
 
-  str_new = alloc_mem(strlen(str) + 1);
+  str_new = malloc(strlen(str) + 1);
+  memset(str_new, 0, strlen(str) + 1);
   strcpy(str_new, str);
   return str_new;
 }
@@ -2708,7 +2583,7 @@ void _free_string(char *pstr, char *file, int line)
       (pstr >= string_space && pstr < top_string))
     return;
 
-  _free_mem(pstr, strlen(pstr) + 1, file, line);
+  free(pstr);
   return;
 }
 
@@ -2893,10 +2768,6 @@ CH_CMD(do_memory)
 
   sprintf(buf, "Strings %5d strings of %7d kB (max %d kB).\n\r",
           nAllocString, sAllocString / 1024, MAX_STRING / 1024);
-  send_to_char(buf, ch);
-
-  sprintf(buf, "Perms   %5d blocks  of %7d kB.\n\r", nAllocPerm,
-          sAllocPerm / 1024);
   send_to_char(buf, ch);
 
   return;

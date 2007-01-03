@@ -34,6 +34,3 @@
 
 /* macro for flag swapping */
 #define GET_UNSET(flag1,flag2)	(~(flag1)&((flag1)|(flag2)))
-
-/* Magic number for memory allocation */
-#define MAGIC_NUM 52571214
