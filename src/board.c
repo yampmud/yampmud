@@ -343,7 +343,7 @@ static void load_board(BOARD_DATA * board)
     while (isspace(letter));
     ungetc(letter, fp);
 
-    pnote = (NOTE_DATA *) alloc_perm(sizeof(*pnote));
+    pnote = (NOTE_DATA *) malloc(sizeof(*pnote));
 
     if (str_cmp(fread_word(fp), "sender"))
       break;
