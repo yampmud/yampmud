@@ -44,12 +44,11 @@
 /* stuff for recycling ban structures */
 BAN_DATA *new_ban(void)
 {
-  static BAN_DATA ban_zero;
   BAN_DATA *ban;
 
   ban = (BAN_DATA *) malloc(sizeof(*ban));
+  memset(ban, 0, sizeof(*ban));
 
-  *ban = ban_zero;
   VALIDATE(ban);
   ban->name = &str_empty[0];
   return ban;
@@ -64,12 +63,11 @@ void free_ban(BAN_DATA * ban)
 
 WIZ_DATA *new_wiz(void)
 {
-  static WIZ_DATA wiz_zero;
   WIZ_DATA *wiz;
 
   wiz = (WIZ_DATA *) malloc(sizeof(*wiz));
+  memset(wiz, 0, sizeof(*wiz));
 
-  *wiz = wiz_zero;
   VALIDATE(wiz);
   wiz->name = &str_empty[0];
   return wiz;
@@ -84,12 +82,11 @@ void free_wiz(WIZ_DATA * wiz)
 
 CLN_DATA *new_cln(void)
 {
-  static CLN_DATA cln_zero;
   CLN_DATA *cln;
 
   cln = (CLN_DATA *) malloc(sizeof(*cln));
+  memset(cln, 0, sizeof(*cln));
 
-  *cln = cln_zero;
   VALIDATE(cln);
   cln->name = &str_empty[0];
   return cln;
@@ -104,12 +101,11 @@ void free_cln(CLN_DATA * cln)
 
 MBR_DATA *new_mbr(void)
 {
-  static MBR_DATA mbr_zero;
   MBR_DATA *mbr;
 
   mbr = (MBR_DATA *) malloc(sizeof(*mbr));
+  memset(mbr, 0, sizeof(*mbr));
 
-  *mbr = mbr_zero;
   VALIDATE(mbr);
   mbr->name = &str_empty[0];
   return mbr;
@@ -124,12 +120,11 @@ void free_mbr(MBR_DATA * mbr)
 
 DESCRIPTOR_DATA *new_descriptor(void)
 {
-  static DESCRIPTOR_DATA d_zero;
   DESCRIPTOR_DATA *d;
 
   d = (DESCRIPTOR_DATA *) malloc(sizeof(*d));
+  memset(d, 0, sizeof(*d));
 
-  *d = d_zero;
   VALIDATE(d);
 
   d->connected = CON_GET_NAME;
@@ -153,12 +148,11 @@ void free_descriptor(DESCRIPTOR_DATA * d)
 
 GEN_DATA *new_gen_data(void)
 {
-  static GEN_DATA gen_zero;
   GEN_DATA *gen;
 
   gen = (GEN_DATA *) malloc(sizeof(*gen));
+  memset(gen, 0, sizeof(*gen));
 
-  *gen = gen_zero;
   VALIDATE(gen);
   return gen;
 }
@@ -177,6 +171,7 @@ EXTRA_DESCR_DATA *new_extra_descr(void)
   EXTRA_DESCR_DATA *ed;
 
   ed = (EXTRA_DESCR_DATA *) malloc(sizeof(*ed));
+  memset(ed, 0, sizeof(*ed));
   top_ed++;
 
   ed->keyword = &str_empty[0];
@@ -196,12 +191,11 @@ void free_extra_descr(EXTRA_DESCR_DATA * ed)
 
 AFFECT_DATA *new_affect(void)
 {
-  static AFFECT_DATA af_zero;
   AFFECT_DATA *af;
 
   af = (AFFECT_DATA *) malloc(sizeof(*af));
+  memset(af, 0, sizeof(*af));
 
-  *af = af_zero;
   top_affect++;
 
   VALIDATE(af);
@@ -217,12 +211,11 @@ void free_affect(AFFECT_DATA * af)
 
 OBJ_DATA *new_obj(void)
 {
-  static OBJ_DATA obj_zero;
   OBJ_DATA *obj;
 
   obj = (OBJ_DATA *) malloc(sizeof(*obj));
+  memset(obj, 0, sizeof(*obj));
 
-  *obj = obj_zero;
   VALIDATE(obj);
 
   return obj;
@@ -271,13 +264,12 @@ void free_obj(OBJ_DATA * obj)
 
 CHAR_DATA *new_char(void)
 {
-  static CHAR_DATA ch_zero;
   CHAR_DATA *ch;
   int i;
 
   ch = (CHAR_DATA *) malloc(sizeof(*ch));
+  memset(ch, 0, sizeof(*ch));
 
-  *ch = ch_zero;
   VALIDATE(ch);
   ch->name = &str_empty[0];
   ch->short_descr = &str_empty[0];
@@ -367,13 +359,10 @@ void free_char(CHAR_DATA * ch)
 PC_DATA *new_pcdata(void)
 {
   int alias;
-
-  static PC_DATA pcdata_zero;
   PC_DATA *pcdata;
 
   pcdata = (PC_DATA *) malloc(sizeof(*pcdata));
-
-  *pcdata = pcdata_zero;
+  memset(pcdata, 0, sizeof(*pcdata));
 
   for (alias = 0; alias < MAX_ALIAS; alias++)
   {
@@ -456,6 +445,7 @@ MEM_DATA *new_mem_data(void)
   MEM_DATA *memory;
 
   memory = (MEM_DATA *) malloc(sizeof(*memory));
+  memset(memory, 0, sizeof(*memory));
 
   memory->next = NULL;
   memory->id = 0;
@@ -499,6 +489,7 @@ BUFFER *new_buf()
   BUFFER *buffer;
 
   buffer = (BUFFER *) malloc(sizeof(*buffer));
+  memset(buffer, 0, sizeof(*buffer));
 
   buffer->next = NULL;
   buffer->state = BUFFER_SAFE;
@@ -517,6 +508,7 @@ BUFFER *new_buf_size(int size)
   BUFFER *buffer;
 
   buffer = (BUFFER *) malloc(sizeof(*buffer));
+  memset(buffer, 0, sizeof(*buffer));
 
   buffer->next = NULL;
   buffer->state = BUFFER_SAFE;
@@ -599,12 +591,11 @@ char *buf_string(BUFFER * buffer)
 
 MPROG_LIST *new_mprog(void)
 {
-  static MPROG_LIST mp_zero;
   MPROG_LIST *mp;
 
   mp = (MPROG_LIST *) malloc(sizeof(*mp));
+  memset(mp, 0, sizeof(*mp));
 
-  *mp = mp_zero;
   mp->vnum = 0;
   mp->trig_type = 0;
   mp->code = &str_empty[0];
@@ -624,12 +615,11 @@ void free_mprog(MPROG_LIST * mp)
 /* Stuff for recycling imm/auction shit */
 AUCTION_DATA *new_auction(void)
 {
-  static AUCTION_DATA auc_zero;
   AUCTION_DATA *auction;
 
   auction = (AUCTION_DATA *) malloc(sizeof(*auction));
+  memset(auction, 0, sizeof(*auction));
 
-  *auction = auc_zero;
   VALIDATE(auction);
   return auction;
 }
@@ -652,6 +642,7 @@ HELP_DATA *new_help(void)
   HELP_DATA *help;
 
   help = malloc(sizeof(HELP_DATA));
+  memset(help, 0, sizeof(*help));
 
   help->id = 0;
   help->level = 0;
@@ -678,9 +669,9 @@ PROPERTY_INDEX_TYPE *new_property_index(void)
   PROPERTY_INDEX_TYPE *pProp;
 
   pProp = (PROPERTY_INDEX_TYPE *) malloc(sizeof(PROPERTY_INDEX_TYPE));
+  memset(pProp, 0, sizeof(*pProp));
   property_index_allocated++;
 
-  memset((void *) pProp, 0, sizeof(PROPERTY_INDEX_TYPE));
   VALIDATE(pProp);
 
   pProp->key = str_dup("");

@@ -66,6 +66,7 @@ void load_social_table()
   /* IMPORTANT to use malloc so we can realloc later on */
 
   social_table = malloc(sizeof(struct social_type) * (maxSocial + 1));
+  memset(social_table, 0, sizeof(struct social_type) * (maxSocial + 1));
 
   for (i = 0; i < maxSocial; i++)
     load_social(fp, &social_table[i]);
@@ -164,6 +165,7 @@ CH_CMD(do_sedit)
     int i, j;
     struct social_type *new_table =
       malloc(sizeof(struct social_type) * maxSocial);
+    memset(new_table, 0, sizeof(struct social_type) * maxSocial);
 
     if (!new_table)
     {

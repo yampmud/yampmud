@@ -3316,6 +3316,7 @@ CH_CMD(do_help)
         fRegular = true;
       }
       output = malloc(strlen(htext) + 200);
+      memset(output, 0, strlen(htext) + 200);
       strcpy(output, "");
       /* 
        * Strip leading '.' to allow initial blanks.

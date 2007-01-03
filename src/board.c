@@ -143,6 +143,7 @@ NOTE_DATA *new_note()
   NOTE_DATA *note;
 
   note = (NOTE_DATA *) malloc(sizeof(NOTE_DATA));
+  memset(note, 0, sizeof(NOTE_DATA));
 
   /* Zero all the field - Envy does not gurantee zeroed memory */
   note->next = NULL;
@@ -344,6 +345,7 @@ static void load_board(BOARD_DATA * board)
     ungetc(letter, fp);
 
     pnote = (NOTE_DATA *) malloc(sizeof(*pnote));
+    memset(pnote, 0, sizeof(*pnote));
 
     if (str_cmp(fread_word(fp), "sender"))
       break;

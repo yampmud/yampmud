@@ -29,6 +29,7 @@ RESET_DATA *new_reset_data(void)
   RESET_DATA *pReset;
 
   pReset = (RESET_DATA *) malloc(sizeof(*pReset));
+  memset(pReset, 0, sizeof(*pReset));
   top_reset++;
 
   pReset->next = NULL;
@@ -55,6 +56,7 @@ AREA_DATA *new_area(void)
   char buf[MAX_INPUT_LENGTH];
 
   pArea = (AREA_DATA *) malloc(sizeof(*pArea));
+  memset(pArea, 0, sizeof(*pArea));
   top_area++;
   top_area_vnum++;
 
@@ -99,6 +101,7 @@ EXIT_DATA *new_exit(void)
   EXIT_DATA *pExit;
 
   pExit = (EXIT_DATA *) malloc(sizeof(*pExit));
+  memset(pExit, 0, sizeof(*pExit));
   top_exit++;
 
   pExit->u1.to_room = NULL;     /* ROM OLC */
@@ -129,6 +132,7 @@ ROOM_INDEX_DATA *new_room_index(void)
   int door;
 
   pRoom = (ROOM_INDEX_DATA *) malloc(sizeof(*pRoom));
+  memset(pRoom, 0, sizeof(*pRoom));
   top_room++;
 
   pRoom->next = NULL;
@@ -210,6 +214,7 @@ SHOP_DATA *new_shop(void)
   int buy;
 
   pShop = (SHOP_DATA *) malloc(sizeof(*pShop));
+  memset(pShop, 0, sizeof(*pShop));
   top_shop++;
 
   pShop->next = NULL;
@@ -239,6 +244,7 @@ OBJ_INDEX_DATA *new_obj_index(void)
   int value;
 
   pObj = (OBJ_INDEX_DATA *) malloc(sizeof(*pObj));
+  memset(pObj, 0, sizeof(*pObj));
   top_obj_index++;
 
   pObj->next = NULL;
@@ -298,6 +304,7 @@ MOB_INDEX_DATA *new_mob_index(void)
   MOB_INDEX_DATA *pMob;
 
   pMob = (MOB_INDEX_DATA *) malloc(sizeof(*pMob));
+  memset(pMob, 0, sizeof(*pMob));
   top_mob_index++;
 
   pMob->next = NULL;
@@ -377,6 +384,7 @@ MPROG_CODE *new_mpcode(void)
   MPROG_CODE *NewCode;
 
   NewCode = (MPROG_CODE *) malloc(sizeof(*NewCode));
+  memset(NewCode, 0, sizeof(*NewCode));
   top_mprog_index++;
 
   NewCode->vnum = 0;
