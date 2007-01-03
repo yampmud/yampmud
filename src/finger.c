@@ -117,7 +117,9 @@ CH_CMD(do_finger)
   {
     send_to_char("No player by that name exists.\n\r", ch);
     free_pcdata(victim->pcdata);
+    victim->pcdata = NULL;
     free_char(victim);
+    victim = NULL;
     return;
   }
 
@@ -145,6 +147,7 @@ CH_CMD(do_finger)
 
   printf_to_char(ch, "\n\r");
   free_pcdata(victim->pcdata);
+  victim->pcdata = NULL;
   free_char(victim);
   return;
 }
