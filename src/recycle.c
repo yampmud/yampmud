@@ -137,7 +137,8 @@ DESCRIPTOR_DATA *new_descriptor(void)
   d->showstr_point = NULL;
   d->outsize = 2000;
   d->ansi = true;
-  d->outbuf = alloc_mem(d->outsize);
+  d->outbuf = malloc(d->outsize);
+  memset(d->outbuf, 0, d->outsize);
 
   return d;
 }
@@ -145,7 +146,7 @@ DESCRIPTOR_DATA *new_descriptor(void)
 void free_descriptor(DESCRIPTOR_DATA * d)
 {
   free_string(d->host);
-  free_mem(d->outbuf, d->outsize);
+  free(d->outbuf);
   INVALIDATE(d);
   free(d);
 }
@@ -503,7 +504,8 @@ BUFFER *new_buf()
   buffer->state = BUFFER_SAFE;
   buffer->size = get_size(BASE_BUF);
 
-  buffer->string = alloc_mem(buffer->size);
+  buffer->string = malloc(buffer->size);
+  memset(buffer->string, 0, buffer->size);
   buffer->string[0] = '\0';
   VALIDATE(buffer);
 
@@ -524,7 +526,8 @@ BUFFER *new_buf_size(int size)
     bug("new_buf: buffer size %d too large.", size);
     quit(1);
   }
-  buffer->string = alloc_mem(buffer->size);
+  buffer->string = malloc(buffer->size);
+  memset(buffer->string, 0, buffer->size);
   buffer->string[0] = '\0';
   VALIDATE(buffer);
 
@@ -533,7 +536,7 @@ BUFFER *new_buf_size(int size)
 
 void free_buf(BUFFER * buffer)
 {
-  free_mem(buffer->string, buffer->size);
+  free(buffer->string);
   buffer->string = NULL;
   buffer->size = 0;
   buffer->state = BUFFER_FREED;
@@ -572,10 +575,11 @@ bool add_buf(BUFFER * buffer, char *string)
 
   if (buffer->size != oldsize)
   {
-    buffer->string = alloc_mem(buffer->size);
+    buffer->string = malloc(buffer->size);
+    memset(buffer->string, 0, buffer->size);
 
     strcpy(buffer->string, oldstr);
-    free_mem(oldstr, oldsize);
+    free(oldstr);
   }
 
   strcat(buffer->string, string);
