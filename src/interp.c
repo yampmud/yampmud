@@ -818,7 +818,7 @@ void do_disable(CHAR_DATA * ch, char *argument)
     }
 
     free_string(p->disabled_by);  /* free name of disabler */
-    free(p); /* free node */
+    free(p);                    /* free node */
     save_disabled();            /* save to disk */
     send_to_char("Command enabled.\n\r", ch);
   }

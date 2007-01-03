@@ -1857,7 +1857,7 @@ void write_to_buffer(DESCRIPTOR_DATA * d, const char *txt, int length)
       return;
     }
     outbuf = malloc(2 * d->outsize);
-    memset(outbuf,0,2*d->outsize);
+    memset(outbuf, 0, 2 * d->outsize);
     strncpy(outbuf, d->outbuf, d->outtop);
     free(d->outbuf);
     d->outbuf = outbuf;
