@@ -3132,7 +3132,8 @@ void page_to_char(const char *txt, CHAR_DATA * ch)
     return;
   }
 
-  ch->desc->showstr_head = alloc_mem(strlen(txt) + 1);
+  ch->desc->showstr_head = malloc(strlen(txt) + 1);
+  memset(ch->desc->showstr_head, 0, strlen(txt) + 1);
   strcpy(ch->desc->showstr_head, txt);
   ch->desc->showstr_point = ch->desc->showstr_head;
   show_string(ch->desc, "");
@@ -3153,6 +3154,7 @@ void show_string(struct descriptor_data *d, char *input)
     if (d->showstr_head)
     {
       free_string(d->showstr_head);
+      free(d->showstr_head);
       d->showstr_head = 0;
     }
     d->showstr_point = 0;
@@ -3179,6 +3181,7 @@ void show_string(struct descriptor_data *d, char *input)
           if (d->showstr_head)
           {
             free_string(d->showstr_head);
+            free(d->showstr_head);
             d->showstr_head = 0;
           }
           d->showstr_point = 0;
