@@ -227,17 +227,17 @@ BUFFER *get_obj(CHAR_DATA * ch, OBJ_DATA * obj, OBJ_DATA * container,
   else
   {
     obj_to_char(obj, ch);
-  }
-  if (IS_OBJ_STAT(obj, ITEM_FORCED) && (ch->level <= HERO))
-  {
-    do_wear(ch, obj->name);
-  }
-  if ((obj->pIndexData->vnum == OBJ_VNUM_VOODOO) && !IS_NPC(ch))
-  {
-    one_argument(obj->name, arg);
-    if (!str_cmp(arg, ch->name) || ch->level < 20)
+    if (IS_OBJ_STAT(obj, ITEM_FORCED) && (ch->level <= HERO))
     {
-      obj->timer = 1;
+      do_wear(ch, obj->name);
+    }
+    if ((obj->pIndexData->vnum == OBJ_VNUM_VOODOO) && !IS_NPC(ch))
+    {
+      one_argument(obj->name, arg);
+      if (!str_cmp(arg, ch->name) || ch->level < 20)
+      {
+        obj->timer = 1;
+      }
     }
   }
   return output;
