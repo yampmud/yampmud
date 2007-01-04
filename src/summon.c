@@ -280,6 +280,7 @@ void get_summon_type(CHAR_DATA * ch, char *argument, int sn)
         obj_from_room(corpse);
 
       extract_obj(corpse);
+      corpse = NULL;
     }
     else
     {

@@ -126,6 +126,7 @@ MAGIC(spell_portal)
     act("You draw upon the power of $p.", ch, stone, NULL, TO_CHAR);
     act("It flares brightly and vanishes!", ch, stone, NULL, TO_CHAR);
     extract_obj(stone);
+    stone = NULL;
   }
 
   portal = create_object(get_obj_index(OBJ_VNUM_PORTAL));
@@ -184,6 +185,7 @@ MAGIC(spell_nexus)
     act("You draw upon the power of $p.", ch, stone, NULL, TO_CHAR);
     act("It flares brightly and vanishes!", ch, stone, NULL, TO_CHAR);
     extract_obj(stone);
+    stone = NULL;
   }
 
   /* portal one */
@@ -844,6 +846,7 @@ MAGIC(spell_bloodbath)
      ch, NULL, victim, TO_NOTVICT);
 
   extract_obj(blood);
+  blood = NULL;
 
   send_to_char
     ("Your body weakens as it assimilates the fresh {Rb{rloo{Rd{x.\n\r", ch);

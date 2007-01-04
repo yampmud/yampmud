@@ -2261,6 +2261,7 @@ void extract_obj(OBJ_DATA * obj)
   {
     obj_next = obj_content->next_content;
     extract_obj(obj_content);
+    obj_content = NULL;
   }
 
   if (object_list == obj)
@@ -2320,6 +2321,7 @@ void extract_char(CHAR_DATA * ch, bool fPull)
   {
     obj_next = obj->next_content;
     extract_obj(obj);
+    obj = NULL;
   }
 
   char_from_room(ch);

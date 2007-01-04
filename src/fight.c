@@ -2731,7 +2731,12 @@ void make_corpse(CHAR_DATA * ch, CHAR_DATA * killer)
           REMOVE_BIT(obj->extra_flags, ITEM_VIS_DEATH);
 
           if (IS_SET(obj->extra_flags, ITEM_INVENTORY))
+          {
             extract_obj(obj);
+            obj = NULL;
+            return;
+          }
+
           act("$p falls to the floor.", ch, obj, NULL, TO_ROOM);
           obj_to_room(obj, ch->in_room);
         }
@@ -2840,7 +2845,10 @@ void make_corpse(CHAR_DATA * ch, CHAR_DATA * killer)
     REMOVE_BIT(obj->extra_flags, ITEM_VIS_DEATH);
 
     if (IS_SET(obj->extra_flags, ITEM_INVENTORY))
+    {
       extract_obj(obj);
+      obj = NULL;
+    }
     else if (floating)
     {
       if (IS_OBJ_STAT(obj, ITEM_ROT_DEATH)) /* get rid of it! */
@@ -2861,6 +2869,7 @@ void make_corpse(CHAR_DATA * ch, CHAR_DATA * killer)
         else
           act("$p evaporates.", ch, obj, NULL, TO_ROOM);
         extract_obj(obj);
+        obj = NULL;
       }
 
       else
@@ -2884,7 +2893,10 @@ void make_corpse(CHAR_DATA * ch, CHAR_DATA * killer)
   if (did_make_itempile)
     obj_to_room(pile, ch->in_room);
   else
+  {
     extract_obj(pile);
+    pile = NULL;
+  }
 
   obj_to_room(corpse, ch->in_room);
   return;
@@ -3205,7 +3217,7 @@ void raw_kill(CHAR_DATA * victim, CHAR_DATA * killer)
     victim->pIndexData->killed++;
     kill_table[URANGE(0, victim->level, MAX_LEVEL - 1)].killed++;
     extract_char(victim, true);
-
+    victim = NULL;
     return;
   }
 
@@ -6387,6 +6399,7 @@ CH_CMD(do_sharpen)
   if (chance <= 10)
   {
     extract_obj(obj);
+    obj = NULL;
     send_to_char
       ("You failed miserably and dulled the weapon beyond repair!\n\r", ch);
     return;

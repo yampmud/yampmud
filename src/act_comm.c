@@ -647,6 +647,7 @@ CH_CMD(do_reroll)
       /* 
        * "After extract_char the ch is no longer valid!" */
       extract_char(ch, true);
+      ch = NULL;
       unlink(strsave);
       sprintf(buf, "rm -f %s.gz", strsave);
       system(buf);
@@ -4174,6 +4175,7 @@ CH_CMD(do_quit)
     if (d != NULL)
       close_socket(d);
     extract_char(ch, true);
+    ch = NULL;
   }
   else
   {
@@ -4182,6 +4184,7 @@ CH_CMD(do_quit)
     d->connected = CON_GET_NAME;
 
     extract_char(ch, true);
+    ch = NULL;
   }
 
   return;
@@ -4232,6 +4235,7 @@ void force_quit(CHAR_DATA * ch, char *argument)
    * After extract_char the ch is no longer valid!
    */
   extract_char(ch, true);
+  ch = NULL;
   return;
 }
 
@@ -4444,12 +4448,16 @@ void stop_follower(CHAR_DATA * ch)
 void nuke_pets(CHAR_DATA * ch)
 {
   if (ch->pet != NULL)
+  {
     extract_char(ch->pet, true);
+    ch->pet = NULL;
+  }
   if (ch->familiar != NULL)
+  {
     extract_char(ch->familiar, true);
+    ch->familiar = NULL;
+  }
 
-  ch->pet = NULL;
-  ch->familiar = NULL;
   return;
 }
 

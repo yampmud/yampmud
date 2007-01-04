@@ -1124,6 +1124,8 @@ void char_update(void)
       {
         act("$n decays into dust.", ch, NULL, NULL, TO_ROOM);
         extract_char(ch, true);
+        ch = NULL;
+        continue;
       }
     }
 
@@ -1137,6 +1139,7 @@ void char_update(void)
       {
         act("$n wanders on home.", ch, NULL, NULL, TO_ROOM);
         extract_char(ch, true);
+        ch = NULL;
         continue;
       }
 
@@ -1169,6 +1172,7 @@ void char_update(void)
           act("$p goes out.", ch, obj, NULL, TO_ROOM);
           act("$p flickers and goes out.", ch, obj, NULL, TO_CHAR);
           extract_obj(obj);
+          obj = NULL;
         }
         else if (obj->value[2] <= 5 && ch->in_room != NULL)
           act("$p flickers.", ch, obj, NULL, TO_CHAR);
@@ -1488,19 +1492,26 @@ void obj_update(void)
         else if (obj->carried_by) /* carried */
           if (obj->wear_loc == WEAR_FLOAT)
             if (obj->carried_by->in_room == NULL)
+            {
               extract_obj(t_obj);
+              t_obj = NULL;
+            }
             else
               obj_to_room(t_obj, obj->carried_by->in_room);
           else
             obj_to_char(t_obj, obj->carried_by);
         else if (obj->in_room == NULL)  /* destroy it */
+        {
           extract_obj(t_obj);
+          t_obj = NULL;
+        }
         else                    /* to a room */
           obj_to_room(t_obj, obj->in_room);
       }
     }
 
     extract_obj(obj);
+    obj = NULL;
   }
 
   return;

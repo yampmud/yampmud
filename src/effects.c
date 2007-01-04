@@ -185,6 +185,7 @@ void acid_effect(void *vo, int level, int dam, int target)
         else
         {
           extract_obj(t_obj);
+          t_obj = NULL;
           continue;
         }
 
@@ -193,6 +194,7 @@ void acid_effect(void *vo, int level, int dam, int target)
     }
 
     extract_obj(obj);
+    obj = NULL;
     return;
   }
 }
@@ -279,6 +281,7 @@ void cold_effect(void *vo, int level, int dam, int target)
                POS_RESTING, VERBOSE_BURN);
 
     extract_obj(obj);
+    obj = NULL;
     return;
   }
 }
@@ -399,6 +402,7 @@ void fire_effect(void *vo, int level, int dam, int target)
         else
         {
           extract_obj(t_obj);
+          t_obj = NULL;
           continue;
         }
         fire_effect(t_obj, level / 2, dam / 2, TARGET_OBJ);
@@ -406,6 +410,7 @@ void fire_effect(void *vo, int level, int dam, int target)
     }
 
     extract_obj(obj);
+    obj = NULL;
     return;
   }
 }
@@ -582,6 +587,7 @@ void shock_effect(void *vo, int level, int dam, int target)
       act(msg, obj->in_room->people, obj, NULL, TO_ALL);
 
     extract_obj(obj);
+    obj = NULL;
     return;
   }
 }

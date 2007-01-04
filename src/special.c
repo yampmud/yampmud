@@ -1344,6 +1344,7 @@ bool spec_fido(CHAR_DATA * ch)
       obj_to_room(obj, ch->in_room);
     }
     extract_obj(corpse);
+    corpse = NULL;
     return true;
   }
 

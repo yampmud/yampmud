@@ -418,11 +418,13 @@ CH_CMD(do_mpjunk)
     {
       unequip_char(ch, obj);
       extract_obj(obj);
+      obj = NULL;
       return;
     }
     if ((obj = get_obj_carry(ch, arg)) == NULL)
       return;
     extract_obj(obj);
+    obj = NULL;
   }
   else
     for (obj = ch->carrying; obj != NULL; obj = obj_next)
@@ -433,6 +435,7 @@ CH_CMD(do_mpjunk)
         if (obj->wear_loc != WEAR_NONE)
           unequip_char(ch, obj);
         extract_obj(obj);
+        obj = NULL;
       }
     }
 
@@ -633,14 +636,20 @@ CH_CMD(do_mppurge)
     {
       vnext = victim->next_in_room;
       if (IS_NPC(victim) && victim != ch && !IS_SET(victim->act, ACT_NOPURGE))
+      {
         extract_char(victim, true);
+        victim = NULL;
+      }
     }
 
     for (obj = ch->in_room->contents; obj != NULL; obj = obj_next)
     {
       obj_next = obj->next_content;
       if (!IS_SET(obj->extra_flags, ITEM_NOPURGE))
+      {
         extract_obj(obj);
+        obj = NULL;
+      }
     }
 
     return;
@@ -651,6 +660,7 @@ CH_CMD(do_mppurge)
     if ((obj = get_obj_here(ch, arg)))
     {
       extract_obj(obj);
+      obj = NULL;
     }
     else
     {
@@ -667,6 +677,7 @@ CH_CMD(do_mppurge)
     return;
   }
   extract_char(victim, true);
+  victim = NULL;
   return;
 }
 
@@ -1352,6 +1363,7 @@ CH_CMD(do_mpremove)
       unequip_char(ch, obj);
       obj_from_char(obj);
       extract_obj(obj);
+      obj = NULL;
     }
   }
 }

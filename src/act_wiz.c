@@ -3524,13 +3524,17 @@ CH_CMD(do_purge)
                                                                                  precaution 
                                                                                */ )
         extract_char(victim, true);
+        victim = NULL;
     }
 
     for (obj = ch->in_room->contents; obj != NULL; obj = obj_next)
     {
       obj_next = obj->next_content;
       if (!IS_OBJ_STAT(obj, ITEM_NOPURGE))
+      {
         extract_obj(obj);
+        obj = NULL;
+      }
     }
 
     act("$n purges the room!", ch, NULL, NULL, TO_ROOM);
@@ -3573,6 +3577,7 @@ CH_CMD(do_purge)
       save_char_obj(victim);
     d = victim->desc;
     extract_char(victim, true);
+    victim = NULL;
     if (d != NULL)
       close_socket(d);
 
@@ -3581,6 +3586,7 @@ CH_CMD(do_purge)
 
   act("$n purges $N.", ch, NULL, victim, TO_NOTVICT);
   extract_char(victim, true);
+  victim = NULL;
   return;
 }
 

@@ -2581,6 +2581,7 @@ MAGIC(spell_enchant_armor)
     act("$p flares blindingly... and evaporates!", ch, obj, NULL, TO_CHAR);
     act("$p flares blindingly... and evaporates!", ch, obj, NULL, TO_ROOM);
     extract_obj(obj);
+    obj = NULL;
     return;
   }
 
@@ -2778,6 +2779,7 @@ MAGIC(spell_enchant_weapon)
     act("$p shivers violently and explodes!", ch, obj, NULL, TO_CHAR);
     act("$p shivers violently and explodeds!", ch, obj, NULL, TO_ROOM);
     extract_obj(obj);
+    obj = NULL;
     return;
   }
 
@@ -4494,6 +4496,7 @@ MAGIC(spell_recharge)
     act("$p glows brightly and explodes!", ch, obj, NULL, TO_CHAR);
     act("$p glows brightly and explodes!", ch, obj, NULL, TO_ROOM);
     extract_obj(obj);
+    obj = NULL;
   }
 }
 

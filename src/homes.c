@@ -955,6 +955,7 @@ void home_sell(CHAR_DATA * ch, char *argument)
     {
       furn_next = furn->next_content;
       extract_obj(furn);
+      furn = NULL;
     }
     send_to_char
       ("Your home has been sold and you are now 12,500 platinum coins richer!\n\r",

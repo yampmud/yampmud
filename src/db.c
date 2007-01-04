@@ -3466,9 +3466,13 @@ void randomize_entrances(long code)
           {
             toportal = get_obj_exit(dir_name[todoor], pToRoomIndex->contents);
             if ((toportal != NULL) && (toportal->item_type == ITEM_EXIT))
+            {
               extract_obj(toportal);
+              toportal = NULL;
+            }
           }
           extract_obj(portal);
+          portal = NULL;
         }
       }
       for (;;)

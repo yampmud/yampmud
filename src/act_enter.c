@@ -235,6 +235,7 @@ CH_CMD(do_enter)
             NULL, TO_ROOM);
       }
       extract_obj(portal);
+      portal = NULL;
     }
 
     /* 

@@ -934,6 +934,7 @@ CH_CMD(do_quest)
                 (int) (quest_table[i].cost / 1.5));
         act(buf, ch, obj, questman, TO_CHAR);
         extract_obj(obj);
+        obj = NULL;
         save_char_obj(ch);
         return;
       }
@@ -986,12 +987,13 @@ CH_CMD(do_quest)
         else
         {
           obj_to_char(newobj, ch);
-          extract_obj(obj);
           ch->pcdata->questpoints -= 75;
           act("$N takes $p from $n and gives $m a new one.", ch,
               obj, questman, TO_ROOM);
           act("$N replaces $p with a new one for 75 quest points.",
               ch, obj, questman, TO_CHAR);
+          extract_obj(obj);
+          obj = NULL;
           save_char_obj(ch);
         }
         return;
@@ -1131,6 +1133,7 @@ CH_CMD(do_quest)
           add_cost(ch, reward, VALUE_GOLD);
           ch->pcdata->questpoints += points;
           extract_obj(obj);
+          obj = NULL;
           return;
         }
         else

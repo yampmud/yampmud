@@ -222,6 +222,7 @@ BUFFER *get_obj(CHAR_DATA * ch, OBJ_DATA * obj, OBJ_DATA * container,
     }
 
     extract_obj(obj);
+    obj = NULL;
   }
   else
   {
@@ -1074,31 +1075,37 @@ CH_CMD(do_drop)
         case OBJ_VNUM_SILVER_ONE:
           silver += 1;
           extract_obj(obj);
+          obj = NULL;
           break;
 
         case OBJ_VNUM_GOLD_ONE:
           gold += 1;
           extract_obj(obj);
+          obj = NULL;
           break;
 
         case OBJ_VNUM_PLATINUM_ONE:
           platinum += 1;
           extract_obj(obj);
+          obj = NULL;
           break;
 
         case OBJ_VNUM_SILVER_SOME:
           silver += obj->value[0];
           extract_obj(obj);
+          obj = NULL;
           break;
 
         case OBJ_VNUM_GOLD_SOME:
           gold += obj->value[1];
           extract_obj(obj);
+          obj = NULL;
           break;
 
         case OBJ_VNUM_PLATINUM_SOME:
           platinum += obj->value[2];
           extract_obj(obj);
+          obj = NULL;
           break;
 
         case OBJ_VNUM_COINS:
@@ -1106,6 +1113,7 @@ CH_CMD(do_drop)
           gold += obj->value[1];
           platinum += obj->value[2];
           extract_obj(obj);
+          obj = NULL;
           break;
       }
     }
@@ -1154,6 +1162,7 @@ CH_CMD(do_drop)
       act("You drop $p and it dissolves into smoke.", ch, obj, NULL, TO_CHAR);
       act("$n drops $p and it dissolves into smoke.", ch, obj, NULL, TO_ROOM);
       extract_obj(obj);
+      obj = NULL;
     }
   }
   else
@@ -1191,6 +1200,7 @@ CH_CMD(do_drop)
                   obj->short_descr);
           add_buf(output, buf);
           extract_obj(obj);
+          obj = NULL;
         }
         else
         {
@@ -1706,6 +1716,7 @@ CH_CMD(do_fill)
     obj->value[2] = fountain->value[2];
     obj->value[1]++;
     extract_obj(fountain);
+    fountain = NULL;
     return;
   }
 
@@ -1985,7 +1996,10 @@ CH_CMD(do_drink)
 
     case ITEM_FOUNTAIN:
       if (!str_cmp(liq_table[liquid].liq_name, "blood"))
+      {
         extract_obj(obj);
+        obj = NULL;
+      }
       break;
 
     case ITEM_DRINK_CON:
@@ -2155,6 +2169,7 @@ CH_CMD(do_eat)
   }
 
   extract_obj(obj);
+  obj = NULL;
   return;
 }
 
@@ -2912,6 +2927,7 @@ CH_CMD(do_sacrifice)
       else
       {
         extract_obj(obj);
+        obj = NULL;
       }
       if (IS_SET(ch->act, PLR_AUTOSPLIT))
       {
@@ -3034,7 +3050,10 @@ CH_CMD(do_sacrifice)
   wiznet(log_buf, ch, obj, WIZ_SACCING, 0, 0);
   if (obj->item_type != ITEM_CORPSE_PC && obj->item_type != ITEM_CORPSE_NPC
       && obj->item_type != ITEM_ITEMPILE)
+  {
     extract_obj(obj);
+    obj = NULL;
+  }
 
   return;
 }
@@ -3088,6 +3107,7 @@ CH_CMD(do_quaff)
   obj_cast_spell(obj->value[4], obj->value[0], ch, ch, NULL);
 
   extract_obj(obj);
+  obj = NULL;
   return;
 }
 
@@ -3167,6 +3187,7 @@ CH_CMD(do_recite)
   }
 
   extract_obj(scroll);
+  scroll = NULL;
   return;
 }
 
@@ -3259,6 +3280,7 @@ CH_CMD(do_brandish)
     act("$n's $p blazes bright and is gone.", ch, staff, NULL, TO_ROOM);
     act("Your $p blazes bright and is gone.", ch, staff, NULL, TO_CHAR);
     extract_obj(staff);
+    staff = NULL;
   }
 
   return;
@@ -3362,6 +3384,7 @@ CH_CMD(do_perform)
         TO_ROOM);
     act("You play $p until it falls apart.", ch, instrument, NULL, TO_CHAR);
     extract_obj(instrument);
+    instrument = NULL;
   }
 
   return;
@@ -3459,6 +3482,7 @@ CH_CMD(do_zap)
     act("$n's $p explodes into fragments.", ch, wand, NULL, TO_ROOM);
     act("Your $p explodes into fragments.", ch, wand, NULL, TO_CHAR);
     extract_obj(wand);
+    wand = NULL;
   }
 
   return;
@@ -3744,6 +3768,7 @@ void obj_to_keeper(OBJ_DATA * obj, CHAR_DATA * ch)
       if (IS_OBJ_STAT(t_obj, ITEM_INVENTORY))
       {
         extract_obj(obj);
+        obj = NULL;
         return;
       }
       obj->cost = t_obj->cost;  /* keep it standard */
@@ -4332,6 +4357,7 @@ CH_CMD(do_sell)
   if (obj->item_type == ITEM_TRASH || IS_OBJ_STAT(obj, ITEM_SELL_EXTRACT))
   {
     extract_obj(obj);
+    obj = NULL;
   }
   else
   {
