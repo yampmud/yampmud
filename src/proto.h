@@ -71,7 +71,7 @@ void violence_update args((void));
 void multi_hit args((CHAR_DATA * ch, CHAR_DATA * victim, int dt));
 int xdamage
 args((CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int class,
-      bool show, int suppress));
+      bool show, int suppress, bool mobdeath));
 bool damage
 args((CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int class,
       bool show));

@@ -1120,6 +1120,7 @@ void process_shields(CHAR_DATA * ch, CHAR_DATA * victim)
 {
   int dam, dt;
   int count = 0, total = 0;
+  bool mobdeath = false;
 
   if (IS_SHIELDED(victim, SHD_POISON))
   {
@@ -1129,11 +1130,13 @@ void process_shields(CHAR_DATA * ch, CHAR_DATA * victim)
     {
       dt = skill_lookup("poisonshield");
       dam = number_range(5, 15);
-      total += xdamage(victim, ch, dam, dt, DAM_POISON, true, VERBOSE_SHIELD);
+      total +=
+        xdamage(victim, ch, dam, dt, DAM_POISON, true, VERBOSE_SHIELD,
+                &mobdeath);
       count++;
     }
   }
-  if (IS_SHIELDED(victim, SHD_ICE))
+  if (!mobdeath && IS_SHIELDED(victim, SHD_ICE))
   {
     if (ch->fighting != victim)
       return;
@@ -1141,11 +1144,13 @@ void process_shields(CHAR_DATA * ch, CHAR_DATA * victim)
     {
       dt = skill_lookup("iceshield");
       dam = number_range(15, 25);
-      total += xdamage(victim, ch, dam, dt, DAM_COLD, true, VERBOSE_SHIELD);
+      total +=
+        xdamage(victim, ch, dam, dt, DAM_COLD, true, VERBOSE_SHIELD,
+                &mobdeath);
       count++;
     }
   }
-  if (IS_SHIELDED(victim, SHD_FIRE))
+  if (!mobdeath && IS_SHIELDED(victim, SHD_FIRE))
   {
     if (ch->fighting != victim)
       return;
@@ -1153,12 +1158,14 @@ void process_shields(CHAR_DATA * ch, CHAR_DATA * victim)
     {
       dt = skill_lookup("fireshield");
       dam = number_range(25, 35);
-      total += xdamage(victim, ch, dam, dt, DAM_FIRE, true, VERBOSE_SHIELD);
+      total +=
+        xdamage(victim, ch, dam, dt, DAM_FIRE, true, VERBOSE_SHIELD,
+                &mobdeath);
       count++;
 
     }
   }
-  if (IS_SHIELDED(victim, SHD_SHOCK))
+  if (!mobdeath && IS_SHIELDED(victim, SHD_SHOCK))
   {
     if (ch->fighting != victim)
       return;
@@ -1167,11 +1174,13 @@ void process_shields(CHAR_DATA * ch, CHAR_DATA * victim)
       dt = skill_lookup("shockshield");
 
       dam = number_range(35, 45);
-      total += xdamage(victim, ch, dam, dt, DAM_POISON, true, VERBOSE_SHIELD);
+      total +=
+        xdamage(victim, ch, dam, dt, DAM_POISON, true, VERBOSE_SHIELD,
+                &mobdeath);
       count++;
     }
   }
-  if (IS_SHIELDED(victim, SHD_ACID))
+  if (!mobdeath && IS_SHIELDED(victim, SHD_ACID))
   {
     if (ch->fighting != victim)
       return;
@@ -1179,11 +1188,13 @@ void process_shields(CHAR_DATA * ch, CHAR_DATA * victim)
     {
       dt = skill_lookup("acidshield");
       dam = number_range(45, 85);
-      total += xdamage(victim, ch, dam, dt, DAM_POISON, true, VERBOSE_SHIELD);
+      total +=
+        xdamage(victim, ch, dam, dt, DAM_POISON, true, VERBOSE_SHIELD,
+                &mobdeath);
       count++;
     }
   }
-  if (IS_SHIELDED(victim, SHD_BRIAR))
+  if (!mobdeath && IS_SHIELDED(victim, SHD_BRIAR))
   {
     if (ch->fighting != victim)
       return;
@@ -1191,12 +1202,14 @@ void process_shields(CHAR_DATA * ch, CHAR_DATA * victim)
     {
       dt = skill_lookup("briarshield");
       dam = number_range(30, 55);
-      total += xdamage(victim, ch, dam, dt, DAM_POISON, true, VERBOSE_SHIELD);
+      total +=
+        xdamage(victim, ch, dam, dt, DAM_POISON, true, VERBOSE_SHIELD,
+                &mobdeath);
       count++;
     }
   }
 
-  if (ch->fighting != victim)
+  if (mobdeath || ch->fighting != victim)
     return;
   if (count > 1)
     dam_message(victim, ch, total, -1, false, VERBOSE_SHIELD_COMP, false);
@@ -1485,13 +1498,15 @@ void one_hit_mock(CHAR_DATA * ch, CHAR_DATA * victim, int dt, bool secondary)
 bool damage(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int dam_type,
             bool show)
 {
-  return xdamage(ch, victim, dam, dt, dam_type, show, VERBOSE_STD);
+  bool mobdeath = false;
+  return xdamage(ch, victim, dam, dt, dam_type, show, VERBOSE_STD, &mobdeath);
 }
 
 bool damage_old(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
                 int dam_type, bool show)
 {
-  return xdamage(ch, victim, dam, dt, dam_type, show, VERBOSE_STD);
+  bool mobdeath = false;
+  return xdamage(ch, victim, dam, dt, dam_type, show, VERBOSE_STD, &mobdeath);
 }
 
 /*
@@ -1499,7 +1514,7 @@ bool damage_old(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
  * Inflict damage from a hit.
  */
 int xdamage(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int dam_type,
-            bool show, int verbose)
+            bool show, int verbose, bool mobdeath)
 {
   ROOM_INDEX_DATA *location;
   char buf[MAX_STRING_LENGTH];
@@ -1512,6 +1527,8 @@ int xdamage(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int dam_type,
   char bufa[MIL];
   char bufb[MIL];
   char bufc[MIL];
+  bool vicisnpc = false;
+  bool vicisch = false;
 
   absorb = 0;
 
@@ -1928,8 +1945,6 @@ int xdamage(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int dam_type,
       mp_percent_trigger(victim, ch, NULL, NULL, TRIG_DEATH);
     }
 
-    raw_kill(victim, ch);
-
     /* dump the flags */
     if (ch != victim && !IS_NPC(ch) &&
         (!is_same_clan(ch, victim) || clan_table[victim->clan].independent))
@@ -1938,9 +1953,23 @@ int xdamage(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int dam_type,
         REMOVE_BIT(victim->act, PLR_TWIT);
     }
 
+    if (IS_NPC(victim))
+      vicisnpc = true;
+
+    if (victim == ch)
+      vicisch = true;
+
+    raw_kill(victim, ch);
+
+    if (vicisnpc)
+    {
+      victim = NULL;
+      mobdeath = true;
+    }
+
     /* RT new auto commands */
 
-    if (!IS_NPC(ch) && IS_NPC(victim))
+    if (!IS_NPC(ch) && vicisnpc)
     {
       OBJ_DATA *coins;
 
@@ -1973,13 +2002,13 @@ int xdamage(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int dam_type,
     return dam;
   }
 
-  if (victim == ch)
+  if (vicisch)
     return dam;
 
   /* 
    * Take care of link dead people.
    */
-  if (!IS_NPC(victim) && victim->desc == NULL)
+  if (!vicisnpc && victim->desc == NULL)
   {
     if (number_range(0, victim->wait) == 0)
     {
@@ -1995,7 +2024,7 @@ int xdamage(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int dam_type,
   if ((!IS_SET(ch->act2, PLR2_CHALLENGED) ||
        !IS_SET(ch->act2, PLR2_CHALLENGER)) && arena != FIGHT_BUSY)
   {
-    if (IS_NPC(victim) && dam > 0 && victim->wait < PULSE_VIOLENCE / 2)
+    if (vicisnpc && dam > 0 && victim->wait < PULSE_VIOLENCE / 2)
     {
       if ((IS_SET(victim->act, ACT_WIMPY) && number_bits(2) == 0
            && victim->hit < victim->max_hit / 5) ||
@@ -2004,7 +2033,7 @@ int xdamage(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int dam_type,
         do_flee(victim, "");
     }
 
-    if (!IS_NPC(victim) && victim->hit > 0 &&
+    if (!vicisnpc && victim->hit > 0 &&
         victim->hit <= victim->wimpy && victim->wait < PULSE_VIOLENCE / 2)
       do_flee(victim, "");
 
