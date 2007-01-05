@@ -32,7 +32,11 @@ void init_sqlite3(void)
 
 void close_sqlite3(void)
 {
-  sqlite3_close(world_db);
+  if (world_db)
+  {
+    sqlite3_close(world_db);
+    world_db = NULL;
+  }
 }
 
 AREA_DATA *fetch_area(long long id)
