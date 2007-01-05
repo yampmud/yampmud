@@ -176,10 +176,14 @@ BUFFER *get_obj(CHAR_DATA * ch, OBJ_DATA * obj, OBJ_DATA * container,
     if (container->pIndexData->item_type == ITEM_PIT &&
         !CAN_WEAR(container, ITEM_TAKE) && !IS_OBJ_STAT(obj, ITEM_HAD_TIMER))
       obj->timer = 0;
+
     if (!silent)
+    {
       sprintf(buf, "You get %s from %s.\n\r", obj->short_descr,
               container->short_descr);
-    add_buf(output, buf);
+      add_buf(output, buf);
+    }
+
     if (!silent)
       act("$n gets $p from $P.", ch, obj, container, TO_ROOM);
     REMOVE_BIT(obj->extra_flags, ITEM_HAD_TIMER);
@@ -188,8 +192,10 @@ BUFFER *get_obj(CHAR_DATA * ch, OBJ_DATA * obj, OBJ_DATA * container,
   else
   {
     if (!silent)
+    {
       sprintf(buf, "You get %s.\n\r", obj->short_descr);
-    add_buf(output, buf);
+      add_buf(output, buf);
+    }
     if (!silent)
       act("$n gets $p.", ch, obj, container, TO_ROOM);
     obj_from_room(obj);
