@@ -3336,7 +3336,8 @@ CH_CMD(do_help)
     rc = sqlite3_step(stmt);
   }
 
-
+  sqlite3_free(sql);
+  sqlite3_finalize(stmt);
   send_to_char("No help on that word.\n\rMissing help file logged.\n\r", ch);
   append_file(ch, HELP_FILE, nohelp);
   sprintf(buf, "%s tried 'help %s'. Error: {D({wNon-Existent{D){w\n\r",
