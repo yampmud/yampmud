@@ -3524,7 +3524,7 @@ CH_CMD(do_purge)
                                                                                  precaution 
                                                                                */ )
         extract_char(victim, true);
-        victim = NULL;
+      victim = NULL;
     }
 
     for (obj = ch->in_room->contents; obj != NULL; obj = obj_next)

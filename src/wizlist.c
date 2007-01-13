@@ -303,8 +303,9 @@ void update_wizlist(CHAR_DATA * ch, int level)
       else
         prev->next = curr->next;
 
-      free_wiz(curr);
       save_wizlist();
+      free_wiz(curr);
+      curr = NULL;
     }
   }
   if (level <= ANCIENT)

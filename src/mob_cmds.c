@@ -345,6 +345,7 @@ CH_CMD(do_mpkill)
 {
   char arg[MAX_INPUT_LENGTH];
   CHAR_DATA *victim;
+  bool mobdeath = false;
 
   one_argument(argument, arg);
 
@@ -364,7 +365,7 @@ CH_CMD(do_mpkill)
     return;
   }
 
-  multi_hit(ch, victim, TYPE_UNDEFINED);
+  multi_hit(ch, victim, TYPE_UNDEFINED, &mobdeath);
   return;
 }
 
@@ -377,6 +378,7 @@ CH_CMD(do_mpassist)
 {
   char arg[MAX_INPUT_LENGTH];
   CHAR_DATA *victim;
+  bool mobdeath = false;
 
   one_argument(argument, arg);
 
@@ -389,7 +391,7 @@ CH_CMD(do_mpassist)
   if (victim == ch || ch->fighting != NULL || victim->fighting == NULL)
     return;
 
-  multi_hit(ch, victim->fighting, TYPE_UNDEFINED);
+  multi_hit(ch, victim->fighting, TYPE_UNDEFINED, &mobdeath);
   return;
 }
 
@@ -1083,6 +1085,7 @@ CH_CMD(do_mpdamage)
   char target[MAX_INPUT_LENGTH], min[MAX_INPUT_LENGTH], max[MAX_INPUT_LENGTH];
   int low, high;
   bool fAll = false, fKill = false;
+  bool mobdeath = false;
 
   argument = one_argument(argument, target);
   argument = one_argument(argument, min);
@@ -1130,20 +1133,20 @@ CH_CMD(do_mpdamage)
     {
       victim_next = victim->next_in_room;
       if (victim != ch)
-        damage(victim, victim,
-               fKill ? number_range(low,
-                                    high) : UMIN(victim->hit,
-                                                 number_range
-                                                 (low, high)),
-               TYPE_UNDEFINED, DAM_NONE, false);
+        xdamage(victim, victim,
+                fKill ? number_range(low,
+                                     high) : UMIN(victim->hit,
+                                                  number_range
+                                                  (low, high)),
+                TYPE_UNDEFINED, DAM_NONE, false, VERBOSE_STD, &mobdeath);
     }
   }
   else
-    damage(victim, victim,
-           fKill ? number_range(low, high) : UMIN(victim->hit,
-                                                  number_range(low,
-                                                               high)),
-           TYPE_UNDEFINED, DAM_NONE, false);
+    xdamage(victim, victim,
+            fKill ? number_range(low, high) : UMIN(victim->hit,
+                                                   number_range(low,
+                                                                high)),
+            TYPE_UNDEFINED, DAM_NONE, false, VERBOSE_STD, &mobdeath);
   return;
 }
 

@@ -68,17 +68,11 @@ bool can_pk args((CHAR_DATA * ch, CHAR_DATA * victim));
 bool is_voodood args((CHAR_DATA * ch, CHAR_DATA * victim));
 bool is_safe_spell args((CHAR_DATA * ch, CHAR_DATA * victim, bool area));
 void violence_update args((void));
-void multi_hit args((CHAR_DATA * ch, CHAR_DATA * victim, int dt));
+void multi_hit args((CHAR_DATA * ch, CHAR_DATA * victim, int dt, bool *mobdeath));
 int xdamage
 args((CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int class,
-      bool show, int suppress, bool mobdeath));
-bool damage
-args((CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int class,
-      bool show));
+      bool show, int suppress, bool *mobdeath));
 bool damage_mock
-args((CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int class,
-      bool show));
-bool damage_old
 args((CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int class,
       bool show));
 void update_pos args((CHAR_DATA * victim));
@@ -210,7 +204,7 @@ int skill_lookup args((const char *name));
 int slot_lookup args((int slot));
 bool saves_spell args((int level, CHAR_DATA * victim, int dam_type));
 void obj_cast_spell
-args((int sn, int level, CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj));
+args((int sn, int level, CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj, bool *mobdeath));
 
 /* mob_prog.c */
 void program_flow
@@ -498,29 +492,29 @@ void free_mpcode args((MPROG_CODE * pMcode));
 void new_reset args((ROOM_INDEX_DATA * pR, RESET_DATA * pReset));
 long convert_level args((char *arg));
 long get_area_level args((AREA_DATA * pArea));
-void check_assist args((CHAR_DATA * ch, CHAR_DATA * victim));
+void check_assist args((CHAR_DATA * ch, CHAR_DATA * victim, bool *mobdeath));
 bool check_dodge args((CHAR_DATA * ch, CHAR_DATA * victim));
 bool check_parry args((CHAR_DATA * ch, CHAR_DATA * victim));
 bool check_shield_block args((CHAR_DATA * ch, CHAR_DATA * victim));
 void dam_message
 args((CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, bool immune,
       int verbose, bool singular));
-void process_shields args((CHAR_DATA * ch, CHAR_DATA * victim));
+void process_shields args((CHAR_DATA * ch, CHAR_DATA * victim, bool *mobdeath));
 void death_cry args((CHAR_DATA * ch));
 void group_gain args((CHAR_DATA * ch, CHAR_DATA * victim));
 int xp_compute args((CHAR_DATA * gch, CHAR_DATA * victim, int total_levels));
 void make_corpse args((CHAR_DATA * ch, CHAR_DATA * killer));
 void one_hit
-args((CHAR_DATA * ch, CHAR_DATA * victim, int dt, bool secondary));
+args((CHAR_DATA * ch, CHAR_DATA * victim, int dt, bool secondary, bool *mobdeath));
 void one_hit_mock
 args((CHAR_DATA * ch, CHAR_DATA * victim, int dt, bool secondary));
-void mob_hit args((CHAR_DATA * ch, CHAR_DATA * victim, int dt));
-void raw_kill args((CHAR_DATA * victim, CHAR_DATA * killer));
+void mob_hit args((CHAR_DATA * ch, CHAR_DATA * victim, int dt, bool *mobdeath));
+void raw_kill args((CHAR_DATA * victim, CHAR_DATA * killer, bool *mobdeath));
 void set_fighting args((CHAR_DATA * ch, CHAR_DATA * victim));
 void disarm args((CHAR_DATA * ch, CHAR_DATA * victim));
 bool check_critical args((CHAR_DATA * ch, CHAR_DATA * victim));
 bool check_counter
-args((CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt));
+args((CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, bool *mobdeath));
 void check_arena args((CHAR_DATA * ch, CHAR_DATA * victim));
 void affect_modify args((CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd));
 bool is_friend args((CHAR_DATA * ch, CHAR_DATA * victim));

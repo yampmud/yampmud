@@ -281,6 +281,8 @@ char *target_name;
 char *third_name;
 char fullarg[MSL];
 
+bool castkill = false;
+
 CH_CMD(do_cast)
 {
   char arg1[MAX_INPUT_LENGTH];
@@ -294,6 +296,7 @@ CH_CMD(do_cast)
   int i;
   int target;
   bool found;
+  bool mobdeath = false;
 
   /* 
    * Switched NPC's can cast spells, but others can't.
@@ -694,6 +697,7 @@ CH_CMD(do_cast)
   }
   else
   {
+    castkill = false;
     ch->mana -= mana;
     if (IS_NPC(ch) || class_table[ch->class].fMana)
       /* class has spells */
@@ -703,9 +707,10 @@ CH_CMD(do_cast)
     check_improve(ch, sn, true, 1);
   }
 
-  if ((skill_table[sn].target == TAR_CHAR_OFFENSIVE ||
-       (skill_table[sn].target == TAR_OBJ_CHAR_OFF &&
-        target == TARGET_CHAR)) && victim != ch && victim->master != ch)
+  if (!castkill && (skill_table[sn].target == TAR_CHAR_OFFENSIVE ||
+                    (skill_table[sn].target == TAR_OBJ_CHAR_OFF &&
+                     target == TARGET_CHAR)) && victim != ch &&
+      victim->master != ch)
   {
     CHAR_DATA *vch;
     CHAR_DATA *vch_next;
@@ -715,11 +720,12 @@ CH_CMD(do_cast)
       vch_next = vch->next_in_room;
       if (victim == vch && victim->fighting == NULL)
       {
-        multi_hit(victim, ch, TYPE_UNDEFINED);
+        multi_hit(victim, ch, TYPE_UNDEFINED, &mobdeath);
         break;
       }
     }
   }
+  castkill = false;
   return;
 }
 
@@ -727,7 +733,7 @@ CH_CMD(do_cast)
  * Cast spells at targets using a magical object.
  */
 void obj_cast_spell(int sn, int level, CHAR_DATA * ch, CHAR_DATA * victim,
-                    OBJ_DATA * obj)
+                    OBJ_DATA * obj, bool * mobdeath)
 {
   void *vo;
   int target = TARGET_NONE;
@@ -856,7 +862,7 @@ void obj_cast_spell(int sn, int level, CHAR_DATA * ch, CHAR_DATA * victim,
       vch_next = vch->next_in_room;
       if (victim == vch && victim->fighting == NULL)
       {
-        multi_hit(victim, ch, TYPE_UNDEFINED);
+        multi_hit(victim, ch, TYPE_UNDEFINED, mobdeath);
         break;
       }
     }
@@ -872,6 +878,7 @@ MAGIC(spell_acid_blast)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int adam, edam;
+  bool mobdeath = false;
 
   adam = dice((level / 3), 33);
   edam = dice((level / 3), 33);
@@ -883,8 +890,9 @@ MAGIC(spell_acid_blast)
 
   if (victim->in_room == ch->in_room)
   {
-    damage(ch, victim, adam, sn, DAM_ACID, true);
-    damage(ch, victim, edam, sn, DAM_ENERGY, true);
+    xdamage(ch, victim, adam, sn, DAM_ACID, true, VERBOSE_STD, &mobdeath);
+    if (!mobdeath)
+      xdamage(ch, victim, edam, sn, DAM_ENERGY, true, VERBOSE_STD, &mobdeath);
   }
   return;
 }
@@ -1024,6 +1032,7 @@ MAGIC(spell_burning_hands)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam;
+  bool mobdeath = false;
 
   if ((ch->fighting == NULL) && (!IS_NPC(ch)) && (!IS_NPC(victim)))
   {
@@ -1034,7 +1043,7 @@ MAGIC(spell_burning_hands)
   dam = number_range((15 + level) / 3, 12);
   if (saves_spell(level, victim, DAM_FIRE))
     dam /= 1.5;
-  damage_old(ch, victim, dam, sn, DAM_FIRE, true);
+  xdamage(ch, victim, dam, sn, DAM_FIRE, true, VERBOSE_STD, &mobdeath);
   return;
 }
 
@@ -1043,6 +1052,7 @@ MAGIC(spell_call_lightning)
   CHAR_DATA *vch;
   CHAR_DATA *vch_next;
   int dam;
+  bool mobdeath = false;
 
   if (!IS_OUTSIDE(ch))
   {
@@ -1076,10 +1086,9 @@ MAGIC(spell_call_lightning)
           ch->attacker = true;
           vch->attacker = false;
         }
-        damage_old(ch, vch,
-                   saves_spell(level, vch,
-                               DAM_LIGHTNING) ? dam / 2 : dam, sn,
-                   DAM_LIGHTNING, true);
+        xdamage(ch, vch,
+                saves_spell(level, vch, DAM_LIGHTNING) ? dam / 2 : dam, sn,
+                DAM_LIGHTNING, true, VERBOSE_STD, &mobdeath);
       }
       continue;
     }
@@ -1360,39 +1369,45 @@ MAGIC(spell_cancellation)
 MAGIC(spell_cause_light)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
+  bool mobdeath = false;
 
   if ((ch->fighting == NULL) && (!IS_NPC(ch)) && (!IS_NPC(victim)))
   {
     ch->attacker = true;
     victim->attacker = false;
   }
-  damage_old(ch, victim, dice(50, 15) + level, sn, DAM_HARM, true);
+  xdamage(ch, victim, dice(50, 15) + level, sn, DAM_HARM, true, VERBOSE_STD,
+          &mobdeath);
   return;
 }
 
 MAGIC(spell_cause_critical)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
+  bool mobdeath = false;
 
   if ((ch->fighting == NULL) && (!IS_NPC(ch)) && (!IS_NPC(victim)))
   {
     ch->attacker = true;
     victim->attacker = false;
   }
-  damage_old(ch, victim, dice(80, 25) + level, sn, DAM_HARM, true);
+  xdamage(ch, victim, dice(80, 25) + level, sn, DAM_HARM, true, VERBOSE_STD,
+          &mobdeath);
   return;
 }
 
 MAGIC(spell_cause_serious)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
+  bool mobdeath = false;
 
   if ((ch->fighting == NULL) && (!IS_NPC(ch)) && (!IS_NPC(victim)))
   {
     ch->attacker = true;
     victim->attacker = false;
   }
-  damage_old(ch, victim, dice(160, 50) + level, sn, DAM_HARM, true);
+  xdamage(ch, victim, dice(160, 50) + level, sn, DAM_HARM, true, VERBOSE_STD,
+          &mobdeath);
   return;
 }
 
@@ -1402,6 +1417,8 @@ MAGIC(spell_chain_lightning)
   CHAR_DATA *tmp_vict, *last_vict, *next_vict;
   bool found;
   int dam;
+  bool mobdeath = false;
+
 
   /* first strike */
 
@@ -1420,8 +1437,12 @@ MAGIC(spell_chain_lightning)
   dam = dice(level, 30);
   if (saves_spell(level, victim, DAM_LIGHTNING))
     dam /= 3;
-  damage_old(ch, victim, dam, sn, DAM_LIGHTNING, true);
-  last_vict = victim;
+  xdamage(ch, victim, dam, sn, DAM_LIGHTNING, true, VERBOSE_STD, &mobdeath);
+  if (mobdeath)
+    last_vict = NULL;
+  else
+    last_vict = victim;
+  mobdeath = false;
   level -= 4;                   /* decrement damage */
 
   /* new targets */
@@ -1441,7 +1462,8 @@ MAGIC(spell_chain_lightning)
         dam = dice(level, 25);
         if (saves_spell(level, tmp_vict, DAM_LIGHTNING))
           dam /= 3;
-        damage_old(ch, tmp_vict, dam, sn, DAM_LIGHTNING, true);
+        xdamage(ch, tmp_vict, dam, sn, DAM_LIGHTNING, true, VERBOSE_STD,
+                &mobdeath);
         level -= 4;             /* decrement damage */
       }
     }                           /* end target searching loop */
@@ -1465,7 +1487,7 @@ MAGIC(spell_chain_lightning)
       dam = dice(level, 15);
       if (saves_spell(level, ch, DAM_LIGHTNING))
         dam /= 3;
-      damage_old(ch, ch, dam, sn, DAM_LIGHTNING, true);
+      xdamage(ch, ch, dam, sn, DAM_LIGHTNING, true, VERBOSE_STD, &mobdeath);
       level -= 4;               /* decrement damage */
 
       if (ch == NULL)
@@ -1586,6 +1608,7 @@ MAGIC(spell_chill_touch)
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   AFFECT_DATA af;
   int dam;
+  bool mobdeath = false;
 
   if (is_affected(ch, sn))
   {
@@ -1619,7 +1642,7 @@ MAGIC(spell_chill_touch)
     victim->attacker = false;
   }
 
-  damage_old(ch, victim, dam, sn, DAM_COLD, true);
+  xdamage(ch, victim, dam, sn, DAM_COLD, true, VERBOSE_STD, &mobdeath);
   return;
 }
 
@@ -1627,6 +1650,7 @@ MAGIC(spell_colour_spray)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam, stun;
+  bool mobdeath = false;
 
   if ((ch->fighting == NULL) && (!IS_NPC(ch)) && (!IS_NPC(victim)))
   {
@@ -1646,7 +1670,7 @@ MAGIC(spell_colour_spray)
         TO_ROOM);
     victim->stunned = 2;
   }
-  damage_old(ch, victim, dam, sn, DAM_LIGHT, true);
+  xdamage(ch, victim, dam, sn, DAM_LIGHT, true, VERBOSE_STD, &mobdeath);
   return;
 }
 
@@ -1982,6 +2006,7 @@ MAGIC(spell_demonfire)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam;
+  bool mobdeath = false;
 
   if (!IS_NPC(ch) && !IS_EVIL(ch))
   {
@@ -2011,9 +2036,10 @@ MAGIC(spell_demonfire)
   if (dam < 0)
     dam /= 5;
 
-  damage_old(ch, victim, dam, sn, DAM_NEGATIVE, true);
-  damage_old(ch, victim, dam, sn, DAM_FIRE, true);
   spell_curse(gsn_curse, 3 * level / 4, ch, (void *) victim, TARGET_CHAR);
+  xdamage(ch, victim, dam, sn, DAM_NEGATIVE, true, VERBOSE_STD, &mobdeath);
+  if (!mobdeath)
+    xdamage(ch, victim, dam, sn, DAM_FIRE, true, VERBOSE_STD, &mobdeath);
   return;
 }
 
@@ -2021,6 +2047,7 @@ MAGIC(spell_angeldust)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam;
+  bool mobdeath = false;
 
   if (!IS_NPC(ch) && !IS_GOOD(ch))
   {
@@ -2050,9 +2077,10 @@ MAGIC(spell_angeldust)
   if (dam < 0)
     dam /= 5;
 
-  damage_old(ch, victim, dam, sn, DAM_HOLY, true);
-  damage_old(ch, victim, dam, sn, DAM_EARTH, true);
   spell_curse(gsn_curse, 3 * level / 4, ch, (void *) victim, TARGET_CHAR);
+  xdamage(ch, victim, dam, sn, DAM_HOLY, true, VERBOSE_STD, &mobdeath);
+  if (!mobdeath)
+    xdamage(ch, victim, dam, sn, DAM_EARTH, true, VERBOSE_STD, &mobdeath);
   return;
 }
 
@@ -2217,6 +2245,7 @@ MAGIC(spell_dispel_evil)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam;
+  bool mobdeath = false;
 
   if (!IS_NPC(ch) && IS_EVIL(ch))
     victim = ch;
@@ -2246,7 +2275,7 @@ MAGIC(spell_dispel_evil)
     ch->attacker = true;
     victim->attacker = false;
   }
-  damage_old(ch, victim, dam, sn, DAM_HOLY, true);
+  xdamage(ch, victim, dam, sn, DAM_HOLY, true, VERBOSE_STD, &mobdeath);
   return;
 }
 
@@ -2254,6 +2283,7 @@ MAGIC(spell_dispel_good)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam;
+  bool mobdeath = false;
 
   if (!IS_NPC(ch) && IS_GOOD(ch))
     victim = ch;
@@ -2283,7 +2313,7 @@ MAGIC(spell_dispel_good)
     ch->attacker = true;
     victim->attacker = false;
   }
-  damage_old(ch, victim, dam, sn, DAM_NEGATIVE, true);
+  xdamage(ch, victim, dam, sn, DAM_NEGATIVE, true, VERBOSE_STD, &mobdeath);
   return;
 }
 
@@ -2473,6 +2503,7 @@ MAGIC(spell_earthquake)
 {
   CHAR_DATA *vch;
   CHAR_DATA *vch_next;
+  bool mobdeath = false;
 
   send_to_char("The earth trembles beneath your feet!\n\r", ch);
   act("$n makes the earth tremble and shiver.", ch, NULL, NULL, TO_ROOM);
@@ -2480,6 +2511,7 @@ MAGIC(spell_earthquake)
   for (vch = char_list; vch != NULL; vch = vch_next)
   {
     vch_next = vch->next;
+    mobdeath = false;
     if (vch->in_room == NULL)
       continue;
     if (vch->in_room == ch->in_room)
@@ -2492,7 +2524,8 @@ MAGIC(spell_earthquake)
           ch->attacker = true;
           vch->attacker = false;
         }
-        damage_old(ch, vch, level + dice(level + 2, 5), sn, DAM_EARTH, true);
+        xdamage(ch, vch, level + dice(level + 2, 5), sn, DAM_EARTH, true,
+                VERBOSE_STD, &mobdeath);
       }
       continue;
     }
@@ -2923,6 +2956,7 @@ MAGIC(spell_energy_drain)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam;
+  bool mobdeath = false;
 
   if (victim != ch)
   {
@@ -2958,7 +2992,7 @@ MAGIC(spell_energy_drain)
 
   send_to_char("You feel your life slipping away!\n\r", victim);
   send_to_char("Wow....what a rush!\n\r", ch);
-  damage_old(ch, victim, dam, sn, DAM_NEGATIVE, true);
+  xdamage(ch, victim, dam, sn, DAM_NEGATIVE, true, VERBOSE_STD, &mobdeath);
 
   return;
 }
@@ -2967,6 +3001,7 @@ MAGIC(spell_fireball)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam;
+  bool mobdeath = false;
 
   dam = dice(level * 2, 33);
   if (saves_spell(level, victim, DAM_FIRE))
@@ -2977,8 +3012,8 @@ MAGIC(spell_fireball)
     ch->attacker = true;
     victim->attacker = false;
   }
-  damage_old(ch, victim, dam, sn, DAM_FIRE, true);
   fire_effect(victim, level, dam, TARGET_CHAR);
+  xdamage(ch, victim, dam, sn, DAM_FIRE, true, VERBOSE_STD, &mobdeath);
   return;
 }
 
@@ -3011,6 +3046,7 @@ MAGIC(spell_flamestrike)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam;
+  bool mobdeath = false;
 
   if ((ch->fighting == NULL) && (!IS_NPC(ch)) && (!IS_NPC(victim)))
   {
@@ -3022,8 +3058,10 @@ MAGIC(spell_flamestrike)
   if (saves_spell(level, victim, DAM_FIRE) &&
       saves_spell(level, victim, DAM_HOLY))
     dam /= 1.5;
-  damage_old(ch, victim, dam + dice(3, 5), sn, DAM_FIRE, true);
-  damage_old(ch, victim, dam, sn, DAM_HOLY, true);
+  xdamage(ch, victim, dam + dice(3, 5), sn, DAM_FIRE, true, VERBOSE_STD,
+          &mobdeath);
+  if (!mobdeath)
+    xdamage(ch, victim, dam, sn, DAM_HOLY, true, VERBOSE_STD, &mobdeath);
   return;
 }
 
@@ -3263,13 +3301,15 @@ MAGIC(spell_giant_strength)
 MAGIC(spell_harm)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
+  bool mobdeath = false;
 
   if ((ch->fighting == NULL) && (!IS_NPC(ch)) && (!IS_NPC(victim)))
   {
     ch->attacker = true;
     victim->attacker = false;
   }
-  damage_old(ch, victim, dice(222, 78) + level, sn, DAM_HARM, true);
+  xdamage(ch, victim, dice(222, 78) + level, sn, DAM_HARM, true, VERBOSE_STD,
+          &mobdeath);
   return;
 }
 
@@ -3278,6 +3318,7 @@ MAGIC(spell_divinewrath)
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   AFFECT_DATA af;
   int dam;
+  bool mobdeath = false;
 
   if ((ch->fighting == NULL) && (!IS_NPC(ch)) && (!IS_NPC(victim)))
   {
@@ -3289,28 +3330,36 @@ MAGIC(spell_divinewrath)
   if (saves_spell(level, victim, DAM_HOLY))
     dam /= 1.5;
 
-  damage_old(ch, victim, dam, sn, DAM_HOLY, true);
-  damage_old(ch, victim, dam, sn, DAM_LIGHT, true);
+  xdamage(ch, victim, dam, sn, DAM_HOLY, true, VERBOSE_STD, &mobdeath);
+  if (!mobdeath)
+  {
+    xdamage(ch, victim, dam, sn, DAM_LIGHT, true, VERBOSE_STD, &mobdeath);
 
-  if (number_range(1, 100) >= 98)
-  {
-    victim->stunned = number_range(2, 4);
-    send_to_char("You are {Ystunned{x by the heavenly light!\n\r", victim);
-    act("$n is {Ystunned{x by the heavenly light!", victim, NULL, NULL,
-        TO_ROOM);
-  }
-  if (number_percent() >= 98 && !IS_AFFECTED(victim, AFF_BLIND))
-  {
-    af.where = TO_AFFECTS;
-    af.type = sn;
-    af.level = level + 5;
-    af.location = APPLY_HITROLL;
-    af.modifier = -20;
-    af.duration = number_range(1, 3);
-    af.bitvector = AFF_BLIND;
-    affect_to_char(victim, &af);
-    send_to_char("You are blinded by the heavenly light!\n\r", victim);
-    act("$n is blinded by the heavenly light!", victim, NULL, NULL, TO_ROOM);
+    if (!mobdeath)
+    {
+      if (number_range(1, 100) >= 98)
+      {
+        victim->stunned = number_range(2, 4);
+        send_to_char("You are {Ystunned{x by the heavenly light!\n\r",
+                     victim);
+        act("$n is {Ystunned{x by the heavenly light!", victim, NULL, NULL,
+            TO_ROOM);
+      }
+      if (number_percent() >= 98 && !IS_AFFECTED(victim, AFF_BLIND))
+      {
+        af.where = TO_AFFECTS;
+        af.type = sn;
+        af.level = level + 5;
+        af.location = APPLY_HITROLL;
+        af.modifier = -20;
+        af.duration = number_range(1, 3);
+        af.bitvector = AFF_BLIND;
+        affect_to_char(victim, &af);
+        send_to_char("You are blinded by the heavenly light!\n\r", victim);
+        act("$n is blinded by the heavenly light!", victim, NULL, NULL,
+            TO_ROOM);
+      }
+    }
   }
 
   return;
@@ -3408,6 +3457,7 @@ MAGIC(spell_heat_metal)
   OBJ_DATA *obj_lose, *obj_next;
   int dam;
   bool fail = true;
+  bool mobdeath = false;
 
   dam = number_range(ch->level, ch->level * 5);
   if (!saves_spell(level + 2, victim, DAM_FIRE) &&
@@ -3534,7 +3584,7 @@ MAGIC(spell_heat_metal)
   {
     if (saves_spell(level, victim, DAM_FIRE))
       dam /= 1.5;
-    damage_old(ch, victim, dam, sn, DAM_FIRE, true);
+    xdamage(ch, victim, dam, sn, DAM_FIRE, true, VERBOSE_STD, &mobdeath);
   }
 }
 
@@ -3542,6 +3592,7 @@ MAGIC(spell_prayer)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam;
+  bool mobdeath = false;
 
   if (!IS_NPC(ch) && !IS_GOOD(ch))
   {
@@ -3562,9 +3613,10 @@ MAGIC(spell_prayer)
 
   if (dam < 0)
     dam /= 5;
-  damage_old(ch, victim, dam, sn, DAM_HOLY, true);
-  damage_old(ch, victim, dam, sn, DAM_SOUND, true);
-  if (!saves_spell(level, victim, DAM_HOLY) &&
+  xdamage(ch, victim, dam, sn, DAM_HOLY, true, VERBOSE_STD, &mobdeath);
+  if (!mobdeath)
+    xdamage(ch, victim, dam, sn, DAM_SOUND, true, VERBOSE_STD, &mobdeath);
+  if (!mobdeath && !saves_spell(level, victim, DAM_HOLY) &&
       get_curr_stat(ch, STAT_WIS) > get_curr_stat(victim, STAT_WIS))
     spell_blindness(skill_lookup("blindness"), level, ch, (void *) victim,
                     TARGET_CHAR);
@@ -3575,6 +3627,7 @@ MAGIC(spell_blasphemy)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam;
+  bool mobdeath = false;
 
   if (!IS_NPC(ch) && !IS_EVIL(ch))
   {
@@ -3595,9 +3648,10 @@ MAGIC(spell_blasphemy)
   if (dam < 0)
     dam /= 5;
 
-  damage_old(ch, victim, dam, sn, DAM_NEGATIVE, true);
-  damage_old(ch, victim, dam, sn, DAM_SOUND, true);
-  if (!saves_spell(level, victim, DAM_NEGATIVE) &&
+  xdamage(ch, victim, dam, sn, DAM_NEGATIVE, true, VERBOSE_STD, &mobdeath);
+  if (!mobdeath)
+    xdamage(ch, victim, dam, sn, DAM_SOUND, true, VERBOSE_STD, &mobdeath);
+  if (!mobdeath && !saves_spell(level, victim, DAM_NEGATIVE) &&
       get_curr_stat(ch, STAT_WIS) > get_curr_stat(victim, STAT_WIS))
     spell_weaken(skill_lookup("weaken"), level, ch, (void *) victim,
                  TARGET_CHAR);
@@ -4032,6 +4086,7 @@ MAGIC(spell_lightning_bolt)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam;
+  bool mobdeath = false;
 
   if ((ch->fighting == NULL) && (!IS_NPC(ch)) && (!IS_NPC(victim)))
   {
@@ -4042,7 +4097,7 @@ MAGIC(spell_lightning_bolt)
   dam = number_range((11 + level) / 2, 10);
   if (saves_spell(level, victim, DAM_LIGHTNING))
     dam /= 1.5;
-  damage_old(ch, victim, dam, sn, DAM_LIGHTNING, true);
+  xdamage(ch, victim, dam, sn, DAM_LIGHTNING, true, VERBOSE_STD, &mobdeath);
   return;
 }
 
@@ -4110,6 +4165,7 @@ MAGIC(spell_magic_missile)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam, hits, i;
+  bool mobdeath = false;
 
   hits = 1 + (ch->level / 10);
 
@@ -4119,14 +4175,14 @@ MAGIC(spell_magic_missile)
     victim->attacker = false;
   }
 
-  for (i = 1; i <= hits; i++)
+  for (i = 1; i <= hits && !mobdeath; i++)
   {
     dam = number_range(20, 50);
     if (ch->level > 19)
       dam *= (ch->level / 20);
     if (saves_spell(level, victim, DAM_ENERGY))
       dam /= 1.5;
-    damage_old(ch, victim, dam, sn, DAM_ENERGY, true);
+    xdamage(ch, victim, dam, sn, DAM_ENERGY, true, VERBOSE_STD, &mobdeath);
   }
   return;
 }
@@ -4386,6 +4442,7 @@ MAGIC(spell_ray_of_truth)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam, align;
+  bool mobdeath = false;
 
   act("$n raises $s hand, and a blinding ray of light shoots forth!", ch,
       NULL, ch, TO_ROOM);
@@ -4416,10 +4473,12 @@ MAGIC(spell_ray_of_truth)
     ch->attacker = true;
     victim->attacker = false;
   }
-  damage_old(ch, victim, dam, sn, DAM_LIGHT, true);
-  damage_old(ch, victim, dam, sn, DAM_HOLY, true);
-  spell_blindness(gsn_blindness, 3 * level / 4, ch, (void *) victim,
-                  TARGET_CHAR);
+  xdamage(ch, victim, dam, sn, DAM_LIGHT, true, VERBOSE_STD, &mobdeath);
+  if (!mobdeath)
+    xdamage(ch, victim, dam, sn, DAM_HOLY, true, VERBOSE_STD, &mobdeath);
+  if (!mobdeath)
+    spell_blindness(gsn_blindness, 3 * level / 4, ch, (void *) victim,
+                    TARGET_CHAR);
 }
 
 MAGIC(spell_recharge)
@@ -4646,6 +4705,7 @@ MAGIC(spell_shocking_grasp)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam;
+  bool mobdeath = false;
 
   if ((ch->fighting == NULL) && (!IS_NPC(ch)) && (!IS_NPC(victim)))
   {
@@ -4656,7 +4716,7 @@ MAGIC(spell_shocking_grasp)
   dam = number_range((9 + level) / 2, 12);
   if (saves_spell(level, victim, DAM_LIGHTNING))
     dam /= 1.5;
-  damage_old(ch, victim, dam, sn, DAM_LIGHTNING, true);
+  xdamage(ch, victim, dam, sn, DAM_LIGHTNING, true, VERBOSE_STD, &mobdeath);
   return;
 }
 
@@ -4946,6 +5006,7 @@ MAGIC(spell_acid_breath)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam, hp_dam, dice_dam, hpch;
+  bool mobdeath = false;
 
   act("$n spits acid at $N.", ch, NULL, victim, TO_NOTVICT);
   act("$n spits a stream of corrosive acid at you.", ch, NULL, victim,
@@ -4967,12 +5028,12 @@ MAGIC(spell_acid_breath)
   {
     acid_effect(victim, level / 2, dam / 4, TARGET_CHAR);
 
-    damage_old(ch, victim, dam / 2, sn, DAM_ACID, true);
+    xdamage(ch, victim, dam / 2, sn, DAM_ACID, true, VERBOSE_STD, &mobdeath);
   }
   else
   {
     acid_effect(victim, level, dam, TARGET_CHAR);
-    damage_old(ch, victim, dam, sn, DAM_ACID, true);
+    xdamage(ch, victim, dam, sn, DAM_ACID, true, VERBOSE_STD, &mobdeath);
   }
 }
 
@@ -4982,6 +5043,7 @@ MAGIC(spell_fire_breath)
   CHAR_DATA *vch, *vch_next;
   int dam, hp_dam, dice_dam;
   int hpch;
+  bool mobdeath = false;
 
   act("$n breathes forth a cone of fire.", ch, NULL, victim, TO_NOTVICT);
   act("$n breathes a cone of hot fire over you!", ch, NULL, victim, TO_VICT);
@@ -5014,12 +5076,12 @@ MAGIC(spell_fire_breath)
       {
         fire_effect(vch, level / 2, dam / 4, TARGET_CHAR);
 
-        damage_old(ch, vch, dam / 2, sn, DAM_FIRE, true);
+        xdamage(ch, vch, dam / 2, sn, DAM_FIRE, true, VERBOSE_STD, &mobdeath);
       }
       else
       {
         fire_effect(vch, level, dam, TARGET_CHAR);
-        damage_old(ch, vch, dam, sn, DAM_FIRE, true);
+        xdamage(ch, vch, dam, sn, DAM_FIRE, true, VERBOSE_STD, &mobdeath);
       }
     }
     else                        /* partial damage */
@@ -5027,13 +5089,12 @@ MAGIC(spell_fire_breath)
       if (saves_spell(level - 2, vch, DAM_FIRE))
       {
         fire_effect(vch, level / 4, dam / 8, TARGET_CHAR);
-        damage_old(ch, vch, dam / 4, sn, DAM_FIRE, true);
+        xdamage(ch, vch, dam / 4, sn, DAM_FIRE, true, VERBOSE_STD, &mobdeath);
       }
       else
       {
         fire_effect(vch, level / 2, dam / 4, TARGET_CHAR);
-
-        damage_old(ch, vch, dam / 2, sn, DAM_FIRE, true);
+        xdamage(ch, vch, dam / 2, sn, DAM_FIRE, true, VERBOSE_STD, &mobdeath);
       }
     }
   }
@@ -5054,6 +5115,7 @@ MAGIC(spell_frost_breath)
   hpch = UMAX(12, ch->hit);
   hp_dam = number_range(hpch / 11 + 1, hpch / 6);
   dice_dam = dice(level, 20);
+  bool mobdeath = false;
 
   dam = UMAX(hp_dam + dice_dam / 10, dice_dam + hp_dam / 10);
   cold_effect(victim->in_room, level, dam / 2, TARGET_ROOM);
@@ -5077,13 +5139,12 @@ MAGIC(spell_frost_breath)
       if (saves_spell(level, vch, DAM_COLD))
       {
         cold_effect(vch, level / 2, dam / 4, TARGET_CHAR);
-
-        damage_old(ch, vch, dam / 2, sn, DAM_COLD, true);
+        xdamage(ch, vch, dam / 2, sn, DAM_COLD, true, VERBOSE_STD, &mobdeath);
       }
       else
       {
         cold_effect(vch, level, dam, TARGET_CHAR);
-        damage_old(ch, vch, dam, sn, DAM_COLD, true);
+        xdamage(ch, vch, dam, sn, DAM_COLD, true, VERBOSE_STD, &mobdeath);
       }
     }
     else
@@ -5091,13 +5152,12 @@ MAGIC(spell_frost_breath)
       if (saves_spell(level - 2, vch, DAM_COLD))
       {
         cold_effect(vch, level / 4, dam / 8, TARGET_CHAR);
-        damage_old(ch, vch, dam / 4, sn, DAM_COLD, true);
+        xdamage(ch, vch, dam / 4, sn, DAM_COLD, true, VERBOSE_STD, &mobdeath);
       }
       else
       {
         cold_effect(vch, level / 2, dam / 4, TARGET_CHAR);
-
-        damage_old(ch, vch, dam / 2, sn, DAM_COLD, true);
+        xdamage(ch, vch, dam / 2, sn, DAM_COLD, true, VERBOSE_STD, &mobdeath);
       }
     }
   }
@@ -5108,6 +5168,7 @@ MAGIC(spell_gas_breath)
   CHAR_DATA *vch;
   CHAR_DATA *vch_next;
   int dam, hp_dam, dice_dam, hpch;
+  bool mobdeath = false;
 
   act("$n breathes out a cloud of poisonous gas!", ch, NULL, NULL, TO_ROOM);
   act("You breath out a cloud of poisonous gas.", ch, NULL, NULL, TO_CHAR);
@@ -5136,13 +5197,12 @@ MAGIC(spell_gas_breath)
     if (saves_spell(level, vch, DAM_POISON))
     {
       poison_effect(vch, level / 2, dam / 4, TARGET_CHAR);
-
-      damage_old(ch, vch, dam / 2, sn, DAM_POISON, true);
+      xdamage(ch, vch, dam / 2, sn, DAM_POISON, true, VERBOSE_STD, &mobdeath);
     }
     else
     {
       poison_effect(vch, level, dam, TARGET_CHAR);
-      damage_old(ch, vch, dam, sn, DAM_POISON, true);
+      xdamage(ch, vch, dam, sn, DAM_POISON, true, VERBOSE_STD, &mobdeath);
     }
   }
 }
@@ -5151,6 +5211,7 @@ MAGIC(spell_lightning_breath)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam, hp_dam, dice_dam, hpch;
+  bool mobdeath = false;
 
   act("$n breathes a bolt of lightning at $N.", ch, NULL, victim, TO_NOTVICT);
   act("$n breathes a bolt of lightning at you!", ch, NULL, victim, TO_VICT);
@@ -5170,13 +5231,13 @@ MAGIC(spell_lightning_breath)
   if (saves_spell(level, victim, DAM_LIGHTNING))
   {
     shock_effect(victim, level / 2, dam / 4, TARGET_CHAR);
-
-    damage_old(ch, victim, dam / 2, sn, DAM_LIGHTNING, true);
+    xdamage(ch, victim, dam / 2, sn, DAM_LIGHTNING, true, VERBOSE_STD,
+            &mobdeath);
   }
   else
   {
     shock_effect(victim, level, dam, TARGET_CHAR);
-    damage_old(ch, victim, dam, sn, DAM_LIGHTNING, true);
+    xdamage(ch, victim, dam, sn, DAM_LIGHTNING, true, VERBOSE_STD, &mobdeath);
   }
 }
 
@@ -5187,6 +5248,7 @@ MAGIC(spell_general_purpose)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam;
+  bool mobdeath = false;
 
   dam = number_range(25, 100);
   if (saves_spell(level, victim, DAM_PIERCE))
@@ -5196,7 +5258,7 @@ MAGIC(spell_general_purpose)
     ch->attacker = true;
     victim->attacker = false;
   }
-  damage_old(ch, victim, dam, sn, DAM_PIERCE, true);
+  xdamage(ch, victim, dam, sn, DAM_PIERCE, true, VERBOSE_STD, &mobdeath);
   return;
 }
 
@@ -5204,6 +5266,7 @@ MAGIC(spell_high_explosive)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam;
+  bool mobdeath = false;
 
   dam = number_range(30, 120);
   if (saves_spell(level, victim, DAM_PIERCE))
@@ -5213,7 +5276,7 @@ MAGIC(spell_high_explosive)
     ch->attacker = true;
     victim->attacker = false;
   }
-  damage_old(ch, victim, dam, sn, DAM_PIERCE, true);
+  xdamage(ch, victim, dam, sn, DAM_PIERCE, true, VERBOSE_STD, &mobdeath);
   return;
 }
 
@@ -5243,6 +5306,7 @@ MAGIC(spell_acid_rain)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam, i;
+  bool mobdeath = false;
 
   if ((ch->fighting == NULL) && (!IS_NPC(ch)) && (!IS_NPC(victim)))
   {
@@ -5260,12 +5324,12 @@ MAGIC(spell_acid_rain)
     ("{CW{ca{Cv{ce{Cs{g of {Ga{gc{Gi{gd{Gi{gc {Brain {gshower down upon {R$N{g!{x",
      ch, NULL, victim, TO_CHAR);
   i = 8;
-  while (i > 0)
+  while (i > 0 && !mobdeath)
   {
     dam = dice(level, level / 10);
     if (saves_spell(level, victim, DAM_ACID))
       dam /= 1.5;
-    damage(ch, victim, dam, sn, DAM_ACID, true);
+    xdamage(ch, victim, dam, sn, DAM_ACID, true, VERBOSE_STD, &mobdeath);
     i--;
   }
   return;
@@ -5276,6 +5340,7 @@ MAGIC(spell_elemental_fury)
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   CHAR_DATA *vic_next;
   int dam, cchan;
+  bool mobdeath = false;
 
   act("$n unleashes the {Gf{gu{Yr{Ry{x of the {Re{Yl{Ge{Cm{Be{Gn{Yt{Rs{x!",
       ch, NULL, NULL, TO_ROOM);
@@ -5288,6 +5353,7 @@ MAGIC(spell_elemental_fury)
   for (victim = char_list; victim != NULL; victim = vic_next)
   {
     vic_next = victim->next;
+    mobdeath = false;
     if (victim->in_room == NULL)
       continue;
     if (victim->in_room == ch->in_room)
@@ -5308,10 +5374,11 @@ MAGIC(spell_elemental_fury)
                 NULL, NULL, TO_ROOM);
             send_to_char("You are harmed by the element of {Ga{gc{Gi{Gd{x!",
                          victim);
-            damage(ch, victim, dam, sn, DAM_ACID, true);
+            xdamage(ch, victim, dam, sn, DAM_ACID, true, VERBOSE_STD,
+                    &mobdeath);
           }
         }
-        if (number_percent() <= cchan)
+        if (number_percent() <= cchan && !mobdeath)
         {
           dam = dice(level * 5, 6);
           if (victim->in_room == ch->in_room)
@@ -5320,10 +5387,11 @@ MAGIC(spell_elemental_fury)
                 NULL, TO_ROOM);
             send_to_char("You are harmed by the element of {Ci{Wc{ce{x!",
                          victim);
-            damage(ch, victim, dam, sn, DAM_COLD, true);
+            xdamage(ch, victim, dam, sn, DAM_COLD, true, VERBOSE_STD,
+                    &mobdeath);
           }
         }
-        if (number_percent() <= cchan)
+        if (number_percent() <= cchan && !mobdeath)
         {
           dam = dice(level * 5, 6);
           if (victim->in_room == ch->in_room)
@@ -5332,10 +5400,11 @@ MAGIC(spell_elemental_fury)
                 NULL, NULL, TO_ROOM);
             send_to_char("You are harmed by the element of {Rf{Yi{rr{Re{x!",
                          victim);
-            damage(ch, victim, dam, sn, DAM_FIRE, true);
+            xdamage(ch, victim, dam, sn, DAM_FIRE, true, VERBOSE_STD,
+                    &mobdeath);
           }
         }
-        if (number_percent() <= cchan)
+        if (number_percent() <= cchan && !mobdeath)
         {
           dam = dice(level * 5, 6);
           if (victim->in_room == ch->in_room)
@@ -5346,10 +5415,11 @@ MAGIC(spell_elemental_fury)
             send_to_char
               ("You are harmed by the element of {yl{Yi{Wg{Dh{Yt{wn{Wi{Yn{yg{x!",
                victim);
-            damage(ch, victim, dam, sn, DAM_LIGHTNING, true);
+            xdamage(ch, victim, dam, sn, DAM_LIGHTNING, true, VERBOSE_STD,
+                    &mobdeath);
           }
         }
-        if (number_percent() <= cchan)
+        if (number_percent() <= cchan && !mobdeath)
         {
           dam = dice(level * 5, 6);
           if (victim->in_room == ch->in_room)
@@ -5358,10 +5428,11 @@ MAGIC(spell_elemental_fury)
                 NULL, NULL, TO_ROOM);
             send_to_char
               ("You are harmed by the element of {ye{ga{yr{Gt{gh{x!", victim);
-            damage(ch, victim, dam, sn, DAM_EARTH, true);
+            xdamage(ch, victim, dam, sn, DAM_EARTH, true, VERBOSE_STD,
+                    &mobdeath);
           }
         }
-        if (number_percent() <= cchan)
+        if (number_percent() <= cchan && !mobdeath)
         {
           dam = dice(level * 5, 6);
           if (victim->in_room == ch->in_room)
@@ -5370,7 +5441,8 @@ MAGIC(spell_elemental_fury)
                 NULL, NULL, TO_ROOM);
             send_to_char
               ("You are harmed by the element of {Cw{Ba{ct{Ce{Br{x!", victim);
-            damage(ch, victim, dam, sn, DAM_WATER, true);
+            xdamage(ch, victim, dam, sn, DAM_WATER, true, VERBOSE_STD,
+                    &mobdeath);
           }
         }
       }

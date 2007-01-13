@@ -689,6 +689,7 @@ MAGIC(spell_napalm)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam;
+  bool mobdeath = false;
 
   if ((ch->fighting == NULL) && (!IS_NPC(ch)) && (!IS_NPC(victim)))
   {
@@ -703,9 +704,13 @@ MAGIC(spell_napalm)
     spell_plague(skill_lookup("plague"), level, ch, (void *) victim,
                  TARGET_CHAR);
 
-  damage(ch, victim, dam + (dam / 2), sn, DAM_FIRE, true);
-  damage(ch, victim, dam + (dam / 4), sn, DAM_DISEASE, true);
-  damage(ch, victim, dam, sn, DAM_FIRE, true);
+  xdamage(ch, victim, dam + (dam / 2), sn, DAM_FIRE, true, VERBOSE_STD,
+          &mobdeath);
+  if (!mobdeath)
+    xdamage(ch, victim, dam + (dam / 4), sn, DAM_DISEASE, true, VERBOSE_STD,
+            &mobdeath);
+  if (!mobdeath)
+    xdamage(ch, victim, dam, sn, DAM_FIRE, true, VERBOSE_STD, &mobdeath);
   return;
 }
 
@@ -1075,6 +1080,7 @@ MAGIC(spell_cry)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   AFFECT_DATA af;
+  bool mobdeath = false;
 
   if (is_affected(victim, sn))
   {
@@ -1091,34 +1097,38 @@ MAGIC(spell_cry)
     return;
   }
 
-  damage_old(ch, victim, dice(ch->level * 8, 10), sn, DAM_MENTAL, true);
+  xdamage(ch, victim, dice(ch->level * 8, 10), sn, DAM_MENTAL, true,
+          VERBOSE_STD, &mobdeath);
 
-  af.where = TO_AFFECTS;
-  af.type = sn;
-  af.level = level;
-  af.duration = ch->level / 40;
-  af.location = APPLY_HITROLL;
-  af.modifier = 0 - ch->level / 10;
-  af.bitvector = 0;
-  affect_to_char(victim, &af);
+  if (!mobdeath)
+  {
+    af.where = TO_AFFECTS;
+    af.type = sn;
+    af.level = level;
+    af.duration = ch->level / 40;
+    af.location = APPLY_HITROLL;
+    af.modifier = 0 - ch->level / 10;
+    af.bitvector = 0;
+    affect_to_char(victim, &af);
 
-  af.where = TO_AFFECTS;
-  af.type = sn;
-  af.level = level;
-  af.duration = ch->level / 40;
-  af.location = APPLY_DAMROLL;
-  af.modifier = 0 - ch->level / 15;
-  af.bitvector = 0;
-  affect_to_char(victim, &af);
+    af.where = TO_AFFECTS;
+    af.type = sn;
+    af.level = level;
+    af.duration = ch->level / 40;
+    af.location = APPLY_DAMROLL;
+    af.modifier = 0 - ch->level / 15;
+    af.bitvector = 0;
+    affect_to_char(victim, &af);
 
-  af.where = TO_AFFECTS;
-  af.type = sn;
-  af.level = level;
-  af.duration = ch->level / 40;
-  af.location = APPLY_DEX;
-  af.modifier = 0 - ch->level / 33;
-  af.bitvector = 0;
-  affect_to_char(victim, &af);
+    af.where = TO_AFFECTS;
+    af.type = sn;
+    af.level = level;
+    af.duration = ch->level / 40;
+    af.location = APPLY_DEX;
+    af.modifier = 0 - ch->level / 33;
+    af.bitvector = 0;
+    affect_to_char(victim, &af);
+  }
   send_to_char("You burst into tears.", victim);
   act("$n bursts into tears.", victim, NULL, NULL, TO_ROOM);
 
@@ -1588,6 +1598,7 @@ MAGIC(spell_celestial_fury)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   int dam;
+  bool mobdeath = false;
 
   act("You call upon the fury of the heavens!", ch, NULL, victim, TO_CHAR);
   act("$n calls upon the fury of the heavens!", ch, NULL, NULL, TO_ROOM);
@@ -1602,7 +1613,10 @@ MAGIC(spell_celestial_fury)
   if (saves_spell(level, victim, DAM_HOLY))
     dam /= 1.5;
 
-  damage_old(ch, victim, dam + dice(3, 10), sn, DAM_HOLY, true);
-  damage_old(ch, victim, dam + dice(2, 15), sn, DAM_LIGHTNING, true);
+  xdamage(ch, victim, dam + dice(3, 10), sn, DAM_HOLY, true, VERBOSE_STD,
+          &mobdeath);
+  if (!mobdeath)
+    xdamage(ch, victim, dam + dice(2, 15), sn, DAM_LIGHTNING, true,
+            VERBOSE_STD, &mobdeath);
   return;
 }

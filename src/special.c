@@ -140,6 +140,7 @@ bool spec_troll_member(CHAR_DATA * ch)
   CHAR_DATA *vch, *victim = NULL;
   int count = 0;
   char *message;
+  bool mobdeath = false;
 
   if (!IS_AWAKE(ch) || IS_AFFECTED(ch, AFF_CALM) || ch->in_room == NULL
       || IS_AFFECTED(ch, AFF_CHARM) || ch->fighting != NULL)
@@ -199,7 +200,7 @@ bool spec_troll_member(CHAR_DATA * ch)
 
   if (message != NULL)
     act(message, ch, NULL, victim, TO_ALL);
-  multi_hit(ch, victim, TYPE_UNDEFINED);
+  multi_hit(ch, victim, TYPE_UNDEFINED, &mobdeath);
   return true;
 }
 
@@ -208,6 +209,7 @@ bool spec_ogre_member(CHAR_DATA * ch)
   CHAR_DATA *vch, *victim = NULL;
   int count = 0;
   char *message;
+  bool mobdeath = false;
 
   if (!IS_AWAKE(ch) || IS_AFFECTED(ch, AFF_CALM) || ch->in_room == NULL
       || IS_AFFECTED(ch, AFF_CHARM) || ch->fighting != NULL)
@@ -267,7 +269,7 @@ bool spec_ogre_member(CHAR_DATA * ch)
 
   if (message != NULL)
     act(message, ch, NULL, victim, TO_ALL);
-  multi_hit(ch, victim, TYPE_UNDEFINED);
+  multi_hit(ch, victim, TYPE_UNDEFINED, &mobdeath);
   return true;
 }
 
@@ -472,6 +474,7 @@ bool spec_patrolman(CHAR_DATA * ch)
   OBJ_DATA *obj;
   char *message;
   int count = 0;
+  bool mobdeath = false;
 
   if (!IS_AWAKE(ch) || IS_AFFECTED(ch, AFF_CALM) || ch->in_room == NULL
       || IS_AFFECTED(ch, AFF_CHARM) || ch->fighting != NULL)
@@ -545,7 +548,7 @@ bool spec_patrolman(CHAR_DATA * ch)
   if (message != NULL)
     act(message, ch, NULL, NULL, TO_ALL);
 
-  multi_hit(ch, victim, TYPE_UNDEFINED);
+  multi_hit(ch, victim, TYPE_UNDEFINED, &mobdeath);
 
   return true;
 }
@@ -1292,6 +1295,7 @@ bool spec_executioner(CHAR_DATA * ch)
   CHAR_DATA *victim;
   CHAR_DATA *v_next;
   char *crime;
+  bool mobdeath = false;
 
   if (!IS_AWAKE(ch) || ch->fighting != NULL)
     return false;
@@ -1316,7 +1320,7 @@ bool spec_executioner(CHAR_DATA * ch)
           victim->name, crime);
   REMOVE_BIT(ch->comm, COMM_NOSHOUT);
   do_yell(ch, buf);
-  multi_hit(ch, victim, TYPE_UNDEFINED);
+  multi_hit(ch, victim, TYPE_UNDEFINED, &mobdeath);
   return true;
 }
 
@@ -1359,6 +1363,7 @@ bool spec_guard(CHAR_DATA * ch)
   CHAR_DATA *ech;
   char *crime;
   int max_evil;
+  bool mobdeath = false;
 
   if (!IS_AWAKE(ch) || ch->fighting != NULL)
     return false;
@@ -1392,7 +1397,7 @@ bool spec_guard(CHAR_DATA * ch)
             victim->name, crime);
     REMOVE_BIT(ch->comm, COMM_NOSHOUT);
     do_yell(ch, buf);
-    multi_hit(ch, victim, TYPE_UNDEFINED);
+    multi_hit(ch, victim, TYPE_UNDEFINED, &mobdeath);
     return true;
   }
 
@@ -1400,7 +1405,7 @@ bool spec_guard(CHAR_DATA * ch)
   {
     act("$n screams '{aPROTECT THE INNOCENT!!  BANZAI!!{x", ch, NULL,
         NULL, TO_ROOM);
-    multi_hit(ch, ech, TYPE_UNDEFINED);
+    multi_hit(ch, ech, TYPE_UNDEFINED, &mobdeath);
     return true;
   }
 

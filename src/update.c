@@ -769,9 +769,8 @@ void char_update(void)
   DESCRIPTOR_DATA *d;
   FILE *fp;
   int countu;
-  bool is_xmas;
-
-  is_xmas = false;
+  bool is_xmas = false;;
+  bool mobdeath = false;
 
   uptime_ticks++;
 
@@ -1359,7 +1358,8 @@ void char_update(void)
       dam = UMIN(ch->level, af->level / 5 + 1);
       ch->mana -= dam;
       ch->move -= dam;
-      damage_old(ch, ch, dam, gsn_plague, DAM_DISEASE, false);
+      xdamage(ch, ch, dam, gsn_plague, DAM_DISEASE, false, VERBOSE_STD,
+              &mobdeath);
     }
     else if (IS_AFFECTED(ch, AFF_POISON) && ch != NULL &&
              !IS_AFFECTED(ch, AFF_SLOW))
@@ -1371,21 +1371,23 @@ void char_update(void)
       {
         act("$n shivers and suffers.", ch, NULL, NULL, TO_ROOM);
         send_to_char("You shiver and suffer.\n\r", ch);
-        damage_old(ch, ch, poison->level / 10 + 1, gsn_poison,
-                   DAM_POISON, false);
+        xdamage(ch, ch, poison->level / 10 + 1, gsn_poison,
+                DAM_POISON, false, VERBOSE_STD, &mobdeath);
       }
     }
 
     else if (ch->position == POS_INCAP && number_range(0, 1) == 0)
     {
-      damage(ch, ch, 1, TYPE_UNDEFINED, DAM_NONE, false);
+      xdamage(ch, ch, 1, TYPE_UNDEFINED, DAM_NONE, false, VERBOSE_STD,
+              &mobdeath);
     }
     else if (ch->position == POS_MORTAL)
     {
-      damage(ch, ch, 1, TYPE_UNDEFINED, DAM_NONE, false);
+      xdamage(ch, ch, 1, TYPE_UNDEFINED, DAM_NONE, false, VERBOSE_STD,
+              &mobdeath);
     }
 
-    if (IS_NPC(ch))
+    if (IS_NPC(ch) && !mobdeath)
       if (!IS_VALID(ch))
       {
         bug("char_update: trying to work with invalid character", 0);
@@ -1395,6 +1397,7 @@ void char_update(void)
         break;
       }
 
+    mobdeath = false;
     ch_next = ch->next;
   }
 
@@ -1540,6 +1543,7 @@ void aggr_update(void)
   CHAR_DATA *vch;
   CHAR_DATA *vch_next;
   CHAR_DATA *victim;
+  bool mobdeath = false;
 
   for (wch = char_list; wch != NULL; wch = wch_next)
   {
@@ -1582,7 +1586,7 @@ void aggr_update(void)
 
       if (victim == NULL)
         continue;
-      multi_hit(ch, victim, TYPE_UNDEFINED);
+      multi_hit(ch, victim, TYPE_UNDEFINED, &mobdeath);
     }
   }
 

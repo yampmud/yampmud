@@ -2083,6 +2083,7 @@ CH_CMD(do_eat)
 {
   char arg[MAX_INPUT_LENGTH];
   OBJ_DATA *obj;
+  bool mobdeath = false;
 
   one_argument(argument, arg);
   if (arg[0] == '\0')
@@ -2166,11 +2167,18 @@ CH_CMD(do_eat)
       break;
 
     case ITEM_PILL:
-      obj_cast_spell(obj->value[1], obj->value[0], ch, ch, NULL);
-      obj_cast_spell(obj->value[2], obj->value[0], ch, ch, NULL);
-      obj_cast_spell(obj->value[3], obj->value[0], ch, ch, NULL);
-      obj_cast_spell(obj->value[4], obj->value[0], ch, ch, NULL);
-
+      obj_cast_spell(obj->value[1], obj->value[0], ch, ch, NULL, &mobdeath);
+      if (mobdeath)
+        break;
+      obj_cast_spell(obj->value[2], obj->value[0], ch, ch, NULL, &mobdeath);
+      if (mobdeath)
+        break;
+      obj_cast_spell(obj->value[3], obj->value[0], ch, ch, NULL, &mobdeath);
+      if (mobdeath)
+        break;
+      obj_cast_spell(obj->value[4], obj->value[0], ch, ch, NULL, &mobdeath);
+      if (mobdeath)
+        break;
       break;
   }
 
@@ -3068,6 +3076,7 @@ CH_CMD(do_quaff)
 {
   char arg[MAX_INPUT_LENGTH];
   OBJ_DATA *obj;
+  bool mobdeath = false;
 
   if (nia(ch))
     return;
@@ -3107,10 +3116,13 @@ CH_CMD(do_quaff)
   act("$n quaffs $p.", ch, obj, NULL, TO_ROOM);
   act("You quaff $p.", ch, obj, NULL, TO_CHAR);
 
-  obj_cast_spell(obj->value[1], obj->value[0], ch, ch, NULL);
-  obj_cast_spell(obj->value[2], obj->value[0], ch, ch, NULL);
-  obj_cast_spell(obj->value[3], obj->value[0], ch, ch, NULL);
-  obj_cast_spell(obj->value[4], obj->value[0], ch, ch, NULL);
+  obj_cast_spell(obj->value[1], obj->value[0], ch, ch, NULL, &mobdeath);
+  if (!mobdeath)
+    obj_cast_spell(obj->value[2], obj->value[0], ch, ch, NULL, &mobdeath);
+  if (!mobdeath)
+    obj_cast_spell(obj->value[3], obj->value[0], ch, ch, NULL, &mobdeath);
+  if (!mobdeath)
+    obj_cast_spell(obj->value[4], obj->value[0], ch, ch, NULL, &mobdeath);
 
   extract_obj(obj);
   obj = NULL;
@@ -3124,6 +3136,7 @@ CH_CMD(do_recite)
   CHAR_DATA *victim;
   OBJ_DATA *scroll;
   OBJ_DATA *obj;
+  bool mobdeath = false;
 
   if (nia(ch))
     return;
@@ -3184,10 +3197,17 @@ CH_CMD(do_recite)
 
   else
   {
-    obj_cast_spell(scroll->value[1], scroll->value[0], ch, victim, obj);
-    obj_cast_spell(scroll->value[2], scroll->value[0], ch, victim, obj);
-    obj_cast_spell(scroll->value[3], scroll->value[0], ch, victim, obj);
-    obj_cast_spell(scroll->value[4], scroll->value[0], ch, victim, obj);
+    obj_cast_spell(scroll->value[1], scroll->value[0], ch, victim, obj,
+                   &mobdeath);
+    if (!mobdeath)
+      obj_cast_spell(scroll->value[2], scroll->value[0], ch, victim, obj,
+                     &mobdeath);
+    if (!mobdeath)
+      obj_cast_spell(scroll->value[3], scroll->value[0], ch, victim, obj,
+                     &mobdeath);
+    if (!mobdeath)
+      obj_cast_spell(scroll->value[4], scroll->value[0], ch, victim, obj,
+                     &mobdeath);
 
     check_improve(ch, gsn_scrolls, true, 2);
   }
@@ -3203,6 +3223,7 @@ CH_CMD(do_brandish)
   CHAR_DATA *vch_next;
   OBJ_DATA *staff;
   int sn;
+  bool mobdeath = false;
 
   if ((staff = get_eq_char(ch, WEAR_HOLD)) == NULL)
   {
@@ -3276,7 +3297,8 @@ CH_CMD(do_brandish)
             break;
         }
 
-        obj_cast_spell(staff->value[3], staff->value[0], ch, vch, NULL);
+        obj_cast_spell(staff->value[3], staff->value[0], ch, vch, NULL,
+                       &mobdeath);
         check_improve(ch, gsn_staves, true, 2);
       }
   }
@@ -3298,6 +3320,7 @@ CH_CMD(do_perform)
   CHAR_DATA *vch_next;
   OBJ_DATA *instrument;
   int sn;
+  bool mobdeath = false;
 
   if ((instrument = get_eq_char(ch, WEAR_HOLD)) == NULL)
   {
@@ -3379,7 +3402,7 @@ CH_CMD(do_perform)
         }
 
         obj_cast_spell(instrument->value[3], instrument->value[0], ch, vch,
-                       NULL);
+                       NULL, &mobdeath);
         check_improve(ch, gsn_perform, true, 2);
       }
   }
@@ -3402,6 +3425,7 @@ CH_CMD(do_zap)
   CHAR_DATA *victim;
   OBJ_DATA *wand;
   OBJ_DATA *obj;
+  bool mobdeath = false;
 
   one_argument(argument, arg);
   if (arg[0] == '\0' && ch->fighting == NULL)
@@ -3478,7 +3502,8 @@ CH_CMD(do_zap)
     }
     else
     {
-      obj_cast_spell(wand->value[3], wand->value[0], ch, victim, obj);
+      obj_cast_spell(wand->value[3], wand->value[0], ch, victim, obj,
+                     &mobdeath);
       check_improve(ch, gsn_wands, true, 2);
     }
   }
@@ -3539,6 +3564,7 @@ CH_CMD(do_steal)
   CHAR_DATA *victim;
   OBJ_DATA *obj;
   int percent;
+  bool mobdeath = false;
 
   argument = one_argument(argument, arg1);
   argument = one_argument(argument, arg2);
@@ -3621,7 +3647,9 @@ CH_CMD(do_steal)
       if (IS_NPC(victim))
       {
         check_improve(ch, gsn_steal, false, 2);
-        multi_hit(victim, ch, TYPE_UNDEFINED);
+        multi_hit(victim, ch, TYPE_UNDEFINED, &mobdeath);
+        if (mobdeath)
+          return;
       }
       else
       {
@@ -3887,6 +3915,7 @@ CH_CMD(do_buy)
   char buf[MAX_STRING_LENGTH];
   int cost, roll;
   long multicost;
+  bool mobdeath = false;
 
   if (argument[0] == '\0')
   {
@@ -4019,7 +4048,7 @@ CH_CMD(do_buy)
       act("$n tells you '{aNice try, jackass!{x'.", keeper, NULL, ch,
           TO_VICT);
       ch->reply = keeper;
-      multi_hit(keeper, ch, TYPE_UNDEFINED);
+      multi_hit(keeper, ch, TYPE_UNDEFINED, &mobdeath);
       return;
     }
     if (number == 0)

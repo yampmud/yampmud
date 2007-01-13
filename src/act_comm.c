@@ -680,7 +680,6 @@ CH_CMD(do_reroll)
 
       SET_BIT(d->character->pcdata->ctier, tier_table[ctier - 1].bit);
       SET_BIT(d->character->act, PLR_REROLL);
-      ch->pcdata->confirm_reroll = false;
 
       d->connected = CON_BEGIN_REROLL;
       return;
