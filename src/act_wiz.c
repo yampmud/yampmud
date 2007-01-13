@@ -533,7 +533,7 @@ void wiznet(char *string, CHAR_DATA * ch, OBJ_DATA * obj, long flag,
     if (strlen(string) > 4)
       for (d = descriptor_list; d != NULL; d = d->next)
       {
-        if ((d->connected == CON_PLAYING) &&
+        if ((d->connected == CON_PLAYING) && d->character &&
             (IS_SET(d->character->wiznet, WIZ_ON)) &&
             (IS_SET(d->character->wiznet, flag)))
         {
