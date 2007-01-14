@@ -2029,6 +2029,9 @@ CH_CMD(do_exits)
   bool fAuto;
   int door;
 
+  buf[0] = '\0';
+  buf2[0] = '\0';
+
   fAuto = !str_cmp(argument, "auto");
   if (!check_blind(ch))
     return;
