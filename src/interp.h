@@ -320,7 +320,6 @@ DECLARE_DO_FUN(do_pktoggle);
 DECLARE_DO_FUN(do_play);
 DECLARE_DO_FUN(do_pload);
 DECLARE_DO_FUN(do_pmote);
-DECLARE_DO_FUN(do_pose);
 DECLARE_DO_FUN(do_pour);
 DECLARE_DO_FUN(do_practice);
 DECLARE_DO_FUN(do_pray);

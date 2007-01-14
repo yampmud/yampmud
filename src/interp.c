@@ -216,7 +216,6 @@ const struct cmd_type cmd_table[] = {
   {";", do_gtell, POS_DEAD, 0, 1, LOG_NORMAL, 0},
   {"note", do_note, POS_SLEEPING, 0, 1, LOG_NORMAL, 1},
   {"board", do_board, POS_SLEEPING, 0, 1, LOG_NORMAL, 1},
-  {"pose", do_pose, POS_RESTING, 0, 1, LOG_NORMAL, 1},
   {"iquest", do_iquest, POS_SLEEPING, 0, 1, LOG_NORMAL, 1},
   {"ask", do_ask, POS_SLEEPING, 0, 1, LOG_NORMAL, 1},
   {"quote", do_quote, POS_SLEEPING, 0, 1, LOG_NORMAL, 1},
