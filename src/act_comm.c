@@ -3896,9 +3896,14 @@ void force_quit(CHAR_DATA * ch, char *argument)
 
 CH_CMD(do_save)
 {
+/*
   send_to_char
     ("Manual save is not available.\n\rYou are automatically saved every 60 seconds.\n\rConsider using the backup command instead.\n\r",
      ch);
+  return;
+*/
+
+  do_backup(ch, argument);
   return;
 
   if (IS_NPC(ch))
