@@ -2556,7 +2556,7 @@ CH_CMD(do_mfind)
    * Do you?
    * -- Furey
    */
-  for (vnum = 0; nMatch < top_mob_index || vnum <= top_vnum_mob; vnum++)
+  for (vnum = 0; nMatch < top_mob_index && vnum <= top_vnum_mob; vnum++)
   {
     if ((pMobIndex = get_mob_index(vnum)) != NULL)
     {
@@ -2612,7 +2612,7 @@ CH_CMD(do_ofind)
    * Do you?
    * -- Furey
    */
-  for (vnum = 0; nMatch < top_obj_index || vnum <= top_vnum_obj; vnum++)
+  for (vnum = 0; nMatch < top_obj_index && vnum <= top_vnum_obj; vnum++)
   {
     if ((pObjIndex = get_obj_index(vnum)) != NULL)
     {
