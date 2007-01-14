@@ -308,10 +308,8 @@ const struct cmd_type cmd_table[] = {
   {"ambush", do_ambush, POS_FIGHTING, 0, 1, LOG_NORMAL, 1},
   {"sharpen", do_sharpen, POS_STANDING, 0, 1, LOG_NORMAL, 1},
   {"nervestrike", do_nervestrike, POS_FIGHTING, 0, 1, LOG_NORMAL, 1},
-  {"ns", do_nervestrike, POS_FIGHTING, 0, 1, LOG_NORMAL, 1},
   {"strike", do_strike, POS_FIGHTING, 0, 1, LOG_NORMAL, 1},
   {"eyerub", do_rub, POS_FIGHTING, 0, 1, LOG_NORMAL, 1},
-  {"rub", do_rub, POS_FIGHTING, 0, 1, LOG_NORMAL, 1},
   {"thrust", do_thrust, POS_FIGHTING, 0, 1, LOG_NORMAL, 1},
   {"whirlwind", do_whirlwind, POS_FIGHTING, 0, 1, LOG_NORMAL, 1},
 
