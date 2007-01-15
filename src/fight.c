@@ -168,9 +168,10 @@ void violence_update(void)
   int vdam = 0;
   bool mobdeath = false;
 
-  for (ch = char_list; ch != NULL; ch = ch->next)
+  for (ch = char_list; ch != NULL; ch = ch_next)
   {
     ch_next = ch->next;
+    mobdeath = false;
 
     if ((victim = ch->fighting) == NULL || ch->in_room == NULL)
       continue;
