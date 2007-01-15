@@ -818,6 +818,7 @@ CH_CMD(do_verbose)
 {
 #define VER_OO(ch,flag) (!IS_SET((ch)->pcdata->verbose,(flag))?" {y({YON{y){x":"{b({BOFF{b){x")
   char arg[MAX_INPUT_LENGTH];
+  arg[0] = '\0';
 
   argument = one_argument(argument, arg);
 
