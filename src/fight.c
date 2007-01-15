@@ -194,6 +194,8 @@ void violence_update(void)
     /* 
      * Fun for the whole family!
      */
+    if (mobdeath)
+      continue;
     check_assist(ch, victim, &mobdeath);
     if (mobdeath)
       continue;
