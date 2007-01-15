@@ -449,9 +449,15 @@ void game_loop_unix(int control)
               nanny(d, d->incomm);
               break;
           }
-
-        d->incomm[0] = '\0';
       }
+    }
+
+    /* This second loop is needed for the instances where a descriptor is closed
+       and subsequently free'd as a result of an incoming command, e.g. quit. */
+    for (d = descriptor_list; d != NULL; d = d_next)
+    {
+      d_next = d->next;
+      d->incomm[0] = '\0';
     }
 
     /* 
@@ -3225,6 +3231,8 @@ void xact_new(const char *format, CHAR_DATA * ch, const void *arg1,
   char buf[MAX_STRING_LENGTH];
   char fname[MAX_INPUT_LENGTH];
   int collen = -1;
+
+  memset(&buf, MAX_STRING_LENGTH, sizeof(char));
 
   if (!format || !*format)
     return;
