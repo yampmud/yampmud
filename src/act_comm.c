@@ -1757,8 +1757,6 @@ CH_CMD(do_ooc)
     {
       send_to_char("The gods have revoked your channel priviliges.\n\r", ch);
       return;
-
-      REMOVE_BIT(ch->comm, COMM_NOOOC);
     }
 
     if ((ch->in_room->vnum == ROOM_VNUM_CORNER) && (!IS_IMMORTAL(ch)))
@@ -1768,6 +1766,8 @@ CH_CMD(do_ooc)
          ch);
       return;
     }
+
+    REMOVE_BIT(ch->comm, COMM_NOOOC);
 
     argument = makedrunk(argument, ch);
 
