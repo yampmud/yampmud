@@ -567,9 +567,10 @@ CH_CMD(do_reroll)
         ch->pcdata->confirm_reroll = false;
         return;
       }
+
       /* Make sure ctier is not greater or less than number tiers in
          tier_table */
-      else if ((ctier = atoi(argument)) <= 0 || ctier > 4)
+      if ((ctier = atoi(argument)) <= 0 || ctier > 4)
       {
         send_to_char
           ("That is not a valid tier.  Please type REROLL <tier>.\n\r", ch);
