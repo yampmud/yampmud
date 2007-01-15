@@ -42,7 +42,7 @@
 #include "merc.h"
 #include "db.h"
 
-bool check_disabled(const struct cmd_type * command);
+bool check_disabled(const struct cmd_type *command);
 DISABLED_DATA *disabled_first;
 
 #define END_MARKER	"END"       /* for load_disabled() and save_disabled() */
@@ -351,8 +351,8 @@ const struct cmd_type cmd_table[] = {
   {"forge", do_forge, POS_STANDING, 0, 1, LOG_NORMAL, 0},
   {"ignor", do_ignor, POS_SLEEPING, 0, 1, LOG_NORMAL, 1},
   {"ignore", do_ignore, POS_SLEEPING, 0, 1, LOG_NORMAL, 1},
-  {"remembe", do_remembe, POS_SLEEPING, 0, 1, LOG_NORMAL, 0},
-  {"remember", do_remember, POS_SLEEPING, 0, 1, LOG_NORMAL, 1},
+  {"unignor", do_unignor, POS_SLEEPING, 0, 1, LOG_NORMAL, 0},
+  {"unignore", do_unignore, POS_SLEEPING, 0, 1, LOG_NORMAL, 1},
   {"voodoo", do_voodoo, POS_STANDING, 20, 1, LOG_NORMAL, 1},
   {"backup", do_backup, POS_DEAD, 0, 1, LOG_ALWAYS, 1},
   {"game", do_game, POS_STANDING, 0, 1, LOG_NORMAL, 1},
