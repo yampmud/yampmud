@@ -373,6 +373,9 @@ CH_CMD(do_reform)
   char arg2[MAX_INPUT_LENGTH];
   int amount;
 
+  arg1[0] = '\0';
+  arg2[0] = '\0';
+
   argument = one_argument(argument, arg1);
   argument = one_argument(argument, arg2);
 
