@@ -483,7 +483,7 @@ const struct tier_type tier_table[] = {
 
 CH_CMD(do_reroll)
 {
-  DESCRIPTOR_DATA *d;
+  DESCRIPTOR_DATA *d = NULL;
   char strsave[MAX_INPUT_LENGTH], buf[MAX_STRING_LENGTH];
   char player_psswd[MAX_STRING_LENGTH], player_title[MAX_STRING_LENGTH];
   char player_name[MAX_INPUT_LENGTH], player_prmpt[MAX_INPUT_LENGTH];
