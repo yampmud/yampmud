@@ -1832,6 +1832,9 @@ void bust_a_prompt(CHAR_DATA * ch)
  */
 void write_to_buffer(DESCRIPTOR_DATA * d, const char *txt, int length)
 {
+  if (d->outbuf == NULL)
+    return;
+
   /* 
    * Find length in case caller didn't.
    */
