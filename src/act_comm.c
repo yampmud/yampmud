@@ -679,6 +679,7 @@ CH_CMD(do_reroll)
       d->character->rpst = player_rpst;
       d->character->redeem = player_ree;
       d->character->bankeditems = player_banked;
+      d->character->nameauthed = 1;
 
       SET_BIT(d->character->pcdata->ctier, tier_table[ctier - 1].bit);
       SET_BIT(d->character->act, PLR_REROLL);
