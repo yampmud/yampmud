@@ -3212,15 +3212,6 @@ void fix_sex(CHAR_DATA * ch)
 void xact_new(const char *format, CHAR_DATA * ch, const void *arg1,
               const void *arg2, int type, int min_pos, int verbose)
 {
-  static char *const he_she[] = {
-    "it", "he", "she"
-  };
-  static char *const him_her[] = {
-    "it", "him", "her"
-  };
-  static char *const his_her[] = {
-    "its", "his", "her"
-  };
   CHAR_DATA *to;
   CHAR_DATA *vch = (CHAR_DATA *) arg2;
   OBJ_DATA *obj1 = (OBJ_DATA *) arg1;

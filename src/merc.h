@@ -2534,3 +2534,8 @@ extern const struct bit_type bitvector_type[];
 #include "proto.h"
 #include "gsn.h"
 #include "globals.h"
+
+extern char *const he_she[];
+extern char *const him_her[];
+extern char *const his_her[];
+

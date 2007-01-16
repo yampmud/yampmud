@@ -712,9 +712,6 @@ void expand_arg(char *buf, const char *format, CHAR_DATA * mob,
                 CHAR_DATA * ch, const void *arg1, const void *arg2,
                 CHAR_DATA * rch)
 {
-  static char *const he_she[] = { "it", "he", "she" };
-  static char *const him_her[] = { "it", "him", "her" };
-  static char *const his_her[] = { "its", "his", "her" };
   const char *someone = "someone";
   const char *something = "something";
   const char *someones = "someone's";

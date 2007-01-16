@@ -57,8 +57,6 @@
 #include "lookup.h"
 #include "ctype.h"
 
-static char *const him_her[] = { "it", "him", "her" };
-
 void do_pkset(CHAR_DATA * ch, char *argument)
 {
   if (IS_NPC(ch))
@@ -2292,10 +2290,6 @@ CH_CMD(do_gmote)
 void social_channel(const char *format, CHAR_DATA * ch, const void *arg2,
                     int type)
 {
-  static char *const he_she[] = { "it", "he", "she" };
-  static char *const him_her[] = { "it", "him", "her" };
-  static char *const his_her[] = { "its", "his", "her" };
-
   CHAR_DATA *to;
   CHAR_DATA *vch = (CHAR_DATA *) arg2;
   const char *str;

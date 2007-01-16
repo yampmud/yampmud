@@ -11082,3 +11082,7 @@ const struct group_type group_table[MAX_GROUP] = {
     "transport", "word of recall"}
    }
 };
+
+char *const he_she[] = { "it", "he", "she" };
+char *const him_her[] = { "it", "him", "her" };
+char *const his_her[] = { "its", "his", "her" };
