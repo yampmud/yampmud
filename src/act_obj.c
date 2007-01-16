@@ -2061,7 +2061,7 @@ CH_CMD(do_restring)
     return;
   }
 
-  if (is_blinky(argument) || is_stupid(argument))
+  if (is_blinky(argument))
   {
     send_to_char("You can not use blink on items.\n\r", ch);
     return;

@@ -4636,11 +4636,6 @@ bool is_blinky(char *argument)
   return false;
 }
 
-bool is_stupid(char *argument)
-{
-  return false;
-}
-
 void do_spacetext(CHAR_DATA * ch, char *argument)
 {
   int namel;

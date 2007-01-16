@@ -1771,7 +1771,7 @@ CH_CMD(do_ooc)
 
     argument = pcolor(ch, argument, 0);
 
-    if (is_blinky(argument) || is_stupid(argument))
+    if (is_blinky(argument))
     {
       send_to_char("You can not use blink in ooc.\n\r", ch);
       return;
@@ -1861,7 +1861,7 @@ CH_CMD(do_gossip)
       return;
     }
 
-    if (is_blinky(argument) || is_stupid(argument))
+    if (is_blinky(argument))
     {
       send_to_char("You can not use blink in gossip.\n\r", ch);
       return;
@@ -1965,7 +1965,7 @@ CH_CMD(do_qgossip)
       return;
     }
 
-    if (is_blinky(argument) || is_stupid(argument))
+    if (is_blinky(argument))
     {
       send_to_char("You can not use blink in qgossip.\n\r", ch);
       return;
@@ -2060,7 +2060,7 @@ CH_CMD(do_grats)
       return;
     }
 
-    if (is_blinky(argument) || is_stupid(argument))
+    if (is_blinky(argument))
     {
       send_to_char("You can not use blink on grats.\n\r", ch);
       return;
@@ -2144,7 +2144,7 @@ CH_CMD(do_quote)
       return;
     }
 
-    if (is_blinky(argument) || is_stupid(argument))
+    if (is_blinky(argument))
     {
       send_to_char("You can not use blink in quote.\n\r", ch);
       return;
@@ -2235,7 +2235,7 @@ CH_CMD(do_gmote)
       return;
     }
 
-    if (is_blinky(argument) || is_stupid(argument))
+    if (is_blinky(argument))
     {
       send_to_char("You can not use blink in gmote.\n\r", ch);
       return;
@@ -2492,7 +2492,7 @@ CH_CMD(do_ask)
       return;
     }
 
-    if (is_blinky(argument) || is_stupid(argument))
+    if (is_blinky(argument))
     {
       send_to_char("You can not use blink on ask.\n\r", ch);
       return;
@@ -2591,7 +2591,7 @@ CH_CMD(do_answer)
       return;
     }
 
-    if (is_blinky(argument) || is_stupid(argument))
+    if (is_blinky(argument))
     {
       send_to_char("You can not use blink in answer.\n\r", ch);
       return;
@@ -2675,7 +2675,7 @@ CH_CMD(do_music)
       return;
     }
 
-    if (is_blinky(argument) || is_stupid(argument))
+    if (is_blinky(argument))
     {
       send_to_char("You can not use blink in music.\n\r", ch);
       return;
@@ -2840,7 +2840,7 @@ CH_CMD(do_sayooc)
     return;
   }
 
-  if (is_blinky(argument) || is_stupid(argument))
+  if (is_blinky(argument))
   {
     send_to_char("You can not use blink in sayooc.\n\r", ch);
     return;
@@ -2875,7 +2875,7 @@ CH_CMD(do_psay)
     return;
   }
 
-  if (is_blinky(argument) || is_stupid(argument))
+  if (is_blinky(argument))
   {
     send_to_char("You can not use blink in psay.\n\r", ch);
     return;
@@ -2913,7 +2913,7 @@ CH_CMD(do_sayic)
     send_to_char("You are silent and can not speak.", ch);
     return;
   }
-  if (is_blinky(argument) || is_stupid(argument))
+  if (is_blinky(argument))
   {
     send_to_char("You can not use blink in sayic.\n\r", ch);
     return;
@@ -2965,7 +2965,7 @@ CH_CMD(do_say)
     return;
   }
 
-  if (is_blinky(argument) || is_stupid(argument))
+  if (is_blinky(argument))
   {
     send_to_char("You can not use blink in say.\n\r", ch);
     return;
@@ -3124,7 +3124,7 @@ CH_CMD(do_shout)
     return;
   }
 
-  if (is_blinky(argument) || is_stupid(argument))
+  if (is_blinky(argument))
   {
     send_to_char("You can not use blink in shout.\n\r", ch);
     return;
@@ -3216,7 +3216,7 @@ CH_CMD(do_tell)
     return;
   }
 
-  if (is_blinky(argument) || is_stupid(argument))
+  if (is_blinky(argument))
   {
     send_to_char("You can not use blink in tells.\n\r", ch);
     return;
@@ -3362,7 +3362,7 @@ CH_CMD(do_reply)
     return;
   }
 
-  if (is_blinky(argument) || is_stupid(argument))
+  if (is_blinky(argument))
   {
     send_to_char("You can not use blink in replys.\n\r", ch);
     return;
@@ -3476,7 +3476,7 @@ CH_CMD(do_yell)
 
   kill_swalk(ch);
 
-  if (is_blinky(argument) || is_stupid(argument))
+  if (is_blinky(argument))
   {
     send_to_char("You can not use blink in yells.\n\r", ch);
     return;
@@ -3522,7 +3522,7 @@ CH_CMD(do_emote)
     return;
   }
 
-  if (is_blinky(argument) || is_stupid(argument))
+  if (is_blinky(argument))
   {
     send_to_char("You can not use blink in emote.\n\r", ch);
     return;
@@ -3560,7 +3560,7 @@ CH_CMD(do_pmote)
     return;
   }
 
-  if (is_blinky(argument) || is_stupid(argument))
+  if (is_blinky(argument))
   {
     send_to_char("You can not use blink in emote.\n\r", ch);
     return;
