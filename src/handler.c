@@ -397,6 +397,8 @@ int check_immune(CHAR_DATA * ch, int dam_type)
 
 bool is_clan(CHAR_DATA * ch)
 {
+  if (ch == NULL)
+    return false;
   return ch->clan;
 }
 

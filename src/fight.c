@@ -1557,6 +1557,11 @@ int xdamage(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int dam_type,
   absorb = 0;
 
   *mobdeath = false;
+  if (IS_NPC(victim))
+    vicisnpc = true;
+
+  if (victim == ch)
+    vicisch = true;
 
   if (victim->position == POS_DEAD || !WR(ch, victim) || !WR(victim, ch))
     return 0;
@@ -1979,11 +1984,7 @@ int xdamage(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt, int dam_type,
         REMOVE_BIT(victim->act, PLR_TWIT);
     }
 
-    if (IS_NPC(victim))
-      vicisnpc = true;
 
-    if (victim == ch)
-      vicisch = true;
 
     raw_kill(victim, ch, mobdeath);
 
