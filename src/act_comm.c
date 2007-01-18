@@ -3753,7 +3753,10 @@ CH_CMD(do_quit)
   d = ch->desc;
 
   if (!strcmp("force", argument))
+  {
     force_quit(ch, "");
+    return;
+  }
 
   if (!strcmp("relog", argument))
   {
