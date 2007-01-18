@@ -645,6 +645,7 @@ CH_CMD(do_reroll)
       player_rpst = ch->rpst;
       player_ree = ch->redeem;
       player_banked = ch->bankeditems;
+      ch->bankeditems = NULL;
 
       /* 
        * "After extract_char the ch is no longer valid!" */
