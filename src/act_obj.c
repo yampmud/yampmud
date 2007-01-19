@@ -1934,31 +1934,15 @@ CH_CMD(do_drink)
       amount = UMIN(amount, obj->value[1]);
       break;
   }
-  if (!IS_NPC(ch) && !IS_IMMORTAL(ch) && ch->level <= 201 &&
-      ch->pcdata->condition[COND_FULL] > 45)
-  {
-    send_to_char("You're too full to drink more.\n\r", ch);
-    return;
-  }
 
   act("$n drinks $T from $p.", ch, obj, liq_table[liquid].liq_name, TO_ROOM);
   act("You drink $T from $p.", ch, obj, liq_table[liquid].liq_name, TO_CHAR);
 
   gain_condition(ch, COND_DRUNK,
                  amount * liq_table[liquid].liq_affect[COND_DRUNK] / 36);
-  gain_condition(ch, COND_FULL,
-                 amount * liq_table[liquid].liq_affect[COND_FULL] / 4);
-  gain_condition(ch, COND_THIRST,
-                 amount * liq_table[liquid].liq_affect[COND_THIRST] / 10);
-  gain_condition(ch, COND_HUNGER,
-                 amount * liq_table[liquid].liq_affect[COND_HUNGER] / 2);
 
   if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK] > 10)
     send_to_char("You feel drunk.\n\r", ch);
-  if (!IS_NPC(ch) && ch->pcdata->condition[COND_FULL] > 40)
-    send_to_char("You are full.\n\r", ch);
-  if (!IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] > 40)
-    send_to_char("Your thirst is quenched.\n\r", ch);
 
   if (!str_cmp(liq_table[liquid].liq_name, "blood") &&
       (!str_cmp(class_table[ch->class].name, "Vampire") ||
@@ -2111,15 +2095,6 @@ CH_CMD(do_eat)
       send_to_char("That's not edible.\n\r", ch);
       return;
     }
-    if (obj->item_type != ITEM_PILL)
-    {
-      if (!IS_NPC(ch) && ch->pcdata->condition[COND_FULL] > 40 &&
-          ch->level <= 201)
-      {
-        send_to_char("You are too full to eat more.\n\r", ch);
-        return;
-      }
-    }
     else
     {
       if (nia(ch))
@@ -2134,19 +2109,6 @@ CH_CMD(do_eat)
   {
 
     case ITEM_FOOD:
-      if (!IS_NPC(ch))
-      {
-        int condition;
-
-        condition = ch->pcdata->condition[COND_HUNGER];
-        gain_condition(ch, COND_FULL, obj->value[0]);
-        gain_condition(ch, COND_HUNGER, obj->value[1]);
-        if (condition == 0 && ch->pcdata->condition[COND_HUNGER] > 0)
-          send_to_char("You are no longer hungry.\n\r", ch);
-        else if (ch->pcdata->condition[COND_FULL] > 40)
-          send_to_char("You are full.\n\r", ch);
-      }
-
       if (obj->value[3] != 0)
       {
         /* The food was poisoned! */

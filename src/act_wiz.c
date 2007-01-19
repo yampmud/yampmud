@@ -2299,10 +2299,7 @@ CH_CMD(do_mstat)
   if (!IS_NPC(victim))
   {
     sprintf(buf,
-            "Thirst: %d  Hunger: %d  Full: %d  Drunk: %d  Quest: %d\n\r",
-            victim->pcdata->condition[COND_THIRST],
-            victim->pcdata->condition[COND_HUNGER],
-            victim->pcdata->condition[COND_FULL],
+            "Drunk: %d  Quest: %d\n\r",
             victim->pcdata->condition[COND_DRUNK], victim->qps);
     add_buf(output, buf);
   }
@@ -4607,9 +4604,9 @@ CH_CMD(do_mset)
     send_to_char("  Field being one of:\n\r", ch);
     send_to_char("    str int wis dex con sex class level\n\r", ch);
     send_to_char("    race group platinum gold silver hp\n\r", ch);
-    send_to_char("    mana move prac align train thirst\n\r", ch);
-    send_to_char("    hunger drunk full quest aqp\n\r", ch);
-    send_to_char("    security pkkills pkdeaths rps property\n\r", ch);
+    send_to_char("    mana move prac align train drunk\n\r", ch);
+    send_to_char("    quest aqp security pkkills pkdeaths\n\r", ch);
+    send_to_char("    rps property\n\r", ch);
     return;
   }
 
@@ -4904,24 +4901,6 @@ CH_CMD(do_mset)
     return;
   }
 
-  if (!str_prefix(arg2, "thirst"))
-  {
-    if (IS_NPC(victim))
-    {
-      send_to_char("Not on NPC's.\n\r", ch);
-      return;
-    }
-
-    if (value < -1 || value > 100)
-    {
-      send_to_char("Thirst range is -1 to 100.\n\r", ch);
-      return;
-    }
-
-    victim->pcdata->condition[COND_THIRST] = value;
-    return;
-  }
-
   if (!str_prefix(arg2, "drunk"))
   {
     if (IS_NPC(victim))
@@ -4940,48 +4919,12 @@ CH_CMD(do_mset)
     return;
   }
 
-  if (!str_prefix(arg2, "full"))
-  {
-    if (IS_NPC(victim))
-    {
-      send_to_char("Not on NPC's.\n\r", ch);
-      return;
-    }
-
-    if (value < -1 || value > 100)
-    {
-      send_to_char("Full range is -1 to 100.\n\r", ch);
-      return;
-    }
-
-    victim->pcdata->condition[COND_FULL] = value;
-    return;
-  }
-
   if (!str_prefix(arg2, "rps"))
   {
     if (IS_NPC(ch))
       return;
 
     victim->rps = value;
-    return;
-  }
-
-  if (!str_prefix(arg2, "hunger"))
-  {
-    if (IS_NPC(victim))
-    {
-      send_to_char("Not on NPC's.\n\r", ch);
-      return;
-    }
-
-    if (value < -1 || value > 100)
-    {
-      send_to_char("Full range is -1 to 100.\n\r", ch);
-      return;
-    }
-
-    victim->pcdata->condition[COND_HUNGER] = value;
     return;
   }
 

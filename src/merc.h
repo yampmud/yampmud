@@ -1491,10 +1491,7 @@ struct kill_data
 /*
  * Conditions.
  */
-#define COND_DRUNK		      0
-#define COND_FULL		      1
-#define COND_THIRST		      2
-#define COND_HUNGER		      3
+#define COND_DRUNK 0
 
 /*
  * Positions.
@@ -2538,4 +2535,3 @@ extern const struct bit_type bitvector_type[];
 extern char *const he_she[];
 extern char *const him_her[];
 extern char *const his_her[];
-

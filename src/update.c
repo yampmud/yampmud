@@ -339,11 +339,6 @@ int hit_gain(CHAR_DATA * ch)
         gain /= 6;
         break;
     }
-
-    if (ch->pcdata->condition[COND_HUNGER] == 0)
-      gain /= 2;
-    if (ch->pcdata->condition[COND_THIRST] == 0)
-      gain /= 2;
   }
 
   gain = gain * ch->in_room->heal_rate / 100;
@@ -413,11 +408,6 @@ int mana_gain(CHAR_DATA * ch)
         gain /= 6;
         break;
     }
-
-    if (ch->pcdata->condition[COND_HUNGER] == 0)
-      gain /= 2;
-    if (ch->pcdata->condition[COND_THIRST] == 0)
-      gain /= 2;
   }
 
   gain = gain * ch->in_room->mana_rate / 100;
@@ -456,11 +446,6 @@ int move_gain(CHAR_DATA * ch)
         gain += get_curr_stat(ch, STAT_DEX) / 2;
         break;
     }
-
-    if (ch->pcdata->condition[COND_HUNGER] == 0)
-      gain /= 2;
-    if (ch->pcdata->condition[COND_THIRST] == 0)
-      gain /= 2;
   }
 
   gain = gain * ch->in_room->heal_rate / 100;
@@ -493,12 +478,6 @@ void gain_condition(CHAR_DATA * ch, int iCond, int value)
   {
     switch (iCond)
     {
-      case COND_HUNGER:
-        send_to_char("You are hungry.\n\r", ch);
-        break;
-      case COND_THIRST:
-        send_to_char("You are thirsty.\n\r", ch);
-        break;
       case COND_DRUNK:
         if (condition != 0)
           send_to_char("You are sober.\n\r", ch);
@@ -1271,12 +1250,6 @@ void char_update(void)
         if (!IS_NPC(ch))
         {
           gain_condition(ch, COND_DRUNK, -1);
-          if (ch->level <= 201)
-          {
-            gain_condition(ch, COND_FULL, ch->size > SIZE_MEDIUM ? -2 : -1);
-            gain_condition(ch, COND_THIRST, ch->size > SIZE_MEDIUM ? -2 : -1);
-            gain_condition(ch, COND_HUNGER, ch->size > SIZE_MEDIUM ? -2 : -1);
-          }
         }
       }
     }

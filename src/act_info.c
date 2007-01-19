@@ -2494,10 +2494,6 @@ CH_CMD(do_lscore)
   send_to_char("{cCONDITION(S): ", ch);
   if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK] > 10)
     send_to_char("{WDRUNK ", ch);
-  if (!IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] == 0)
-    send_to_char("{WTHIRSTY ", ch);
-  if (!IS_NPC(ch) && ch->pcdata->condition[COND_HUNGER] == 0)
-    send_to_char("{WHUNGRY{x", ch);
   send_to_char(".\n\r", ch);
   send_to_char("{cPOSITION: ", ch);
   switch (ch->position)
@@ -2764,16 +2760,6 @@ CH_CMD(do_score)
   if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK] > 10)
   {
     sprintf(buf, "{cYou are drunk.{x\n\r");
-    add_buf(output, buf);
-  }
-  if (!IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] == 0)
-  {
-    sprintf(buf, "{cYou are thirsty.{x\n\r");
-    add_buf(output, buf);
-  }
-  if (!IS_NPC(ch) && ch->pcdata->condition[COND_HUNGER] == 0)
-  {
-    sprintf(buf, "{cYou are hungry.{x\n\r");
     add_buf(output, buf);
   }
 

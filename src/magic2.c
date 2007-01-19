@@ -1035,7 +1035,6 @@ MAGIC(spell_sate)
 
   CHAR_DATA *victim = (CHAR_DATA *) vo;
 
-  victim->pcdata->condition[COND_HUNGER] = 24;
   update_pos(victim);
   send_to_char("Your hunger is sated.\n\r", victim);
   if (ch != victim)
@@ -1049,7 +1048,6 @@ MAGIC(spell_quench)
 
   CHAR_DATA *victim = (CHAR_DATA *) vo;
 
-  victim->pcdata->condition[COND_THIRST] = 30;
   update_pos(victim);
   send_to_char("Your thirst is quenched.\n\r", victim);
   if (ch != victim)

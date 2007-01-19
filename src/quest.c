@@ -843,21 +843,8 @@ CH_CMD(do_quest)
       {
         if (ch->pcdata->questpoints >= quest_table[i].cost)
         {
-          if (quest_table[i].vnum == 0)
-          {
-            ch->pcdata->questpoints -= quest_table[i].cost;
-            ch->pcdata->condition[COND_FULL] = -51;
-            ch->pcdata->condition[COND_THIRST] = -51;
-            act
-              ("$N calls upon the power of the gods to relieve your mortal burdens.",
-               ch, NULL, questman, TO_CHAR);
-            act
-              ("$N calls upon the power of the gods to relieve $n' mortal burdens.",
-               ch, NULL, questman, TO_ROOM);
-            return;
-          }
-          else if ((obj = create_object(get_obj_index(quest_table[i].vnum)))
-                   == NULL)
+          if ((obj = create_object(get_obj_index(quest_table[i].vnum)))
+              == NULL)
           {
             send_to_char
               ("That object could not be found, contact an immortal.\n\r",

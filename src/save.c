@@ -630,9 +630,6 @@ bool load_char_obj(DESCRIPTOR_DATA * d, char *name)
   for (stat = 0; stat < MAX_STATS; stat++)
     ch->perm_stat[stat] = 13;
 
-  ch->pcdata->condition[COND_THIRST] = 48;
-  ch->pcdata->condition[COND_FULL] = 48;
-  ch->pcdata->condition[COND_HUNGER] = 48;
   ch->pcdata->security = 0;     /* OLC */
   ch->pcdata->pkdeaths = 0;
   ch->pcdata->pkkills = 0;
