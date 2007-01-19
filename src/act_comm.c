@@ -61,11 +61,13 @@ void do_pkset(CHAR_DATA * ch, char *argument)
 {
   if (IS_NPC(ch))
     return;
+
   if (ch->pcdata->pkset == true)
   {
     send_to_char("You are already set with PK status.\n\r", ch);
     return;
   }
+
   if (ch->pcdata->confirm_pkset == true)
   {
     if (argument[0] != '\0')
@@ -3179,6 +3181,8 @@ CH_CMD(do_tell)
   int pos;
   bool found = false;
   int wtime;
+
+  arg[0] = '\0';
 
   if (!IS_NPC(ch))
     ch->movement_timer = 0;
