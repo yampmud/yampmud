@@ -919,10 +919,9 @@ void do_unread(CHAR_DATA * ch, char *argument)
     {
       unread = unread_notes(ch, &boards[i]);  /* how many unread notes? */
       total = total_notes(ch, &boards[i]);
-      if (unread)
-        maxtotal += total;
       if (unread && (unread != BOARD_NOACCESS) && (total != BOARD_NOACCESS))
       {
+        maxtotal += total;
         printf_to_char(ch,
                        " {W%2d{x{c) {C%12s{b [%s%4d{b] [%s%4d{b] {c%s{x\n\r",
                        count, boards[i].short_name,
