@@ -1360,18 +1360,7 @@ void char_update(void)
               &mobdeath);
     }
 
-    if (IS_NPC(ch) && !mobdeath)
-      if (!IS_VALID(ch))
-      {
-        bug("char_update: trying to work with invalid character", 0);
-        send_to_char
-          ("Something has gone wrong with your pfile!\007\n\rDisconnecting...\n\r",
-           ch);
-        break;
-      }
-
     mobdeath = false;
-    ch_next = ch->next;
   }
 
   return;
