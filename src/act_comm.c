@@ -490,8 +490,8 @@ CH_CMD(do_reroll)
   int player_rps, player_rpst, player_ree;
   char newbuf[MSL];
   OBJ_DATA *player_banked;
-  int player_plat, player_gold, player_slvr, player_tier, player_comm,
-    player_iqp, player_aqp;
+  int player_plat, player_gold, player_slvr, player_balance, player_tier,
+    player_comm, player_iqp, player_aqp;
   int iClass, iSecv, wNet, ctier, player_trust;
   bool wasHero = false;
 
@@ -643,6 +643,7 @@ CH_CMD(do_reroll)
       player_plat = ch->platinum;
       player_gold = ch->gold;
       player_slvr = ch->silver;
+      player_balance = ch->pcdata->balance;
       player_rps = ch->rps;
       player_rpst = ch->rpst;
       player_ree = ch->redeem;
@@ -667,6 +668,7 @@ CH_CMD(do_reroll)
       d->character->gold = player_gold;
       d->character->silver = player_slvr;
       d->character->platinum = player_plat;
+      d->character->pcdata->balance = player_balance;
       d->character->prompt = str_dup(player_prmpt);
       d->character->pcdata->pwd = str_dup(player_psswd);
       d->character->pcdata->title = str_dup(player_title);
