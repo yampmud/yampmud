@@ -106,9 +106,9 @@ CH_CMD(do_bane)
     return;
   }
 
-  if (cost > (ch->gold * 100 + ch->silver))
+  if (cost > ((ch->platinum * 10000) + (ch->gold * 100) + ch->silver))
   {
-    act("$N says '{aYou do not have enough gold for my services.{x'", ch,
+    act("$N says '{aYou do not have enough money for my services.{x'", ch,
         NULL, mob, TO_CHAR);
     return;
   }
