@@ -2837,151 +2837,26 @@ CH_CMD(do_immtalk)
   return;
 }
 
-CH_CMD(do_sayooc)
-{
-
-  if (argument[0] == '\0')
-  {
-    send_to_char("Say what ooc?\n\r", ch);
-    return;
-  }
-
-  if (is_blinky(argument))
-  {
-    send_to_char("You can not use blink in sayooc.\n\r", ch);
-    return;
-  }
-  if (!IS_NPC(ch))
-  {
-    CHAR_DATA *mob, *mob_next;
-
-    for (mob = ch->in_room->people; mob != NULL; mob = mob_next)
-    {
-      mob_next = mob->next_in_room;
-      if (IS_NPC(mob) && HAS_TRIGGER(mob, TRIG_SPEECH) &&
-          mob->position == mob->pIndexData->default_pos)
-        mp_act_trigger(argument, mob, ch, NULL, NULL, TRIG_SPEECH);
-    }
-  }
-  argument = makedrunk(argument, ch);
-  argument = pcolor(ch, argument, 0);
-  act("{WYou say {C({DOOC{C) {x'{W$t{x'{x", ch, argument, NULL, TO_CHAR);
-  act("{W$n says {C({DOOC{C) {x'{W$t{x'{x", ch, argument, NULL, TO_ROOM);
-
-  return;
-
-}
-
-CH_CMD(do_psay)
-{
-
-  if (argument[0] == '\0')
-  {
-    send_to_char("Say what plainly?\n\r", ch);
-    return;
-  }
-
-  if (is_blinky(argument))
-  {
-    send_to_char("You can not use blink in psay.\n\r", ch);
-    return;
-  }
-  act("{W$n says {C({DOOC{C) {x'{W$T{x'{x", ch, NULL, argument, TO_ROOM);
-  act("{WYou say {C({DOOC{C) {x'{W$T{x'{x", ch, NULL, argument, TO_CHAR);
-
-  if (!IS_NPC(ch))
-  {
-    CHAR_DATA *mob, *mob_next;
-
-    for (mob = ch->in_room->people; mob != NULL; mob = mob_next)
-    {
-      mob_next = mob->next_in_room;
-      if (IS_NPC(mob) && HAS_TRIGGER(mob, TRIG_SPEECH) &&
-          mob->position == mob->pIndexData->default_pos)
-        mp_act_trigger(argument, mob, ch, NULL, NULL, TRIG_SPEECH);
-    }
-  }
-  return;
-
-}
-
-CH_CMD(do_sayic)
-{
-
-  if (argument[0] == '\0')
-  {
-    send_to_char("Say what IC?\n\r", ch);
-    return;
-  }
-
-  if (IS_SHIELDED(ch, SHD_SILENCE))
-  {
-    send_to_char("You are silent and can not speak.", ch);
-    return;
-  }
-  if (is_blinky(argument))
-  {
-    send_to_char("You can not use blink in sayic.\n\r", ch);
-    return;
-  }
-  if (!IS_NPC(ch))
-  {
-    CHAR_DATA *mob, *mob_next;
-
-    for (mob = ch->in_room->people; mob != NULL; mob = mob_next)
-    {
-      mob_next = mob->next_in_room;
-      if (IS_NPC(mob) && HAS_TRIGGER(mob, TRIG_SPEECH) &&
-          mob->position == mob->pIndexData->default_pos)
-        mp_act_trigger(argument, mob, ch, NULL, NULL, TRIG_SPEECH);
-    }
-  }
-
-  argument = makedrunk(argument, ch);
-  argument = pcolor(ch, argument, 0);
-
-  act("{W$n says {R({DIC{R) {x'{W$T{x'{x", ch, NULL, argument, TO_ROOM);
-  act("{WYou say {R({DIC{R) {x'{W$T{x'{x", ch, NULL, argument, TO_CHAR);
-  return;
-
-}
-
-/*
- * Different statements for punctuation at the end of a say now. 
- * -Marquoz (marquoz@gost.net)
- */
-
 CH_CMD(do_say)
 {
-  int length;
-
-  length = 0;
-
-  if (!IS_NPC(ch))
-    ch->movement_timer = 0;
   if (IS_SET(ch->act2, PLR_RP) || IS_NPC(ch))
   {
-
     do_sayic(ch, argument);
     return;
   }
   else
   {
     do_sayooc(ch, argument);
-    return;
   }
+}
 
-  if (is_blinky(argument))
-  {
-    send_to_char("You can not use blink in say.\n\r", ch);
-    return;
-  }
+
+char *say_verb(char *argument)
+{
+  int length = 0;
 
   if (argument[0] == '\0')
-  {
-    send_to_char("Say what?\n\r", ch);
-    return;
-  }
+    return "say";
 
   length = strlen(argument);
 
@@ -2995,85 +2870,139 @@ CH_CMD(do_say)
   {
     /* 'something!' = exclaim */
     if (argument[length - 2] != '!')
-    {
-      act("{W$n {Yexclaims{x '{W$T{x'{x", ch, NULL, argument, TO_ROOM);
-      act("{WYou {Yexclaim{x '{W$T'{x", ch, NULL, argument, TO_CHAR);
-    }
+      return "{Yexclaim";
     /* 'something!!!' = screams */
     else
-    {
-      act("{W$n {Rscreams {x'{W$T{x'{x", ch, NULL, argument, TO_ROOM);
-      act("{WYou {Rscream {x'{W$T{x'{x", ch, NULL, argument, TO_CHAR);
-    }
+      return "{Rscream";
   }
   else if (argument[length - 1] == '?')
   {
     /* 'something?!' = boggles */
     if (argument[length - 2] == '!')
-    {
-      act("{W$n {gboggles {x'{W$T{x'{x", ch, NULL, argument, TO_ROOM);
-      act("{WYou {gboggle {x'{W$T{x'{x", ch, NULL, argument, TO_CHAR);
-    }
+      return "{gboggle";
     /* 'something?' = asks */
     else if (argument[length - 2] != '?')
-    {
-      act("{W$n {Casks {x'{W$T{x'{x", ch, NULL, argument, TO_ROOM);
-      act("{WYou{C ask {x'{W$T{x'{x", ch, NULL, argument, TO_CHAR);
-    }
-    /* 'something??' = confusedly asks */
+      return "{Cask";
+    /* 'something??' = demands */
     else if (argument[length - 20] != '?')
-    {
-      act("{W$n {Gdemands {x'{W$T{x'{x", ch, NULL, argument, TO_ROOM);
-      act("{WYou {Gdemand {x'{W$T{x'{x", ch, NULL, argument, TO_CHAR);
-    }
+      return "{Gdemand";
   }
   /* 'something...' = mutter */
   else if (argument[length - 1] == '.' && argument[length - 2] == '.' &&
            argument[length - 3] == '.')
-  {
-    act("{W$n{D mutters {x'{W$T{x'{x", ch, NULL, argument, TO_ROOM);
-    act("{WYou{D mutter {x'{W$T{x'{x", ch, NULL, argument, TO_CHAR);
-  }
+    return "{Dmutter";
   /* '=), :) = chuckles */
   else if (argument[length - 1] == ')' &&
            (argument[length - 2] == '=' || argument[length - 2] == ':'))
-  {
-    act("{W$n {cchuckles {x'{W$T{x'{x", ch, NULL, argument, TO_ROOM);
-    act("{WYou {cchuckle {x'{W$T{x'{x", ch, NULL, argument, TO_CHAR);
-  }
+    return "{cchuckle";
   /* '=(, :( = sulks */
   else if (argument[length - 1] == '(' &&
            (argument[length - 2] == '=' || argument[length - 2] == ':'))
-  {
-    act("{W$n {bsulks {x'{W$T{x'{x", ch, NULL, argument, TO_ROOM);
-    act("{WYou {bsulk {x'{W$T{x'{x", ch, NULL, argument, TO_CHAR);
-  }
+    return "{bsulk";
   /* '=P, :P = smirks */
   else if (argument[length - 1] == 'P' &&
            (argument[length - 2] == '=' || argument[length - 2] == ':'))
-  {
-    act("{W$n {rsmirks {x'{W$T{x'{x", ch, NULL, argument, TO_ROOM);
-    act("{WYou {rsmirk {x'{W$T{x'{x", ch, NULL, argument, TO_CHAR);
-  }
-  /* ';) = leers */
+    return "{rsmirk";
   else if (argument[length - 1] == ')' && (argument[length - 2] == ';'))
-  {
-    act("{W$n {yleers {x'{W$T{x'{x", ch, NULL, argument, TO_ROOM);
-    act("{WYou {yleer {x'{W$T{x'{x", ch, NULL, argument, TO_CHAR);
-  }
+    return "{yleer";
   /* '=O, :O = sings */
   else if (argument[length - 1] == 'O' &&
            (argument[length - 2] == '=' || argument[length - 2] == ':'))
-  {
-    act("{W$n {Msings {x'{W$T{x'{x", ch, NULL, argument, TO_ROOM);
-    act("{WYou {Msing {x'{W$T{x'{x", ch, NULL, argument, TO_CHAR);
-  }
+    return "{Msing";
   /* Add more punctuations with another else if statement here */
-  else                          /* Any other punctuation */
+
+  return "say";
+}
+
+/*
+ * Different statements for punctuation at the end of a say now. 
+ * -Marquoz (marquoz@gost.net)
+ */
+CH_CMD(do_sayooc)
+{
+  char buf[MAX_STRING_LENGTH];
+
+  buf[0] = '\0';
+
+  if (!IS_NPC(ch))
+    ch->movement_timer = 0;
+
+  if (is_blinky(argument))
   {
-    act("{W$n says {x'{W$T{x'{x", ch, NULL, argument, TO_ROOM);
-    act("{WYou say {x'{W$T{x'{x", ch, NULL, argument, TO_CHAR);
+    send_to_char("You can not use blink in say.\n\r", ch);
+    return;
   }
+
+  if (argument[0] == '\0')
+  {
+    send_to_char("Say what out of character?\n\r", ch);
+    return;
+  }
+
+  /* 
+   * trailing {7 is to assure the last ' is colored right
+   * trailing {x is to assure no colour bleed from the green -M
+   * Added in functionality for different ways to say
+   */
+  sprintf(buf, "{W$n %ss{x {C({DOOC{C) '{W$T{C'{x", say_verb(argument));
+  act(buf, ch, NULL, argument, TO_ROOM);
+  sprintf(buf, "{WYou %s{x {C({DOOC{C) '{W$T{C'{x", say_verb(argument));
+  act(buf, ch, NULL, argument, TO_CHAR);
+
+  if (!IS_NPC(ch))
+  {
+    CHAR_DATA *mob, *mob_next;
+
+    for (mob = ch->in_room->people; mob != NULL; mob = mob_next)
+    {
+      mob_next = mob->next_in_room;
+      if (IS_NPC(mob) && HAS_TRIGGER(mob, TRIG_SPEECH) &&
+          mob->position == mob->pIndexData->default_pos)
+        mp_act_trigger(argument, mob, ch, NULL, NULL, TRIG_SPEECH);
+    }
+  }
+  return;
+}
+
+CH_CMD(do_sayic)
+{
+  char buf[MAX_STRING_LENGTH];
+  char verb[MAX_STRING_LENGTH];
+
+  buf[0] = '\0';
+
+  if (!IS_NPC(ch))
+    ch->movement_timer = 0;
+
+  if (IS_SHIELDED(ch, SHD_SILENCE))
+  {
+    send_to_char("You are silent and can not speak.", ch);
+    return;
+  }
+
+  if (is_blinky(argument))
+  {
+    send_to_char("You can not use blink in say.\n\r", ch);
+    return;
+  }
+
+  if (argument[0] == '\0')
+  {
+    send_to_char("Say what in character?\n\r", ch);
+    return;
+  }
+
+  /* 
+   * trailing {7 is to assure the last ' is colored right
+   * trailing {x is to assure no colour bleed from the green -M
+   * Added in functionality for different ways to say
+   */
+  sprintf(verb, "%s", say_verb(argument));
+  argument = makedrunk(argument, ch);
+  sprintf(buf, "{W$n %ss{x {R({DIC{R) '{W$T{R'{x", verb);
+  act(buf, ch, NULL, argument, TO_ROOM);
+  sprintf(buf, "{WYou %s{x {R({DIC{R) '{W$T{R'{x", verb);
+  act(buf, ch, NULL, argument, TO_CHAR);
 
   if (!IS_NPC(ch))
   {

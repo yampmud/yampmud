@@ -227,8 +227,6 @@ const struct cmd_type cmd_table[] = {
   {"say", do_say, POS_RESTING, 0, 1, LOG_NORMAL, 1},
   {"sayic", do_sayic, POS_RESTING, 0, 1, LOG_NORMAL, 1},
   {"sayooc", do_sayooc, POS_RESTING, 0, 1, LOG_NORMAL, 1},
-  {"psay", do_psay, POS_RESTING, 0, 1, LOG_NORMAL, 1},
-  {"|", do_psay, POS_RESTING, 0, 1, LOG_NORMAL, 1},
   {"[", do_sayic, POS_RESTING, 0, 1, LOG_NORMAL, 1},
   {"]", do_sayooc, POS_RESTING, 0, 1, LOG_NORMAL, 1},
   {"rp", do_rp, POS_RESTING, 0, 1, LOG_NORMAL, 1},
