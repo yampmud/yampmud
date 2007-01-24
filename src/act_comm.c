@@ -4860,6 +4860,9 @@ CH_CMD(do_gocial)
   int count;
   char buf2[MAX_STRING_LENGTH];
 
+  command[0] = '\0';
+  arg[0] = '\0';
+
   argument = one_argument(argument, command);
 
   found = false;
