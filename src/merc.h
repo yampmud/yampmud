@@ -2439,9 +2439,6 @@ extern const sh_int movement_loss[SECT_MAX];
 #define TEMP_FILE	"../player/romtmp"
 #define NULL_FILE	"/dev/null"   /* To reserve one stream */
 #define AREA_LIST       "../config/area.list" /* List of areas */
-#define BUG_FILE        "../config/text/bugs.text"  /* For 'bug' and bug() */
-#define IDEA_FILE        "../config/text/ideas.text"  /* For 'idea' */
-#define TYPO_FILE       "../config/text/typos.text" /* For 'typo' */
 #define NOTE_FILE       "../config/notes/notes.note"  /* For 'notes' */
 #define ICN_FILE       "../config/notes/icn.note" /* For 'notes' */
 #define PENALTY_FILE	"../config/notes/penalties.note"

@@ -3572,77 +3572,106 @@ CH_CMD(do_pmote)
   return;
 }
 
-CH_CMD(do_idea)
+void do_bug(CHAR_DATA * ch, char *argument)
 {
   char buf[MAX_STRING_LENGTH];
+  char *buf2;
 
-  if (IS_NPC(ch))
-    return;
-
-  if (argument[0] == '\0' || !str_cmp("list", argument) ||
-      !str_cmp("to", argument) || !str_cmp("subject", argument))
+  if (!argument || argument[0] == '\0')
   {
-    do_help(ch, "idea");
+    send_to_char("Submit what bug?\n\r", ch);
     return;
   }
 
-  append_file(ch, IDEA_FILE, argument);
-  send_to_char
-    ("Idea logged.\n\rYes, this means I WILL get your idea report.\n\r", ch);
-  sprintf(buf, "%s has filed an idea: %s\n\r", ch->name, argument);
-  wiznet(buf, NULL, NULL, WIZ_HELP, 0, 0);
-  if (ch->level < 5)
-    WAIT_STATE(ch, 18);
+  smash_tilde(argument);
+  sprintf(buf,
+          "While standing in %s [%ld], %s noticed the following bug:\n\r\n\r%s",
+          ch->in_room->name, ch->in_room->vnum, ch->name, argument);
+  buf2 = str_dup(buf);
+  buf2 = format_string(buf2);
+  make_note("Bugs", ch->name, "imms", "Quick Bug Report", 30, buf2);
+  free_string(buf2);
+  send_to_char("Bug logged.\n\r", ch);
   return;
 }
 
-CH_CMD(do_bug)
+void do_typo(CHAR_DATA * ch, char *argument)
 {
   char buf[MAX_STRING_LENGTH];
+  char *buf2;
 
-  if (IS_NPC(ch))
-    return;
-
-  if (argument[0] == '\0' || !str_cmp("list", argument) ||
-      !str_cmp("to", argument) || !str_cmp("subject", argument))
+  if (!argument || argument[0] == '\0')
   {
-    do_help(ch, "bug");
+    send_to_char("Submit what typo?\n\r", ch);
     return;
   }
 
-  append_file(ch, BUG_FILE, argument);
-  send_to_char
-    ("Bug logged.\n\rYes, This means I WILL get the bug report..\n\r", ch);
-  sprintf(buf, "%s has filed an bug report: %s\n\r", ch->name, argument);
-  wiznet(buf, NULL, NULL, WIZ_HELP, 0, 0);
-  if (ch->level < 5)
-    WAIT_STATE(ch, 18);
+  smash_tilde(argument);
+  sprintf(buf,
+          "While standing in %s [%ld],  %s noticed the following typo:\n\r\n\r%s",
+          ch->in_room->name, ch->in_room->vnum, ch->name, argument);
+  buf2 = str_dup(buf);
+  buf2 = format_string(buf2);
+  make_note("Typos", ch->name, "imms", "Quick Typo Report", 30, buf2);
+  free_string(buf2);
+  send_to_char("Typo logged.\n\r", ch);
   return;
 }
 
-CH_CMD(do_typo)
+void do_idea(CHAR_DATA * ch, char *argument)
 {
   char buf[MAX_STRING_LENGTH];
+  char *buf2;
 
-  if (IS_NPC(ch))
-    return;
-
-  if (argument[0] == '\0' || !str_cmp("list", argument) ||
-      !str_cmp("to", argument) || !str_cmp("subject", argument))
+  if (!argument || argument[0] == '\0')
   {
-    do_help(ch, "typo");
+    send_to_char("Submit what idea?\n\r", ch);
     return;
   }
 
-  append_file(ch, TYPO_FILE, argument);
-  send_to_char
-    ("Typo logged.\n\rYes, This means I WILL get your typo report..\n\r", ch);
-  sprintf(buf, "%s has filed an idea: %s\n\r", ch->name, argument);
-  wiznet(buf, NULL, NULL, WIZ_HELP, 0, 0);
-  if (ch->level < 5)
-    WAIT_STATE(ch, 18);
+  smash_tilde(argument);
+  switch (number_range(1, 5))
+  {
+    case 1:
+      sprintf(buf,
+              "While standing in %s [%ld], a light bulb appeared above %s's head:\n\r\n\r%s",
+              ch->in_room->name, ch->in_room->vnum, ch->name, argument);
+      break;
+    case 2:
+      sprintf(buf,
+              "While standing in %s [%ld], %s had a miraculous revelation!\n\r\n\r%s",
+              ch->in_room->name, ch->in_room->vnum, ch->name, argument);
+      break;
+    case 3:
+      sprintf(buf,
+              "While standing in %s [%ld], God asked %s the meaning of life, and %s said:\n\r\n\r%s",
+              ch->in_room->name, ch->in_room->vnum, ch->name, ch->name,
+              argument);
+      break;
+    case 4:
+      sprintf(buf,
+              "While standing in %s [%ld], %s slipped and hit his head while playing twister and thought of the following:\n\r\n\r%s",
+              ch->in_room->name, ch->in_room->vnum, ch->name, argument);
+      break;
+    case 5:
+      sprintf(buf,
+              "While standing in %s [%ld], %s had a mental breakdown while pondering this:\n\r\n\r%s",
+              ch->in_room->name, ch->in_room->vnum, ch->name, argument);
+      break;
+    default:
+      sprintf(buf, "While standing in %s [%ld], %s thought:\n\r\n\r%s",
+              ch->in_room->name, ch->in_room->vnum, ch->name, argument);
+      break;
+  }
+
+  buf2 = str_dup(buf);
+  buf2 = format_string(buf2);
+  make_note("Ideas", ch->name, "imms", "Quick Idea Report", 30, buf2);
+  free_string(buf2);
+  send_to_char("Idea logged.\n\r", ch);
   return;
 }
+
 
 CH_CMD(do_rent)
 {
