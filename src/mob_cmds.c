@@ -1363,10 +1363,12 @@ CH_CMD(do_mpremove)
     obj_next = obj->next_content;
     if (fAll || obj->pIndexData->vnum == vnum)
     {
-      unequip_char(ch, obj);
+      if (obj->wear_loc != WEAR_NONE)
+        unequip_char(ch, obj);
       obj_from_char(obj);
       extract_obj(obj);
       obj = NULL;
+      return;
     }
   }
 }
