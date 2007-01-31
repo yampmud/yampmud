@@ -220,6 +220,7 @@ const struct olc_cmd_type redit_table[] = {
 
   {"commands", show_commands},
   {"create", redit_create},
+  {"delete", redit_delete},
   {"desc", redit_desc},
   {"ed", redit_ed},
   {"format", redit_format},

@@ -5506,6 +5506,7 @@ OEDIT(oedit_delete)
   sprintf(buf, "Removed object vnum {C%d{x and {C%d{x resets.\n\r", index,
           count);
   send_to_char(buf, ch);
+  edit_done(ch);
   return true;
 }
 
@@ -5698,6 +5699,7 @@ MEDIT(medit_delete)
   sprintf(buf, "Removed mobile vnum {C%d{x and {C%d{x resets.\n\r", index,
           count);
   send_to_char(buf, ch);
+  edit_done(ch);
   return true;
 }
 
@@ -5797,6 +5799,187 @@ bool medit_property(CHAR_DATA * ch, char *argument)
   }
 
   send_to_char("Done.\n\r", ch);
+
+  return true;
+}
+
+void unlink_room_index(ROOM_INDEX_DATA * pRoom)
+{
+  int iHash;
+  ROOM_INDEX_DATA *iRoom, *sRoom;
+
+  iHash = pRoom->vnum % MAX_KEY_HASH;
+
+  sRoom = room_index_hash[iHash];
+
+  if (sRoom->next == NULL)
+    room_index_hash[iHash] = NULL;
+  else if (sRoom == pRoom)
+    room_index_hash[iHash] = pRoom->next;
+  else
+  {
+    for (iRoom = sRoom; iRoom != NULL; iRoom = iRoom->next)
+    {
+      if (iRoom == pRoom)
+      {
+        sRoom->next = pRoom->next;
+        break;
+      }
+      sRoom = iRoom;
+    }
+  }
+}
+
+REDIT(redit_delete)
+{
+  ROOM_INDEX_DATA *pRoom, *pRoom2;
+  RESET_DATA *pReset;
+  EXIT_DATA *ex;
+  OBJ_DATA *Obj, *obj_next;
+  CHAR_DATA *wch, *wnext;
+  EXTRA_DESCR_DATA *pExtra;
+  char arg[MIL];
+  char buf[MSL];
+  int index, i, iHash, rcount, ecount, mcount, ocount, edcount;
+
+  if (argument[0] == '\0')
+  {
+    send_to_char("Syntax:  redit delete [vnum]\n\r", ch);
+    return false;
+  }
+
+  one_argument(argument, arg);
+
+  if (is_number(arg))
+  {
+    index = atoi(arg);
+    pRoom = get_room_index(index);
+  }
+  else
+  {
+    send_to_char("That is not a number.\n\r", ch);
+    return false;
+  }
+
+  if (!pRoom)
+  {
+    send_to_char("No such room.\n\r", ch);
+    return false;
+  }
+
+  if (ch->in_room->vnum == index)
+  {
+    send_to_char
+      ("The room you are in is being deleted. You are being moved to a safe place to avoid being harmed by the giant compactor.\n\r",
+       wch);
+    if (ch->fighting != NULL)
+      stop_fighting(ch, true);
+
+    char_from_room(ch);
+    char_to_room(ch, get_room_index(ROOM_VNUM_LIMBO));
+    ch->was_in_room = ch->in_room;
+  }
+
+  SET_BIT(pRoom->area->area_flags, AREA_CHANGED);
+
+  rcount = 0;
+
+  for (pReset = pRoom->reset_first; pReset; pReset = pReset->next)
+  {
+    rcount++;
+  }
+
+  ocount = 0;
+  for (Obj = pRoom->contents; Obj; Obj = obj_next)
+  {
+    obj_next = Obj->next_content;
+
+    extract_obj(Obj);
+    ocount++;
+  }
+
+  mcount = 0;
+  for (wch = pRoom->people; wch; wch = wnext)
+  {
+    wnext = wch->next_in_room;
+    if (IS_NPC(wch))
+    {
+      extract_char(wch, true);
+      mcount++;
+    }
+    else
+    {
+      send_to_char
+        ("The room you are in is being deleted. You are being moved to a safe place to avoid being harmed by the giant compactor.\n\r",
+         wch);
+      if (wch->fighting != NULL)
+        stop_fighting(wch, true);
+
+      char_from_room(wch);
+
+      char_to_room(wch, get_room_index(ROOM_VNUM_TEMPLE));
+      wch->was_in_room = wch->in_room;
+    }
+  }
+
+  /* unlink all exits to the room. */
+  ecount = 0;
+  for (iHash = 0; iHash < MAX_KEY_HASH; iHash++)
+  {
+    for (pRoom2 = room_index_hash[iHash]; pRoom2; pRoom2 = pRoom2->next)
+    {
+      for (i = 0; i <= MAX_DIR; i++)
+      {
+        if (!(ex = pRoom2->exit[i]))
+          continue;
+
+        if (pRoom2 == pRoom)
+        {
+          /* these are freed by free_room_index */
+          ecount++;
+          continue;
+        }
+
+        if (ex->u1.to_room == pRoom)
+        {
+          free_exit(pRoom2->exit[i]);
+          pRoom2->exit[i] = NULL;
+          SET_BIT(pRoom2->area->area_flags, AREA_CHANGED);
+          ecount++;
+        }
+      }
+    }
+  }
+
+  /* count extra descs. they are freed by free_room_index */
+  edcount = 0;
+  for (pExtra = pRoom->extra_descr; pExtra; pExtra = pExtra->next)
+  {
+    edcount++;
+  }
+
+  if (top_vnum_room == index)
+    for (i = 1; i < index; i++)
+      if (get_room_index(i))
+        top_vnum_room = i;
+
+  top_room--;
+
+  unlink_room_index(pRoom);
+
+  pRoom->area = NULL;
+  pRoom->vnum = 0;
+
+  free_room_index(pRoom);
+
+  sprintf(buf, "Removed room vnum {C%d{x, %d resets, %d extra "
+          "descriptions and %d exits.\n\r", index, rcount, edcount, ecount);
+  send_to_char(buf, ch);
+  sprintf(buf, "{C%d{x objects and {C%d{x mobiles were extracted "
+          "from the room.\n\r", ocount, mcount);
+  send_to_char(buf, ch);
+
+  edit_done(ch);
 
   return true;
 }

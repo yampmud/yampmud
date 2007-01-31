@@ -153,6 +153,7 @@ DECLARE_OLC_FUN(redit_tele);
 DECLARE_OLC_FUN(redit_clan);
 DECLARE_OLC_FUN(redit_owner);
 DECLARE_OLC_FUN(redit_property);
+DECLARE_OLC_FUN(redit_delete);
 
 /*
  * Object Editor Prototypes
