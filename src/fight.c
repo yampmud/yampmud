@@ -4777,6 +4777,7 @@ CH_CMD(do_dirt)
   else
   {
     check_improve(ch, gsn_dirt, false, 2);
+    send_to_char("Your dirt kick misses.\n\r", ch);
     if (!IS_IMMORTAL(ch))
       WAIT_STATE(ch, skill_table[gsn_dirt].beats);
     xdamage(ch, victim, 0, gsn_dirt, DAM_NONE, true, VERBOSE_STD, &mobdeath);
