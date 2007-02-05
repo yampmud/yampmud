@@ -1653,7 +1653,7 @@ CH_CMD(do_examine)
   char buf[MSL];
   char arg[MAX_INPUT_LENGTH];
   OBJ_DATA *obj;
-
+  bool found = false;
   one_argument(argument, arg);
 
   if (arg[0] == '\0')
@@ -1664,6 +1664,7 @@ CH_CMD(do_examine)
 
   if ((obj = get_obj_here(ch, arg)) != NULL)
   {
+    found = true;
     switch (obj->item_type)
     {
       default:
@@ -1728,6 +1729,9 @@ CH_CMD(do_examine)
         break;
     }
   }
+
+  if (!found)
+    send_to_char("That's not here!\n\r", ch);
 
   return;
 }
