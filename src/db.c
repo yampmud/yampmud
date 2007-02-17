@@ -333,7 +333,6 @@ void load_area(FILE * fp)
   area_last = pArea;
   pArea->next = NULL;
   current_area = pArea;
-  top_area++;
   return;
 }
 
@@ -431,7 +430,6 @@ void new_load_area(FILE * fp)
           area_last = pArea;
           pArea->next = NULL;
           current_area = pArea;
-          top_area++;
           store_area(pArea);
           return;
         }
