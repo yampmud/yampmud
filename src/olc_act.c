@@ -5871,7 +5871,7 @@ REDIT(redit_delete)
   {
     send_to_char
       ("The room you are in is being deleted. You are being moved to a safe place to avoid being harmed by the giant compactor.\n\r",
-       wch);
+       ch);
     if (ch->fighting != NULL)
       stop_fighting(ch, true);
 
