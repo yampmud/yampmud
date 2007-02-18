@@ -5101,12 +5101,6 @@ CH_CMD(do_kill)
     return;
   }
 
-  if (ch->position == POS_FIGHTING)
-  {
-    send_to_char("You do the best you can!\n\r", ch);
-    return;
-  }
-
   if ((ch->fighting == NULL) && (!IS_NPC(ch)) && (!IS_NPC(victim)))
   {
     ch->attacker = true;
