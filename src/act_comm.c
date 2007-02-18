@@ -473,7 +473,7 @@ struct tier_type
   long bit;
 };
 
-const struct tier_type tier_table[] = {
+static const struct tier_type tier_table[] = {
   {1, TIER_01},
   {2, TIER_02},
   {3, TIER_03},
@@ -2851,14 +2851,14 @@ CH_CMD(do_say)
 }
 
 
-char *say_verb(char *argument)
+static char *say_verb(char *argument)
 {
   int length = 0;
 
   if (argument[0] == '\0')
     return "say";
 
-  length = strlen(argument);
+  length = (int) strlen(argument);
 
   /* 
    * trailing {7 is to assure the last ' is colored right
@@ -3525,19 +3525,19 @@ CH_CMD(do_pmote)
 
     for (; *letter != '\0'; letter++)
     {
-      if (*letter == '\'' && matches == strlen(vch->name))
+      if (*letter == '\'' && matches == (int) strlen(vch->name))
       {
         strcat(temp, "r");
         continue;
       }
 
-      if (*letter == 's' && matches == strlen(vch->name))
+      if (*letter == 's' && matches == (int) strlen(vch->name))
       {
         matches = 0;
         continue;
       }
 
-      if (matches == strlen(vch->name))
+      if (matches == (int) strlen(vch->name))
       {
         matches = 0;
       }
@@ -3546,7 +3546,7 @@ CH_CMD(do_pmote)
       {
         matches++;
         name++;
-        if (matches == strlen(vch->name))
+        if (matches == (int) strlen(vch->name))
         {
           strcat(temp, "you");
           last[0] = '\0';
@@ -3900,7 +3900,10 @@ CH_CMD(do_follow)
   char arg[MAX_INPUT_LENGTH];
   CHAR_DATA *victim;
 
+  arg[0] = '\0';
+
   one_argument(argument, arg);
+
   if (arg[0] == '\0')
   {
     send_to_char("Follow whom?\n\r", ch);
@@ -4124,6 +4127,8 @@ CH_CMD(do_order)
   bool found;
   bool fAll;
 
+  arg[0] = '\0';
+
   argument = one_argument(argument, arg);
   one_argument(argument, arg2);
   if (!str_cmp(arg2, "delete") || !str_cmp(arg2, "mob"))
@@ -4208,6 +4213,8 @@ CH_CMD(do_group)
   char buf[MAX_STRING_LENGTH];
   char arg[MAX_INPUT_LENGTH];
   CHAR_DATA *victim;
+
+  arg[0] = '\0';
 
   one_argument(argument, arg);
   if (arg[0] == '\0')
@@ -4318,9 +4325,14 @@ CH_CMD(do_split)
   int share_platinum, share_gold, share_silver;
   int extra_platinum, extra_gold, extra_silver;
 
+  arg1[0] = '\0';
+  arg2[0] = '\0';
+  arg3[0] = '\0';
+
   argument = one_argument(argument, arg1);
   argument = one_argument(argument, arg2);
   one_argument(argument, arg3);
+
   if (arg1[0] == '\0')
   {
     send_to_char("Split how much?\n\r", ch);
@@ -4526,6 +4538,8 @@ CH_CMD(do_colour)
 {
   char arg[MAX_STRING_LENGTH];
   int ccolor;
+
+  arg[0] = '\0';
 
   argument = one_argument(argument, arg);
   if (!*arg)
@@ -4824,7 +4838,7 @@ CH_CMD(do_consent)
   if (IS_NPC(ch))
     return;
 
-  if (strlen(argument) <= 0)
+  if ((int) strlen(argument) <= 0)
   {
     send_to_char("Consent who?\n\r", ch);
     return;
@@ -5168,6 +5182,9 @@ CH_CMD(do_newname)
   argument = one_argument(argument, arg1);
   argument = one_argument(argument, arg2);
 
+  arg1[0] = '\0';
+  arg2[0] = '\0';
+
   if (ch->nameauthed)
   {
     send_to_char("Your name has been authorized.  You may not change it.\n\r",
@@ -5242,6 +5259,8 @@ CH_CMD(do_ignore)
   DESCRIPTOR_DATA *d;
   int pos;
   bool found = false;
+
+  arg[0] = '\0';
 
   if (ch->desc == NULL)
     rch = ch;
@@ -5352,6 +5371,8 @@ CH_CMD(do_unignore)
   char arg[MAX_INPUT_LENGTH], buf[MAX_STRING_LENGTH];
   int pos;
   bool found = false;
+
+  arg[0] = '\0';
 
   if (ch->desc == NULL)
     rch = ch;
