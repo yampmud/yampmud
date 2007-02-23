@@ -164,3 +164,22 @@ HELP_DATA *help_lookup(char *keyword)
   sqlite3_free(sql);
   return NULL;
 }
+
+int area_lookup(const char *name)
+{
+  AREA_DATA *pArea = NULL;
+  char buf[MAX_INPUT_LENGTH];
+
+  snprintf(buf, MAX_INPUT_LENGTH, "%s.are", name);
+
+  for (pArea = area_first; pArea != NULL; pArea = pArea->next)
+  {
+    if (!strcmp(buf, pArea->file_name))
+      break;
+  }
+
+  if (pArea)
+    return pArea->vnum;
+  else
+    return 0;
+}

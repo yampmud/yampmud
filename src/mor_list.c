@@ -1,28 +1,61 @@
+#include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 
 #include "merc.h"
 #include "recycle.h"
 #include "tables.h"
 #include "str_util.h"
+#include "lookup.h"
 
 CH_CMD(do_rlist)
 {
   ROOM_INDEX_DATA *pRoomIndex;
   AREA_DATA *pArea;
   char buf[MAX_STRING_LENGTH];
-  BUFFER *buf1;
+  BUFFER *buf1 = new_buf();
   char arg[MAX_INPUT_LENGTH];
-  bool found;
+  bool found = false;;
   long vnum;
+  long area_vnum = 0;
   int col = 0;
 
   one_argument(argument, arg);
 
-  pArea = ch->in_room->area;
-  buf1 = new_buf();
-  /*    buf1[0] = '\0'; */
-  found = false;
+  if (arg[0] != '\0')
+  {
+    if (isdigit(arg[0]))
+    {
+      area_vnum = atoi(arg);
+      if (area_vnum <= 0 || area_vnum > top_area)
+      {
+        sprintf(buf, "Area vnum must be between 1 and %d.\n\r", top_area);
+        send_to_char(buf, ch);
+        return;
+      }
+    }
+    else
+    {
+      if ((area_vnum = area_lookup(arg)) == 0)
+      {
+        sprintf(buf, "Unknown area: %s\n\r", arg);
+        send_to_char(buf, ch);
+        return;
+      }
+    }
+    for (pArea = area_first; pArea != NULL; pArea = pArea->next)
+    {
+      if (pArea->vnum == area_vnum)
+      {
+        found = true;
+        break;
+      }
+    }
+  }
+
+  if (!found)
+    pArea = ch->in_room->area;
 
   for (vnum = pArea->min_vnum; vnum <= pArea->max_vnum; vnum++)
   {
@@ -57,30 +90,66 @@ CH_CMD(do_mlist)
   MOB_INDEX_DATA *pMobIndex;
   AREA_DATA *pArea;
   char buf[MAX_STRING_LENGTH];
-  BUFFER *buf1;
-  char arg[MAX_INPUT_LENGTH];
-  bool fAll, found;
+  BUFFER *buf1 = new_buf();
+  char arg1[MAX_INPUT_LENGTH];
+  char arg2[MAX_INPUT_LENGTH];
+  bool fAll, found = false;
   long vnum;
+  long area_vnum = 0;
   int col = 0;
 
-  one_argument(argument, arg);
-  if (arg[0] == '\0')
+  argument = one_argument(argument, arg1);
+  argument = one_argument(argument, arg2);
+
+  if (arg1[0] == '\0')
   {
-    send_to_char("Syntax:  mlist <all/name>\n\r", ch);
+    send_to_char("Syntax:  mlist <all/name> [area vnum/name]\n\r", ch);
     return;
   }
 
-  buf1 = new_buf();
-  pArea = ch->in_room->area;
-  /*    buf1[0] = '\0'; */
-  fAll = !str_cmp(arg, "all");
+  if (arg2[0] != '\0')
+  {
+    if (isdigit(arg2[0]))
+    {
+
+      area_vnum = atoi(arg2);
+      if (area_vnum <= 0 || area_vnum > top_area)
+      {
+        sprintf(buf, "Area vnum must be between 1 and %d.\n\r", top_area);
+        send_to_char(buf, ch);
+        return;
+      }
+    }
+    else
+    {
+      if ((area_vnum = area_lookup(arg2)) == 0)
+      {
+        sprintf(buf, "Unknown area: %s\n\r", arg1);
+        send_to_char(buf, ch);
+        return;
+      }
+    }
+    for (pArea = area_first; pArea != NULL; pArea = pArea->next)
+    {
+      if (pArea->vnum == area_vnum)
+      {
+        found = true;
+        break;
+      }
+    }
+  }
+
+  if (!found)
+    pArea = ch->in_room->area;
+
+  fAll = !str_cmp(arg1, "all");
   found = false;
 
   for (vnum = pArea->min_vnum; vnum <= pArea->max_vnum; vnum++)
   {
     if ((pMobIndex = get_mob_index(vnum)) != NULL)
     {
-      if (fAll || is_name(arg, pMobIndex->player_name))
+      if (fAll || is_name(arg1, pMobIndex->player_name))
       {
         found = true;
         sprintf(buf, "[%-6ld] %-17.16s ", pMobIndex->vnum,
@@ -112,22 +181,58 @@ CH_CMD(do_olist)
   OBJ_INDEX_DATA *pObjIndex;
   AREA_DATA *pArea;
   char buf[MAX_STRING_LENGTH];
-  BUFFER *buf1;
+  BUFFER *buf1 = new_buf();
   char arg[MAX_INPUT_LENGTH];
-  bool fAll, found;
+  char arg2[MAX_INPUT_LENGTH];
+  bool fAll, found = false;
   long vnum;
+  long area_vnum = 0;
   int col = 0;
 
-  one_argument(argument, arg);
+  argument = one_argument(argument, arg);
+  argument = one_argument(argument, arg2);
+
   if (arg[0] == '\0')
   {
-    send_to_char("Syntax:  olist <all/name/item_type>\n\r", ch);
+    send_to_char("Syntax:  olist <all/name/item_type> [area vnum/name]\n\r",
+                 ch);
     return;
   }
 
-  pArea = ch->in_room->area;
-  buf1 = new_buf();
-  /*    buf1[0] = '\0'; */
+  if (arg2[0] != '\0')
+  {
+    if (isdigit(arg2[0]))
+    {
+      area_vnum = atoi(arg2);
+      if (area_vnum <= 0 || area_vnum > top_area)
+      {
+        sprintf(buf, "Area vnum must be between 1 and %d.\n\r", top_area);
+        send_to_char(buf, ch);
+        return;
+      }
+    }
+    else
+    {
+      if ((area_vnum = area_lookup(arg2)) == 0)
+      {
+        sprintf(buf, "Unknown area: %s\n\r", arg2);
+        send_to_char(buf, ch);
+        return;
+      }
+    }
+    for (pArea = area_first; pArea != NULL; pArea = pArea->next)
+    {
+      if (pArea->vnum == area_vnum)
+      {
+        found = true;
+        break;
+      }
+    }
+  }
+
+  if (!found)
+    pArea = ch->in_room->area;
+
   fAll = !str_cmp(arg, "all");
   found = false;
 
