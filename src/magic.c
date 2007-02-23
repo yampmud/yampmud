@@ -41,6 +41,7 @@
 #include "magic.h"
 #include "recycle.h"
 #include "tables.h"
+#include "fd_property.h"
 
 /*
  * Lookup a skill by name.
@@ -901,15 +902,22 @@ MAGIC(spell_armor)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   AFFECT_DATA af;
+  bool silent = false;
+
+  GetCharProperty(ch, PROPERTY_BOOL, "silent_spellup", &silent);
 
   if (is_affected(victim, sn))
   {
-    if (victim == ch)
-      send_to_char("You are already armored.\n\r", ch);
-    else
-      act("$N is already armored.", ch, NULL, victim, TO_CHAR);
+    if (!silent)
+    {
+      if (victim == ch)
+        send_to_char("You are already armored.\n\r", ch);
+      else
+        act("$N is already armored.", ch, NULL, victim, TO_CHAR);
+    }
     return;
   }
+
   af.where = TO_AFFECTS;
   af.type = sn;
   af.level = 2 + level;
@@ -918,8 +926,9 @@ MAGIC(spell_armor)
   af.location = APPLY_AC;
   af.bitvector = 0;
   affect_to_char(victim, &af);
+
   send_to_char("You feel someone protecting you.\n\r", victim);
-  if (ch != victim)
+  if (ch != victim && !silent)
     act("$N is protected by your magic.", ch, NULL, victim, TO_CHAR);
   return;
 }
@@ -929,6 +938,9 @@ MAGIC(spell_bless)
   CHAR_DATA *victim;
   OBJ_DATA *obj;
   AFFECT_DATA af;
+  bool silent = false;
+
+  GetCharProperty(ch, PROPERTY_BOOL, "silent_spellup", &silent);
 
   /* deal with the object case first */
   if (target == TARGET_OBJ)
@@ -979,10 +991,13 @@ MAGIC(spell_bless)
 
   if (victim->position == POS_FIGHTING || is_affected(victim, sn))
   {
-    if (victim == ch)
-      send_to_char("You are already blessed.\n\r", ch);
-    else
-      act("$N already has divine favor.", ch, NULL, victim, TO_CHAR);
+    if (!silent)
+    {
+      if (victim == ch)
+        send_to_char("You are already blessed.\n\r", ch);
+      else
+        act("$N already has divine favor.", ch, NULL, victim, TO_CHAR);
+    }
     return;
   }
 
@@ -999,7 +1014,8 @@ MAGIC(spell_bless)
   af.modifier = 0 - level / 2;
   affect_to_char(victim, &af);
   send_to_char("You feel righteous.\n\r", victim);
-  if (ch != victim)
+
+  if ((ch != victim) && !silent)
     act("You grant $N the favor of your god.", ch, NULL, victim, TO_CHAR);
   return;
 }
@@ -3140,15 +3156,22 @@ MAGIC(spell_fly)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   AFFECT_DATA af;
+  bool silent = false;
+
+  GetCharProperty(ch, PROPERTY_BOOL, "silent_spellup", &silent);
 
   if (IS_AFFECTED(victim, AFF_FLYING))
   {
-    if (victim == ch)
-      send_to_char("You are already airborne.\n\r", ch);
-    else
-      act("$N doesn't need your help to fly.", ch, NULL, victim, TO_CHAR);
+    if (!silent)
+    {
+      if (victim == ch)
+        send_to_char("You are already airborne.\n\r", ch);
+      else
+        act("$N doesn't need your help to fly.", ch, NULL, victim, TO_CHAR);
+    }
     return;
   }
+
   af.where = TO_AFFECTS;
   af.type = sn;
   af.level = level;
@@ -3157,8 +3180,10 @@ MAGIC(spell_fly)
   af.modifier = 0;
   af.bitvector = AFF_FLYING;
   affect_to_char(victim, &af);
+
   send_to_char("Your feet rise off the ground.\n\r", victim);
-  act("$n's feet rise off the ground.", victim, NULL, NULL, TO_ROOM);
+  if (!silent)
+    act("$n's feet rise off the ground.", victim, NULL, NULL, TO_ROOM);
   return;
 }
 
@@ -3168,23 +3193,32 @@ MAGIC(spell_frenzy)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   AFFECT_DATA af;
+  bool silent = false;
+
+  GetCharProperty(ch, PROPERTY_BOOL, "silent_spellup", &silent);
 
   if (is_affected(victim, sn) || IS_AFFECTED(victim, AFF_BERSERK))
   {
-    if (victim == ch)
-      send_to_char("You are already in a frenzy.\n\r", ch);
-    else
-      act("$N is already in a frenzy.", ch, NULL, victim, TO_CHAR);
+    if (!silent)
+    {
+      if (victim == ch)
+        send_to_char("You are already in a frenzy.\n\r", ch);
+      else
+        act("$N is already in a frenzy.", ch, NULL, victim, TO_CHAR);
+    }
     return;
   }
 
   if (is_affected(victim, skill_lookup("calm")))
   {
-    if (victim == ch)
-      send_to_char("Why don't you just relax for a while?\n\r", ch);
-    else
-      act("$N doesn't look like $e wants to fight anymore.", ch, NULL,
-          victim, TO_CHAR);
+    if (!silent)
+    {
+      if (victim == ch)
+        send_to_char("Why don't you just relax for a while?\n\r", ch);
+      else
+        act("$N doesn't look like $e wants to fight anymore.", ch, NULL,
+            victim, TO_CHAR);
+    }
     return;
   }
 
@@ -3192,7 +3226,8 @@ MAGIC(spell_frenzy)
       (IS_NEUTRAL(ch) && !IS_NEUTRAL(victim)) || (IS_EVIL(ch) &&
                                                   !IS_EVIL(victim)))
   {
-    act("Your god doesn't seem to like $N", ch, NULL, victim, TO_CHAR);
+    if (!silent)
+      act("Your god doesn't seem to like $N", ch, NULL, victim, TO_CHAR);
     return;
   }
 
@@ -3214,7 +3249,8 @@ MAGIC(spell_frenzy)
   affect_to_char(victim, &af);
 
   send_to_char("You are filled with holy wrath!\n\r", victim);
-  act("$n gets a wild look in $s eyes!", victim, NULL, NULL, TO_ROOM);
+  if (!silent)
+    act("$n gets a wild look in $s eyes!", victim, NULL, NULL, TO_ROOM);
 }
 
 /* RT ROM-style gate */
@@ -3274,13 +3310,19 @@ MAGIC(spell_giant_strength)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   AFFECT_DATA af;
+  bool silent = false;
+
+  GetCharProperty(ch, PROPERTY_BOOL, "silent_spellup", &silent);
 
   if (is_affected(victim, sn))
   {
-    if (victim == ch)
-      send_to_char("You are already as strong as you can get!\n\r", ch);
-    else
-      act("$N can't get any stronger.", ch, NULL, victim, TO_CHAR);
+    if (!silent)
+    {
+      if (victim == ch)
+        send_to_char("You are already as strong as you can get!\n\r", ch);
+      else
+        act("$N can't get any stronger.", ch, NULL, victim, TO_CHAR);
+    }
     return;
   }
 
@@ -3292,9 +3334,11 @@ MAGIC(spell_giant_strength)
   af.modifier = 1 + (level >= 18) + (level >= 25) + (level >= 32);
   af.bitvector = 0;
   affect_to_char(victim, &af);
+
   send_to_char("Your muscles surge with heightened power!\n\r", victim);
-  act("$n's muscles surge with heightened power.", victim, NULL, NULL,
-      TO_ROOM);
+  if (!silent)
+    act("$n's muscles surge with heightened power.", victim, NULL, NULL,
+        TO_ROOM);
   return;
 }
 
@@ -3371,15 +3415,21 @@ MAGIC(spell_haste)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   AFFECT_DATA af;
+  bool silent = false;
+
+  GetCharProperty(ch, PROPERTY_BOOL, "silent_spellup", &silent);
 
   if (is_affected(victim, sn) || IS_AFFECTED(victim, AFF_HASTE) ||
       IS_SET(victim->off_flags, OFF_FAST))
   {
-    if (victim == ch)
-      send_to_char("You can't move any faster!\n\r", ch);
-    else
-      act("$N is already moving as fast as $E can.", ch, NULL, victim,
-          TO_CHAR);
+    if (!silent)
+    {
+      if (victim == ch)
+        send_to_char("You can't move any faster!\n\r", ch);
+      else
+        act("$N is already moving as fast as $E can.", ch, NULL, victim,
+            TO_CHAR);
+    }
     return;
   }
 
@@ -3387,12 +3437,13 @@ MAGIC(spell_haste)
   {
     if (!check_dispel(level, victim, skill_lookup("slow")))
     {
-      if (victim != ch)
+      if ((victim != ch) && !silent)
         send_to_char("Spell failed.\n\r", ch);
       send_to_char("You feel momentarily faster.\n\r", victim);
       return;
     }
-    act("$n is moving less slowly.", victim, NULL, NULL, TO_ROOM);
+    if (!silent)
+      act("$n is moving less slowly.", victim, NULL, NULL, TO_ROOM);
     return;
   }
 
@@ -3408,10 +3459,14 @@ MAGIC(spell_haste)
   af.modifier = 1 + (level >= 18) + (level >= 25) + (level >= 32);
   af.bitvector = AFF_HASTE;
   affect_to_char(victim, &af);
+
   send_to_char("You feel yourself moving more quickly.\n\r", victim);
-  act("$n is moving more quickly.", victim, NULL, NULL, TO_ROOM);
-  if (ch != victim)
-    send_to_char("Ok.\n\r", ch);
+  if (!silent)
+  {
+    act("$n is moving more quickly.", victim, NULL, NULL, TO_ROOM);
+    if (ch != victim)
+      send_to_char("Ok.\n\r", ch);
+  }
   return;
 }
 
@@ -4651,13 +4706,19 @@ MAGIC(spell_sanctuary)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   AFFECT_DATA af;
+  bool silent = false;
+
+  GetCharProperty(ch, PROPERTY_BOOL, "silent_spellup", &silent);
 
   if (is_affected(victim, sn))
   {
-    if (victim == ch)
-      send_to_char("You are already in sanctuary.\n\r", ch);
-    else
-      act("$N is already in sanctuary.", ch, NULL, victim, TO_CHAR);
+    if (!silent)
+    {
+      if (victim == ch)
+        send_to_char("You are already in sanctuary.\n\r", ch);
+      else
+        act("$N is already in sanctuary.", ch, NULL, victim, TO_CHAR);
+    }
     return;
   }
 
@@ -4669,7 +4730,9 @@ MAGIC(spell_sanctuary)
   af.modifier = 0;
   af.bitvector = SHD_SANCTUARY;
   affect_to_char(victim, &af);
-  act("$n is surrounded by a white aura.", victim, NULL, NULL, TO_ROOM);
+
+  if (!silent)
+    act("$n is surrounded by a white aura.", victim, NULL, NULL, TO_ROOM);
   send_to_char("You are surrounded by a white aura.\n\r", victim);
   return;
 }
@@ -4678,13 +4741,20 @@ MAGIC(spell_shield)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   AFFECT_DATA af;
+  bool silent = false;
+
+  GetCharProperty(ch, PROPERTY_BOOL, "silent_spellup", &silent);
 
   if (is_affected(victim, sn))
   {
-    if (victim == ch)
-      send_to_char("You are already shielded from harm.\n\r", ch);
-    else
-      act("$N is already protected by a shield.", ch, NULL, victim, TO_CHAR);
+    if (!silent)
+    {
+      if (victim == ch)
+        send_to_char("You are already shielded from harm.\n\r", ch);
+      else
+        act("$N is already protected by a shield.", ch, NULL, victim,
+            TO_CHAR);
+    }
     return;
   }
 
@@ -4696,7 +4766,9 @@ MAGIC(spell_shield)
   af.modifier = -40;
   af.bitvector = 0;
   affect_to_char(victim, &af);
-  act("$n is surrounded by a force shield.", victim, NULL, NULL, TO_ROOM);
+
+  if (!silent)
+    act("$n is surrounded by a force shield.", victim, NULL, NULL, TO_ROOM);
   send_to_char("You are surrounded by a force shield.\n\r", victim);
   return;
 }

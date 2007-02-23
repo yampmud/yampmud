@@ -7054,12 +7054,15 @@ CH_CMD(do_qspell)
 {
   CHAR_DATA *vch;
   char arg[MAX_INPUT_LENGTH];
+  char buf[MAX_STRING_LENGTH];
   DESCRIPTOR_DATA *d;
+  bool silent = true;
 
   argument = one_argument(argument, arg);
 
   if (IS_NPC(ch))
     return;
+
   if (!IS_IMMORTAL(ch) && !IS_SET(ch->act2, PLR_MADMIN))
     return;
 
@@ -7075,6 +7078,7 @@ CH_CMD(do_qspell)
     {
       if (d->connected == CON_PLAYING && d->character != ch &&
           d->character->in_room != NULL &&
+          !IS_IMMORTAL(d->character) &&
           ch->level >= d->character->ghost_level && can_see(ch, d->character))
       {
         char buf[MAX_STRING_LENGTH];
@@ -7086,6 +7090,7 @@ CH_CMD(do_qspell)
     do_gmessage("{w[{RSPELL-UP{w] All players have received a spell-up!\n\r");
     return;
   }
+
   if (str_cmp("room", arg))
   {
     if ((vch = get_char_world(ch, arg)) == NULL)
@@ -7096,12 +7101,17 @@ CH_CMD(do_qspell)
   }
   else
     vch = ch;
+
+  SetCharProperty(ch, PROPERTY_BOOL, "silent_spellup", (void *) &silent);
   if (!str_cmp("room", arg))
+  {
     for (vch = ch->in_room->people; vch; vch = vch->next_in_room)
     {
       if (vch == ch)
         continue;
       if (IS_NPC(vch))
+        continue;
+      if (IS_IMMORTAL(vch))
         continue;
       spell_shockshield(skill_lookup("shockshield"), ch->level, ch,
                         vch, TARGET_CHAR);
@@ -7130,6 +7140,8 @@ CH_CMD(do_qspell)
       spell_dragon_wisdom(skill_lookup("dragon wisdom"), ch->level,
                           ch, vch, TARGET_CHAR);
     }
+    send_to_char("You give everyone in the room a spellup!\n\r", ch);
+  }
   else
   {
     spell_shockshield(skill_lookup("shockshield"), ch->level, ch, vch,
@@ -7158,7 +7170,10 @@ CH_CMD(do_qspell)
                       TARGET_CHAR);
     spell_dragon_wisdom(skill_lookup("dragon wisdom"), ch->level, ch,
                         vch, TARGET_CHAR);
+    sprintf(buf, "You give %s a spellup!\n\r", vch->name);
+    send_to_char(buf, ch);
   }
+  DeleteCharProperty(ch, PROPERTY_BOOL, "silent_spellup");
   return;
 }
 

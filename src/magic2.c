@@ -41,6 +41,7 @@
 #include "magic.h"
 #include "tables.h"
 #include "recycle.h"
+#include "fd_property.h"
 
 extern char *target_name;
 
@@ -447,21 +448,28 @@ MAGIC(spell_iceshield)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   AFFECT_DATA af;
+  bool silent = false;
+
+  GetCharProperty(ch, PROPERTY_BOOL, "silent_spellup", &silent);
 
   if (IS_SHIELDED(victim, SHD_ICE))
   {
-    if (victim == ch)
-      send_to_char
-        ("You are already surrounded by an {Cicy{x shield.\n\r", ch);
-    else
-      act("$N is already surrounded by an {Cicy{x shield.", ch, NULL,
-          victim, TO_CHAR);
+    if (!silent)
+    {
+      if (victim == ch)
+        send_to_char
+          ("You are already surrounded by an {Cicy{x shield.\n\r", ch);
+      else
+        act("$N is already surrounded by an {Cicy{x shield.", ch, NULL,
+            victim, TO_CHAR);
+    }
     return;
   }
 
   if (IS_NPC(victim))
   {
-    send_to_char("You failed.\n\r", ch);
+    if (!silent)
+      send_to_char("You failed.\n\r", ch);
     return;
   }
 
@@ -475,7 +483,9 @@ MAGIC(spell_iceshield)
 
   affect_to_char(victim, &af);
   send_to_char("You are surrounded by an {Cicy{x shield.\n\r", victim);
-  act("$n is surrounded by an {Cicy{x shield.", victim, NULL, NULL, TO_ROOM);
+  if (!silent)
+    act("$n is surrounded by an {Cicy{x shield.", victim, NULL, NULL,
+        TO_ROOM);
   return;
 }
 
@@ -484,21 +494,28 @@ MAGIC(spell_fireshield)
 
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   AFFECT_DATA af;
+  bool silent = false;
+
+  GetCharProperty(ch, PROPERTY_BOOL, "silent_spellup", &silent);
 
   if (IS_SHIELDED(victim, SHD_FIRE))
   {
-    if (victim == ch)
-      send_to_char
-        ("You are already surrounded by a {Rfirey{x shield.\r\n", ch);
-    else
-      act("$N is already surrounded by a {Rfiery{x shield.", ch, NULL,
-          victim, TO_CHAR);
+    if (!silent)
+    {
+      if (victim == ch)
+        send_to_char
+          ("You are already surrounded by a {Rfirey{x shield.\r\n", ch);
+      else
+        act("$N is already surrounded by a {Rfiery{x shield.", ch, NULL,
+            victim, TO_CHAR);
+    }
     return;
   }
 
   if (IS_NPC(victim))
   {
-    send_to_char("You failed.\n\r", ch);
+    if (!silent)
+      send_to_char("You failed.\n\r", ch);
     return;
   }
 
@@ -512,7 +529,9 @@ MAGIC(spell_fireshield)
 
   affect_to_char(victim, &af);
   send_to_char("You are surrounded by a {Rfiery{x shield.\n\r", victim);
-  act("$n is surrounded by a {Rfiery{x shield.", victim, NULL, NULL, TO_ROOM);
+  if (!silent)
+    act("$n is surrounded by a {Rfiery{x shield.", victim, NULL, NULL,
+        TO_ROOM);
   return;
 
 }
@@ -522,21 +541,28 @@ MAGIC(spell_shockshield)
 
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   AFFECT_DATA af;
+  bool silent = false;
+
+  GetCharProperty(ch, PROPERTY_BOOL, "silent_spellup", &silent);
 
   if (IS_SHIELDED(victim, SHD_SHOCK))
   {
-    if (victim == ch)
-      send_to_char
-        ("You are already surrounded in a {Bcrackling{x shield.\n\r", ch);
-    else
-      act("$N is already surrounded by a {Bcrackling{x shield.", ch,
-          NULL, victim, TO_CHAR);
+    if (!silent)
+    {
+      if (victim == ch)
+        send_to_char
+          ("You are already surrounded in a {Bcrackling{x shield.\n\r", ch);
+      else
+        act("$N is already surrounded by a {Bcrackling{x shield.", ch,
+            NULL, victim, TO_CHAR);
+    }
     return;
   }
 
   if (IS_NPC(victim))
   {
-    send_to_char("You failed.\n\r", ch);
+    if (!silent)
+      send_to_char("You failed.\n\r", ch);
     return;
   }
 
@@ -550,8 +576,9 @@ MAGIC(spell_shockshield)
 
   affect_to_char(victim, &af);
   send_to_char("You are surrounded by a {Bcrackling{x field.\n\r", victim);
-  act("$n is surrounded by a {Bcrackling{x shield.", victim, NULL, NULL,
-      TO_ROOM);
+  if (!silent)
+    act("$n is surrounded by a {Bcrackling{x shield.", victim, NULL, NULL,
+        TO_ROOM);
   return;
 }
 
@@ -560,21 +587,28 @@ MAGIC(spell_acidshield)
 
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   AFFECT_DATA af;
+  bool silent = false;
+
+  GetCharProperty(ch, PROPERTY_BOOL, "silent_spellup", &silent);
 
   if (IS_SHIELDED(victim, SHD_ACID))
   {
-    if (victim == ch)
-      send_to_char
-        ("You are already surrounded in an {GA{gcidic{x shield.\n\r", ch);
-    else
-      act("$N is already surrounded by an {GA{gcidic{x shield.", ch,
-          NULL, victim, TO_CHAR);
+    if (!silent)
+    {
+      if (victim == ch)
+        send_to_char
+          ("You are already surrounded in an {GA{gcidic{x shield.\n\r", ch);
+      else
+        act("$N is already surrounded by an {GA{gcidic{x shield.", ch,
+            NULL, victim, TO_CHAR);
+    }
     return;
   }
 
   if (IS_NPC(victim))
   {
-    send_to_char("You failed.\n\r", ch);
+    if (!silent)
+      send_to_char("You failed.\n\r", ch);
     return;
   }
 
@@ -588,31 +622,39 @@ MAGIC(spell_acidshield)
 
   affect_to_char(victim, &af);
   send_to_char("You are surrounded by an {GA{gcidic{x field.\n\r", victim);
-  act("$n is surrounded by an {GA{gcidic{x shield.", victim, NULL, NULL,
-      TO_ROOM);
+  if (!silent)
+    act("$n is surrounded by an {GA{gcidic{x shield.", victim, NULL, NULL,
+        TO_ROOM);
   return;
 }
 
 MAGIC(spell_poisonshield)
 {
-
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   AFFECT_DATA af;
+  bool silent = false;
+
+  GetCharProperty(ch, PROPERTY_BOOL, "silent_spellup", &silent);
 
   if (IS_SHIELDED(victim, SHD_POISON))
   {
-    if (victim == ch)
-      send_to_char
-        ("You are already surrounded in a {MP{moisonous{x {CC{cl{Co{cu{Cd{x.\n\r",
-         ch);
-    else
-      act("$N is already surrounded by a {MP{moisonous{x {CC{cl{Co{cu{Cd{x.",
-          ch, NULL, victim, TO_CHAR);
+    if (!silent)
+    {
+      if (victim == ch)
+        send_to_char
+          ("You are already surrounded in a {MP{moisonous{x {CC{cl{Co{cu{Cd{x.\n\r",
+           ch);
+      else
+        act
+          ("$N is already surrounded by a {MP{moisonous{x {CC{cl{Co{cu{Cd{x.",
+           ch, NULL, victim, TO_CHAR);
+    }
     return;
   }
   if (IS_NPC(victim))
   {
-    send_to_char("You failed.\n\r", ch);
+    if (!silent)
+      send_to_char("You failed.\n\r", ch);
     return;
   }
 
@@ -628,8 +670,9 @@ MAGIC(spell_poisonshield)
   send_to_char
     ("You are surrounded by a {MP{moisonous{x {CC{cl{Co{cu{Cd{x.\n\r",
      victim);
-  act("$n is surrounded by a {MP{moisonous{x {CC{cl{Co{cu{Cd{x.", victim,
-      NULL, NULL, TO_ROOM);
+  if (!silent)
+    act("$n is surrounded by a {MP{moisonous{x {CC{cl{Co{cu{Cd{x.", victim,
+        NULL, NULL, TO_ROOM);
   return;
 }
 
@@ -718,16 +761,23 @@ MAGIC(spell_dragon_skin)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   AFFECT_DATA af;
+  bool silent = false;
+
+  GetCharProperty(ch, PROPERTY_BOOL, "silent_spellup", &silent);
 
   if (is_affected(victim, sn))
   {
-    if (victim == ch)
-      send_to_char("Your skin is already hard as a dragons.\n\r", ch);
-    else
-      act("$N's skin is already hard as a dragons.", ch, NULL, victim,
-          TO_CHAR);
+    if (!silent)
+    {
+      if (victim == ch)
+        send_to_char("Your skin is already hard as a dragons.\n\r", ch);
+      else
+        act("$N's skin is already hard as a dragons.", ch, NULL, victim,
+            TO_CHAR);
+    }
     return;
   }
+
   af.where = TO_AFFECTS;
   af.type = sn;
   af.level = level;
@@ -736,7 +786,9 @@ MAGIC(spell_dragon_skin)
   af.modifier = -(2 * level);
   af.bitvector = 0;
   affect_to_char(victim, &af);
-  act("$n's skin is now hard as a dragons.", victim, NULL, NULL, TO_ROOM);
+
+  if (!silent)
+    act("$n's skin is now hard as a dragons.", victim, NULL, NULL, TO_ROOM);
   send_to_char("Your skin is now hard as a dragons.\n\r", victim);
   return;
 }
@@ -745,13 +797,19 @@ MAGIC(spell_dragon_wisdom)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   AFFECT_DATA af;
+  bool silent = false;
+
+  GetCharProperty(ch, PROPERTY_BOOL, "silent_spellup", &silent);
 
   if (is_affected(victim, sn))
   {
-    if (victim == ch)
-      send_to_char("You are already as wise as a dragon!\n\r", ch);
-    else
-      act("$N can't get any wiser.", ch, NULL, victim, TO_CHAR);
+    if (!silent)
+    {
+      if (victim == ch)
+        send_to_char("You are already as wise as a dragon!\n\r", ch);
+      else
+        act("$N can't get any wiser.", ch, NULL, victim, TO_CHAR);
+    }
     return;
   }
 
@@ -763,31 +821,40 @@ MAGIC(spell_dragon_wisdom)
   af.modifier = 1 + (level >= 18) + (level >= 25) + (level >= 32);
   af.bitvector = 0;
   affect_to_char(victim, &af);
+
   send_to_char("Your brain surges with heightened wisdom!\n\r", victim);
-  act("$n's brain surges with heightened wisdom.", victim, NULL, NULL,
-      TO_ROOM);
+  if (!silent)
+    act("$n's brain surges with heightened wisdom.", victim, NULL, NULL,
+        TO_ROOM);
   return;
 }
 
 MAGIC(spell_briarshield)
 {
-
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   AFFECT_DATA af;
+  bool silent = false;
+
+  GetCharProperty(ch, PROPERTY_BOOL, "silent_spellup", &silent);
 
   if (IS_SHIELDED(victim, SHD_BRIAR))
   {
-    if (victim == ch)
-      send_to_char("You are already surrounded in a thorny shield.\n\r", ch);
-    else
-      act("$N is already surrounded by a thorny shield.", ch, NULL,
-          victim, TO_CHAR);
+    if (!silent)
+    {
+      if (victim == ch)
+        send_to_char("You are already surrounded in a thorny shield.\n\r",
+                     ch);
+      else
+        act("$N is already surrounded by a thorny shield.", ch, NULL,
+            victim, TO_CHAR);
+    }
     return;
   }
 
   if (IS_NPC(victim))
   {
-    send_to_char("You failed.\n\r", ch);
+    if (!silent)
+      send_to_char("You failed.\n\r", ch);
     return;
   }
 
@@ -801,7 +868,8 @@ MAGIC(spell_briarshield)
 
   affect_to_char(victim, &af);
   send_to_char("You are surrounded by a thorny shield.\n\r", victim);
-  act("$n is surrounded by a thorny shield.", victim, NULL, NULL, TO_ROOM);
+  if (!silent)
+    act("$n is surrounded by a thorny shield.", victim, NULL, NULL, TO_ROOM);
   return;
 }
 
