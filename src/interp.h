@@ -384,7 +384,6 @@ DECLARE_DO_FUN(do_rstat);
 DECLARE_DO_FUN(do_rub);
 DECLARE_DO_FUN(do_rules);
 DECLARE_DO_FUN(do_sacrifice);
-DECLARE_DO_FUN(do_save);
 DECLARE_DO_FUN(do_say);
 DECLARE_DO_FUN(do_sayic);
 DECLARE_DO_FUN(do_sayooc);

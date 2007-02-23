@@ -3862,38 +3862,6 @@ void force_quit(CHAR_DATA * ch, char *argument)
   return;
 }
 
-CH_CMD(do_save)
-{
-  /*
-     send_to_char
-     ("Manual save is not available.\n\rYou are automatically saved every 60 seconds.\n\rConsider using the backup command instead.\n\r",
-     ch);
-     return;
-   */
-
-  do_backup(ch, argument);
-  return;
-
-  if (IS_NPC(ch))
-    return;
-
-  if (ch->level > 1)
-  {
-    save_char_obj(ch);
-    send_to_char
-      ("Saved.\n\rPlease remember you are automatically saved every 60 seconds.\n\rYou should consider using the backup command instead.\n\r",
-       ch);
-
-    if (ch->level < 5)
-      WAIT_STATE(ch, 18);
-    return;
-  }
-  else
-  {
-    send_to_char("You must be level 2 to save.\n\r", ch);
-  }
-}
-
 CH_CMD(do_follow)
 {
   /* RT changed to allow unlimited following and follow the NOFOLLOW rules */
