@@ -611,15 +611,6 @@ struct spec_type
 /*
  * Data structure for notes.
  */
-
-#define NOTE_NOTE	0
-#define NOTE_ICN	1
-#define NOTE_PENALTY	2
-#define NOTE_NEWS	3
-#define NOTE_CHANGES	4
-#define NOTE_SIGN	5
-#define NOTE_WEDDINGS	6
-
 struct note_data
 {
   NOTE_DATA *next;
