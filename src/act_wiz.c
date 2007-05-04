@@ -6899,54 +6899,6 @@ CH_CMD(do_vape)
 
   sprintf(strsave, "%s%s", PLAYER_DIR, capitalize(victim->name));
   stop_fighting(victim, true);
-  sprintf(buf,
-          "{R8888888888   88        88     ad8888ba    88      a8P    \n\r");
-  send_to_char(buf, ch);
-  sprintf(buf,
-          "{R88           88        88   d8        8b  88     88      \n\r");
-  send_to_char(buf, ch);
-  sprintf(buf,
-          "{R88           88        88  d8             88   88        \n\r");
-  send_to_char(buf, ch);
-  sprintf(buf,
-          "{R88aaaaa      88        88  88             88 d88         \n\r");
-  send_to_char(buf, ch);
-  sprintf(buf,
-          "{R88           88        88  88             8888 88        \n\r");
-  send_to_char(buf, ch);
-  sprintf(buf,
-          "{R88           88        88  Y8             88P   Y8b      \n\r");
-  send_to_char(buf, ch);
-  sprintf(buf,
-          "{R88           Y8a      a8P   Y8a      a8P  88      88     \n\r");
-  send_to_char(buf, ch);
-  sprintf(buf,
-          "{R88              Y8888Y         Y8888Y     88       Y8b   \n\r");
-  send_to_char(buf, ch);
-  sprintf(buf,
-          "{R                                                         \n\r");
-  send_to_char(buf, ch);
-  sprintf(buf,
-          "{R                                                         \n\r");
-  send_to_char(buf, ch);
-  sprintf(buf, "{R                                               \n\r");
-  send_to_char(buf, ch);
-  sprintf(buf, "{R8b        d8   ad8888ba     88        88  88   \n\r");
-  send_to_char(buf, ch);
-  sprintf(buf, "{R Y8      8P  d8        8b   88        88  88   \n\r");
-  send_to_char(buf, ch);
-  sprintf(buf, "{R  Y8    8P  d8          8b  88        88  88   \n\r");
-  send_to_char(buf, ch);
-  sprintf(buf, "{R    8aa8    88          88  88        88  88   \n\r");
-  send_to_char(buf, ch);
-  sprintf(buf, "{R     88     88          88  88        88  88   \n\r");
-  send_to_char(buf, ch);
-  sprintf(buf, "{R     88     Y8          8P  88        88       \n\r");
-  send_to_char(buf, ch);
-  sprintf(buf, "{R     88      Y8a      a8P   Y8a      a8P  aa   \n\r");
-  send_to_char(buf, ch);
-  sprintf(buf, "{R     88         Y8888Y         Y8888Y     88  \n\r");
-  send_to_char(buf, ch);
   sprintf(buf, "Ahh, dons\'t that feel better? :)\n\r");
   send_to_char(buf, ch);
   sprintf(buf,
