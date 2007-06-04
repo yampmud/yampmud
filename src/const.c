@@ -11048,7 +11048,7 @@ const struct group_type group_table[MAX_GROUP] = {
     4, 4, -1, -1, 5, 7, 3, -1,
     3, 4, -1, -1, 5, 7, 2, -1},
    {"blindness", "curse", "energy drain", "plague", "poison", "slow",
-    "voodoo", "weaken", "cry", "terror", "entangle", "silence", "soul siphon"}
+    "voodoo", "weaken", "cry", "terror", "entangle", "silence", "soul siphon", "dispel magic"}
    },
 
   {
