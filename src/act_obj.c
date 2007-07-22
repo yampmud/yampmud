@@ -379,15 +379,6 @@ CH_CMD(do_get)
       case ITEM_PIT:
       case ITEM_CORPSE_NPC:
       case ITEM_CORPSE_PC:
-        {
-
-          if (!can_loot(ch, container))
-          {
-            send_to_char("You can't do that.\n\r", ch);
-            free_buf(output);
-            return;
-          }
-        }
       case ITEM_ITEMPILE:
         {
 
