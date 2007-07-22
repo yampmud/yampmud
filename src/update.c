@@ -984,7 +984,7 @@ void char_update(void)
         save_char_obj(ch);
       }
 
-      if (ch->blackjack_timer >= 1);
+      if (ch->blackjack_timer >= 1)
       ch->blackjack_timer--;
 
       if (!is_pkill(ch))
@@ -1160,7 +1160,7 @@ void char_update(void)
       cur_on = 0;
       for (d = descriptor_list; d; d = d->next)
       {
-        if (d->connected == CON_PLAYING);
+        if (d->connected == CON_PLAYING)
         countu++;
       }
       cur_on = countu;
