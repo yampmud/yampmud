@@ -899,7 +899,6 @@ void home_buy(CHAR_DATA * ch)
     send_to_char("This home is already owned.\n\r", ch);
     return;
   }
-  return;
 }
 
 void home_sell(CHAR_DATA * ch, char *argument)

@@ -576,106 +576,109 @@ CH_CMD(do_cast)
       break;
 
     case TAR_OBJ_TRAN:
-      if (arg2[0] == '\0')
       {
-        send_to_char("Transport what to whom?\n\r", ch);
-        return;
-      }
-      if (arg3[0] == '\0')
-      {
-        send_to_char("Transport it to whom?\n\r", ch);
-        return;
-      }
-      if ((obj = get_obj_carry(ch, target_name)) == NULL)
-      {
-        send_to_char("You are not carrying that.\n\r", ch);
-        return;
-      }
-      if ((victim = get_char_world(ch, third_name)) == NULL || IS_NPC(victim))
-      {
-        send_to_char("They aren't here.\n\r", ch);
-        return;
-      }
-      if (!IS_NPC(ch) && ch->mana < mana)
-      {
-        send_to_char("You don't have enough mana.\n\r", ch);
-        return;
-      }
-      if (obj->wear_loc != WEAR_NONE)
-      {
-        send_to_char("You must remove it first.\n\r", ch);
-        return;
-      }
-      if (IS_SET(victim->act, PLR_NOTRAN) && ch->level < SQUIRE)
-      {
-        send_to_char("They don't want it.\n\r", ch);
-        return;
-      }
-      if (victim->carry_number + get_obj_number(obj) > can_carry_n(victim))
-      {
-        act("$N has $S hands full.", ch, NULL, victim, TO_CHAR);
-        return;
-      }
-      if (get_carry_weight(victim) + get_obj_weight(obj) >
-          can_carry_w(victim))
-      {
-        act("$N can't carry that much weight.", ch, NULL, victim, TO_CHAR);
-        return;
-      }
-      if (!can_see_obj(victim, obj))
-      {
-        act("$N can't see it.", ch, NULL, victim, TO_CHAR);
-        return;
-      }
-      if ((!IS_NPC(ch) && !IS_NPC(victim)) &&
-          (!IS_IMMORTAL(ch)) && (!IS_IMMORTAL(victim)) &&
-          (ch != victim) && (!skill_table[sn].socket) &&
-          (!str_cmp(ch->pcdata->socket, victim->pcdata->socket)))
-      {
-        send_to_char("Spell failed.\n\r", ch);
-        return;
-      }
-      if (!IS_IMMORTAL(ch))
-        WAIT_STATE(ch, skill_table[sn].beats);
-      if (!can_drop_obj(ch, obj) || IS_OBJ_STAT(obj, ITEM_QUEST))
-      {
-        send_to_char("It seems happy where it is.\n\r", ch);
-        check_improve(ch, sn, false, 1);
-        ch->mana -= mana / 3;
-        return;
-      }
-      if ((obj->pIndexData->vnum == OBJ_VNUM_VOODOO) && (ch->level <= HERO))
-      {
-        send_to_char("You can't transport voodoo dolls.\n\r", ch);
-        check_improve(ch, sn, false, 1);
-        ch->mana -= mana / 3;
-        return;
-      }
-
-      if (number_percent() > get_skill(ch, sn))
-      {
-        send_to_char("You lost your concentration.\n\r", ch);
-        check_improve(ch, sn, false, 1);
-        ch->mana -= mana / 2;
-      }
-      else
-      {
-        ch->mana -= mana;
-        obj_from_char(obj);
-        obj_to_char(obj, victim);
-        act("$p glows {Ggreen{x, then disappears.", ch, obj, victim, TO_CHAR);
-        act("$p suddenly appears in your inventory.", ch, obj, victim,
-            TO_VICT);
-        act("$p glows {Ggreen{x, then disappears from $n's inventory.", ch,
-            obj, victim, TO_NOTVICT);
-        check_improve(ch, sn, true, 1);
-        if (IS_OBJ_STAT(obj, ITEM_FORCED) && (victim->level <= HERO))
+        if (arg2[0] == '\0')
         {
-          do_wear(victim, obj->name);
+          send_to_char("Transport what to whom?\n\r", ch);
+          return;
+        }
+        if (arg3[0] == '\0')
+        {
+          send_to_char("Transport it to whom?\n\r", ch);
+          return;
+        }
+        if ((obj = get_obj_carry(ch, target_name)) == NULL)
+        {
+          send_to_char("You are not carrying that.\n\r", ch);
+          return;
+        }
+        if ((victim = get_char_world(ch, third_name)) == NULL ||
+            IS_NPC(victim))
+        {
+          send_to_char("They aren't here.\n\r", ch);
+          return;
+        }
+        if (!IS_NPC(ch) && ch->mana < mana)
+        {
+          send_to_char("You don't have enough mana.\n\r", ch);
+          return;
+        }
+        if (obj->wear_loc != WEAR_NONE)
+        {
+          send_to_char("You must remove it first.\n\r", ch);
+          return;
+        }
+        if (IS_SET(victim->act, PLR_NOTRAN) && ch->level < SQUIRE)
+        {
+          send_to_char("They don't want it.\n\r", ch);
+          return;
+        }
+        if (victim->carry_number + get_obj_number(obj) > can_carry_n(victim))
+        {
+          act("$N has $S hands full.", ch, NULL, victim, TO_CHAR);
+          return;
+        }
+        if (get_carry_weight(victim) + get_obj_weight(obj) >
+            can_carry_w(victim))
+        {
+          act("$N can't carry that much weight.", ch, NULL, victim, TO_CHAR);
+          return;
+        }
+        if (!can_see_obj(victim, obj))
+        {
+          act("$N can't see it.", ch, NULL, victim, TO_CHAR);
+          return;
+        }
+        if ((!IS_NPC(ch) && !IS_NPC(victim)) &&
+            (!IS_IMMORTAL(ch)) && (!IS_IMMORTAL(victim)) &&
+            (ch != victim) && (!skill_table[sn].socket) &&
+            (!str_cmp(ch->pcdata->socket, victim->pcdata->socket)))
+        {
+          send_to_char("Spell failed.\n\r", ch);
+          return;
+        }
+        if (!IS_IMMORTAL(ch))
+          WAIT_STATE(ch, skill_table[sn].beats);
+        if (!can_drop_obj(ch, obj) || IS_OBJ_STAT(obj, ITEM_QUEST))
+        {
+          send_to_char("It seems happy where it is.\n\r", ch);
+          check_improve(ch, sn, false, 1);
+          ch->mana -= mana / 3;
+          return;
+        }
+        if ((obj->pIndexData->vnum == OBJ_VNUM_VOODOO) && (ch->level <= HERO))
+        {
+          send_to_char("You can't transport voodoo dolls.\n\r", ch);
+          check_improve(ch, sn, false, 1);
+          ch->mana -= mana / 3;
+          return;
+        }
+
+        if (number_percent() > get_skill(ch, sn))
+        {
+          send_to_char("You lost your concentration.\n\r", ch);
+          check_improve(ch, sn, false, 1);
+          ch->mana -= mana / 2;
+        }
+        else
+        {
+          ch->mana -= mana;
+          obj_from_char(obj);
+          obj_to_char(obj, victim);
+          act("$p glows {Ggreen{x, then disappears.", ch, obj, victim,
+              TO_CHAR);
+          act("$p suddenly appears in your inventory.", ch, obj, victim,
+              TO_VICT);
+          act("$p glows {Ggreen{x, then disappears from $n's inventory.", ch,
+              obj, victim, TO_NOTVICT);
+          check_improve(ch, sn, true, 1);
+          if (IS_OBJ_STAT(obj, ITEM_FORCED) && (victim->level <= HERO))
+          {
+            do_wear(victim, obj->name);
+          }
         }
       }
       return;
-      break;
   }
 
   if (!IS_NPC(ch) && ch->mana < mana)
