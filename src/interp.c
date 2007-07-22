@@ -330,7 +330,6 @@ const struct cmd_type cmd_table[] = {
   {"quit", do_quit, POS_DEAD, 0, 1, LOG_NORMAL, 1},
   {"recall", do_recall, POS_FIGHTING, 0, 1, LOG_NORMAL, 1},
   {"/", do_recall, POS_FIGHTING, 0, 1, LOG_NORMAL, 0},
-  {"rent", do_rent, POS_DEAD, 0, 1, LOG_NORMAL, 0},
   {"save", do_backup, POS_DEAD, 0, 1, LOG_NORMAL, 1},
   {"sleep", do_sleep, POS_SLEEPING, 0, 1, LOG_NORMAL, 1},
   {"sneak", do_sneak, POS_STANDING, 0, 1, LOG_NORMAL, 1},

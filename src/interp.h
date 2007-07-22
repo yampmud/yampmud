@@ -360,7 +360,6 @@ DECLARE_DO_FUN(do_reform);
 DECLARE_DO_FUN(do_reload);
 DECLARE_DO_FUN(do_remove);
 DECLARE_DO_FUN(do_rename);
-DECLARE_DO_FUN(do_rent);
 DECLARE_DO_FUN(do_repeat);
 DECLARE_DO_FUN(do_repent);
 DECLARE_DO_FUN(do_replay);

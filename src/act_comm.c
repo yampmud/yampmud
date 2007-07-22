@@ -3673,12 +3673,6 @@ void do_idea(CHAR_DATA * ch, char *argument)
 }
 
 
-CH_CMD(do_rent)
-{
-  send_to_char("There is no rent here.  Just save and quit.\n\r", ch);
-  return;
-}
-
 CH_CMD(do_qui)
 {
   send_to_char("If you want to QUIT, you have to spell it out.\n\r", ch);
