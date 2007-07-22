@@ -132,7 +132,6 @@ const struct cmd_type cmd_table[] = {
   {"peek", do_peek, POS_STANDING, 0, 1, LOG_NORMAL, 1},
   {"read", do_read, POS_RESTING, 0, 1, LOG_NORMAL, 1},
   {"report", do_report, POS_RESTING, 0, 1, LOG_NORMAL, 1},
-  {"oscore", do_score, POS_DEAD, 0, 1, LOG_NORMAL, 1},
   {"score", do_score_loki, POS_DEAD, 0, 1, LOG_NORMAL, 1},
   {"scan", do_scan, POS_RESTING, 0, 1, LOG_NORMAL, 1},
   {"skills", do_skills, POS_DEAD, 0, 1, LOG_NORMAL, 1},
