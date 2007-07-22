@@ -7293,11 +7293,9 @@ CH_CMD(do_mend)
 
 void check_arena(CHAR_DATA * ch, CHAR_DATA * victim)
 {
-  DESCRIPTOR_DATA *d;           /* needed for Arena bet checking */
   char buf[MAX_STRING_LENGTH];
   float odds;
   float lvl1, lvl2;
-  int payoff;
 
   if (IS_NPC(ch) || IS_NPC(victim))
     return;
