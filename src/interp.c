@@ -254,7 +254,6 @@ const struct cmd_type cmd_table[] = {
   {"heal", do_heal, POS_RESTING, 0, 1, LOG_NORMAL, 1},
   {"repent", do_repent, POS_RESTING, 0, 1, LOG_NORMAL, 1},
   {"pray", do_pray, POS_RESTING, 0, 1, LOG_NORMAL, 1},
-  {"boom", do_pray, POS_RESTING, ML, 1, LOG_NORMAL, 1},
   {"hold", do_wear, POS_RESTING, 0, 1, LOG_NORMAL, 1},
   {"list", do_list, POS_RESTING, 0, 1, LOG_NORMAL, 1},
   {"lock", do_lock, POS_RESTING, 0, 1, LOG_NORMAL, 1},
