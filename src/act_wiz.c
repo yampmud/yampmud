@@ -2441,7 +2441,7 @@ CH_CMD(do_mstat)
     }
   }
 
-  page_to_char(buf_string(output), ch);
+  send_to_char(buf_string(output), ch);
   free_buf(output);
 
   show_properties(ch, victim->property, "temp");
@@ -2514,7 +2514,7 @@ CH_CMD(do_vnum)
       if (pArea2 != NULL)
         pArea2 = pArea2->next;
     }
-    page_to_char(buf_string(output), ch);
+    send_to_char(buf_string(output), ch);
     free_buf(output);
     return;
   }
@@ -2574,7 +2574,7 @@ CH_CMD(do_mfind)
   }
   else
   {
-    page_to_char(buf_string(output), ch);
+    send_to_char(buf_string(output), ch);
   }
   free_buf(output);
   return;
@@ -2630,7 +2630,7 @@ CH_CMD(do_ofind)
   }
   else
   {
-    page_to_char(buf_string(output), ch);
+    send_to_char(buf_string(output), ch);
   }
   free_buf(output);
   return;
@@ -2697,7 +2697,7 @@ CH_CMD(do_owhere)
   if (!found)
     send_to_char("Nothing like that in heaven or earth.\n\r", ch);
   else
-    page_to_char(buf_string(buffer), ch);
+    send_to_char(buf_string(buffer), ch);
 
   free_buf(buffer);
 }
@@ -2753,7 +2753,7 @@ CH_CMD(do_mwhere)
       }
     }
 
-    page_to_char(buf_string(buffer), ch);
+    send_to_char(buf_string(buffer), ch);
     free_buf(buffer);
     return;
   }
@@ -2781,7 +2781,7 @@ CH_CMD(do_mwhere)
   if (!found)
     act("You didn't find any $T.", ch, NULL, argument, TO_CHAR);
   else
-    page_to_char(buf_string(buffer), ch);
+    send_to_char(buf_string(buffer), ch);
 
   free_buf(buffer);
 
@@ -8050,7 +8050,7 @@ CH_CMD(do_mlevel)
     return;
   }
 
-  page_to_char(buf_string(output), ch);
+  send_to_char(buf_string(output), ch);
 
   if (count == 300)
     send_to_char("{RStopped at 300 mobs. \n\r", ch);
@@ -8162,7 +8162,7 @@ CH_CMD(do_olevel)
   if (!found)
     send_to_char("Nothing like that in heaven or earth.\n\r", ch);
   else
-    page_to_char(buf_string(buffer), ch);
+    send_to_char(buf_string(buffer), ch);
 
   if (count == 300)
     send_to_char("{RStopped at 300 objects.", ch);

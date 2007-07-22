@@ -338,7 +338,7 @@ CH_CMD(do_get)
         if (!is_get_all && numobj > 0)
 
         {
-          page_to_char(buf_string(output), ch);
+          send_to_char(buf_string(output), ch);
         }
         else
         {
@@ -459,7 +459,7 @@ CH_CMD(do_get)
       {
         if (!is_get_all)
         {
-          page_to_char(buf_string(output), ch);
+          send_to_char(buf_string(output), ch);
         }
         else
         {
@@ -984,7 +984,7 @@ CH_CMD(do_put)
         sprintf(pbuf, "$n puts %d items in $P.\n\r", count);
         act(pbuf, ch, NULL, container, TO_ROOM);
       }
-      page_to_char(buf_string(output), ch);
+      send_to_char(buf_string(output), ch);
     }
     free_buf(output);
   }

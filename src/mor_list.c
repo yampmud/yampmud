@@ -80,7 +80,7 @@ CH_CMD(do_rlist)
   if (col % 3 != 0)
     add_buf(buf1, "\n\r");
 
-  page_to_char(buf_string(buf1), ch);
+  send_to_char(buf_string(buf1), ch);
   free_buf(buf1);
   return;
 }
@@ -171,7 +171,7 @@ CH_CMD(do_mlist)
   if (col % 3 != 0)
     add_buf(buf1, "\n\r");
 
-  page_to_char(buf_string(buf1), ch);
+  send_to_char(buf_string(buf1), ch);
   free_buf(buf1);
   return;
 }
@@ -263,7 +263,7 @@ CH_CMD(do_olist)
   if (col % 3 != 0)
     add_buf(buf1, "\n\r");
 
-  page_to_char(buf_string(buf1), ch);
+  send_to_char(buf_string(buf1), ch);
   free_buf(buf1);
   return;
 }

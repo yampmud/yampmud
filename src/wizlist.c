@@ -279,7 +279,7 @@ CH_CMD(do_wizlist)
   sprintf(buf,
           "{x\\{W/_/_______________________________________________________________________/_/{x\n\r");
   add_buf(buffer, buf);
-  page_to_char(buf_string(buffer), ch);
+  send_to_char(buf_string(buffer), ch);
   free_buf(buffer);
   return;
 }

@@ -631,7 +631,7 @@ CH_CMD(do_clans)
   }
   sprintf(buf, "{D-------------------------------{x\n\r");
   add_buf(output, buf);
-  page_to_char(buf_string(output), ch);
+  send_to_char(buf_string(output), ch);
   free_buf(output);
   return;
 }
@@ -925,7 +925,7 @@ CH_CMD(do_clanwho)
 
   sprintf(buf2, "\n\r{CC{clan {CM{cembers {CF{cound{x: {&%d{x\n\r", nMatch);
   add_buf(output, buf2);
-  page_to_char(buf_string(output), ch);
+  send_to_char(buf_string(output), ch);
 
   free_buf(output);
   return;

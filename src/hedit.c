@@ -310,7 +310,7 @@ HEDIT(hedit_list)
   if (cnt % 4)
     add_buf(buffer, "\n\r");
 
-  page_to_char(buf_string(buffer), ch);
+  send_to_char(buf_string(buffer), ch);
   free_buf(buffer);
   return false;
 }

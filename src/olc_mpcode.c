@@ -194,7 +194,7 @@ CH_CMD(do_mplist)
     add_buf(buffer, buf);
     count++;
   }
-  page_to_char(buf_string(buffer), ch);
+  send_to_char(buf_string(buffer), ch);
   free_buf(buffer);
   return;
 }

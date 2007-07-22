@@ -240,7 +240,7 @@ CH_CMD(do_mpdump)
     send_to_char("No such MOBprogram.\n\r", ch);
     return;
   }
-  page_to_char(mprg->code, ch);
+  send_to_char(mprg->code, ch);
 }
 
 /*

@@ -694,7 +694,7 @@ void show_char_to_char_1(CHAR_DATA * victim, CHAR_DATA * ch)
     add_buf(output, buf_string(outlist));
     free_buf(outlist);
   }
-  page_to_char(buf_string(output), ch);
+  send_to_char(buf_string(output), ch);
   free_buf(output);
   return;
 }
@@ -782,7 +782,7 @@ CH_CMD(do_peek)
     add_buf(output, buf);
     check_improve(ch, gsn_peek, false, 2);
   }
-  page_to_char(buf_string(output), ch);
+  send_to_char(buf_string(output), ch);
   free_buf(output);
   return;
 }
@@ -1415,7 +1415,7 @@ CH_CMD(do_look)
     }
 
     outlist = show_list_to_char(ch->in_room->contents, ch, false, false);
-    page_to_char(buf_string(outlist), ch);
+    send_to_char(buf_string(outlist), ch);
     free_buf(outlist);
     show_char_to_char(ch->in_room->people, ch);
     return;
@@ -1472,7 +1472,7 @@ CH_CMD(do_look)
 
         act("$p holds:", ch, obj, NULL, TO_CHAR);
         outlist = show_list_to_char(obj->contains, ch, true, true);
-        page_to_char(buf_string(outlist), ch);
+        send_to_char(buf_string(outlist), ch);
         free_buf(outlist);
         break;
       case ITEM_ITEMPILE:
@@ -1484,7 +1484,7 @@ CH_CMD(do_look)
 
         act("$p holds:", ch, obj, NULL, TO_CHAR);
         outlist = show_list_to_char(obj->contains, ch, true, true);
-        page_to_char(buf_string(outlist), ch);
+        send_to_char(buf_string(outlist), ch);
         free_buf(outlist);
         break;
     }
@@ -3115,7 +3115,7 @@ CH_CMD(do_affects)
     send_to_char("{cYou are not affected by any spells.{x\n\r", ch);
   else
   {
-    page_to_char(buf_string(buffer), ch);
+    send_to_char(buf_string(buffer), ch);
     free_buf(buffer);
   }
   return;
@@ -3537,7 +3537,7 @@ CH_CMD(do_whois)
     return;
   }
 
-  page_to_char(buf_string(output), ch);
+  send_to_char(buf_string(output), ch);
   free_buf(output);
 }
 
@@ -4122,7 +4122,7 @@ CH_CMD(do_inventory)
   }
   send_to_char("You are carrying:\n\r", ch);
   outlist = show_list_to_char(ch->carrying, ch, true, true);
-  page_to_char(buf_string(outlist), ch);
+  send_to_char(buf_string(outlist), ch);
   free_buf(outlist);
   return;
 }
@@ -5146,7 +5146,7 @@ CH_CMD(do_omni)
   add_buf(output, buf2);
   sprintf(buf2, "{BMorts {wfound{x: {M%d{x\n\r", mortmatch);
   add_buf(output, buf2);
-  page_to_char(buf_string(output), ch);
+  send_to_char(buf_string(output), ch);
   free_buf(output);
   return;
 }

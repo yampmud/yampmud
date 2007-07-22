@@ -1218,7 +1218,7 @@ CH_CMD(do_replay)
     return;
   }
 
-  page_to_char(buf_string(ch->pcdata->buffer), ch);
+  send_to_char(buf_string(ch->pcdata->buffer), ch);
   clear_buf(ch->pcdata->buffer);
   ch->tells = 0;
 }

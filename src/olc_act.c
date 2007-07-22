@@ -5016,7 +5016,7 @@ void show_liqlist(CHAR_DATA * ch)
     add_buf(buffer, buf);
   }
 
-  page_to_char(buf_string(buffer), ch);
+  send_to_char(buf_string(buffer), ch);
   free_buf(buffer);
 
   return;
@@ -5040,7 +5040,7 @@ void show_damlist(CHAR_DATA * ch)
     add_buf(buffer, buf);
   }
 
-  page_to_char(buf_string(buffer), ch);
+  send_to_char(buf_string(buffer), ch);
   free_buf(buffer);
 
   return;
@@ -5096,7 +5096,7 @@ MEDIT(medit_group)
     }
 
     if (found)
-      page_to_char(buf_string(buffer), ch);
+      send_to_char(buf_string(buffer), ch);
     else
       send_to_char("No mobs in that group.\n\r", ch);
 

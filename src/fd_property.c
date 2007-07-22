@@ -108,7 +108,7 @@ void do_propertylist(CHAR_DATA * ch, char *argument)
   if (i % 2 == 0)
     add_buf(output, "\n\r");
 
-  page_to_char(buf_string(output), ch);
+  send_to_char(buf_string(output), ch);
   free_buf(output);
   printf_to_char(ch, "Done.\r\n");
 }

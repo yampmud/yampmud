@@ -280,7 +280,7 @@ CH_CMD(do_bank)
       BUFFER *outlist;
       send_to_char("You Have the following items in the bank:\n\r", ch);
       outlist = show_list_to_char(ch->bankeditems, ch, true, true);
-      page_to_char(buf_string(outlist), ch);
+      send_to_char(buf_string(outlist), ch);
       free_buf(outlist);
       return;
     }

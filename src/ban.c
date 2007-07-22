@@ -196,7 +196,7 @@ void ban_site(CHAR_DATA * ch, char *argument, bool fPerm)
       add_buf(buffer, buf);
     }
 
-    page_to_char(buf_string(buffer), ch);
+    send_to_char(buf_string(buffer), ch);
     free_buf(buffer);
     return;
   }

@@ -361,7 +361,6 @@ args((const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2,
 char *colour_clear args((CHAR_DATA * ch));
 char *colour_channel args((int colornum, CHAR_DATA * ch));
 void send_to_char args((const char *txt, CHAR_DATA * ch));
-void page_to_char args((const char *txt, CHAR_DATA * ch));
 void bugf(char *fmt, ...) __attribute__ ((format(printf, 1, 2)));
 void mudlogf(char *fmt, ...) __attribute__ ((format(printf, 1, 2)));
 void printf_to_char args((CHAR_DATA * ch, char *fmt, ...))

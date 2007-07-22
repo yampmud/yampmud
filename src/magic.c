@@ -4212,7 +4212,7 @@ MAGIC(spell_locate_object)
   if (!found)
     send_to_char("Nothing like that in heaven or earth.\n\r", ch);
   else
-    page_to_char(buf_string(buffer), ch);
+    send_to_char(buf_string(buffer), ch);
 
   free_buf(buffer);
 

@@ -3129,29 +3129,6 @@ void send_to_char(const char *txt, CHAR_DATA * ch)
 
 }
 
-/*
- * Send a page to one char.
- */
-void page_to_char(const char *txt, CHAR_DATA * ch)
-{
-  send_to_char(txt, ch);
-  return;
-
-  if (txt == NULL || ch == NULL || ch->desc == NULL)
-    return;
-  if (ch->lines == 0)
-  {
-    send_to_char(txt, ch);
-    return;
-  }
-
-  ch->desc->showstr_head = malloc(strlen(txt) + 1);
-  memset(ch->desc->showstr_head, 0, strlen(txt) + 1);
-  strcpy(ch->desc->showstr_head, txt);
-  ch->desc->showstr_point = ch->desc->showstr_head;
-  show_string(ch->desc, "");
-}
-
 /* string pager */
 void show_string(struct descriptor_data *d, char *input)
 {
