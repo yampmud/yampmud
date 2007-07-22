@@ -115,12 +115,14 @@ CH_CMD(do_redeem)
   sprintf(buf, ch->name);
 
   len = (int) strlen(buf);
+
   while (i < len && i < 9)
   {
     sprintf(out, "%d", ((LOWER(buf[i]) - 'a') / 3));
     strcat(fin, out);
     i++;
   }
+
   if (!str_cmp(fin, argument))
   {
     send_to_char("Key is correct!\n\r", ch);
@@ -130,12 +132,8 @@ CH_CMD(do_redeem)
     ch->redeem++;
     return;
   }
-  else
-  {
-    send_to_char("Key is incorrect!\n\r", ch);
-    return;
-  }
 
+  send_to_char("Key is incorrect!\n\r", ch);
   return;
 }
 
