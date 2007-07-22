@@ -3238,7 +3238,7 @@ CH_CMD(do_help)
     sqlite3_mprintf
     ("SELECT id,level,keyword,htext FROM helps WHERE keyword LIKE '%%%q%%' AND level <= %d",
      argall, get_trust(ch));
-  rc = sqlite3_prepare(world_db, sql, (int)strlen(sql), &stmt, &tail);
+  rc = sqlite3_prepare(world_db, sql, (int) strlen(sql), &stmt, &tail);
 
   if (rc != SQLITE_OK)
   {
@@ -3789,44 +3789,41 @@ CH_CMD(do_who)
           sprintf(buf2, "%3d", wch->level);
           switch (wch->level)
           {
+            case MAX_LEVEL - 0:
+              sprintf(buf2, "{CGOD{x");
+              break;
+            case MAX_LEVEL - 1:
+              sprintf(buf2, "{GCRE{x");
+              break;
+            case MAX_LEVEL - 2:
+              sprintf(buf2, "{GSUP{x");
+              break;
+            case MAX_LEVEL - 3:
+              sprintf(buf2, "{GDEI{x");
+              break;
+            case MAX_LEVEL - 4:
+              sprintf(buf2, "{GGOD{x");
+              break;
+            case MAX_LEVEL - 5:
+              sprintf(buf2, "{GIMM{x");
+              break;
+            case MAX_LEVEL - 6:
+              sprintf(buf2, "{GDEM{x");
+              break;
+            case MAX_LEVEL - 7:
+              sprintf(buf2, "{CKNI{x");
+              break;
+            case MAX_LEVEL - 8:
+              sprintf(buf2, "{CSQU{x");
+              break;
+            case MAX_LEVEL - 9:
+              sprintf(buf2, "{RA{rnc{x");
+              break;
+            case MAX_LEVEL - 10:
+              sprintf(buf2, "{CH{cro{x");
+              break;
             default:
               break;
-              {
-            case MAX_LEVEL - 0:
-                sprintf(buf2, "{CGOD{x");
-                break;
-            case MAX_LEVEL - 1:
-                sprintf(buf2, "{GCRE{x");
-                break;
-            case MAX_LEVEL - 2:
-                sprintf(buf2, "{GSUP{x");
-                break;
-            case MAX_LEVEL - 3:
-                sprintf(buf2, "{GDEI{x");
-                break;
-            case MAX_LEVEL - 4:
-                sprintf(buf2, "{GGOD{x");
-
-                break;
-            case MAX_LEVEL - 5:
-                sprintf(buf2, "{GIMM{x");
-                break;
-            case MAX_LEVEL - 6:
-                sprintf(buf2, "{GDEM{x");
-                break;
-            case MAX_LEVEL - 7:
-                sprintf(buf2, "{CKNI{x");
-                break;
-            case MAX_LEVEL - 8:
-                sprintf(buf2, "{CSQU{x");
-                break;
-            case MAX_LEVEL - 9:
-                sprintf(buf2, "{RA{rnc{x");
-                break;
-            case MAX_LEVEL - 10:
-                sprintf(buf2, "{CH{cro{x");
-                break;
-              }
           }
 
           if (wch->sex == 1)
