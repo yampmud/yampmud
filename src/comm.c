@@ -3138,6 +3138,9 @@ void show_string(struct descriptor_data *d, char *input)
   int lines = 0, toggle = 1;
   int show_lines;
 
+  buffer[0] = '\0';
+  buf[0] = '\0';
+
   one_argument(input, buf);
   if (buf[0] != '\0')
   {
