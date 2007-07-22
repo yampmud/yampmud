@@ -2074,7 +2074,6 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
         d->connected = CON_CONFIRM_NEW_NAME;
         return;
       }
-      break;
 
     case CON_GET_OLD_PASSWORD:
       write_to_buffer(d, "\n\r", 2);

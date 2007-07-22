@@ -2465,7 +2465,6 @@ char *fread_string_temp(FILE * fp)
       case EOF:
         bugf("fread_string(): EOF");
         abort();
-        exit(1);
 
       case '\n':
         plast++;

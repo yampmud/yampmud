@@ -2366,12 +2366,8 @@ bool can_pk(CHAR_DATA * ch, CHAR_DATA * victim)
                    "They are far to strong to be considered an actual target by the likes of you!\n\r");
     return false;
   }
-
   else
-  {
     return true;
-  }
-  return false;
 }
 
 bool is_safe_mock(CHAR_DATA * ch, CHAR_DATA * victim)
