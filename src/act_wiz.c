@@ -7805,8 +7805,6 @@ void do_pktoggle(CHAR_DATA * ch, char *arg)
     victim->pcdata->pkset = false;
     return;
   }
-
-  return;
 }
 
 void do_bprompt(CHAR_DATA * ch, char *argument)
