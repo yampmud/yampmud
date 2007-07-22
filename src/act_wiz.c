@@ -6284,11 +6284,11 @@ bool can_pack(CHAR_DATA * ch)
   OBJ_DATA *object;
   bool found;
 
-  if (IS_IMMORTAL(ch));
-  return true;
+  if (IS_IMMORTAL(ch))
+    return true;
 
-  if (IS_NPC(ch));
-  return false;
+  if (IS_NPC(ch))
+    return false;
 
   if (ch->desc == NULL)
     return true;
