@@ -2226,13 +2226,6 @@ CH_CMD(do_charinfo)
    copyright of Loki of Death Rising.
    If you use this score you must leave this header intact. */
 
-CH_CMD(do_newscore)
-{
-
-  return;
-}
-
-
 CH_CMD(do_score_loki)
 {
   int i;

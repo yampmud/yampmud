@@ -277,7 +277,6 @@ DECLARE_DO_FUN(do_music);
 DECLARE_DO_FUN(do_mwhere);
 DECLARE_DO_FUN(do_newlock);
 DECLARE_DO_FUN(do_nervestrike);
-DECLARE_DO_FUN(do_newscore);
 DECLARE_DO_FUN(do_nochannels);
 DECLARE_DO_FUN(do_noclan);
 DECLARE_DO_FUN(do_noemote);
