@@ -4535,7 +4535,6 @@ CH_CMD(do_bash)
     if (!IS_IMMORTAL(ch))
       WAIT_STATE(ch, skill_table[gsn_bash].beats);
     return;
-    chance -= 3 * (get_skill(victim, gsn_dodge) - chance);
   }
 
   /* now the attack */
