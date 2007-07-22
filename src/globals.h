@@ -81,7 +81,6 @@ GLOBAL_DEF(bool double_qp, false);
 GLOBAL_DEF(bool happy_hour, false);
 GLOBAL_DEF(bool fuckedup, false);
 GLOBAL_DEF(bool drugs, false);
-GLOBAL_DEF(int titl, 0);
 GLOBAL(char new_arg[MIL]);
 GLOBAL(char new_argg[MIL]);
 GLOBAL(char fuck_arg[MIL]);
