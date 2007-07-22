@@ -247,7 +247,7 @@ CH_CMD(do_questforge)
   else if (!str_cmp(arg1, "dtype"))
   {
     send_to_char("{cValid damage types are{D:{x\n\r", ch);
-    do_help(ch, "wdam");;
+    do_help(ch, "wdam");
     return;
   }
   else if (!str_cmp(arg1, "flags"))

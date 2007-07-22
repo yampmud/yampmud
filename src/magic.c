@@ -1299,7 +1299,7 @@ MAGIC(spell_cancellation)
 
   if (check_dispel(level, victim, skill_lookup("frenzy")))
   {
-    act("$n no longer looks so wild.", victim, NULL, NULL, TO_ROOM);;
+    act("$n no longer looks so wild.", victim, NULL, NULL, TO_ROOM);
     found = true;
   }
 
@@ -2428,7 +2428,7 @@ MAGIC(spell_dispel_magic)
 
   if (check_dispel(level, victim, skill_lookup("frenzy")))
   {
-    act("$n no longer looks so wild.", victim, NULL, NULL, TO_ROOM);;
+    act("$n no longer looks so wild.", victim, NULL, NULL, TO_ROOM);
     found = true;
   }
 
