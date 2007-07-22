@@ -339,9 +339,12 @@ void game_loop_unix(int control)
     /* 
      * Poll all active descriptors.
      */
-    FD_ZERO(&in_set);
-    FD_ZERO(&out_set);
-    FD_ZERO(&exc_set);
+
+    /* memset rather than FD_ZERO */
+    memset((fd_set *) &in_set, 0, sizeof(in_set));
+    memset((fd_set *) &out_set, 0, sizeof(in_set));
+    memset((fd_set *) &exc_set, 0, sizeof(in_set));
+
     FD_SET(control, &in_set);
     maxdesc = control;
     for (d = descriptor_list; d; d = d->next)
@@ -364,9 +367,11 @@ void game_loop_unix(int control)
     if (FD_ISSET(control, &in_set))
       init_descriptor(control);
 
-    FD_ZERO(&in_set);
-    FD_ZERO(&out_set);
-    FD_ZERO(&exc_set);
+    /* memset rather than FD_ZERO */
+    memset((fd_set *) &in_set, 0, sizeof(in_set));
+    memset((fd_set *) &out_set, 0, sizeof(in_set));
+    memset((fd_set *) &exc_set, 0, sizeof(in_set));
+
     for (d = descriptor_list; d; d = d->next)
     {
       maxdesc = UMAX(maxdesc, d->descriptor);
