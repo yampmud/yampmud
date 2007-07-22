@@ -3009,8 +3009,8 @@ CH_CMD(do_affects)
             "{Y------------------------------------------------------------------------------{x\n\r");
     add_buf(buffer,
             "{cYou are affected by the following racial affects:{x\n\r");
-    if (IS_SET(cheat, race_table[ch->race].aff));
-    cheat -= race_table[ch->race].aff;
+    if (IS_SET(cheat, race_table[ch->race].aff))
+      cheat -= race_table[ch->race].aff;
     strcpy(buf3, affect_bit_name(race_table[ch->race].aff));
     buf4 = buf3;
     buf4 = one_argument(buf4, buf2);
