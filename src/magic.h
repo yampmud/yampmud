@@ -36,6 +36,7 @@
  * Spell functions.
  * Defined in magic.c.
  */
+#ifndef S_SPLINT_S
 DECLARE_SPELL_FUN(spell_null);
 DECLARE_SPELL_FUN(spell_summon);
 DECLARE_SPELL_FUN(spell_sate);
@@ -291,3 +292,4 @@ DECLARE_SPELL_FUN(spell_topaz_aura);
 DECLARE_SPELL_FUN(spell_obsidian_aura);
 DECLARE_SPELL_FUN(spell_ray_of_frost);
 DECLARE_SPELL_FUN(spell_last_rites);
+#endif

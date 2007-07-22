@@ -114,7 +114,7 @@ CH_CMD(do_redeem)
 
   sprintf(buf, ch->name);
 
-  len = strlen(buf);
+  len = (int) strlen(buf);
   while (i < len && i < 9)
   {
     sprintf(out, "%d", ((LOWER(buf[i]) - 'a') / 3));

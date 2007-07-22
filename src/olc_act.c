@@ -533,7 +533,7 @@ AEDIT(aedit_file)
   /* 
    * Simple Syntax Check.
    */
-  length = strlen(argument);
+  length = (int) strlen(argument);
   if (length > 8)
   {
     send_to_char("No more than eight characters allowed.\n\r", ch);
@@ -973,7 +973,7 @@ REDIT(redit_show)
 
         if (str_infix(word, reset_state))
         {
-          length = strlen(word);
+          length = (int) strlen(word);
           for (i = 0; i < length; i++)
             word[i] = UPPER(word[i]);
         }

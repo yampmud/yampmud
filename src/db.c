@@ -2296,7 +2296,7 @@ char *fread_string(FILE * fp)
           iHash = UMIN(MAX_KEY_HASH - 1, plast - 1 - top_string);
           for (pHash = string_hash[iHash]; pHash; pHash = pHashPrev)
           {
-            for (ic = 0; ic < sizeof(char *); ic++)
+            for (ic = 0; ic < (int) sizeof(char *); ic++)
               u1.rgc[ic] = pHash[ic];
             pHashPrev = u1.pc;
             pHash += sizeof(char *);
@@ -2311,7 +2311,7 @@ char *fread_string(FILE * fp)
             pString = top_string;
             top_string = plast;
             u1.pc = string_hash[iHash];
-            for (ic = 0; ic < sizeof(char *); ic++)
+            for (ic = 0; ic < (int) sizeof(char *); ic++)
               pString[ic] = u1.rgc[ic];
             string_hash[iHash] = pString;
 
@@ -2395,7 +2395,7 @@ char *fread_string_eol(FILE * fp)
           iHash = UMIN(MAX_KEY_HASH - 1, plast - 1 - top_string);
           for (pHash = string_hash[iHash]; pHash; pHash = pHashPrev)
           {
-            for (ic = 0; ic < sizeof(char *); ic++)
+            for (ic = 0; ic < (int) sizeof(char *); ic++)
               u1.rgc[ic] = pHash[ic];
             pHashPrev = u1.pc;
             pHash += sizeof(char *);
@@ -2410,7 +2410,7 @@ char *fread_string_eol(FILE * fp)
             pString = top_string;
             top_string = plast;
             u1.pc = string_hash[iHash];
-            for (ic = 0; ic < sizeof(char *); ic++)
+            for (ic = 0; ic < (int) sizeof(char *); ic++)
               pString[ic] = u1.rgc[ic];
             string_hash[iHash] = pString;
 
@@ -3130,8 +3130,8 @@ bool str_infix(const char *astr, const char *bstr)
   if ((c0 = LOWER(astr[0])) == '\0')
     return false;
 
-  sstr1 = strlen(astr);
-  sstr2 = strlen(bstr);
+  sstr1 = (int) strlen(astr);
+  sstr2 = (int) strlen(bstr);
 
   for (ichar = 0; ichar <= sstr2 - sstr1; ichar++)
   {
@@ -3157,8 +3157,8 @@ bool str_infix_c(const char *astr, const char *bstr)
   if ((c0 = astr[0]) == '\0')
     return false;
 
-  sstr1 = strlen(astr);
-  sstr2 = strlen(bstr);
+  sstr1 = (int) strlen(astr);
+  sstr2 = (int) strlen(bstr);
 
   for (ichar = 0; ichar <= sstr2 - sstr1; ichar++)
   {
@@ -3193,8 +3193,8 @@ char *str_replace(char *astr, char *bstr, char *cstr)
   if (!str_infix(bstr, cstr))
     return astr;
 
-  sstr1 = strlen(astr);
-  sstr2 = strlen(bstr);
+  sstr1 = (int) strlen(astr);
+  sstr2 = (int) strlen(bstr);
   jchar = 0;
 
   if (sstr1 < sstr2)
@@ -3253,8 +3253,8 @@ char *str_replace_c(char *astr, char *bstr, char *cstr)
   if (!str_infix_c(bstr, cstr))
     return astr;
 
-  sstr1 = strlen(astr);
-  sstr2 = strlen(bstr);
+  sstr1 = (int) strlen(astr);
+  sstr2 = (int) strlen(bstr);
   jchar = 0;
 
   if (sstr1 < sstr2)
@@ -3299,8 +3299,8 @@ bool str_suffix(const char *astr, const char *bstr)
   int sstr1;
   int sstr2;
 
-  sstr1 = strlen(astr);
-  sstr2 = strlen(bstr);
+  sstr1 = (int) strlen(astr);
+  sstr2 = (int) strlen(bstr);
   if (sstr1 <= sstr2 && !str_cmp(astr, bstr + sstr2 - sstr1))
     return false;
   else

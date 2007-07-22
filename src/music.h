@@ -46,5 +46,5 @@ struct song_data
 
 extern struct song_data song_table[MAX_SONGS];
 
-void song_update args((void));
-void load_songs args((void));
+void song_update (void);
+void load_songs (void);

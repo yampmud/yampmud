@@ -700,19 +700,19 @@ CH_CMD(do_smote)
 
     for (; *letter != '\0'; letter++)
     {
-      if (*letter == '\'' && matches == strlen(vch->name))
+      if (*letter == '\'' && matches == (int) strlen(vch->name))
       {
         strcat(temp, "r");
         continue;
       }
 
-      if (*letter == 's' && matches == strlen(vch->name))
+      if (*letter == 's' && matches == (int) strlen(vch->name))
       {
         matches = 0;
         continue;
       }
 
-      if (matches == strlen(vch->name))
+      if (matches == (int) strlen(vch->name))
       {
         matches = 0;
       }
@@ -721,7 +721,7 @@ CH_CMD(do_smote)
       {
         matches++;
         name++;
-        if (matches == strlen(vch->name))
+        if (matches == (int) strlen(vch->name))
         {
           strcat(temp, "you");
           last[0] = '\0';
@@ -5059,7 +5059,7 @@ CH_CMD(do_string)
         return;
       }
       cnt = 0;
-      for (plc = 0; plc < strlen(arg3); plc++)
+      for (plc = 0; plc < (int) strlen(arg3); plc++)
       {
         if (arg3[plc] != '{')
         {
@@ -5103,7 +5103,7 @@ CH_CMD(do_string)
         }
         if (cnt >= 10)
         {
-          plc = strlen(arg3);
+          plc = (int) strlen(arg3);
         }
       }
       sprintf(buf2, "%s{0", buf);

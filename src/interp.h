@@ -71,6 +71,7 @@ extern const struct cmd_type cmd_table[];
  * Command functions.
  * Defined in act_*.c (mostly).
  */
+#ifndef S_SPLINT_S
 DECLARE_DO_FUN(do_abort);
 DECLARE_DO_FUN(do_abusy);
 DECLARE_DO_FUN(do_aclear);
@@ -494,3 +495,4 @@ DECLARE_DO_FUN(do_authname);
 DECLARE_DO_FUN(do_badname);
 DECLARE_DO_FUN(do_newname);
 DECLARE_DO_FUN(do_olevel);
+#endif

@@ -1096,7 +1096,7 @@ make_note(const char *board_name, const char *sender, const char *to,
 
   if (strlen(text) > MAX_NOTE_TEXT)
   {
-    bug("make_note: text too long (%d bytes)", strlen(text));
+    bug("make_note: text too long (%d bytes)", (int) strlen(text));
     return;
   }
 

@@ -269,7 +269,7 @@ int init_socket(int port)
     quit(1);
   }
 
-  if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, (char *) &x, sizeof(x)) < 0)
+  if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, (char *) &x, (socklen_t) sizeof(x)) < 0)
   {
     perror("Init_socket: SO_REUSEADDR");
     close(fd);
@@ -297,7 +297,7 @@ int init_socket(int port)
   sa.sin_family = AF_INET;
   sa.sin_port = htons(port);
 
-  if (bind(fd, (struct sockaddr *) &sa, sizeof(sa)) < 0)
+  if (bind(fd, (struct sockaddr *) &sa, (socklen_t) sizeof(sa)) < 0)
   {
     perror("Init socket: bind");
     close(fd);
@@ -548,7 +548,7 @@ void init_descriptor(int control)
   int size;
   HELP_DATA *pHelp;
 
-  size = sizeof(sock);
+  size = (int) sizeof(sock);
   getsockname(control, (struct sockaddr *) &sock, (socklen_t *) & size);
   if ((desc =
        accept(control, (struct sockaddr *) &sock, (socklen_t *) & size)) < 0)
@@ -576,7 +576,7 @@ void init_descriptor(int control)
   dnew->pString = NULL;         /* OLC */
   dnew->editor = 0;             /* OLC */
   dnew->ansi = true;
-  size = sizeof(sock);
+  size = (int) sizeof(sock);
   if (getpeername(desc, (struct sockaddr *) &sock, (socklen_t *) & size) < 0)
   {
     perror("New_descriptor: getpeername");
@@ -590,13 +590,13 @@ void init_descriptor(int control)
      */
     int addr;
 
-    addr = ntohl(sock.sin_addr.s_addr);
+    addr = (int) ntohl(sock.sin_addr.s_addr);
     sprintf(buf, "%d.%d.%d.%d", (addr >> 24) & 0xFF,
             (addr >> 16) & 0xFF, (addr >> 8) & 0xFF, (addr) & 0xFF);
     sprintf(log_buf, "Sock.sinaddr:  %s", buf);
     log_string(log_buf);
     from =
-      gethostbyaddr((char *) &sock.sin_addr, sizeof(sock.sin_addr), AF_INET);
+      gethostbyaddr((char *) &sock.sin_addr, (socklen_t) sizeof(sock.sin_addr), AF_INET);
     dnew->host = str_dup(from ? from->h_name : buf);
   }
 
@@ -724,7 +724,7 @@ bool read_from_descriptor(DESCRIPTOR_DATA * d)
     return true;
 
   /* Check for overflow. */
-  iStart = strlen(d->inbuf);
+  iStart = (int) strlen(d->inbuf);
   if (iStart >= sizeof(d->inbuf) - 15)
   {
     sprintf(log_buf, "%s input overflow!", d->host);
@@ -740,7 +740,7 @@ bool read_from_descriptor(DESCRIPTOR_DATA * d)
     int nRead;
 
     nRead =
-      read(d->descriptor, d->inbuf + iStart, sizeof(d->inbuf) - 10 - iStart);
+      (int) read(d->descriptor, d->inbuf + iStart, sizeof(d->inbuf) - 10 - iStart);
     if (nRead > 0)
     {
       iStart += nRead;
@@ -932,7 +932,7 @@ bool process_ansi_output(DESCRIPTOR_DATA * d)
 
       if (!
           (success =
-           write_to_descriptor(d->descriptor, output, strlen(output))))
+           write_to_descriptor(d->descriptor, output, (int) strlen(output))))
         break;                  /* problems...  */
 
       memset(output, 0, MSL);
@@ -1503,7 +1503,7 @@ bool process_ansi_output(DESCRIPTOR_DATA * d)
   }
 
   success = success &&
-    (write_to_descriptor(d->descriptor, output, strlen(output)));
+    (write_to_descriptor(d->descriptor, output, (int) strlen(output)));
 
   d->outtop = 0;
   return success;
@@ -1845,7 +1845,7 @@ void write_to_buffer(DESCRIPTOR_DATA * d, const char *txt, int length)
    */
 
   if (!length)
-    length = strlen(txt);
+    length = (int) strlen(txt);
 
   /* 
    * Initial \n\r if needed.
@@ -1899,7 +1899,7 @@ bool write_to_descriptor(int desc, char *txt, int length)
   if (!txt)
     return true;
 
-  total = strlen(txt);
+  total = (int) strlen(txt);
   sofar = 0;
   thisround = 0;
   loops = 0;
@@ -1907,7 +1907,7 @@ bool write_to_descriptor(int desc, char *txt, int length)
   while (sofar < total && loops < 128000)
   {
     loops++;
-    thisround = write(desc, txt + sofar, total - sofar);
+    thisround = (int) write(desc, txt + sofar, total - sofar);
 
     if (thisround < 0)
       thisround = 0;
@@ -3187,7 +3187,7 @@ void show_string(struct descriptor_data *d, char *input)
     else if (!*scan || (show_lines > 0 && lines >= show_lines))
     {
       *scan = '\0';
-      write_to_buffer(d, buffer, strlen(buffer));
+      write_to_buffer(d, buffer, (int) strlen(buffer));
       for (chk = d->showstr_point; isspace(*chk); chk++);
       {
         if (!*chk)
@@ -3863,7 +3863,7 @@ CH_CMD(do_font)
   int place, size;
   char buf[10];
 
-  size = strlen(argument);
+  size = (int) strlen(argument);
   /* top border */
   center_to_char("{b+{D-", ch, 72 - (2 * size));
   for (place = 2; place < size; place++)

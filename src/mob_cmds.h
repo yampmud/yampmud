@@ -47,6 +47,7 @@ extern const struct mob_cmd_type mob_cmd_table[];
  * Command functions.
  * Defined in mob_cmds.c
  */
+#ifndef S_SPLINT_S
 DECLARE_DO_FUN(do_mpasound);
 DECLARE_DO_FUN(do_mpgecho);
 DECLARE_DO_FUN(do_mpzecho);
@@ -76,3 +77,4 @@ DECLARE_DO_FUN(do_mpcall);
 DECLARE_DO_FUN(do_mpflee);
 DECLARE_DO_FUN(do_mpotransfer);
 DECLARE_DO_FUN(do_mpremove);
+#endif

@@ -135,7 +135,7 @@ HELP_DATA *help_lookup(char *keyword)
   sql =
     sqlite3_mprintf
     ("SELECT id,keyword FROM helps WHERE keyword LIKE '%%%q%%'", keyword);
-  rc = sqlite3_prepare(world_db, sql, strlen(sql), &stmt, &tail);
+  rc = sqlite3_prepare(world_db, sql, (int) strlen(sql), &stmt, &tail);
 
   if (rc != SQLITE_OK)
   {

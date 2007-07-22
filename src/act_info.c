@@ -3238,7 +3238,7 @@ CH_CMD(do_help)
     sqlite3_mprintf
     ("SELECT id,level,keyword,htext FROM helps WHERE keyword LIKE '%%%q%%' AND level <= %d",
      argall, get_trust(ch));
-  rc = sqlite3_prepare(world_db, sql, strlen(sql), &stmt, &tail);
+  rc = sqlite3_prepare(world_db, sql, (int)strlen(sql), &stmt, &tail);
 
   if (rc != SQLITE_OK)
   {
@@ -4629,8 +4629,8 @@ void do_spacetext(CHAR_DATA * ch, char *argument)
   int value;
   int i;
 
-  namel = (strlen(ch->name));
-  titl = (strlen(argument));
+  namel = (int) strlen(ch->name);
+  titl = (int) strlen(argument);
 
   i = 1;
   offset = 0;
@@ -4696,7 +4696,7 @@ CH_CMD(do_title)
   }
   else
   {
-    value = strlen(argument);
+    value = (int) strlen(argument);
     argument[value] = '{';
     argument[value + 1] = 'x';
     argument[value + 2] = '\0';
@@ -4726,7 +4726,7 @@ CH_CMD(do_description)
       }
 
       strcpy(buf, ch->description);
-      for (len = strlen(buf); len > 0; len--)
+      for (len = (int) strlen(buf); len > 0; len--)
       {
         if (buf[len] == '\r')
         {

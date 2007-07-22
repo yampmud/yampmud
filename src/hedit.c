@@ -280,7 +280,7 @@ HEDIT(hedit_list)
   BUFFER *buffer;
 
   sql = "SELECT level,keyword,id FROM helps WHERE 1 ORDER BY id";
-  rc = sqlite3_prepare(world_db, sql, strlen(sql), &stmt, &tail);
+  rc = sqlite3_prepare(world_db, sql, (int) strlen(sql), &stmt, &tail);
 
   if (rc != SQLITE_OK)
   {

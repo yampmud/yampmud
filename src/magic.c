@@ -162,7 +162,7 @@ void say_spell(CHAR_DATA * ch, int sn)
   buf[0] = '\0';
   for (pName = skill_table[sn].name; *pName != '\0'; pName += length)
   {
-    for (iSyl = 0; (length = strlen(syl_table[iSyl].old)) != 0; iSyl++)
+    for (iSyl = 0; (length = (int) strlen(syl_table[iSyl].old)) != 0; iSyl++)
     {
       if (!str_prefix(syl_table[iSyl].old, pName))
       {
@@ -5177,6 +5177,7 @@ MAGIC(spell_frost_breath)
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   CHAR_DATA *vch, *vch_next;
   int dam, hp_dam, dice_dam, hpch;
+  bool mobdeath = false;
 
   act("$n breathes out a freezing cone of frost!", ch, NULL, victim,
       TO_NOTVICT);
@@ -5187,7 +5188,6 @@ MAGIC(spell_frost_breath)
   hpch = UMAX(12, ch->hit);
   hp_dam = number_range(hpch / 11 + 1, hpch / 6);
   dice_dam = dice(level, 20);
-  bool mobdeath = false;
 
   dam = UMAX(hp_dam + dice_dam / 10, dice_dam + hp_dam / 10);
   cold_effect(victim->in_room, level, dam / 2, TARGET_ROOM);
