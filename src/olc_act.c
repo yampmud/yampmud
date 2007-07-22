@@ -4636,21 +4636,6 @@ MEDIT(medit_vuln)
 MEDIT(medit_material)
 {
   return true;
-  MOB_INDEX_DATA *pMob;
-
-  EDIT_MOB(ch, pMob);
-
-  if (argument[0] == '\0')
-  {
-    send_to_char("Syntax:  material [string]\n\r", ch);
-    return false;
-  }
-
-  free_string(pMob->material);
-  pMob->material = str_dup(argument);
-
-  send_to_char("Material set.\n\r", ch);
-  return true;
 }
 
 MEDIT(medit_off)
