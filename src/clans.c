@@ -796,13 +796,7 @@ void update_clanlist(CHAR_DATA * ch, int clannum, bool add, bool clead)
   CLN_DATA *pcln;
 
   if (IS_NPC(ch))
-  {
     return;
-  }
-  else
-  {
-    return;
-  }
 
   for (pcln = cln_list; pcln != NULL; pcln = pcln->next)
   {
