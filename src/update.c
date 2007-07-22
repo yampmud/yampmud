@@ -748,7 +748,7 @@ void char_update(void)
   DESCRIPTOR_DATA *d;
   FILE *fp;
   int countu;
-  bool is_xmas = false;;
+  bool is_xmas = false;
   bool mobdeath = false;
 
   uptime_ticks++;
