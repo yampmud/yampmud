@@ -122,7 +122,6 @@ DECLARE_DO_FUN(do_bane);
 DECLARE_DO_FUN(do_bank);
 DECLARE_DO_FUN(do_bash);
 DECLARE_DO_FUN(do_berserk);
-DECLARE_DO_FUN(do_bet);
 DECLARE_DO_FUN(do_blackjack);
 DECLARE_DO_FUN(do_board);
 DECLARE_DO_FUN(do_bonus);

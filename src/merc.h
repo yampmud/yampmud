@@ -1863,7 +1863,6 @@ struct char_data
 
   CHAR_DATA *challenger;        /* person who challenged you */
   CHAR_DATA *challenged;        /* person who you challenged */
-  CHAR_DATA *gladiator;         /* ARENA player wagered on */
 
   int nameauthed;               /* Has the name be authorized */
   int namedenied;               /* Has the name been denied */
@@ -1920,7 +1919,6 @@ struct pc_data
   long balance;
   long shares;
   char explored[MAX_EXPLORE];
-  int plr_wager;                /* ARENA amount wagered */
   int awins;                    /* ARENA number of wins */
   int alosses;                  /* ARENA number of losses */
   sh_int nextquest;

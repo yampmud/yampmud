@@ -269,7 +269,8 @@ int init_socket(int port)
     quit(1);
   }
 
-  if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, (char *) &x, (socklen_t) sizeof(x)) < 0)
+  if (setsockopt
+      (fd, SOL_SOCKET, SO_REUSEADDR, (char *) &x, (socklen_t) sizeof(x)) < 0)
   {
     perror("Init_socket: SO_REUSEADDR");
     close(fd);
@@ -341,9 +342,9 @@ void game_loop_unix(int control)
      */
 
     /* memset rather than FD_ZERO */
-    memset((fd_set *) &in_set, 0, sizeof(in_set));
-    memset((fd_set *) &out_set, 0, sizeof(in_set));
-    memset((fd_set *) &exc_set, 0, sizeof(in_set));
+    memset((fd_set *) & in_set, 0, sizeof(in_set));
+    memset((fd_set *) & out_set, 0, sizeof(in_set));
+    memset((fd_set *) & exc_set, 0, sizeof(in_set));
 
     FD_SET(control, &in_set);
     maxdesc = control;
@@ -368,9 +369,9 @@ void game_loop_unix(int control)
       init_descriptor(control);
 
     /* memset rather than FD_ZERO */
-    memset((fd_set *) &in_set, 0, sizeof(in_set));
-    memset((fd_set *) &out_set, 0, sizeof(in_set));
-    memset((fd_set *) &exc_set, 0, sizeof(in_set));
+    memset((fd_set *) & in_set, 0, sizeof(in_set));
+    memset((fd_set *) & out_set, 0, sizeof(in_set));
+    memset((fd_set *) & exc_set, 0, sizeof(in_set));
 
     for (d = descriptor_list; d; d = d->next)
     {
@@ -596,7 +597,8 @@ void init_descriptor(int control)
     sprintf(log_buf, "Sock.sinaddr:  %s", buf);
     log_string(log_buf);
     from =
-      gethostbyaddr((char *) &sock.sin_addr, (socklen_t) sizeof(sock.sin_addr), AF_INET);
+      gethostbyaddr((char *) &sock.sin_addr,
+                    (socklen_t) sizeof(sock.sin_addr), AF_INET);
     dnew->host = str_dup(from ? from->h_name : buf);
   }
 
@@ -740,7 +742,8 @@ bool read_from_descriptor(DESCRIPTOR_DATA * d)
     int nRead;
 
     nRead =
-      (int) read(d->descriptor, d->inbuf + iStart, sizeof(d->inbuf) - 10 - iStart);
+      (int) read(d->descriptor, d->inbuf + iStart,
+                 sizeof(d->inbuf) - 10 - iStart);
     if (nRead > 0)
     {
       iStart += nRead;
@@ -2736,7 +2739,6 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
         ch->move = ch->max_move;
         ch->train = 15;
         ch->practice = 35;
-        ch->pcdata->plr_wager = 0;  /* arena betting amount */
         ch->pcdata->awins = 0;  /* arena wins */
         ch->pcdata->alosses = 0;  /* arena losses */
         sprintf(buf, "the newbie");

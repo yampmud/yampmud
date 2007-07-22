@@ -2330,12 +2330,6 @@ CH_CMD(do_score_loki)
                      "{Y| {c[{gArena{c]{c You have been challenged by{r %s{c.{x\n\r",
                      ch->challenger->name);
     }
-    if (ch->gladiator != NULL)
-    {
-      printf_to_char(ch,
-                     "{Y| {c[{gArena bet{c]{c You have a {Y%d platinum{c bet on %s.{x\n\r",
-                     ch->pcdata->plr_wager, ch->gladiator->name);
-    }
   }
 
   if (!IS_NPC(ch))

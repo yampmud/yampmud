@@ -6561,12 +6561,6 @@ CH_CMD(do_cscore)
                      "{Y| {c[{gArena{c]{c You have been challenged by{r %s{c.{x\n\r",
                      victim->challenger->name);
     }
-    if (victim->gladiator != NULL)
-    {
-      printf_to_char(ch,
-                     "{Y| {c[{gArena bet{c]{c You have a {Y%d gold{c bet on %s.{x\n\r",
-                     victim->pcdata->plr_wager, victim->gladiator->name);
-    }
   }
 
   if (!IS_NPC(victim))

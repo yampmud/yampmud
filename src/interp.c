@@ -355,7 +355,6 @@ const struct cmd_type cmd_table[] = {
   {"reform", do_reform, POS_RESTING, 0, 1, LOG_NORMAL, 1},
   {"qpgive", do_qpgive, POS_RESTING, 0, 1, LOG_NORMAL, 1},
   {"decline", do_decline, POS_SLEEPING, 0, 1, LOG_NORMAL, 1},
-  {"bet", do_bet, POS_SLEEPING, 0, 1, LOG_NORMAL, 1},
   {"accept", do_agree, POS_STANDING, 0, 1, LOG_NORMAL, 1},
   {"challenge", do_challenge, POS_STANDING, 0, 1, LOG_NORMAL, 1},
   {"newname", do_newname, POS_DEAD, 0, 1, LOG_NORMAL, 1},

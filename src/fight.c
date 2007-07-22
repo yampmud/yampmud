@@ -7329,48 +7329,6 @@ void check_arena(CHAR_DATA * ch, CHAR_DATA * victim)
   lvl2 = victim->hit;
   odds = (lvl2 / lvl1);
 
-  if (!is_mass_arena && !spar)
-    for (d = descriptor_list; d; d = d->next)
-    {
-      if (d->connected == CON_PLAYING)
-      {
-        if (d->character->gladiator == ch)
-        {
-          payoff = d->character->pcdata->plr_wager * (odds + 1);
-          payoff = abs(payoff);
-          sprintf(buf,
-                  "{WYou won! Your wager: {D%d{W, payoff: {D%d{x\n\r",
-                  d->character->pcdata->plr_wager, payoff);
-          send_to_char(buf, d->character);
-          d->character->platinum += payoff;
-          /* reset the betting info */
-          d->character->gladiator = NULL;
-          d->character->pcdata->plr_wager = 0;
-          payoff = 0;
-        }
-        if (d->character->gladiator != ch &&
-            d->character->pcdata->plr_wager >= 1)
-        {
-          int tmp = 0;
-
-          sprintf(buf, "{WYou lost! Your wager: {D%d{x\n\r",
-                  d->character->pcdata->plr_wager);
-          send_to_char(buf, d->character);
-          if (d->character->pcdata->plr_wager > d->character->exp)
-          {
-            tmp = d->character->pcdata->plr_wager;
-            d->character->pcdata->plr_wager -= tmp;
-          }
-          if (tmp > 0)
-            /* d->character->pcdata->quest -= tmp; */
-            d->character->platinum -= d->character->pcdata->plr_wager;
-          /* reset the betting info */
-          d->character->gladiator = NULL;
-          d->character->pcdata->plr_wager = 0;
-        }
-      }
-    }
-
   /* now move both fighters out of arena and back to the regular "world" be
      sure to define ROOM_VNUM_AWINNER and ROOM_VNUM_ALOSER */
   stop_fighting(victim, true);
