@@ -694,8 +694,6 @@ AEDIT(aedit_builder)
     send_to_char(pArea->builders, ch);
     return true;
   }
-
-  return false;
 }
 
 AEDIT(aedit_vnum)
