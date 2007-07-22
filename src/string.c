@@ -343,7 +343,6 @@ char *format_string(char *oldstring /*, bool fSpace */ )
             i++;
           }
         }
-        else if (*rdesc == '\r');
         else if (*rdesc == 'i' && *(rdesc + 1) == '.' &&
                  *(rdesc + 2) == 'e' && *(rdesc + 3) == '.')
         {
