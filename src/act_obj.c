@@ -1380,8 +1380,6 @@ CH_CMD(do_give)
 
     if (IS_NPC(victim) && IS_SET(victim->act, ACT_IS_CHANGER) && !IS_NPC(ch))
     {
-      int change;
-
       act("$n tells you '{aI'm sorry, I no longer provide this service.{x'.",
           victim, NULL, ch, TO_VICT);
       ch->reply = victim;
@@ -1393,53 +1391,6 @@ CH_CMD(do_give)
         sprintf(buf, "%d silver %s", silver, ch->name);
       do_give(victim, buf);
       return;
-
-      if (platinum != 0)
-      {
-        act("$n tells you '{aI'm sorry, I can't convert past platinum.{x'.",
-            victim, NULL, ch, TO_VICT);
-        ch->reply = victim;
-        sprintf(buf, "%d platinum %s", platinum, ch->name);
-        do_give(victim, buf);
-        return;
-      }
-      if (silver != 0)
-      {
-        change = (95 * silver / 100 / 100);
-      }
-      else
-      {
-        change = (95 * gold / 100 / 100);
-      }
-
-      if (silver != 0 && change > victim->gold)
-        victim->gold += change;
-
-      if (gold != 0 && change > victim->platinum)
-        victim->platinum += change;
-
-      if (change < 1 && can_see(victim, ch))
-      {
-        act
-          ("$n tells you '{aI'm sorry, you did not give me enough to change{x'.",
-           victim, NULL, ch, TO_VICT);
-        ch->reply = victim;
-        sprintf(buf, "%d %s %s", amount,
-                silver != 0 ? "silver" : "gold", ch->name);
-        do_give(victim, buf);
-      }
-      else if (can_see(victim, ch))
-      {
-        sprintf(buf, "%d %s %s", change,
-                silver != 0 ? "gold" : "platinum", ch->name);
-        do_give(victim, buf);
-        sprintf(buf, "%d %s %s", (95 * amount / 100 - change * 100),
-                silver != 0 ? "silver" : "gold", ch->name);
-        do_give(victim, buf);
-        act("$n tells you '{aThank you, come again{x'.", victim, NULL,
-            ch, TO_VICT);
-        ch->reply = victim;
-      }
     }
     return;
   }
