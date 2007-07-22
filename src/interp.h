@@ -391,7 +391,6 @@ DECLARE_DO_FUN(do_sell);
 DECLARE_DO_FUN(do_set);
 DECLARE_DO_FUN(do_scan);
 DECLARE_DO_FUN(do_score_loki);
-DECLARE_DO_FUN(do_score_new);
 DECLARE_DO_FUN(do_scroll);
 DECLARE_DO_FUN(do_sharpen);
 DECLARE_DO_FUN(do_shout);

@@ -2637,45 +2637,6 @@ CH_CMD(do_lscore)
   }
 }
 
-CH_CMD(do_score_new)
-{
-  char buf[MSL];
-  BUFFER *output;
-
-  output = new_buf();
-  sprintf(buf, "\n\r");
-  add_buf(output, buf);
-  sprintf(buf, "          %s: %s\n\r", ch->name,
-          IS_NPC(ch) ? ", the mobile." : ch->pcdata->title);
-  add_buf(output, buf);
-  sprintf(buf, "\n\r");
-  add_buf(output, buf);
-  sprintf(buf, "     Level: %-14dAge: %-14dSex: %-10s\n\r", ch->level,
-          get_age(ch),
-          ch->sex == 0 ? "sexless" : ch->sex == 1 ? "male" : "female");
-  add_buf(output, buf);
-  sprintf(buf, "      Race: %-28s   Class: %-10s\n\r",
-          race_table[ch->race].name, class_table[ch->class].name);
-  add_buf(output, buf);
-  sprintf(buf, "  Platinum: %-13ldGold: %-11ldSilver: %-12ld\n\r",
-          ch->platinum, ch->gold, ch->silver);
-  add_buf(output, buf);
-  sprintf(buf, "        HP: %ld/%ld  Mana: %ld/%ld    MV: %ld/%ld\n\r",
-          ch->hit, ch->max_hit, ch->mana, ch->max_mana, ch->move,
-          ch->max_move);
-  add_buf(output, buf);
-  sprintf(buf, "   Hitroll: %-12dWimpy: %-10dDamroll: %-11d\n\r",
-          GET_HITROLL(ch), ch->wimpy, GET_DAMROLL(ch));
-  add_buf(output, buf);
-  sprintf(buf, "       AQP: %-32ldImmQP: %-13d\n\r",
-          ch->pcdata->questpoints, ch->qps);
-  add_buf(output, buf);
-  page_to_char(buf_string(output), ch);
-  free_buf(output);
-  if (IS_SET(ch->comm, COMM_SHOW_AFFECTS))
-    do_affects(ch, "");
-}
-
 CH_CMD(do_affects)
 {
   AFFECT_DATA *paf, *paf_last = NULL;
