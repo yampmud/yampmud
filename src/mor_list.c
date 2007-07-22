@@ -16,7 +16,7 @@ CH_CMD(do_rlist)
   char buf[MAX_STRING_LENGTH];
   BUFFER *buf1 = new_buf();
   char arg[MAX_INPUT_LENGTH];
-  bool found = false;;
+  bool found = false;
   long vnum;
   long area_vnum = 0;
   int col = 0;
