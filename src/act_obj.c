@@ -2836,6 +2836,8 @@ CH_CMD(do_sacrifice)
   int silver = 0;
   int total_coins = 0;
   int randroom = 0;
+  OBJ_DATA *contents = NULL;
+  OBJ_DATA *next_content = NULL;
 
   /* variables for AUTOSPLIT */
   CHAR_DATA *gch;
@@ -2868,6 +2870,22 @@ CH_CMD(do_sacrifice)
           obj->item_type == ITEM_ITEMPILE ||
           (obj->item_type == ITEM_CORPSE_PC && obj->contains))
         continue;
+
+      if (obj->contains)
+      {
+        for (contents = obj->contains; contents != NULL;
+             contents = next_content)
+        {
+          next_content = contents->next_content;
+          sprintf(buf, "%s falls out of %s.\n\r", contents->short_descr,
+                  obj->short_descr);
+          buf[0] = UPPER(buf[0]);
+          send_to_char(buf, ch);
+          obj_from_obj(contents);
+          obj_to_room(contents, ch->in_room);
+        }
+      }
+
       silver = UMAX(1, obj->level * 3);
       if (obj->item_type != ITEM_CORPSE_NPC &&
           obj->item_type != ITEM_CORPSE_PC)
@@ -2961,6 +2979,20 @@ CH_CMD(do_sacrifice)
   {
     act("$p is not an acceptable sacrifice.", ch, obj, 0, TO_CHAR);
     return;
+  }
+
+  if (obj->contains)
+  {
+    for (contents = obj->contains; contents != NULL; contents = next_content)
+    {
+      next_content = contents->next_content;
+      sprintf(buf, "%s falls out of %s.\n\r", contents->short_descr,
+              obj->short_descr);
+      buf[0] = UPPER(buf[0]);
+      send_to_char(buf, ch);
+      obj_from_obj(contents);
+      obj_to_room(contents, ch->in_room);
+    }
   }
 
   silver = UMAX(1, obj->level * 3);
