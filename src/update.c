@@ -766,9 +766,9 @@ void char_update(void)
   if (arena != FIGHT_OPEN)
     arenacount++;
 
-  hour = (int) (struct tm *) localtime(&current_time)->tm_hour;
-  day = (int) (struct tm *) localtime(&current_time)->tm_mday;
-  month = (int) (struct tm *) localtime(&current_time)->tm_mon;
+  hour = localtime(&current_time)->tm_hour;
+  day = localtime(&current_time)->tm_mday;
+  month = localtime(&current_time)->tm_mon;
 
   if (hour == 12 && is_mid == true)
   {
