@@ -3374,13 +3374,13 @@ char *colour(char type, CHAR_DATA * ch)
   switch (type)
   {
     default:
-      sprintf(clcode, colour_clear(ch));
+      sprintf(clcode, "%s", colour_clear(ch));
       break;
     case 'x':
-      sprintf(clcode, colour_clear(ch));
+      sprintf(clcode, "%s", colour_clear(ch));
       break;
     case '0':
-      sprintf(clcode, colour_clear(ch));
+      sprintf(clcode, "%s", colour_clear(ch));
       break;
     case 'z':
       sprintf(clcode, BLINK);
@@ -3478,7 +3478,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'A':                  /* Auction Channel */
       if (ch->color_auc)
       {
-        sprintf(clcode, colour_channel(ch->color_auc, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_auc, ch));
       }
       else
       {
@@ -3488,7 +3488,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'E':                  /* Clan Gossip Channel */
       if (ch->color_cgo)
       {
-        sprintf(clcode, colour_channel(ch->color_cgo, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_cgo, ch));
       }
       else
       {
@@ -3498,7 +3498,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'F':                  /* Clan Talk Channel */
       if (ch->color_cla)
       {
-        sprintf(clcode, colour_channel(ch->color_cla, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_cla, ch));
       }
       else
       {
@@ -3508,7 +3508,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'H':                  /* Gossip Channel */
       if (ch->color_gos)
       {
-        sprintf(clcode, colour_channel(ch->color_gos, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_gos, ch));
       }
       else
       {
@@ -3518,7 +3518,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'J':                  /* Grats Channel */
       if (ch->color_gra)
       {
-        sprintf(clcode, colour_channel(ch->color_gra, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_gra, ch));
       }
       else
       {
@@ -3528,7 +3528,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'K':                  /* Group Tell Channel */
       if (ch->color_gte)
       {
-        sprintf(clcode, colour_channel(ch->color_gte, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_gte, ch));
       }
       else
       {
@@ -3538,7 +3538,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'L':                  /* Immortal Talk Channel */
       if (ch->color_imm)
       {
-        sprintf(clcode, colour_channel(ch->color_imm, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_imm, ch));
       }
       else
       {
@@ -3548,7 +3548,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'N':                  /* Music Channel */
       if (ch->color_mus)
       {
-        sprintf(clcode, colour_channel(ch->color_mus, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_mus, ch));
       }
       else
       {
@@ -3558,7 +3558,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'P':                  /* Question+Answer Channel */
       if (ch->color_que)
       {
-        sprintf(clcode, colour_channel(ch->color_que, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_que, ch));
       }
       else
       {
@@ -3568,7 +3568,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'Q':                  /* Quote Channel */
       if (ch->color_quo)
       {
-        sprintf(clcode, colour_channel(ch->color_quo, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_quo, ch));
       }
       else
       {
@@ -3578,7 +3578,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'S':                  /* Say Channel */
       if (ch->color_say)
       {
-        sprintf(clcode, colour_channel(ch->color_say, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_say, ch));
       }
       else
       {
@@ -3588,7 +3588,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'T':                  /* Shout+Yell Channel */
       if (ch->color_sho)
       {
-        sprintf(clcode, colour_channel(ch->color_sho, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_sho, ch));
       }
       else
       {
@@ -3598,7 +3598,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'U':                  /* Tell+Reply Channel */
       if (ch->color_tel)
       {
-        sprintf(clcode, colour_channel(ch->color_tel, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_tel, ch));
       }
       else
       {
@@ -3608,7 +3608,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'V':                  /* Wiznet Messages */
       if (ch->color_wiz)
       {
-        sprintf(clcode, colour_channel(ch->color_wiz, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_wiz, ch));
       }
       else
       {
@@ -3618,7 +3618,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'a':                  /* Mobile Talk */
       if (ch->color_mob)
       {
-        sprintf(clcode, colour_channel(ch->color_mob, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_mob, ch));
       }
       else
       {
@@ -3628,7 +3628,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'e':                  /* Room Title */
       if (ch->color_roo)
       {
-        sprintf(clcode, colour_channel(ch->color_roo, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_roo, ch));
       }
       else
       {
@@ -3638,7 +3638,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'f':                  /* Opponent Condition */
       if (ch->color_con)
       {
-        sprintf(clcode, colour_channel(ch->color_con, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_con, ch));
       }
       else
       {
@@ -3648,7 +3648,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'h':                  /* Fight Actions */
       if (ch->color_fig)
       {
-        sprintf(clcode, colour_channel(ch->color_fig, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_fig, ch));
       }
       else
       {
@@ -3658,7 +3658,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'i':                  /* Opponents Fight Actions */
       if (ch->color_opp)
       {
-        sprintf(clcode, colour_channel(ch->color_opp, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_opp, ch));
       }
       else
       {
@@ -3668,7 +3668,7 @@ char *colour(char type, CHAR_DATA * ch)
     case 'j':                  /* Disarm Messages */
       if (ch->color_dis)
       {
-        sprintf(clcode, colour_channel(ch->color_dis, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_dis, ch));
       }
       else
       {
@@ -3678,17 +3678,17 @@ char *colour(char type, CHAR_DATA * ch)
     case 'k':                  /* Witness Messages */
       if (ch->color_wit)
       {
-        sprintf(clcode, colour_channel(ch->color_wit, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_wit, ch));
       }
       else
       {
-        sprintf(clcode, colour_clear(ch));
+        sprintf(clcode, "%s", colour_clear(ch));
       }
       break;
     case 'l':                  /* Quest Gossip */
       if (ch->color_qgo)
       {
-        sprintf(clcode, colour_channel(ch->color_qgo, ch));
+        sprintf(clcode, "%s", colour_channel(ch->color_qgo, ch));
       }
       else
       {
@@ -3800,7 +3800,7 @@ char *colour_channel(int colornum, CHAR_DATA * ch)
   else if (colornum == 16)
     sprintf(clcode, C_BLACK);
   else
-    sprintf(clcode, colour_clear(ch));
+    sprintf(clcode, "%s", colour_clear(ch));
   return clcode;
 }
 

@@ -73,20 +73,20 @@ void do_htmlout()
         {
           sprintf(buf, "%d %s %s<br>\n\r", wch->level, wch->name,
                   IS_SET(wch->comm, COMM_AFK) ? "(AFK)" : "");
-          fprintf(fp, buf);
+          fprintf(fp, "%s", buf);
         }
       }
     }
 
     sprintf(buf, "<br>%d total players online.", count);
-    fprintf(fp, buf);
+    fprintf(fp, "%s", buf);
 
     sprintf(buf, "<br>%d players on was the most today.", max_on);
-    fprintf(fp, buf);
+    fprintf(fp, "%s", buf);
 
     sprintf(buf, "<br>There was a copyover %.2f hours ago.",
             (uptime_ticks / 60.00));
-    fprintf(fp, buf);
+    fprintf(fp, "%s", buf);
 
     fprintf(fp, "</body></html>\n\r");
   }
@@ -112,7 +112,7 @@ CH_CMD(do_redeem)
   if (IS_NPC(ch) || ch->redeem > 0)
     return;
 
-  sprintf(buf, ch->name);
+  sprintf(buf, "%s", ch->name);
 
   len = (int) strlen(buf);
 
