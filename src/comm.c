@@ -1959,7 +1959,9 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
         close_socket(d);
         return;
       }
-
+      if (argument[0] == '\'') {
+        argument++;
+      }
       if (!str_cmp(argument, "logs"))
       {
         islogonly = true;
@@ -1971,6 +1973,8 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
       islogonly = false;
 
       argument[0] = UPPER(argument[0]);
+      sprintf(log_buf, "Name entered. (%s)", argument);
+      wiznet(log_buf, NULL, NULL, WIZ_LOGINS, 0, 0);
       if (!check_parse_name(argument))
       {
         write_to_buffer(d, "Illegal name, try another.\n\r", 0);
@@ -2875,8 +2879,10 @@ bool check_parse_name(char *name)
   if (is_name
       (name,
        "all auto immortal immortals self someone something the it yes no"
-       "you demise balance circle loner honor Loki unlinked they them {"))
+       "you demise balance circle loner honor Loki unlinked they them {")) {
+    
     return false;
+       }
 
   /* Don't allow names similar to immortals,
      but allow the actual full names */
@@ -2913,12 +2919,16 @@ bool check_parse_name(char *name)
   /* 
    * Length restrictions.
    */
-  if (strlen(name) < 3)
+  if (strlen(name) < 3){
+    sprintf(log_buf, "Name too short. (%s)", name);
+    wiznet(log_buf, NULL, NULL, WIZ_LOGINS, 0, 0);
     return false;
-
-  if (strlen(name) > 12)
+  }
+  if (strlen(name) > 12) {
+    sprintf(log_buf, "Name too long. (%s)", name);
+    wiznet(log_buf, NULL, NULL, WIZ_LOGINS, 0, 0);
     return false;
-
+  }
   /* Check to see if the name is in our bad names text file */
   if ((fp = file_open("../config/text/badname.txt", "r")))
   {
@@ -2934,6 +2944,8 @@ bool check_parse_name(char *name)
         if (!str_cmp(capitalize(name), badname))
         {
           file_close(fp);
+          sprintf(log_buf, "badword name (%s)", name);
+          wiznet(log_buf, NULL, NULL, WIZ_LOGINS, 0, 0);
           return false;
         }
       }
@@ -2957,8 +2969,11 @@ bool check_parse_name(char *name)
     fIll = true;
     for (pc = name; *pc != '\0'; pc++)
     {
-      if (!isalpha(*pc))
+      if (!isalpha(*pc)){
+        sprintf(log_buf, "Non-alphanumeric login. (%s)", name);
+        wiznet(log_buf, NULL, NULL, WIZ_LOGINS, 0, 0);
         return false;
+      }
       if (isupper(*pc))         /* ugly anti-caps hack */
       {
         if (adjcaps)
@@ -2972,10 +2987,16 @@ bool check_parse_name(char *name)
         fIll = false;
     }
 
-    if (fIll)
+    if (fIll) {
+      sprintf(log_buf, "fIll (%s)", name);
+      wiznet(log_buf, NULL, NULL, WIZ_LOGINS, 0, 0);
       return false;
-    if (cleancaps || (total_caps > (strlen(name)) / 2 && strlen(name) < 3))
+    }
+    if (cleancaps || (total_caps > (strlen(name)) / 2 && strlen(name) < 3)) {
+      sprintf(log_buf, "Caps Check (%s)", name);
+      wiznet(log_buf, NULL, NULL, WIZ_LOGINS, 0, 0);
       return false;
+    }
   }
 
   /* 
@@ -2990,8 +3011,11 @@ bool check_parse_name(char *name)
       for (pMobIndex = mob_index_hash[iHash]; pMobIndex != NULL;
            pMobIndex = pMobIndex->next)
       {
-        if (is_name(name, pMobIndex->player_name))
+        if (is_name(name, pMobIndex->player_name)) {
+          sprintf(log_buf, "Login with mob name. (%s)", name);
+          wiznet(log_buf, NULL, NULL, WIZ_LOGINS, 0, 0);
           return false;
+        }
       }
     }
   }
@@ -3169,7 +3193,7 @@ void show_string(struct descriptor_data *d, char *input)
     {
       *scan = '\0';
       write_to_buffer(d, buffer, (int) strlen(buffer));
-      for (chk = d->showstr_point; isspace(*chk); chk++);
+      for (chk = d->showstr_point; isspace(*chk); chk++)
       {
         if (!*chk)
         {
