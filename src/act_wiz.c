@@ -6464,7 +6464,7 @@ CH_CMD(do_cscore)
                  "{Y| {cWimpy{x:{g %-9d{Y| {cSilv{x:{g %-8ld{Y| {cBalance{x:{g %ld{x\n\r"
                  "{Y| {cHours{x:{g %-9d{x\n\r",
                  IS_NPC(victim) ? "mobile" : race_table[victim->race].
-                 name, victim->pcdata->questpoints, victim->hit,
+                 name, IS_NPC(victim) ? 0 : victim->pcdata->questpoints, victim->hit,
                  victim->max_hit, get_age(victim), victim->qps,
                  victim->mana, victim->max_mana,
                  victim->sex == 0 ? "sexless" : victim->sex ==
@@ -6475,8 +6475,8 @@ CH_CMD(do_cscore)
                  victim->platinum, get_carry_weight(victim) / 10,
                  can_carry_w(victim) / 10, victim->alignment,
                  victim->gold, victim->saving_throw, victim->wimpy,
-                 victim->silver, victim->pcdata->balance,
-                 (int) (victim->played + current_time -
+                 victim->silver, IS_NPC(victim) ? 0 : victim->pcdata->balance,
+                 IS_NPC(victim) ? 0 : (int) (victim->played + current_time -
                         victim->logon) / 3600);
 
   /*stats */
@@ -6584,7 +6584,7 @@ CH_CMD(do_cscore)
                    clan_table[victim->invited].pkill ? "B" : "M",
                    clan_table[victim->invited].who_name);
   }
-  if (!IS_NPC(ch))
+  if (!IS_NPC(victim))
   {
     int rcnt = roomcount(victim);
     int arcnt = areacount(victim);
