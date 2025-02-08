@@ -9,7 +9,7 @@
 #include "olc.h"
 #include "recycle.h"
 
-struct song_data song_table[MAX_SONGS];
+extern struct song_data song_table[MAX_SONGS];
 
 void do_band_name args((CHAR_DATA * ch, char *argument));
 void do_song_name args((CHAR_DATA * ch, char *argument));
