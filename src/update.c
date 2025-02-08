@@ -1267,7 +1267,7 @@ void char_update(void)
         if (paf_next == NULL || paf_next->type != paf->type ||
             paf_next->duration > 0)
         {
-          if (paf->type > 0 && skill_table[paf->type].msg_off != '\0')
+          if (paf->type > 0 && skill_table[paf->type].msg_off[0] != '\0')
           {
             send_to_char(skill_table[paf->type].msg_off, ch);
             send_to_char("\n\r", ch);
