@@ -783,7 +783,7 @@ char *numlines(char *string)
 {
   int cnt = 1;
   static char buf[MAX_STRING_LENGTH * 2];
-  char buf2[MAX_STRING_LENGTH], tmpb[MAX_STRING_LENGTH];
+  char buf2[MAX_STRING_LENGTH], tmpb[MAX_STRING_LENGTH-256];
 
   buf[0] = '\0';
 
