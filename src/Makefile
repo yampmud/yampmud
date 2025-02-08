@@ -17,7 +17,7 @@ rot: $(O_FILES)
 	@echo "Finishing..."
 	@$(CC) $(L_FLAGS) -o rot $(O_FILES) $(LIBS)
 	@echo "Done."
-.c.o: merc.h
+%.o: %.c merc.h
 	@echo "Compiling $<..."
 	@$(CC) -c $(C_FLAGS) $<
 
