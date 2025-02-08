@@ -85,7 +85,7 @@ void get_summon_type(CHAR_DATA * ch, char *argument, int sn)
   char act_buf[MSL];
   char lev_buf[MSL];
   char noarg_buf[MSL];
-  char spell_buf[MSL];
+  char spell_buf[MSL-256];
   char spell_temp_buf[MSL];
   char spell_name[MSL];
   char spell_name_tmp[MSL];
