@@ -2967,7 +2967,7 @@ CH_CMD(do_sayooc)
 CH_CMD(do_sayic)
 {
   char buf[MAX_STRING_LENGTH];
-  char verb[MAX_STRING_LENGTH];
+  char verb[MAX_STRING_LENGTH-256];
 
   buf[0] = '\0';
 
