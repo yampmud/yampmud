@@ -1395,6 +1395,8 @@ CH_CMD(do_pray)
 
   if (ch->level < 5)
     WAIT_STATE(ch, 18);
+  else
+    WAIT_STATE(ch, wtime);
 
 }
 
@@ -1484,6 +1486,8 @@ CH_CMD(do_anctalk)
 
   if (ch->level < 5)
     WAIT_STATE(ch, 18);
+  else
+    WAIT_STATE(ch, wtime);
 
 }
 
@@ -1817,6 +1821,9 @@ CH_CMD(do_ooc)
 
   if (ch->level < 5)
     WAIT_STATE(ch, 18);
+  else
+    WAIT_STATE(ch, wtime);
+
 }
 
 /* RT chat replaced with ROM gossip */
@@ -1919,6 +1926,8 @@ CH_CMD(do_gossip)
   wtime = UMAX(2, 9 - (ch->level));
   if (ch->level < 5)
     WAIT_STATE(ch, 18);
+  else
+    WAIT_STATE(ch, wtime);
 }
 
 CH_CMD(do_qgossip)
@@ -2015,6 +2024,8 @@ CH_CMD(do_qgossip)
   wtime = UMAX(2, 9 - (ch->level));
   if (ch->level < 5)
     WAIT_STATE(ch, 18);
+  else
+    WAIT_STATE(ch, wtime);
 }
 
 CH_CMD(do_grats)
@@ -2112,6 +2123,8 @@ CH_CMD(do_grats)
   wtime = UMAX(2, 9 - (ch->level));
   if (ch->level < 5)
     WAIT_STATE(ch, 18);
+  else
+    WAIT_STATE(ch, wtime);
 }
 
 CH_CMD(do_quote)
@@ -2203,6 +2216,8 @@ CH_CMD(do_quote)
   wtime = UMAX(2, 9 - (ch->level));
   if (ch->level < 5)
     WAIT_STATE(ch, 18);
+  else
+    WAIT_STATE(ch, wtime);
 }
 
 CH_CMD(do_gmote)
@@ -2291,6 +2306,8 @@ CH_CMD(do_gmote)
   wtime = UMAX(2, 9 - (ch->level));
   if (ch->level < 5)
     WAIT_STATE(ch, 18);
+  else
+    WAIT_STATE(ch, wtime);
 }
 
 void social_channel(const char *format, CHAR_DATA * ch, const void *arg2,
@@ -2550,6 +2567,8 @@ CH_CMD(do_ask)
   wtime = UMAX(2, 9 - (ch->level));
   if (ch->level < 5)
     WAIT_STATE(ch, 18);
+  else
+    WAIT_STATE(ch, wtime);
 }
 
 /* RT answer channel - uses same line as asks */
@@ -2642,6 +2661,8 @@ CH_CMD(do_answer)
   wtime = UMAX(2, 9 - (ch->level));
   if (ch->level < 5)
     WAIT_STATE(ch, 18);
+  else
+    WAIT_STATE(ch, wtime);
 }
 
 /* RT music channel */
@@ -2736,6 +2757,8 @@ CH_CMD(do_music)
   wtime = UMAX(2, 9 - (ch->level));
   if (ch->level < 5)
     WAIT_STATE(ch, 18);
+  else
+    WAIT_STATE(ch, wtime);
 }
 
 CH_CMD(do_announce)
@@ -3263,6 +3286,8 @@ CH_CMD(do_tell)
   wtime = UMAX(2, 9 - (ch->level));
   if (ch->level < 5)
     WAIT_STATE(ch, 18);
+  else
+    WAIT_STATE(ch, wtime);
 
   return;
 }
@@ -3377,6 +3402,8 @@ CH_CMD(do_reply)
   wtime = UMAX(2, 9 - (ch->level));
   if (ch->level < 5)
     WAIT_STATE(ch, 18);
+  else
+    WAIT_STATE(ch, wtime);
 
   return;
 }
